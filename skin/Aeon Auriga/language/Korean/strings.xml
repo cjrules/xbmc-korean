@@ -3,11 +3,11 @@
 <!--  strings 31000 thru 31999 reserved for skins  -->
 
  <strings>
-	<string id="31000">0.9 (STARK)</string> <!-- DO NOT CHANGE -->
-	<string id="31001"></string> <!-- RESERVED FOR CREDITS -->
-	<string id="31002"></string> <!-- RESERVED FOR CREDITS -->
-	<string id="31003"></string> <!-- RESERVED FOR CREDITS -->
-	<string id="31004">초기화</string>
+	  <string id="31000">0.9 (STARK)</string> <!-- DO NOT CHANGE -->
+	  <string id="31001">정보없음</string> 
+	  <string id="31002">음소거</string>
+	  <string id="31003"></string>
+	  <string id="31004">초기화</string>
     <string id="31005">항목:</string>
     <string id="31006">지금 재생중</string>
     <string id="31007">일시정지</string>
@@ -206,10 +206,10 @@
   
 <!-- Aeon Advanced options -->
   
-	<string id="31252">GRADIENT EFFECT FOR HOME MAIN MENU</string>
-	<string id="31253">LINK GAMES SHORTCUT TO 'LAUNCHER' PLUGIN</string>
-	<string id="31258">SHOW RATINGS (IMDB, ETC.) IN MOVIE INFO PAGE</string>
-	<string id="31259">DEFAULT ICONS FOR MEDIA FLAGS (OFF FOR BLANK SPACES)</string>
+	<string id="31252">홈화면 메인 메뉴에 그라디언트 효과</string>
+	<string id="31253">게임 바로가기를 런처 플러그인에 연결</string>
+	<string id="31258">영화정보 페이지에서 평점(IMDB 등) 보이기</string>
+	<string id="31259">미디어 플래그에 기본 아이콘 사용 (보이지 않으려면 끄기)</string>
     <string id="31260">시간 패널 보기</string>
     <string id="31261">첫 화면 날씨 팝업</string>
     <string id="31262">음악 배경 삽화 (팬아트)</string>
