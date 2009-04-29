@@ -46,31 +46,42 @@
 
 <!-- Media Window options -->
   
-    <string id="31050">보기 형식</string>
-    <string id="31051">정렬: 순차</string>
-    <string id="31052">정렬: 무작위</string>
-    <string id="31053">모드: 파일</string>
+  	<string id="31044">ART</string>
+	  <string id="31045">THUMB</string>
+	  <string id="31046">PLOT</string>
+	  <string id="31047">LAYOUT</string>
+	  <string id="31048">TRIGGER</string>
+	  <string id="31049">AUTO</string>
+	  <string id="31050">보기: </string>
+    <string id="31051">무작위</string>
+    <string id="31052">두껍게</string>
+    <string id="31053">가늘게</string>
     <string id="31054">설정</string>
     <string id="31055">연결재생: 켜기</string>
-    <string id="31056">연결재생: 끄기</string>
+    <string id="31056">THUMB: SQUARE</string>
     <string id="31057">파일</string>
-    <string id="31058">미시청: 숨김</string>
-    <string id="31059">미시청: 보기</string>
+    <string id="31058">미시청 숨김</string>
+    <string id="31059">썸네일: 포스터</string>
     <string id="31060">배치: 고정</string>
     <string id="31061">배치: 유동</string>
     <string id="31062">시즌</string>
     <string id="31063">에피소드</string>
-    <string id="31064">팬아트: 끄기</string>
-    <string id="31065">팬아트: 켜기</string>
-    <string id="31066">배경: 켜기</string>
-    <string id="31067">배경: 끄기</string>
-    <string id="31068">모드: 라이브러리</string>
-    <string id="31069">플래그: 켜기</string>
-    <string id="31070">플래그: 끄기</string>
-	<string id="31071">미리보기: 하나</string>
-	<string id="31072">미리보기: 여러개</string>
-  	<string id="31073">격자무늬: 기본</string>
-	<string id="31074">격자무늬: 최대</string>
+    <string id="31064">팬아트</string>
+    <string id="31065">PANEL</string>
+    <string id="31066">오버레이</string>
+    <string id="31067">배경</string>
+    <string id="31068">라이브러리</string>
+    <string id="31069">플래그</string>
+    <string id="31070">인포</string>
+  	<string id="31071">SLIM</string>
+	  <string id="31072">FULL</string>
+  	<string id="31073">기본</string>
+	  <string id="31074">최대</string>
+	 	<string id="31075">LAYOUT</string>
+	  <string id="31076">GRID</string>
+	  <string id="31077">ON</string>
+	  <string id="31078">OFF</string>
+	  <string id="31079">AUTOHIDE</string>
     
 <!-- Aeon Customisation Virtual Home page labels -->
   
@@ -152,7 +163,6 @@
 	<string id="31165">사용자</string>
 	<string id="31166">프로파일 관리</string>
 
-
 <!--  Button / Shutdown Menu  --> 
 
     <string id="31200">설정</string>
@@ -196,6 +206,10 @@
   
 <!-- Aeon Advanced options -->
   
+	<string id="31252">GRADIENT EFFECT FOR HOME MAIN MENU</string>
+	<string id="31253">LINK GAMES SHORTCUT TO 'LAUNCHER' PLUGIN</string>
+	<string id="31258">SHOW RATINGS (IMDB, ETC.) IN MOVIE INFO PAGE</string>
+	<string id="31259">DEFAULT ICONS FOR MEDIA FLAGS (OFF FOR BLANK SPACES)</string>
     <string id="31260">시간 패널 보기</string>
     <string id="31261">첫 화면 날씨 팝업</string>
     <string id="31262">음악 배경 삽화 (팬아트)</string>
@@ -309,6 +323,16 @@
     <string id="31431">평점을 변경하려면 밀어 올리거나 내림</string>
     <string id="31432">시즌</string>
     <string id="31433">에피소드</string>
+    <string id="31434">시간</string>
+	  <string id="31435">배우 정보 없음</string>
+	  <string id="31436">연도</string>
+	  <string id="31438">쟝르</string>
+	  <string id="31439">시청</string>
+	  <string id="31440">미시청</string>
+	  <string id="31441">날짜 정보 없음</string>
+	  <string id="31442">수정일 정보 없음</string>
+	  <string id="31443">해상도 정보 없음</string>
+	  <string id="31444">파일 크기 정보 없음</string>
 
 <!--  Aeon Assistant  -->
 
@@ -346,6 +370,9 @@
     <string id="31606">활성 보기 형식:</string>
     <string id="31607">새로 고침</string>
     <string id="31608">정보 켜기/끄기</string>
+  	<string id="31609">THIS LIBRARY IS EMPTY</string>
+  	<string id="31610">POPULATE IT VIA THE VIDEOS WINDOW</string>
+  	<string id="31611">POPULATE IT VIA THE FILES WINDOW</string>
 
 <!-- Welcome screen / Aeon Tour -->
 <!-- ENSURE LOWER/UPPER CASE IS OBEYED --> 
@@ -395,7 +422,10 @@
     <string id="31753">패널</string>
     <string id="31754">선택</string>
     <string id="31755">방향으로 보기모드 선택[CR]나가려면 누름</string>	
-
+	  <string id="31756">ONLY LIST VIEW IS AVAILABLE FOR EPISODES</string>
+  	<string id="31757">멀티플렉스</string>
+	  <string id="31578">스트립쇼</string>
+	  
 <!-- Aeon Settings panel labels -->
   
     <string id="31800">별도 자막</string>
@@ -433,5 +463,27 @@
 	<string id="31907">XBMC 포럼의 모든분께</string>
 	<string id="31908">...그리고 여러분</string>
 	<string id="31909">AEON은 돌아옵니다</string>
-    
+  	
+<!-- Submenu / Objects -->
+
+	<string id="31920">최근</string>
+	<string id="31921">제목</string>
+	<string id="31922">쟝르</string>
+	<string id="31923">연도</string>
+	<string id="31924">배우</string>
+	<string id="31925">감독</string>
+	<string id="31926">제작사</string>
+	<string id="31927">아티스트</string>
+	<string id="31928">앨범</string>
+	<string id="31929">재생목록</string>
+	<string id="31930">TOP 100</string>
+	<string id="31931">비디오</string>
+	<string id="31932">파일</string>
+	<string id="31933">보기</string>
+	<string id="31934">영화</string>
+	<string id="31935">항목</string>
+	<string id="31936">트랙</string>
+	<string id="31937">시즌</string>
+	<string id="31938">에피소드</string>
+	  
 </strings>
