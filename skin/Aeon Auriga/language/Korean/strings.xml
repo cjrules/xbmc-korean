@@ -50,7 +50,7 @@
 	  <string id="31045">썸네일</string>
 	  <string id="31046">줄거리</string>
 	  <string id="31047">레이아웃</string>
-	  <string id="31048">TRIGGER</string>
+	  <string id="31048">위화살표</string>
 	  <string id="31049">자동</string>
 	  <string id="31050">보기: </string>
     <string id="31051">무작위</string>
@@ -67,21 +67,21 @@
     <string id="31062">시즌</string>
     <string id="31063">에피소드</string>
     <string id="31064">팬아트</string>
-    <string id="31065">PANEL</string>
+    <string id="31065">패널</string>
     <string id="31066">오버레이</string>
     <string id="31067">배경</string>
     <string id="31068">라이브러리</string>
     <string id="31069">플래그</string>
     <string id="31070">영화정보</string>
-  	<string id="31071">SLIM</string>
-	  <string id="31072">FULL</string>
+  	<string id="31071">간단히</string>
+	  <string id="31072">자세히</string>
   	<string id="31073">기본</string>
 	  <string id="31074">최대</string>
 	 	<string id="31075">레이아웃</string>
-	  <string id="31076">GRID</string>
-	  <string id="31077">ON</string>
-	  <string id="31078">OFF</string>
-	  <string id="31079">AUTOHIDE</string>
+	  <string id="31076">그리드</string>
+	  <string id="31077">켜기</string>
+	  <string id="31078">끄기</string>
+	  <string id="31079">자동숨김</string>
     
 <!-- Aeon Customisation Virtual Home page labels -->
   
