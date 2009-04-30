@@ -1051,6 +1051,12 @@
 	</font>
 	
 	<font>
+	  <name>Font_Submenu</name>
+	  <filename>aeon_rss_kr.ttf</filename>
+	  <size>19</size>
+	</font>	
+
+	<font>
 	  <name>Font_Time</name>
 	  <filename>aeon_main_kr.ttf</filename>
 	  <size>18</size>
@@ -1102,6 +1108,12 @@
 	</font>
 	
 	<font>
+	  <name>Font_ListPlaying</name>
+	  <filename>aeon_rss_kr.ttf</filename>
+	  <size>18</size>
+	</font>	
+
+	<font>
 	  <name>Font_WeatherTitle</name>
 	  <filename>aeon_main_kr.ttf</filename>
 	  <size>24</size>
@@ -1136,10 +1148,16 @@
 	
 	<font>
 		<name>Font_List</name>
-		<filename>aeon_rss_kr.ttf</filename>
-		<size>16</size>
+		<filename>aeon_main_kr.ttf</filename>
+		<size>18</size>
 	</font>
 	
+	<font>
+		<name>Font_ListSmall</name>
+		<filename>aeon_main_kr.ttf</filename>
+		<size>14</size>
+	</font>	
+
 	<font>
 		<name>font13</name>
 		<filename>aeon_rss_kr.ttf</filename>
@@ -1151,6 +1169,24 @@
 		<filename>aeon_main_kr.ttf</filename>
 		<size>13</size>
 	</font>
+	
+	<font>
+		<name>Font_ListDetailTV</name>
+		<filename>aeon_main_kr.ttf</filename>
+		<size>16</size>
+	</font>	
+	
+	<font>
+		<name>Font_ListSub</name>
+		<filename>aeon_main_kr.ttf</filename>
+		<size>16</size>
+	</font>	
+	
+	<font>
+		<name>Font_ListObjects</name>
+		<filename>aeon_main_kr.ttf</filename>
+		<size>16</size>
+	</font>	
 	
 <!-- Settings screens -->
 
@@ -1207,6 +1243,24 @@
 
 <!-- Context menus and dialogs -->
 
+	<font>
+	  <name>Font_FileBrowserButton</name>
+	  <filename>aeon_main_kr.ttf</filename>
+	  <size>22</size>
+	</font>
+	
+	<font>
+	  <name>Font_FileBrowserDetail</name>
+	  <filename>aeon_main_kr.ttf</filename>
+	  <size>15</size>
+	</font>
+
+	<font>
+	  <name>Font_FileBrowserHeading</name>
+	  <filename>aeon_main_kr.ttf</filename>
+	  <size>31</size>
+	</font>	
+
     <font>
       <name>Font_ContextMenuButton</name>
       <filename>aeon_main_kr.ttf</filename>
@@ -1230,6 +1284,12 @@
 	  <filename>aeon_main_kr.ttf</filename>
 	  <size>16</size>
 	</font>
+
+	<font>
+	  <name>Font_ProgressLabelMid</name>
+	  <filename>aeon_main_kr.ttf</filename>
+	  <size>27</size>
+	</font>	
 
 	<font>
 	  <name>Font_ProgressLabelBig</name>
@@ -1290,6 +1350,65 @@
       <filename>aeon_main_kr.ttf</filename>
       <size>16</size>
     </font>
+
+<!-- StripShow -->
+
+    <font>
+      <name>Font_StripshowLabel</name>
+      <filename>aeon_main_kr.ttf</filename>
+      <size>55</size>
+    </font>
+	
+    <font>
+      <name>Font_StripshowLabelSmall</name>
+      <filename>aeon_main_kr.ttf</filename>
+      <size>24</size>
+    </font>	
+	
+    <font>
+      <name>Font_StripshowDetail</name>
+      <filename>aeon_main_kr.ttf</filename>
+      <size>18</size>
+    </font>	
+	
+<!-- Multiplex -->
+
+    <font>
+      <name>Font_MultiplexMainLabel</name>
+      <filename>aeon_main_kr.ttf</filename>
+      <size>55</size>
+    </font>
+	
+    <font>
+      <name>Font_MultiplexTVLabel</name>
+      <filename>aeon_main_kr.ttf</filename>
+      <size>55</size>
+    </font>	
+	
+    <font>
+      <name>Font_MultiplexSeasonLabel</name>
+      <filename>aeon_main_kr.ttf</filename>
+      <size>26</size>
+    </font>		
+
+    <font>
+      <name>Font_MultiplexPlot</name>
+      <filename>aeon_main_kr.ttf</filename>
+      <size>19</size>
+	  <linespacing>1</linespacing>	  
+    </font>
+	
+    <font>
+      <name>Font_MultiplexInfoLabel</name>
+      <filename>aeon_main_kr.ttf</filename>
+      <size>16</size>
+    </font>	
+	
+    <font>
+      <name>Font_MultiplexInfoValue</name>
+      <filename>aeon_main_kr.ttf</filename>
+      <size>17</size>
+    </font>	
 	
 <!-- Fullscreen Info pages -->
 
