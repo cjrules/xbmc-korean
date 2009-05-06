@@ -11,8 +11,8 @@
     <include>BigList</include>
     <include>Icons</include>
     <include>Wide</include>
+    <include>Wrap</include>
     <include>Tilted</include>
-    <include>Fanart</include>
 
     <control type="image">
       <description>Photos Window Image</description>
@@ -187,7 +187,7 @@
           <control type="image">
             <description>Selected Dot</description>
             <posx>15</posx>
-            <posy>79</posy>
+            <posy>78</posy>
             <width>30</width>
             <height>30</height>
             <aspectratio align="left">keep</aspectratio>
@@ -221,7 +221,7 @@
           <control type="image">
             <description>Selected Dot</description>
             <posx>15</posx>
-            <posy>109</posy>
+            <posy>108</posy>
             <width>30</width>
             <height>30</height>
             <aspectratio align="left">keep</aspectratio>
@@ -255,7 +255,7 @@
           <control type="image">
             <description>Selected Dot</description>
             <posx>15</posx>
-            <posy>139</posy>
+            <posy>138</posy>
             <width>30</width>
             <height>30</height>
             <aspectratio align="left">keep</aspectratio>
@@ -289,7 +289,7 @@
           <control type="image">
             <description>Selected Dot</description>
             <posx>15</posx>
-            <posy>169</posy>
+            <posy>168</posy>
             <width>30</width>
             <height>30</height>
             <aspectratio align="left">keep</aspectratio>
@@ -297,14 +297,14 @@
             <visible>ControlGroup(9001).HasFocus + Control.IsVisible(56)</visible>
           </control>
           <control type="button" id="2007">
-            <description>Photos</description>
+            <description>Wrap</description>
             <posx>0</posx>
             <posy>195</posy>
             <width>285</width>
             <height>30</height>
             <align>left</align>
             <aligny>center</aligny>
-            <label>$LOCALIZE[31000]</label>
+            <label>$LOCALIZE[31019]</label>
             <font>18BdFont</font>
             <textcolor>DefaultTextColor</textcolor>
             <focusedcolor>FocusedTextColor</focusedcolor>
@@ -316,14 +316,14 @@
             <onclick>Container.SetViewMode(55)</onclick>
             <onleft>51</onleft>
             <onright>51</onright>
-            <onup>2005</onup>
+            <onup>2006</onup>
             <ondown>2011</ondown>
             <visible>ControlGroup(9001).HasFocus</visible>
           </control>
           <control type="image">
             <description>Selected Dot</description>
             <posx>15</posx>
-            <posy>199</posy>
+            <posy>198</posy>
             <width>30</width>
             <height>30</height>
             <aspectratio align="left">keep</aspectratio>

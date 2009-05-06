@@ -11,6 +11,8 @@
     <include>BigList</include>
     <include>Icons</include>
     <include>Wide</include>
+    <include>Wrap</include>
+    <include>Tilted</include>
 
     <control type="image">
       <description>Game Saves Window Image</description>
@@ -140,7 +142,7 @@
             <onclick>Container.SetViewMode(51)</onclick>
             <onleft>51</onleft>
             <onright>51</onright>
-            <onup>2011</onup>
+            <onup>2021</onup>
             <ondown>2003</ondown>
             <visible>ControlGroup(9001).HasFocus</visible>
           </control>
@@ -243,7 +245,7 @@
             <onleft>51</onleft>
             <onright>51</onright>
             <onup>2004</onup>
-            <ondown>2011</ondown>
+            <ondown>2006</ondown>
             <visible>ControlGroup(9001).HasFocus</visible>
           </control>
           <control type="image">
@@ -255,6 +257,74 @@
             <aspectratio align="left">keep</aspectratio>
             <texture>ButtonDot.png</texture>
             <visible>ControlGroup(9001).HasFocus + Control.IsVisible(54)</visible>
+          </control>
+          <control type="button" id="2006">
+            <description>Tilted</description>
+            <posx>0</posx>
+            <posy>165</posy>
+            <width>285</width>
+            <height>30</height>
+            <align>left</align>
+            <aligny>center</aligny>
+            <label>$LOCALIZE[31023]</label>
+            <font>18BdFont</font>
+            <textcolor>DefaultTextColor</textcolor>
+            <focusedcolor>FocusedTextColor</focusedcolor>
+            <disabledcolor>DisabledTextColor</disabledcolor>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <textoffsetx>45</textoffsetx>
+            <pulseonselect>false</pulseonselect>
+            <onclick>Container.SetViewMode(56)</onclick>
+            <onleft>51</onleft>
+            <onright>51</onright>
+            <onup>2005</onup>
+            <ondown>2007</ondown>
+            <visible>ControlGroup(9001).HasFocus</visible>
+          </control>
+          <control type="image">
+            <description>Selected Dot</description>
+            <posx>15</posx>
+            <posy>168</posy>
+            <width>30</width>
+            <height>30</height>
+            <aspectratio align="left">keep</aspectratio>
+            <texture>ButtonDot.png</texture>
+            <visible>ControlGroup(9001).HasFocus + Control.IsVisible(56)</visible>
+          </control>
+          <control type="button" id="2007">
+            <description>Wrap</description>
+            <posx>0</posx>
+            <posy>195</posy>
+            <width>285</width>
+            <height>30</height>
+            <align>left</align>
+            <aligny>center</aligny>
+            <label>$LOCALIZE[31019]</label>
+            <font>18BdFont</font>
+            <textcolor>DefaultTextColor</textcolor>
+            <focusedcolor>FocusedTextColor</focusedcolor>
+            <disabledcolor>DisabledTextColor</disabledcolor>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <textoffsetx>45</textoffsetx>
+            <pulseonselect>false</pulseonselect>
+            <onclick>Container.SetViewMode(55)</onclick>
+            <onleft>51</onleft>
+            <onright>51</onright>
+            <onup>2006</onup>
+            <ondown>2011</ondown>
+            <visible>ControlGroup(9001).HasFocus</visible>
+          </control>
+          <control type="image">
+            <description>Selected Dot</description>
+            <posx>15</posx>
+            <posy>198</posy>
+            <width>30</width>
+            <height>30</height>
+            <aspectratio align="left">keep</aspectratio>
+            <texture>ButtonDot.png</texture>
+            <visible>ControlGroup(9001).HasFocus + Control.IsVisible(55)</visible>
           </control>
         </control>
       </control>

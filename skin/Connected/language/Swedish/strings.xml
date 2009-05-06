@@ -2,7 +2,7 @@
 <!--Language file translated with Team XBMC Translator-->
 <!--Translator: blittan-->
 <!--Email: blittan@xbmc.org-->
-<!--Date of translation: 01/20/2009-->
+<!--Date of translation: 04/27/2009-->
 <!--$Revision$-->
 <strings>
   <string id="31000">Foton</string>
@@ -15,6 +15,7 @@
   <string id="31011">Tack för att du valde [COLOR=FocusedTextColor]XBMC Connected[/COLOR].[CR]Senaste XBMC versionen är alltid att rekommendera.</string>
   <string id="31012">Försäkra dig om att gå till skalinställningar under inställningar.[CR]Inställningar kan visas genom att trycka höger på hemsidan.</string>
   <string id="31013">XBMC Connected</string>
+  <string id="31019">Svep</string>
   <string id="31020">Valmöjligheter</string>
   <string id="31021">Bred</string>
   <string id="31022">Fankonst</string>
@@ -49,7 +50,7 @@
   <string id="31510">Visa</string>
   <string id="31511">Sorteringsetiketter</string>
   <string id="31512">Affischer</string>
-  <string id="31513">Infotext i</string>
+  <string id="31513">Info i</string>
   <string id="31514">Tillstånd</string>
   <string id="31515">Helbildsbakgrund i</string>
   <string id="31516">Hel bakgrundsvideo</string>
@@ -68,6 +69,9 @@
   <string id="31529">Sätt bildmapp för Musik:</string>
   <string id="31530">Sätt bildmapp för Foton:</string>
   <string id="31531">Små skanningsdialoger</string>
+  <string id="31532">Diffus</string>
+  <string id="31533">Bakgrund</string>
+  <string id="31534">Färg</string>
   <string id="31540">Konfigurera videoinställningar, som t.ex:[CR][CR]- Filstapling[CR]- Biblioteksinställningar[CR]- Skärmkalibrering[CR]- Spelarval[CR]- Undertextsformat</string>
   <string id="31541">Konfigurera ljudinställningar, som t.ex:[CR][CR]- Visualiseringar[CR]- Biblioteksval[CR]- Spelarval[CR]- Last.FM[CR]- CD Rippning[CR]- Karaoke</string>
   <string id="31542">Konfigurera fotoval, som t.ex:[CR][CR]- Filval[CR]- Bildspel</string>

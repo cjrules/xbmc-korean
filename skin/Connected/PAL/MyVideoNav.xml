@@ -11,9 +11,8 @@
     <include>BigList</include>
     <include>Icons</include>
     <include>Wide</include>
+    <include>Wrap</include>
     <include>Tilted</include>
-    <include>Fanart</include>
-    <include>Seasons</include>
 
     <control type="image">
       <description>Videos Library Window Image</description>
@@ -413,14 +412,14 @@
             <visible>ControlGroup(9001).HasFocus + Control.IsVisible(56)</visible>
           </control>
           <control type="button" id="2007">
-            <description>Movies</description>
+            <description>Wrap</description>
             <posx>0</posx>
             <posy>195</posy>
             <width>285</width>
             <height>30</height>
             <align>left</align>
             <aligny>center</aligny>
-            <label>$LOCALIZE[20342] [LOWERCASE]($LOCALIZE[31022])[/LOWERCASE]</label>
+            <label>$LOCALIZE[31019]</label>
             <font>18BdFont</font>
             <textcolor>DefaultTextColor</textcolor>
             <focusedcolor>FocusedTextColor</focusedcolor>
@@ -434,103 +433,7 @@
             <onright>51</onright>
             <onup>2006</onup>
             <ondown>2011</ondown>
-            <visible>ControlGroup(9001).HasFocus + Container.Content(movies)</visible>
-          </control>
-          <control type="button" id="2007">
-            <description>TV Shows</description>
-            <posx>0</posx>
-            <posy>195</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <aligny>center</aligny>
-            <label>$LOCALIZE[20343] [LOWERCASE]($LOCALIZE[31022])[/LOWERCASE]</label>
-            <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
-            <onclick>Container.SetViewMode(55)</onclick>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>2006</onup>
-            <ondown>2011</ondown>
-            <visible>ControlGroup(9001).HasFocus + Container.Content(tvshows)</visible>
-          </control>
-          <control type="button" id="2007">
-            <description>Seasons</description>
-            <posx>0</posx>
-            <posy>195</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <aligny>center</aligny>
-            <label>$LOCALIZE[31005] [LOWERCASE]($LOCALIZE[31022])[/LOWERCASE]</label>
-            <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
-            <onclick>Container.SetViewMode(57)</onclick>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>2006</onup>
-            <ondown>2011</ondown>
-            <visible>ControlGroup(9001).HasFocus + Container.Content(seasons)</visible>
-          </control>
-          <control type="button" id="2007">
-            <description>Episodes</description>
-            <posx>0</posx>
-            <posy>195</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <aligny>center</aligny>
-            <label>$LOCALIZE[20360] [LOWERCASE]($LOCALIZE[31022])[/LOWERCASE]</label>
-            <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
-            <onclick>Container.SetViewMode(55)</onclick>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>2006</onup>
-            <ondown>2011</ondown>
-            <visible>ControlGroup(9001).HasFocus + Container.Content(Episodes)</visible>
-          </control>
-          <control type="button" id="2007">
-            <description>Music Videos</description>
-            <posx>0</posx>
-            <posy>195</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <aligny>center</aligny>
-            <label>$LOCALIZE[20389] [LOWERCASE]($LOCALIZE[31022])[/LOWERCASE]</label>
-            <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
-            <onclick>Container.SetViewMode(55)</onclick>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>2006</onup>
-            <ondown>2011</ondown>
-            <visible>ControlGroup(9001).HasFocus + Container.Content(musicvideos)</visible>
+            <visible>ControlGroup(9001).HasFocus</visible>
           </control>
           <control type="image">
             <description>Selected Dot</description>
@@ -540,7 +443,7 @@
             <height>30</height>
             <aspectratio align="left">keep</aspectratio>
             <texture>ButtonDot.png</texture>
-            <visible>ControlGroup(9001).HasFocus + [Control.IsVisible(55) | Control.IsVisible(57)]</visible>
+            <visible>ControlGroup(9001).HasFocus + Control.IsVisible(55)</visible>
           </control>
         </control>
       </control>
@@ -813,6 +716,32 @@
     </control>
   </control>
   
+  <control type="group">
+    <posx>185</posx>
+    <posy>530</posy>
+    <include>MediaFlagFade</include>
+    <include>ResolutionLogos</include>
+  </control>
+  <control type="group">
+    <posx>265</posx>
+    <posy>530</posy>
+    <include>MediaFlagFade</include>
+    <include>VideoCodecLogos</include>
+  </control>
+  <control type="group">
+    <posx>365</posx>
+    <posy>530</posy>
+    <include>MediaFlagFade</include>
+    <include>AudioCodecLogos</include>
+  </control>
+  <control type="group">
+    <posx>495</posx>
+    <posy>530</posy>
+    <include>MediaFlagFade</include>
+    <include>SubLogos</include>
+  </control>
+  
   <include>NowPlaying</include>
+  
 </controls>
 </window>

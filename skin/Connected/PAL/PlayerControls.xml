@@ -26,7 +26,7 @@
       <label>$INFO[VideoPlayer.Title]</label>
       <textcolor>FocusedTextColor</textcolor>
       <scroll>true</scroll>
-      <visible>IsEmpty(VideoPlayer.Title | MusicPlayer.Title)</visible>
+      <visible>IsEmpty(VideoPlayer.Title) | IsEmpty(MusicPlayer.Title)</visible>
     </control>
     <control type="label" id="1">
       <description>Label</description>

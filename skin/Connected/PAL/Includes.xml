@@ -75,15 +75,71 @@
   
 	<include name="Backgrounds">
     <control type="group">
+      <include>FanartFade</include>
+      <include>FanartPhotos</include>
+      <include>FanartWeather</include>
+      
+      <!-- Default Background -->
       <control type="image">
         <posx>0</posx>
         <posy>0</posy>
         <width>720</width>
         <height>576</height>
         <aspectratio>scale</aspectratio>
-        <texture>Background.png</texture>
-        <visible>!Skin.String(CustomBackPath)</visible>
+        <texture>BackgroundDefault.png</texture>
+        <visible>!Window.IsActive(2) + !Window.IsActive(2600) + !Skin.String(CustomBackPath) + !Skin.String(CustomBackFolder) + IsEmpty(Fanart.Image) + IsEmpty(listitem.property(fanart_image))</visible>
       </control>
+      <control type="image">
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>720</width>
+        <height>576</height>
+        <aspectratio>scale</aspectratio>
+        <texture>BackgroundDefault.png</texture>
+        <visible>Window.IsActive(2) + !Skin.String(CustomBackPath) + !Skin.String(CustomBackFolder) + IsEmpty(ListItem.Thumb) + IsEmpty(ListItem.FileNameAndPath)</visible>
+      </control>
+      <control type="image">
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>720</width>
+        <height>576</height>
+        <aspectratio>scale</aspectratio>
+        <texture>BackgroundDefault.png</texture>
+        <visible>Window.IsActive(2600) + !Skin.String(CustomBackPath) + !Skin.String(CustomBackFolder) + !Skin.HasSetting(WeatherFanart_Path)</visible>
+      </control>
+      
+      <!-- Default Background Colored -->
+      <control type="image">
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>720</width>
+        <height>576</height>
+        <aspectratio>scale</aspectratio>
+        <texture>$INFO[Skin.String(DefaultBackground)]</texture>
+        <visible>!Window.IsActive(2) + !Window.IsVisible(2600) + !Skin.String(CustomBackPath) + !Skin.String(CustomBackFolder) + !Skin.HasSetting(DefaultBackground) + IsEmpty(Fanart.Image) + IsEmpty(listitem.property(fanart_image))</visible>
+      </control>
+      <control type="image">
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>720</width>
+        <height>576</height>
+        <aspectratio>scale</aspectratio>
+        <texture>$INFO[Skin.String(DefaultBackground)]</texture>
+        <visible>Window.IsActive(2) + !Skin.String(CustomBackPath) + !Skin.String(CustomBackFolder) + !Skin.HasSetting(DefaultBackground) + IsEmpty(ListItem.Thumb) + IsEmpty(ListItem.FileNameAndPath)</visible>
+      </control>
+      <control type="image">
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>720</width>
+        <height>576</height>
+        <aspectratio>scale</aspectratio>
+        <texture>$INFO[Skin.String(DefaultBackground)]</texture>
+        <visible>Window.IsActive(2600) + !Skin.String(CustomBackPath) + !Skin.String(CustomBackFolder) + !Skin.HasSetting(DefaultBackground) + !Skin.String(WeatherFanart_Path)</visible>
+      </control>
+
+
+<!-- No Diffuse -->            
+      <!-- Custom Background Image -->
       <control type="image">
         <posx>0</posx>
         <posy>0</posy>
@@ -91,63 +147,99 @@
         <height>576</height>
         <aspectratio>scale</aspectratio>
         <info>Skin.String(CustomBackPath)</info>
-        <visible>Skin.String(CustomBackPath)</visible>
+        <visible>Skin.String(CustomBackPath) + !Skin.String(CustomBackFolder) + Skin.HasSetting(BackgroundDiffuse) + [IsEmpty(Fanart.Image) + IsEmpty(listitem.property(fanart_image))]</visible>
       </control>
-      <control type="largeimage">
-        <posx>0</posx>
-        <posy>0</posy>
-        <width>720</width>
-        <height>576</height>
-        <aspectratio>scale</aspectratio>
-        <colordiffuse>DisabledTextColor</colordiffuse>
-        <info>ListItem.Property(fanart_image)</info>
-        <visible>System.IdleTime(1) + IsEmpty(FanArt.Image) + !Skin.HasSetting(Fanart) + [Control.IsVisible(55) | Control.IsVisible(57)]</visible>
-      </control>
-      <control type="largeimage">
-        <posx>0</posx>
-        <posy>0</posy>
-        <width>720</width>
-        <height>576</height>
-        <aspectratio>scale</aspectratio>
-        <colordiffuse>DisabledTextColor</colordiffuse>
-        <info>Fanart.Image</info>
-        <visible>!Skin.HasSetting(Fanart) + [Control.IsVisible(55) | Control.IsVisible(57)]</visible>
-      </control>
-      <control type="image">
-        <posx>0</posx>
-        <posy>0</posy>
-        <width>720</width>
-        <height>576</height>
-        <aspectratio>scale</aspectratio>
-        <colordiffuse>DisabledTextColor</colordiffuse>
-        <info>ListItem.Thumb</info>
-        <visible>Control.IsVisible(55) + Window.IsActive(2) + !Skin.HasSetting(PhotoFull)</visible>
-      </control>
-      <control type="largeimage">
-        <posx>0</posx>
-        <posy>0</posy>
-        <width>720</width>
-        <height>576</height>
-        <aspectratio>scale</aspectratio>
-        <colordiffuse>DisabledTextColor</colordiffuse>
-        <info>ListItem.FileNameAndPath</info>
-        <visible>Control.IsVisible(55) + Window.IsActive(2) + Skin.HasSetting(PhotoFull)</visible>
-      </control>
+
+      <!-- Custom Background Folder -->
       <control type="multiimage">
-        <description>Weather Fanart</description>
+        <posx>0</posx>
+        <posy>0</posy>
         <width>720</width>
         <height>576</height>
-        <imagepath>$INFO[Skin.String(WeatherFanart_Path),]$INFO[Weather.FanartCode]</imagepath>
         <timeperimage>5000</timeperimage>
         <fadetime>2000</fadetime>
         <pauseatend>10000</pauseatend>
         <randomize>true</randomize>
         <loop>no</loop>
         <aspectratio>scale</aspectratio>
-        <colordiffuse>DisabledTextColor</colordiffuse>
-        <visible>Window.IsActive(2600) + Skin.HasSetting(WeatherFanart)</visible>
+        <fadetime>400</fadetime>
+        <visible>!Skin.String(CustomBackPath) + Skin.String(CustomBackFolder) + Skin.HasSetting(BackgroundDiffuse) + [IsEmpty(Fanart.Image) + IsEmpty(listitem.property(fanart_image))]</visible>
       </control>
-      
+
+      <!-- Fanart/Photo/Weather No Diffuse -->
+      <control type="group">
+        <visible>Skin.HasSetting(FanartDiffuse)</visible>
+        <!-- Movie Fanart No Diffuse-->
+        <control type="largeimage">
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>720</width>
+          <height>576</height>
+          <aspectratio>scale</aspectratio>
+          <colordiffuse>FFFFFFFF</colordiffuse>
+          <info>ListItem.Property(fanart_image)</info>
+          <fadetime>400</fadetime>
+          <visible>IsEmpty(FanArt.Image) + !Skin.HasSetting(Fanart)</visible>
+        </control>
+
+        <!-- TV Fanart No Diffuse -->
+        <control type="largeimage">
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>720</width>
+          <height>576</height>
+          <aspectratio>scale</aspectratio>
+          <colordiffuse>FFFFFFFF</colordiffuse>
+          <info>Fanart.Image</info>
+          <fadetime>400</fadetime>
+          <visible>!Skin.HasSetting(Fanart)</visible>
+        </control>
+
+        <!-- Photo Back Low Res No Diffuse  -->
+        <control type="image">
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>720</width>
+          <height>576</height>
+          <aspectratio>scale</aspectratio>
+          <colordiffuse>FFFFFFFF</colordiffuse>
+          <info>ListItem.Thumb</info>
+          <fadetime>400</fadetime>
+          <visible>Window.IsActive(2) + !Skin.HasSetting(PhotoFull)</visible>
+        </control>
+
+        <!-- Photo Back High Res No Diffuse  -->
+        <control type="largeimage">
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>720</width>
+          <height>576</height>
+          <aspectratio>scale</aspectratio>
+          <colordiffuse>FFFFFFFF</colordiffuse>
+          <info>ListItem.FileNameAndPath</info>
+          <fadetime>400</fadetime>
+          <visible>Window.IsActive(2) + Skin.HasSetting(PhotoFull)</visible>
+        </control>
+
+        <!-- Weather Fanart No Diffuse  -->
+        <control type="multiimage">
+          <description>Weather Fanart</description>
+          <width>720</width>
+          <height>576</height>
+          <imagepath>$INFO[Skin.String(WeatherFanart_Path),]$INFO[Weather.FanartCode]</imagepath>
+          <timeperimage>5000</timeperimage>
+          <fadetime>2000</fadetime>
+          <pauseatend>10000</pauseatend>
+          <randomize>true</randomize>
+          <loop>no</loop>
+          <aspectratio>scale</aspectratio>
+          <colordiffuse>FFFFFFFF</colordiffuse>
+          <fadetime>400</fadetime>
+          <visible>Window.IsActive(2600) + Skin.HasSetting(WeatherFanart)</visible>
+        </control>
+      </control>
+
+      <!-- Full Screen Video and Visual -->
       <control type="group">
         <visible>[Player.HasVideo | Player.HasAudio] + [Skin.HasSetting(FullScreenVideoEnable) |  Skin.HasSetting(FullScreenVisualEnable)]</visible>
         <control type="videowindow">
@@ -173,7 +265,110 @@
           <animation effect="fade" delay="0" end="70" time="0" condition="true">Conditional</animation>
         </control>
       </control>
+
+<!-- With Diffuse -->      
+      <!-- Custom Background Image -->
+      <control type="image">
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>720</width>
+        <height>576</height>
+        <aspectratio>scale</aspectratio>
+        <colordiffuse>BackgroundDiffuseColor</colordiffuse>
+        <info>Skin.String(CustomBackPath)</info>
+        <visible>Skin.String(CustomBackPath) + !Skin.String(CustomBackFolder) + !Skin.HasSetting(BackgroundDiffuse) + [IsEmpty(Fanart.Image) + IsEmpty(listitem.property(fanart_image))]</visible>
+      </control>
+
+      <!-- Custom Background Folder -->
+      <control type="multiimage">
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>720</width>
+        <height>576</height>
+        <info>Skin.String(CustomBackFolder)</info>
+        <timeperimage>5000</timeperimage>
+        <fadetime>2000</fadetime>
+        <pauseatend>10000</pauseatend>
+        <randomize>true</randomize>
+        <loop>no</loop>
+        <aspectratio>scale</aspectratio>
+        <fadetime>400</fadetime>
+        <colordiffuse>BackgroundDiffuseColor</colordiffuse>
+        <visible>!Skin.String(CustomBackPath) + Skin.String(CustomBackFolder) + !Skin.HasSetting(BackgroundDiffuse) + [IsEmpty(Fanart.Image) + IsEmpty(listitem.property(fanart_image))]</visible>
+      </control>
       
+      <!-- Fanart/Photo Weather -->
+      <control type="group">
+        <visible>!Skin.HasSetting(FanartDiffuse)</visible>
+        <!-- Movie Fanart Diffused -->
+        <control type="largeimage">
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>720</width>
+          <height>576</height>
+          <aspectratio>scale</aspectratio>
+          <colordiffuse>BackgroundDiffuseColor</colordiffuse>
+          <info>ListItem.Property(fanart_image)</info>
+          <fadetime>400</fadetime>
+          <visible>IsEmpty(FanArt.Image) + !Skin.HasSetting(Fanart)</visible>
+        </control>
+
+        <!-- TV Fanart Diffused -->
+        <control type="largeimage">
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>720</width>
+          <height>576</height>
+          <aspectratio>scale</aspectratio>
+          <colordiffuse>BackgroundDiffuseColor</colordiffuse>
+          <info>Fanart.Image</info>
+          <fadetime>400</fadetime>
+          <visible>!Skin.HasSetting(Fanart)</visible>
+        </control>
+
+        <!-- Photo Back Low Res Diffused  -->
+        <control type="image">
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>720</width>
+          <height>576</height>
+          <aspectratio>scale</aspectratio>
+          <colordiffuse>BackgroundDiffuseColor</colordiffuse>
+          <info>ListItem.Thumb</info>
+          <fadetime>400</fadetime>
+          <visible>Window.IsActive(2) + !Skin.HasSetting(PhotoFull)</visible>
+        </control>
+
+        <!-- Photo Back High Res Diffused  -->
+        <control type="largeimage">
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>720</width>
+          <height>576</height>
+          <aspectratio>scale</aspectratio>
+          <colordiffuse>BackgroundDiffuseColor</colordiffuse>
+          <info>ListItem.FileNameAndPath</info>
+          <fadetime>400</fadetime>
+          <visible>Window.IsActive(2) + Skin.HasSetting(PhotoFull)</visible>
+        </control>
+
+        <!-- Weather Fanart Diffused  -->
+        <control type="multiimage">
+          <description>Weather Fanart</description>
+          <width>720</width>
+          <height>576</height>
+          <imagepath>$INFO[Skin.String(WeatherFanart_Path),]$INFO[Weather.FanartCode]</imagepath>
+          <timeperimage>5000</timeperimage>
+          <fadetime>2000</fadetime>
+          <pauseatend>10000</pauseatend>
+          <randomize>true</randomize>
+          <loop>no</loop>
+          <aspectratio>scale</aspectratio>
+          <colordiffuse>BackgroundDiffuseColor</colordiffuse>
+          <fadetime>400</fadetime>
+          <visible>Window.IsActive(2600) + Skin.HasSetting(WeatherFanart)</visible>
+        </control>
+      </control>   
     </control>
 	</include>
 
@@ -988,18 +1183,183 @@
     </control>
     
   </include>
+
+  <!-- Media Flags -->
+  <include name="ResolutionLogos">
+    <control type="image">
+      <width>56</width>
+      <height>25</height>
+      <texture>resolutions/sd.png</texture>
+      <aspectratio>keep</aspectratio>
+      <visible>substring(listitem.studio,sd)</visible>
+    </control>
+    <control type="image">
+      <width>56</width>
+      <height>25</height>
+      <texture>resolutions/480i.png</texture>
+      <aspectratio>keep</aspectratio>
+      <visible>substring(listitem.studio,480i)</visible>
+    </control>
+    <control type="image">
+      <width>56</width>
+      <height>25</height>
+      <texture>resolutions/576i.png</texture>
+      <aspectratio>keep</aspectratio>
+      <visible>substring(listitem.studio,576i)</visible>
+    </control>
+    <control type="image">
+      <width>56</width>
+      <height>25</height>
+      <texture>resolutions/720i.png</texture>
+      <aspectratio>keep</aspectratio>
+      <visible>substring(listitem.studio,720i)</visible>
+    </control>
+    <control type="image">
+      <width>56</width>
+      <height>25</height>
+      <texture>resolutions/1080i.png</texture>
+      <aspectratio>keep</aspectratio>
+      <visible>substring(listitem.studio,1080i)</visible>
+    </control>
+    <control type="image">
+      <width>56</width>
+      <height>25</height>
+      <texture>resolutions/480p.png</texture>
+      <aspectratio>keep</aspectratio>
+      <visible>substring(listitem.studio,480p)</visible>
+    </control>
+    <control type="image">
+      <width>56</width>
+      <height>25</height>
+      <texture>resolutions/576p.png</texture>
+      <aspectratio>keep</aspectratio>
+      <visible>substring(listitem.studio,576p)</visible>
+    </control>
+    <control type="image">
+      <width>56</width>
+      <height>25</height>
+      <texture>resolutions/720p.png</texture>
+      <aspectratio>keep</aspectratio>
+      <visible>substring(listitem.studio,720p)</visible>
+    </control>
+    <control type="image">
+      <width>56</width>
+      <height>25</height>
+      <texture>resolutions/1080p.png</texture>
+      <aspectratio>keep</aspectratio>
+      <visible>substring(listitem.studio,1080p)</visible>
+    </control>
+  </include>
+
+  <include name="VideoCodecLogos">
+    <control type="image">
+      <width>78</width>
+      <height>25</height>
+      <aspectratio>keep</aspectratio>
+      <texture>video_codecs/xvid.png</texture>
+      <visible>substring(listitem.studio,xvid)</visible>
+    </control>
+    <control type="image">
+      <width>78</width>
+      <height>25</height>
+      <aspectratio>keep</aspectratio>
+      <texture>video_codecs/divx.png</texture>
+      <visible>substring(listitem.studio,divx)</visible>
+    </control>
+  </include>
+  
+  <include name="AudioCodecLogos">
+    <control type="image">
+      <width>109</width>
+      <height>25</height>
+      <aspectratio>keep</aspectratio>
+      <texture>audio_codecs/dd51.png</texture>
+      <visible>substring(listitem.studio,6ch) + substring(listitem.studio,ac-3)</visible>
+    </control>
+    <control type="image">
+      <width>109</width>
+      <height>25</height>
+      <aspectratio>keep</aspectratio>
+      <texture>audio_codecs/dd71.png</texture>
+      <visible>substring(listitem.studio,8ch) + substring(listitem.studio,ac-3)</visible>
+    </control>
+    <control type="image">
+      <width>109</width>
+      <height>25</height>
+      <aspectratio>keep</aspectratio>
+      <texture>audio_codecs/dts51.png</texture>
+      <visible>substring(listitem.studio,6ch) + substring(listitem.studio,dts)</visible>
+    </control>
+    <control type="image">
+      <width>109</width>
+      <height>25</height>
+      <aspectratio>keep</aspectratio>
+      <texture>audio_codecs/dts71.png</texture>
+      <visible>substring(listitem.studio,8ch) + substring(listitem.studio,dts)</visible>
+    </control>
+    <control type="image">
+      <width>109</width>
+      <height>25</height>
+      <aspectratio>keep</aspectratio>
+      <texture>audio_codecs/dd20.png</texture>
+      <visible>substring(listitem.studio,2ch)</visible>
+    </control>
+    <control type="image">
+      <width>109</width>
+      <height>25</height>
+      <aspectratio>keep</aspectratio>
+      <texture>audio_codecs/mono.png</texture>
+      <visible>substring(listitem.studio,mono)</visible>
+    </control>
+  </include>
+
+  <include name="SubLogos">
+    <control type="image">
+      <width>33</width>
+      <height>25</height>
+      <aspectratio>keep</aspectratio>
+      <texture>audio_codecs/cc.png</texture>
+      <visible>substring(listitem.studio,sub)</visible>
+    </control>
+  </include>
   
 	<!-- Animations -->
+  <include name="SettingsFade">
+    <animation effect="fade" time="300" end="100" condition="Window.Previous(home)">WindowOpen</animation>
+    <animation effect="fade" time="300" end="0" condition="Window.Next(home)">WindowClose</animation>
+  </include>
+  
 	<include name="DefaultFade">
 		<animation effect="fade" time="300" end="100">WindowOpen</animation>
 		<animation effect="fade" time="300" end="0">WindowClose</animation>
 		<animation effect="fade" time="300" end="100">Visible</animation>
 		<animation effect="fade" time="300" end="0">Hidden</animation>
 	</include>
-
-  <include name="SettingsFade">
-    <animation effect="fade" time="300" end="100" condition="Window.Previous(home)">WindowOpen</animation>
-    <animation effect="fade" time="300" end="0" condition="Window.Next(home)">WindowClose</animation>
+  
+  <include name="MediaFlagFade">
+    <animation effect="fade" delay="0" end="60" time="200">WindowOpen</animation>
+    <animation effect="fade" delay="0" start="60" end="0" time="200">WindowClose</animation>
+    <animation effect="fade" delay="0" end="60" time="200">WindowOpen</animation>
+    <animation effect="fade" delay="0" start="60" end="0" time="200">WindowClose</animation>
+  </include>
+  
+  <include name="FanartFade">
+    <animation effect="fade" time="300" condition="!Window.IsActive(2) + !Window.IsActive(2600) + !IsEmpty(Fanart.Image) + !IsEmpty(listitem.property(fanart_image))">Visible</animation>
+    <animation effect="fade" time="300" condition="!Window.IsActive(2) + !Window.IsActive(2600) + !IsEmpty(Fanart.Image) + !IsEmpty(listitem.property(fanart_image))">Hidden</animation>
+    <animation effect="fade" time="300" condition="!Window.IsActive(2) + !Window.IsActive(2600) + !IsEmpty(Fanart.Image) + !IsEmpty(listitem.property(fanart_image))">WindowOpen</animation>
+    <animation effect="fade" time="300" condition="!Window.IsActive(2) + !Window.IsActive(2600) + !IsEmpty(Fanart.Image) + !IsEmpty(listitem.property(fanart_image))">WindowClose</animation>
+  </include>
+  <include name="FanartFadePhotos">
+    <animation effect="fade" time="300" condition="Window.IsActive(2) + !IsEmpty(ListItem.Thumb) + !IsEmpty(ListItem.FileNameAndPath)">Visible</animation>
+    <animation effect="fade" time="300" condition="Window.IsActive(2) + !IsEmpty(ListItem.Thumb) + !IsEmpty(ListItem.FileNameAndPath)">Hidden</animation>
+    <animation effect="fade" time="300" condition="Window.IsActive(2) + !IsEmpty(ListItem.Thumb) + !IsEmpty(ListItem.FileNameAndPath)">WindowOpen</animation>
+    <animation effect="fade" time="300" condition="Window.IsActive(2) + !IsEmpty(ListItem.Thumb) + !IsEmpty(ListItem.FileNameAndPath)">WindowClose</animation>
+  </include>
+  <include name="FanartFadeWeather">
+    <animation effect="fade" time="300" condition="Window.IsActive(2600) + !IsEmpty(WeatherFanart_Path)">Visible</animation>
+    <animation effect="fade" time="300" condition="Window.IsActive(2600) + !IsEmpty(WeatherFanart_Path)">Hidden</animation>
+    <animation effect="fade" time="300" condition="Window.IsActive(2600) + !IsEmpty(WeatherFanart_Path)">WindowOpen</animation>
+    <animation effect="fade" time="300" condition="Window.IsActive(2600) + !IsEmpty(WeatherFanart_Path)">WindowClose</animation>
   </include>
 
   <include name="HomeSubMenuFade">

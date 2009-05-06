@@ -11,6 +11,8 @@
     <include>BigList</include>
     <include>Icons</include>
     <include>Wide</include>
+    <include>Wrap</include>
+    <include>Tilted</include>
 
     <control type="image">
       <description>Scripts Window Image</description>
@@ -57,7 +59,7 @@
       <visible allowhiddenfocus="true">ControlGroup(9000).HasFocus</visible>
 
       <control type="group">
-        <include>OptionBack2-4</include>
+        <include>OptionBack3-5</include>
         <visible>ControlGroup(9001).HasFocus</visible>
       </control>
       <control type="group">
@@ -147,7 +149,7 @@
           <control type="image">
             <description>Selected Dot</description>
             <posx>15</posx>
-            <posy>48</posy>
+            <posy>49</posy>
             <width>30</width>
             <height>30</height>
             <aspectratio align="left">keep</aspectratio>
@@ -243,7 +245,7 @@
             <onleft>51</onleft>
             <onright>51</onright>
             <onup>2004</onup>
-            <ondown>2011</ondown>
+            <ondown>2006</ondown>
             <visible>ControlGroup(9001).HasFocus</visible>
           </control>
           <control type="image">
@@ -256,13 +258,81 @@
             <texture>ButtonDot.png</texture>
             <visible>ControlGroup(9001).HasFocus + Control.IsVisible(54)</visible>
           </control>
+          <control type="button" id="2006">
+            <description>Tilted</description>
+            <posx>0</posx>
+            <posy>165</posy>
+            <width>285</width>
+            <height>30</height>
+            <align>left</align>
+            <aligny>center</aligny>
+            <label>$LOCALIZE[31023]</label>
+            <font>18BdFont</font>
+            <textcolor>DefaultTextColor</textcolor>
+            <focusedcolor>FocusedTextColor</focusedcolor>
+            <disabledcolor>DisabledTextColor</disabledcolor>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <textoffsetx>45</textoffsetx>
+            <pulseonselect>false</pulseonselect>
+            <onclick>Container.SetViewMode(56)</onclick>
+            <onleft>51</onleft>
+            <onright>51</onright>
+            <onup>2005</onup>
+            <ondown>2007</ondown>
+            <visible>ControlGroup(9001).HasFocus</visible>
+          </control>
+          <control type="image">
+            <description>Selected Dot</description>
+            <posx>15</posx>
+            <posy>168</posy>
+            <width>30</width>
+            <height>30</height>
+            <aspectratio align="left">keep</aspectratio>
+            <texture>ButtonDot.png</texture>
+            <visible>ControlGroup(9001).HasFocus + Control.IsVisible(56)</visible>
+          </control>
+          <control type="button" id="2007">
+            <description>Wrap</description>
+            <posx>0</posx>
+            <posy>195</posy>
+            <width>285</width>
+            <height>30</height>
+            <align>left</align>
+            <aligny>center</aligny>
+            <label>$LOCALIZE[31019]</label>
+            <font>18BdFont</font>
+            <textcolor>DefaultTextColor</textcolor>
+            <focusedcolor>FocusedTextColor</focusedcolor>
+            <disabledcolor>DisabledTextColor</disabledcolor>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <textoffsetx>45</textoffsetx>
+            <pulseonselect>false</pulseonselect>
+            <onclick>Container.SetViewMode(55)</onclick>
+            <onleft>51</onleft>
+            <onright>51</onright>
+            <onup>2006</onup>
+            <ondown>2011</ondown>
+            <visible>ControlGroup(9001).HasFocus</visible>
+          </control>
+          <control type="image">
+            <description>Selected Dot</description>
+            <posx>15</posx>
+            <posy>198</posy>
+            <width>30</width>
+            <height>30</height>
+            <aspectratio align="left">keep</aspectratio>
+            <texture>ButtonDot.png</texture>
+            <visible>ControlGroup(9001).HasFocus + Control.IsVisible(55)</visible>
+          </control>
         </control>
       </control>
 
       <control type="group" id="9002">
         <posx>0</posx>
-        <posy>170</posy>
-        <animation effect="slide" time="10" end="0,-125" condition="ControlGroup(9002).HasFocus | ControlGroup(9003).HasFocus">Conditional</animation>
+        <posy>230</posy>
+        <animation effect="slide" time="10" end="0,-185" condition="ControlGroup(9002).HasFocus | ControlGroup(9003).HasFocus">Conditional</animation>
         <control type="button" id="2011">
           <description>Sort Header</description>
           <posx>0</posx>

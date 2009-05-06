@@ -13,6 +13,7 @@
 	<string id="31012">Be sure to visit Skin Options under Settings.[CR]Settings can be viewed by pressing right on the home page.</string>
 	<string id="31013">XBMC Connected</string>
 
+  <string id="31019">Wrap</string>
 	<string id="31020">Options</string>
 	<string id="31021">Wide</string>
   <string id="31022">Fanart</string>
@@ -49,9 +50,9 @@
   <string id="31510">View</string>
   <string id="31511">Sort Labels</string>
   <string id="31512">Posters</string>
-  <string id="31513">Info Text In</string>
+  <string id="31513">Info In</string>
   <string id="31514">Conditions</string>
-  <string id="31515">Full Image Background In</string>
+  <string id="31515">Full Background Photo</string>
   <string id="31516">Full Background Video</string>
   <string id="31517">Full Background Visualisation</string>
   <string id="31518">Time In Now Playing Info</string>
@@ -68,6 +69,9 @@
   <string id="31529">Set Music Image Folder:</string>
   <string id="31530">Set Photos Image Folder:</string>
   <string id="31531">Small Scan Dialogs</string>
+  <string id="31532">Diffuse</string>
+  <string id="31533">Background</string>
+  <string id="31534">Color</string>
 
   <string id="31540">Configure Video settings, Including:[CR][CR]- File Stacking[CR]- Library Options[CR]- Screen Calibration[CR]- Player Options[CR]- Subtitle Format</string>
   <string id="31541">Configure Music settings, Including:[CR][CR]- Visualisations[CR]- Library Options[CR]- Player Options[CR]- Last.FM[CR]- CD Ripping[CR]- Karaoke</string>

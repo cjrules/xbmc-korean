@@ -11,8 +11,8 @@
     <include>BigList</include>
     <include>Icons</include>
     <include>Wide</include>
+    <include>Wrap</include>
     <include>Tilted</include>
-    <include>Fanart</include>
 
     <control type="image">
       <description>Music Library Window Image</description>
@@ -372,14 +372,14 @@
             <visible>ControlGroup(9001).HasFocus + Control.IsVisible(56)</visible>
           </control>
           <control type="button" id="2007">
-            <description>Artists</description>
+            <description>Wrap</description>
             <posx>0</posx>
             <posy>195</posy>
             <width>285</width>
             <height>30</height>
             <align>left</align>
             <aligny>center</aligny>
-            <label>$LOCALIZE[133] [LOWERCASE]($LOCALIZE[31022])[/LOWERCASE]</label>
+            <label>$LOCALIZE[31019]</label>
             <font>18BdFont</font>
             <textcolor>DefaultTextColor</textcolor>
             <focusedcolor>FocusedTextColor</focusedcolor>
@@ -393,55 +393,7 @@
             <onright>51</onright>
             <onup>2006</onup>
             <ondown>2011</ondown>
-            <visible>ControlGroup(9001).HasFocus + Container.Content(Artists)</visible>
-          </control>
-          <control type="button" id="2007">
-            <description>Albums</description>
-            <posx>0</posx>
-            <posy>195</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <aligny>center</aligny>
-            <label>$LOCALIZE[132] [LOWERCASE]($LOCALIZE[31022])[/LOWERCASE]</label>
-            <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
-            <onclick>Container.SetViewMode(55)</onclick>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>2006</onup>
-            <ondown>2011</ondown>
-            <visible>ControlGroup(9001).HasFocus + Container.Content(albums)</visible>
-          </control>
-          <control type="button" id="2007">
-            <description>Songs</description>
-            <posx>0</posx>
-            <posy>195</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <aligny>center</aligny>
-            <label>$LOCALIZE[134] [LOWERCASE]($LOCALIZE[31022])[/LOWERCASE]</label>
-            <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
-            <onclick>Container.SetViewMode(55)</onclick>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>2006</onup>
-            <ondown>2011</ondown>
-            <visible>ControlGroup(9001).HasFocus + Container.Content(songs)</visible>
+            <visible>ControlGroup(9001).HasFocus</visible>
           </control>
           <control type="image">
             <description>Selected Dot</description>

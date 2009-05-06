@@ -8,7 +8,7 @@
 			<width>22</width>
 			<height>21</height>
 			<texture>Pointer.png</texture>
-			<colordiffuse>DefaultPointerColor</colordiffuse>
+			<colordiffuse>DefaultTextColor</colordiffuse>
 		</control>
 		<control type="image" id="2">
 			<description>Focus</description>
@@ -17,7 +17,7 @@
 			<width>22</width>
 			<height>21</height>
 			<texture>Pointer.png</texture>
-			<colordiffuse>FocusPointerColor</colordiffuse>
+			<colordiffuse>FocusedTextColor</colordiffuse>
 		</control>
 		<control type="image" id="3">
 			<description>Drag</description>
@@ -26,7 +26,7 @@
 			<width>22</width>
 			<height>21</height>
 			<texture>Pointer.png</texture>
-			<colordiffuse>DragPointerColor</colordiffuse>
+			<colordiffuse>SelectedTextColor</colordiffuse>
 		</control>
 		<control type="image" id="4">
 			<description>Click</description>
@@ -35,7 +35,7 @@
 			<width>22</width>
 			<height>21</height>
 			<texture>Pointer.png</texture>
-			<colordiffuse>ClickPointerColor</colordiffuse>
+			<colordiffuse>DefaultTextColor</colordiffuse>
 		</control>
 	</controls>
 </window>

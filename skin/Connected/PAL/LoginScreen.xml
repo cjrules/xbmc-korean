@@ -72,7 +72,7 @@
             <width>500</width>
             <height>60</height>
             <font>22BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(-2).Label</info>
@@ -92,7 +92,7 @@
             <width>500</width>
             <height>60</height>
             <font>22BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(-1).Label</info>
@@ -112,7 +112,7 @@
             <width>500</width>
             <height>90</height>
             <font>26BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(0).Label </info>
@@ -138,7 +138,7 @@
             <width>500</width>
             <height>120</height>
             <font>26BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(1).Label</info>
@@ -158,7 +158,7 @@
             <width>500</width>
             <height>90</height>
             <font>26BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(2).Label</info>
@@ -178,7 +178,7 @@
             <width>500</width>
             <height>60</height>
             <font>22BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(3).Label</info>
@@ -209,7 +209,7 @@
             <width>500</width>
             <height>60</height>
             <font>22BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(-3).Label</info>
@@ -229,7 +229,7 @@
             <width>500</width>
             <height>90</height>
             <font>26BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(-2).Label </info>
@@ -249,7 +249,7 @@
             <width>500</width>
             <height>120</height>
             <font>26BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(-1).Label</info>
@@ -275,7 +275,7 @@
             <width>500</width>
             <height>90</height>
             <font>26BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(0).Label</info>
@@ -295,7 +295,7 @@
             <width>500</width>
             <height>60</height>
             <font>22BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(1).Label</info>
@@ -315,7 +315,7 @@
             <width>500</width>
             <height>60</height>
             <font>22BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(2).Label</info>
@@ -343,7 +343,7 @@
             <width>500</width>
             <height>60</height>
             <font>22BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(-2).Label</info>
@@ -363,7 +363,7 @@
             <width>500</width>
             <height>90</height>
             <font>26BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(-1).Label </info>
@@ -383,7 +383,7 @@
             <width>500</width>
             <height>90</height>
             <font>26BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(1).Label</info>
@@ -403,7 +403,7 @@
             <width>500</width>
             <height>60</height>
             <font>22BdFont</font>
-            <textcolor>HomeTextColor</textcolor>
+            <textcolor>FocusedTextColor</textcolor>
             <align>left</align>
             <aligny>center</aligny>
             <info>Container(52).ListItem(2).Label</info>
@@ -452,7 +452,7 @@
           <align>left</align>
           <aligny>center</aligny>
           <font>50BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <info>Container(52).ListItem(0).Label</info>
         </control>
       </control>

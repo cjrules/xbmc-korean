@@ -32,15 +32,6 @@
 			<font>40BdFont</font>
 			<textcolor>FocusedTextColor</textcolor>
 		</control>
-    <control type="image">
-      <posx>620</posx>
-      <posy>5</posy>
-      <width>40</width>
-      <height>40</height>
-      <info>ListItem.Overlay</info>
-      <aspectratio align="right">keep</aspectratio>
-      <visible>!Skin.HasSetting(OverlayIcons)</visible>
-    </control>
 
 		<control type="label">
 			<description>Year label</description>

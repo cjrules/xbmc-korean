@@ -18,8 +18,8 @@
 			<onright>51</onright>
 			<onup>60</onup>
 			<ondown>60</ondown>
-      <visible>[Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsWindows) + !Control.IsVisible(56)] + ![Control.IsVisible(55) + [Container.Content(episodes) | Container.Content(movies) | Window.IsActive(2) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | Container.Content(musicvideos) | Container.Content(tvshows)]]</visible>
-			<animation effect="fade" time="0" start="0" end="60">Visible</animation>
+      <visible>[Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsWindows)] + [Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(54)]]</visible>
+			<animation effect="fade" time="0" start="0" end="60" condition="Control.HasFocus(60)">Conditional</animation>
 			</control>
 		<control type="scrollbar" id="60">
 			<description>Scroll Bar</description>
@@ -38,9 +38,8 @@
 			<onright>51</onright>
 			<onup>60</onup>
 			<ondown>60</ondown>
-      <visible>[!Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsWindows) + !Control.IsVisible(56)] + ![Control.IsVisible(55) + [Container.Content(episodes) | Container.Content(movies) | Window.IsActive(2) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | Container.Content(musicvideos) | Container.Content(tvshows)]]</visible>
-			<animation effect="fade" time="0" start="0" end="30">WindowOpen</animation>
-      <animation effect="fade" time="0" start="0" end="30">WindowClose</animation>
+      <visible>[!Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsWindows)] + [Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(54)]]</visible>
+      <animation effect="fade" time="0" start="0" end="30" condition="!Control.HasFocus(60)">Conditional</animation>
 		</control>
 	</include>
   
@@ -62,8 +61,8 @@
       <onright>60</onright>
       <onup>51</onup>
       <ondown>51</ondown>
-      <visible>[Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsWindows)] + [Control.IsVisible(55) + [Container.Content(episodes) | Container.Content(movies) | Window.IsActive(2) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | Container.Content(musicvideos) | Container.Content(tvshows)]]</visible>
-      <animation effect="fade" time="0" start="0" end="60">Visible</animation>
+      <visible>[Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsWindows)] + [Control.IsVisible(55) | Control.IsVisible(56)]]</visible>
+      <animation effect="fade" time="0" start="0" end="60" condition="Control.HasFocus(60)">Conditional</animation>
     </control>
     <control type="scrollbar" id="60">
       <description>Scroll Bar</description>
@@ -82,50 +81,8 @@
       <onright>60</onright>
       <onup>51</onup>
       <ondown>51</ondown>
-      <visible>[!Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsWindows)] + [Control.IsVisible(55) + [Container.Content(episodes) | Container.Content(movies) | Window.IsActive(2) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | Container.Content(musicvideos) | Container.Content(tvshows)]]</visible>
-      <animation effect="fade" time="0" start="0" end="30">WindowOpen</animation>
-      <animation effect="fade" time="0" start="0" end="30">WindowClose</animation>
-    </control>
-    <control type="scrollbar" id="60">
-      <description>Scroll Bar</description>
-      <posx>120</posx>
-      <posy>505</posy>
-      <width>480</width>
-      <height>32</height>
-      <texturesliderbackground>ScrollBarBackH.png</texturesliderbackground>
-      <texturesliderbar>-</texturesliderbar>
-      <texturesliderbarfocus>-</texturesliderbarfocus>
-      <textureslidernib>ScrollBarNibH.png</textureslidernib>
-      <textureslidernibfocus>ScrollBarNibH.png</textureslidernibfocus>
-      <orientation>horizontal</orientation>
-      <showonepage>false</showonepage>
-      <onleft>60</onleft>
-      <onright>60</onright>
-      <onup>51</onup>
-      <ondown>51</ondown>
-      <visible>[Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsWindows)] + Control.IsVisible(56)</visible>
-      <animation effect="fade" time="0" start="0" end="60">Visible</animation>
-    </control>
-    <control type="scrollbar" id="60">
-      <description>Scroll Bar</description>
-      <posx>120</posx>
-      <posy>505</posy>
-      <width>480</width>
-      <height>32</height>
-      <texturesliderbackground>ScrollBarBackH.png</texturesliderbackground>
-      <texturesliderbar>-</texturesliderbar>
-      <texturesliderbarfocus>-</texturesliderbarfocus>
-      <textureslidernib>ScrollBarNibH.png</textureslidernib>
-      <textureslidernibfocus>ScrollBarNibH.png</textureslidernibfocus>
-      <orientation>horizontal</orientation>
-      <showonepage>false</showonepage>
-      <onleft>60</onleft>
-      <onright>60</onright>
-      <onup>51</onup>
-      <ondown>51</ondown>
-      <visible>[!Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsWindows)] + Control.IsVisible(56)</visible>
-      <animation effect="fade" time="0" start="0" end="30">WindowOpen</animation>
-      <animation effect="fade" time="0" start="0" end="30">WindowClose</animation>
+      <visible>[!Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsWindows)] + [Control.IsVisible(55) | Control.IsVisible(56)]]</visible>
+      <animation effect="fade" time="0" start="0" end="30" condition="!Control.HasFocus(60)">Conditional</animation>
     </control>
   </include>
   
@@ -296,7 +253,7 @@
           <height>80</height>
           <info>ListItem.Icon</info>
           <aspectratio align="left" aligny="top">keep</aspectratio>
-          <animation effect="fade" time="0" start="0" end="50" condition="true">Conditional</animation>
+          <colordiffuse>IconDiffuseColor</colordiffuse>
         </control>
         <control type="label">
           <posx>110</posx>
@@ -443,18 +400,18 @@
         <control type="group">
           <visible>container.content(movies)</visible>
           <control type="label">
-            <description>Duration Value</description>
+            <description>Rating Value</description>
             <posx>110</posx>
             <posy>30</posy>
             <width>660</width>
             <height>30</height>
             <align>left</align>
             <aligny>center</aligny>
-            <label>$LOCALIZE[2050]: $INFO[ListItem.Duration]</label>
+            <label>$LOCALIZE[563]: $INFO[ListItem.Rating]</label>
             <scroll>false</scroll>
             <font>20BdFont</font>
             <textcolor>FocusedTextColor</textcolor>
-            <visible>!IsEmpty(ListItem.Duration)</visible>
+            <visible>!IsEmpty(ListItem.Rating)</visible>
             <animation effect="fade" time="0" start="0" end="50" condition="true">Conditional</animation>
           </control>
           <control type="label">
@@ -652,10 +609,10 @@
           <aspectratio align="left" aligny="top">keep</aspectratio>
         </control>
         <control type="image">
-          <posx>5</posx>
-          <posy>10</posy>
-          <width>14</width>
-          <height>14</height>
+          <posx>25</posx>
+          <posy>60</posy>
+          <width>25</width>
+          <height>25</height>
           <info>ListItem.Overlay</info>
           <aspectratio align="left" aligny="top">keep</aspectratio>
           <visible>!Skin.HasSetting(OverlayIcons)</visible>
@@ -799,18 +756,18 @@
         <control type="group">
           <visible>container.content(movies)</visible>
           <control type="label">
-            <description>Duration Value</description>
+            <description>Rating Value</description>
             <posx>110</posx>
             <posy>30</posy>
             <width>660</width>
             <height>30</height>
             <align>left</align>
             <aligny>center</aligny>
-            <label>$LOCALIZE[2050]: $INFO[ListItem.Duration]</label>
+            <label>$LOCALIZE[563]: $INFO[ListItem.Rating]</label>
             <scroll>true</scroll>
             <font>20BdFont</font>
             <textcolor>FocusedTextColor</textcolor>
-            <visible>!IsEmpty(ListItem.Duration)</visible>
+            <visible>!IsEmpty(ListItem.Rating)</visible>
           </control>
           <control type="label">
             <description>Genre Value</description>
@@ -886,7 +843,7 @@
             <align>left</align>
             <aligny>center</aligny>
             <label>$LOCALIZE[557]: $INFO[ListItem.artist]</label>
-            <scroll>false</scroll>
+            <scroll>true</scroll>
             <font>20BdFont</font>
             <textcolor>FocusedTextColor</textcolor>
             <visible>!IsEmpty(ListItem.artist)</visible>
@@ -900,7 +857,7 @@
             <align>left</align>
             <aligny>center</aligny>
             <label>$LOCALIZE[515]: $INFO[ListItem.Genre]</label>
-            <scroll>false</scroll>
+            <scroll>true</scroll>
             <font>20BdFont</font>
             <textcolor>FocusedTextColor</textcolor>
             <visible>!IsEmpty(ListItem.Genre)</visible>
@@ -981,7 +938,7 @@
             <align>left</align>
             <aligny>center</aligny>
             <label>$LOCALIZE[515]: $INFO[ListItem.genre]</label>
-            <scroll>false</scroll>
+            <scroll>true</scroll>
             <font>20BdFont</font>
             <textcolor>FocusedTextColor</textcolor>
             <visible>!IsEmpty(ListItem.Genre)</visible>
@@ -1013,7 +970,7 @@
 					<height>120</height>
 					<info>ListItem.Icon</info>
           <aspectratio align="center" aligny="bottom">keep</aspectratio>
-					<animation effect="fade" time="0" start="0" end="50" condition="true">Conditional</animation>
+          <colordiffuse>IconDiffuseColor</colordiffuse>
 				</control>
 				<control type="image">
 					<posx>22</posx>
@@ -1072,9 +1029,9 @@
 				</control>
         <control type="image">
           <posx>5</posx>
-          <posy>115</posy>
-          <width>15</width>
-          <height>15</height>
+          <posy>110</posy>
+          <width>25</width>
+          <height>25</height>
           <info>ListItem.Overlay</info>
           <aspectratio align="left" aligny="top">keep</aspectratio>
           <visible>!Skin.HasSetting(OverlayIcons)</visible>
@@ -1130,7 +1087,7 @@
 					<height>90</height>
 					<info>ListItem.Icon</info>
           <aspectratio align="center" aligny="bottom">keep</aspectratio>
-					<animation effect="fade" time="0" start="0" end="50" condition="true">Conditional</animation>
+          <colordiffuse>IconDiffuseColor</colordiffuse>
 				</control>
 				<control type="image">
 					<posx>22</posx>
@@ -1189,9 +1146,9 @@
 				</control>
         <control type="image">
           <posx>5</posx>
-          <posy>115</posy>
-          <width>15</width>
-          <height>15</height>
+          <posy>110</posy>
+          <width>25</width>
+          <height>25</height>
           <info>ListItem.Overlay</info>
           <aspectratio align="right" aligny="middle">keep</aspectratio>
           <visible>!Skin.HasSetting(OverlayIcons)</visible>
@@ -1225,6 +1182,2024 @@
 		</control>
 	</include>
 
+  <include name="Wrap">
+    <control type="wraplist" id="55">
+      <description>General Fanart Views</description>
+      <posx>-75</posx>
+      <posy>370</posy>
+      <width>800</width>
+      <height>130</height>
+      <onleft>55</onleft>
+      <onright>55</onright>
+      <onup>9000</onup>
+      <ondown>60</ondown>
+      <viewtype label="$LOCALIZE[31019]">wraplist</viewtype>
+      <scrolltime>200</scrolltime>
+      <pagecontrol>60</pagecontrol>
+      <focusposition>3</focusposition>
+      <orientation>horizontal</orientation>
+      <itemlayout height="125" width="125">
+        <control type="image">
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>120</width>
+          <height>120</height>
+          <info>ListItem.Icon</info>
+          <aspectratio align="center" aligny="center">keep</aspectratio>
+          <colordiffuse>IconDiffuseColor</colordiffuse>
+        </control>
+      </itemlayout>
+      <focusedlayout height="125" width="125">
+        <control type="image">
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>120</width>
+          <height>120</height>
+          <info>ListItem.Icon</info>
+          <aspectratio align="center" aligny="center">keep</aspectratio>
+          <animation effect="zoom" end="-15,-15,150,150" time="800" reversible="false">Focus</animation>
+        </control>
+        <control type="image">
+          <posx>55</posx>
+          <posy>95</posy>
+          <width>20</width>
+          <height>20</height>
+          <info>ListItem.Overlay</info>
+          <aspectratio align="center" aligny="center">keep</aspectratio>
+          <animation effect="zoom" end="50,95,35,35" time="800" reversible="false">Focus</animation>
+          <visible>!Skin.HasSetting(OverlayIcons)</visible>
+        </control>
+      </focusedlayout>
+    </control>
+
+    <!-- Video Files Info Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>230</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + !Skin.HasSetting(VideoFilesInfo) + [Window.IsActive(videofiles) | Window.IsActive(videoplaylist)]</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>615</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$INFO[ListItem.Label]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Date Added label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[570]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Size label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[21802]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Video Files Info Values -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>230</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + !Skin.HasSetting(VideoFilesInfo) + [Window.IsActive(videofiles) | Window.IsActive(videoplaylist)]</visible>
+      <control type="label">
+        <description>Date Added label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Date]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Size label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Size]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Music Files Info Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>230</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + !Skin.HasSetting(MusicFilesInfo) + [Window.IsActive(musicfiles) | Window.IsActive(musicplaylist)]</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>615</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$INFO[ListItem.Label]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Date Added label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[570]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Size label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[21802]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+    
+    <!-- Music Files Info Values -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>230</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + !Skin.HasSetting(MusicFilesInfo) + [Window.IsActive(musicfiles) | Window.IsActive(musicplaylist)]</visible>
+      <control type="label">
+        <description>Date Added label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Date]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Size label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Size]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Services Info Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>230</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Window.IsActive(programs) + !Skin.HasSetting(ServicesInfo)</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>615</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$INFO[ListItem.Label]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Date Added label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[570]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Size label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[21802]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+    
+    <!-- Services Info Values -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>230</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Window.IsActive(programs) + !Skin.HasSetting(ServicesInfo)</visible>
+      <control type="label">
+        <description>Date Added label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Date]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Size label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Size]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Plug-ins Info Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>230</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Window.IsActive(scripts) + !Skin.HasSetting(PluginsInfo)</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>615</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$INFO[ListItem.Label]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Date Added label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[570]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Size label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[21802]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+    
+    <!-- Plug-ins Info Labels -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>230</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Window.IsActive(scripts) + !Skin.HasSetting(PluginsInfo)</visible>
+      <control type="label">
+        <description>Date Added label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Date]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Size label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Size]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+    
+    <!-- Photos Info Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>220</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Window.IsActive(2) + !Skin.HasSetting(PhotosInfo)</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>615</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Label]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Size label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[21802]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Resolution label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[169]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Photo Date/Time label</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[21820]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Photos Info Values -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>220</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Window.IsActive(2) + !Skin.HasSetting(PhotosInfo)</visible>
+      <control type="label">
+        <description>Size Value</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Size]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Resolution Value</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.PictureResolution]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Date Value</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.PictureDateTime]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+    </control>
+    
+    <!-- Artists Info Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>30</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(Artists) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(MusicLibraryInfo)</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>615</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Label]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Born label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[21893]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Formed label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[21894]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Genre label</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[515]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Styles label</description>
+        <posx>0</posx>
+        <posy>135</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[176]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Moods label</description>
+        <posx>0</posx>
+        <posy>165</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[175]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Istruments label</description>
+        <posx>0</posx>
+        <posy>195</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[21892]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Died label</description>
+        <posx>0</posx>
+        <posy>225</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[21897]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Disbanded label</description>
+        <posx>0</posx>
+        <posy>255</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[21896]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Years Active label</description>
+        <posx>0</posx>
+        <posy>285</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[21898]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Artists Info Values -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>30</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(Artists) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(MusicLibraryInfo)</visible>
+      <control type="label">
+        <description>Born Value</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Property(Born)]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Formed Value</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Property(Formed)]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Genre Value</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Property(Genre)]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Styles Value</description>
+        <posx>0</posx>
+        <posy>135</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Property(Style)]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Moods Value</description>
+        <posx>0</posx>
+        <posy>165</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Property(Mood)]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Instruments label</description>
+        <posx>0</posx>
+        <posy>195</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Property(Instrument)]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Died Value</description>
+        <posx>0</posx>
+        <posy>225</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Property(Died)]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Disbanded Active</description>
+        <posx>0</posx>
+        <posy>255</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Property(Disbanded)]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Years Active Value</description>
+        <posx>0</posx>
+        <posy>285</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Property(YearsActive)]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Albums Info Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>150</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(Albums) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(MusicLibraryInfo)</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>615</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Label]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Year label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[345]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Artist label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[557]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Genre label</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[515]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Moods label</description>
+        <posx>0</posx>
+        <posy>135</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[175]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Styles label</description>
+        <posx>0</posx>
+        <posy>165</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[176]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Albums Info Values -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>150</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(Albums) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(MusicLibraryInfo)</visible>
+      <control type="label">
+        <description>Year Value</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Year]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Artist Value</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Artist]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Genre Value</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Genre]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Moods Value</description>
+        <posx>0</posx>
+        <posy>135</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Property(Mood)]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Instruments label</description>
+        <posx>0</posx>
+        <posy>165</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Property(Style)]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Songs Info Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>150</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(Songs) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(MusicLibraryInfo)</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>615</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Title]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Year label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[345]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Artist label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[557]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Album label</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[558]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Genre label</description>
+        <posx>0</posx>
+        <posy>135</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[515]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Track label</description>
+        <posx>0</posx>
+        <posy>165</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[554]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Songs Info Values -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>150</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(songs) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(MusicLibraryInfo)</visible>
+      <control type="label">
+        <description>Year Value</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Year]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Artist Value</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Artist]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Album Value</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Album]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Genre Value</description>
+        <posx>0</posx>
+        <posy>135</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Genre]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Track label</description>
+        <posx>0</posx>
+        <posy>165</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Tracknumber]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+    </control>
+    
+    <!-- Movies Info Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>30</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(movies) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>615</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Title]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Year label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[345]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Runtime label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[2050]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Genre label</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[515]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Writer label</description>
+        <posx>0</posx>
+        <posy>135</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[20417]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Director label</description>
+        <posx>0</posx>
+        <posy>165</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[20339]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Rating label</description>
+        <posx>0</posx>
+        <posy>195</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[368] $LOCALIZE[563]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>MPAA Rating label</description>
+        <posx>0</posx>
+        <posy>225</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[20074]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Tagline label</description>
+        <posx>0</posx>
+        <posy>255</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[202]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Plot label</description>
+        <posx>0</posx>
+        <posy>285</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[203]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Movies Info Values -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>30</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(movies) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <control type="label">
+        <description>Year Value</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Year]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Duration Value</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Duration]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Genre Value</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Genre]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Writer Value</description>
+        <posx>0</posx>
+        <posy>135</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Writer]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Director Value</description>
+        <posx>0</posx>
+        <posy>165</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Director]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+
+      <control type="label">
+        <description>Rating label</description>
+        <posx>RatingLabelposx</posx>
+        <posy>195</posy>
+        <width>340</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Rating]/10</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+        <visible>!IsEmpty(ListItem.Rating)</visible>
+      </control>
+      <control type="label">
+        <description>Empty Rating label</description>
+        <posx>0</posx>
+        <posy>195</posy>
+        <width>340</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[161]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+        <visible>IsEmpty(ListItem.Rating)</visible>
+      </control>
+      <control type="image">
+        <posx>StarRatingposx</posx>
+        <posy>200</posy>
+        <width>-</width>
+        <height>20</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <info>ListItem.StarRating</info>
+        <aspectratio>keep</aspectratio>
+        <visible>!IsEmpty(ListItem.Rating)</visible>
+      </control>
+
+      <control type="label">
+        <description>MPAA Rating Value</description>
+        <posx>0</posx>
+        <posy>225</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.mpaa]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Tagline Value</description>
+        <posx>0</posx>
+        <posy>255</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Tagline]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Plot Outline Value</description>
+        <posx>0</posx>
+        <posy>285</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.PlotOutline]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- TV Shows Info Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>60</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(tvshows) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>655</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Title]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>First Aired label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[20416]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Episodes label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[20360]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Genre label</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[515]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Rating label</description>
+        <posx>0</posx>
+        <posy>135</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[368] $LOCALIZE[563]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Plot label</description>
+        <posx>0</posx>
+        <posy>165</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[207]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="textbox">
+        <description>Plot</description>
+        <posx>0</posx>
+        <posy>195</posy>
+        <width>660</width>
+        <height>78</height>
+        <spinposx>500</spinposx>
+        <spinposy>-30</spinposy>
+        <spinwidth>20</spinwidth>
+        <spinheight>11</spinheight>
+        <font>18BdFont</font>
+        <info>ListItem.plot</info>
+        <textcolor>DefaultTextColor</textcolor>
+        <textureup>-</textureup>
+        <texturedown flipy="true">-</texturedown>
+        <textureupfocus>-</textureupfocus>
+        <texturedownfocus flipy="true">-</texturedownfocus>
+        <autoscroll delay="6000" time="2000" repeat="8000"></autoscroll>
+      </control>
+    </control>
+
+    <!-- TV Shows Info Values -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>60</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(tvshows) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <visible></visible>
+      <control type="label">
+        <description>Year Value</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Year]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Episodes Value</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$INFO[listitem.episode]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Episodes Value</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[161]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+        <visible>IsEmpty(listitem.episode)</visible>
+      </control>
+      <control type="label">
+        <description>Genre Value</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Genre]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Rating label</description>
+        <posx>RatingLabelposx</posx>
+        <posy>135</posy>
+        <width>340</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Rating]/10</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+        <visible>!IsEmpty(ListItem.Rating)</visible>
+      </control>
+      <control type="label">
+        <description>Empty Rating label</description>
+        <posx>0</posx>
+        <posy>135</posy>
+        <width>340</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[161]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+        <visible>IsEmpty(ListItem.Rating)</visible>
+      </control>
+      <control type="image">
+        <posx>StarRatingposx</posx>
+        <posy>140</posy>
+        <width>-</width>
+        <height>20</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <info>ListItem.StarRating</info>
+        <aspectratio>keep</aspectratio>
+      </control>
+      <control type="label">
+        <description>Empty Plot label</description>
+        <posx>0</posx>
+        <posy>165</posy>
+        <width>340</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[161]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+        <visible>IsEmpty(ListItem.Plot)</visible>
+      </control>
+    </control>
+
+    <!-- Seasons Info Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>270</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(Seasons) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>615</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Label]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Episodes</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[20360]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Seasons Info Values -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>270</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(Seasons) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <control type="label">
+        <description>Episodes Value</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Episode]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Episodes Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>100</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(episodes) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>615</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Title]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Year label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[20416]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Season label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[20373]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Episode label</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[20359]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Plot label</description>
+        <posx>0</posx>
+        <posy>135</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[207]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="textbox">
+        <description>Plot</description>
+        <posx>0</posx>
+        <posy>165</posy>
+        <width>660</width>
+        <height>78</height>
+        <spinposx>500</spinposx>
+        <spinposy>-30</spinposy>
+        <spinwidth>20</spinwidth>
+        <spinheight>11</spinheight>
+        <font>18BdFont</font>
+        <info>ListItem.plot</info>
+        <textcolor>DefaultTextColor</textcolor>
+        <textureup>-</textureup>
+        <texturedown flipy="true">-</texturedown>
+        <textureupfocus>-</textureupfocus>
+        <texturedownfocus flipy="true">-</texturedownfocus>
+        <autoscroll delay="6000" time="2000" repeat="8000"></autoscroll>
+      </control>
+    </control>
+
+    <!-- Episode Values -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>100</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(episodes) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <control type="label">
+        <description>Year Value</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Year]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Season Value</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.season]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Episode Value</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.episode]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Episode Value</description>
+        <posx>0</posx>
+        <posy>135</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[161]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+        <visible>IsEmpty(ListItem.Plot)</visible>
+      </control>
+    </control>
+
+    <!-- Music Videos Info Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>90</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(musicvideos) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>615</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Title]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>\
+      <control type="label">
+        <description>Year label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[345]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Runtime label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[2050]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Genre label</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[515]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Artist label</description>
+        <posx>0</posx>
+        <posy>135</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[557]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Album label</description>
+        <posx>0</posx>
+        <posy>165</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[558]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Director label</description>
+        <posx>0</posx>
+        <posy>195</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[20339]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Studio label</description>
+        <posx>0</posx>
+        <posy>225</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[572]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Music Videos Info Values -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>90</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + Container.Content(musicvideos) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <control type="label">
+        <description>Year Value</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Year]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Duration Value</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Duration]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Genre Value</description>
+        <posx>0</posx>
+        <posy>105</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Genre]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Artist Value</description>
+        <posx>0</posx>
+        <posy>135</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Artist]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Album Value</description>
+        <posx>0</posx>
+        <posy>165</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Album]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Director label</description>
+        <posx>0</posx>
+        <posy>195</posy>
+        <width>340</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Director]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Studio Value</description>
+        <posx>0</posx>
+        <posy>225</posy>
+        <width>520</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Studio]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+      </control>
+    </control>
+  </include>
+  
   <include name="Tilted">
     <control type="wraplist" id="56">
       <posx>0</posx>
@@ -1271,7 +3246,6 @@
       <animation effect="slide" end="-160,0" time="200" reversible="false">Hidden</animation>
       <control type="group">
         <control type="group">
-          <animation effect="fade" time="0" start="0" end="50" condition="true">Conditional</animation>
           <control type="image">
             <posx>0</posx>
             <posy>0</posy>
@@ -1280,6 +3254,7 @@
             <info>Container.ListItem(-10).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>160</posx>
@@ -1289,6 +3264,7 @@
             <info>Container.ListItem(-9).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>320</posx>
@@ -1298,6 +3274,7 @@
             <info>Container.ListItem(-8).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>480</posx>
@@ -1307,6 +3284,7 @@
             <info>Container.ListItem(-7).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>640</posx>
@@ -1316,6 +3294,7 @@
             <info>Container.ListItem(-6).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>800</posx>
@@ -1325,6 +3304,7 @@
             <info>Container.ListItem(-5).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>960</posx>
@@ -1334,6 +3314,7 @@
             <info>Container.ListItem(-4).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>1120</posx>
@@ -1343,6 +3324,7 @@
             <info>Container.ListItem(-3).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>1280</posx>
@@ -1352,11 +3334,11 @@
             <info>Container.ListItem(-2).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
         </control>
         <control type="group">
           <posy>160</posy>
-          <animation effect="fade" time="0" start="0" end="50" condition="true">Conditional</animation>
           <control type="image">
             <posx>0</posx>
             <posy>0</posy>
@@ -1365,6 +3347,7 @@
             <info>Container.ListItem(-2).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>160</posx>
@@ -1374,6 +3357,7 @@
             <info>Container.ListItem(-1).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>320</posx>
@@ -1383,6 +3367,7 @@
             <info>Container.ListItem(0).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>480</posx>
@@ -1392,6 +3377,7 @@
             <info>Container.ListItem(1).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>640</posx>
@@ -1401,6 +3387,7 @@
             <info>Container.ListItem(2).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>800</posx>
@@ -1410,6 +3397,7 @@
             <info>Container.ListItem(3).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>960</posx>
@@ -1419,6 +3407,7 @@
             <info>Container.ListItem(4).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>1120</posx>
@@ -1428,6 +3417,7 @@
             <info>Container.ListItem(5).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>1280</posx>
@@ -1437,11 +3427,11 @@
             <info>Container.ListItem(6).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
         </control>
         <control type="group">
           <posy>320</posy>
-          <animation effect="fade" time="0" start="0" end="50" condition="true">Conditional</animation>
           <control type="image">
             <posx>0</posx>
             <posy>0</posy>
@@ -1450,6 +3440,7 @@
             <info>Container.ListItem(6).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>160</posx>
@@ -1459,6 +3450,7 @@
             <info>Container.ListItem(7).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>320</posx>
@@ -1468,6 +3460,7 @@
             <info>Container.ListItem(8).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>480</posx>
@@ -1477,6 +3470,7 @@
             <info>Container.ListItem(9).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>640</posx>
@@ -1486,6 +3480,7 @@
             <info>Container.ListItem(10).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>800</posx>
@@ -1495,6 +3490,7 @@
             <info>Container.ListItem(11).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>960</posx>
@@ -1504,6 +3500,7 @@
             <info>Container.ListItem(12).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>1120</posx>
@@ -1513,6 +3510,7 @@
             <info>Container.ListItem(13).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>1280</posx>
@@ -1522,6 +3520,7 @@
             <info>Container.ListItem(14).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
         </control>
       </control>
@@ -1535,7 +3534,6 @@
       <animation effect="slide" end="160,0" time="200" reversible="false">Hidden</animation>
       <control type="group">
         <control type="group">
-          <animation effect="fade" time="0" start="0" end="50" condition="true">Conditional</animation>
           <control type="image">
             <posx>-160</posx>
             <posy>0</posy>
@@ -1544,6 +3542,7 @@
             <info>Container.ListItem(-9).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>0</posx>
@@ -1553,6 +3552,7 @@
             <info>Container.ListItem(-8).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>160</posx>
@@ -1562,6 +3562,7 @@
             <info>Container.ListItem(-7).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>320</posx>
@@ -1571,6 +3572,7 @@
             <info>Container.ListItem(-6).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>480</posx>
@@ -1580,6 +3582,7 @@
             <info>Container.ListItem(-5).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>640</posx>
@@ -1589,6 +3592,7 @@
             <info>Container.ListItem(-4).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>800</posx>
@@ -1598,6 +3602,7 @@
             <info>Container.ListItem(-3).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>960</posx>
@@ -1607,6 +3612,7 @@
             <info>Container.ListItem(-2).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>1120</posx>
@@ -1616,11 +3622,11 @@
             <info>Container.ListItem(-1).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
         </control>
         <control type="group">
           <posy>160</posy>
-          <animation effect="fade" time="0" start="0" end="50" condition="true">Conditional</animation>
           <control type="image">
             <posx>-160</posx>
             <posy>0</posy>
@@ -1629,6 +3635,7 @@
             <info>Container.ListItem(-1).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>0</posx>
@@ -1638,6 +3645,7 @@
             <info>Container.ListItem(0).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>160</posx>
@@ -1647,6 +3655,7 @@
             <info>Container.ListItem(1).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>320</posx>
@@ -1656,6 +3665,7 @@
             <info>Container.ListItem(2).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>480</posx>
@@ -1665,6 +3675,7 @@
             <info>Container.ListItem(3).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>640</posx>
@@ -1674,6 +3685,7 @@
             <info>Container.ListItem(4).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>800</posx>
@@ -1683,6 +3695,7 @@
             <info>Container.ListItem(5).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>960</posx>
@@ -1692,6 +3705,7 @@
             <info>Container.ListItem(6).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>1120</posx>
@@ -1701,11 +3715,11 @@
             <info>Container.ListItem(7).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
         </control>
         <control type="group">
           <posy>320</posy>
-          <animation effect="fade" time="0" start="0" end="50" condition="true">Conditional</animation>
           <control type="image">
             <posx>-160</posx>
             <posy>0</posy>
@@ -1714,6 +3728,7 @@
             <info>Container.ListItem(7).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>0</posx>
@@ -1723,6 +3738,7 @@
             <info>Container.ListItem(8).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>160</posx>
@@ -1732,6 +3748,7 @@
             <info>Container.ListItem(9).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>320</posx>
@@ -1741,6 +3758,7 @@
             <info>Container.ListItem(10).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>480</posx>
@@ -1750,6 +3768,7 @@
             <info>Container.ListItem(11).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>640</posx>
@@ -1759,6 +3778,7 @@
             <info>Container.ListItem(12).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>800</posx>
@@ -1768,6 +3788,7 @@
             <info>Container.ListItem(13).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>960</posx>
@@ -1777,6 +3798,7 @@
             <info>Container.ListItem(14).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>1120</posx>
@@ -1786,6 +3808,7 @@
             <info>Container.ListItem(15).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
         </control>
       </control>
@@ -1798,7 +3821,6 @@
         <visible>Control.IsVisible(56) + !Control.IsVisible(3001)  + !Control.IsVisible(3002)</visible>
         <animation effect="rotatey" center="0" start="0" end="-30" time="0" condition="true">Conditional</animation>
         <control type="group">
-          <animation effect="fade" time="0" start="0" end="50" condition="true">Conditional</animation>
           <control type="image">
             <posx>0</posx>
             <posy>0</posy>
@@ -1807,6 +3829,7 @@
             <info>Container.ListItem(-9).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>160</posx>
@@ -1816,6 +3839,7 @@
             <info>Container.ListItem(-8).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>320</posx>
@@ -1825,6 +3849,7 @@
             <info>Container.ListItem(-7).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>480</posx>
@@ -1834,6 +3859,7 @@
             <info>Container.ListItem(-6).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>640</posx>
@@ -1843,6 +3869,7 @@
             <info>Container.ListItem(-5).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>800</posx>
@@ -1852,6 +3879,7 @@
             <info>Container.ListItem(-4).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>960</posx>
@@ -1861,6 +3889,7 @@
             <info>Container.ListItem(-3).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>1120</posx>
@@ -1870,11 +3899,11 @@
             <info>Container.ListItem(-2).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
         </control>
         <control type="group">
           <posy>160</posy>
-          <animation effect="fade" time="0" start="0" end="50" condition="true">Conditional</animation>
           <control type="image">
             <posx>0</posx>
             <posy>0</posy>
@@ -1883,6 +3912,7 @@
             <info>Container.ListItem(-1).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>320</posx>
@@ -1892,6 +3922,7 @@
             <info>Container.ListItem(1).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>480</posx>
@@ -1901,6 +3932,7 @@
             <info>Container.ListItem(2).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>640</posx>
@@ -1910,6 +3942,7 @@
             <info>Container.ListItem(3).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>800</posx>
@@ -1919,6 +3952,7 @@
             <info>Container.ListItem(4).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>960</posx>
@@ -1928,6 +3962,7 @@
             <info>Container.ListItem(5).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>1120</posx>
@@ -1937,11 +3972,11 @@
             <info>Container.ListItem(6).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
         </control>
         <control type="group">
           <posy>320</posy>
-          <animation effect="fade" time="0" start="0" end="50" condition="true">Conditional</animation>
           <control type="image">
             <posx>0</posx>
             <posy>0</posy>
@@ -1950,6 +3985,7 @@
             <info>Container.ListItem(7).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>160</posx>
@@ -1959,6 +3995,7 @@
             <info>Container.ListItem(8).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>320</posx>
@@ -1968,6 +4005,7 @@
             <info>Container.ListItem(9).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>480</posx>
@@ -1977,6 +4015,7 @@
             <info>Container.ListItem(10).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>640</posx>
@@ -1986,6 +4025,7 @@
             <info>Container.ListItem(11).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>800</posx>
@@ -1995,6 +4035,7 @@
             <info>Container.ListItem(12).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>960</posx>
@@ -2004,6 +4045,7 @@
             <info>Container.ListItem(13).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
           <control type="image">
             <posx>1120</posx>
@@ -2013,6 +4055,7 @@
             <info>Container.ListItem(14).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+            <colordiffuse>IconDiffuseColor</colordiffuse>
           </control>
         </control>
       </control>
@@ -2025,15 +4068,6 @@
         <animation effect="rotatey" center="0" start="0" end="-30" time="0" condition="true">Conditional</animation>
         <control type="group">
           <control type="image">
-            <posx>143</posx>
-            <posy>5</posy>
-            <width>15</width>
-            <height>15</height>
-            <info>ListItem.Overlay</info>
-            <aspectratio align="left" aligny="top">keep</aspectratio>
-            <visible>!Skin.HasSetting(OverlayIcons)</visible>
-          </control>
-          <control type="image">
             <posx>160</posx>
             <posy>0</posy>
             <width>160</width>
@@ -2041,6 +4075,15 @@
             <info>Container.ListItem(0).thumb</info>
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
+          </control>
+          <control type="image">
+            <posx>165</posx>
+            <posy>120</posy>
+            <width>35</width>
+            <height>35</height>
+            <info>ListItem.Overlay</info>
+            <aspectratio align="left" aligny="top">keep</aspectratio>
+            <visible>!Skin.HasSetting(OverlayIcons)</visible>
           </control>
         </control>
       </control>

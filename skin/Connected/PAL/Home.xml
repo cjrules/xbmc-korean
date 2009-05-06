@@ -36,9 +36,9 @@
       <aligny>center</aligny>
       <font>18BdFont</font>
       <urlset>1</urlset>
-      <titlecolor>RSSTitleTextColor</titlecolor>
-      <headlinecolor>RSSHeadlineTextColor</headlinecolor>
-      <textcolor>RSSTextColor</textcolor>
+      <titlecolor>SelectedTextColor</titlecolor>
+      <headlinecolor>FocusedTextColor</headlinecolor>
+      <textcolor>DefaultTextColor</textcolor>
       <visible>Skin.HasSetting(WelcomeScreen) + Window.IsVisible(0)</visible>
       <include>DefaultFade</include>
     </control>
@@ -183,7 +183,7 @@
           <width>500</width>
           <height>60</height>
           <font>22BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(-2).Label</info>
@@ -203,7 +203,7 @@
           <width>500</width>
           <height>60</height>
           <font>22BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(-1).Label</info>
@@ -223,7 +223,7 @@
           <width>500</width>
           <height>90</height>
           <font>26BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(0).Label </info>
@@ -249,7 +249,7 @@
           <width>500</width>
           <height>120</height>
           <font>26BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(1).Label</info>
@@ -269,7 +269,7 @@
           <width>500</width>
           <height>90</height>
           <font>26BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(2).Label</info>
@@ -289,7 +289,7 @@
           <width>500</width>
           <height>60</height>
           <font>22BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(3).Label</info>
@@ -320,7 +320,7 @@
           <width>500</width>
           <height>60</height>
           <font>22BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(-3).Label</info>
@@ -340,7 +340,7 @@
           <width>500</width>
           <height>90</height>
           <font>26BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(-2).Label </info>
@@ -360,7 +360,7 @@
           <width>500</width>
           <height>120</height>
           <font>26BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(-1).Label</info>
@@ -386,7 +386,7 @@
           <width>500</width>
           <height>90</height>
           <font>26BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(0).Label</info>
@@ -406,7 +406,7 @@
           <width>500</width>
           <height>60</height>
           <font>22BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(1).Label</info>
@@ -426,7 +426,7 @@
           <width>500</width>
           <height>60</height>
           <font>22BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(2).Label</info>
@@ -454,7 +454,7 @@
           <width>500</width>
           <height>60</height>
           <font>22BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(-2).Label</info>
@@ -474,7 +474,7 @@
           <width>500</width>
           <height>90</height>
           <font>26BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(-1).Label </info>
@@ -494,7 +494,7 @@
           <width>500</width>
           <height>90</height>
           <font>26BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(1).Label</info>
@@ -514,7 +514,7 @@
           <width>500</width>
           <height>60</height>
           <font>22BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <align>left</align>
           <aligny>center</aligny>
           <info>Container(9001).ListItem(2).Label</info>
@@ -566,7 +566,7 @@
           <align>left</align>
           <aligny>center</aligny>
           <font>50BdFont</font>
-          <textcolor>HomeTextColor</textcolor>
+          <textcolor>FocusedTextColor</textcolor>
           <info>Container(9001).ListItem(0).Label</info>
         </control>
       </control>
