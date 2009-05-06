@@ -1341,7 +1341,7 @@
 <onclick>Skin.SetBool(videomovies)</onclick>
 <onclick>Skin.Reset(videotv)</onclick>
 <onclick>ActivateWindow(MyVideoFiles,Movies)</onclick>
-<visible>!Skin.HasSetting(movie-library)</visible>
+<visible>Skin.HasSetting(movie-library)</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
@@ -1353,7 +1353,7 @@
 <onclick>Skin.SetBool(videomovies)</onclick>
 <onclick>Skin.Reset(videotv)</onclick>
 <onclick>ActivateWindow(MyVideoLibrary,MovieTitles)</onclick>
-<visible>Skin.HasSetting(movie-library)</visible>
+<visible>!Skin.HasSetting(movie-library)</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
@@ -1366,7 +1366,7 @@
 <onclick>Skin.SetBool(videotv)</onclick>
 <onclick>Skin.Reset(videomovies)</onclick>
 <onclick>ActivateWindow(MyVideoFiles,TV)</onclick>
-<visible>!Skin.HasSetting(movie-library)</visible>
+<visible>Skin.HasSetting(movie-library)</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
@@ -1378,7 +1378,7 @@
 <onclick>Skin.SetBool(videotv)</onclick>
 <onclick>Skin.Reset(videomovies)</onclick>
 <onclick>ActivateWindow(MyVideoLibrary,tvshowtitles)</onclick>
-<visible>Skin.HasSetting(movie-library)</visible>
+<visible>!Skin.HasSetting(movie-library)</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 

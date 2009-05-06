@@ -608,29 +608,6 @@
 <animation effect="fade" time="1000">Windowclose</animation>
 </control>
 
-<control type="image">
-<posx>0</posx>
-<posy>0</posy>
-<width>1280</width>
-<height>720</height>
-<texture>background2.png</texture>
-<aspectratio>stretch</aspectratio>
-<visible>Control.HasFocus(21)</visible>
-<visible>Skin.HasSetting(Wallpaper)</visible>
-<animation effect="fade" start="0" end="100" time="500">Visible</animation>
-</control>
-
-<control type="image">
-<posx>0</posx>
-<posy>0</posy>
-<width>1280</width>
-<height>720</height>
-<texture>background2.png</texture>
-<aspectratio>stretch</aspectratio>
-<visible>Control.HasFocus(21)</visible>
-<visible>Skin.HasSetting(Default Wallpaper)</visible>
-<animation effect="fade" start="0" end="100" time="500">Visible</animation>
-</control>
 
 
 <control type="group">
@@ -1180,7 +1157,7 @@
 
 <animation effect="slide" time="600" start="0,720" end="0,0" acceleration="-1">WindowOpen</animation>
 <animation effect="fade" time="400" start="100" end="0">WindowClose</animation>
-
+<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
 
 <control type="wraplist" id="11">
 <visible>Skin.HasSetting(Small Film Strip)</visible>
@@ -1195,7 +1172,6 @@
 <viewtype>list</viewtype>
 <orientation>horizontal</orientation>
 <focusposition>3</focusposition>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
 <scrolltime>200</scrolltime>
 
 
@@ -1208,7 +1184,6 @@
 <width>182.85</width>
 <height>171</height>
 <texture>3.png</texture>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>
 
@@ -1218,7 +1193,6 @@
 <width>182.85</width>
 <height>171</height>
 <texture>1.png</texture>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>
 
@@ -1228,7 +1202,6 @@
 <width>182.85</width>
 <height>25</height>
 <texture>homebutton-horizontal-nofocus.png</texture>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>			
 
@@ -1271,7 +1244,6 @@
 <width>182.85</width>
 <height>171</height>
 <texture>3.png</texture>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>
 
@@ -1281,7 +1253,6 @@
 <width>182.85</width>
 <height>171</height>
 <texture>2.png</texture>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>
 
@@ -1291,7 +1262,6 @@
 <width>182.85</width>
 <height>25</height>
 <texture>homebutton-horizontal-nofocus.png</texture>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>			
 
@@ -1363,7 +1333,7 @@
 <onclick>Skin.SetBool(videomovies)</onclick>
 <onclick>Skin.Reset(videotv)</onclick>
 <onclick>ActivateWindow(MyVideoFiles,Movies)</onclick>
-<visible>!Skin.HasSetting(movie-library)</visible>
+<visible>Skin.HasSetting(movie-library)</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
@@ -1375,18 +1345,6 @@
 <onclick>Skin.SetBool(videomovies)</onclick>
 <onclick>Skin.Reset(videotv)</onclick>
 <onclick>ActivateWindow(MyVideoLibrary,MovieTitles)</onclick>
-<visible>Skin.HasSetting(movie-library)</visible>
-<visible>!Skin.HasSetting(tv-library)</visible>
-</item>
-
-<item id="5">
-<label>20343</label>
-<icon>watch tv.png</icon>
-<thumb>watch tv.png</thumb>
-<onclick>SetFocus(21)</onclick>
-<onclick>Skin.SetBool(videotv)</onclick>
-<onclick>Skin.Reset(videomovies)</onclick>
-<onclick>ActivateWindow(MyVideoFiles,TV)</onclick>
 <visible>!Skin.HasSetting(movie-library)</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
@@ -1398,8 +1356,20 @@
 <onclick>SetFocus(21)</onclick>
 <onclick>Skin.SetBool(videotv)</onclick>
 <onclick>Skin.Reset(videomovies)</onclick>
-<onclick>ActivateWindow(MyVideoLibrary,tvshowtitles)</onclick>
+<onclick>ActivateWindow(MyVideoFiles,TV)</onclick>
 <visible>Skin.HasSetting(movie-library)</visible>
+<visible>!Skin.HasSetting(tv-library)</visible>
+</item>
+
+<item id="5">
+<label>20343</label>
+<icon>watch tv.png</icon>
+<thumb>watch tv.png</thumb>
+<onclick>SetFocus(21)</onclick>
+<onclick>Skin.SetBool(videotv)</onclick>
+<onclick>Skin.Reset(videomovies)</onclick>
+<onclick>ActivateWindow(MyVideoLibrary,tvshowtitles)</onclick>
+<visible>!Skin.HasSetting(movie-library)</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
@@ -1464,6 +1434,8 @@
 
 <visible>!Skin.HasSetting(Small Film Strip)</visible>
 
+<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
+
 <animation effect="slide" time="600" start="0,720" end="0,0" acceleration="-1">WindowOpen</animation>
 <animation effect="fade" time="400" start="100" end="0">WindowClose</animation>
 
@@ -1481,7 +1453,7 @@
 <viewtype>list</viewtype>
 <orientation>horizontal</orientation>
 <focusposition>2</focusposition>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
+
 <scrolltime>200</scrolltime>
 
 
@@ -1493,7 +1465,6 @@
 <width>256</width>
 <height>260.20</height>
 <texture>3.png</texture>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>
 
@@ -1503,7 +1474,6 @@
 <width>256</width>
 <height>260.20</height>
 <texture>1.png</texture>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>
 
@@ -1513,7 +1483,6 @@
 <width>256</width>
 <height>35</height>
 <texture>homebutton-horizontal-nofocus.png</texture>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>			
 
@@ -1555,7 +1524,6 @@
 <width>256</width>
 <height>260.20</height>
 <texture>3.png</texture>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>
 
@@ -1565,7 +1533,6 @@
 <width>256</width>
 <height>260.20</height>
 <texture>2.png</texture>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>
 
@@ -1575,7 +1542,6 @@
 <width>256</width>
 <height>35</height>
 <texture>homebutton-horizontal-nofocus.png</texture>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>			
 
@@ -1647,7 +1613,7 @@
 <onclick>Skin.SetBool(videomovies)</onclick>
 <onclick>Skin.Reset(videotv)</onclick>
 <onclick>ActivateWindow(MyVideoFiles,Movies)</onclick>
-<visible>!Skin.HasSetting(movie-library)</visible>
+<visible>Skin.HasSetting(movie-library)</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
@@ -1659,18 +1625,6 @@
 <onclick>Skin.SetBool(videomovies)</onclick>
 <onclick>Skin.Reset(videotv)</onclick>
 <onclick>ActivateWindow(MyVideoLibrary,MovieTitles)</onclick>
-<visible>Skin.HasSetting(movie-library)</visible>
-<visible>!Skin.HasSetting(tv-library)</visible>
-</item>
-
-<item id="5">
-<label>20343</label>
-<icon>watch tv.png</icon>
-<thumb>watch tv.png</thumb>
-<onclick>SetFocus(21)</onclick>
-<onclick>Skin.SetBool(videotv)</onclick>
-<onclick>Skin.Reset(videomovies)</onclick>
-<onclick>ActivateWindow(MyVideoFiles,TV)</onclick>
 <visible>!Skin.HasSetting(movie-library)</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
@@ -1682,8 +1636,20 @@
 <onclick>SetFocus(21)</onclick>
 <onclick>Skin.SetBool(videotv)</onclick>
 <onclick>Skin.Reset(videomovies)</onclick>
-<onclick>ActivateWindow(MyVideoLibrary,tvshowtitles)</onclick>
+<onclick>ActivateWindow(MyVideoFiles,TV)</onclick>
 <visible>Skin.HasSetting(movie-library)</visible>
+<visible>!Skin.HasSetting(tv-library)</visible>
+</item>
+
+<item id="5">
+<label>20343</label>
+<icon>watch tv.png</icon>
+<thumb>watch tv.png</thumb>
+<onclick>SetFocus(21)</onclick>
+<onclick>Skin.SetBool(videotv)</onclick>
+<onclick>Skin.Reset(videomovies)</onclick>
+<onclick>ActivateWindow(MyVideoLibrary,tvshowtitles)</onclick>
+<visible>!Skin.HasSetting(movie-library)</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 

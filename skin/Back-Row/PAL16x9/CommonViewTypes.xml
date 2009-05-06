@@ -631,27 +631,21 @@
 </control>
 
 <control type="image">
-<posx>0</posx>
-<posy>0</posy>
-<width>370</width>
-<height>245</height>
-<texture>List background.png</texture>
-</control>
-
-<control type="image">
-<posx>0</posx>
-<posy>0</posy>
-<width>370</width>
-<height>245</height>
-<texture>List background.png</texture>
+<posx>-4</posx>
+<posy>-10</posy>
+<width>378</width>
+<height>253</height>
+<texture diffuse="mask menu.png">background2.png</texture>
+<colordiffuse>bbffffff</colordiffuse>
 </control>
 
 
+
 <control type="image">
-<posx>10</posx>
-<posy>18</posy>
-<width>106</width>
-<height>208</height>
+<posx>9</posx>
+<posy>8</posy>
+<width>112</width>
+<height>218</height>
 <info>ListItem.Icon</info>
 <texture diffuse="mask wall.png"></texture>
 <visible>!IsEmpty(ListItem.Thumb)</visible>
@@ -659,20 +653,20 @@
 </control>
 
 <control type="image">
-<posx>10</posx>
-<posy>18</posy>
-<width>106</width>
-<height>208</height>
+<posx>9</posx>
+<posy>8</posy>
+<width>112</width>
+<height>218</height>
 <texture diffuse="mask wall.png">defaultdvdposter.png</texture>
 <visible>IsEmpty(ListItem.Thumb)</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
 <control type="image">
-<posx>10</posx>
-<posy>18</posy>
-<width>106</width>
-<height>208</height>
+<posx>9</posx>
+<posy>8</posy>
+<width>112</width>
+<height>218</height>
 <texture>mask glass wall.png</texture>
 <aspectratio>stretch</aspectratio>
 </control>
@@ -1367,26 +1361,20 @@
 </control>
 
 <control type="image">
-<posx>0</posx>
-<posy>0</posy>
-<width>370</width>
-<height>245</height>
-<texture>List background.png</texture>
+<posx>-4</posx>
+<posy>-10</posy>
+<width>378</width>
+<height>253</height>
+<texture diffuse="mask menu.png">background2.png</texture>
+<colordiffuse>bbffffff</colordiffuse>
 </control>
 
-<control type="image">
-<posx>0</posx>
-<posy>0</posy>
-<width>370</width>
-<height>245</height>
-<texture>List background.png</texture>
-</control>
 
 <control type="image">
-<posx>10</posx>
-<posy>18</posy>
-<width>106</width>
-<height>208</height>
+<posx>9</posx>
+<posy>8</posy>
+<width>112</width>
+<height>218</height>
 <info>ListItem.Icon</info>
 <texture diffuse="mask wall.png"></texture>
 <visible>!IsEmpty(ListItem.Thumb)</visible>
@@ -1394,21 +1382,22 @@
 </control>
 
 <control type="image">
-<posx>10</posx>
-<posy>18</posy>
-<width>106</width>
-<height>208</height>
+<posx>9</posx>
+<posy>8</posy>
+<width>112</width>
+<height>218</height>
 <texture diffuse="mask wall.png">defaultdvdposter.png</texture>
 <visible>IsEmpty(ListItem.Thumb)</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
 <control type="image">
-<posx>10</posx>
-<posy>18</posy>
-<width>106</width>
-<height>208</height>
-<texture>mask glass wall.png</texture>
+<posx>9</posx>
+<posy>8</posy>
+<width>112</width>
+<height>218</height>
+<texture diffuse="mask wall.png">mask glass wall.png</texture>
+<colordiffuse>99ffffff</colordiffuse>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -1477,7 +1466,7 @@
 <control type="panel" id="51">
 <visible>!Container.Content(TVshows)</visible>
 <posx>15</posx>
-<posy>60</posy>
+<posy>70</posy>
 <width>700</width>
 <height>520</height>
 <onleft>2</onleft>
@@ -1487,16 +1476,27 @@
 <scrolltime>200</scrolltime>
 <viewtype label="538">Big Icons</viewtype>
 <pagecontrol>90</pagecontrol>
+
 <itemlayout height="250" width="170">
 
 <control type="image">
-<posx>5</posx>
+<posx>15</posx>
 <posy>30</posy>
-<width>160</width>
+<width>150</width>
 <height>190</height>
+<texture diffuse="Mask.png"></texture>
 <align>center</align>
 <aspectratio>stretch</aspectratio>
 <info>ListItem.Icon</info>
+</control>
+
+<control type="image">
+<posx>15</posx>
+<posy>30</posy>
+<width>150</width>
+<height>190</height>
+<texture>mask glass.png</texture>
+<aspectratio>stretch</aspectratio>
 </control>
 
 <control type="label">
@@ -1514,24 +1514,35 @@
 
 </itemlayout>
 
+
 <focusedlayout height="250" width="170">
 
 <control type="image">
-<width>170</width>
-<height>250</height>
+<width>180</width>
+<height>240</height>
 <posx>0</posx>
-<posy></posy>
-<texture>folder-focus1.png</texture>
+<posy>10</posy>
+<texture>List background1.png</texture>
 </control>
 
 <control type="image">
-<posx>5</posx>
+<posx>15</posx>
 <posy>30</posy>
-<width>160</width>
+<width>150</width>
 <height>190</height>
+<texture diffuse="Mask.png"></texture>
 <align>center</align>
 <aspectratio>stretch</aspectratio>
 <info>ListItem.Icon</info>
+</control>
+
+<control type="image">
+<posx>15</posx>
+<posy>30</posy>
+<width>150</width>
+<height>190</height>
+<texture>mask glass.png</texture>
+<aspectratio>stretch</aspectratio>
 </control>
 
 <control type="label">
@@ -1577,10 +1588,12 @@
 <!-- Square Big Icons -->
 
 <include name="Square Big Icons music library">
+
+
 <control type="panel" id="51">
 <visible>Container.Content(Albums)  | Container.Content(Artists) | Container.Content(Songs)</visible>
 <posx>15</posx>
-<posy>60</posy>
+<posy>70</posy>
 <width>700</width>
 <height>520</height>
 <onleft>2</onleft>
@@ -1590,13 +1603,15 @@
 <scrolltime>200</scrolltime>
 <viewtype label="538">Big Icons</viewtype>
 <pagecontrol>90</pagecontrol>
+
 <itemlayout height="250" width="170">
 
 <control type="image">
-<posx>5</posx>
+<posx>15</posx>
 <posy>30</posy>
-<width>160</width>
+<width>150</width>
 <height>190</height>
+<texture diffuse="Mask.png"></texture>
 <align>center</align>
 <aspectratio>stretch</aspectratio>
 <info>ListItem.Icon</info>
@@ -1604,16 +1619,24 @@
 </control>
 
 <control type="image">
-<posx>5</posx>
+<posx>15</posx>
 <posy>30</posy>
-<width>160</width>
+<width>150</width>
 <height>190</height>
 <align>center</align>
 <aspectratio>stretch</aspectratio>
-<texture>defaultcdposter.png</texture>
+<texture diffuse="Mask.png">defaultcdposter.png</texture>
 <visible>IsEmpty(ListItem.Thumb)</visible>
 </control>
 
+<control type="image">
+<posx>15</posx>
+<posy>30</posy>
+<width>150</width>
+<height>190</height>
+<texture>mask glass.png</texture>
+<aspectratio>stretch</aspectratio>
+</control>
 
 <control type="label">
 <posx>86</posx>
@@ -1630,21 +1653,23 @@
 
 </itemlayout>
 
+
 <focusedlayout height="250" width="170">
 
 <control type="image">
-<width>170</width>
-<height>250</height>
+<width>180</width>
+<height>240</height>
 <posx>0</posx>
-<posy></posy>
-<texture>folder-focus1.png</texture>
+<posy>10</posy>
+<texture>List background1.png</texture>
 </control>
 
 <control type="image">
-<posx>5</posx>
+<posx>15</posx>
 <posy>30</posy>
-<width>160</width>
+<width>150</width>
 <height>190</height>
+<texture diffuse="Mask.png"></texture>
 <align>center</align>
 <aspectratio>stretch</aspectratio>
 <info>ListItem.Icon</info>
@@ -1652,16 +1677,24 @@
 </control>
 
 <control type="image">
-<posx>5</posx>
+<posx>15</posx>
 <posy>30</posy>
-<width>160</width>
+<width>150</width>
 <height>190</height>
 <align>center</align>
 <aspectratio>stretch</aspectratio>
-<texture>defaultcdposter.png</texture>
+<texture diffuse="Mask.png">defaultcdposter.png</texture>
 <visible>IsEmpty(ListItem.Thumb)</visible>
 </control>
 
+<control type="image">
+<posx>15</posx>
+<posy>30</posy>
+<width>150</width>
+<height>190</height>
+<texture>mask glass.png</texture>
+<aspectratio>stretch</aspectratio>
+</control>
 
 <control type="label">
 <posx>86</posx>
@@ -1677,6 +1710,8 @@
 </control>
 
 </focusedlayout>
+
+
 
 </control>
 
@@ -2003,7 +2038,8 @@
 <posy>0</posy>
 <width>370</width>
 <height>245</height>
-<texture>List background.png</texture>
+<texture diffuse="mask menu.png">background2.png</texture>
+<colordiffuse>bbffffff</colordiffuse>
 </control>
 
 
@@ -2118,7 +2154,8 @@
 <posy>0</posy>
 <width>370</width>
 <height>245</height>
-<texture>List background.png</texture>
+<texture diffuse="mask menu.png">background2.png</texture>
+<colordiffuse>bbffffff</colordiffuse>
 </control>
 
 
@@ -2204,7 +2241,8 @@
 <posy>0</posy>
 <width>370</width>
 <height>245</height>
-<texture>List background.png</texture>
+<texture diffuse="mask menu.png">background2.png</texture>
+<colordiffuse>bbffffff</colordiffuse>
 </control>
 
 
@@ -3025,12 +3063,74 @@
 <control type="list" id="50">
 <viewtype label="535">list</viewtype>
 <visible>Container.Content(Movies)</visible>
+<visible>Skin.HasSetting(sbar)</visible>
 <scrolltime>200</scrolltime>
 <posx>25</posx>
 <posy>85</posy>
 <width>320</width>
 <height>448</height>
 <onleft>90</onleft>
+<onright>2</onright>
+<onup>50</onup>
+<ondown>50</ondown>
+<pagecontrol>90</pagecontrol>
+<itemlayout height="32">
+
+<control type="label">
+<posx>5</posx>
+<posy>0</posy>
+<width>310</width>
+<height>32</height>
+<font>special14</font>
+<aligny>center</aligny>
+<textcolor>white</textcolor>
+<include>selectedcolor</include>
+<info>ListItem.title</info>
+</control>
+
+
+
+</itemlayout>
+<focusedlayout height="32">
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>320</width>
+<height>32</height>
+<texture>input-focus.png</texture>
+<visible>Control.HasFocus(50)</visible>
+</control>
+
+<control type="label">
+<posx>5</posx>
+<posy>0</posy>
+<width>310</width>
+<height>32</height>
+<font>special14</font>
+<textcolor>white</textcolor>
+<include>selectedcolor</include>
+<scroll>true</scroll>
+<scrolltime>100</scrolltime>
+<info>ListItem.title</info>
+<aligny>center</aligny>
+</control>
+
+
+
+</focusedlayout>
+</control>
+
+<control type="list" id="50">
+<viewtype label="535">list</viewtype>
+<visible>Container.Content(Movies)</visible>
+<visible>!Skin.HasSetting(sbar)</visible>
+<scrolltime>200</scrolltime>
+<posx>25</posx>
+<posy>85</posy>
+<width>320</width>
+<height>448</height>
+<onleft>2</onleft>
 <onright>2</onright>
 <onup>50</onup>
 <ondown>50</ondown>
@@ -12557,6 +12657,132 @@
 </control>
 </include>
 
+<include name="Picture Wrap">
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>720</width>
+<height>576</height>
+<info>ListItem.Icon</info>
+<visible>Control.IsVisible(55)</visible>
+<aspectratio>scale</aspectratio>
+</control>
+
+<control type="image">
+<texture diffuse="lower diffuse.png">Fanart Mask2.png</texture>
+<posx>0</posx>
+<posy>45</posy>
+<width>740</width>
+<height>576</height>
+<visible>Control.IsVisible(55)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+<control type="wraplist" id="55">
+<viewtype label="Picture Wrap">bigwrap</viewtype>
+<posx>0</posx>
+<posy>430</posy>
+<width>720</width>
+<height>195</height>
+<scrolltime>200</scrolltime>
+<focusposition>2</focusposition>
+<orientation>horizontal</orientation>
+<onleft>51</onleft>
+<onright>51</onright>
+<onup>2</onup>
+<ondown>2</ondown>
+
+<itemlayout height="144" width="144">
+
+
+<control type="image">
+<posx>4</posx>
+<posy>8</posy>
+<width>136</width>
+<height>112</height>
+<info>ListItem.icon</info>
+<texture diffuse="Mask.png"></texture>
+<align>center</align>
+<aspectratio scalediffuse="false">scale</aspectratio>
+</control>
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>144</width>
+<height>144</height>
+<texture>mask glass.png</texture>
+<aspectratio>stretch</aspectratio>
+</control>
+
+<control type="label">
+<posx>72</posx>
+<posy>125</posy>
+<width>140</width>
+<height>15</height>
+<font>font18</font>
+<textcolor>white</textcolor>
+<include>selectedcolor</include>
+<info>ListItem.Label</info>
+<align>center</align>
+</control>
+
+</itemlayout>
+
+<focusedlayout height="144" width="144">
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>144</width>
+<height>144</height>
+<texture diffuse="mask.png">folder-focus1.png</texture>
+<aspectratio>stretch</aspectratio>
+</control>
+
+<control type="image">
+<posx>4</posx>
+<posy>8</posy>
+<width>136</width>
+<height>112</height>
+<info>ListItem.icon</info>
+<texture diffuse="Mask.png"></texture>
+<align>center</align>
+<aspectratio scalediffuse="false">scale</aspectratio>
+</control>
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>144</width>
+<height>144</height>
+<texture>mask glass.png</texture>
+<aspectratio>stretch</aspectratio>
+</control>
+
+
+<control type="label">
+<posx>72</posx>
+<posy>125</posy>
+<width>140</width>
+<height>15</height>
+<font>font18</font>
+<textcolor>white</textcolor>
+<include>selectedcolor</include>
+<scroll>true</scroll>
+<scrolltime>300</scrolltime>
+<info>ListItem.Label</info>
+<align>center</align>
+</control>
+
+
+</focusedlayout>
+
+</control>
+
+</include>
+
 <include name="CD Wrap Music Library">
 
 <control>
@@ -15598,7 +15824,6 @@
 <info>ListItem.label</info>
 <shadowcolor>shadow</shadowcolor>
 <visible>Control.HasFocus(53)</visible>
-<visible>system.platform.xbox</visible>
 </control>
 
 </include>
@@ -17698,6 +17923,8 @@
 
 <posy>0</posy>
 
+<texture>mask glass wall.png</texture>
+
 <control type="image">
 <posx>520</posx>
 <posy>0</posy>
@@ -18049,26 +18276,14 @@
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
+
 <control type="image">
 <posx>560</posx>
 <posy>102</posy>
 <width>133</width>
 <height>268</height>
-<texture>dvd4.png</texture>
-<aspectratio aligny="center">stretch</aspectratio>
-<visible>Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation> 
-<visible>container.content(seasons)</visible>
-</control>
-
-<control type="image">
-<posx>560</posx>
-<posy>106</posy>
-<width>131</width>
-<height>260</height>
 <info>ListItem.Thumb</info>
-<texture>defaultdvdposter.png</texture>
+<texture diffuse="Mask wall.png">defaultdvdposter.png</texture>
 <aspectratio aligny="center">stretch</aspectratio>
 <visible>Control.IsVisible(58)</visible>
 <animation effect="fade" time="200">WindowOpen</animation>
@@ -18078,10 +18293,10 @@
 
 <control type="image">
 <posx>560</posx>
-<posy>106</posy>
-<width>131</width>
-<height>260</height>
-<texture>dvd3.png</texture>
+<posy>102</posy>
+<width>133</width>
+<height>268</height>
+<texture>mask glass wall.png</texture>
 <aspectratio aligny="center">stretch</aspectratio>
 <visible>Control.IsVisible(58)</visible>
 <animation effect="fade" time="200">WindowOpen</animation>
@@ -18194,6 +18409,7 @@
 <texture>R.png</texture>
 <visible>substring(listitem.mpaa,Rated R)</visible>
 <visible>container.content(movies) + Control.IsVisible(58)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
 <control type="image">
@@ -18205,6 +18421,7 @@
 <texture>PG-13.png</texture>
 <visible>substring(listitem.mpaa,Rated PG-13)</visible>
 <visible>container.content(movies) + Control.IsVisible(58)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
 <control type="image">
@@ -18216,6 +18433,7 @@
 <texture>PG.png</texture>
 <visible>substring(listitem.mpaa,Rated PG) + !substring(listitem.mpaa,Rated PG-13)</visible>
 <visible>container.content(movies) + Control.IsVisible(58)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
 <control type="image">
@@ -18227,6 +18445,7 @@
 <texture>NR.png</texture>
 <visible>substring(listitem.mpaa,Rated NR)</visible>
 <visible>container.content(movies) + Control.IsVisible(58)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
 <control type="image">
@@ -18238,6 +18457,7 @@
 <texture>NC-17.png</texture>
 <visible>substring(listitem.mpaa,Rated NC-18)</visible>
 <visible>container.content(movies) + Control.IsVisible(58)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
 <control type="image">
@@ -18249,6 +18469,7 @@
 <texture>G.png</texture>
 <visible>substring(listitem.mpaa,Rated G)</visible>
 <visible>container.content(movies) + Control.IsVisible(58)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
 
@@ -18694,26 +18915,16 @@
 <ondown>2</ondown>
 <pagecontrol>90</pagecontrol>
 
-<itemlayout height="165" width="80">
+<itemlayout height="162" width="80">
 
 
 <control type="image">
 <posx>0</posx>
 <posy>0</posy>
 <width>80</width>
-<height>159</height>
-<texture>dvd4.png</texture>
-<aspectratio>stretch</aspectratio>
-</control>
-
-
-<control type="image">
-<posx>1</posx>
-<posy>3</posy>
-<width>76</width>
-<height>153</height>
+<height>156</height>
 <info>ListItem.Thumb</info>
-<texture>defaultdvdposter.png</texture>
+<texture diffuse="Mask wall.png">defaultdvdposter.png</texture>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -18721,8 +18932,9 @@
 <posx>0</posx>
 <posy>0</posy>
 <width>80</width>
-<height>159</height>
-<texture>dvd3.png</texture>
+<height>156</height>
+<texture>mask glass wall.png</texture>
+<colordiffuse>88ffffff</colordiffuse>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -18730,38 +18942,29 @@
 
 </itemlayout>
 
-<focusedlayout height="165" width="80">
+<focusedlayout height="162" width="80">
 
 <pulseonselect>true</pulseonselect>
+
 
 <control type="image">
 <posx>0</posx>
 <posy>0</posy>
 <width>80</width>
-<height>159</height>
-<texture>dvd4.png</texture>
+<height>156</height>
+<info>ListItem.Thumb</info>
+<texture diffuse="Mask wall.png">defaultdvdposter.png</texture>
 <aspectratio>stretch</aspectratio>
 <animation effect="zoom"  end="-15,-62,110,220" time="200">Focus</animation>
 </control>
 
-
-<control type="image">
-<posx>1</posx>
-<posy>3</posy>
-<width>76</width>
-<height>153</height>
-<info>ListItem.Thumb</info>
-<texture>defaultdvdposter.png</texture>
-<aspectratio>stretch</aspectratio>
-<animation effect="zoom"  end="-15,-57,107,210" time="200">Focus</animation>
-</control>
-
 <control type="image">
 <posx>0</posx>
 <posy>0</posy>
 <width>80</width>
-<height>159</height>
-<texture>dvd3.png</texture>
+<height>156</height>
+<texture>mask glass wall.png</texture>
+<colordiffuse>88ffffff</colordiffuse>
 <aspectratio>stretch</aspectratio>
 <animation effect="zoom"  end="-15,-62,110,220" time="200">Focus</animation>
 </control>
@@ -18780,6 +18983,7 @@
 </control>
 
 </focusedlayout>
+
 
 </control>
 
@@ -18814,18 +19018,8 @@
 <posy>0</posy>
 <width>80</width>
 <height>156</height>
-<texture>dvd4.png</texture>
-<aspectratio>stretch</aspectratio>
-</control>
-
-
-<control type="image">
-<posx>1</posx>
-<posy>3</posy>
-<width>76</width>
-<height>150</height>
 <info>ListItem.Thumb</info>
-<texture>defaultdvdposter.png</texture>
+<texture diffuse="Mask wall.png">defaultdvdposter.png</texture>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -18834,7 +19028,8 @@
 <posy>0</posy>
 <width>80</width>
 <height>156</height>
-<texture>dvd3.png</texture>
+<texture>mask glass wall.png</texture>
+<colordiffuse>88ffffff</colordiffuse>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -18846,34 +19041,25 @@
 
 <pulseonselect>true</pulseonselect>
 
+
 <control type="image">
 <posx>0</posx>
 <posy>0</posy>
 <width>80</width>
 <height>156</height>
-<texture>dvd4.png</texture>
+<info>ListItem.Thumb</info>
+<texture diffuse="Mask wall.png">defaultdvdposter.png</texture>
 <aspectratio>stretch</aspectratio>
 <animation effect="zoom"  end="-15,-62,110,220" time="200">Focus</animation>
 </control>
 
-
-<control type="image">
-<posx>1</posx>
-<posy>3</posy>
-<width>76</width>
-<height>150</height>
-<info>ListItem.Thumb</info>
-<texture>defaultdvdposter.png</texture>
-<aspectratio>stretch</aspectratio>
-<animation effect="zoom"  end="-15,-57,107,210" time="200">Focus</animation>
-</control>
-
 <control type="image">
 <posx>0</posx>
 <posy>0</posy>
 <width>80</width>
 <height>156</height>
-<texture>dvd3.png</texture>
+<texture>mask glass wall.png</texture>
+<colordiffuse>88ffffff</colordiffuse>
 <aspectratio>stretch</aspectratio>
 <animation effect="zoom"  end="-15,-62,110,220" time="200">Focus</animation>
 </control>
@@ -19149,9 +19335,9 @@
 <include name="Library Root View">
 
 <control type="image">
-<posx>190</posx>
+<posx>164</posx>
 <posy>105</posy>
-<width>340</width>
+<width>392</width>
 <height>386</height>
 <texture>List background1.png</texture>
 <visible>!Container.Content(Movies) + !Container.Content(episodes) + !Container.Content(TVshows) + !Container.Content(seasons) + !Container.Content(MusicVideos) + Control.HasFocus(51)</visible>
@@ -19160,23 +19346,11 @@
 </control>
 
 <control type="image">
-<posx>190</posx>
+<posx>164</posx>
 <posy>105</posy>
-<width>340</width>
+<width>392</width>
 <height>386</height>
 <texture>List background.png</texture>
-<visible>!Container.Content(Movies) + !Container.Content(episodes) + !Container.Content(TVshows) + !Container.Content(seasons) + !Container.Content(MusicVideos) + Control.HasFocus(51)</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation> 
-</control>
-
-
-<control type="image">
-<posx>190</posx>
-<posy>105</posy>
-<width>340</width>
-<height>386</height>
-<texture></texture>
 <visible>!Container.Content(Movies) + !Container.Content(episodes) + !Container.Content(TVshows) + !Container.Content(seasons) + !Container.Content(MusicVideos) + Control.HasFocus(51)</visible>
 <animation effect="fade" time="200">WindowOpen</animation>
 <animation effect="fade" time="200">WindowClose</animation> 
@@ -19198,10 +19372,11 @@
 <onup>51</onup>
 <ondown>51</ondown>
 <itemlayout height="40" width="520">
+
 <control type="label">
 <posx>260</posx>
 <posy>10</posy>
-<width>300</width>
+<width>352</width>
 <height>20</height>
 <font>special13</font>
 <textcolor>white</textcolor>
@@ -19214,28 +19389,20 @@
 <focusedlayout height="40" width="520">
 
 <control type="image">
-<posx>93</posx>
+<posx>67</posx>
 <posy>0</posy>
-<width>334</width>
+<width>386</width>
 <height>40</height>
 <texture>input-focus.png</texture>
 <visible>Control.HasFocus(51)</visible>
 </control>
 
-<control type="image">
-<posx>110</posx>
-<posy>0</posy>
-<width>300</width>
-<height>40</height>
-<texture></texture>
-<visible>Control.HasFocus(51)</visible>
-</control>
 
 
 <control type="label">
 <posx>260</posx>
 <posy>10</posy>
-<width>300</width>
+<width>352</width>
 <height>20</height>
 <font>special15</font>
 <textcolor>white</textcolor>
@@ -19818,9 +19985,9 @@
 <visible>!Container.Content(Albums)</visible>
 <visible>!Container.Content(Artists)</visible>
 <visible>!Container.Content(Songs)</visible>
-<posx>190</posx>
+<posx>164</posx>
 <posy>105</posy>
-<width>340</width>
+<width>392</width>
 <height>386</height>
 <texture>List background1.png</texture>
 <animation effect="fade" time="200">WindowOpen</animation>
@@ -19831,9 +19998,9 @@
 <visible>!Container.Content(Albums)</visible>
 <visible>!Container.Content(Artists)</visible>
 <visible>!Container.Content(Songs)</visible>
-<posx>190</posx>
+<posx>164</posx>
 <posy>105</posy>
-<width>340</width>
+<width>392</width>
 <height>386</height>
 <texture>List background.png</texture>
 <animation effect="fade" time="200">WindowOpen</animation>
@@ -19857,10 +20024,11 @@
 <onup>51</onup>
 <ondown>51</ondown>
 <itemlayout height="40" width="520">
+
 <control type="label">
 <posx>260</posx>
 <posy>10</posy>
-<width>300</width>
+<width>352</width>
 <height>20</height>
 <font>special13</font>
 <textcolor>white</textcolor>
@@ -19873,20 +20041,11 @@
 <focusedlayout height="40" width="520">
 
 <control type="image">
-<posx>93</posx>
+<posx>67</posx>
 <posy>0</posy>
-<width>334</width>
+<width>386</width>
 <height>40</height>
 <texture>input-focus.png</texture>
-<visible>Control.HasFocus(50)</visible>
-</control>
-
-<control type="image">
-<posx>110</posx>
-<posy>0</posy>
-<width>300</width>
-<height>40</height>
-<texture></texture>
 <visible>Control.HasFocus(50)</visible>
 </control>
 
@@ -19894,7 +20053,7 @@
 <control type="label">
 <posx>260</posx>
 <posy>10</posy>
-<width>300</width>
+<width>352</width>
 <height>20</height>
 <font>special15</font>
 <textcolor>white</textcolor>
@@ -19913,5 +20072,337 @@
 
 </include>
 
+<include name="Photo Wall">
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>730</width>
+<height>586</height>
+<texture>background2.png</texture>
+<visible>Control.IsVisible(56)</visible>
+</control>
+
+<control type="panel" id="56">
+<posx>0</posx>
+<posy>0</posy>
+<width>720</width>
+<height>576</height>
+<onleft>2</onleft>
+<onright>2</onright>
+<onup>59</onup>
+<ondown>59</ondown>
+<include></include>
+<viewtype label="Wall Icons">Icons</viewtype>
+<scrolltime>200</scrolltime>
+<pagecontrol>90</pagecontrol>
+
+<itemlayout height="192" width="144">
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>144</width>
+<height>192</height>
+<info>ListItem.Icon</info>
+<visible>!IsEmpty(ListItem.Thumb)</visible>
+<texture diffuse="Mask.png"></texture>
+<align>center</align>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<colordiffuse>88FFFFFF</colordiffuse>
+</control>
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>144</width>
+<height>192</height>
+<texture diffuse="Mask.png">defaultpicturebig.png</texture>
+<visible>IsEmpty(ListItem.Thumb)</visible>
+<align>center</align>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<colordiffuse>88FFFFFF</colordiffuse>
+</control>
+
+
+</itemlayout>
+
+
+<focusedlayout height="192" width="144">
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>144</width>
+<height>192</height>
+<texture>List background1.png</texture>
+<!-- Center Icons -->
+<animation effect="zoom" time="0" end="-43,-57.5,230,307" reversible="false" condition="[Container(56).Row(1) + Container(56).Column(1) | Container(56).Row(1) + Container(56).Column(2) | Container(56).Row(1) + Container(56).Column(3)]">Conditional</animation>
+
+<!-- Top Left Icon -->
+<animation effect="zoom" time="0" end="0,0,230,307" reversible="false" condition="Container(56).Row(0) + Container(56).Column(0)">Conditional</animation>
+
+<!-- Top Row Excluding Corners -->
+<animation effect="zoom" time="0" end="-43,0,230,307" reversible="false" condition="Container(56).Row(0) + Container(56).Column(1) | Container(56).Row(0) + Container(56).Column(2) | Container(56).Row(0) + Container(56).Column(3)">Conditional</animation>
+
+<!-- Top Right Corner -->
+<animation effect="zoom" time="0" end="-86,0,230,307" reversible="false" condition="[Container(56).Row(0) + Container(56).Column(4)]">Conditional</animation>
+
+<!-- Left Column Excluding Corners -->
+<animation effect="zoom" time="0" end="-0,-57.5,230,307" reversible="false" condition="[Container(56).Row(1) + Container(56).Column(0)]">Conditional</animation>
+
+<!-- Bottom Left Corner -->
+<animation effect="zoom" time="0" end="0,-115,230,307" reversible="false" condition="[Container(56).Row(2) + Container(56).Column(0)]">Conditional</animation>
+
+<!-- Bottom Row Excluding Corners -->
+<animation effect="zoom" time="0" end="-43,-115,230,307" reversible="false" condition="[Container(56).Row(2) + Container(56).Column(1) | Container(56).Row(2) + Container(56).Column(2) | Container(56).Row(2) + Container(56).Column(3)]">Conditional</animation>
+
+<!-- Bottom Right Corner -->
+<animation effect="zoom" time="0" end="-86,-115,230,307" reversible="false" condition="[Container(56).Row(2) + Container(56).Column(4)]">Conditional</animation>
+
+<!-- Right Column Excluding Corners -->
+<animation effect="zoom" time="0" end="-86,-57.5,230,307" reversible="false" condition="[Container(56).Row(1) + Container(56).Column(4)]">Conditional</animation>
+<visible>!Control.IsVisible(899)</visible>
+</control>
+
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>144</width>
+<height>192</height>
+<info>ListItem.Icon</info>
+<visible>!IsEmpty(ListItem.Thumb)</visible>
+<texture diffuse="Mask.png"></texture>
+<align>center</align>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<!-- Center Icons -->
+<animation effect="zoom" time="0" end="-25.5,-33.5,195,260" condition="[Container(56).Row(1) + Container(56).Column(1) | Container(56).Row(1) + Container(56).Column(2) | Container(56).Row(1) + Container(56).Column(3)]">Conditional</animation>
+
+
+<!-- Top Left Icon -->
+<animation effect="zoom" time="0" end="17.5,23.5,195,260" condition="Container(56).Row(0) + Container(56).Column(0)">Conditional</animation>
+
+<!-- Top Row Excluding Corners -->
+<animation effect="zoom" time="0" end="-25.5,23.5,195,260" condition="Container(56).Row(0) + Container(56).Column(1) | Container(56).Row(0) + Container(56).Column(2) | Container(56).Row(0) + Container(56).Column(3)">Conditional</animation>
+
+
+<!-- Top Right Corner -->
+<animation effect="zoom" time="0" end="-68.5,23.5,195,260" condition="[Container(56).Row(0) + Container(56).Column(4)]">Conditional</animation>
+
+<!-- Left Column Excluding Corners -->
+<animation effect="zoom" time="0" end="17.5,-33.5,195,260" condition="[Container(56).Row(1) + Container(56).Column(0)]">Conditional</animation>
+
+<!-- Bottom Left Corner -->
+<animation effect="zoom" time="0" end="17.5,-91.5,195,260" condition="[Container(56).Row(2) + Container(56).Column(0)]">Conditional</animation>
+
+<!-- Bottom Row Excluding Corners -->
+<animation effect="zoom" time="0" end="-25.5,-91.5,195,260" condition="[Container(56).Row(2) + Container(56).Column(1) | Container(56).Row(2) + Container(56).Column(2) | Container(56).Row(2) + Container(56).Column(3)]">Conditional</animation>
+
+<!-- Bottom Right Corner -->
+<animation effect="zoom" time="0" end="-68.5,-91.5,195,260" condition="[Container(56).Row(2) + Container(56).Column(4)]">Conditional</animation>
+
+<!-- Right Column Excluding Corners -->
+<animation effect="zoom" time="0" end="-68.5,-33.5,195,260" condition="[Container(56).Row(1) + Container(56).Column(4)]">Conditional</animation>
+<visible>!Control.IsVisible(899)</visible>
+
+</control>
+
+
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>144</width>
+<height>192</height>
+<texture diffuse="Mask.png">defaultpicturebig.png</texture>
+<visible>IsEmpty(ListItem.Thumb)</visible>
+<align>center</align>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<!-- Center Icons -->
+<animation effect="zoom" time="0" end="-25.5,-33.5,195,260" condition="[Container(56).Row(1) + Container(56).Column(1) | Container(56).Row(1) + Container(56).Column(2) | Container(56).Row(1) + Container(56).Column(3)]">Conditional</animation>
+
+
+<!-- Top Left Icon -->
+<animation effect="zoom" time="0" end="17.5,23.5,195,260" condition="Container(56).Row(0) + Container(56).Column(0)">Conditional</animation>
+
+<!-- Top Row Excluding Corners -->
+<animation effect="zoom" time="0" end="-25.5,23.5,195,260" condition="Container(56).Row(0) + Container(56).Column(1) | Container(56).Row(0) + Container(56).Column(2) | Container(56).Row(0) + Container(56).Column(3)">Conditional</animation>
+
+
+<!-- Top Right Corner -->
+<animation effect="zoom" time="0" end="-68.5,23.5,195,260" condition="[Container(56).Row(0) + Container(56).Column(4)]">Conditional</animation>
+
+<!-- Left Column Excluding Corners -->
+<animation effect="zoom" time="0" end="17.5,-33.5,195,260" condition="[Container(56).Row(1) + Container(56).Column(0)]">Conditional</animation>
+
+<!-- Bottom Left Corner -->
+<animation effect="zoom" time="0" end="17.5,-91.5,195,260" condition="[Container(56).Row(2) + Container(56).Column(0)]">Conditional</animation>
+
+<!-- Bottom Row Excluding Corners -->
+<animation effect="zoom" time="0" end="-25.5,-91.5,195,260" condition="[Container(56).Row(2) + Container(56).Column(1) | Container(56).Row(2) + Container(56).Column(2) | Container(56).Row(2) + Container(56).Column(3)]">Conditional</animation>
+
+<!-- Bottom Right Corner -->
+<animation effect="zoom" time="0" end="-68.5,-91.5,195,260" condition="[Container(56).Row(2) + Container(56).Column(4)]">Conditional</animation>
+
+<!-- Right Column Excluding Corners -->
+<animation effect="zoom" time="0" end="-68.5,-33.5,195,260" condition="[Container(56).Row(1) + Container(56).Column(4)]">Conditional</animation>
+<visible>!Control.IsVisible(899)</visible>
+
+</control>
+
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>144</width>
+<height>192</height>
+<info>ListItem.Icon</info>
+<visible>!IsEmpty(ListItem.Thumb)</visible>
+<texture diffuse="Mask.png"></texture>
+<align>center</align>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<colordiffuse>88FFFFFF</colordiffuse>
+<visible>Control.IsVisible(899)</visible>
+</control>
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>144</width>
+<height>192</height>
+<texture diffuse="Mask.png">defaultpicturebig.png</texture>
+<visible>IsEmpty(ListItem.Thumb)</visible>
+<align>center</align>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<colordiffuse>88FFFFFF</colordiffuse>
+<visible>Control.IsVisible(899)</visible>
+</control>
+
+
+
+</focusedlayout>
+</control>
+</include>
+
+<include name="Icons">
+<control type="panel" id="51">
+<posx>15</posx>
+<posy>60</posy>
+<width>700</width>
+<height>520</height>
+<onleft>2</onleft>
+<onright>90</onright>
+<onup>51</onup>
+<ondown>51</ondown>
+<scrolltime>200</scrolltime>
+<viewtype label="538">Icons</viewtype>
+<pagecontrol>90</pagecontrol>
+<itemlayout height="250" width="170">
+
+<control type="image">
+<posx>15</posx>
+<posy>30</posy>
+<width>150</width>
+<height>190</height>
+<texture diffuse="Mask.png"></texture>
+<align>center</align>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<info>ListItem.Icon</info>
+</control>
+
+<control type="image">
+<posx>15</posx>
+<posy>30</posy>
+<width>150</width>
+<height>190</height>
+<texture>mask glass.png</texture>
+<aspectratio>stretch</aspectratio>
+</control>
+
+<control type="label">
+<posx>86</posx>
+<posy>229</posy>
+<width>158</width>
+<height>16</height>
+<font>font15</font>
+<textcolor>white</textcolor>
+<selectedcolor>white</selectedcolor>
+<align>center</align>
+<scroll>false</scroll>
+<info>ListItem.label</info>
+</control>
+
+</itemlayout>
+
+<focusedlayout height="250" width="170">
+
+<control type="image">
+<width>180</width>
+<height>240</height>
+<posx>0</posx>
+<posy>10</posy>
+<texture>List background1.png</texture>
+</control>
+
+<control type="image">
+<posx>15</posx>
+<posy>30</posy>
+<width>150</width>
+<height>190</height>
+<texture diffuse="Mask.png"></texture>
+<align>center</align>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<info>ListItem.Icon</info>
+</control>
+
+<control type="image">
+<posx>15</posx>
+<posy>30</posy>
+<width>150</width>
+<height>190</height>
+<texture>mask glass.png</texture>
+<aspectratio>stretch</aspectratio>
+</control>
+
+<control type="label">
+<posx>86</posx>
+<posy>229</posy>
+<width>158</width>
+<height>16</height>
+<font>font15</font>
+<textcolor>white</textcolor>
+<selectedcolor>white</selectedcolor>
+<align>center</align>
+<scroll>true</scroll>
+<info>ListItem.label</info>
+</control>
+
+</focusedlayout>
+
+</control>
+
+<control type="scrollbar" id="90">
+<posx>700</posx>
+<posy>75</posy>
+<width>15</width>
+<height>480</height>
+<texturesliderbackground>scrollbar_background.png</texturesliderbackground>
+<texturesliderbar>scrollbar_background.png</texturesliderbar>
+<texturesliderbarfocus>scrollbar_background.png</texturesliderbarfocus>
+<textureslidernib>scrollbar_nib.png</textureslidernib>
+<textureslidernibfocus>scrollbar_nib_focus.png</textureslidernibfocus>
+<onleft>51</onleft>
+<onright>2</onright>
+<onup>50</onup>
+<ondown>50</ondown>
+<showonepage>false</showonepage>
+<orientation>vertical</orientation>
+<visible>Skin.HasSetting(sbar)</visible>
+<visible>Control.IsVisible(51)</visible>
+<visible>!Control.HasFocus(57)</visible>
+</control>
+
+</include>
 
 </includes>

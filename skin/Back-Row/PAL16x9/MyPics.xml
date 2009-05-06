@@ -72,19 +72,18 @@
 		</control>
 
 	
-<include>CD Wrap</include>
-	
-<include>Bigwraplist</include>	
-
 <include>listcontrol</include>
 
 <include>List 2</include>
 
-<include>List 3</include>	
+<include>Picture Wrap</include>
 
-<include>Square Big Icons</include>	
+<include>Icons</include>	
  
-<include>Square Small Icons1</include>	
+<include>Photo Wall</include>	
+
+
+
 
 <control type="image">
     <description>list item icon</description>
@@ -97,19 +96,7 @@
     <visible>Control.IsVisible(50)</visible>
     </control>
 
-    <control type="image">
-    <description>list item icon reflection</description>
-    <posx>20</posx>
-    <posy>450</posy>
-    <width>350</width>
-    <height>350</height>
-    <info>ListItem.Icon</info>
-    <texture flipy="true" diffuse="Thumb_Mask.png" />
-    <aspectratio>keep</aspectratio>
-    <visible>Control.IsVisible(50)</visible>
-    </control>
-
-	
+   	
 	
 	<control>
 		<description>Description label</description>

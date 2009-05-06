@@ -8,18 +8,21 @@
 	</coordinates>
 
 	<controls>
+
+	
 		<control type="image" id="1">
-			<description>Popup Music Scan Dialog Background</description>
-			<posx>165</posx>
+			<description>Scan Dialog Background</description>
+			<posx>164</posx>
 			<posy>15</posy>
-			<width>395</width>
+			<width>391</width>
 			<height>88</height>
-			<texture>Plot panel.png</texture>
+			<texture diffuse="mask wide.png">background2.png</texture>
 			<colordiffuse>99ffffff</colordiffuse>
 		</control>
+
 		<control type="label" id="401">
 			<description>Caption Label</description>
-			<posx>180</posx>
+			<posx>174</posx>
 			<posy>23</posy>
 			<font>font12</font>
 			<align>left</align>
@@ -28,7 +31,7 @@
 		</control>
 		<control type="label" id="402">
 			<description>Current Directory Label</description>
-			<posx>180</posx>
+			<posx>174</posx>
 			<posy>43</posy>
 			<width>370</width>
 			<haspath>yes</haspath>
@@ -36,7 +39,7 @@
 		</control>
 		<control type="progress" id="403">
 			<description>progress control</description>
-			<posx>180</posx>
+			<posx>174</posx>
 			<posy>82</posy>
 			<width>370</width>
 			<height>10</height>
@@ -50,7 +53,7 @@
 
 		<control type="progress" id="404">
 			<description>progress control</description>
-			<posx>180</posx>
+			<posx>174</posx>
 			<posy>82</posy>
 			<width>370</width>
 			<height>10</height>
@@ -65,7 +68,7 @@
 		<control>
 		<description>Media Progressbar overlay</description>
 		<type>image</type>
-		<posx>180</posx>
+		<posx>174</posx>
 		<posy>82</posy>
 		<width>370</width>
 		<height>10</height>
@@ -74,12 +77,12 @@
 	</control>
 
 		<control type="image" id="1">
-			<description>Popup Music Scan Dialog Background</description>
-			<posx>165</posx>
+			<description>Scan Dialog Background</description>
+			<posx>164</posx>
 			<posy>15</posy>
-			<width>395</width>
+			<width>391</width>
 			<height>88</height>
-			<texture>keyboard-panel-overlay1.png</texture>
+			<texture>mask glass wide.png</texture>
 			<colordiffuse>99ffffff</colordiffuse>
 		</control>
 

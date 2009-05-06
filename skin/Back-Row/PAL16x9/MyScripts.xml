@@ -76,19 +76,11 @@
 
 <include>List 3</include>	
 
-<include>MusicJukebox</include>
-	
 <include>Bigwraplist</include>	 
-	
-<include>WideIconView</include>
-
-<include>BigWideView</include>
 
 <include>Square Big Icons</include>	
  
 <include>Square Small Icons</include>	
-
-<include>CD Wrap</include>
 
 	
 	<control type="image">

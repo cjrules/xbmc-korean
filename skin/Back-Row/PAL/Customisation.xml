@@ -548,7 +548,7 @@
 <include>20014</include>
 <font>font64</font>
 <onclick>Skin.ToggleSetting(movie-library)</onclick>
-<selected>Skin.HasSetting(movie-library)</selected>
+<selected>!Skin.HasSetting(movie-library)</selected>
 <align>left</align>
 <texturefocus>input-focus.png</texturefocus>
 <texturenofocus></texturenofocus>
