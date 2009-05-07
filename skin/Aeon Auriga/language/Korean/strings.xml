@@ -46,11 +46,13 @@
 
 <!-- Media Window options -->
   
+	  <string id="31042">테마: LIGHT</string>
+	  <string id="31043">테마: NIGHT</string>
   	<string id="31044">팬아트</string>
 	  <string id="31045">썸네일</string>
 	  <string id="31046">줄거리</string>
 	  <string id="31047">레이아웃</string>
-	  <string id="31048">위화살표</string>
+	  <string id="31048">수동</string>
 	  <string id="31049">자동</string>
 	  <string id="31050">보기: </string>
     <string id="31051">무작위</string>
@@ -156,12 +158,12 @@
     <string id="31158">고급</string>
     <string id="31159">확장된 AEON 옵션</string>
     <string id="31160">프로파일</string>
-	<string id="31161">사용자 계정</string>
-	<string id="31162">로그인 화면</string>
-	<string id="31163">옵션</string>
-	<string id="31164">로그인 화면</string>
-	<string id="31165">사용자</string>
-	<string id="31166">프로파일 관리</string>
+  	<string id="31161">사용자 계정</string>
+  	<string id="31162">로그인 화면</string>
+  	<string id="31163">옵션</string>
+  	<string id="31164">로그인 화면</string>
+  	<string id="31165">사용자</string>
+  	<string id="31166">프로파일 관리</string>
 
 <!--  Button / Shutdown Menu  --> 
 
@@ -175,7 +177,7 @@
     <string id="31207">다시 시작</string>
     <string id="31208">종료</string>
     <string id="31209">로그 아웃</string>
-	<string id="31210">꺼내기</string> 
+  	<string id="31210">꺼내기</string> 
 
 <!--  Set Content / Add Source dialogs  --> 
   
@@ -206,10 +208,13 @@
   
 <!-- Aeon Advanced options -->
   
-	<string id="31252">홈화면 메인 메뉴에 그라디언트 효과</string>
-	<string id="31253">게임 바로가기를 런처 플러그인에 연결</string>
-	<string id="31258">영화정보 페이지에서 평점(IMDB 등) 보이기</string>
-	<string id="31259">미디어 플래그에 기본 아이콘 사용 (보이지 않으려면 끄기)</string>
+  	<string id="31249">미디어 플래그 토글</string>
+  	<string id="31250">멀티플렉스 레이아웃 (팬아트, 줄거리, THUMBSHOW)</string>
+  	<string id="31251">멀티플렉스 영화정보 토글 (켜기, 끄기, 자동, 수동)</string>
+  	<string id="31252">홈화면 메인 메뉴에 그라디언트 효과</string>
+  	<string id="31253">게임 바로가기를 런처 플러그인에 연결</string>
+  	<string id="31258">영화정보 페이지에서 평점(IMDB 등) 보이기</string>
+  	<string id="31259">미디어 플래그에 기본 아이콘 사용 (보이지 않으려면 끄기)</string>
     <string id="31260">시간 패널 보기</string>
     <string id="31261">첫 화면 날씨 팝업</string>
     <string id="31262">음악 배경 삽화 (팬아트)</string>
@@ -463,6 +468,8 @@
 	<string id="31907">XBMC 포럼의 모든분께</string>
 	<string id="31908">...그리고 여러분</string>
 	<string id="31909">AEON은 돌아옵니다</string>
+	<string id="31910">날씨 배경</string>
+
   	
 <!-- Submenu / Objects -->
 
