@@ -130,6 +130,7 @@ class Main:
             finished_path = ""
             for cnt, url in enumerate( asset_files ):
                 items = os.path.split( url )
+                print url
                 # base path
                 drive = xbmc.translatePath( "/".join( [ "special://home", self.args.install ] ) )
                 # create the script/plugin/skin title
