@@ -2,7 +2,7 @@
 	<include name="HomeSelection">
 
     <control type="group">
-      <visible>!Skin.HasSetting(HomeSelectionIcons) + !Skin.HasSetting(HomeSelectionImages)</visible>
+      <visible>!Skin.HasSetting(HomeSelectionIcons) + !Skin.String(HomeVideosImages) + !Skin.String(HomeMusicImages) + !Skin.String(HomePhotosImages)</visible>
         <!-- Selection Misc. -->
         <control type="group" id="9006">
           <visible>[Container(9001).HasFocus(1) | Container(9001).HasFocus(4) | Container(9001).HasFocus(7)] + !Player.HasMedia + Control.IsVisible(9004)</visible>
@@ -52,59 +52,6 @@
             </control>
           </control>
         </control>
-    </control>
-
-    <control type="group">
-      <visible>!Skin.HasSetting(HomeSelectionIcons) + Skin.HasSetting(HomeSelectionImages)</visible>
-      <!-- Selection Misc. -->
-      <control type="group" id="9006">
-        <visible>[Container(9001).HasFocus(1) | Container(9001).HasFocus(7)] + !Player.HasMedia + Control.IsVisible(9004)</visible>
-        <animation effect="slide" tween="circle" delay="300" start="500" time="400" reversible="false">Visible</animation>
-        <control type="group">
-          <control type="image">
-            <description>Selected Image</description>
-            <posx>420</posx>
-            <posy>50</posy>
-            <width>300</width>
-            <height>300</height>
-            <info>Container(9001).ListItem.ActualIcon</info>
-            <aspectratio align="left">keep</aspectratio>
-            <visible>![Window.Next(filemanager) | Window.Next(programs) | Window.Next(videofiles)  | Window.Next(videolibrary) | Window.Next(weather) | Window.Next(musicfiles) | Window.Next(musiclibrary) | Window.Next(pictures) | Window.Next(settings) | Window.Next(scripts)]</visible>
-          </control>
-        </control>
-      </control>
-      <control type="group" id="9006">
-        <visible>[Container(9001).HasFocus(5) | Container(9001).HasFocus(8)] + !Player.HasMedia + Control.IsVisible(9004)</visible>
-        <animation effect="slide" tween="circle" delay="300" start="500,200" time="400" reversible="false">Visible</animation>
-        <control type="group">
-          <control type="image">
-            <description>Selected Image</description>
-            <posx>420</posx>
-            <posy>50</posy>
-            <width>300</width>
-            <height>300</height>
-            <info>Container(9001).ListItem.ActualIcon</info>
-            <aspectratio align="left">keep</aspectratio>
-            <visible>![Window.Next(filemanager) | Window.Next(programs) | Window.Next(videofiles) | Window.Next(videolibrary) | Window.Next(weather) | Window.Next(musicfiles) | Window.Next(musiclibrary) | Window.Next(pictures) | Window.Next(settings) | Window.Next(scripts)]</visible>
-          </control>
-        </control>
-      </control>
-      <control type="group" id="9006">
-        <visible>[Container(9001).HasFocus(6)] + !Player.HasMedia + Control.IsVisible(9004)</visible>
-        <animation effect="slide" tween="circle" delay="300" start="500,-200" time="400" reversible="false">Visible</animation>
-        <control type="group">
-          <control type="image">
-            <description>Selected Image</description>
-            <posx>420</posx>
-            <posy>50</posy>
-            <width>300</width>
-            <height>300</height>
-            <info>Container(9001).ListItem.ActualIcon</info>
-            <aspectratio align="left">keep</aspectratio>
-            <visible>![Window.Next(filemanager) | Window.Next(programs) | Window.Next(videofiles) | Window.Next(videolibrary) | Window.Next(weather) | Window.Next(musicfiles) | Window.Next(musiclibrary) | Window.Next(pictures) | Window.Next(settings) | Window.Next(scripts)]</visible>
-          </control>
-        </control>
-      </control>
     </control>
 
     <control type="group">

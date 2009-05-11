@@ -42,7 +42,7 @@
           <label>$INFO[System.Time]</label>
           <font>22BdFont</font>
           <textcolor>FocusedTextColor</textcolor>
-          <visible>!Skin.HasSetting(NowPlayingTimeVideo)</visible>
+          <visible>!Skin.HasSetting(NowPlayingTime)</visible>
         </control>
         <control type="label" id="401">
           <description>Header Label</description>
@@ -55,7 +55,7 @@
           <label>$INFO[MusicPlayer.Album] [COLOR=FocusedTextColor]$INFO[MusicPlayer.Year][/COLOR]</label>
           <font>22BdFont</font>
           <textcolor>FocusedTextColor</textcolor>
-          <visible>!IsEmpty(MusicPlayer.Album) + !Skin.HasSetting(NowPlayingTimeAudio)</visible>
+          <visible>!IsEmpty(MusicPlayer.Album) + !Skin.HasSetting(NowPlayingTime)</visible>
         </control>
         <control type="label" id="401">
           <description>Header Label</description>
@@ -68,7 +68,7 @@
           <label>$INFO[MusicPlayer.Label] [COLOR=FocusedTextColor]$INFO[MusicPlayer.Year][/COLOR]</label>
           <font>22BdFont</font>
           <textcolor>FocusedTextColor</textcolor>
-          <visible>IsEmpty(MusicPlayer.Album) + !Skin.HasSetting(NowPlayingTimeAudio)</visible>
+          <visible>IsEmpty(MusicPlayer.Album) + !Skin.HasSetting(NowPlayingTime)</visible>
         </control>
         <control type="label" id="401">
           <description>Header Label</description>
@@ -81,7 +81,7 @@
           <label>$INFO[MusicPlayer.Album] [COLOR=FocusedTextColor]$INFO[MusicPlayer.Year][/COLOR]</label>
           <font>22BdFont</font>
           <textcolor>FocusedTextColor</textcolor>
-          <visible>Skin.HasSetting(NowPlayingTimeAudio)</visible>
+          <visible>Skin.HasSetting(NowPlayingTime)</visible>
         </control>
         <control type="label" id="401">
           <description>Header Label</description>
@@ -94,7 +94,7 @@
           <label>$INFO[MusicPlayer.Label] [COLOR=FocusedTextColor]$INFO[MusicPlayer.Year][/COLOR]</label>
           <font>22BdFont</font>
           <textcolor>FocusedTextColor</textcolor>
-          <visible>IsEmpty(MusicPlayer.Album) + Skin.HasSetting(NowPlayingTimeAudio)</visible>
+          <visible>IsEmpty(MusicPlayer.Album) + Skin.HasSetting(NowPlayingTime)</visible>
         </control>
         <control type="label" id="0">
           <description>artist</description>

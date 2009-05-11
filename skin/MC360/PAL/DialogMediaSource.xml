@@ -222,30 +222,65 @@
 			<animation effect="fade" delay="450" time="200">WindowOpen</animation>
 			<animation effect="fade" time="200">WindowClose</animation>
 		</control>
-		<control type="listcontrol" id="10">
-			<description>Path List Control</description>
+		<control type="list" id="10">
 			<posx>25</posx>
 			<posy>240</posy>
 			<width>380</width>
-			<height>150</height>
-			<font>font12</font>
-			<textoffsetx>12</textoffsetx>
-			<aligny>center</aligny>
-			<texturefocus>iconlist-focus.png</texturefocus>
-			<texturenofocus>iconlist-nofocus.png</texturenofocus>
-			<textureheight>32</textureheight>
-			<spacebetweenitems>8</spacebetweenitems>
-			<textxoff>-20</textxoff>
-			<font2>-</font2>
+			<height>120</height>
 			<onup>10</onup>
 			<onleft>11</onleft>
 			<onright>11</onright>
 			<ondown>10</ondown>
+			<viewtype label="544">list</viewtype>
+			<scrolltime>200</scrolltime>
+			<pagecontrol>60</pagecontrol>
 			<visible>![Window.IsActive(128) | [Window.IsActive(126) + !Window.IsActive(NetworkSettings)] | Window.IsActive(103)]</visible>
 			<animation effect="fade" time="100">Hidden</animation>
 			<animation effect="fade" delay="450" time="200">Visible</animation>
 			<animation effect="fade" delay="450" time="200">WindowOpen</animation>
 			<animation effect="fade" time="200">WindowClose</animation>
+			<itemlayout height="30">
+				<control type="image">
+					<posx>0</posx>
+					<posy>1</posy>
+					<width>380</width>
+					<height>30</height>
+					<texture>iconlist-nofocus.png</texture>
+				</control>
+				<control type="label">
+					<posx>5</posx>
+					<posy>4</posy>
+					<width>370</width>
+					<height>22</height>
+					<font>font13</font>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textcolor>TextcolorBlack</textcolor>
+					<selectedcolor>listselectedcolor</selectedcolor>
+					<info>ListItem.Label</info>
+				</control>
+			</itemlayout>
+			<focusedlayout height="30">
+				<control type="image">
+					<posx>0</posx>
+					<posy>1</posy>
+					<width>380</width>
+					<height>30</height>
+					<texture>iconlist-focus.png</texture>
+				</control>
+				<control type="label">
+					<posx>5</posx>
+					<posy>4</posy>
+					<width>370</width>
+					<height>22</height>
+					<font>font13</font>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textcolor>TextcolorBlack</textcolor>
+					<selectedcolor>listselectedcolor</selectedcolor>
+					<info>ListItem.Label</info>
+				</control>
+			</focusedlayout>
 		</control>
 		<control type="label" id="0">
 			<description>Name Label</description>

@@ -216,7 +216,7 @@
         <animation effect="rotatey" center="1280" start="0" end="10" time="0" condition="true">Conditional</animation>
         <texture flipy="true" diffuse="DiffuseMirror.png">$INFO[ListItem.Icon]</texture>
       </control>
-      <control type="image">
+      <!--<control type="image">
         <posx>394</posx>
         <posy>405</posy>
         <width>40</width>
@@ -224,8 +224,8 @@
         <info>ListItem.Overlay</info>
         <aspectratio align="left" aligny="top">bottom</aspectratio>
         <animation effect="rotatey" center="1280" start="0" end="10" time="0" condition="true">Conditional</animation>
-        <visible>!Skin.HasSetting(OverlayIcons)</visible>
-      </control>
+        <visible>!Skin.HasSetting(MediaFlags)</visible>
+      </control>-->
 		</control>
     <include>CommonVerticalScrollBar</include>
     <include>CommonHorizontalScrollBar</include>
@@ -477,7 +477,7 @@
             <scroll>false</scroll>
             <font>20BdFont</font>
             <textcolor>FocusedTextColor</textcolor>
-            <visible>!IsEmpty(ListItem.Episode) + Skin.HasSetting(OverlayIcons)</visible>
+            <visible>!IsEmpty(ListItem.Episode) + Skin.HasSetting(MediaFlags)</visible>
             <animation effect="fade" time="0" start="0" end="50" condition="true">Conditional</animation>
           </control>
         </control>
@@ -608,15 +608,15 @@
           <info>ListItem.Icon</info>
           <aspectratio align="left" aligny="top">keep</aspectratio>
         </control>
-        <control type="image">
+        <!--<control type="image">
           <posx>25</posx>
           <posy>60</posy>
           <width>25</width>
           <height>25</height>
           <info>ListItem.Overlay</info>
           <aspectratio align="left" aligny="top">keep</aspectratio>
-          <visible>!Skin.HasSetting(OverlayIcons)</visible>
-        </control>
+          <visible>!Skin.HasSetting(MediaFlags)</visible>
+        </control>-->
         <control type="label">
           <posx>110</posx>
           <posy>0</posy>
@@ -829,7 +829,7 @@
             <scroll>true</scroll>
             <font>20BdFont</font>
             <textcolor>FocusedTextColor</textcolor>
-            <visible>!IsEmpty(ListItem.Episode) + Skin.HasSetting(OverlayIcons)</visible>
+            <visible>!IsEmpty(ListItem.Episode) + Skin.HasSetting(MediaFlags)</visible>
           </control>
         </control>
         <control type="group">
@@ -1027,15 +1027,15 @@
 					<texture>ButtonBack2.png</texture>
           <aspectratio align="left" aligny="top">stretch</aspectratio>
 				</control>
-        <control type="image">
+        <!--<control type="image">
           <posx>5</posx>
           <posy>110</posy>
           <width>25</width>
           <height>25</height>
           <info>ListItem.Overlay</info>
           <aspectratio align="left" aligny="top">keep</aspectratio>
-          <visible>!Skin.HasSetting(OverlayIcons)</visible>
-        </control>
+          <visible>!Skin.HasSetting(MediaFlags)</visible>
+        </control>-->
 				<control type="label">
 					<posx>82</posx>
 					<posy>110</posy>
@@ -1144,15 +1144,15 @@
 					<texture>ButtonBack2.png</texture>
           <aspectratio align="left" aligny="top">stretch</aspectratio>
 				</control>
-        <control type="image">
+        <!--<control type="image">
           <posx>5</posx>
           <posy>110</posy>
           <width>25</width>
           <height>25</height>
           <info>ListItem.Overlay</info>
           <aspectratio align="right" aligny="middle">keep</aspectratio>
-          <visible>!Skin.HasSetting(OverlayIcons)</visible>
-        </control>
+          <visible>!Skin.HasSetting(MediaFlags)</visible>
+        </control>-->
 				<control type="label">
 					<posx>172</posx>
 					<posy>110</posy>
@@ -1186,7 +1186,7 @@
     <control type="wraplist" id="55">
       <description>General Fanart Views</description>
       <posx>-75</posx>
-      <posy>370</posy>
+      <posy>378</posy>
       <width>800</width>
       <height>130</height>
       <onleft>55</onleft>
@@ -1217,9 +1217,9 @@
           <height>120</height>
           <info>ListItem.Icon</info>
           <aspectratio align="center" aligny="center">keep</aspectratio>
-          <animation effect="zoom" end="-15,-15,150,150" time="800" reversible="false">Focus</animation>
+          <animation effect="zoom" end="-10,-10,140,140" time="800" reversible="false">Focus</animation>
         </control>
-        <control type="image">
+        <!--<control type="image">
           <posx>55</posx>
           <posy>95</posy>
           <width>20</width>
@@ -1227,8 +1227,8 @@
           <info>ListItem.Overlay</info>
           <aspectratio align="center" aligny="center">keep</aspectratio>
           <animation effect="zoom" end="50,95,35,35" time="800" reversible="false">Focus</animation>
-          <visible>!Skin.HasSetting(OverlayIcons)</visible>
-        </control>
+          <visible>!Skin.HasSetting(MediaFlags)</visible>
+        </control>-->
       </focusedlayout>
     </control>
 
@@ -1238,7 +1238,7 @@
       <posy>230</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + !Skin.HasSetting(VideoFilesInfo) + [Window.IsActive(videofiles) | Window.IsActive(videoplaylist)]</visible>
+      <visible>Control.IsVisible(55) + !Skin.HasSetting(WrapInfo) + [Window.IsActive(videofiles) | Window.IsActive(videoplaylist)]</visible>
       <control type="label">
         <description>Title label</description>
         <posx>0</posx>
@@ -1286,7 +1286,7 @@
       <posy>230</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + !Skin.HasSetting(VideoFilesInfo) + [Window.IsActive(videofiles) | Window.IsActive(videoplaylist)]</visible>
+      <visible>Control.IsVisible(55) + !Skin.HasSetting(WrapInfo) + [Window.IsActive(videofiles) | Window.IsActive(videoplaylist)]</visible>
       <control type="label">
         <description>Date Added label</description>
         <posx>0</posx>
@@ -1321,7 +1321,7 @@
       <posy>230</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + !Skin.HasSetting(MusicFilesInfo) + [Window.IsActive(musicfiles) | Window.IsActive(musicplaylist)]</visible>
+      <visible>Control.IsVisible(55) + !Skin.HasSetting(WrapInfo) + [Window.IsActive(musicfiles) | Window.IsActive(musicplaylist)]</visible>
       <control type="label">
         <description>Title label</description>
         <posx>0</posx>
@@ -1369,7 +1369,7 @@
       <posy>230</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + !Skin.HasSetting(MusicFilesInfo) + [Window.IsActive(musicfiles) | Window.IsActive(musicplaylist)]</visible>
+      <visible>Control.IsVisible(55) + !Skin.HasSetting(WrapInfo) + [Window.IsActive(musicfiles) | Window.IsActive(musicplaylist)]</visible>
       <control type="label">
         <description>Date Added label</description>
         <posx>0</posx>
@@ -1404,7 +1404,7 @@
       <posy>230</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Window.IsActive(programs) + !Skin.HasSetting(ServicesInfo)</visible>
+      <visible>Control.IsVisible(55) + Window.IsActive(programs) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Title label</description>
         <posx>0</posx>
@@ -1452,7 +1452,7 @@
       <posy>230</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Window.IsActive(programs) + !Skin.HasSetting(ServicesInfo)</visible>
+      <visible>Control.IsVisible(55) + Window.IsActive(programs) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Date Added label</description>
         <posx>0</posx>
@@ -1487,7 +1487,7 @@
       <posy>230</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Window.IsActive(scripts) + !Skin.HasSetting(PluginsInfo)</visible>
+      <visible>Control.IsVisible(55) + Window.IsActive(scripts) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Title label</description>
         <posx>0</posx>
@@ -1535,7 +1535,7 @@
       <posy>230</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Window.IsActive(scripts) + !Skin.HasSetting(PluginsInfo)</visible>
+      <visible>Control.IsVisible(55) + Window.IsActive(scripts) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Date Added label</description>
         <posx>0</posx>
@@ -1570,7 +1570,7 @@
       <posy>220</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Window.IsActive(2) + !Skin.HasSetting(PhotosInfo)</visible>
+      <visible>Control.IsVisible(55) + Window.IsActive(2) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Title label</description>
         <posx>0</posx>
@@ -1631,7 +1631,7 @@
       <posy>220</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Window.IsActive(2) + !Skin.HasSetting(PhotosInfo)</visible>
+      <visible>Control.IsVisible(55) + Window.IsActive(2) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Size Value</description>
         <posx>0</posx>
@@ -1679,7 +1679,7 @@
       <posy>30</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(Artists) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(MusicLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(Artists) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Title label</description>
         <posx>0</posx>
@@ -1818,7 +1818,7 @@
       <posy>30</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(Artists) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(MusicLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(Artists) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Born Value</description>
         <posx>0</posx>
@@ -1944,7 +1944,7 @@
       <posy>150</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(Albums) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(MusicLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(Albums) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Title label</description>
         <posx>0</posx>
@@ -2031,7 +2031,7 @@
       <posy>150</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(Albums) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(MusicLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(Albums) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Year Value</description>
         <posx>0</posx>
@@ -2105,7 +2105,7 @@
       <posy>150</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(Songs) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(MusicLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(Songs) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Title label</description>
         <posx>0</posx>
@@ -2192,7 +2192,7 @@
       <posy>150</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(songs) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(MusicLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(songs) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Year Value</description>
         <posx>0</posx>
@@ -2266,7 +2266,7 @@
       <posy>30</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(movies) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(movies) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Title label</description>
         <posx>0</posx>
@@ -2320,22 +2320,9 @@
         <textcolor>FocusedTextColor</textcolor>
       </control>
       <control type="label">
-        <description>Writer label</description>
-        <posx>0</posx>
-        <posy>135</posy>
-        <width>125</width>
-        <height>30</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label>$LOCALIZE[20417]:</label>
-        <scroll>true</scroll>
-        <font>20BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-      </control>
-      <control type="label">
         <description>Director label</description>
         <posx>0</posx>
-        <posy>165</posy>
+        <posy>135</posy>
         <width>125</width>
         <height>30</height>
         <align>left</align>
@@ -2348,7 +2335,7 @@
       <control type="label">
         <description>Rating label</description>
         <posx>0</posx>
-        <posy>195</posy>
+        <posy>165</posy>
         <width>125</width>
         <height>30</height>
         <align>left</align>
@@ -2361,7 +2348,7 @@
       <control type="label">
         <description>MPAA Rating label</description>
         <posx>0</posx>
-        <posy>225</posy>
+        <posy>195</posy>
         <width>125</width>
         <height>30</height>
         <align>left</align>
@@ -2374,7 +2361,7 @@
       <control type="label">
         <description>Tagline label</description>
         <posx>0</posx>
-        <posy>255</posy>
+        <posy>225</posy>
         <width>125</width>
         <height>30</height>
         <align>left</align>
@@ -2387,7 +2374,7 @@
       <control type="label">
         <description>Plot label</description>
         <posx>0</posx>
-        <posy>285</posy>
+        <posy>255</posy>
         <width>125</width>
         <height>30</height>
         <align>left</align>
@@ -2405,7 +2392,7 @@
       <posy>30</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(movies) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(movies) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Year Value</description>
         <posx>0</posx>
@@ -2446,22 +2433,9 @@
         <textcolor>DefaultTextColor</textcolor>
       </control>
       <control type="label">
-        <description>Writer Value</description>
-        <posx>0</posx>
-        <posy>135</posy>
-        <width>520</width>
-        <height>30</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label fallback="161">$INFO[ListItem.Writer]</label>
-        <scroll>true</scroll>
-        <font>20BdFont</font>
-        <textcolor>DefaultTextColor</textcolor>
-      </control>
-      <control type="label">
         <description>Director Value</description>
         <posx>0</posx>
-        <posy>165</posy>
+        <posy>135</posy>
         <width>520</width>
         <height>30</height>
         <align>left</align>
@@ -2471,11 +2445,10 @@
         <font>20BdFont</font>
         <textcolor>DefaultTextColor</textcolor>
       </control>
-
       <control type="label">
         <description>Rating label</description>
         <posx>RatingLabelposx</posx>
-        <posy>195</posy>
+        <posy>165</posy>
         <width>340</width>
         <height>30</height>
         <align>left</align>
@@ -2489,7 +2462,7 @@
       <control type="label">
         <description>Empty Rating label</description>
         <posx>0</posx>
-        <posy>195</posy>
+        <posy>165</posy>
         <width>340</width>
         <height>30</height>
         <align>left</align>
@@ -2502,7 +2475,7 @@
       </control>
       <control type="image">
         <posx>StarRatingposx</posx>
-        <posy>200</posy>
+        <posy>170</posy>
         <width>-</width>
         <height>20</height>
         <align>left</align>
@@ -2511,11 +2484,10 @@
         <aspectratio>keep</aspectratio>
         <visible>!IsEmpty(ListItem.Rating)</visible>
       </control>
-
       <control type="label">
         <description>MPAA Rating Value</description>
         <posx>0</posx>
-        <posy>225</posy>
+        <posy>195</posy>
         <width>520</width>
         <height>30</height>
         <align>left</align>
@@ -2528,7 +2500,7 @@
       <control type="label">
         <description>Tagline Value</description>
         <posx>0</posx>
-        <posy>255</posy>
+        <posy>225</posy>
         <width>520</width>
         <height>30</height>
         <align>left</align>
@@ -2541,7 +2513,7 @@
       <control type="label">
         <description>Plot Outline Value</description>
         <posx>0</posx>
-        <posy>285</posy>
+        <posy>255</posy>
         <width>520</width>
         <height>30</height>
         <align>left</align>
@@ -2559,7 +2531,7 @@
       <posy>60</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(tvshows) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(tvshows) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Title label</description>
         <posx>0</posx>
@@ -2643,7 +2615,7 @@
         <posx>0</posx>
         <posy>195</posy>
         <width>660</width>
-        <height>78</height>
+        <height>75</height>
         <spinposx>500</spinposx>
         <spinposy>-30</spinposy>
         <spinwidth>20</spinwidth>
@@ -2665,7 +2637,7 @@
       <posy>60</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(tvshows) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(tvshows) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <visible></visible>
       <control type="label">
         <description>Year Value</description>
@@ -2780,7 +2752,7 @@
       <posy>270</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(Seasons) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(Seasons) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Title label</description>
         <posx>0</posx>
@@ -2815,7 +2787,7 @@
       <posy>270</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(Seasons) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(Seasons) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Episodes Value</description>
         <posx>0</posx>
@@ -2837,7 +2809,7 @@
       <posy>100</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(episodes) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(episodes) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Title label</description>
         <posx>0</posx>
@@ -2908,7 +2880,7 @@
         <posx>0</posx>
         <posy>165</posy>
         <width>660</width>
-        <height>78</height>
+        <height>75</height>
         <spinposx>500</spinposx>
         <spinposy>-30</spinposy>
         <spinwidth>20</spinwidth>
@@ -2930,7 +2902,7 @@
       <posy>100</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(episodes) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(episodes) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Year Value</description>
         <posx>0</posx>
@@ -2992,7 +2964,7 @@
       <posy>90</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(musicvideos) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(musicvideos) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Title label</description>
         <posx>0</posx>
@@ -3105,7 +3077,7 @@
       <posy>90</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + Container.Content(musicvideos) + Window.IsVisible(videolibrary) + !Skin.HasSetting(VideoLibraryInfo)</visible>
+      <visible>Control.IsVisible(55) + Container.Content(musicvideos) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
       <control type="label">
         <description>Year Value</description>
         <posx>0</posx>
@@ -4076,15 +4048,15 @@
             <texture>defaultFolderBig.png</texture>
             <aspectratio align="left" aligny="top">keep</aspectratio>
           </control>
-          <control type="image">
+          <!--<control type="image">
             <posx>165</posx>
             <posy>120</posy>
             <width>35</width>
             <height>35</height>
             <info>ListItem.Overlay</info>
             <aspectratio align="left" aligny="top">keep</aspectratio>
-            <visible>!Skin.HasSetting(OverlayIcons)</visible>
-          </control>
+            <visible>!Skin.HasSetting(MediaFlags)</visible>
+          </control>-->
         </control>
       </control>
     </control>

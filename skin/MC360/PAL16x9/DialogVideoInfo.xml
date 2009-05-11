@@ -760,20 +760,107 @@
 				<shadowcolor>shadow-grey</shadowcolor>
 				<font>font12</font>
 			</control>
-			<control type="listcontrol" id="50">
-				<description>cast listcontrol</description>
-				<posx>308</posx>
-				<posy>315</posy>
-				<width>380</width>
+			<control type="list" id="50">
+				<posx>305</posx>
+				<posy>285</posy>
+				<width>390</width>
 				<height>180</height>
 				<onleft>5</onleft>
 				<onright>4</onright>
 				<onup>50</onup>
 				<ondown>50</ondown>
-				<spinposx>126</spinposx>
-				<spinposy>-23</spinposy>
-				<spinwidth>18</spinwidth>
-				<spinheight>16</spinheight>
+				<viewtype label="535">list</viewtype>
+				<scrolltime>200</scrolltime>
+				<pagecontrol>60</pagecontrol>
+				<itemlayout height="30">
+					<control type="image">
+						<width>390</width>
+						<height>30</height>
+						<posx>0</posx>
+						<posy>1</posy>
+						<texture>iconlist-nofocus.png</texture>
+					</control>
+					<control type="image">
+						<posx>5</posx>
+						<posy>5</posy>
+						<width>22</width>
+						<height>22</height>
+						<info>ListItem.thumb</info>
+					</control>
+					<control type="label">
+						<posx>30</posx>
+						<posy>4</posy>
+						<width>340</width>
+						<height>22</height>
+						<font>font13</font>
+						<align>left</align>
+						<aligny>center</aligny>
+						<textcolor>TextcolorBlack</textcolor>
+						<selectedcolor>listselectedcolor</selectedcolor>
+						<info>ListItem.Label</info>
+					</control>
+					<control type="label">
+						<posx>380</posx>
+						<posy>4</posy>
+						<width>300</width>
+						<height>22</height>
+						<font>font12</font>
+						<align>right</align>
+						<aligny>center</aligny>
+						<textcolor>TextcolorBlack</textcolor>
+						<selectedcolor>listselectedcolor</selectedcolor>
+						<info>ListItem.Label2</info>
+					</control>
+				</itemlayout>
+				<focusedlayout height="30">
+					<control type="image">
+						<width>390</width>
+						<height>30</height>
+						<posx>0</posx>
+						<posy>1</posy>
+						<texture>iconlist-focus.png</texture>
+						<visible>Control.HasFocus(50)</visible>
+					</control>
+					<control type="image">
+						<width>390</width>
+						<height>30</height>
+						<posx>0</posx>
+						<posy>1</posy>
+						<texture>iconlist-nofocus.png</texture>
+						<visible>!Control.HasFocus(50)</visible>
+					</control>
+					<control type="image">
+						<posx>5</posx>
+						<posy>5</posy>
+						<width>22</width>
+						<height>22</height>
+						<info>ListItem.thumb</info>
+					</control>
+					<control type="label">
+						<posx>30</posx>
+						<posy>4</posy>
+						<width>340</width>
+						<height>22</height>
+						<font>font13</font>
+						<align>left</align>
+						<aligny>center</aligny>
+						<textcolor>TextcolorBlack</textcolor>
+						<selectedcolor>listselectedcolor</selectedcolor>
+						<info>ListItem.Label</info>
+					</control>
+					<control type="label">
+						<posx>380</posx>
+						<posy>4</posy>
+						<width>300</width>
+						<height>22</height>
+						<font>font12</font>
+						<align>right</align>
+						<aligny>center</aligny>
+						<textcolor>TextcolorBlack</textcolor>
+						<selectedcolor>listselectedcolor</selectedcolor>
+						<info>ListItem.Label2</info>
+					</control>
+				</focusedlayout>
 			</control>
 			<control type="image">
 				<description>Divider image</description>

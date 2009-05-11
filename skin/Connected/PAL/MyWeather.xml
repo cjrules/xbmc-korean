@@ -10,6 +10,16 @@
     <include>DefaultFade</include>
     <visible>Weather.IsFetched</visible>
     <control type="image">
+      <posx>0</posx>
+      <posy>190</posy>
+      <width>720</width>
+      <height>387</height>
+      <texture>Black.png</texture>
+      <aspectratio>stretch</aspectratio>
+      <include>WrapBackFade</include>
+      <visible>Skin.HasSetting(WeatherBack)</visible>
+    </control>
+    <control type="image">
       <description>Weather Window Image Day</description>
       <posx>-15</posx>
       <posy>510</posy>
@@ -49,6 +59,7 @@
     <control type="group">
       <posx>30</posx>
       <posy>10</posy>
+      <visible>!Skin.HasSetting(WeatherInfo)</visible>
       <!-- Current Day Info Labels -->
       <control type="group">
         <control type="label">
@@ -230,50 +241,6 @@
           <texture>-</texture>
           <align>left</align>
           <aspectratio>keep</aspectratio>
-        </control>
-        
-        <control type="spincontrol" id="3">
-          <description>Location Select</description>
-          <posx>490</posx>
-          <posy>200</posy>
-          <width>15</width>
-          <height>15</height>
-          <texturefocus>-</texturefocus>
-          <texturenofocus>-</texturenofocus>
-          <reverse>yes</reverse>
-          <font>-</font>
-          <onleft>2000</onleft>
-          <onright>2</onright>
-          <onup>2</onup>
-          <ondown>2</ondown>
-        </control>
-        <control type="label">
-          <description>Location Value</description>
-          <posx>480</posx>
-          <posy>195</posy>
-          <width>520</width>
-          <height>30</height>
-          <align>right</align>
-          <aligny>center</aligny>
-          <label>$INFO[Weather.Location]</label>
-          <scroll>true</scroll>
-          <font>20BdFont</font>
-          <textcolor>DefaultTextColor</textcolor>
-          <visible>!Control.HasFocus(3)</visible>
-        </control>
-        <control type="label">
-          <description>Location Value</description>
-          <posx>480</posx>
-          <posy>195</posy>
-          <width>520</width>
-          <height>30</height>
-          <align>right</align>
-          <aligny>center</aligny>
-          <label>$INFO[Weather.Location]</label>
-          <scroll>true</scroll>
-          <font>20BdFont</font>
-          <textcolor>FocusedTextColor</textcolor>
-          <visible>Control.HasFocus(3)</visible>
         </control>
       </control>
     </control>
@@ -558,6 +525,50 @@
           <scroll>true</scroll>
         </control>
       </control>
+    </control>
+
+    <control type="spincontrol" id="3">
+      <description>Location Select</description>
+      <posx>655</posx>
+      <posy>210</posy>
+      <width>15</width>
+      <height>15</height>
+      <texturefocus>-</texturefocus>
+      <texturenofocus>-</texturenofocus>
+      <reverse>yes</reverse>
+      <font>-</font>
+      <onleft>2000</onleft>
+      <onright>2</onright>
+      <onup>2</onup>
+      <ondown>2</ondown>
+    </control>
+    <control type="label">
+      <description>Location Value</description>
+      <posx>645</posx>
+      <posy>205</posy>
+      <width>520</width>
+      <height>30</height>
+      <align>right</align>
+      <aligny>center</aligny>
+      <label>$INFO[Weather.Location]</label>
+      <scroll>true</scroll>
+      <font>20BdFont</font>
+      <textcolor>DefaultTextColor</textcolor>
+      <visible>!Control.HasFocus(3)</visible>
+    </control>
+    <control type="label">
+      <description>Location Value</description>
+      <posx>645</posx>
+      <posy>205</posy>
+      <width>520</width>
+      <height>30</height>
+      <align>right</align>
+      <aligny>center</aligny>
+      <label>$INFO[Weather.Location]</label>
+      <scroll>true</scroll>
+      <font>20BdFont</font>
+      <textcolor>FocusedTextColor</textcolor>
+      <visible>Control.HasFocus(3)</visible>
     </control>
     
     <control type="group">

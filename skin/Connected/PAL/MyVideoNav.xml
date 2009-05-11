@@ -4,9 +4,10 @@
 <controls>
 
 <include>Backgrounds</include>
-
+  
   <control type="group">
     <include>DefaultFade</include>
+    <include>WrapBack</include>
     <include>List</include>
     <include>BigList</include>
     <include>Icons</include>
@@ -716,31 +717,7 @@
     </control>
   </control>
   
-  <control type="group">
-    <posx>185</posx>
-    <posy>530</posy>
-    <include>MediaFlagFade</include>
-    <include>ResolutionLogos</include>
-  </control>
-  <control type="group">
-    <posx>265</posx>
-    <posy>530</posy>
-    <include>MediaFlagFade</include>
-    <include>VideoCodecLogos</include>
-  </control>
-  <control type="group">
-    <posx>365</posx>
-    <posy>530</posy>
-    <include>MediaFlagFade</include>
-    <include>AudioCodecLogos</include>
-  </control>
-  <control type="group">
-    <posx>495</posx>
-    <posy>530</posy>
-    <include>MediaFlagFade</include>
-    <include>SubLogos</include>
-  </control>
-  
+  <include>MediaFlags</include>
   <include>NowPlaying</include>
   
 </controls>

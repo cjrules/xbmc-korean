@@ -403,12 +403,13 @@
 					<height>295</height>
 					<texture>Playlist-Vis-Back.png</texture>
 				</control>
-				<control type="visualisation">
+				<control type="image">
 					<posx>20</posx>
 					<posy>270</posy>
 					<width>225</width>
 					<height>200</height>
-					<animation effect="zoom" end="1,1,1,1" time="1">WindowClose</animation>
+					<aspectratio>keep</aspectratio>
+					<texture>$INFO[MusicPlayer.Cover]</texture>
 				</control>
 				<control type="fadelabel">
 					<description>Big Album info label</description>

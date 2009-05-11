@@ -17,20 +17,57 @@
 			<label>-</label>
 			<font>font10</font>
 		</control>
-		<control type="listcontrol" id="3">
-			<description>Movies list</description>
+		<control type="list" id="3">
 			<posx>20</posx>
 			<posy>60</posy>
 			<width>370</width>
 			<height>486</height>
-			<texturefocus>default-button.png</texturefocus>
-			<texturenofocus>-</texturenofocus>
 			<onleft>5</onleft>
 			<onright>5</onright>
 			<onup>3</onup>
 			<ondown>3</ondown>
-			<font>font12</font>
-			<textcolor>button-text</textcolor>
+			<scrolltime>1</scrolltime>
+			<itemlayout height="32">
+				<control type="image">
+					<width>370</width>
+					<height>30</height>
+					<posx>0</posx>
+					<posy>1</posy>
+				</control>
+				<control type="label">
+					<posx>13</posx>
+					<posy>-4</posy>
+					<width>344</width>
+					<height>37</height>
+					<font>font12</font>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textcolor>button-text</textcolor>
+					<selectedcolor>listselectedtext</selectedcolor>
+					<info>ListItem.Label</info>
+				</control>
+			</itemlayout>
+			<focusedlayout height="32">
+				<control type="image">
+					<width>370</width>
+					<height>37</height>
+					<posx>0</posx>
+					<posy>-4</posy>
+					<texture>default-button.png</texture>
+				</control>
+				<control type="label">
+					<posx>13</posx>
+					<posy>-4</posy>
+					<width>344</width>
+					<height>37</height>
+					<font>font12</font>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textcolor>button-text</textcolor>
+					<selectedcolor>listselectedtext</selectedcolor>
+					<info>ListItem.Label</info>
+				</control>
+			</focusedlayout>
 		</control>
 		<control type="button" id="5">
 			<description>Manual Button</description>

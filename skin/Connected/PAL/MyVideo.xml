@@ -4,9 +4,10 @@
 <controls>
 	 
 <include>Backgrounds</include>
-
+  
   <control type="group">
     <include>DefaultFade</include>
+    <include>WrapBack</include>
     <include>List</include>
     <include>BigList</include>
     <include>Icons</include>

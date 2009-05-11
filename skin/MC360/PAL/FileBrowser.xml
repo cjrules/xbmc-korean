@@ -278,21 +278,95 @@
 			<animation effect="fade" delay="450" time="200">WindowOpen</animation>
 			<animation effect="fade" time="100">WindowClose</animation>
 		</control>
-		<control type="listcontrol" id="450">
-			<description>Custom Background Listcontrol</description>
+		<control type="list" id="450">
 			<posx>24</posx>
-			<posy>283</posy>
+			<posy>280</posy>
 			<width>300</width>
-			<height>200</height>
+			<height>180</height>
 			<onleft>413</onleft>
 			<onright>413</onright>
 			<onup>450</onup>
 			<ondown>450</ondown>
-			<texturefocus>guide-selectmediabutton-focus.png</texturefocus>
-			<texturenofocus>guide-selectmediabutton-nofocus.png</texturenofocus>
-			<textureheight>30</textureheight>
+			<viewtype label="544">list</viewtype>
+			<scrolltime>200</scrolltime>
+			<pagecontrol>60</pagecontrol>
 			<animation effect="fade" delay="450" time="200">WindowOpen</animation>
 			<animation effect="fade" time="100">WindowClose</animation>
+			<itemlayout height="30">
+				<control type="image">
+					<posx>0</posx>
+					<posy>1</posy>
+					<width>300</width>
+					<height>30</height>
+					<texture>iconlist-nofocus.png</texture>
+				</control>
+				<control type="label">
+					<posx>5</posx>
+					<posy>4</posy>
+					<width>280</width>
+					<height>22</height>
+					<font>font13</font>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textcolor>TextcolorBlack</textcolor>
+					<selectedcolor>listselectedcolor</selectedcolor>
+					<info>ListItem.Label</info>
+				</control>
+				<control type="label">
+					<posx>295</posx>
+					<posy>4</posy>
+					<width>200</width>
+					<height>22</height>
+					<font>font13</font>
+					<align>right</align>
+					<aligny>center</aligny>
+					<textcolor>TextcolorBlack</textcolor>
+					<selectedcolor>listselectedcolor</selectedcolor>
+					<info>ListItem.Label2</info>
+				</control>
+			</itemlayout>
+			<focusedlayout height="30">
+				<control type="image">
+					<posx>0</posx>
+					<posy>1</posy>
+					<width>300</width>
+					<height>30</height>
+					<texture>iconlist-focus.png</texture>
+					<visible>Control.HasFocus(450)</visible>
+				</control>
+				<control type="image">
+					<posx>0</posx>
+					<posy>1</posy>
+					<width>300</width>
+					<height>30</height>
+					<texture>iconlist-nofocus.png</texture>
+					<visible>!Control.HasFocus(450)</visible>
+				</control>
+				<control type="label">
+					<posx>5</posx>
+					<posy>4</posy>
+					<width>280</width>
+					<height>22</height>
+					<font>font13</font>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textcolor>TextcolorBlack</textcolor>
+					<selectedcolor>listselectedcolor</selectedcolor>
+					<info>ListItem.Label</info>
+				</control>
+				<control type="label">
+					<posx>295</posx>
+					<posy>4</posy>
+					<width>200</width>
+					<height>22</height>
+					<font>font13</font>
+					<align>right</align>
+					<aligny>center</aligny>
+					<textcolor>TextcolorBlack</textcolor>
+					<selectedcolor>listselectedcolor</selectedcolor>
+					<info>ListItem.Label2</info>
+				</control>
+			</focusedlayout>
 		</control>
 		<control type="group">
 			<control type="button" id="413">
