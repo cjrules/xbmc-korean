@@ -82,7 +82,7 @@
   <control type="image">
     <description>list item icon</description>
     <posx>45</posx>
-    <posy>105</posy>
+    <posy>127.5</posy>
     <width>295</width>
     <height>365</height>
     <texture>Case1.png</texture>
@@ -93,7 +93,7 @@
    <control type="image">
     <description>list item icon</description>
     <posx>83</posx>
-    <posy>120</posy>
+    <posy>142.5</posy>
     <width>244</width>
     <height>333</height>
     <info>ListItem.Icon</info>
@@ -104,8 +104,8 @@
 
  <control type="image">
     <description>list item icon</description>
-    <posx>83</posx>
-    <posy>120</posy>
+     <posx>83</posx>
+    <posy>142.5</posy>
     <width>244</width>
     <height>333</height>
     <texture>defaultcdposter.png</texture>
@@ -118,7 +118,7 @@
  <control type="image">
     <description>list item icon</description>
     <posx>48</posx>
-    <posy>103</posy>
+    <posy>125.5</posy>
     <width>292</width>
     <height>367</height>
     <texture>Case2.png</texture>

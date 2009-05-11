@@ -203,6 +203,7 @@
 <height>29</height>
 <texture>input-focus.png</texture>
 <visible>Control.HasFocus(20)</visible>
+<include>List Scroll29</include>
 </control>
 
 <control type="image">
@@ -275,6 +276,7 @@
 <height>29</height>
 <texture>input-focus.png</texture>
 <visible>Control.HasFocus(21)</visible>
+<include>List Scroll29</include>
 </control>
 
 <control type="image">

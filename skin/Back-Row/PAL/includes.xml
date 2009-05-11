@@ -1027,5 +1027,30 @@
 </control>
 </include>
 
-	
+<include name="List Scroll">
+<animation effect="slide" start="0,-40" end="0,0" time="100" reversible="false" tween="quadratic" easing="out" condition="Container.OnNext">focus</animation>
+<animation effect="slide" start="0,40" end="0,0" time="100" reversible="false"  tween="quadratic" easing="out" condition="Container.OnPrevious">focus</animation>
+</include>
+
+<include name="List Scroll29">
+<animation effect="slide" start="0,-29" end="0,0" time="100" reversible="false" tween="quadratic" easing="out" condition="Container.OnNext">focus</animation>
+<animation effect="slide" start="0,29" end="0,0" time="100" reversible="false"  tween="quadratic" easing="out" condition="Container.OnPrevious">focus</animation>
+</include>
+
+
+<include name="List Scroll32">
+<animation effect="slide" start="0,-32" end="0,0" time="100" reversible="false" tween="quadratic" easing="out" condition="Container.OnNext">focus</animation>
+<animation effect="slide" start="0,32" end="0,0" time="100" reversible="false"  tween="quadratic" easing="out" condition="Container.OnPrevious">focus</animation>
+</include>
+
+<include name="List Scroll32.5">
+<animation effect="slide" start="0,-32.5" end="0,0" time="100" reversible="false" tween="quadratic" easing="out" condition="Container.OnNext">focus</animation>
+<animation effect="slide" start="0,32.5" end="0,0" time="100" reversible="false"  tween="quadratic" easing="out" condition="Container.OnPrevious">focus</animation>
+</include>
+
+<include name="List Scroll35">
+<animation effect="slide" start="0,-35" end="0,0" time="100" reversible="false" tween="quadratic" easing="out" condition="Container.OnNext">focus</animation>
+<animation effect="slide" start="0,35" end="0,0" time="100" reversible="false"  tween="quadratic" easing="out" condition="Container.OnPrevious">focus</animation>
+</include>
+
 </includes>    

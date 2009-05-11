@@ -68,6 +68,9 @@
 <onup>450</onup>
 <ondown>450</ondown>
 <pagecontrol>90</pagecontrol>
+<scrolltime>200</scrolltime>
+<wraparound>yes</wraparound>
+
 
 <itemlayout height="35">
 
@@ -110,6 +113,7 @@
 <height>35</height>
 <texture>input-focus.png</texture>
 <visible>Control.HasFocus(450)</visible>
+<include>List Scroll35</include>
 </control>
 
 <control type="label">

@@ -88,7 +88,7 @@
 <control type="image">
     <description>list item icon</description>
     <posx>20</posx>
-    <posy>100</posy>
+    <posy>115</posy>
     <width>350</width>
     <height>350</height>
     <info>ListItem.Icon</info>

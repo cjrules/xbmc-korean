@@ -97,7 +97,7 @@
 <control type="image">
     <description>list item icon</description>
     <posx>20</posx>
-    <posy>100</posy>
+    <posy>125</posy>
     <width>350</width>
     <height>350</height>
     <info>ListItem.Icon</info>
@@ -109,7 +109,7 @@
     <control type="image">
     <description>list item icon reflection</description>
     <posx>20</posx>
-    <posy>450</posy>
+    <posy>475</posy>
     <width>350</width>
     <height>350</height>
     <info>ListItem.Icon</info>
@@ -120,7 +120,7 @@
 	
 	<control type="image">
        <posx>300</posx>
-       <posy>400</posy>
+       <posy>425</posy>
        <width>30</width>
        <height>30</height>
        <info>ListItem.Overlay</info>

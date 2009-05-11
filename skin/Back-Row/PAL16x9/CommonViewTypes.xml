@@ -2484,6 +2484,8 @@
 <aspectratio>scale</aspectratio>
 <texture>$INFO[ListItem.Property(Fanart_Image)]</texture>
 <visible>Control.IsVisible(50)</visible>
+<visible>!Container.OnNext + !Container.OnPrevious</visible>
+<animation effect="fade" start="0" end="100" time="300" delay="200">Visible</animation>
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
@@ -2504,35 +2506,39 @@
 <control type="list" id="50">
 <viewtype label="535">list</viewtype>
 <posx>375</posx>
-<posy>95</posy>
+<posy>90</posy>
 <width>320</width>
-<height>390</height>
+<height>440</height>
 <onleft>2</onleft>
 <onright>90</onright>
 <onup>50</onup>
 <ondown>50</ondown>
 <pagecontrol>90</pagecontrol>
 
-<itemlayout height="29">
+<itemlayout height="40">
+
 <control type="image">
 <posx>5</posx>
-<posy>2</posy>
-<width>20</width>
-<height>20</height>
+<posy>4</posy>
+<width>28</width>
+<height>32</height>
 <info>ListItem.Icon</info>
 <aspectratio>keep</aspectratio>
 </control>
+
 <control type="label">
 <posx>35</posx>
 <posy>0</posy>
 <width>280</width>
-<height>29</height>
-<font>special14</font>
+<height>40</height>
+<font>special17</font>
 <aligny>center</aligny>
 <textcolor>white</textcolor>
 <include>selectedcolor</include>
+<scrolltime>100</scrolltime>
 <info>ListItem.Label</info>
 </control>
+
 </itemlayout>
 
 <focusedlayout height="40">
@@ -2544,6 +2550,7 @@
 <height>40</height>
 <texture>input-focus.png</texture>
 <visible>Control.HasFocus(50)</visible>
+<include>List Scroll</include>
 </control>
 
 <control type="image">
@@ -2553,15 +2560,6 @@
 <height>32</height>
 <info>ListItem.Icon</info>
 <aspectratio>keep</aspectratio>
-</control>
-
-<control type="image">
-<posx>0</posx>
-<posy>0</posy>
-<width>320</width>
-<height>40</height>
-<texture></texture>
-<visible>Control.HasFocus(50)</visible>
 </control>
 
 <control type="label">
@@ -2577,6 +2575,7 @@
 <scrolltime>100</scrolltime>
 <info>ListItem.Label</info>
 </control>
+
 </focusedlayout>
 </control>
 
@@ -2698,22 +2697,22 @@
 <visible>Container.Content(Albums) | Container.Content(Artists) | Container.Content(Songs)</visible>
 <viewtype label="535">list</viewtype>
 <posx>375</posx>
-<posy>95</posy>
+<posy>90</posy>
 <width>320</width>
-<height>390</height>
+<height>440</height>
 <onleft>2</onleft>
 <onright>90</onright>
 <onup>50</onup>
 <ondown>50</ondown>
 <pagecontrol>90</pagecontrol>
 
-<itemlayout height="29">
+<itemlayout height="40">
 
 <control type="image">
 <posx>5</posx>
-<posy>2</posy>
-<width>20</width>
-<height>20</height>
+<posy>4</posy>
+<width>28</width>
+<height>32</height>
 <info>ListItem.Icon</info>
 <visible>!IsEmpty(ListItem.Thumb)</visible>
 <aspectratio>keep</aspectratio>
@@ -2721,9 +2720,9 @@
 
 <control type="image">
 <posx>5</posx>
-<posy>2</posy>
-<width>20</width>
-<height>20</height>
+<posy>4</posy>
+<width>28</width>
+<height>32</height>
 <texture>defaultcdposter.png</texture>
 <visible>IsEmpty(ListItem.Thumb)</visible>
 <aspectratio>keep</aspectratio>
@@ -2733,13 +2732,15 @@
 <posx>35</posx>
 <posy>0</posy>
 <width>280</width>
-<height>29</height>
-<font>special14</font>
+<height>40</height>
+<font>special17</font>
 <aligny>center</aligny>
 <textcolor>white</textcolor>
 <include>selectedcolor</include>
+<scrolltime>100</scrolltime>
 <info>ListItem.Label</info>
 </control>
+
 </itemlayout>
 
 <focusedlayout height="40">
@@ -2751,6 +2752,7 @@
 <height>40</height>
 <texture>input-focus.png</texture>
 <visible>Control.HasFocus(50)</visible>
+<include>List Scroll</include>
 </control>
 
 <control type="image">
@@ -3073,6 +3075,7 @@
 <onright>2</onright>
 <onup>50</onup>
 <ondown>50</ondown>
+<wraparound>yes</wraparound>
 <pagecontrol>90</pagecontrol>
 <itemlayout height="32">
 
@@ -3100,6 +3103,7 @@
 <height>32</height>
 <texture>input-focus.png</texture>
 <visible>Control.HasFocus(50)</visible>
+<include>List Scroll32</include>
 </control>
 
 <control type="label">
@@ -3135,6 +3139,7 @@
 <onup>50</onup>
 <ondown>50</ondown>
 <pagecontrol>90</pagecontrol>
+<wraparound>yes</wraparound>
 <itemlayout height="32">
 
 <control type="label">
@@ -3161,6 +3166,7 @@
 <height>32</height>
 <texture>input-focus.png</texture>
 <visible>Control.HasFocus(50)</visible>
+<include>List Scroll32</include>
 </control>
 
 <control type="label">
@@ -3433,6 +3439,7 @@
 <height>32.5</height>
 <texture>input-focus.png</texture>
 <visible>Control.HasFocus(50)</visible>
+<include>List Scroll32.5</include>
 </control>
 
 <control type="image">
@@ -5500,7 +5507,729 @@
 
 </include>
 
+<include name="VideofileWraplist">
 
+<control>
+<description>Background</description>
+<type>image</type>
+<posx>0</posx>
+<posy>0</posy>
+<width>720</width>
+<height>576</height>
+<texture>back-row.png</texture>
+<visible>!Skin.HasSetting(Background)</visible>
+<visible>Control.IsVisible(54)</visible>
+</control>	
+
+<control>
+<description>Background</description>
+<type>image</type>
+<posx>-20</posx>
+<posy>0</posy>
+<width>760</width>
+<height>586</height>
+<texture diffuse="lower diffuse.png">background2.png</texture>
+<visible>Control.IsVisible(54)</visible>
+</control>	
+
+<control type="group" id="3001">
+<posy>90</posy>
+<camera x="360" y="288" />
+<visible>Control.IsVisible(54) + Container.OnNext</visible>
+<animation effect="slide" tween="cubic" end="-50,0" time="200" reversible="false">Hidden</animation>
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(-5).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="-40" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="-40" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="image">
+<posx>50</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(-4).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="10" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>50</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="10" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+
+<control type="image">
+<posx>100</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(-3).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="60" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>100</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="60" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="image">
+<posx>150</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(-2).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="110" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>150</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="110" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="image">
+<posx>570</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(4).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="810" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>570</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="810" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+
+<control type="image">
+<posx>520</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(3).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="760" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>520</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="760" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="image">
+<posx>470</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(2).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="710" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>470</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="710" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="image">
+<posx>420</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(1).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="660" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>420</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="660" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="group">
+<visible>Control.IsVisible(54) + Container.OnNext</visible>
+<animation effect="slide" tween="cubic" end="-60,0" time="200" reversible="false">Hidden</animation>
+
+<control type="image">
+<posx>260</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(-1).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<visible>Container.OnNext</visible>
+<animation effect="rotatey" center="220" start="0" end="-65" time="200" reversible="false">Hidden</animation>
+</control>
+
+<control type="image">
+<posx>260</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<visible>Container.OnNext</visible>
+<animation effect="rotatey" center="220" start="0" end="-65" time="200" reversible="false">Hidden</animation>
+</control>
+
+
+
+<control type="image">
+<posx>370</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(0).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<visible>Container.OnNext</visible>
+<animation effect="rotatey" center="610" start="0" end="-65" time="200" reversible="false">Hidden</animation>
+<animation effect="rotatey" center="610" start="60" end="65" time="200" condition="true">Conditional</animation>
+
+</control>
+
+<control type="image">
+<posx>370</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<visible>Container.OnNext</visible>
+<animation effect="rotatey" center="610" start="0" end="-65" time="200" reversible="false">Hidden</animation>
+<animation effect="rotatey" center="610" start="60" end="65" time="200" condition="true">Conditional</animation>
+
+</control>
+
+</control>
+
+</control>
+<control type="group" id="3002">
+<posy>90</posy>
+<camera x="360" y="288" />
+<visible>Control.IsVisible(54) + Container.OnPrevious</visible>
+<animation effect="slide" tween="cubic" end="50,0" time="200" reversible="false">Hidden</animation>
+
+<control type="image">
+<posx>-50</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(-4).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="-90" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>-50</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="-90" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(-3).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="-40" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="-40" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>50</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(-2).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="10" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>50</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="10" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>100</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(-1).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="60" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>100</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="60" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="image">
+<posx>520</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(5).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="760" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>520</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="760" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="image">
+<posx>470</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(4).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="710" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>470</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="710" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>420</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(3).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="660" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>420</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="660" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>370</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(2).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="610" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>370</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="610" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="group">
+<visible>Control.IsVisible(54) + Container.OnPrevious</visible>
+<animation effect="slide" tween="cubic" end="60,0" time="200" reversible="false">Hidden</animation>
+
+<control type="image">
+<posx>260</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(1).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<visible>Container.OnPrevious</visible>
+<animation effect="rotatey" center="500" start="0" end="65" time="200" reversible="false">Hidden</animation>
+</control>
+
+<control type="image">
+<posx>260</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<visible>Container.OnPrevious</visible>
+<animation effect="rotatey" center="500" start="0" end="65" time="200" reversible="false">Hidden</animation>
+</control>
+
+
+<control type="image">
+<posx>150</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(0).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<visible>Container.OnPrevious</visible>
+<animation effect="rotatey" center="110" start="0" end="65" time="200" reversible="false">Hidden</animation>
+<animation effect="rotatey" center="110" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>150</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<visible>Container.OnPrevious</visible>
+<animation effect="rotatey" center="110" start="0" end="65" time="200" reversible="false">Hidden</animation>
+<animation effect="rotatey" center="110" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+</control>
+
+</control>
+
+<control type="group" id="3000">
+<posy>90</posy>
+<camera x="360" y="288" />
+<visible>Control.IsVisible(54) + !Control.IsVisible(3001)  + !Control.IsVisible(3002)</visible>
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(-4).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="-40" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="-40" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="image">
+<posx>50</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(-3).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="10" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>50</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="10" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="image">
+<posx>100</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(-2).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="60" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>100</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="60" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="image">
+<posx>150</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(-1).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="110" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>150</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="110" start="-60" end="-65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="image">
+<posx>520</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(4).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="760" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>520</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="760" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="image">
+<posx>470</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(3).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="710" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>470</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="710" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>420</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(2).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="660" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>420</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="660" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+<control type="image">
+<posx>370</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<info>Container.ListItem(1).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+<animation effect="rotatey" center="610" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+<control type="image">
+<posx>370</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<texture>mask4.png</texture>
+<animation effect="rotatey" center="610" start="60" end="65" time="0" condition="true">Conditional</animation>
+</control>
+
+
+
+<control type="image">
+<posx>260</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<aspectratio>stretch</aspectratio>
+<visible>!Contol.HasFocus(54)</visible>
+<info>Container.ListItem(0).Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
+</control>
+
+<control type="image">
+<posx>260</posx>
+<posy>0</posy>
+<width>200</width>
+<height>385</height>
+<aspectratio>stretch</aspectratio>
+<visible>!Contol.HasFocus(54)</visible>
+<texture>mask4.png</texture>
+</control>
+
+
+
+
+
+</control>
+
+<control type="scrollbar" id="90">
+<posx>210</posx>
+<posy>527</posy>
+<width>300</width>
+<height>20</height>
+<texturesliderbackground>Scroll-background.png</texturesliderbackground>
+<texturesliderbar>scroll-background.png</texturesliderbar>
+<texturesliderbarfocus>scroll-background.png</texturesliderbarfocus>
+<textureslidernib>scrollbar_nib1.png</textureslidernib>
+<textureslidernibfocus>scrollbar_nib_focus1.png</textureslidernibfocus>
+<onleft>90</onleft>
+<onright>90</onright>
+<onup>54</onup>
+<ondown>2</ondown>
+<showonepage>false</showonepage>
+<orientation>horizontal</orientation>
+<visible>Skin.HasSetting(sbar)</visible>
+<visible>Control.IsVisible(54)+!System.IdleTime(2)</visible>
+<visible>!Control.HasFocus(57)</visible>
+</control>
+
+
+
+<control type="wraplist" id="54">
+<posx>-40</posx>
+<posy>165</posy>
+<width>760</width>
+<height>375</height>
+<onleft>54</onleft>
+<onright>54</onright>
+<onup>2</onup>
+<ondown>90</ondown>
+<scrolltime>0</scrolltime>
+<viewtype label="Coverflow">wraplist</viewtype>
+<pagecontrol>90</pagecontrol> 
+<focusposition>3</focusposition>
+<orientation>horizontal</orientation>
+<itemlayout height="250" width="100">
+</itemlayout>
+<focusedlayout height="250"  width="200">
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>200</width>
+<height>375</height>
+
+<visible>!Control.IsVisible(3001)  + !Control.IsVisible(3002)</visible>
+<aspectratio>stretch</aspectratio>
+</control>
+</focusedlayout>
+</control>
+
+<control type="label">
+<posx>0</posx>
+<posy>480</posy>
+<width>720</width>
+<height>16</height>
+<font>special16</font>
+<textcolor>white</textcolor>
+<align>center</align>
+<label>$INFO[ListItem.Label]</label>
+<include>selectedcolor</include>
+<visible>Control.IsVisible(54)</visible>
+</control>
+
+
+
+</include>
 
 <!-- Wrap List -->
 
@@ -11263,7 +11992,7 @@
 
 </include>
 
-<include name="DVD Wrap">
+<include name="Poster Wrap">
 
 <control>
 <description>Background</description>
@@ -11278,7 +12007,6 @@
 <visible>Control.IsVisible(58)</visible>
 </control>
 
-
 <control>
 <description>Panel Image</description>
 <type>image</type>
@@ -11290,106 +12018,161 @@
 <visible>Control.IsVisible(58)</visible>
 </control>
 
-<control type="wraplist" id="58">
-<viewtype label="DVD Wrap">bigwrap</viewtype>
+<control type="image">
 <posx>0</posx>
-<posy>150</posy>
+<posy>82</posy>
+<width>720</width>
+<height>40</height>
+<texture>homebutton-horizontal-nofocus.png</texture>
+<aspectratio>stretch</aspectratio>
+<visible>Control.IsVisible(58)</visible>
+</control>
+
+<control type="label">
+<posx>0</posx>
+<posy>87</posy>
+<width>720</width>
+<height>30</height>
+<font>Heading-L</font>
+<textcolor>white</textcolor>
+<align>center</align>
+<label>$INFO[ListItem.Label]</label>
+<scroll>true</scroll>
+<visible>Control.IsVisible(58)</visible>
+</control>
+
+<control type="wraplist" id="58">
+<viewtype label="Poster Wrap">bigwrap</viewtype>
+<posx>0</posx>
+<posy>188</posy>
 <width>720</width>
 <height>526</height>
-<scrolltime>250</scrolltime>
-<focusposition>2</focusposition>
+<scrolltime>200</scrolltime>
+<focusposition>3</focusposition>
 <orientation>horizontal</orientation>
 <onleft>58</onleft>
 <onright>58</onright>
 <onup>2</onup>
 <ondown>2</ondown>
-<itemlayout height="300" width="144">
+<itemlayout height="300" width="103">
+
 <control type="image">
 <posx>0</posx>
 <posy>0</posy>
-<width>144</width>
-<height>300</height>
-<info>ListItem.Icon</info>
+<width>103</width>
+<height>215</height>
+<info>ListItem.Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
-</control>
-<control type="image">
-<posx>0</posx>
-<posy>300</posy>
-<width>144</width>
-<height>300</height>
-<info>ListItem.Icon</info>
-<aspectratio aligny="top">stretch</aspectratio>
-<texture flipy="true" diffuse="Thumb_Mask.png">-</texture>
-<colordiffuse>90ffffff</colordiffuse>
 </control>
 
 <control type="image">
-<posx>120</posx>
-<posy>290</posy>
-<width>25</width>
-<height>25</height>
+<posx>0</posx>
+<posy>0</posy>
+<width>103</width>
+<height>215</height>
+<texture>mask4.png</texture>
+<aspectratio aligny="bottom">stretch</aspectratio>
+</control>
+
+<control type="image">
+<posx>0</posx>
+<posy>215</posy>
+<width>103</width>
+<height>215</height>
+<info>ListItem.Thumb</info>
+<aspectratio aligny="top">stretch</aspectratio>
+<texture flipy="true" diffuse="Mask3.png">defaultdvdposter.png</texture>
+<colordiffuse>33ffffff</colordiffuse>
+</control>
+
+<control type="image">
+<posx>0</posx>
+<posy>215</posy>
+<width>103</width>
+<height>215</height>
+<aspectratio aligny="top">stretch</aspectratio>
+<texture diffuse="lower diffuse.png">background2.png</texture>
+</control>
+
+
+<control type="image">
+<posx>86</posx>
+<posy>200</posy>
+<width>18</width>
+<height>18</height>
 <info>ListItem.Overlay</info>
 <visible>Control.IsVisible(58) + Skin.HasSetting(menu-overlay)</visible>
 </control>
 
 </itemlayout>
 
-<focusedlayout height="300" width="144">
+<focusedlayout height="300" width="103">
+
+
 <control type="image">
 <posx>0</posx>
 <posy>0</posy>
-<width>144</width>
-<height>300</height>
-<info>ListItem.Icon</info>
+<width>103</width>
+<height>215</height>
+<info>ListItem.Thumb</info>
+<texture diffuse="Mask3.png">defaultdvdposter.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
-<animation effect="zoom" tween="cubic" end="-30,-60,204,400" time="500">Focus</animation>
-</control>
-<control type="image">
-<posx>0</posx>
-<posy>300</posy>
-<width>144</width>
-<height>300</height>
-<info>ListItem.Icon</info>
-<aspectratio aligny="top">stretch</aspectratio>
-<texture flipy="true" diffuse="Thumb_Mask.png">-</texture>
-<animation effect="zoom" tween="cubic" end="-30,340,204,400" time="500">Focus</animation>
+<animation type="Focus">
+<effect type="zoom" tween="cubic" end="-21.5,-35.5,146,286" time="400"/>
+</animation>
 </control>
 
 <control type="image">
-<posx>120</posx>
-<posy>290</posy>
-<width>25</width>
-<height>25</height>
+<posx>0</posx>
+<posy>0</posy>
+<width>103</width>
+<height>215</height>
+<texture>mask4.png</texture>
+<aspectratio aligny="bottom">stretch</aspectratio>
+<animation type="Focus">
+<effect type="zoom" tween="cubic" end="-21.5,-35.5,146,286" time="400"/>
+</animation>
+</control>
+
+<control type="image">
+<posx>0</posx>
+<posy>215</posy>
+<width>103</width>
+<height>215</height>
+<info>ListItem.Thumb</info>
+<aspectratio aligny="top">stretch</aspectratio>
+<texture flipy="true" diffuse="Mask3.png">defaultdvdposter.png</texture>
+<colordiffuse>33ffffff</colordiffuse>
+<animation type="Focus">
+<effect type="zoom" tween="cubic" end="-21.5,246,146,286" time="400"/>
+</animation>
+</control>
+
+<control type="image">
+<posx>0</posx>
+<posy>215</posy>
+<width>103</width>
+<height>215</height>
+<aspectratio aligny="top">stretch</aspectratio>
+<texture diffuse="lower diffuse.png">background2.png</texture>
+<animation type="Focus">
+<effect type="zoom" tween="cubic" end="-21.5,246,146,286" time="400"/>
+</animation>
+</control>
+
+<control type="image">
+<posx>86</posx>
+<posy>200</posy>
+<width>18</width>
+<height>18</height>
 <info>ListItem.Overlay</info>
 <visible>Control.IsVisible(58) + Skin.HasSetting(menu-overlay)</visible>
-<animation effect="zoom" tween="cubic" end="145,325,35,35" time="500">Focus</animation>
+<animation effect="zoom" tween="cubic" end="103,235,25,25" time="400">Focus</animation>
 </control>
 
 </focusedlayout>
 
-</control>
-
-<control type="image">
-<posx>0</posx>
-<posy>50</posy>
-<width>720</width>
-<height>40</height>
-<texture>homebutton-horizontal-nofocus.png</texture>
-<visible>Control.IsVisible(58)</visible>
-</control>
-
-<control type="label">
-<posx>0</posx>
-<posy>50</posy>
-<width>720</width>
-<height>40</height>
-<font>special16</font>
-<textcolor>white</textcolor>
-<aligny>center</aligny>
-<align>center</align>
-<label>$INFO[ListItem.Label]</label>
-<scroll>true</scroll>
-<visible>Control.IsVisible(58)</visible>
 </control>
 </include>
 
@@ -11413,34 +12196,36 @@
 <control type="list" id="51">
 <viewtype label="List 2">list</viewtype>
 <posx>35</posx>
-<posy>85</posy>
+<posy>90</posy>
 <width>670</width>
-<height>460</height>
+<height>440</height>
 <pagecontrol>90</pagecontrol>
 <onleft>2</onleft>
 <onright>90</onright>
 <onup>51</onup>
 <ondown>51</ondown>
-<itemlayout height="28">
+
+<itemlayout height="40">
+
 <control type="image">
-<posx>0</posx>
-<posy>5</posy>
-<width>16</width>
-<height>16</height>
+<posx>5</posx>
+<posy>3</posy>
+<width>32</width>
+<height>32</height>
 <info>ListItem.Icon</info>
-<colordiffuse>white</colordiffuse>
 </control>
 
 <control type="label">
-<posx>25</posx>
+<posx>45</posx>
 <posy>0</posy>
 <width>460</width>
-<height>28</height>
-<font>special14</font>
+<height>40</height>
+<font>special17</font>
 <textcolor>white</textcolor>
 <include>selectedcolor</include>
+<scroll>true</scroll>
+<scrolltime>300</scrolltime>
 <info>ListItem.Label</info>
-<colordiffuse>white</colordiffuse>
 <aligny>center</aligny>
 </control>
 
@@ -11448,21 +12233,20 @@
 <posx>650</posx>
 <posy>0</posy>
 <width>260</width>
-<height>28</height>
-<font>special14</font>
+<height>40</height>
+<font>special17</font>
 <align>right</align>
 <textcolor>white</textcolor>
 <include>selectedcolor</include>
 <info>ListItem.Label2</info>
 <aligny>center</aligny>
-<colordiffuse>white</colordiffuse>
 </control>
 
 <control type="image">
 <posx>580</posx>
-<posy>6.5</posy>
+<posy>0</posy>
 <width>15</width>
-<height>15</height>
+<height>40</height>
 <info>ListItem.Overlay</info>
 <aligny>center</aligny>
 <visible>Control.IsVisible(51) + Skin.HasSetting(menu-overlay)</visible>
@@ -11478,6 +12262,7 @@
 <height>40</height>
 <texture>input-focus.png</texture>
 <visible>Control.HasFocus(51)</visible>
+<include>List Scroll</include>
 </control>
 
 <control type="image">
@@ -11551,46 +12336,45 @@
 <visible>Container.Content(Albums)  | Container.Content(Artists) | Container.Content(Songs)</visible>
 <viewtype label="List 2">list</viewtype>
 <posx>35</posx>
-<posy>85</posy>
+<posy>90</posy>
 <width>670</width>
-<height>460</height>
+<height>440</height>
 <pagecontrol>90</pagecontrol>
 <onleft>2</onleft>
 <onright>90</onright>
 <onup>51</onup>
 <ondown>51</ondown>
 
-<itemlayout height="28">
+<itemlayout height="40">
 <control type="image">
-<posx>0</posx>
-<posy>5</posy>
-<width>16</width>
-<height>16</height>
+<posx>5</posx>
+<posy>3</posy>
+<width>32</width>
+<height>32</height>
 <info>ListItem.Icon</info>
 <visible>!IsEmpty(ListItem.Thumb)</visible>
-<colordiffuse>white</colordiffuse>
 </control>
 
 <control type="image">
-<posx>0</posx>
-<posy>5</posy>
-<width>16</width>
-<height>16</height>
+<posx>5</posx>
+<posy>3</posy>
+<width>32</width>
+<height>32</height>
 <texture>defaultcdposter.png</texture>
 <visible>IsEmpty(ListItem.Thumb)</visible>
-<colordiffuse>white</colordiffuse>
 </control>
 
 <control type="label">
-<posx>25</posx>
+<posx>45</posx>
 <posy>0</posy>
 <width>460</width>
-<height>28</height>
-<font>special14</font>
+<height>40</height>
+<font>special17</font>
 <textcolor>white</textcolor>
 <include>selectedcolor</include>
+<scroll>true</scroll>
+<scrolltime>300</scrolltime>
 <info>ListItem.Label</info>
-<colordiffuse>white</colordiffuse>
 <aligny>center</aligny>
 </control>
 
@@ -11598,21 +12382,20 @@
 <posx>650</posx>
 <posy>0</posy>
 <width>260</width>
-<height>28</height>
-<font>special14</font>
+<height>40</height>
+<font>special17</font>
 <align>right</align>
 <textcolor>white</textcolor>
 <include>selectedcolor</include>
 <info>ListItem.Label2</info>
 <aligny>center</aligny>
-<colordiffuse>white</colordiffuse>
 </control>
 
 <control type="image">
 <posx>580</posx>
-<posy>6.5</posy>
+<posy>0</posy>
 <width>15</width>
-<height>15</height>
+<height>40</height>
 <info>ListItem.Overlay</info>
 <aligny>center</aligny>
 <visible>Control.IsVisible(51) + Skin.HasSetting(menu-overlay)</visible>
@@ -11629,6 +12412,7 @@
 <height>40</height>
 <texture>input-focus.png</texture>
 <visible>Control.HasFocus(51)</visible>
+<include>List Scroll</include>
 </control>
 
 <control type="image">
@@ -11711,53 +12495,54 @@
 <visible>Container.Content(Movies) | Container.Content(MusicVideos)</visible>
 <viewtype label="List 2">list</viewtype>
 <posx>35</posx>
-<posy>85</posy>
+<posy>90</posy>
 <width>670</width>
-<height>460</height>
+<height>440</height>
 <pagecontrol>90</pagecontrol>
 <onleft>2</onleft>
 <onright>90</onright>
 <onup>51</onup>
 <ondown>51</ondown>
-<itemlayout height="28">
+
+
+<itemlayout height="40">
+
 <control type="image">
-<posx>0</posx>
-<posy>5</posy>
-<width>16</width>
-<height>16</height>
+<posx>5</posx>
+<posy>3</posy>
+<width>32</width>
+<height>32</height>
 <info>ListItem.Icon</info>
-<colordiffuse>white</colordiffuse>
 </control>
 
 <control type="label">
-<posx>25</posx>
+<posx>45</posx>
 <posy>0</posy>
 <width>460</width>
-<height>28</height>
-<font>special14</font>
+<height>40</height>
+<font>special17</font>
 <textcolor>white</textcolor>
 <include>selectedcolor</include>
+<scrolltime>300</scrolltime>
 <info>ListItem.Label</info>
-<colordiffuse>white</colordiffuse>
 <aligny>center</aligny>
 </control>
 
+
 <control type="image" description="Ratings Image">
-<posx>590</posx>
-<posy>0</posy>
-<width>60</width>
-<height>16</height>
+<posx>560</posx>
+<posy>8</posy>
+<width>90</width>
+<height>24</height>
 <info>ListItem.StarRating</info>
 <aspectratio>stretch</aspectratio>
-<aligny>center</aligny>
-<colordiffuse>99ffffff</colordiffuse>
 </control>
 
 <control type="image">
-<posx>560</posx>
-<posy>6.5</posy>
+<posx>515</posx>
+<posy>0</posy>
 <width>15</width>
-<height>15</height>
+<height>40</height>
 <info>ListItem.Overlay</info>
 <aligny>center</aligny>
 <visible>Control.IsVisible(51) + Skin.HasSetting(menu-overlay)</visible>
@@ -11773,6 +12558,7 @@
 <height>40</height>
 <texture>input-focus.png</texture>
 <visible>Control.HasFocus(51)</visible>
+<include>List Scroll</include>
 </control>
 
 <control type="image">
@@ -13407,8 +14193,6 @@
 <visible>Control.IsVisible(57)</visible>
 </control>
 
-
-
 <control>
 <description>Panel Image</description>
 <type>image</type>
@@ -13422,21 +14206,21 @@
 
 <control type="image">
 <posx>0</posx>
-<posy>50</posy>
+<posy>82</posy>
 <width>720</width>
 <height>40</height>
 <texture>homebutton-horizontal-nofocus.png</texture>
+<aspectratio>stretch</aspectratio>
 <visible>Control.IsVisible(57)</visible>
 </control>
 
 <control type="label">
 <posx>0</posx>
-<posy>50</posy>
+<posy>87</posy>
 <width>720</width>
-<height>40</height>
-<font>special16</font>
+<height>30</height>
+<font>Heading-L</font>
 <textcolor>white</textcolor>
-<aligny>center</aligny>
 <align>center</align>
 <label>$INFO[ListItem.Label]</label>
 <scroll>true</scroll>
@@ -13444,53 +14228,53 @@
 </control>
 
 <control type="wraplist" id="57">
-<visible>!Container.Content(TVshows) + !Container.Content(Episodes) + !Container.Content(MusicVideos)</visible>
 <viewtype label="DVD Case Wrap">bigwrap</viewtype>
 <posx>0</posx>
-<posy>150</posy>
+<posy>188</posy>
 <width>720</width>
 <height>526</height>
-<scrolltime>250</scrolltime>
-<focusposition>2</focusposition>
+<scrolltime>200</scrolltime>
+<focusposition>3</focusposition>
 <orientation>horizontal</orientation>
 <onleft>57</onleft>
 <onright>57</onright>
 <onup>2</onup>
 <ondown>2</ondown>
-<itemlayout height="300" width="144">
+<itemlayout height="300" width="103">
 
 <control type="image">
 <posx>0</posx>
 <posy>0</posy>
-<width>144</width>
-<height>300</height>
+<width>103</width>
+<height>215</height>
 <texture>DVD4.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
 
 <control type="image">
 <posx>0</posx>
-<posy>8</posy>
-<width>139</width>
-<height>284</height>
-<info>ListItem.Icon</info>
+<posy>4</posy>
+<width>99.41</width>
+<height>208</height>
+<info>ListItem.Thumb</info>
+<texture>defaultdvdposter.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
 
 <control type="image">
 <posx>0</posx>
-<posy>6</posy>
-<width>139</width>
-<height>288</height>
+<posy>4</posy>
+<width>99.41</width>
+<height>208</height>
 <texture>DVD3.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
 
 <control type="image">
 <posx>0</posx>
-<posy>300</posy>
-<width>144</width>
-<height>300</height>
+<posy>215</posy>
+<width>103</width>
+<height>215</height>
 <aspectratio aligny="top">stretch</aspectratio>
 <texture flipy="true" diffuse="Thumb_Mask.png">DVD4.png</texture>
 <colordiffuse>white</colordiffuse>
@@ -13498,72 +14282,72 @@
 
 <control type="image">
 <posx>0</posx>
-<posy>308</posy>
-<width>139</width>
-<height>284</height>
-<info>ListItem.Icon</info>
+<posy>221</posy>
+<width>99.41</width>
+<height>206</height>
+<info>ListItem.Thumb</info>
 <aspectratio aligny="top">stretch</aspectratio>
-<texture flipy="true" diffuse="Thumb_Mask.png">-</texture>
+<texture flipy="true" diffuse="Thumb_Mask.png">defaultdvdposter.png</texture>
 <colordiffuse>90ffffff</colordiffuse>
 </control>
 
 <control type="image">
-<posx>120</posx>
-<posy>280</posy>
-<width>25</width>
-<height>25</height>
+<posx>86</posx>
+<posy>200</posy>
+<width>18</width>
+<height>18</height>
 <info>ListItem.Overlay</info>
 <visible>Control.IsVisible(57) + Skin.HasSetting(menu-overlay)</visible>
 </control>
 
 </itemlayout>
 
-<focusedlayout height="300" width="144">
+<focusedlayout height="300" width="103">
 
 <control type="image">
 <posx>0</posx>
 <posy>0</posy>
-<width>144</width>
-<height>300</height>
+<width>103</width>
+<height>215</height>
 <texture>dvdbackground.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
-<animation effect="zoom" tween="cubic" end="-30,-60,204,400" time="400">Focus</animation>
+<animation effect="zoom" tween="cubic" end="-21.5,-35.5,146,286" time="400">Focus</animation>
 <visible>!Skin.HasSetting(DVD Animation)</visible>
 </control>
 
 <control type="image">
 <posx>0</posx>
-<posy>300</posy>
-<width>144</width>
-<height>300</height>
+<posy>0</posy>
+<width>103</width>
+<height>215</height>
 <aspectratio aligny="top">stretch</aspectratio>
 <texture flipy="true" diffuse="-">background2.png</texture>
 <animation type="Focus">
-<effect type="zoom" tween="cubic" end="-30,335,204,400" time="400"/>Focus</animation>
+<effect type="zoom" tween="cubic" end="-21.5,250.50,146,286" time="400"/>Focus</animation>
 <visible>!Skin.HasSetting(DVD Animation)</visible>
 </control>
 
 <control type="image">
 <posx>0</posx>
-<posy>300</posy>
-<width>144</width>
-<height>300</height>
+<posy>215</posy>
+<width>103</width>
+<height>215</height>
 <aspectratio aligny="top">stretch</aspectratio>
 <texture flipy="true" diffuse="Thumb_Mask.png">dvdbackground.png</texture>
 <animation type="Focus">
-<effect type="zoom" tween="cubic" end="-30,335,204,400" time="400"/>Focus</animation>
+<effect type="zoom" tween="cubic" end="-21.5,250.50,146,286" time="400"/>Focus</animation>
 <visible>!Skin.HasSetting(DVD Animation)</visible>
 </control>
 
 <control type="image">
 <posx>0</posx>
 <posy>0</posy>
-<width>144</width>
-<height>300</height>
+<width>103</width>
+<height>215</height>
 <texture>DVD4.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation type="Focus">
-<effect type="zoom" tween="cubic" end="-30,-60,204,400" time="400"/>
+<effect type="zoom" tween="cubic" end="-21.5,-35.5,146,286" time="400"/>
 <effect type="rotatey" delay="1000" center="1" start="0" end="80" time="1500"/>
 </animation>
 <visible>!Skin.HasSetting(DVD Animation)</visible>
@@ -13572,25 +14356,26 @@
 <control type="image">
 <posx>0</posx>
 <posy>0</posy>
-<width>144</width>
-<height>300</height>
+<width>103</width>
+<height>215</height>
 <texture>DVD4.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation type="Focus">
-<effect type="zoom" tween="cubic" end="-30,-60,204,400" time="400"/>
+<effect type="zoom" tween="cubic" end="-21.5,-35.5,146,286" time="400"/>
 </animation>
 <visible>Skin.HasSetting(DVD Animation)</visible>
 </control>
 
 <control type="image">
 <posx>0</posx>
-<posy>8</posy>
-<width>139</width>
-<height>284</height>
-<info>ListItem.Icon</info>
+<posy>4</posy>
+<width>99.41</width>
+<height>208</height>
+<info>ListItem.Thumb</info>
+<texture>defaultdvdposter.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation type="Focus">
-<effect type="zoom" tween="cubic" end="-30,-50,198,383" time="400"/>
+<effect type="zoom" tween="cubic" end="-21.5,-31,141.60,278" time="400"/>
 <effect type="rotatey" delay="1000" center="1" start="0" end="80" time="1500"/>
 </animation>
 <visible>!Skin.HasSetting(DVD Animation)</visible>
@@ -13598,26 +14383,27 @@
 
 <control type="image">
 <posx>0</posx>
-<posy>8</posy>
-<width>139</width>
-<height>284</height>
-<info>ListItem.Icon</info>
+<posy>4</posy>
+<width>99.41</width>
+<height>208</height>
+<info>ListItem.Thumb</info>
+<texture>defaultdvdposter.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation type="Focus">
-<effect type="zoom" tween="cubic" end="-30,-50,198,383" time="400"/>
+<effect type="zoom" tween="cubic" end="-21.5,-31,141.60,278" time="400"/>
 </animation>
 <visible>Skin.HasSetting(DVD Animation)</visible>
 </control>
 
 <control type="image">
 <posx>0</posx>
-<posy>8</posy>
-<width>139</width>
-<height>288</height>
+<posy>6</posy>
+<width>99.41</width>
+<height>206</height>
 <texture>DVD3.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation type="Focus">
-<effect type="zoom" tween="cubic" end="-30,-50,198,383" time="400"/>
+<effect type="zoom" tween="cubic" end="-21.5,-31,141.60,279" time="400"/>
 <effect type="rotatey" delay="1000" center="1" start="0" end="80" time="1500"/>
 </animation>
 <visible>!Skin.HasSetting(DVD Animation)</visible>
@@ -13625,26 +14411,26 @@
 
 <control type="image">
 <posx>0</posx>
-<posy>8</posy>
-<width>139</width>
-<height>288</height>
+<posy>6</posy>
+<width>99.41</width>
+<height>206</height>
 <texture>DVD3.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation type="Focus">
-<effect type="zoom" tween="cubic" end="-30,-50,198,383" time="400"/>
+<effect type="zoom" tween="cubic" end="-21.5,-31,141.60,279" time="400"/>
 </animation>
 <visible>Skin.HasSetting(DVD Animation)</visible>
 </control>
 
 <control type="image">
 <posx>0</posx>
-<posy>300</posy>
-<width>144</width>
-<height>300</height>
+<posy>215</posy>
+<width>103</width>
+<height>215</height>
 <aspectratio aligny="top">stretch</aspectratio>
 <texture flipy="true" diffuse="Thumb_Mask.png">DVD4.png</texture>
 <animation type="Focus">
-<effect type="zoom" tween="cubic" end="-30,335,204,400" time="400"/>
+<effect type="zoom" tween="cubic" end="-21.5,246,146,286" time="400"/>
 <effect type="rotatey" delay="1000" center="1" start="0" end="80" time="1500"/>
 </animation>
 <visible>!Skin.HasSetting(DVD Animation)</visible>
@@ -13652,26 +14438,26 @@
 
 <control type="image">
 <posx>0</posx>
-<posy>300</posy>
-<width>144</width>
-<height>300</height>
+<posy>215</posy>
+<width>103</width>
+<height>215</height>
 <aspectratio aligny="top">stretch</aspectratio>
 <texture flipy="true" diffuse="Thumb_Mask.png">DVD4.png</texture>
 <animation type="Focus">
-<effect type="zoom" tween="cubic" end="-30,335,204,400" time="400"/>
+<effect type="zoom" tween="cubic" end="-21.5,246,146,286" time="400"/>
 </animation>
 <visible>Skin.HasSetting(DVD Animation)</visible>
 </control>
 
 <control type="image">
 <posx>0</posx>
-<posy>300</posy>
-<width>139</width>
-<height>300</height>
+<posy>215</posy>
+<width>99.41</width>
+<height>215</height>
 <aspectratio aligny="top">stretch</aspectratio>
 <texture flipy="true" diffuse="-">background2.png</texture>
 <animation type="Focus">
-<effect type="zoom" tween="cubic" end="-30,340,198,385" time="400"/>
+<effect type="zoom" tween="cubic" end="-21.5,246,141.60,286" time="400"/>
 <effect type="rotatey" delay="1000" center="1" start="0" end="80" time="1500"/>
 </animation>
 <visible>!Skin.HasSetting(DVD Animation)</visible>
@@ -13679,14 +14465,14 @@
 
 <control type="image">
 <posx>0</posx>
-<posy>300</posy>
-<width>139</width>
-<height>300</height>
-<info>ListItem.Icon</info>
+<posy>215</posy>
+<width>99.41</width>
+<height>215</height>
+<info>ListItem.Thumb</info>
 <aspectratio aligny="top">stretch</aspectratio>
-<texture flipy="true" diffuse="Thumb_Mask.png">-</texture>
+<texture flipy="true" diffuse="Thumb_Mask.png">defaultdvdposter.png</texture>
 <animation type="Focus">
-<effect type="zoom" tween="cubic" end="-30,340,198,385" time="400"/>
+<effect type="zoom" tween="cubic" end="-21.5,253.5,141.60,275" time="400"/>
 <effect type="rotatey" delay="1000" center="1" start="0" end="80" time="1500"/>
 </animation>
 <visible>!Skin.HasSetting(DVD Animation)</visible>
@@ -13694,26 +14480,26 @@
 
 <control type="image">
 <posx>0</posx>
-<posy>300</posy>
-<width>139</width>
-<height>300</height>
-<info>ListItem.Icon</info>
+<posy>215</posy>
+<width>99.41</width>
+<height>215</height>
+<info>ListItem.Thumb</info>
 <aspectratio aligny="top">stretch</aspectratio>
-<texture flipy="true" diffuse="Thumb_Mask.png">-</texture>
+<texture flipy="true" diffuse="Thumb_Mask.png">defaultdvdposter.png</texture>
 <animation type="Focus">
-<effect type="zoom" tween="cubic" end="-30,340,198,385" time="400"/>
+<effect type="zoom" tween="cubic" end="-21.5,253.5,141.60,275" time="400"/>
 </animation>
 <visible>Skin.HasSetting(DVD Animation)</visible>
 </control>
 
 <control type="image">
-<posx>120</posx>
-<posy>280</posy>
-<width>25</width>
-<height>25</height>
+<posx>86</posx>
+<posy>200</posy>
+<width>18</width>
+<height>18</height>
 <info>ListItem.Overlay</info>
 <visible>Control.IsVisible(57) + Skin.HasSetting(menu-overlay)</visible>
-<animation effect="zoom" tween="cubic" end="145,315,35,35" time="400">Focus</animation>
+<animation effect="zoom" tween="cubic" end="103,235,25,25" time="400">Focus</animation>
 </control>
 
 </focusedlayout>
@@ -19378,10 +20164,11 @@
 <posy>10</posy>
 <width>352</width>
 <height>20</height>
-<font>special13</font>
+<font>Heading-M</font>
 <textcolor>white</textcolor>
 <info>ListItem.Label</info>
 <align>center</align>
+<aligny>center</aligny>
 </control>
 
 </itemlayout>
@@ -19395,6 +20182,7 @@
 <height>40</height>
 <texture>input-focus.png</texture>
 <visible>Control.HasFocus(51)</visible>
+<include>List Scroll</include>
 </control>
 
 
@@ -19404,7 +20192,7 @@
 <posy>10</posy>
 <width>352</width>
 <height>20</height>
-<font>special15</font>
+<font>Heading-M</font>
 <textcolor>white</textcolor>
 <scroll>true</scroll>
 <scrolltime>300</scrolltime>
@@ -20030,10 +20818,11 @@
 <posy>10</posy>
 <width>352</width>
 <height>20</height>
-<font>special13</font>
+<font>Heading-M</font>
 <textcolor>white</textcolor>
 <info>ListItem.Label</info>
 <align>center</align>
+<aligny>center</aligny>
 </control>
 
 </itemlayout>
@@ -20047,6 +20836,7 @@
 <height>40</height>
 <texture>input-focus.png</texture>
 <visible>Control.HasFocus(50)</visible>
+<include>List Scroll</include>
 </control>
 
 
@@ -20055,7 +20845,7 @@
 <posy>10</posy>
 <width>352</width>
 <height>20</height>
-<font>special15</font>
+<font>Heading-M</font>
 <textcolor>white</textcolor>
 <scroll>true</scroll>
 <scrolltime>300</scrolltime>

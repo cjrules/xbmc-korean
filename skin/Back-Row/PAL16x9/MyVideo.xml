@@ -83,13 +83,13 @@
 
 <include>BigWideView</include>
 
-<include>DVD Wrap</include>
+<include>Poster Wrap</include>
 
 <include>DVD Case Wrap</include>
 
 <include>File Mode DVD Case Wrap</include>
 
-<include>Jukebox WrapList</include>
+<include>VideofileWraplist</include>
 
 <include>Bigwraplist</include>	
 
@@ -117,19 +117,13 @@
     <posx>10</posx>
     <posy>90</posy>
     <width>360</width>
-    <height>390</height>
+    <height>440</height>
     <info>ListItem.Icon</info>
     <aspectratio>keep</aspectratio>
     <visible>Control.IsVisible(50)</visible>
     </control>
 
     
-
-
-
-
-
-
 
 
 <control type="label">
@@ -160,13 +154,6 @@
     <label>20343</label>
     </control>
 
-
-
-
-
-
-
- 
 <control type="group">
 
  <posx>10</posx>
