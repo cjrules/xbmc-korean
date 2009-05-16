@@ -2,10 +2,10 @@
 <strings>
     <!-- Update messages -->
     <string id="30000">이 항목을 설치 하시겠습니까?</string>
-    <string id="30001"></string>
+    <string id="30001">파일 읽는중...</string>
     <string id="30002">파일 리스트 읽는중...</string>
     <string id="30003">기다려 주세요...</string>
-    <string id="30004"></string>
+    <string id="30004">백업 생성됨</string>
     <string id="30005">읽는중:</string>
     <string id="30006">디렉토리:</string>
     <string id="30007">파일:</string>
@@ -16,14 +16,31 @@
     <string id="30012">SVN에 없음</string>
     <string id="30013">알려지지 않은 버전</string>
     <string id="30014">새로운</string>
+	<string id="30015">호환되지 않음</string>
+    <string id="30016">업데이트</string>
+    <string id="30017">변경사항</string>
+    <string id="30018">삭제됨</string>
 
     <string id="30020">그만두기</string>
     <string id="30021">설치</string>
+	<string id="30022">삭제</string>
 
     <!-- settings -->
     <string id="30500">업데이트 확인</string>
 	<string id="30510">업데이트: SVN에 없는 애드온을 보겠습니까?</string>
 	<string id="30520">업데이트: 버전이 없는 애드온을 보겠습니까?</string>
+	<string id="30530">Readme 보기</string>
+    <string id="30540">변경사항 보기</string>
+
+    <!-- context menu -->
+    <string id="30600">변경사항 보기</string>
+    <string id="30610">Readme 보기</string>
+
+    <!-- compatible messages -->
+    <string id="30700">버전</string>
+    <string id="30701">이 버전의 %s 는</string>
+    <string id="30702">XBMC 버전 of %s 이상이 필요합니다.</string>
+    <string id="30703">XBMC 를 업그레이드 하세요.</string>
 
     <!-- Update error messages -->
     <string id="30030">해당 항목 설치중 에러가 있었음!</string>
