@@ -15622,6 +15622,16 @@
 </control>
 
 
+<control type="label">
+<posx>3</posx>
+<posy>25</posy>
+<width>15</width>
+<height>15</height>
+<textcolor>grey</textcolor>
+<font>font10</font>
+<label>$INFO[ListItem.episode]</label>
+<align>left</align>
+</control>
 
 <control type="image">
 <posx>17</posx>
@@ -15643,15 +15653,7 @@
 <visible>Control.IsVisible(53) + Skin.HasSetting(menu-overlay)</visible>
 </control>
 
-<control type="label">
-<posx>3</posx>
-<posy>25</posy>
-<width>144</width>
-<textcolor>grey</textcolor>
-<font>font10</font>
-<label>$INFO[ListItem.episode]</label>
-<align>left</align>
-</control>
+
 
 </itemlayout>
 
@@ -15677,6 +15679,18 @@
 <aspectratio>keep</aspectratio>
 </control>
 
+
+<control type="label">
+<posx>3</posx>
+<posy>25</posy>
+<width>15</width>
+<height>15</height>
+<textcolor>grey</textcolor>
+<font>font10</font>
+<label>$INFO[ListItem.episode]</label>
+<align>left</align>
+</control>
+
 <control type="image">
 <posx>17</posx>
 <posy>23</posy>
@@ -15696,15 +15710,6 @@
 <visible>Control.IsVisible(53) + Skin.HasSetting(menu-overlay)</visible>
 </control>
 
-<control type="label">
-<posx>3</posx>
-<posy>25</posy>
-<width>144</width>
-<textcolor>grey</textcolor>
-<font>font10</font>
-<label>$INFO[ListItem.episode]</label>
-<align>left</align>
-</control>
 
 
 </focusedlayout>
@@ -16048,8 +16053,8 @@
 <height>245</height>
 <visible>Control.HasFocus(53) + [Container.Content(episodes)] + [!Container(53).OnNext + !Container(53).OnPrevious]</visible>
 <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
-<animation effect="slide" start="1065" end="0" time="800" delay="2500">WindowOpen</animation>
-<animation effect="slide" start="1065" end="0" time="800" delay="2500">Visible</animation>
+<animation effect="fade" start="0" end="100" time="800" delay="800">WindowOpen</animation>
+<animation effect="fade" start="0" end="100" time="800" delay="800">Visible</animation>
 <visible>!Window.IsActive(106)</visible>
 <visible>!Window.IsActive(103)</visible>
 <control type="image">

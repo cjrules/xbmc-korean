@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
-<string id="20410">트레일러</string>
+<string id="20410">영화 예고편</string>
 <string id="31001">프로그램 항목 켜기</string>
 <string id="31002">비디오 라이브러리 모드 사용</string>
 <string id="31003">TV 쇼 항목 켜기</string>
@@ -105,4 +105,5 @@
 <string id="31102">티비쇼 배경 폴더 설정</string>
 <string id="31103">티비쇼 배경 폴더 설정 초기화</string>
 <string id="31104">스크롤바 켜고 끄기</string>
+<string id="31105">홈 스크린에서 더 작은 필름 스트립</string>
 </strings>

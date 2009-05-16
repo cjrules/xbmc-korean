@@ -235,9 +235,9 @@
 	<include name="BigList">
 		<control type="list" id="52">
 			<posx>40</posx>
-			<posy>40</posy>
+			<posy>50</posy>
 			<width>650</width>
-			<height>470</height>
+			<height>450</height>
 			<onleft>60</onleft>
 			<onright>9000</onright>
 			<onup>52</onup>
@@ -245,7 +245,7 @@
 			<viewtype label="$LOCALIZE[537]">list</viewtype>
 			<scrolltime>200</scrolltime>
 			<pagecontrol>60</pagecontrol>
-			<itemlayout height="95" width="660">
+			<itemlayout height="90" width="660">
         <control type="image">
           <posx>24</posx>
           <posy>5</posy>
@@ -599,7 +599,7 @@
           </control>
         </control>
 			</itemlayout>
-			<focusedlayout height="95" width="660">
+			<focusedlayout height="90" width="660">
         <control type="image">
           <posx>24</posx>
           <posy>5</posy>
@@ -951,7 +951,7 @@
 	<include name="Icons">
 		<control type="panel" id="53">
 			<posx>45</posx>
-			<posy>50</posy>
+			<posy>55</posy>
 			<width>720</width>
 			<height>460</height>
 			<onleft>60</onleft>
@@ -1068,7 +1068,7 @@
 	<include name="Wide">
 		<control type="panel" id="54">
 			<posx>45</posx>
-			<posy>20</posy>
+			<posy>25</posy>
 			<width>720</width>
 			<height>480</height>
 			<onleft>60</onleft>

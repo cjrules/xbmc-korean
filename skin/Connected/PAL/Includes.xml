@@ -50,24 +50,24 @@
   
   <include name="WeatherInfo">
     <control type="group">
-      <posx>455</posx>
-      <posy>15</posy>
+      <posx>460</posx>
+      <posy>10</posy>
       <visible>Skin.HasSetting(WeatherInfo) + Weather.IsFetched</visible>
       <control type="image">
-        <posx>185</posx>
-        <width>70</width>
-        <height>70</height>
+        <posx>195</posx>
+        <width>55</width>
+        <height>55</height>
         <info>Weather.Conditions</info>
         <aspectratio align="right">keep</aspectratio>
       </control>
       <control type="label">
-        <posx>180</posx>
+        <posx>190</posx>
         <width>-</width>
-        <height>70</height>
+        <height>55</height>
         <align>right</align>
         <aligny>center</aligny>
         <label>$INFO[Weather.Conditions] $INFO[Weather.Temperature]</label>
-        <font>26BdFont</font>
+        <font>20BdFont</font>
         <textcolor>FocusedTextColor</textcolor>
       </control>
     </control>
@@ -679,8 +679,8 @@
 
     <!-- Videos -->
     <control type="group">
-      <posx>350</posx>
-      <posy>520</posy>
+      <posx>515</posx>
+      <posy>5</posy>
       <include>DefaultFade</include>
       <visible>Player.HasVideo + !Window.IsActive(2005) + !Window.IsActive(0)</visible>
       <control type="label" id="0">
@@ -717,8 +717,8 @@
 
     <!-- Music -->
     <control type="group">
-      <posx>350</posx>
-      <posy>520</posy>
+      <posx>515</posx>
+      <posy>5</posy>
       <include>DefaultFade</include>
       <visible>Player.HasAudio + !Window.IsActive(2006) + !Window.IsActive(0)</visible>
       <control type="label" id="0">

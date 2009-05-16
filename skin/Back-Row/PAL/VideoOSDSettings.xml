@@ -23,6 +23,7 @@
 		<width>420</width>
 		<height>31</height>
 		<texture>osd_settings_header.png</texture>
+		<colordiffuse>99ffffff</colordiffuse>
 	</control>
 
 	<control type="label" id="2">
@@ -40,6 +41,7 @@
 		<posy>170</posy>
 		<width>420</width>
 		<align>center</align>
+		<font>font12</font>
 		<label>13390</label>
 	</control>
 
@@ -49,7 +51,7 @@
 		<posx>390</posx>
 		<posy>5</posy>
 		<subtype>page</subtype>
-		<font>font10</font>
+		<font>font12</font>
 		<onleft>5</onleft>
 		<onright>28</onright>
 		<ondown>5</ondown>
@@ -63,7 +65,7 @@
 		<posx>0</posx>
 		<posy>30</posy>
 		<width>420</width>
-		<height>310</height>
+		<height>320</height>
 		<itemgap>0</itemgap>
 		<pagecontrol>60</pagecontrol>
 		<onleft>60</onleft>
@@ -112,7 +114,7 @@
 		<texturedown>scroll-down.png</texturedown>
 		<textureupFocus>scroll-up-focus.png</textureupFocus>
 		<texturedownFocus>scroll-down-focus.png</texturedownFocus>
-		<font>font10</font>
+		<font>font12</font>
 		<textcolor>white</textcolor>
 		<colordiffuse>white</colordiffuse>
 		<disabledcolor>60d0d0d0</disabledcolor>
@@ -130,7 +132,7 @@
 		<texturefocus>input-focus.png</texturefocus>
 		<texturenofocus>-</texturenofocus>
 		<sliderwidth>100</sliderwidth>
-		<sliderheight>20</sliderheight>
+		<sliderheight>15</sliderheight>
 		<texturesliderbar>osd_slider_bg.png</texturesliderbar>
 		<textureslidernib>osd_slider_nibNF.png</textureslidernib>
 		<textureslidernibfocus>osd_slider_nibFO.png</textureslidernibfocus>
@@ -138,6 +140,7 @@
 		<include>textcolorwhite</include>
 		<disabledcolor>60d0d0d0</disabledcolor>
 		<textoffsetx>12</textoffsetx>
+		<aligny>center</aligny>
 	</control>
 
 	<control type="image" id="11">
