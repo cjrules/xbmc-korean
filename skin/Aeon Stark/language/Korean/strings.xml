@@ -4,13 +4,13 @@
 
  <strings>
 	<string id="31000">0.9 (STARK)</string> <!-- DO NOT CHANGE -->
-	<string id="31001"></string> <!-- RESERVED FOR CREDITS -->
-	<string id="31002"></string> <!-- RESERVED FOR CREDITS -->
-	<string id="31003"></string> <!-- RESERVED FOR CREDITS -->
-	<string id="31004">초기화</string>
+	<string id="31001"></string>
+	<string id="31002">음소거됨</string>
+	<string id="31003">이 버전은 날씨 화면 옵션을 사용할수 없음</string>
+	<string id="31004">배경 초기화</string>
     <string id="31005">항목:</string>
     <string id="31006">지금 재생중</string>
-    <string id="31007">일시정지</string>
+    <string id="31007">일시중지</string>
     <string id="31008">현재온도</string>
     <string id="31009">단위</string>
   
@@ -152,7 +152,6 @@
 	<string id="31165">사용자</string>
 	<string id="31166">프로파일 관리</string>
 
-
 <!--  Button / Shutdown Menu  --> 
 
     <string id="31200">설정</string>
@@ -196,6 +195,7 @@
   
 <!-- Aeon Advanced options -->
   
+	<string id="31259">미디어 플래그 기본 아이콘 (끄기는 사이띄개)</string>
     <string id="31260">시간 패널 보기</string>
     <string id="31261">첫 화면 날씨 팝업</string>
     <string id="31262">음악 배경 삽화 (팬아트)</string>
@@ -341,11 +341,14 @@
     <string id="31601">시스템 여유 메모리:</string>
     <string id="31602">XBMC 빌드 날짜:</string>
     <string id="31603">FPS:</string>
-    <string id="31604">현재 윈도우 ID:</string>
+    <string id="31604">현재 창 ID:</string>
     <string id="31605">현재 FOCUS:</string>
     <string id="31606">활성 보기 형식:</string>
     <string id="31607">새로 고침</string>
     <string id="31608">정보 켜기/끄기</string>
+	<string id="31609">이 라이브러리는 비었음</string>
+	<string id="31610">비디오 창에서 지정</string>
+	<string id="31611">파일 창에서 지정</string>
 
 <!-- Welcome screen / Aeon Tour -->
 <!-- ENSURE LOWER/UPPER CASE IS OBEYED --> 
@@ -395,6 +398,7 @@
     <string id="31753">패널</string>
     <string id="31754">선택</string>
     <string id="31755">방향으로 보기모드 선택[CR]나가려면 누름</string>	
+	<string id="31756">에피소드에는 목록 보기만 사용할수 있음</string>
 
 <!-- Aeon Settings panel labels -->
   
@@ -420,8 +424,8 @@
     <string id="31819">AEON의 첫화면에서  배경이 두드러지게 다른부분들을 작게 할수 있고,[CR]시력이 약한사람을 위해 큰 글자로 가독성을 증진시킬수 있습니다.</string>	
     <string id="31820">사용자 개개인</string>
 	<string id="31821">XBMC 다중 사용자 프로파일을 지원합니다, 개별 사용자의 설정을[CR]저장할 수 있습니다. RSS 피드, 보기 설정과 미디어 라이브러리등이 별도로 저장됩니다.</string>
-    
-    <!-- Credits -->
+
+<!-- Credits -->
 
 	<string id="31900">텍스쳐</string>
 	<string id="31901">기본 배경화면</string>
@@ -433,5 +437,6 @@
 	<string id="31907">XBMC 포럼의 모든분께</string>
 	<string id="31908">...그리고 여러분</string>
 	<string id="31909">AEON은 돌아옵니다</string>
+	<string id="31910">날씨 배경</string>
     
 </strings>
