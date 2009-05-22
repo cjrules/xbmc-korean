@@ -1,0 +1,126 @@
+﻿<window id="120">
+	<defaultcontrol>920</defaultcontrol>
+
+  <controls>
+
+    <control type="group">
+      <posx>320</posx>
+      <posy>10</posy>
+      <animation effect="slide" time="300" tween="circle" easing="out" start="0,-120" end="0,0">WindowOpen</animation>
+      <animation effect="slide" time="300" tween="circle" easing="out" start="0,-120" end="0,0">Visible</animation>
+      <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,-120">WindowClose</animation>
+      <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,-120">Hidden</animation>
+      <visible>![Window.IsVisible(121) | Window.IsVisible(122)]</visible>
+
+      <control type="image">
+        <posx>-10</posx>
+        <posy>-20</posy>
+        <width>640</width>
+        <height>78</height>
+        <include>OverlayDarkArea</include>
+      </control>
+
+      <control type="group">
+        <posy>10</posy>
+
+        <control type="label">
+          <description>Vis Presets</description>
+          <width>370</width>
+          <height>50</height>
+          <align>center</align>
+          <font>TitleFont</font>
+          <label>31403</label>
+          <visible>ControlGroup(10).HasFocus(920)</visible>
+        </control>
+
+        <control type="label">
+          <description>Vis Settings</description>
+          <width>370</width>
+          <height>50</height>
+          <align>center</align>
+          <font>TitleFont</font>
+          <label>31404</label>
+          <visible>ControlGroup(10).HasFocus(919)</visible>
+        </control>
+
+        <control type="label">
+          <description>Vis Select</description>
+          <width>370</width>
+          <height>50</height>
+          <align>center</align>
+          <font>TitleFont</font>
+          <label>31402</label>
+          <visible>ControlGroup(10).HasFocus(500)</visible>
+        </control>
+
+        <control type="label">
+          <description>Lyrics</description>
+          <width>370</width>
+          <height>50</height>
+          <align>center</align>
+          <font>TitleFont</font>
+          <label>31405</label>
+          <visible>ControlGroup(10).HasFocus(501)</visible>
+        </control>
+      </control>
+
+      <control type="grouplist" id="10">
+        <posx>390</posx>
+        <posy>8</posy>
+        <width>560</width>
+        <orientation>horizontal</orientation>
+        <itemgap>26</itemgap>
+
+    		<control type="button" id="920">
+    			<description>Vis Presets</description>
+          <include>VideoOSDButtonDims</include>
+          <texturefocus>OSDVizFO.png</texturefocus>
+          <texturenofocus>OSDVizNF.png</texturenofocus>
+    			<onclick>XBMC.ActivateWindow(122)</onclick>
+    		</control>
+
+    		<control type="button" id="919">
+    			<description>Vis Settings</description>
+          <include>VideoOSDButtonDims</include>
+          <texturefocus>OSDPresetSettingsFO.png</texturefocus>
+          <texturenofocus>OSDPresetSettingsNF.png</texturenofocus>
+    			<onclick>XBMC.ActivateWindow(121)</onclick>
+    		</control>
+
+    		<control type="button" id="500">
+    			<description>Vis Select</description>
+          <include>VideoOSDButtonDims</include>
+          <texturefocus>OSDPreFO.png</texturefocus>
+          <texturenofocus>OSDPreNF.png</texturenofocus>
+    		</control>
+
+    		<control type="button" id="501">
+    			<description>Lyrics</description>
+          <include>VideoOSDButtonDims</include>
+          <texturefocus>OSDBookmarksFO.png</texturefocus>
+          <texturenofocus>OSDBookmarksNF.png</texturenofocus>
+          <onclick>XBMC.RunScript($INFO[Skin.String(LyricScriptPath)])</onclick>
+          <visible>!IsEmpty(Skin.String(LyricScriptPath))</visible>
+    		</control>
+
+    		<control type="image" id="502">
+    			<description>Lyrics</description>
+          <include>VideoOSDButtonDims</include>
+          <texture diffuse="GreyDark.png">OSDBookmarksNF.png</texture>
+          <visible>IsEmpty(Skin.String(LyricScriptPath))</visible>
+    		</control>
+      </control>
+    </control>
+
+		<control type="selectbutton" id="503">
+			<description>Visualisation Select Button</description>
+			<onleft>503</onleft>
+			<onright>503</onright>
+			<onup>500</onup>
+			<ondown>500</ondown>
+      <animation effect="slide" time="300" tween="circle" easing="out" start="0,-150" end="0,0">Visible</animation>
+      <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,-150">Hidden</animation>
+		</control>
+
+  </controls>
+</window>

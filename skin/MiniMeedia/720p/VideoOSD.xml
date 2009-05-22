@@ -1,0 +1,118 @@
+<window id="2901">
+  <defaultcontrol>1</defaultcontrol>
+
+  <controls>
+
+    <control type="group">
+      <posx>365</posx>
+      <posy>10</posy>
+      <animation effect="slide" time="300" tween="circle" easing="out" start="0,-120" end="0,0">WindowOpen</animation>
+      <animation effect="slide" time="300" tween="circle" easing="out" start="0,-120" end="0,0">Visible</animation>
+      <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,-120">WindowClose</animation>
+      <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,-120">Hidden</animation>
+      <visible>!Window.IsVisible(SliderDialog)</visible>
+
+      <control type="image">
+        <posx>-10</posx>
+        <posy>-20</posy>
+        <width>570</width>
+        <height>78</height>
+        <include>OverlayDarkArea</include>
+      </control>
+
+      <control type="group">
+        <posy>10</posy>
+
+        <control type="label">
+          <description>Bookmarks</description>
+          <width>300</width>
+          <height>50</height>
+          <align>center</align>
+          <font>TitleFont</font>
+          <label>298</label>
+          <visible>ControlGroup(10).HasFocus(1)</visible>
+        </control>
+
+        <control type="label">
+          <description>Audio Settings</description>
+          <width>300</width>
+          <height>50</height>
+          <align>center</align>
+          <font>TitleFont</font>
+          <label>$LOCALIZE[292] $LOCALIZE[5]</label>
+          <visible>ControlGroup(10).HasFocus(2)</visible>
+        </control>
+
+        <control type="label">
+          <description>Video Settings</description>
+          <width>300</width>
+          <height>50</height>
+          <align>center</align>
+          <font>TitleFont</font>
+          <label>$LOCALIZE[291] $LOCALIZE[5]</label>
+          <visible>ControlGroup(10).HasFocus(3)</visible>
+        </control>
+
+        <control type="label">
+          <description>DVD Settings</description>
+          <width>300</width>
+          <height>50</height>
+          <align>center</align>
+          <font>TitleFont</font>
+          <label>446</label>
+          <visible>ControlGroup(10).HasFocus(4)</visible>
+        </control>
+      </control>
+
+      <control type="grouplist" id="10">
+        <posx>320</posx>
+        <posy>8</posy>
+        <width>560</width>
+        <orientation>horizontal</orientation>
+        <itemgap>26</itemgap>
+
+        <control type="button" id="1">
+          <description>BookMarks button</description>
+          <include>VideoOSDButtonDims</include>
+          <texturefocus>OSDBookmarksFO.png</texturefocus>
+          <texturenofocus>OSDBookmarksNF.png</texturenofocus>
+          <onclick>XBMC.ActivateWindow(125)</onclick>
+        </control>
+
+        <control type="button" id="2">
+          <description>Audio Settings button</description>
+          <include>VideoOSDButtonDims</include>
+          <texturefocus>OSDAudioFO.png</texturefocus>
+          <texturenofocus>OSDAudioNF.png</texturenofocus>
+          <onclick>XBMC.ActivateWindow(124)</onclick>
+        </control>
+
+        <control type="button" id="3">
+          <description>Video Settings button</description>
+          <include>VideoOSDButtonDims</include>
+          <texturefocus>OSDVideoFO.png</texturefocus>
+          <texturenofocus>OSDVideoNF.png</texturenofocus>
+          <onclick>XBMC.ActivateWindow(123)</onclick>
+        </control>
+
+        <control type="button" id="4">
+          <description>dvd button</description>
+          <include>VideoOSDButtonDims</include>
+          <texturefocus>OSDDvdFO.png</texturefocus>
+          <texturenofocus>OSDDvdNF.png</texturenofocus>
+          <onclick>XBMC.PlayerControl(ShowVideoMenu)</onclick>
+          <visible>VideoPlayer.HasMenu</visible>
+        </control>
+
+        <control type="image" id="5">
+          <description>dvd button Fake</description>
+          <include>VideoOSDButtonDims</include>
+          <texture>OSDDvdNF.png</texture>
+          <colordiffuse>44FFFFFF</colordiffuse>
+          <visible>!VideoPlayer.HasMenu</visible>
+        </control>
+      </control>
+    </control>
+
+  </controls>
+</window>

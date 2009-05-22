@@ -1,0 +1,30 @@
+<window id="107">
+
+  <controls>
+
+    <control type="group">
+      <posx>490</posx>
+      <posy>-10</posy>
+
+      <control type="image">
+        <description>Panel background</description>
+        <width>800</width>
+        <height>72</height>
+        <include>OverlayDarkArea</include>
+      </control>
+
+      <control type="label" id="401">
+        <description>Caption</description>
+        <posy>14</posy>
+        <include>KaiDialogText</include>
+      </control>
+
+      <control type="label" id="402">
+        <description>Description</description>
+        <posy>44</posy>
+        <include>KaiDialogText</include>
+      </control>
+    </control>
+
+  </controls>
+</window>
