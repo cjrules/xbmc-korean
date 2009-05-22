@@ -1,18 +1,15 @@
 ﻿<window id="101">
 <defaultcontrol always="true">10</defaultcontrol>
 <allowoverlay>no</allowoverlay>
-  
-<coordinates>
-	<system>1</system>
-	<posx>208</posx>
-	<posy>180</posy>
-</coordinates>
 
 <include>DefaultFade</include>
   
 <controls>
 
   <control type="group">
+    <posx>208</posx>
+    <posy>180</posy>
+    <visible>!Skin.HasSetting(SmallScan)</visible>
     <include>OptionBack1-5</include>
     <control type="image">
       <description>Header Back</description>
@@ -94,6 +91,23 @@
       <ondown>-</ondown>
       <onleft>10</onleft>
       <onright>10</onright>
+    </control>
+  </control>
+
+  <control type="group">
+    <posx>250</posx>
+    <posy>20</posy>
+    <visible>Skin.HasSetting(SmallScan)</visible>
+    <include>MediaScanBackSmall</include>
+    <control type="label">
+      <description>Header Label</description>
+      <posx>5</posx>
+      <width>210</width>
+      <height>30</height>
+      <align>center</align>
+      <label>$LOCALIZE[20186]...</label>
+      <font>18BdFont</font>
+      <textcolor>FocusedTextColor</textcolor>
     </control>
   </control>
   

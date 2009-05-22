@@ -9,21 +9,19 @@
   <string id="31005">Seasons</string>
 	
 	<string id="31010">Welcome</string>
-	<string id="31011">Thank you for choosing [COLOR=FocusedTextColor]XBMC Connected[/COLOR].[CR]Latest XBMC release is always recommended.</string>
-	<string id="31012">Be sure to visit Skin Options under Settings.[CR]Settings can be viewed by pressing right on the home page.</string>
-	<string id="31013">XBMC Connected</string>
+	<string id="31011">Thank you for choosing</string>
+  <string id="31012">XBMC Connected</string>
+  <string id="31013">The latest XBMC release is always recommended</string>
+  <string id="31014">Be sure to visit Skin Settings under Settings</string>
+  <string id="31015">Settings can be viewed by pressing right on the home page</string>
 
-  <string id="31019">Wrap</string>
 	<string id="31020">Options</string>
 	<string id="31021">Wide</string>
-  <string id="31022">Fanart</string>
-  <string id="31023">Tilted</string>
-  <string id="31024">Loaded Profile</string>
-  <string id="31025">Profile Settings</string>
-  <string id="31026">H:</string>
-  <string id="31027">L:</string>
-  <string id="31028">Current Conditions</string>
-  <string id="31029">Outlook:</string>
+  <string id="31022">Tilted</string>
+  <string id="31023">Loaded Profile</string>
+  <string id="31024">Profile Settings</string>
+  <string id="31025">Outlook</string>
+  <string id="31026">Wrap</string>
 
   <string id="31030">Paused</string>
   <string id="31031">Rewinding</string>
@@ -38,50 +36,113 @@
   <string id="31046">Play</string>
   <string id="31047">Volume Muted</string>
 
-  <string id="31501">Backgrounds</string>
-  <string id="31502">Enable</string>
-	<string id="31503">Menu Animation</string>
-	<string id="31504">Reload Skin</string>
-	<string id="31505">Reset Skin Settings</string>
-	<string id="31506"></string>
-	<string id="31507"></string>
-	<string id="31508">Selection Images</string>
-	<string id="31509">Media Flags</string>
-  <string id="31510">View</string>
-  <string id="31511">Sort Labels</string>
-  <string id="31512">Reset</string>
-  <string id="31513">Info</string>
-  <string id="31514">Conditions</string>
-  <string id="31515">Full Background Photo</string>
-  <string id="31516">Full Background Video</string>
-  <string id="31517">Full Background Visualisation</string>
-  <string id="31518">Time In Now Playing Info</string>
-  <string id="31519">Views</string>
-  <string id="31520">Scroll Bars In Dialogs</string>
-	<string id="31521">Scroll Bars In Windows</string>
-	<string id="31522">Weather Script</string>
-	<string id="31523">Set Script Path</string>
-	<string id="31524">Custom Background</string>
-	<string id="31525">Reset Background To</string>
-  <string id="31526">Extras</string>
-  <string id="31527">Set Script Label</string>
-  <string id="31528">Set Videos Image Folder</string>
-  <string id="31529">Set Music Image Folder</string>
-  <string id="31530">Set Photos Image Folder</string>
-  <string id="31531">Small Scan Dialogs</string>
-  <string id="31532">Diffuse</string>
-  <string id="31533">Background</string>
-  <string id="31534">Color</string>
+  <string id="31501">Background</string>
+  <string id="31502">Views</string>
+  <string id="31503">Extras</string>
+  <string id="31504">Enable</string>
+  <string id="31505">Current Weather Conditions</string>
+  <string id="31506">Menu Animation</string>
+  <string id="31507">Custom Selection Images</string>
+  <string id="31508">Set Videos Image Folder</string>
+  <string id="31509">Set Music Image Folder</string>
+  <string id="31510">Set Photos Image Folder</string>
+  <string id="31511">Reset</string>
+  <string id="31512">Full Background Video</string>
+  <string id="31513">Fanart</string>
+  <string id="31514">Diffuse</string>
+  <string id="31515">Full Background Visualisation</string>
+  <string id="31516">Full Background Photo</string>
+  <string id="31517">Weather Script</string>
+  <string id="31518">Set Script Label</string>
+  <string id="31519">Set Script Path</string>
+  <string id="31520">Set Fanart Path</string>
+  <string id="31521">Background Color</string>
+  <string id="31522">Custom Background</string>
+  <string id="31523">Set Background Image</string>
+  <string id="31524">Set Background Folder</string>
+  <string id="31525">Sort Labels</string>
+  <string id="31526">Media Flags</string>
+  <string id="31527">View</string>
+  <string id="31528">Info</string>
+  <string id="31529">Scroll Bars In Dialogs</string>
+  <string id="31530">Scroll Bars In Windows</string>
+  <string id="31531">Time In Now Playing Info</string>
+  <string id="31532">Small Scan Dialogs</string>
+  <string id="31533">Reset Skin Settings</string>
+  <string id="31534">Reset this skin to default</string>
+  <string id="31535">Are you sure</string>
 
-  <string id="31540">Configure Video settings, Including:[CR][CR]- File Stacking[CR]- Library Options[CR]- Screen Calibration[CR]- Player Options[CR]- Subtitle Format</string>
-  <string id="31541">Configure Music settings, Including:[CR][CR]- Visualisations[CR]- Library Options[CR]- Player Options[CR]- Last.FM[CR]- CD Ripping[CR]- Karaoke</string>
-  <string id="31542">Configure Photo settings, Including:[CR][CR]- File Options[CR]- SlideShow</string>
-  <string id="31543">Configure Service settings, Including:[CR][CR]- Video Modes[CR]- Trainer Options</string>
-  <string id="31544">Configure Weather settings, Including:[CR][CR]- Cities[CR]- Regions[CR]- Zip Codes</string>
-  <string id="31545">Configure Network settings, Including:[CR][CR]- IP Address &amp; HTTP Proxy[CR]- FTP &amp; Web Server Settings[CR]- Autodetect System[CR]- SMB Client [CR]- uPnP Settings</string>
-  <string id="31546">Configure System settings, Including:[CR][CR]- Debug Logging[CR]- LED Colors[CR]- LCD Settings[CR]- Autorun[CR]- Harddisk Management[CR]- Cache Memory[CR]- Video &amp; Audio Hardware[CR]- Master Lock</string>
-  <string id="31547">Configure Display settings, Including:[CR][CR]- Skin Selection[CR]- RSS Options[CR]- Region Selection[CR]- Date &amp; Time[CR]- Screen Resolution[CR]- Screensaver Options</string>
-  <string id="31548">Configure Profiles, Including:[CR][CR]- Creating Profiles[CR]- Deleting Profiles[CR]- User Settings[CR]- Profile Locks</string>
-  <string id="31549">View System Information, Including:[CR][CR]- Storage[CR]- Hardware[CR]- Network[CR]- Video[CR]- XBMC Credits</string>
-  <string id="31550">Configure Skin settings, Including:[CR][CR]- Home Options[CR]- Media View Settings[CR]- Background Options[CR]- Hide/Show Scrollbars[CR]- Reset Skin Settings</string>
+  <string id="31600">Configure Video Settings</string>
+  <string id="31601">File Stacking</string>
+  <string id="31602">Library Options</string>
+  <string id="31603">Screen Calibration</string>
+  <string id="31604">Player Options</string>
+  <string id="31605">Subtitle Format</string>
+
+  <string id="31610">Configure Music Settings</string>
+  <string id="31611">Visualisations</string>
+  <string id="31612">Library Options</string>
+  <string id="31613">Player Options</string>
+  <string id="31614">Last.FM</string>
+  <string id="31615">CD Ripping</string>
+  <string id="31616">Karaoke</string>
+
+  <string id="31620">Configure Photo Settings</string>
+  <string id="31621">File Options</string>
+  <string id="31622">SlideShow</string>
+  
+  <string id="31630">Configure Service Settings</string>
+  <string id="31631">Video Modes</string>
+  <string id="31632">Trainer Options</string>
+  
+  <string id="31640">Configure Weather Settings</string>
+  <string id="31641">Cities</string>
+  <string id="31642">Regions</string>
+  <string id="31643">Zip Codes</string>
+  
+  <string id="31650">Configure Network Settings</string>
+  <string id="31651">IP Address &amp; HTTP Proxy</string>
+  <string id="31652">FTP &amp; Web Server Settings</string>
+  <string id="31653">Autodetect System</string>
+  <string id="31654">SMB Client</string>
+  <string id="31655">uPnP Settings</string>
+  
+  <string id="31660">Configure System Settings</string>
+  <string id="31661">Debug Logging</string>
+  <string id="31662">LED Colors</string>
+  <string id="31663">LCD Settings</string>
+  <string id="31664">Autorun</string>
+  <string id="31665">Harddisk Management</string>
+  <string id="31666">Cache Memory</string>
+  <string id="31667">Video &amp; Audio Hardware</string>
+  <string id="31668">Master Lock</string>
+
+  <string id="31670">Configure Appearance Settings</string>
+  <string id="31671">Skin Selection</string>
+  <string id="31672">RSS Options</string>
+  <string id="31673">Region Selection</string>
+  <string id="31674">Date &amp; Time</string>
+  <string id="31675">Screen Resolution</string>
+  <string id="31676">Screensaver Options</string>
+
+  <string id="31680">Configure Profile Settings</string>
+  <string id="31681">Creating Profiles</string>
+  <string id="31682">Deleting Profiles</string>
+  <string id="31683">User Settings</string>
+  <string id="31684">Profile Locks</string>
+  
+  <string id="31690">View System Information</string>
+  <string id="31691">Storage</string>
+  <string id="31692">Hardware</string>
+  <string id="31693">Network</string>
+  <string id="31694">Video</string>
+  <string id="31695">XBMC Credits</string>
+  
+  <string id="31700">Configure Skin Settings</string>
+  <string id="31701">Home Options</string>
+  <string id="31702">Media View Settings</string>
+  <string id="31703">Background Options</string>
+  <string id="31704">Hide &amp; Show Scrollbars</string>
+  <string id="31705">Reset Skin Settings</string>
+
 </strings>

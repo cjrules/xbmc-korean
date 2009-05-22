@@ -306,7 +306,7 @@
 		</control>
 		<control type="image">
 			<posx>-60</posx>
-			<posy>110</posy>
+			<posy>112</posy>
 			<width>-</width>
 			<height>20</height>
 			<align>left</align>

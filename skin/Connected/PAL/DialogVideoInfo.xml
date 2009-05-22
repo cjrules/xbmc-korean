@@ -236,7 +236,7 @@
 		</control>
 		<control type="image">
       <posx>StarRatingposx</posx>
-			<posy>200</posy>
+			<posy>202</posy>
 			<width>-</width>
 			<height>20</height>
 			<align>left</align>
@@ -272,11 +272,11 @@
     </control>
 	</control>
 
-<!-- TV Show Posters Labels -->
+<!-- TV Show Labels -->
   <control type="group">
     <posx>10</posx>
     <posy>10</posy>
-    <visible>Container.Content(tvshows) + Skin.HasSetting(TVShowsPosters)</visible>
+    <visible>Container.Content(tvshows)</visible>
     <control type="label">
       <description>Title label</description>
       <posx>0</posx>
@@ -374,7 +374,7 @@
   <control type="group">
     <posx>145</posx>
     <posy>10</posy>
-    <visible>Container.Content(tvshows) + Skin.HasSetting(TVShowsPosters)</visible>
+    <visible>Container.Content(tvshows)</visible>
     <control type="label">
       <description>First Aired Value</description>
       <posx>0</posx>
@@ -402,56 +402,6 @@
       <font>20BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
     </control>
-    <control type="image">
-      <posx>35</posx>
-      <posy>80</posy>
-      <width>25</width>
-      <height>25</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <texture>OverlayWatched.png</texture>
-      <aspectratio>keep</aspectratio>
-      <visible>!IsEmpty(listitem.episode)</visible>
-    </control>
-    <control type="label">
-      <description>Watched Value</description>
-      <posx>60</posx>
-      <posy>75</posy>
-      <width>520</width>
-      <height>30</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <label>[COLOR=FocusedTextColor]$INFO[ListItem.Property(WatchedEpisodes)][/COLOR]</label>
-      <scroll>true</scroll>
-      <font>20BdFont</font>
-      <textcolor>DefaultTextColor</textcolor>
-      <visible>!IsEmpty(listitem.episode)</visible>
-    </control>
-    <control type="image">
-      <posx>95</posx>
-      <posy>80</posy>
-      <width>25</width>
-      <height>25</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <texture>OverlayUnWatched.png</texture>
-      <aspectratio>keep</aspectratio>
-      <visible>!IsEmpty(listitem.episode)</visible>
-    </control>
-    <control type="label">
-      <description>Unwatched Value</description>
-      <posx>120</posx>
-      <posy>75</posy>
-      <width>520</width>
-      <height>30</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <label>[COLOR=FocusedTextColor]$INFO[ListItem.Property(UnWatchedEpisodes)][/COLOR]</label>
-      <scroll>true</scroll>
-      <font>20BdFont</font>
-      <textcolor>DefaultTextColor</textcolor>
-      <visible>!IsEmpty(listitem.episode)</visible>
-    </control>
     <control type="label">
       <description>Episodes Value</description>
       <posx>0</posx>
@@ -465,8 +415,7 @@
       <font>20BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>IsEmpty(listitem.episode)</visible>
-    </control>
-    
+    </control>  
     <control type="label">
       <description>Genre Value</description>
       <posx>0</posx>
@@ -495,7 +444,7 @@
     </control>
     <control type="image">
       <posx>StarRatingposx</posx>
-      <posy>140</posy>
+      <posy>142</posy>
       <width>-</width>
       <height>20</height>
       <align>left</align>
@@ -512,190 +461,6 @@
       <align>left</align>
       <aligny>center</aligny>
       <label fallback="161">$INFO[listitem.FilenameAndPath]</label>
-      <scroll>true</scroll>
-      <font>20BdFont</font>
-      <textcolor>DefaultTextColor</textcolor>
-    </control>
-  </control>
-
-<!-- Tv Shows No Posters Labels -->
-  <control type="group">
-    <posx>10</posx>
-    <posy>10</posy>
-    <visible>Container.Content(tvshows) + !Skin.HasSetting(TVShowsPosters)</visible>
-    <control type="label">
-      <description>Title label</description>
-      <posx>0</posx>
-      <posy>0</posy>
-      <width>650</width>
-      <height>40</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <label fallback="161">$INFO[ListItem.Title]</label>
-      <scroll>true</scroll>
-      <font>40BdFont</font>
-      <textcolor>FocusedTextColor</textcolor>
-    </control>
-
-    <control type="label">
-      <description>First Aired</description>
-      <posx>0</posx>
-      <posy>165</posy>
-      <width>125</width>
-      <height>30</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <label>$LOCALIZE[20416]:</label>
-      <scroll>true</scroll>
-      <font>20BdFont</font>
-      <textcolor>FocusedTextColor</textcolor>
-    </control>
-    <control type="label">
-      <description>Episodes</description>
-      <posx>0</posx>
-      <posy>195</posy>
-      <width>125</width>
-      <height>30</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <label>$LOCALIZE[20360]:</label>
-      <scroll>true</scroll>
-      <font>20BdFont</font>
-      <textcolor>FocusedTextColor</textcolor>
-    </control>
-    <control type="label">
-      <description>Genre</description>
-      <posx>0</posx>
-      <posy>225</posy>
-      <width>125</width>
-      <height>30</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <label>$LOCALIZE[515]:</label>
-      <scroll>true</scroll>
-      <font>20BdFont</font>
-      <textcolor>FocusedTextColor</textcolor>
-    </control>
-    
-    <control type="image">
-      <description>Media icon</description>
-      <posx>0</posx>
-      <posy>50</posy>
-      <width>660</width>
-      <height>110</height>
-      <info>ListItem.Icon</info>
-      <aspectratio align="left" aligny="top">keep</aspectratio>
-      <bordertexture border="14">ButtonNF.png</bordertexture>
-      <bordersize>5</bordersize>
-    </control>
-  </control>
-
-<!-- TV Shows No Posters Values -->
-  <control type="group">
-    <posx>145</posx>
-    <posy>10</posy>
-    <visible>Container.Content(tvshows) + !Skin.HasSetting(TVShowsPosters)</visible>
-    <control type="label" id="24">
-      <description>First Aired</description>
-      <posx>0</posx>
-      <posy>165</posy>
-      <width>340</width>
-      <height>30</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <label fallback="161">$INFO[ListItem.FirstAired]</label>
-      <scroll>true</scroll>
-      <font>20BdFont</font>
-      <textcolor>DefaultTextColor</textcolor>
-    </control>
-    
-    <control type="label">
-      <description>Episodes Value</description>
-      <posx>0</posx>
-      <posy>195</posy>
-      <width>520</width>
-      <height>30</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <label fallback="161">$INFO[ListItem.Episode]</label>
-      <scroll>true</scroll>
-      <font>20BdFont</font>
-      <textcolor>DefaultTextColor</textcolor>
-    </control>
-    <control type="image">
-      <posx>35</posx>
-      <posy>200</posy>
-      <width>25</width>
-      <height>25</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <texture>OverlayWatched.png</texture>
-      <aspectratio>keep</aspectratio>
-      <visible>!IsEmpty(listitem.episode)</visible>
-    </control>
-    <control type="label">
-      <description>Watched Value</description>
-      <posx>60</posx>
-      <posy>195</posy>
-      <width>520</width>
-      <height>30</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <label>[COLOR=FocusedTextColor]$INFO[ListItem.Property(WatchedEpisodes)][/COLOR]</label>
-      <scroll>true</scroll>
-      <font>20BdFont</font>
-      <textcolor>DefaultTextColor</textcolor>
-      <visible>!IsEmpty(listitem.episode)</visible>
-    </control>
-    <control type="image">
-      <posx>95</posx>
-      <posy>200</posy>
-      <width>25</width>
-      <height>25</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <texture>OverlayUnWatched.png</texture>
-      <aspectratio>keep</aspectratio>
-      <visible>!IsEmpty(listitem.episode)</visible>
-    </control>
-    <control type="label">
-      <description>Unwatched Value</description>
-      <posx>120</posx>
-      <posy>195</posy>
-      <width>520</width>
-      <height>30</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <label>[COLOR=FocusedTextColor]$INFO[ListItem.Property(UnWatchedEpisodes)][/COLOR]</label>
-      <scroll>true</scroll>
-      <font>20BdFont</font>
-      <textcolor>DefaultTextColor</textcolor>
-      <visible>!IsEmpty(listitem.episode)</visible>
-    </control>
-    <control type="label">
-      <description>Episodes Value</description>
-      <posx>0</posx>
-      <posy>195</posy>
-      <width>520</width>
-      <height>30</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <label>$LOCALIZE[161]</label>
-      <scroll>true</scroll>
-      <font>20BdFont</font>
-      <textcolor>DefaultTextColor</textcolor>
-      <visible>IsEmpty(listitem.episode)</visible>
-    </control>
-    
-    <control type="label">
-      <description>Genre</description>
-      <posx>0</posx>
-      <posy>225</posy>
-      <width>340</width>
-      <height>30</height>
-      <align>left</align>
-      <aligny>center</aligny>
-      <label fallback="161">$INFO[ListItem.Genre]</label>
       <scroll>true</scroll>
       <font>20BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
@@ -1202,7 +967,6 @@
   <control type="group">
     <posx>10</posx>
     <posy>10</posy>
-    <animation effect="slide" start="0,0" end="0,-30" time="0" condition="[container.content(tvshows) + !Skin.HasSetting(TVShowsPosters)] | container.content(seasons)">conditional</animation>
     <control type="label">
       <description>Plot label</description>
       <posx>0</posx>

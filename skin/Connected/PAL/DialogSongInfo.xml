@@ -212,7 +212,7 @@
 		</control>
 		<control type="image">
 			<posx>-60</posx>
-			<posy>170</posy>
+			<posy>172</posy>
 			<width>-</width>
 			<height>20</height>
 			<align>left</align>
@@ -236,7 +236,7 @@
 	</control>
   
 	<control type="group">
-		<posx>250</posx>
+		<posx>240</posx>
 		<posy>182</posy>
 		<control type="button" id="14">
 			<description>Decrease Rating button</description>

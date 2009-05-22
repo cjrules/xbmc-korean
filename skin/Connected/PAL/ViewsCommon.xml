@@ -1193,7 +1193,7 @@
       <onright>55</onright>
       <onup>9000</onup>
       <ondown>60</ondown>
-      <viewtype label="$LOCALIZE[31019]">wraplist</viewtype>
+      <viewtype label="$LOCALIZE[31026]">wraplist</viewtype>
       <scrolltime>200</scrolltime>
       <pagecontrol>60</pagecontrol>
       <focusposition>3</focusposition>
@@ -1232,176 +1232,10 @@
       </focusedlayout>
     </control>
 
-    <!-- Video Files Info Labels -->
-    <control type="group">
-      <posx>30</posx>
-      <posy>230</posy>
-      <animation effect="fade" time="300" end="100">Visible</animation>
-      <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + !Skin.HasSetting(WrapInfo) + [Window.IsActive(videofiles) | Window.IsActive(videoplaylist)]</visible>
-      <control type="label">
-        <description>Title label</description>
-        <posx>0</posx>
-        <posy>0</posy>
-        <width>615</width>
-        <height>40</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label>$INFO[ListItem.Label]</label>
-        <scroll>true</scroll>
-        <font>40BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-      </control>
-      <control type="label">
-        <description>Date Added label</description>
-        <posx>0</posx>
-        <posy>45</posy>
-        <width>125</width>
-        <height>30</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label>$LOCALIZE[570]:</label>
-        <scroll>true</scroll>
-        <font>20BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-      </control>
-      <control type="label">
-        <description>Size label</description>
-        <posx>0</posx>
-        <posy>75</posy>
-        <width>125</width>
-        <height>30</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label>$LOCALIZE[21802]:</label>
-        <scroll>true</scroll>
-        <font>20BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-      </control>
-    </control>
-
-    <!-- Video Files Info Values -->
-    <control type="group">
-      <posx>165</posx>
-      <posy>230</posy>
-      <animation effect="fade" time="300" end="100">Visible</animation>
-      <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + !Skin.HasSetting(WrapInfo) + [Window.IsActive(videofiles) | Window.IsActive(videoplaylist)]</visible>
-      <control type="label">
-        <description>Date Added label</description>
-        <posx>0</posx>
-        <posy>45</posy>
-        <width>125</width>
-        <height>30</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label fallback="161">$INFO[ListItem.Date]</label>
-        <scroll>true</scroll>
-        <font>20BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-      </control>
-      <control type="label">
-        <description>Size label</description>
-        <posx>0</posx>
-        <posy>75</posy>
-        <width>125</width>
-        <height>30</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label fallback="161">$INFO[ListItem.Size]</label>
-        <scroll>true</scroll>
-        <font>20BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-      </control>
-    </control>
-
-    <!-- Music Files Info Labels -->
-    <control type="group">
-      <posx>30</posx>
-      <posy>230</posy>
-      <animation effect="fade" time="300" end="100">Visible</animation>
-      <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + !Skin.HasSetting(WrapInfo) + [Window.IsActive(musicfiles) | Window.IsActive(musicplaylist)]</visible>
-      <control type="label">
-        <description>Title label</description>
-        <posx>0</posx>
-        <posy>0</posy>
-        <width>615</width>
-        <height>40</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label>$INFO[ListItem.Label]</label>
-        <scroll>true</scroll>
-        <font>40BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-      </control>
-      <control type="label">
-        <description>Date Added label</description>
-        <posx>0</posx>
-        <posy>45</posy>
-        <width>125</width>
-        <height>30</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label>$LOCALIZE[570]:</label>
-        <scroll>true</scroll>
-        <font>20BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-      </control>
-      <control type="label">
-        <description>Size label</description>
-        <posx>0</posx>
-        <posy>75</posy>
-        <width>125</width>
-        <height>30</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label>$LOCALIZE[21802]:</label>
-        <scroll>true</scroll>
-        <font>20BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-      </control>
-    </control>
-    
-    <!-- Music Files Info Values -->
-    <control type="group">
-      <posx>165</posx>
-      <posy>230</posy>
-      <animation effect="fade" time="300" end="100">Visible</animation>
-      <animation effect="fade" time="300" end="100">WindowOpen</animation>
-      <visible>Control.IsVisible(55) + !Skin.HasSetting(WrapInfo) + [Window.IsActive(musicfiles) | Window.IsActive(musicplaylist)]</visible>
-      <control type="label">
-        <description>Date Added label</description>
-        <posx>0</posx>
-        <posy>45</posy>
-        <width>125</width>
-        <height>30</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label fallback="161">$INFO[ListItem.Date]</label>
-        <scroll>true</scroll>
-        <font>20BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-      </control>
-      <control type="label">
-        <description>Size label</description>
-        <posx>0</posx>
-        <posy>75</posy>
-        <width>125</width>
-        <height>30</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label fallback="161">$INFO[ListItem.Size]</label>
-        <scroll>true</scroll>
-        <font>20BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-      </control>
-    </control>
-
     <!-- Services Info Labels -->
     <control type="group">
       <posx>30</posx>
-      <posy>230</posy>
+      <posy>210</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Window.IsActive(programs) + !Skin.HasSetting(WrapInfo)</visible>
@@ -1449,7 +1283,7 @@
     <!-- Services Info Values -->
     <control type="group">
       <posx>165</posx>
-      <posy>230</posy>
+      <posy>210</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Window.IsActive(programs) + !Skin.HasSetting(WrapInfo)</visible>
@@ -1484,7 +1318,7 @@
     <!-- Plug-ins Info Labels -->
     <control type="group">
       <posx>30</posx>
-      <posy>230</posy>
+      <posy>210</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Window.IsActive(scripts) + !Skin.HasSetting(WrapInfo)</visible>
@@ -1532,7 +1366,7 @@
     <!-- Plug-ins Info Labels -->
     <control type="group">
       <posx>165</posx>
-      <posy>230</posy>
+      <posy>210</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Window.IsActive(scripts) + !Skin.HasSetting(WrapInfo)</visible>
@@ -1567,7 +1401,7 @@
     <!-- Photos Info Labels -->
     <control type="group">
       <posx>30</posx>
-      <posy>220</posy>
+      <posy>180</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Window.IsActive(2) + !Skin.HasSetting(WrapInfo)</visible>
@@ -1628,7 +1462,7 @@
     <!-- Photos Info Values -->
     <control type="group">
       <posx>165</posx>
-      <posy>220</posy>
+      <posy>180</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Window.IsActive(2) + !Skin.HasSetting(WrapInfo)</visible>
@@ -1670,6 +1504,89 @@
         <scroll>true</scroll>
         <font>20BdFont</font>
         <textcolor>DefaultTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Music Files Info Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>210</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + !Skin.HasSetting(WrapInfo) + [Window.IsActive(musicfiles) | Window.IsActive(musicplaylist)]</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>615</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$INFO[ListItem.Label]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Date Added label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[570]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Size label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[21802]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Music Files Info Values -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>210</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + !Skin.HasSetting(WrapInfo) + [Window.IsActive(musicfiles) | Window.IsActive(musicplaylist)]</visible>
+      <control type="label">
+        <description>Date Added label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Date]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Size label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Size]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
       </control>
     </control>
     
@@ -1797,19 +1714,6 @@
         <font>20BdFont</font>
         <textcolor>FocusedTextColor</textcolor>
       </control>
-      <control type="label">
-        <description>Years Active label</description>
-        <posx>0</posx>
-        <posy>285</posy>
-        <width>125</width>
-        <height>30</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label>$LOCALIZE[21898]:</label>
-        <scroll>true</scroll>
-        <font>20BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-      </control>
     </control>
 
     <!-- Artists Info Values -->
@@ -1923,25 +1827,12 @@
         <font>20BdFont</font>
         <textcolor>DefaultTextColor</textcolor>
       </control>
-      <control type="label">
-        <description>Years Active Value</description>
-        <posx>0</posx>
-        <posy>285</posy>
-        <width>520</width>
-        <height>30</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label fallback="161">$INFO[ListItem.Property(YearsActive)]</label>
-        <scroll>true</scroll>
-        <font>20BdFont</font>
-        <textcolor>DefaultTextColor</textcolor>
-      </control>
     </control>
 
     <!-- Albums Info Labels -->
     <control type="group">
       <posx>30</posx>
-      <posy>150</posy>
+      <posy>120</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Container.Content(Albums) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(WrapInfo)</visible>
@@ -2028,7 +1919,7 @@
     <!-- Albums Info Values -->
     <control type="group">
       <posx>165</posx>
-      <posy>150</posy>
+      <posy>120</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Container.Content(Albums) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(WrapInfo)</visible>
@@ -2102,7 +1993,7 @@
     <!-- Songs Info Labels -->
     <control type="group">
       <posx>30</posx>
-      <posy>150</posy>
+      <posy>120</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Container.Content(Songs) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(WrapInfo)</visible>
@@ -2189,7 +2080,7 @@
     <!-- Songs Info Values -->
     <control type="group">
       <posx>165</posx>
-      <posy>150</posy>
+      <posy>120</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Container.Content(songs) + Window.IsVisible(musiclibrary) + !Skin.HasSetting(WrapInfo)</visible>
@@ -2257,6 +2148,89 @@
         <scroll>true</scroll>
         <font>20BdFont</font>
         <textcolor>DefaultTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Video Files Info Labels -->
+    <control type="group">
+      <posx>30</posx>
+      <posy>210</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + !Skin.HasSetting(WrapInfo) + [Window.IsActive(videofiles) | Window.IsActive(videoplaylist)]</visible>
+      <control type="label">
+        <description>Title label</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>615</width>
+        <height>40</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$INFO[ListItem.Label]</label>
+        <scroll>true</scroll>
+        <font>40BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Date Added label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[570]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Size label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[21802]:</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+    </control>
+
+    <!-- Video Files Info Values -->
+    <control type="group">
+      <posx>165</posx>
+      <posy>210</posy>
+      <animation effect="fade" time="300" end="100">Visible</animation>
+      <animation effect="fade" time="300" end="100">WindowOpen</animation>
+      <visible>Control.IsVisible(55) + !Skin.HasSetting(WrapInfo) + [Window.IsActive(videofiles) | Window.IsActive(videoplaylist)]</visible>
+      <control type="label">
+        <description>Date Added label</description>
+        <posx>0</posx>
+        <posy>45</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Date]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <description>Size label</description>
+        <posx>0</posx>
+        <posy>75</posy>
+        <width>125</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label fallback="161">$INFO[ListItem.Size]</label>
+        <scroll>true</scroll>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
       </control>
     </control>
     
@@ -2475,7 +2449,7 @@
       </control>
       <control type="image">
         <posx>StarRatingposx</posx>
-        <posy>170</posy>
+        <posy>172</posy>
         <width>-</width>
         <height>20</height>
         <align>left</align>
@@ -2528,7 +2502,7 @@
     <!-- TV Shows Info Labels -->
     <control type="group">
       <posx>30</posx>
-      <posy>60</posy>
+      <posy>45</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Container.Content(tvshows) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
@@ -2634,7 +2608,7 @@
     <!-- TV Shows Info Values -->
     <control type="group">
       <posx>165</posx>
-      <posy>60</posy>
+      <posy>45</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Container.Content(tvshows) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
@@ -2722,7 +2696,7 @@
       </control>
       <control type="image">
         <posx>StarRatingposx</posx>
-        <posy>140</posy>
+        <posy>142</posy>
         <width>-</width>
         <height>20</height>
         <align>left</align>
@@ -2749,7 +2723,7 @@
     <!-- Seasons Info Labels -->
     <control type="group">
       <posx>30</posx>
-      <posy>270</posy>
+      <posy>240</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Container.Content(Seasons) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
@@ -2784,7 +2758,7 @@
     <!-- Seasons Info Values -->
     <control type="group">
       <posx>165</posx>
-      <posy>270</posy>
+      <posy>240</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Container.Content(Seasons) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
@@ -2806,7 +2780,7 @@
     <!-- Episodes Labels -->
     <control type="group">
       <posx>30</posx>
-      <posy>100</posy>
+      <posy>70</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Container.Content(episodes) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
@@ -2899,7 +2873,7 @@
     <!-- Episode Values -->
     <control type="group">
       <posx>165</posx>
-      <posy>100</posy>
+      <posy>70</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Container.Content(episodes) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
@@ -2961,7 +2935,7 @@
     <!-- Music Videos Info Labels -->
     <control type="group">
       <posx>30</posx>
-      <posy>90</posy>
+      <posy>60</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Container.Content(musicvideos) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
@@ -3074,7 +3048,7 @@
     <!-- Music Videos Info Values -->
     <control type="group">
       <posx>165</posx>
-      <posy>90</posy>
+      <posy>60</posy>
       <animation effect="fade" time="300" end="100">Visible</animation>
       <animation effect="fade" time="300" end="100">WindowOpen</animation>
       <visible>Control.IsVisible(55) + Container.Content(musicvideos) + Window.IsVisible(videolibrary) + !Skin.HasSetting(WrapInfo)</visible>
@@ -3186,7 +3160,7 @@
       <orientation>horizontal</orientation>
       <focusposition>1</focusposition>
       <scrolltime>200</scrolltime>
-      <viewtype label="$LOCALIZE[31023]">wraplist</viewtype>
+      <viewtype label="$LOCALIZE[31022]">wraplist</viewtype>
       <itemlayout height="160" width="160">
         <control type="image">
           <posx>0</posx>

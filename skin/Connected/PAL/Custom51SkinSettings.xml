@@ -63,7 +63,7 @@
 			<posx>10</posx>
 			<posy>55</posy>
       <width>140</width>
-      <height>345</height>
+      <height>380</height>
       <itemgap>5</itemgap>
 			<onup>9000</onup>
 			<ondown>9000</ondown>
@@ -121,13 +121,13 @@
       <control type="button" id="30">
         <description>Views</description>
         <width>140</width>
-        <label>$LOCALIZE[31519]</label>
+        <label>$LOCALIZE[31502]</label>
         <font>18BdFont</font>
       </control>
       <control type="button" id="31">
         <description>Extras</description>
         <width>140</width>
-        <label>$LOCALIZE[31526]</label>
+        <label>$LOCALIZE[31503]</label>
         <font>18BdFont</font>
       </control>
 		</control>
@@ -149,7 +149,7 @@
       <control type="radiobutton" id="42">
         <description>DVD-Rom Visible On Home Menu</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[446]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[446]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(HomeDVD)</selected>
         <onclick>Skin.ToggleSetting(HomeDVD)</onclick>
@@ -157,7 +157,7 @@
       <control type="radiobutton" id="43">
         <description>Videos Visible On Home Menu</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[3]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[3]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(HomeVideos)</selected>
         <onclick>Skin.ToggleSetting(HomeVideos)</onclick>
@@ -165,7 +165,7 @@
       <control type="radiobutton" id="44">
         <description>Videos Submenu</description>
         <width>490</width>
-        <label> - $LOCALIZE[31502] $LOCALIZE[3] $LOCALIZE[1034]</label>
+        <label> - $LOCALIZE[31504] $LOCALIZE[3] $LOCALIZE[1034]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(HomeVideosSubmenu)</selected>
         <onclick>Skin.ToggleSetting(HomeVideosSubmenu)</onclick>
@@ -174,7 +174,7 @@
       <control type="radiobutton" id="45">
         <description>Music Visible On Home Menu</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[2]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[2]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(HomeMusic)</selected>
         <onclick>Skin.ToggleSetting(HomeMusic)</onclick>
@@ -182,7 +182,7 @@
       <control type="radiobutton" id="46">
         <description>Music Submenu</description>
         <width>490</width>
-        <label> - $LOCALIZE[31502] $LOCALIZE[2] $LOCALIZE[1034]</label>
+        <label> - $LOCALIZE[31504] $LOCALIZE[2] $LOCALIZE[1034]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(HomeMusicSubmenu)</selected>
         <onclick>Skin.ToggleSetting(HomeMusicSubmenu)</onclick>
@@ -191,7 +191,7 @@
       <control type="radiobutton" id="47">
         <description>Photos Visible On Home Menu</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[1]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31000]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(HomePhotos)</selected>
         <onclick>Skin.ToggleSetting(HomePhotos)</onclick>
@@ -199,7 +199,7 @@
       <control type="radiobutton" id="48">
         <description>Plug-ins Visible On Home Menu</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31002]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31002]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(HomePlugins)</selected>
         <onclick>Skin.ToggleSetting(HomePlugins)</onclick>
@@ -207,7 +207,7 @@
       <control type="radiobutton" id="49">
         <description>Services Visible On Home Menu</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31001]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31001]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(HomeServices)</selected>
         <onclick>Skin.ToggleSetting(HomeServices)</onclick>
@@ -215,7 +215,7 @@
       <control type="radiobutton" id="50">
         <description>Services Submenu</description>
         <width>490</width>
-        <label> - $LOCALIZE[31502] $LOCALIZE[31001] $LOCALIZE[1034]</label>
+        <label> - $LOCALIZE[31504] $LOCALIZE[31001] $LOCALIZE[1034]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(HomeServicesSubmenu)</selected>
         <onclick>Skin.ToggleSetting(HomeServicesSubmenu)</onclick>
@@ -224,15 +224,15 @@
       <control type="radiobutton" id="51">
         <description>Weather Visible On Home Menu</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[8]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[8]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(HomeWeather)</selected>
         <onclick>Skin.ToggleSetting(HomeWeather)</onclick>
       </control>
       <control type="radiobutton" id="52">
-        <description>Weather Conditions</description>
+        <description>Current Weather Conditions</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[8] $LOCALIZE[31514]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31505]</label>
         <font>18BdFont</font>
         <selected>Skin.HasSetting(WeatherInfo)</selected>
         <onclick>Skin.ToggleSetting(WeatherInfo)</onclick>
@@ -240,7 +240,7 @@
       <control type="radiobutton" id="53">
         <description>Menu Animation</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31503]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31506]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(HomeMenuAnimation)</selected>
         <onclick>Skin.ToggleSetting(HomeMenuAnimation)</onclick>
@@ -248,7 +248,7 @@
       <control type="radiobutton" id="54">
         <description>Custom Home Selection Images</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[636] $LOCALIZE[31508]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31507]</label>
         <font>18BdFont</font>
         <selected>Skin.HasSetting(HomeSelectionImages)</selected>
         <onclick>Skin.ToggleSetting(HomeSelectionImages)</onclick>
@@ -257,7 +257,7 @@
         <description>Set Videos Image Folder</description>
         <width>490</width>
         <align>left</align>
-        <label> - $LOCALIZE[31528]</label>
+        <label> - $LOCALIZE[31508]</label>
         <label2>[COLOR=FocusedTextColor]$INFO[Skin.String(HomeVideosImages)][/COLOR]</label2>
         <font>18BdFont</font>
         <texturefocus>ButtonInputFo.png</texturefocus>
@@ -270,7 +270,7 @@
         <description>Set Music Image Folder</description>
         <width>490</width>
         <align>left</align>
-        <label> - $LOCALIZE[31529]</label>
+        <label> - $LOCALIZE[31509]</label>
         <label2>[COLOR=FocusedTextColor]$INFO[Skin.String(HomeMusicImages)][/COLOR]</label2>
         <font>18BdFont</font>
         <texturefocus>ButtonInputFo.png</texturefocus>
@@ -283,7 +283,7 @@
         <description>Set Photos Image Folder</description>
         <width>490</width>
         <align>left</align>
-        <label> - $LOCALIZE[31530]</label>
+        <label> - $LOCALIZE[31510]</label>
         <label2>[COLOR=FocusedTextColor]$INFO[Skin.String(HomePhotosImages)][/COLOR]</label2>
         <font>18BdFont</font>
         <texturefocus>ButtonInputFo.png</texturefocus>
@@ -296,7 +296,7 @@
         <description>Reset Selection Images</description>
         <width>490</width>
         <align>left</align>
-        <label> - $LOCALIZE[31512] $LOCALIZE[31508]</label>
+        <label> - $LOCALIZE[31511] $LOCALIZE[31507]</label>
         <font>18BdFont</font>
         <texturefocus>ButtonInputFo.png</texturefocus>
         <texturenofocus>ButtonInputNF.png</texturenofocus>
@@ -327,10 +327,27 @@
       <control type="radiobutton" id="62">
         <description>Background Video Enable</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31516]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31512]</label>
         <font>18BdFont</font>
         <selected>Skin.HasSetting(FullScreenVideoEnable)</selected>
         <onclick>Skin.ToggleSetting(FullScreenVideoEnable)</onclick>
+      </control>
+      <control type="radiobutton" id="63">
+        <description>Enable Video and Music Fanart</description>
+        <width>490</width>
+        <label>$LOCALIZE[31504] $LOCALIZE[157] $LOCALIZE[31513]</label>
+        <font>18BdFont</font>
+        <selected>!Skin.HasSetting(VideoFanart)</selected>
+        <onclick>Skin.ToggleSetting(VideoFanart)</onclick>
+      </control>
+      <control type="radiobutton" id="64">
+        <description>Enable Diffuse</description>
+        <width>490</width>
+        <label> - $LOCALIZE[31504] $LOCALIZE[31514]</label>
+        <font>18BdFont</font>
+        <visible>!Skin.HasSetting(VideoFanart)</visible>
+        <selected>!Skin.HasSetting(VideoFanartDiffuse)</selected>
+        <onclick>Skin.ToggleSetting(VideoFanartDiffuse)</onclick>
       </control>
     </control>
     
@@ -350,10 +367,27 @@
       <control type="radiobutton" id="82">
         <description>Background Visual Enable</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31517]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31515]</label>
         <font>18BdFont</font>
         <selected>Skin.HasSetting(FullScreenVisualEnable)</selected>
         <onclick>Skin.ToggleSetting(FullScreenVisualEnable)</onclick>
+      </control>
+      <control type="radiobutton" id="83">
+        <description>Enable Music Fanart</description>
+        <width>490</width>
+        <label>$LOCALIZE[31504] $LOCALIZE[2] $LOCALIZE[31513]</label>
+        <font>18BdFont</font>
+        <selected>!Skin.HasSetting(MusicFanart)</selected>
+        <onclick>Skin.ToggleSetting(MusicFanart)</onclick>
+      </control>
+      <control type="radiobutton" id="84">
+        <description>Enable Diffuse</description>
+        <width>490</width>
+        <label> - $LOCALIZE[31504] $LOCALIZE[31514]</label>
+        <font>18BdFont</font>
+        <visible>!Skin.HasSetting(MusicFanart)</visible>
+        <selected>!Skin.HasSetting(MusicFanartDiffuse)</selected>
+        <onclick>Skin.ToggleSetting(MusicFanartDiffuse)</onclick>
       </control>
 		</control>
 
@@ -370,16 +404,22 @@
       <onright>60</onright>
       <pagecontrol>60</pagecontrol>
       <visible>ControlGroup(9000).HasFocus(25)</visible>
-      <control type="label">
-        <description>No Settings</description>
+      <control type="radiobutton" id="102">
+        <description>Full Background Photo</description>
         <width>490</width>
-        <height>30</height>
-        <align>center</align>
-        <aligny>center</aligny>
-        <label>$LOCALIZE[106] $LOCALIZE[5]</label>
-        <scroll>true</scroll>
+        <label>$LOCALIZE[31504] $LOCALIZE[31516]</label>
         <font>18BdFont</font>
-        <textcolor>DefaultTextColor</textcolor>
+        <selected>Skin.HasSetting(PhotoBack)</selected>
+        <onclick>Skin.ToggleSetting(PhotoBack)</onclick>
+      </control>
+      <control type="radiobutton" id="103">
+        <description>Enable Diffuse</description>
+        <width>490</width>
+        <label> - $LOCALIZE[31504] $LOCALIZE[31514]</label>
+        <font>18BdFont</font>
+        <visible>Skin.HasSetting(PhotoBack)</visible>
+        <selected>!Skin.HasSetting(PhotoDiffuse)</selected>
+        <onclick>Skin.ToggleSetting(PhotoDiffuse)</onclick>
       </control>
     </control>
     
@@ -396,7 +436,7 @@
 			<onright>60</onright>
       <pagecontrol>60</pagecontrol>
 			<visible>ControlGroup(9000).HasFocus(26)</visible>
-      <control type="label">
+      <control type="label" id="122">
         <description>No Settings</description>
         <width>490</width>
         <height>30</height>
@@ -422,7 +462,7 @@
       <onright>60</onright>
       <pagecontrol>60</pagecontrol>
       <visible>ControlGroup(9000).HasFocus(27)</visible>
-      <control type="label">
+      <control type="label" id="142">
         <description>No Settings</description>
         <width>490</width>
         <height>30</height>
@@ -451,7 +491,7 @@
       <control type="radiobutton" id="162">
         <description>Weather Script Enable</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31522]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31517]</label>
         <font>18BdFont</font>
         <selected>Skin.HasSetting(WeatherScriptEnable)</selected>
         <onclick>Skin.ToggleSetting(WeatherScriptEnable)</onclick>
@@ -460,7 +500,7 @@
         <description>Weather Script Label Button</description>
         <width>490</width>
         <align>left</align>
-        <label> - $LOCALIZE[31527] $INFO[Skin.String(WeatherScript_Name)]</label>
+        <label> - $LOCALIZE[31518] $INFO[Skin.String(WeatherScript_Name)]</label>
         <font>18BdFont</font>
         <texturefocus>ButtonInputFo.png</texturefocus>
         <texturenofocus>ButtonInputNF.png</texturenofocus>
@@ -472,7 +512,7 @@
         <description>Weather Script Path Button</description>
         <width>490</width>
         <align>left</align>
-        <label> - $LOCALIZE[31523]</label>
+        <label> - $LOCALIZE[31519]</label>
         <label2>[COLOR=FocusedTextColor]$INFO[Skin.String(WeatherScript_Path)][/COLOR]</label2>
         <font>18BdFont</font>
         <texturefocus>ButtonInputFo.png</texturefocus>
@@ -483,20 +523,61 @@
         <visible>Skin.HasSetting(WeatherScriptEnable)</visible>
       </control>
       <control type="radiobutton" id="165">
-        <description>Weather Info Text</description>
+        <description>Enable Weather Fanart</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[8] $LOCALIZE[31513]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[8] $LOCALIZE[31513]</label>
         <font>18BdFont</font>
-        <selected>!Skin.HasSetting(WeatherInfo)</selected>
-        <onclick>Skin.ToggleSetting(WeatherInfo)</onclick>
+        <selected>Skin.HasSetting(WeatherFanartEnable)</selected>
+        <onclick>Skin.ToggleSetting(WeatherFanartEnable)</onclick>
       </control>
-      <control type="radiobutton" id="166">
-        <description>Weather Background</description>
+      <control type="button" id="166">
+        <description>Weather Fanart Path Button</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[8] $LOCALIZE[31533]</label>
+        <align>left</align>
+        <label> - $LOCALIZE[31520]</label>
+        <label2>[COLOR=FocusedTextColor]$INFO[Skin.String(WeatherFanartPath)][/COLOR]</label2>
         <font>18BdFont</font>
-        <selected>Skin.HasSetting(WeatherBack)</selected>
-        <onclick>Skin.ToggleSetting(WeatherBack)</onclick>
+        <texturefocus>ButtonInputFo.png</texturefocus>
+        <texturenofocus>ButtonInputNF.png</texturenofocus>
+        <textoffsetx>5</textoffsetx>
+        <scroll>true</scroll>
+        <onclick>Skin.SetPath(WeatherFanartPath)</onclick>
+        <visible>Skin.HasSetting(WeatherFanartEnable)</visible>
+      </control>
+      <control type="radiobutton" id="167">
+        <description>Enable Diffuse</description>
+        <width>490</width>
+        <label> - $LOCALIZE[31504] $LOCALIZE[31514]</label>
+        <font>18BdFont</font>
+        <selected>!Skin.HasSetting(WeatherDiffuse)</selected>
+        <onclick>Skin.ToggleSetting(WeatherDiffuse)</onclick>
+        <visible>Skin.String(WeatherFanartPath)</visible>
+      </control>
+      <control type="radiobutton" id="168">
+        <description>Enable Weather Background</description>
+        <width>490</width>
+        <label> - $LOCALIZE[31504] $LOCALIZE[31521]</label>
+        <font>18BdFont</font>
+        <selected>Skin.HasSetting(WeatherBackEnable)</selected>
+        <onclick>Skin.ToggleSetting(WeatherBackEnable)</onclick>
+        <visible>Skin.String(WeatherFanartPath)</visible>
+      </control>
+      <control type="button" id="169">
+        <description>Reset Fanart</description>
+        <width>490</width>
+        <align>left</align>
+        <label> - $LOCALIZE[31511] $LOCALIZE[31513]</label>
+        <font>18BdFont</font>
+        <texturefocus>ButtonInputFo.png</texturefocus>
+        <texturenofocus>ButtonInputNF.png</texturenofocus>
+        <textoffsetx>5</textoffsetx>
+        <scroll>true</scroll>
+        <onclick>Skin.Reset(WeatherFanartEnable)</onclick>
+        <onclick>Skin.Reset(WeatherFanartPath)</onclick>
+        <onclick>Skin.Reset(WeatherDiffuse)</onclick>
+        <onclick>Skin.Reset(WeatherBackEnable)</onclick>
+        <onclick>SetFocus(165)</onclick>
+        <visible>Skin.String(WeatherFanartPath)</visible>
       </control>
     </control>
 
@@ -589,7 +670,7 @@
       <height>30</height>
       <align>left</align>
       <aligny>center</aligny>
-      <label>$LOCALIZE[31533] $LOCALIZE[31534]</label>
+      <label>$LOCALIZE[31521]</label>
       <scroll>true</scroll>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
@@ -597,7 +678,7 @@
     </control>
     
     <control type="grouplist" id="9002">
-      <description>Backgrounds Control Area</description>
+      <description>Background Control Area</description>
       <posx>160</posx>
       <posy>90</posy>
       <width>490</width>
@@ -608,144 +689,71 @@
       <onleft>9000</onleft>
       <onright>60</onright>
       <pagecontrol>60</pagecontrol>
-      <visible>ControlGroup(9000).HasFocus(29)</visible> 
+      <visible>ControlGroup(9000).HasFocus(29)</visible>
       <control type="radiobutton" id="202">
-        <description>Custom Background</description>
+        <description>Enable Custom Background</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31524]</label>
-        <label2>[COLOR=FocusedTextColor]$INFO[Skin.String(CustomBackPath)][/COLOR]</label2>
+        <label>$LOCALIZE[31504] $LOCALIZE[31522]</label>
         <font>18BdFont</font>
-        <selected>Skin.String(CustomBackPath)</selected>
-        <onclick>Skin.SetImage(CustomBackPath)</onclick>
+        <selected>Skin.HasSetting(CustomBackEnable)</selected>
+        <onclick>Skin.ToggleSetting(CustomBackEnable)</onclick>
       </control>
-      <control type="radiobutton" id="203">
-        <description>Enable Diffuse</description>
-        <width>490</width>
-        <label> - $LOCALIZE[31502] $LOCALIZE[31532]</label>
-        <font>18BdFont</font>
-        <selected>!Skin.HasSetting(BackgroundDiffuse)</selected>
-        <onclick>Skin.ToggleSetting(BackgroundDiffuse)</onclick>
-        <visible>Skin.String(CustomBackPath)</visible>
-      </control>
-      <control type="button" id="204">
-        <description>Reset Custom Background</description>
+      <control type="button" id="203">
+        <description>Set Background Image Path</description>
         <width>490</width>
         <align>left</align>
-        <label> - $LOCALIZE[31525] $LOCALIZE[571]</label>
+        <label> - $LOCALIZE[31523]</label>
+        <label2>[COLOR=FocusedTextColor]$INFO[Skin.String(CustomBackImage)][/COLOR]</label2>
         <font>18BdFont</font>
         <texturefocus>ButtonInputFo.png</texturefocus>
         <texturenofocus>ButtonInputNF.png</texturenofocus>
         <textoffsetx>5</textoffsetx>
-        <onclick>Skin.Reset(CustomBackPath)</onclick>
-        <onclick>SetFocus(202)</onclick>
-        <visible>Skin.String(CustomBackPath)</visible>
-      </control>
-      <control type="radiobutton" id="205">
-        <description>Custom Background Folder</description>
+        <scroll>true</scroll>
+        <enable>!Skin.String(CustomBackFolder)</enable>
+        <onclick>Skin.SetImage(CustomBackImage)</onclick>
+        <visible>Skin.HasSetting(CustomBackEnable)</visible>
+      </control>   
+      <control type="button" id="204">
+        <description>Set Background Folder Path</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31524] $LOCALIZE[20334]</label>
+        <align>left</align>
+        <label> - $LOCALIZE[31524]</label>
         <label2>[COLOR=FocusedTextColor]$INFO[Skin.String(CustomBackFolder)][/COLOR]</label2>
         <font>18BdFont</font>
-        <selected>Skin.String(CustomBackFolder)</selected>
+        <texturefocus>ButtonInputFo.png</texturefocus>
+        <texturenofocus>ButtonInputNF.png</texturenofocus>
+        <textoffsetx>5</textoffsetx>
+        <scroll>true</scroll>
+        <enable>!Skin.String(CustomBackImage)</enable>
         <onclick>Skin.SetPath(CustomBackFolder)</onclick>
+        <visible>Skin.HasSetting(CustomBackEnable)</visible>
       </control>
-      <control type="radiobutton" id="206">
+      <control type="radiobutton" id="205">
         <description>Enable Diffuse</description>
         <width>490</width>
-        <label> - $LOCALIZE[31502] $LOCALIZE[31532]</label>
+        <label> - $LOCALIZE[31504] $LOCALIZE[31514]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(BackgroundDiffuse)</selected>
         <onclick>Skin.ToggleSetting(BackgroundDiffuse)</onclick>
-        <visible>Skin.String(CustomBackFolder)</visible>
+        <visible>Skin.String(CustomBackImage) | Skin.String(CustomBackFolder)</visible>
       </control>
-      <control type="button" id="207">
-        <description>Reset Custom Background</description>
+      <control type="button" id="206">
+        <description>Reset Background</description>
         <width>490</width>
         <align>left</align>
-        <label> - $LOCALIZE[31525] $LOCALIZE[571]</label>
+        <label> - $LOCALIZE[31511] $LOCALIZE[31501]</label>
         <font>18BdFont</font>
         <texturefocus>ButtonInputFo.png</texturefocus>
         <texturenofocus>ButtonInputNF.png</texturenofocus>
         <textoffsetx>5</textoffsetx>
+        <scroll>true</scroll>
+        <onclick>Skin.Reset(CustomBackEnable)</onclick>
+        <onclick>Skin.Reset(CustomBackImage)</onclick>
         <onclick>Skin.Reset(CustomBackFolder)</onclick>
-        <onclick>SetFocus(205)</onclick>
-        <visible>Skin.String(CustomBackFolder)</visible>
-      </control>
-      <control type="image" id="208">
-        <description>separator image</description>
-        <height>30</height>
-      </control>
-      <control type="radiobutton" id="209">
-        <description>Enable Video and Music Fanart</description>
-        <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[157] &amp; $LOCALIZE[249] $LOCALIZE[31022]</label>
-        <font>18BdFont</font>
-        <selected>!Skin.HasSetting(Fanart)</selected>
-        <onclick>Skin.ToggleSetting(Fanart)</onclick>
-      </control>
-      <control type="radiobutton" id="210">
-        <description>Enable Diffuse</description>
-        <width>490</width>
-        <label> - $LOCALIZE[31502] $LOCALIZE[31532]</label>
-        <font>18BdFont</font>
-        <visible>!Skin.HasSetting(Fanart)</visible>
-        <selected>!Skin.HasSetting(FanartDiffuse)</selected>
-        <onclick>Skin.ToggleSetting(FanartDiffuse)</onclick>
-      </control>
-      <control type="image" id="211">
-        <description>separator image</description>
-        <height>30</height>
-      </control>
-      <control type="radiobutton" id="212">
-        <description>Full Background Photo</description>
-        <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31515]</label>
-        <font>18BdFont</font>
-        <selected>Skin.HasSetting(PhotoBack)</selected>
-        <onclick>Skin.ToggleSetting(PhotoBack)</onclick>
-      </control>
-      <control type="radiobutton" id="213">
-        <description>Enable  Diffuse</description>
-        <width>490</width>
-        <label> - $LOCALIZE[31502] $LOCALIZE[31532]</label>
-        <font>18BdFont</font>
-        <visible>Skin.HasSetting(PhotoBack)</visible>
-        <selected>!Skin.HasSetting(PhotoDiffuse)</selected>
-        <onclick>Skin.ToggleSetting(PhotoDiffuse)</onclick>
-      </control>
-      <control type="image" id="214">
-        <description>separator image</description>
-        <height>30</height>
-      </control>
-      <control type="radiobutton" id="215">
-        <description>Weather Fanart</description>
-        <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[8] $LOCALIZE[31022]</label>
-        <font>18BdFont</font>
-        <selected>Skin.String(WeatherFanartPath)</selected>
-        <onclick>Skin.SetPath(WeatherFanartPath)</onclick>
-      </control>
-      <control type="radiobutton" id="216">
-        <description>Enable Diffuse</description>
-        <width>490</width>
-        <label> - $LOCALIZE[31502] $LOCALIZE[31532]</label>
-        <font>18BdFont</font>
-        <visible>Skin.String(WeatherFanartPath)</visible>
-        <selected>!Skin.HasSetting(WeatherDiffuse)</selected>
-        <onclick>Skin.ToggleSetting(WeatherDiffuse)</onclick>
-      </control>
-      <control type="button" id="217">
-        <description>Reset Weather Fanart To Default</description>
-        <width>490</width>
-        <align>left</align>
-        <label> - $LOCALIZE[31512] $LOCALIZE[8] $LOCALIZE[31022]</label>
-        <font>18BdFont</font>
-        <texturefocus>ButtonInputFo.png</texturefocus>
-        <texturenofocus>ButtonInputNF.png</texturenofocus>
-        <textoffsetx>5</textoffsetx>
-        <onclick>Skin.Reset(WeatherFanartPath)</onclick>
-        <onclick>SetFocus(216)</onclick>
-        <visible>Skin.String(WeatherFanartPath)</visible>
+        <onclick>Skin.Reset(BackgroundDiffuse)</onclick>
+        <onclick>Skin.Reset(DefaultBackground)</onclick>
+        <onclick>SetFocus(202)</onclick>
+        <visible>Skin.String(CustomBackImage) | Skin.String(CustomBackFolder)</visible>
       </control>
     </control>
 
@@ -762,40 +770,40 @@
       <onright>60</onright>
       <pagecontrol>60</pagecontrol>
       <visible>ControlGroup(9000).HasFocus(30)</visible>
-      <control type="radiobutton" id="232">
+      <control type="radiobutton" id="222">
         <description>SortLabels</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31511]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31525]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(SortLabels)</selected>
         <onclick>Skin.ToggleSetting(SortLabels)</onclick>
       </control>
-      <control type="radiobutton" id="233">
+      <control type="radiobutton" id="223">
         <description>Enable Media Flags</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31509]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31526]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(MediaFlags)</selected>
         <onclick>Skin.ToggleSetting(MediaFlags)</onclick>
       </control>
-      <control type="radiobutton" id="234">
+      <control type="radiobutton" id="224">
         <description>Wrap Info Text</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31019] $LOCALIZE[31510] $LOCALIZE[31513]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31026] $LOCALIZE[31527] $LOCALIZE[31528]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(WrapInfo)</selected>
         <onclick>Skin.ToggleSetting(WrapInfo)</onclick>
       </control>
-      <control type="radiobutton" id="235">
+      <control type="radiobutton" id="225">
         <description>Wrap View Background</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31019] $LOCALIZE[31510]  $LOCALIZE[31533]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31026] $LOCALIZE[31527]  $LOCALIZE[31501]</label>
         <font>18BdFont</font>
         <selected>Skin.HasSetting(WrapBack)</selected>
         <onclick>Skin.ToggleSetting(WrapBack)</onclick>
       </control>
     </control>
-    
+
     <control type="grouplist" id="9001">
       <description>Extras Control Area</description>
       <posx>160</posx>
@@ -809,39 +817,39 @@
       <onright>60</onright>
       <pagecontrol>60</pagecontrol>
       <visible>ControlGroup(9000).HasFocus(31)</visible>
-      <control type="radiobutton" id="252">
+      <control type="radiobutton" id="242">
         <description>Enable Scroll Bars In Dialogs</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31520]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31529]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(ScrollBarsDialogs)</selected>
         <onclick>Skin.ToggleSetting(ScrollBarsDialogs)</onclick>
       </control>
-      <control type="radiobutton" id="253">
+      <control type="radiobutton" id="243">
         <description>Enable Scroll Bars In Windows</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31521]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31530]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(ScrollBarsWindows)</selected>
         <onclick>Skin.ToggleSetting(ScrollBarsWindows)</onclick>
       </control>
-      <control type="radiobutton" id="254">
+      <control type="radiobutton" id="244">
         <description>Now Playing Time Enable</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31518]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31531]</label>
         <font>18BdFont</font>
         <selected>!Skin.HasSetting(NowPlayingTime)</selected>
         <onclick>Skin.ToggleSetting(NowPlayingTime)</onclick>
       </control>
-      <control type="radiobutton" id="255">
+      <control type="radiobutton" id="245">
         <description>Small Scan Dialogs</description>
         <width>490</width>
-        <label>$LOCALIZE[31502] $LOCALIZE[31531]</label>
+        <label>$LOCALIZE[31504] $LOCALIZE[31532]</label>
         <font>18BdFont</font>
         <selected>Skin.HasSetting(SmallScan)</selected>
         <onclick>Skin.ToggleSetting(SmallScan)</onclick>
       </control>
-      <control type="radiobutton" id="256">
+      <control type="radiobutton" id="246">
         <description>Startup Playlist Script Enable</description>
         <width>490</width>
         <label>$LOCALIZE[21398]</label>
@@ -849,32 +857,16 @@
         <selected>Skin.HasSetting(StartupPlaylistEnable)</selected>
         <onclick>Skin.SetFile(StartupPlaylistPath,.m3u,Q:\UserData\playlists\music\)</onclick>
       </control>
-      <control type="image" id="257">
-        <description>separator image</description>
-        <height>30</height>
-      </control>
-      <control type="button" id="268">
-        <description>Reload Skin</description>
-        <width>490</width>
-        <align>left</align>
-        <label>$LOCALIZE[31504]</label>
-        <font>18BdFont</font>
-        <texturefocus>ButtonInputFo.png</texturefocus>
-        <texturenofocus>ButtonInputNF.png</texturenofocus>
-        <textoffsetx>5</textoffsetx>
-        <pulseonselect>false</pulseonselect>
-        <onclick>xbmc.ReloadSkin()</onclick>
-      </control>
-      <control type="button" id="259">
+      <control type="button" id="247">
         <description>Reset Settings</description>
         <width>490</width>
         <align>left</align>
-        <label>$LOCALIZE[31505]</label>
+        <label>$LOCALIZE[31533]</label>
         <font>18BdFont</font>
         <texturefocus>ButtonInputFo.png</texturefocus>
         <texturenofocus>ButtonInputNF.png</texturenofocus>
         <textoffsetx>5</textoffsetx>
-        <onclick>Skin.ResetSettings</onclick>
+        <onclick>XBMC.ActivateWindow(57)</onclick>
       </control>
     </control>
 

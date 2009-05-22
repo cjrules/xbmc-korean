@@ -39,7 +39,7 @@
       <titlecolor>SelectedTextColor</titlecolor>
       <headlinecolor>FocusedTextColor</headlinecolor>
       <textcolor>DefaultTextColor</textcolor>
-      <visible>Skin.HasSetting(WelcomeScreen) + Window.IsVisible(0)</visible>
+      <visible>!Window.IsVisible(56)</visible>
       <include>DefaultFade</include>
     </control>
 
@@ -52,7 +52,7 @@
       <posy>0</posy>
       <width>720</width>
       <height>576</height>
-      <visible>Skin.HasSetting(WelcomeScreen) + Window.IsVisible(0)</visible>
+      <visible>!Window.IsVisible(56)</visible>
       <onup>9001</onup>
       <ondown>9001</ondown>
       <onleft>ActivateWindow(52)</onleft>
@@ -142,20 +142,12 @@
           <visible>!Skin.HasSetting(HomeServices) + Skin.HasSetting(HomeServicesSubmenu)</visible>
         </item>
         <item id="7">
-          <description>Weather Day</description>
+          <description>Weather</description>
           <label>$LOCALIZE[8]</label>
-          <icon>HomeWeatherDay.png</icon>
-          <thumb>HomeWeatherDayThumb.png</thumb>
+          <icon>HomeWeather.png</icon>
+          <thumb>HomeWeatherThumb.png</thumb>
           <onclick>ActivateWindow(MyWeather)</onclick>
-          <visible>!Skin.HasSetting(HomeWeather) + System.Time(05:00,17:00)</visible>
-        </item>
-        <item id="7">
-          <description>Weather Night</description>
-          <label>$LOCALIZE[8]</label>
-          <icon>HomeWeatherNight.png</icon>
-          <thumb>HomeWeatherNightThumb.png</thumb>
-          <onclick>ActivateWindow(MyWeather)</onclick>
-          <visible>!Skin.HasSetting(HomeWeather) + System.Time(17:00,05:00)</visible>
+          <visible>!Skin.HasSetting(HomeWeather)</visible>
         </item>
         <item id="8">
           <description>No Shortcuts</description>
@@ -574,124 +566,5 @@
 
   <include>NowPlaying</include>
 
-  <!-- Welcome Screen -->
-  <control type="group">
-    <visible>!Skin.HasSetting(WelcomeScreen) + Window.IsVisible(0)</visible>
-    <control type="group">
-      <posx>90</posx>
-      <posy>101</posy>
-      <include>DialogBackWide</include>
-      <control type="image">
-        <description>Header Back</description>
-        <width>540</width>
-        <height>45</height>
-        <align>left</align>
-        <texture>ButtonNF.png</texture>
-      </control>
-      <control type="label">
-        <description>Header Label</description>
-        <posx>10</posx>
-        <posy>0</posy>
-        <width>520</width>
-        <height>45</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label>$LOCALIZE[31010]</label>
-        <font>22BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-      </control>
-
-      <control type="label">
-        <description>Line 1</description>
-        <posx>10</posx>
-        <posy>55</posy>
-        <width>520</width>
-        <height>70</height>
-        <label>$LOCALIZE[31011]</label>
-        <font>18BdFont</font>
-        <textcolor>DefaultTextColor</textcolor>
-        <wrapmultiline>true</wrapmultiline>
-      </control>
-      <control type="label">
-        <description>Line 1</description>
-        <posx>10</posx>
-        <posy>125</posy>
-        <width>520</width>
-        <height>70</height>
-        <label>$LOCALIZE[31012]</label>
-        <font>18BdFont</font>
-        <textcolor>DefaultTextColor</textcolor>
-        <wrapmultiline>true</wrapmultiline>
-      </control>
-
-      <control type="group">
-        <posx>10</posx>
-        <posy>215</posy>
-        <include>ContentImageFade</include>
-        <control type="image">
-          <description>Video Image</description>
-          <width>80</width>
-          <height>80</height>
-          <aspectratio align="left">keep</aspectratio>
-          <texture>HomeVideosThumb.png</texture>
-        </control>
-        <control type="image">
-          <description>Music Image</description>
-          <posx>90</posx>
-          <width>80</width>
-          <height>80</height>
-          <aspectratio align="left">keep</aspectratio>
-          <texture>HomeMusicThumb.png</texture>
-        </control>
-        <control type="image">
-          <description>Photos Image</description>
-          <posx>180</posx>
-          <width>80</width>
-          <height>80</height>
-          <aspectratio align="left">keep</aspectratio>
-          <texture>HomePhotosThumb.png</texture>
-        </control>
-        <control type="image">
-          <description>Plugins Image</description>
-          <posx>270</posx>
-          <width>80</width>
-          <height>80</height>
-          <aspectratio align="left">keep</aspectratio>
-          <texture>HomePluginsThumb.png</texture>
-        </control>
-        <control type="image">
-          <description>Services Image</description>
-          <posx>360</posx>
-          <width>80</width>
-          <height>80</height>
-          <aspectratio align="left">keep</aspectratio>
-          <texture>HomeServicesThumb.png</texture>
-        </control>
-        <control type="image">
-          <description>Weather Image</description>
-          <posx>450</posx>
-          <width>80</width>
-          <height>80</height>
-          <aspectratio align="left">keep</aspectratio>
-          <texture>HomeWeatherDayThumb.png</texture>
-        </control>
-      </control>
-      
-      <control type="button" id="9001">
-        <description>Ok Button</description>
-        <posx>210</posx>
-        <posy>335</posy>
-        <label>$LOCALIZE[12321]</label>
-        <font>18BdFont</font>
-        <onclick>Skin.SetBool(WelcomeScreen)</onclick>
-        <onclick>SetFocus(9000)</onclick>
-        <onup>-</onup>
-        <ondown>-</ondown>
-        <onleft>-</onleft>
-        <onright>-</onright>
-      </control>
-    </control>
-  </control>
-  
 </controls>
 </window>

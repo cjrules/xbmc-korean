@@ -28,7 +28,7 @@
       <height>45</height>
       <align>left</align>
       <aligny>center</aligny>
-      <label>$LOCALIZE[13200]</label>
+      <label>$LOCALIZE[5] $LOCALIZE[10507]</label>
       <font>22BdFont</font>
       <textcolor>FocusedTextColor</textcolor>
     </control>
@@ -40,7 +40,7 @@
       <height>45</height>
       <align>right</align>
       <aligny>center</aligny>
-      <label>$LOCALIZE[31024]: $INFO[system.profilename]</label>
+      <label>$LOCALIZE[31023]: $INFO[system.profilename]</label>
       <font>18BdFont</font>
       <textcolor>FocusedTextColor</textcolor>
     </control>
@@ -78,7 +78,7 @@
       <posy>55</posy>
       <width>640</width>
       <font>18BdFont</font>
-      <label>$LOCALIZE[31502] $LOCALIZE[20096]</label>
+      <label>$LOCALIZE[31504] $LOCALIZE[20096]</label>
       <onright>2</onright>
       <onleft>2</onleft>
       <onup>2</onup>
@@ -108,6 +108,7 @@
           <width>35</width>
           <height>35</height>
           <info>ListItem.Icon</info>
+          <texture>unknown-user.png</texture>
           <aspectratio aligny="middle">keep</aspectratio>
         </control>
         <control type="label">
@@ -155,6 +156,7 @@
           <width>35</width>
           <height>35</height>
           <info>ListItem.Icon</info>
+          <texture>unknown-user.png</texture>
           <aspectratio aligny="middle">keep</aspectratio>
         </control>
         <control type="label">
