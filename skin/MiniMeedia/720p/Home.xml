@@ -516,7 +516,6 @@
             <thumb>$INFO[Skin.String(CustomWeatherBGFolder)]$INFO[Weather.FanartCode]</thumb>
             <onclick>XBMC.ActivateWindow(2600)</onclick>
             <visible>!Skin.HasSetting(HideWeather)</visible>
-            <visible>System.HasNetwork</visible>
           </item>
           <item id="4">
             <description>My Programs Menu</description>
@@ -577,6 +576,7 @@
     </control>
 
     <include>MusicNowPlaying</include>
+    <include>VideoOverlayUI</include>
 
   </controls>
 </window>

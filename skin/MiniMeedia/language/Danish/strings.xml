@@ -23,7 +23,7 @@
   <string id="31016">Konfigurer</string>
   <string id="31017">Strøm</string>
   <string id="31018"></string>
-  <string id="31019">Spil</string>
+  <string id="31019">Afspil</string>
   <string id="31020">Check</string>
   <string id="31021">Af</string>
   <string id="31022">Nyligt Tilføjet</string>
@@ -60,12 +60,14 @@
   <string id="31216">Skjul Medie Optælling</string>
   <string id="31217">Vis Portrætminiaturer Ved TV</string>
   <string id="31218">Vis Minimal Video OSD</string>
+  <string id="31219">Skjul Statisk (Sne) Baggrundsbillede</string>
 
   <!-- Video -->
   <string id="31300">Ikke Tilgængligt</string>
   <string id="31301">Miniature</string>
   <string id="31302">Fanart</string>
   <string id="31303">Sæsoner</string>
+  <string id="31304">Forventet Sluttid</string>
 
   <!-- Music -->
   <string id="31400">Sluttede</string>

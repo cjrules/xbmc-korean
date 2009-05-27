@@ -172,6 +172,7 @@
           <onup>450</onup>
           <itemgap>10</itemgap>
           <orientation>horizontal</orientation>
+          <animation effect="slide" start="0,0" end="-90,0" time="0" condition="Control.IsVisible(451)">Conditional</animation>
 
           <control type="button" id="413">
             <description>Ok Button</description>
@@ -187,6 +188,22 @@
             <description>Create Folder</description>
             <label>$LOCALIZE[119]</label>
           </control>
+
+    			<control type="radiobutton" id="416">
+    				<description>Flip Image</description>
+    				<posy>5</posy>
+    				<width>150</width>
+    				<height>32</height>
+    				<label>$LOCALIZE[749]</label>
+            <font>MediumSmallTitle2Font</font>
+            <textoffsetx>14</textoffsetx>
+            <textoffsety>7</textoffsety>
+            <texturefocus border="3">black_rounded_underline.png</texturefocus>
+            <texturenofocus border="3">black_rounded_transparent.png</texturenofocus>
+            <radioposy>2</radioposy>
+    				<include>DialogTextControl</include>
+    				<visible>Control.IsVisible(451)</visible>
+    			</control>
         </control>
 
       </control>

@@ -581,6 +581,7 @@
     </control>
 
     <include>MusicNowPlaying</include>
+    <include>VideoOverlayUI</include>
 
   </controls>
 </window>

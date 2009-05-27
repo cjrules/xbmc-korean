@@ -16,11 +16,11 @@
   <string id="31009"></string>
   <string id="31010"></string>
   <string id="31011">Mirar tus</string>
-  <string id="31012">Escucha a</string>
+  <string id="31012">Escucha tu</string>
   <string id="31013">Ver tus</string>
   <string id="31014">Usa tus</string>
   <string id="31015">Analiza</string>
-  <string id="31016">Configurar el</string>
+  <string id="31016">Configurar</string>
   <string id="31017">Energia</string>
   <string id="31018"></string>
   <string id="31019">Reproducir el</string>
@@ -33,7 +33,7 @@
   <string id="31101">Ordenar Por</string>
   <string id="31102">Opciones de Configuracion</string>
   <string id="31103">Mostrador</string>
-  <string id="31104">Mostrar Reloj Grande</string>
+  <string id="31104">Ver Reloj Grande</string>
   <string id="31105">Cascada</string>
   <string id="31106">Exhibicion</string>
   <string id="31107">Lista Corta</string>
@@ -55,9 +55,9 @@
   <string id="31211">Ocultar sinopsis cuando se muestre Video</string>
   <string id="31212">Ocultar Superposicion de Vistas</string>
   <string id="31213">Ocultar Miniatura</string>
-  <string id="31214">Mostrar Critica</string>
-  <string id="31215">Mostrar Tipo de Contenido</string>
-  <string id="31216">Ocultar Contador de Media</string>
+  <string id="31214">Ver Critica</string>
+  <string id="31215">Ver Tipo Contenido</string>
+  <string id="31216">Ocultar Contador</string>
   <string id="31217">Usar Retrato en Miniatura para TV</string>
   <string id="31218">Mostrar OSD Video Minimalista</string>
   <string id="31219">Ocultar Fondo de Ruido Blanco</string>

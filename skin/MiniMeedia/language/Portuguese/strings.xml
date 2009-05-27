@@ -6,7 +6,7 @@
   <!-- Home / General --> 
   <string id="31000">Gerenciador de Ficheiros</string> 
   <string id="31001">Info</string> 
-  <string id="31002">Reiniciar</string> 
+  <string id="31002">Repor</string> 
   <string id="31003">Analizar</string> 
   <string id="31004">Alterar</string> 
   <string id="31005">Diversos</string> 
@@ -23,10 +23,10 @@
   <string id="31016">Configura o</string> 
   <string id="31017">Energia</string> 
   <string id="31018"></string> 
-  <string id="31019">Reproduzir o</string> 
+  <string id="31019">Reproduz o</string> 
   <string id="31020">Verifica a</string> 
   <string id="31021">Por</string> 
-  <string id="31022">Recentemente Adicionado</string> 
+  <string id="31022">Adicionado Recentemente</string> 
 
   <!-- Options Menu --> 
   <string id="31100">Poster de Info</string> 
@@ -49,7 +49,7 @@
   <string id="31205">Ocultar</string> 
   <string id="31206">Relógio</string> 
   <string id="31207">Ocultar Metereologia no Ecrã Principal</string>
-  <string id="31208">Desligar</string> 
+  <string id="31208">Desabilitar</string> 
   <string id="31209">Configurar Definições para</string> 
   <string id="31210">Menu</string> 
   <string id="31211">Ocultar Resumo no OSD de Video</string> 
@@ -67,7 +67,7 @@
   <string id="31301">Miniatura</string> 
   <string id="31302">Fanart</string> 
   <string id="31303">Temporada</string> 
-  <string id="31304">Hora de Termo Aprox.</string>
+  <string id="31304">Hora Aprox. de Termo</string>
 
   <!-- Music --> 
   <string id="31400">Acabou</string> 

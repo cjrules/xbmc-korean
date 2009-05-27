@@ -96,76 +96,6 @@
     </control>
 
     <control type="group" id="1">
-      <posx>1130</posx>
-      <posy>595</posy>
-      <animation effect="slide" time="300" delay="200" tween="circle" easing="out" start="0,100" end="0,0">WindowOpen</animation>
-      <animation effect="slide" time="300" delay="200" tween="circle" easing="out" start="0,100" end="0,0">Visible</animation>
-      <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,100">WindowClose</animation>
-      <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,100">Hidden</animation>
-      <visible>Player.Seeking | Player.Forwarding | Player.Rewinding</visible>
-
-      <control type="image" id="1">
-        <width>120</width>
-        <height>135</height>
-        <include>OverlayArea</include>
-      </control>
-
-      <control type="image" id="1">
-        <description>RW image</description>
-        <include>OSDIconDims</include>
-        <texture>osd_rewind.png</texture>
-        <visible>Player.Rewinding</visible>
-      </control>
-
-      <control type="image" id="1">
-        <description>FF image</description>
-        <include>OSDIconDims</include>
-        <texture>osd_forward.png</texture>
-        <visible>Player.Forwarding</visible>
-      </control>
-
-      <control type="group" id="1">
-        <posx>65</posx>
-        <posy>16</posy>
-
-        <control type="label" id="1">
-          <description>2x FF/Rew</description>
-          <include>OSDSeekLabel</include>
-          <label>2x</label>
-          <visible>Player.Rewinding2x | Player.Forwarding2x</visible>
-        </control>
-
-        <control type="label" id="1">
-          <description>4x FF/Rew</description>
-          <include>OSDSeekLabel</include>
-          <label>4x</label>
-          <visible>Player.Rewinding4x | Player.Forwarding4x</visible>
-        </control>
-
-        <control type="label" id="1">
-          <description>8x FF/Rew</description>
-          <include>OSDSeekLabel</include>
-          <label>8x</label>
-          <visible>Player.Rewinding8x | Player.Forwarding8x</visible>
-        </control>
-
-        <control type="label" id="1">
-          <description>16x FF/Rew</description>
-          <include>OSDSeekLabel</include>
-          <label>16x</label>
-          <visible>Player.Rewinding16x | Player.Forwarding16x</visible>
-        </control>
-
-        <control type="label" id="1">
-          <description>32x FF/Rew</description>
-          <include>OSDSeekLabel</include>
-          <label>32x</label>
-          <visible>Player.Rewinding32x | Player.Forwarding32x</visible>
-        </control>
-      </control>
-    </control>
-
-    <control type="group" id="1">
       <posx>1165</posx>
       <posy>491</posy>
       <animation effect="slide" time="0" delay="0" start="0,0" end="0,100" condition="Skin.HasSetting(UseMinimalVideoOSD)">Conditional</animation>
@@ -174,18 +104,88 @@
       <animation effect="slide" time="300" delay="200" tween="circle" easing="out" start="0,100" end="0,0">Visible</animation>
       <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,100">WindowClose</animation>
       <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,100">Hidden</animation>
-      <visible>Player.Paused</visible>
+      <visible>Player.Paused | Player.Seeking | Player.Forwarding | Player.Rewinding</visible>
 
-      <control type="image" id="1">
-        <width>65</width>
-        <height>65</height>
-        <include>OverlayAreaTop</include>
+      <control type="group" id="1">
+        <visible>Player.Paused</visible>
+
+        <control type="image" id="1">
+          <width>65</width>
+          <height>65</height>
+          <include>OverlayAreaTop</include>
+        </control>
+
+        <control type="image" id="1">
+          <description>Paused image</description>
+          <include>OSDIconDims</include>
+          <texture>osd_pause.png</texture>
+        </control>
       </control>
 
-      <control type="image" id="1">
-        <description>Paused image</description>
-        <include>OSDIconDims</include>
-        <texture>osd_pause.png</texture>
+      <control type="group" id="1">
+        <posx>-52</posx>
+        <animation effect="slide" time="0" delay="0" start="0,0" end="0,100" condition="[Player.Seeking | Player.DisplayAfterSeek | Player.Forwarding | Player.Rewinding] + !Skin.HasSetting(UseMinimalVideoOSD) + !Window.IsActive(VideoOSD)">Conditional</animation>
+        <visible>Player.Seeking | Player.Forwarding | Player.Rewinding</visible>
+
+        <control type="image" id="1">
+          <width>120</width>
+          <height>65</height>
+          <include>OverlayAreaTop</include>
+        </control>
+  
+        <control type="image" id="1">
+          <description>RW image</description>
+          <include>OSDIconDims</include>
+          <texture>osd_rewind.png</texture>
+          <visible>Player.Rewinding</visible>
+        </control>
+  
+        <control type="image" id="1">
+          <description>FF image</description>
+          <include>OSDIconDims</include>
+          <texture>osd_forward.png</texture>
+          <visible>Player.Forwarding</visible>
+        </control>
+  
+        <control type="group" id="1">
+          <posx>65</posx>
+          <posy>16</posy>
+  
+          <control type="label" id="1">
+            <description>2x FF/Rew</description>
+            <include>OSDSeekLabel</include>
+            <label>2x</label>
+            <visible>Player.Rewinding2x | Player.Forwarding2x</visible>
+          </control>
+  
+          <control type="label" id="1">
+            <description>4x FF/Rew</description>
+            <include>OSDSeekLabel</include>
+            <label>4x</label>
+            <visible>Player.Rewinding4x | Player.Forwarding4x</visible>
+          </control>
+  
+          <control type="label" id="1">
+            <description>8x FF/Rew</description>
+            <include>OSDSeekLabel</include>
+            <label>8x</label>
+            <visible>Player.Rewinding8x | Player.Forwarding8x</visible>
+          </control>
+  
+          <control type="label" id="1">
+            <description>16x FF/Rew</description>
+            <include>OSDSeekLabel</include>
+            <label>16x</label>
+            <visible>Player.Rewinding16x | Player.Forwarding16x</visible>
+          </control>
+  
+          <control type="label" id="1">
+            <description>32x FF/Rew</description>
+            <include>OSDSeekLabel</include>
+            <label>32x</label>
+            <visible>Player.Rewinding32x | Player.Forwarding32x</visible>
+          </control>
+        </control>
       </control>
     </control>
 
@@ -196,7 +196,18 @@
       <animation effect="slide" time="300" tween="circle" easing="out" start="0,100" end="0,0">Visible</animation>
       <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,100">WindowClose</animation>
       <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,100">Hidden</animation>
-      <visible>!Window.IsVisible(SliderDialog) + [[Player.Seeking | Player.DisplayAfterSeek | Player.Forwarding | Player.Rewinding] | [Skin.HasSetting(UseMinimalVideoOSD) + [Player.ShowInfo | Player.Paused]]]</visible>
+      <visible>!Window.IsVisible(SliderDialog) + [[[Player.Seeking | Player.DisplayAfterSeek | Player.Forwarding | Player.Rewinding] + !Window.IsActive(VideoOSD)] | [Skin.HasSetting(UseMinimalVideoOSD) + [Player.ShowInfo | Player.Paused | Window.IsActive(VideoOSD)]]]</visible>
+
+      <control type="image" id="1">
+        <posx>375</posx>
+        <posy>-35</posy>
+        <width>450</width>
+        <height>36</height>
+        <include>OverlayAreaTop</include>
+        <visible>Window.IsVisible(VideoOSD)</visible>
+        <animation effect="slide" time="300" tween="circle" easing="out" start="0,200" end="0,0">Visible</animation>
+        <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,200">Hidden</animation>
+      </control>
 
       <control type="image" id="1">
         <width>1220</width>
@@ -288,7 +299,7 @@
               <aligny>center</aligny>
               <font>MediumSmallTitleFont</font>
               <label>$INFO[VideoPlayer.Title]</label>
-              <visible>![Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)]</visible>
+              <visible>![[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)] | !Window.IsActive(VideoOSD)]</visible>
             </control>
             <control type="label" id="1">
               <include>VideoOSDTitleWideTextDims</include>
@@ -296,7 +307,7 @@
               <aligny>center</aligny>
               <font>MediumSmallTitleFont</font>
               <label>$INFO[VideoPlayer.Title]</label>
-              <visible>[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)]</visible>
+              <visible>[[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)] | !Window.IsActive(VideoOSD)]</visible>
             </control>
           </control>
 
@@ -308,13 +319,13 @@
               <include>VideoOSDTitleTextDims</include>
               <font>MediumSmallTitleFont</font>
               <label>$INFO[VideoPlayer.Title]</label>
-              <visible>![Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)]</visible>
+              <visible>![[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)] | !Window.IsActive(VideoOSD)]</visible>
             </control>
             <control type="label" id="1">
               <include>VideoOSDTitleWideTextDims</include>
               <font>MediumSmallTitleFont</font>
               <label>$INFO[VideoPlayer.Title]</label>
-              <visible>[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)]</visible>
+              <visible>[[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)] | !Window.IsActive(VideoOSD)]</visible>
             </control>
 
             <control type="label" id="1">
@@ -322,14 +333,14 @@
               <posy>22</posy>
               <font>SmallTitleFont</font>
               <label>$INFO[VideoPlayer.Year,(,)]</label>
-              <visible>![Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)]</visible>
+              <visible>![[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)] | !Window.IsActive(VideoOSD)]</visible>
             </control>
             <control type="label" id="1">
               <include>VideoOSDTitleWideTextDims</include>
               <posy>22</posy>
               <font>SmallTitleFont</font>
               <label>$INFO[VideoPlayer.Year,(,)]</label>
-              <visible>[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)]</visible>
+              <visible>[[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)] | !Window.IsActive(VideoOSD)]</visible>
             </control>
           </control>
 
@@ -340,13 +351,13 @@
               <include>VideoOSDTitleTextDims</include>
               <font>MediumSmallTitleFont</font>
               <label>$INFO[VideoPlayer.TVShowTitle]</label>
-              <visible>![Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)]</visible>
+              <visible>![[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)] | !Window.IsActive(VideoOSD)]</visible>
             </control>
             <control type="label" id="1">
               <include>VideoOSDTitleWideTextDims</include>
               <font>MediumSmallTitleFont</font>
               <label>$INFO[VideoPlayer.TVShowTitle]</label>
-              <visible>[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)]</visible>
+              <visible>[[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)] | !Window.IsActive(VideoOSD)]</visible>
             </control>
 
             <control type="label" id="1">
@@ -354,27 +365,27 @@
               <include>VideoOSDTitleTextDims</include>
               <font>SmallTitleFont</font>
               <label>$INFO[VideoPlayer.Season,$LOCALIZE[20373] ], $INFO[VideoPlayer.Episode,$LOCALIZE[20359] ]</label>
-              <visible>![Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)]</visible>
+              <visible>![[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)] | !Window.IsActive(VideoOSD)]</visible>
             </control>
             <control type="label" id="1">
               <posy>28</posy>
               <include>VideoOSDTitleWideTextDims</include>
               <font>SmallTitleFont</font>
               <label>$INFO[VideoPlayer.Season,$LOCALIZE[20373] ], $INFO[VideoPlayer.Episode,$LOCALIZE[20359] ]</label>
-              <visible>[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)]</visible>
+              <visible>[[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)] | !Window.IsActive(VideoOSD)]</visible>
             </control>
 
             <control type="label" id="1">
               <posy>52</posy>
               <include>VideoOSDTitleTextDims</include>
               <label>$INFO[VideoPlayer.Title]</label>
-              <visible>![Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)]</visible>
+              <visible>![[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)] | !Window.IsActive(VideoOSD)]</visible>
             </control>
             <control type="label" id="1">
               <posy>52</posy>
               <include>VideoOSDTitleWideTextDims</include>
               <label>$INFO[VideoPlayer.Title]</label>
-              <visible>[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)]</visible>
+              <visible>[[Skin.HasSetting(HidePlotInVideoOSD) + !Window.IsActive(VideoOSD)] | !Window.IsActive(VideoOSD)]</visible>
             </control>
           </control>
         </control>
@@ -383,6 +394,8 @@
           <description>Plot</description>
           <posx>440</posx>
           <visible>!Window.IsActive(VideoOSD) + !Skin.HasSetting(HidePlotInVideoOSD)</visible>
+          <animation effect="slide" time="300" tween="circle" easing="out" start="0,200" end="0,0">Visible</animation>
+          <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,200">Hidden</animation>
 
           <control type="textbox" id="1">
             <width>500</width>

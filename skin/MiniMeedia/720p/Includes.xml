@@ -100,31 +100,32 @@
     <include>BaseBackground</include>
 
     <control type="group">
-      <control type="multiimage">
-        <description>Fanart BG</description>
-        <info>ListItem.Property(fanart_image)</info>
-        <visible>!IsEmpty(ListItem.Property(fanart_image))</visible>
+      <control type="group">
         <visible>[Window.IsVisible(MyVideoLibrary) + Container.Content(movies) + !Skin.HasSetting(HideMovieFanart)] |
                  [Window.IsVisible(MyVideoLibrary) + [Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + !Skin.HasSetting(HideTVFanart)] |
                  [Window.IsVisible(MyVideoFiles) + !Skin.HasSetting(HideVideoFanart)] |
                  [[Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicFiles)] + !Skin.HasSetting(HideMusicFanart)]</visible>
-        <include>BackgroundImage</include>
-      </control>
 
-<!--
-      <control type="multiimage">
-        <description>Fanart BG</description>
-        <info>Fanart.Image</info>
-        <visible>[Container.Content(movies) + !Skin.HasSetting(HideMovieFanart)]</visible>
-        <include>BackgroundImage</include>
+        <control type="multiimage">
+          <description>Fanart BG</description>
+          <info>ListItem.Property(fanart_image)</info>
+          <visible>!IsEmpty(ListItem.Property(fanart_image))</visible>
+          <include>BackgroundImage</include>
+        </control>
+
+        <control type="multiimage">
+          <description>Fanart BG</description>
+          <info>Fanart.Image</info>
+          <visible>!IsEmpty(Fanart.Image)</visible>
+          <include>BackgroundImage</include>
+        </control>
       </control>
--->
 
       <control type="multiimage">
         <description>Custom Movies BG</description>
         <info>Skin.String(CustomMoviesBGFolder)</info>
         <visible>Container.Content(movies)</visible>
-        <visible>IsEmpty(ListItem.Property(fanart_image)) | Skin.HasSetting(HideMovieFanart)</visible>
+        <visible>[IsEmpty(ListItem.Property(fanart_image)) + IsEmpty(Fanart.Image)] | Skin.HasSetting(HideMovieFanart)</visible>
         <visible>Skin.String(CustomMoviesBGFolder)</visible>
         <include>BackgroundImage</include>
       </control>
@@ -133,7 +134,7 @@
         <description>Custom TV BG</description>
         <info>Skin.String(CustomTVShowsBGFolder)</info>
         <visible>[Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
-        <visible>IsEmpty(ListItem.Property(fanart_image)) | Skin.HasSetting(HideTVFanart)</visible>
+        <visible>[IsEmpty(ListItem.Property(fanart_image)) + IsEmpty(Fanart.Image)] | Skin.HasSetting(HideTVFanart)</visible>
         <visible>Skin.String(CustomTVShowsBGFolder)</visible>
         <include>BackgroundImage</include>
       </control>
@@ -141,8 +142,8 @@
       <control type="multiimage">
         <description>Custom Videos BG</description>
         <info>Skin.String(CustomVideosBGFolder)</info>
-        <visible>Window.IsVisible(MyVideoFiles)</visible>
-        <visible>IsEmpty(ListItem.Property(fanart_image)) | Skin.HasSetting(HideVideoFanart)</visible>
+        <visible>Window.IsVisible(MyVideoFiles) | [Window.IsVisible(MyVideoLibrary) + ![Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]]</visible>
+        <visible>[IsEmpty(ListItem.Property(fanart_image)) + IsEmpty(Fanart.Image)] | Skin.HasSetting(HideVideoFanart)</visible>
         <visible>Skin.String(CustomVideosBGFolder)</visible>
         <include>BackgroundImage</include>
       </control>
@@ -151,14 +152,14 @@
         <description>Music BG</description>
         <info>Skin.String(CustomMusicBGFolder)</info>
         <visible>[Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicPlaylist)]</visible>
-        <visible>IsEmpty(ListItem.Property(fanart_image)) | Skin.HasSetting(HideMusicFanart)</visible>
+        <visible>[IsEmpty(ListItem.Property(fanart_image)) + IsEmpty(Fanart.Image)] | Skin.HasSetting(HideMusicFanart)</visible>
         <visible>Skin.String(CustomMusicBGFolder)</visible>
         <include>BackgroundImage</include>
       </control>
 
       <control type="group">
         <description>System BG</description>
-        <visible>[Window.IsVisible(Settings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SystemInfo) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(1001) | Window.IsVisible(FileManager.xml)]</visible>
+        <visible>[Window.IsVisible(Settings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SystemInfo) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(1001) | Window.IsVisible(FileManager.xml) | Window.IsVisible(MyScripts)]</visible>
 
         <control type="multiimage">
           <info>Skin.String(CustomSystemBGFolder)</info>
@@ -188,16 +189,9 @@
         <visible>Window.IsVisible(MyWeather)</visible>
 
         <control type="multiimage">
-          <description>Custom Weather BG</description>
-          <info>Skin.String(CustomWeatherBGFolder)</info>
-          <visible>Skin.String(CustomMusicBGFolder)</visible>
-          <include>BackgroundImage</include>
-        </control>
-
-        <control type="multiimage">
           <description>Current Weather BG</description>
           <imagepath>$INFO[Skin.String(CustomWeatherBGFolder)]$INFO[Weather.FanartCode]</imagepath>
-          <visible>!Skin.String(CustomMusicBGFolder)</visible>
+          <visible>Skin.String(CustomWeatherBGFolder)</visible>
           <include>BackgroundImage</include>
         </control>
       </control>
@@ -832,6 +826,91 @@
 		<animation effect="slide" time="700" tween="circle" easing="in" start="0,0" end="700,0">WindowClose</animation>
 	</include>
 
+	<include name="VideoOSDControlButton">
+    <onup>10</onup>
+    <width>48</width>
+    <height>48</height>
+	</include>
+
+	<constant name="VideoOSDButtonAreaWidth">60</constant>
+
+	<include name="VideoOverlayUI">
+    <control type="group" id="1">
+      <posx>0</posx>
+      <posy>50</posy>
+      <animation effect="slide" time="300" delay="300" tween="circle" easing="out" start="-350,0" end="0,0">WindowOpen</animation>
+      <animation effect="slide" time="300" tween="circle" easing="out" start="-350,0" end="0,0">Visible</animation>
+      <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="-350,0">WindowClose</animation>
+      <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="-350,0">Hidden</animation>
+      <visible>Player.HasVideo</visible>
+      
+      <control type="image" id="1">
+        <description>Panel background</description>
+        <posx>-10</posx>
+        <posy>-10</posy>
+        <width>314</width>
+        <height>236</height>
+        <include>OverlayDarkArea</include>
+      </control>
+
+      <control type="group" id="1">
+        <posx>10</posx>
+        <posy>0</posy>
+
+        <control type="videowindow" id="1">
+          <description>Video Preview</description>
+          <width>284</width>
+          <height>160</height>
+          <aspectratio>keep</aspectratio>
+          <align>center</align>
+          <aligny>center</aligny>
+        </control>
+
+        <control type="label" id="1">
+          <description>Title</description>
+          <posy>168</posy>
+          <width>284</width>
+          <font>SmallTinyTitleFont</font>
+          <info>VideoPlayer.Title</info>
+        </control>
+
+        <control type="group" id="1">
+          <posy>186</posy>
+
+          <control type="progress" id="1">
+            <description>Progress Bar</description>
+            <posx>-6</posx>
+            <width>296</width>
+            <info>Player.Progress</info>
+          </control>
+
+          <control type="group" id="1">
+            <posy>18</posy>
+
+            <control type="label" id="1">
+              <description>Elapsed Time Label</description>
+              <font>SmallerDefaultFont</font>
+              <info>Player.Time</info>
+              <textcolor>Unfocused</textcolor>
+              <width>140</width>
+              <visible>!Player.Seeking</visible>
+            </control>
+
+            <control type="label" id="1">
+              <description>Duration Label</description>
+              <posx>284</posx>
+              <info>Player.Duration</info>
+              <font>SmallerDefaultFont</font>
+              <textcolor>Unfocused</textcolor>
+              <align>right</align>
+              <width>140</width>
+            </control>
+          </control>
+        </control>
+      </control>
+    </control>
+	</include>
+
 	<!-- Music OSD -->
 	<include name="MusicNowPlayingAnim">
 		<animation effect="slide" time="300" tween="circle" easing="out" start="-600,0" end="0,0">Visible</animation>
@@ -887,7 +966,7 @@
 				<width>6</width>
 				<height>12</height>
 				<texture flipx="true">arrow_right.png</texture>
-				<visible>Window.IsVisible(Home) | Window.IsVisible(3) | Window.IsVisible(7) | Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(57)</visible>
+				<visible>Window.IsVisible(Home) | Window.IsVisible(3) | Window.IsVisible(7) | Window.IsVisible(Settings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(1001) | Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(57)</visible>
 			</control>
 		</control>
 
@@ -1375,29 +1454,39 @@
   			</control>
 			</control>
 
-      <control type="group">
-				<visible>[Window.IsVisible(MyVideoFiles) | Window.IsVisible(MyMusicFiles)]</visible>
+			<control type="label">
+				<description>Videos</description>
+				<label>3</label>
+				<visible>[Window.IsVisible(MyVideoFiles)] + ![Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | Container.Content(playlists) | Container.Content(plugins) | Container.Content(musicvideos) | Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(studios) | Container.Content(directors)]</visible>
+				<include>MediaLeftContentTypeLabel</include>
+			</control>
 
-  			<control type="label">
-  				<description>Files</description>
-  				<label>744</label>
-  				<visible>Container.Content(files)</visible>
-  				<include>MediaLeftContentTypeLabel</include>
-  			</control>
-  
-  			<control type="label">
-  				<description>Videos</description>
-  				<label>3</label>
-  				<visible>[Window.IsVisible(MyVideoFiles)] + ![Container.Content(files) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | Container.Content(playlists) | Container.Content(plugins) | Container.Content(musicvideos) | Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(studios) | Container.Content(directors)]</visible>
-  				<include>MediaLeftContentTypeLabel</include>
-  			</control>
-  
-  			<control type="label">
-  				<description>Music</description>
-  				<label>2</label>
-  				<visible>[Window.IsVisible(MyMusicFiles)] + ![Container.Content(files) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | Container.Content(playlists) | Container.Content(plugins) | Container.Content(musicvideos) | Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(studios) | Container.Content(directors)]</visible>
-  				<include>MediaLeftContentTypeLabel</include>
-  			</control>
+			<control type="label">
+				<description>Music</description>
+				<label>2</label>
+				<visible>[Window.IsVisible(MyMusicFiles)] + ![Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | Container.Content(playlists) | Container.Content(plugins) | Container.Content(musicvideos) | Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(studios) | Container.Content(directors)]</visible>
+				<include>MediaLeftContentTypeLabel</include>
+			</control>
+
+			<control type="label">
+				<description>Pictures</description>
+				<label>1</label>
+				<visible>Window.IsVisible(MyPics.xml)</visible>
+				<include>MediaLeftContentTypeLabel</include>
+			</control>
+
+			<control type="label">
+				<description>Programs</description>
+				<label>0</label>
+				<visible>Window.IsVisible(MyPrograms)</visible>
+				<include>MediaLeftContentTypeLabel</include>
+			</control>
+
+			<control type="label">
+				<description>Scripts</description>
+				<label>247</label>
+				<visible>Window.IsVisible(MyScripts)</visible>
+				<include>MediaLeftContentTypeLabel</include>
 			</control>
 		</control>
 	</include>
@@ -2006,7 +2095,8 @@
 						<posx>130</posx>
 						<include>WatchedOverlay</include>
 						<visible>!Control.IsVisible(50)</visible>
-						<animation effect="slide" time="0" start="0,0" end="20,5" condition="Container.Content(episodes)">Conditional</animation>
+						<animation effect="slide" time="0" start="0,0" end="20,5" condition="Container.Content(tvshows) | Container.Content(episodes)">Conditional</animation>
+						<animation effect="slide" time="0" start="0,0" end="20,-14" condition="Container.Content(seasons)">Conditional</animation>
 					</control>
 
 					<control type="image">

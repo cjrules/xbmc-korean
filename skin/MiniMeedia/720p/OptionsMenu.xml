@@ -422,7 +422,7 @@
             <label>$LOCALIZE[31200]</label>
             <onclick>Skin.ToggleSetting(ShowPlotInListView)</onclick>
             <selected>Skin.HasSetting(ShowPlotInListView)</selected>
-            <visible>[Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(54)] + [Window.IsVisible(MyVideoFiles) | Window.IsVisible(MyVideoLibrary) |  Window.IsVisible(MyVideoPlaylist)]</visible>
+            <visible>[Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(54) | [Control.IsVisible(57) + Container(57).Content(episodes)]] + [Window.IsVisible(MyVideoFiles) | Window.IsVisible(MyVideoLibrary) |  Window.IsVisible(MyVideoPlaylist)]</visible>
             <include>OMButtonItem</include>
           </control>
           <control type="radiobutton" id="3611">
