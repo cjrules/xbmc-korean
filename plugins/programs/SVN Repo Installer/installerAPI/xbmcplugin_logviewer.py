@@ -7,7 +7,7 @@ import sys
 try:
     import xbmcgui
     import xbmc
-    xbmc.log("[PLUGIN] Module: %s loaded!" % __name__, xbmc.LOGDEBUG)
+    xbmc.log( "[PLUGIN] Module: %s loaded!" % __name__, xbmc.LOGDEBUG )
     DEBUG = False
 except:
     DEBUG = True
@@ -27,7 +27,7 @@ class ChangelogParser:
     PAGES = 3
 
     def __init__( self, repo, category=None, revision=None, parse=True ):
-        xbmc.log("[PLUGIN] %s __init__!" % (self.__class__))
+        xbmc.log( "[PLUGIN] %s __init__!" % (self.__class__), xbmc.LOGDEBUG )
         if ( DEBUG ):
             self.log = "[B]%s: %s[/B]\n----\n" % ( category or repo, "ChangeLog" )
         else:
@@ -49,12 +49,12 @@ class ChangelogParser:
             for page in range( self.PAGES ):
                 path = os.path.join( base_path, "%s%d.txt" % ( self.repo, page, ) )
                 # open socket
-                if ( ( DEBUG or self.parse == True ) and os.path.isfile( path ) and self.revision is None):
-                    xbmc.log("[PLUGIN] %s path=%s" % (self.__class__.__name__, path))
+                if ( os.path.isfile( path ) and self.revision is None):
+                    xbmc.log( "[PLUGIN] %s path=%s" % (self.__class__.__name__, path), xbmc.LOGDEBUG )
                     usock = open( path, "r" )
                 else:
                     url = self.BASE_URL % ( self.repo, page * 50, )
-                    xbmc.log("[PLUGIN] %s url=%s" % (self.__class__.__name__, url))
+                    xbmc.log( "[PLUGIN] %s url=%s" % (self.__class__.__name__, url), xbmc.LOGDEBUG )
                     usock = urllib.urlopen( url )
                 #read html source
                 htmlSource = usock.read()
@@ -114,7 +114,7 @@ if ( not DEBUG ):
         ACTION_EXIT_SCRIPT = ( 9, 10, )
 
         def __init__( self, *args, **kwargs ):
-            xbmc.log("[PLUGIN] %s __init__!" % (self.__class__))
+            xbmc.log( "[PLUGIN] %s __init__!" % (self.__class__), xbmc.LOGDEBUG )
             xbmcgui.WindowXMLDialog.__init__( self )
             self._parse_argv()
 
@@ -156,10 +156,10 @@ if ( not DEBUG ):
                     # local readme - determine correct language path
                     path = self.getReadmePath()
                     # open socket
-                    xbmc.log("[PLUGIN] %s path=%s" % (self.__class__.__name__, path))
+                    xbmc.log("[PLUGIN] %s path=%s" % (self.__class__.__name__, path), xbmc.LOGDEBUG )
                     usock = open( path, "r" )
                 else:
-                    xbmc.log("[PLUGIN] %s url=%s" % (self.__class__.__name__, self.args.readme))
+                    xbmc.log("[PLUGIN] %s url=%s" % (self.__class__.__name__, self.args.readme), xbmc.LOGDEBUG )
                     usock = urllib.urlopen( self.args.readme )
 
                 #read html source

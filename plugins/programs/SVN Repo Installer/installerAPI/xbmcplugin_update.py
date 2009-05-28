@@ -37,15 +37,18 @@ class Main:
 	INSTALLED_ITEMS_FILENAME = os.path.join( os.getcwd(), "installed_items.dat" )
 
 	def __init__( self ):
-		xbmc.log("[PLUGIN] %s __init__!" % (self.__class__))
+		xbmc.log("[PLUGIN] %s __init__!" % (self.__class__), xbmc.LOGDEBUG )
 		ok = False
+		# set our plugin category
+		xbmcplugin.setPluginCategory( handle=int( sys.argv[ 1 ] ), category=xbmc.getLocalizedString( 30500 ) )
 
 		# load settings
 		self.showNoSVN = bool(xbmcplugin.getSetting( "show_no_svn" ) == "true")
 		self.showNoVer = bool(xbmcplugin.getSetting( "show_no_ver" ) == "true")
 
 		self._get_xbmc_revision()
-		self.SVN_URL_LIST = [ "xbmc-addons", "xbmc-scripting" ]
+
+		self.SVN_URL_LIST = self._get_repos()
 		#['plugin://programs/SVN Repo Installer/', '-1', '?download_url="%2Ftrunk%2Fplugins%2Fmusic/iTunes%2F"&repo=\'xbmc-addons\'&install=""&ioffset=2&voffset=0']
 		# create all XBMC script/plugin paths
 		paths = ("plugins/programs","plugins/video","plugins/music","plugins/pictures","scripts")
@@ -72,6 +75,16 @@ class Main:
 
 		log("ok=%s" % ok)
 		xbmcplugin.endOfDirectory( int( sys.argv[ 1 ] ), ok, cacheToDisc=False)
+
+	def _get_repos( self ):
+			repo_list = []
+			# now add all the repos
+			repos = os.listdir( os.path.join( os.getcwd(), "resources", "repositories" ) )
+			# enumerate through the list of categories and add the item to the media list
+			for repo in repos:
+				if ( os.path.isdir( os.path.join( os.getcwd(), "resources", "repositories", repo ) ) and "(tagged)" not in repo ):
+					repo_list += [ repo ]
+			return repo_list
 
 	def _get_xbmc_revision( self ):
 		try:

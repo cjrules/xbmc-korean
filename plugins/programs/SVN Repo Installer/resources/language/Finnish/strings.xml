@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<strings>  <!-- Finnish 24.4.2009 -->
+<strings>  <!-- Finnish 19.5.2009 -->
     <!-- Update messages -->
     <string id="30000">Haluatko asentaa valitun kohteen?</string>
     <string id="30001"></string>
@@ -10,7 +10,7 @@
     <string id="30006">Polku:</string>
     <string id="30007">Tiedosto:</string>
     <string id="30008">Kohde asennettiin kansioon:</string>
-    <string id="30009">Etsitään asennetut lisäkkeet...</string>
+    <string id="30009">Etsitään asennetut lisäosat...</string>
     <string id="30010">Tarkistetaan SVN:aa...</string>
     <string id="30011">Ok</string>
     <string id="30012">Ei löydy SVN:sta</string>
@@ -27,8 +27,8 @@
 
     <!-- settings -->
     <string id="30500">Tarkista päivitykset</string>
-    <string id="30510">Päivitykset: Näytä lisäkkeet joita ei ole SVN:ssä</string>
-    <string id="30520">Päivitykset: Näytä lisäkkeet ilman versiota</string>
+    <string id="30510">Päivitykset: Näytä lisäosat, joita ei ole SVN:ssä</string>
+    <string id="30520">Päivitykset: Näytä lisäosat ilman versiota</string>
     <string id="30530">Näytä ohje</string>
     <string id="30540">Näytä muutokset</string>
 
