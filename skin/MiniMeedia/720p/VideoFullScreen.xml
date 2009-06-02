@@ -98,7 +98,7 @@
     <control type="group" id="1">
       <posx>1165</posx>
       <posy>491</posy>
-      <animation effect="slide" time="0" delay="0" start="0,0" end="0,100" condition="Skin.HasSetting(UseMinimalVideoOSD)">Conditional</animation>
+      <animation effect="slide" time="0" delay="0" start="0,0" end="0,75" condition="Skin.HasSetting(UseMinimalVideoOSD)">Conditional</animation>
       <animation effect="slide" time="0" delay="0" start="0,0" end="0,174" condition="Window.IsVisible(SliderDialog)">Conditional</animation>
       <animation effect="slide" time="300" delay="200" tween="circle" easing="out" start="0,100" end="0,0">WindowOpen</animation>
       <animation effect="slide" time="300" delay="200" tween="circle" easing="out" start="0,100" end="0,0">Visible</animation>
@@ -157,7 +157,7 @@
             <label>2x</label>
             <visible>Player.Rewinding2x | Player.Forwarding2x</visible>
           </control>
-  
+
           <control type="label" id="1">
             <description>4x FF/Rew</description>
             <include>OSDSeekLabel</include>
@@ -191,7 +191,7 @@
 
     <control type="group" id="1">
       <posx>30</posx>
-      <posy>655</posy>
+      <posy>630</posy>
       <animation effect="slide" time="300" tween="circle" easing="out" start="0,100" end="0,0">WindowOpen</animation>
       <animation effect="slide" time="300" tween="circle" easing="out" start="0,100" end="0,0">Visible</animation>
       <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,100">WindowClose</animation>
@@ -211,14 +211,76 @@
 
       <control type="image" id="1">
         <width>1220</width>
-        <height>75</height>
+        <height>100</height>
         <include>OverlayArea</include>
+      </control>
+
+      <control type="group" id="1">
+        <description>Title</description>
+        <posx>24</posx>
+        <posy>9</posy>
+
+        <control type="group" id="1">
+          <visible>![VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv)]</visible>
+
+          <control type="label" id="1">
+            <width>1172</width>
+            <font>MediumSmallTitleFont</font>
+            <label>$INFO[VideoPlayer.Title]</label>
+          </control>
+        </control>
+
+        <control type="group" id="1">
+          <visible>[VideoPlayer.Content(movies)]</visible>
+
+          <control type="label" id="1">
+            <width>600</width>
+            <font>MediumSmallTitleFont</font>
+            <label>$INFO[VideoPlayer.Title]</label>
+          </control>
+          <control type="label" id="1">
+            <posx>1172</posx>
+            <posy>2</posy>
+            <width>562</width>
+            <font>SmallTitleFont</font>
+            <align>right</align>
+            <label>$INFO[VideoPlayer.Year]</label>
+          </control>
+        </control>
+
+        <control type="group" id="1">
+          <visible>[VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv)]</visible>
+
+          <control type="label" id="1">
+            <width>475</width>
+            <font>MediumSmallTitleFont</font>
+            <label>$INFO[VideoPlayer.Title]</label>
+          </control>
+
+          <control type="label" id="1">
+            <posx>481</posx>
+            <posy>2</posy>
+            <width>210</width>
+            <font>SmallTitleFont</font>
+            <align>center</align>
+            <label>$INFO[VideoPlayer.Season,$LOCALIZE[20373] ], $INFO[VideoPlayer.Episode,$LOCALIZE[20359] ]</label>
+          </control>
+
+          <control type="label" id="1">
+            <posx>1172</posx>
+            <posy>2</posy>
+            <width>400</width>
+            <font>SmallTitleFont</font>
+            <align>right</align>
+            <label>$INFO[VideoPlayer.TVShowTitle]</label>
+          </control>
+        </control>
       </control>
 
       <control type="group" id="1">
         <description>Progress Bar and Time</description>
         <posx>18</posx>
-        <posy>10</posy>
+        <posy>35</posy>
 
         <control type="progress" id="1">
           <description>Progress Bar</description>

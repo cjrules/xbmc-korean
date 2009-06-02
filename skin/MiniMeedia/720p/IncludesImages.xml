@@ -40,6 +40,12 @@
 
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\57irving.png</texture>
+        <visible>substring(ListItem.Studio,57th and Irving)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\aandm.png</texture>
         <visible>substring(ListItem.Studio,A and M)</visible>
       </control>
@@ -97,7 +103,7 @@
         <texture>studios\andell.png</texture>
         <visible>substring(ListItem.Studio,Andell)</visible>
       </control>
-  
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\anonymous.png</texture>
@@ -124,6 +130,12 @@
   
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\avnetkerner.png</texture>
+        <visible>substring(ListItem.Studio,Avnet Kerner)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\babylonian.png</texture>
         <visible>substring(ListItem.Studio,Babylonian)</visible>
       </control>
@@ -140,6 +152,12 @@
         <visible>substring(ListItem.Studio,Band Apart)</visible>
       </control>
   
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\bazmark.png</texture>
+        <visible>substring(ListItem.Studio,Bazmark)</visible>
+      </control>
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\beacon.png</texture>
@@ -160,6 +178,12 @@
   
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\bobyari.png</texture>
+        <visible>substring(ListItem.Studio,Bob Yari)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\brightlight.png</texture>
         <visible>substring(ListItem.Studio,Brightlight)</visible>
       </control>
@@ -176,6 +200,12 @@
         <visible>substring(ListItem.Studio,Cannon)</visible>
       </control>
   
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\capcom.png</texture>
+        <visible>substring(ListItem.Studio,Capcom)</visible>
+      </control>
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\carolco.png</texture>
@@ -205,7 +235,7 @@
         <texture>studios\centropolis.png</texture>
         <visible>substring(ListItem.Studio,Centropolis)</visible>
       </control>
-  
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\cheyenne.png</texture>
@@ -222,6 +252,12 @@
         <include>VideoStudioFlagsDims</include>
         <texture>studios\columbia.png</texture>
         <visible>substring(ListItem.Studio,Columbia)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\concorde.png</texture>
+        <visible>substring(ListItem.Studio,Concorde Films)</visible>
       </control>
 
       <control type="image">
@@ -254,6 +290,12 @@
         <visible>substring(ListItem.Studio,Dark Horse)</visible>
       </control>
   
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\dc.png</texture>
+        <visible>stringcompare(ListItem.Studio,DC)</visible>
+      </control>
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\destination.png</texture>
@@ -295,7 +337,13 @@
         <texture>studios\dreamworks.png</texture>
         <visible>substring(ListItem.Studio,DreamWorks)</visible>
       </control>
-  
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\eleven.png</texture>
+        <visible>substring(ListItem.Studio,Eleven)</visible>
+      </control>
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\emmedia.png</texture>
@@ -308,6 +356,12 @@
         <visible>substring(ListItem.Studio,Entertainment Films)</visible>
       </control>
   
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\eurimages.png</texture>
+        <visible>substring(ListItem.Studio,Eurimages)</visible>
+      </control>
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\europa.png</texture>
@@ -370,6 +424,12 @@
   
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\ghibli.png</texture>
+        <visible>substring(ListItem.Studio,Ghibli)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\ghosthouse.png</texture>
         <visible>substring(ListItem.Studio,Ghost House)</visible>
       </control>
@@ -391,7 +451,7 @@
         <texture>studios\greenestreet.png</texture>
         <visible>substring(ListItem.Studio,GreeneStreet)</visible>
       </control>
-  
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\gutek.png</texture>
@@ -460,6 +520,12 @@
   
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\infilm.png</texture>
+        <visible>substring(ListItem.Studio,Infilm)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\infinifilm.png</texture>
         <visible>substring(ListItem.Studio,infinifilm)</visible>
       </control>
@@ -472,8 +538,26 @@
   
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\iti.png</texture>
+        <visible>substring(ListItem.Studio,ITI Film)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\jawa.png</texture>
         <visible>substring(ListItem.Studio,Jawa)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\kadokawa.png</texture>
+        <visible>substring(ListItem.Studio,Kadokawa)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\kamera.png</texture>
+        <visible>substring(ListItem.Studio,Kamera)</visible>
       </control>
 
       <control type="image">
@@ -514,6 +598,12 @@
 
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\lightstorm.png</texture>
+        <visible>substring(ListItem.Studio,Lightstorm)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\linsefilm.png</texture>
         <visible>substring(ListItem.Studio,Linsefilm)</visible>
       </control>
@@ -530,6 +620,12 @@
         <visible>substring(ListItem.Studio,LivePlanet)</visible>
       </control>
   
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\lizard.png</texture>
+        <visible>substring(ListItem.Studio,Lizard)</visible>
+      </control>
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\lucasfilm.png</texture>
@@ -550,6 +646,12 @@
   
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\management360.png</texture>
+        <visible>substring(ListItem.Studio,Management 360)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\mandalay.png</texture>
         <visible>substring(ListItem.Studio,Mandalay)</visible>
       </control>
@@ -560,6 +662,12 @@
         <visible>substring(ListItem.Studio,Mandate)</visible>
       </control>
   
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\manga.png</texture>
+        <visible>substring(ListItem.Studio,Manga)</visible>
+      </control>
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\marvel.png</texture>
@@ -652,22 +760,40 @@
   
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\mosfilm.png</texture>
+        <visible>substring(ListItem.Studio,Mosfilm)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\myriad.png</texture>
         <visible>substring(ListItem.Studio,Myriad)</visible>
       </control>
-  
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\nala.png</texture>
         <visible>substring(ListItem.Studio,NALA)</visible>
       </control>
-  
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\narodowa.png</texture>
+        <visible>substring(ListItem.Studio,Filmoteka Narodowa)</visible>
+      </control>
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\newline.png</texture>
         <visible>substring(ListItem.Studio,New Line)</visible>
       </control>
-  
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\newmarket.png</texture>
+        <visible>substring(ListItem.Studio,Newmarket)</visible>
+      </control>
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\nothing.png</texture>
@@ -678,6 +804,12 @@
         <include>VideoStudioFlagsDims</include>
         <texture>studios\nuimage.png</texture>
         <visible>substring(ListItem.Studio,NUImage)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\oko.png</texture>
+        <visible>substring(ListItem.Studio,Filmowe Oko)</visible>
       </control>
 
       <control type="image">
@@ -760,6 +892,12 @@
   
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\playtone.png</texture>
+        <visible>substring(ListItem.Studio,Playtone)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\polygram.png</texture>
         <visible>substring(ListItem.Studio,PolyGram)</visible>
       </control>
@@ -793,13 +931,19 @@
         <texture>studios\relativity.png</texture>
         <visible>substring(ListItem.Studio,Relativity)</visible>
       </control>
-  
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\revolution.png</texture>
         <visible>substring(ListItem.Studio,Revolution)</visible>
       </control>
   
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\rhombus.png</texture>
+        <visible>substring(ListItem.Studio,Rhombus)</visible>
+      </control>
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\rkoradio.png</texture>
@@ -816,6 +960,12 @@
         <include>VideoStudioFlagsDims</include>
         <texture>studios\rogue.png</texture>
         <visible>substring(ListItem.Studio,Rogue)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\saulzaentz.png</texture>
+        <visible>substring(ListItem.Studio,Zaentz)</visible>
       </control>
 
       <control type="image">
@@ -886,6 +1036,12 @@
   
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\squareenix.png</texture>
+        <visible>substring(ListItem.Studio,Square Enix)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\steele.png</texture>
         <visible>substring(ListItem.Studio,Steele)</visible>
       </control>
@@ -946,6 +1102,12 @@
   
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\turner.png</texture>
+        <visible>substring(ListItem.Studio,Turner)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\twisted.png</texture>
         <visible>substring(ListItem.Studio,Twisted)</visible>
       </control>
@@ -958,10 +1120,16 @@
   
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\ugc.png</texture>
+        <visible>substring(ListItem.Studio,UGC)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\universal.png</texture>
         <visible>substring(ListItem.Studio,Universal)</visible>
       </control>
-  
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\viewaskew.png</texture>
@@ -994,8 +1162,20 @@
 
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\wdr.png</texture>
+        <visible>substring(ListItem.Studio,WDR)</visible>
+      </control>
+  
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\weinstein.png</texture>
         <visible>substring(ListItem.Studio,Weinstein)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\wfdif.png</texture>
+        <visible>substring(ListItem.Studio,WFDiF)</visible>
       </control>
   
       <control type="image">
@@ -1008,6 +1188,12 @@
         <include>VideoStudioFlagsDims</include>
         <texture>studios\workingtitle.png</texture>
         <visible>substring(ListItem.Studio,Working Title)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\zebra.png</texture>
+        <visible>substring(ListItem.Studio,Filmowe Zebra)</visible>
       </control>
     </control>
   </include>
@@ -1330,43 +1516,43 @@
         <texture>mpaa\tv-14.png</texture>
   			<visible>stringcompare(ListItem.MPAA,TV-14)</visible>
   		</control>
-  
+
   		<control type="image">
         <include>VideoTVRatingFlagsDims</include>
         <texture>mpaa\tv-g.png</texture>
   			<visible>stringcompare(ListItem.MPAA,TV-G)</visible>
   		</control>
-  
+
   		<control type="image">
         <include>VideoTVRatingFlagsDims</include>
         <texture>mpaa\tv-ma.png</texture>
   			<visible>stringcompare(ListItem.MPAA,TV-MA)</visible>
   		</control>
-  
+
   		<control type="image">
         <include>VideoTVRatingFlagsDims</include>
         <texture>mpaa\tv-pg.png</texture>
   			<visible>stringcompare(ListItem.MPAA,TV-PG)</visible>
   		</control>
-  
+
   		<control type="image">
         <include>VideoTVRatingFlagsDims</include>
         <texture>mpaa\tv-y.png</texture>
   			<visible>stringcompare(ListItem.MPAA,TV-Y)</visible>
   		</control>
-  
+
   		<control type="image">
         <include>VideoTVRatingFlagsDims</include>
         <texture>mpaa\tv-y.png</texture>
   			<visible>stringcompare(ListItem.MPAA,TV-Y7)</visible>
   		</control>
-  
+
   		<control type="image">
         <include>VideoTVRatingFlagsDims</include>
         <texture>mpaa\tv-y.png</texture>
   			<visible>stringcompare(ListItem.MPAA,TV-Y7 FV)</visible>
   		</control>
-  	</control>	
+  	</control>
   </include>
 
 </includes>

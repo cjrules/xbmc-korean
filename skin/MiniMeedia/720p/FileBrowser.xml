@@ -48,15 +48,6 @@
               <info>ListItem.Thumb</info>
               <colordiffuse>66999999</colordiffuse>
               <aspectratio aligny="center" align="center">keep</aspectratio>
-              <visible>!IsEmpty(ListItem.Thumb)</visible>
-            </control>
-            <control type="image">
-              <width>30</width>
-              <height>30</height>
-              <info>ListItem.Icon</info>
-              <colordiffuse>66999999</colordiffuse>
-              <aspectratio aligny="center" align="center">keep</aspectratio>
-              <visible>IsEmpty(ListItem.Thumb)</visible>
             </control>
 
             <control type="label">
@@ -73,14 +64,6 @@
               <height>30</height>
               <info>ListItem.Thumb</info>
               <aspectratio aligny="center" align="center">keep</aspectratio>
-              <visible>!IsEmpty(ListItem.Thumb)</visible>
-            </control>
-            <control type="image">
-              <width>30</width>
-              <height>30</height>
-              <info>ListItem.Thumb</info>
-              <aspectratio aligny="center" align="center">keep</aspectratio>
-              <visible>IsEmpty(ListItem.Thumb)</visible>
             </control>
 
             <control type="label">
@@ -109,15 +92,6 @@
               <info>ListItem.Thumb</info>
               <colordiffuse>66999999</colordiffuse>
               <aspectratio align="left">keep</aspectratio>
-              <visible>!IsEmpty(ListItem.Thumb)</visible>
-            </control>
-            <control type="image">
-              <width>200</width>
-              <height>120</height>
-              <info>ListItem.Thumb</info>
-              <colordiffuse>66999999</colordiffuse>
-              <aspectratio align="left">keep</aspectratio>
-              <visible>IsEmpty(ListItem.Thumb)</visible>
             </control>
 
             <control type="label">
@@ -134,16 +108,8 @@
             <control type="image">
               <width>200</width>
               <height>120</height>
-              <info>ListItem.Icon</info>
+              <info>ListItem.Thumb</info>
               <aspectratio align="left">keep</aspectratio>
-              <visible>!IsEmpty(ListItem.Thumb)</visible>
-            </control>
-            <control type="image">
-              <width>200</width>
-              <height>120</height>
-              <info>ListItem.Icon</info>
-              <aspectratio align="left">keep</aspectratio>
-              <visible>IsEmpty(ListItem.Thumb)</visible>
             </control>
 
             <control type="label">

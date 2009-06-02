@@ -79,10 +79,20 @@
     <control type="group" id="1">
       <posx>-10</posx>
       <posy>580</posy>
-			<visible>Player.ShowInfo</visible>
-			<include>MusicNowPlayingAnim</include>
+      <visible>Player.ShowInfo</visible>
+      <include>MusicNowPlayingAnim</include>
 
       <include>MusicNowPlayingDisplay</include>
+      
+      <control type="image">
+        <description>Star Rating</description>
+        <posx>150</posx>
+        <posy>58</posy>
+        <width>64</width>
+        <aspectratio>keep</aspectratio>
+        <align>left</align>
+        <info>Player.StarRating</info>
+      </control>
     </control>
 
   </controls>

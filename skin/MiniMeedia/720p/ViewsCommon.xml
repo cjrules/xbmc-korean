@@ -42,13 +42,13 @@
         <animation effect="slide" time="300" tween="circle" easing="out" start="300,-250" end="0,0">Visible</animation>
         <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="300,-250">WindowClose</animation>
         <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="300,-250">Hidden</animation>
-        <visible>![Skin.HasSetting(HideThumbInListView) | IsEmpty(ListItem.Thumb) | Window.IsVisible(2004) | Window.IsVisible(MyPics.xml)]</visible>
+        <visible>[![Skin.HasSetting(HideThumbInListView) | IsEmpty(ListItem.Thumb) | Window.IsVisible(2004) | Window.IsVisible(MyPics.xml)]] | Container.Content(genres)</visible>
         <include>HideWhenUpperDialogActive</include>
 
         <control type="group">
           <description>Default Thumbnail</description>
           <posx>1130</posx>
-          <visible>![Window.IsVisible(MyVideo.xml) | [Container.Content(tvshows) + !Skin.HasSetting(UsePortraitTVThumbs)] | Container.Content(episodes) | Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]</visible>
+          <visible>![Window.IsVisible(MyVideo.xml) | [Container.Content(tvshows) + !Skin.HasSetting(UsePortraitTVThumbs)] | Container.Content(episodes) | Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)] | Container.Content(genres)</visible>
 
           <control type="image">
             <width>160</width>
@@ -60,6 +60,13 @@
             <width>146</width>
             <height>196</height>
             <include>ListViewThumb</include>
+          </control>
+
+          <control type="image">
+            <width>146</width>
+            <height>196</height>
+            <include>ListViewThumbForGenres</include>
+            <include>ListViewThumbDims</include>
           </control>
         </control>
 
@@ -136,7 +143,7 @@
         </control>
 
         <control type="group">
-          <description>Thumbnail</description>
+          <description>Music Thumbnail</description>
           <posx>1080</posx>
           <visible>[Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]</visible>
 
@@ -1672,7 +1679,7 @@
 
           <control type="image">
             <posx>-4</posx>
-            <width>534</width>
+            <width>367</width>
             <height>160</height>
             <include>OverlayArea</include>
           </control>
@@ -1680,7 +1687,7 @@
           <control type="textbox">
             <posx>4</posx>
             <posy>6</posy>
-            <width>516</width>
+            <width>351</width>
             <height>130</height>
             <info>ListItem.Plot</info>
             <include>LowListViewInfoText</include>

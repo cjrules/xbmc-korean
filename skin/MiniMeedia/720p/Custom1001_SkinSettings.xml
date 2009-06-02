@@ -227,6 +227,14 @@
             <selected>Skin.HasSetting(ShowContentType)</selected>
             <include>SettingsOptionRadioButton</include>
           </control>
+
+          <control type="radiobutton" id="7">
+            <description>Hide Weather Fanart</description>
+            <label>$LOCALIZE[31205] $LOCALIZE[8] $LOCALIZE[31302]</label>
+            <onclick>Skin.ToggleSetting(HideWeatherFanart)</onclick>
+            <selected>Skin.HasSetting(HideWeatherFanart)</selected>
+            <include>SettingsOptionRadioButton</include>
+          </control>
         </control>
 
         <!-- Home Options -->

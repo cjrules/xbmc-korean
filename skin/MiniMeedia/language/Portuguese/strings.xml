@@ -13,16 +13,16 @@
   <string id="31006">Visual</string> 
   <string id="31007">Ligar/Desligar</string> 
   <string id="31008">Não Classificado</string> 
-  <string id="31009"></string> 
-  <string id="31010"></string> 
-  <string id="31011">Assiste a</string> 
-  <string id="31012">Ouve a tua</string> 
+  <string id="31009">Assiste aos teus</string>  <!-- used for Movies -->
+  <string id="31010">Assiste às tuas</string>  <!-- used for TV shows --> 
+  <string id="31011">Assiste aos teus</string>   <!-- used for Videos --> 
+  <string id="31012">Ouve a tua</string>
   <string id="31013">Vê as tuas</string> 
   <string id="31014">Utiliza os teus</string> 
   <string id="31015">Verifica a</string> 
-  <string id="31016">Configura o</string> 
+  <string id="31016">Configurar</string>
   <string id="31017">Energia</string> 
-  <string id="31018"></string> 
+  <string id="31018">Informação Básica</string>
   <string id="31019">Reproduz o</string> 
   <string id="31020">Verifica a</string> 
   <string id="31021">Por</string> 
@@ -46,7 +46,7 @@
   <string id="31202">Pasta de Fundos de Ecrã</string> 
   <string id="31203">Fundos de Ecrã</string> 
   <string id="31204">Menu de Opções</string> 
-  <string id="31205">Ocultar</string> 
+  <string id="31205">Ocultar</string>
   <string id="31206">Relógio</string> 
   <string id="31207">Ocultar Metereologia no Ecrã Principal</string>
   <string id="31208">Desabilitar</string> 
@@ -56,11 +56,11 @@
   <string id="31212">Ocultar Marca de Visto</string> 
   <string id="31213">Ocultar Miniaturas</string> 
   <string id="31214">Mostrar Crítica</string> 
-  <string id="31215">Mostrar Tipo de Conteúdo</string> 
-  <string id="31216">Ocultar Contagem de Media</string> 
+  <string id="31215">Mostrar Tipo</string>
+  <string id="31216">Ocultar Contagem</string>
   <string id="31217">Usar Posters para TV</string> 
   <string id="31218">Mostrar OSD de Video Minimalista</string> 
-  <string id="31219">Ocultar Fundo de Estática</string>  
+  <string id="31219">Ocultar Fundo de Ecrã de Estática</string>   
 
   <!-- Video --> 
   <string id="31300">N/D</string> 

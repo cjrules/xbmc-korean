@@ -102,7 +102,7 @@
             <onright>5</onright>
             <orientation>vertical</orientation>
             <scrolltime>200</scrolltime>
-            <pagecontrol>49</pagecontrol>
+            <pagecontrol>63</pagecontrol>
 
             <itemlayout width="540" height="29">
               <control type="label">
@@ -126,7 +126,7 @@
             </focusedlayout>
           </control>
 
-          <control type="scrollbar">
+          <control type="scrollbar" id="63">
             <posx>544</posx>
             <posy>0</posy>
             <height>178</height>
@@ -141,6 +141,7 @@
             <posy>300</posy>
             <animation effect="slide" time="300" tween="circle" easing="out" start="0,0" end="0,-300">Focus</animation>
             <animation effect="slide" time="200" tween="circle" easing="in" start="0,-300" end="0,0">Unfocus</animation>
+            <visible>!Control.IsVisible(50)</visible>
 
             <control type="button">
               <onright>1</onright>

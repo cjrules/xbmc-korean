@@ -209,4 +209,7 @@
   <constant name="LowListTVWideLabelWidth">360</constant>
   <constant name="LowListTVWideContentBGWidth">396</constant>
 
+  <constant name="HighListEpisodeContentWidth">549</constant>
+  <constant name="HighListEpisodeLabelWidth">525</constant>
+  <constant name="HighListEpisodeContentBGWidth">561</constant>
 </includes>

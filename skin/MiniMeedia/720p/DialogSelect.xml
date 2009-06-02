@@ -24,7 +24,7 @@
           <control type="scrollbar" id="61">
             <onup>61</onup>
             <ondown>61</ondown>
-            <onright>5</onright>
+            <onright>3</onright>
             <height>230</height>
           </control>
 

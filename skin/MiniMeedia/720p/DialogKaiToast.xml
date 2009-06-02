@@ -3,25 +3,30 @@
   <controls>
 
     <control type="group">
-      <posx>490</posx>
+      <posx>790</posx>
       <posy>-10</posy>
+      <animation effect="slide" time="300" tween="circle" easing="out" start="0,-130" end="0,0">WindowOpen</animation>
+      <animation effect="slide" time="300" tween="circle" easing="out" start="0,-130" end="0,0">Visible</animation>
+      <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,-130">WindowClose</animation>
+      <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,-130">Hidden</animation>
 
       <control type="image">
         <description>Panel background</description>
-        <width>800</width>
-        <height>72</height>
+        <width>500</width>
+        <height>90</height>
         <include>OverlayDarkArea</include>
       </control>
 
       <control type="label" id="401">
         <description>Caption</description>
-        <posy>14</posy>
+        <posy>20</posy>
+        <font>MediumTitleFont</font>
         <include>KaiDialogText</include>
       </control>
 
       <control type="label" id="402">
         <description>Description</description>
-        <posy>44</posy>
+        <posy>52</posy>
         <include>KaiDialogText</include>
       </control>
     </control>

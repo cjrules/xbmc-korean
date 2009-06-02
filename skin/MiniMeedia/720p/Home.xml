@@ -472,7 +472,7 @@
           <item id="9">
             <description>My Movies Button</description>
             <label>$LOCALIZE[342]</label>
-            <label2>$LOCALIZE[31011]</label2>
+            <label2>$LOCALIZE[31009]</label2>
             <thumb>$INFO[Skin.String(CustomMoviesBGFolder)]</thumb>
             <onclick>XBMC.ActivateWindow(MyVideoLibrary,movietitles,return)</onclick>
             <visible>!Skin.HasSetting(HideMovies)</visible>
@@ -480,7 +480,7 @@
           <item id="8">
             <description>My TV Shows Button</description>
             <label>$LOCALIZE[20343]</label>
-            <label2>$LOCALIZE[31011]</label2>
+            <label2>$LOCALIZE[31010]</label2>
             <thumb>$INFO[Skin.String(CustomTVShowsBGFolder)]</thumb>
             <onclick>XBMC.ActivateWindow(MyVideoLibrary,tvshowtitles,return)</onclick>
             <visible>!Skin.HasSetting(HideTVShows)</visible>
@@ -515,7 +515,15 @@
             <label2>$LOCALIZE[31020]</label2>
             <thumb>$INFO[Skin.String(CustomWeatherBGFolder)]$INFO[Weather.FanartCode]</thumb>
             <onclick>XBMC.ActivateWindow(2600)</onclick>
-            <visible>!Skin.HasSetting(HideWeather)</visible>
+            <visible>!Skin.HasSetting(HideWeather) + !Skin.HasSetting(HideWeatherFanart)</visible>
+          </item>
+          <item id="5">
+            <description>My Weather Button</description>
+            <label>$LOCALIZE[8]</label>
+            <label2>$LOCALIZE[31020]</label2>
+            <thumb>$INFO[Skin.String(CustomWeatherBGFolder)]</thumb>
+            <onclick>XBMC.ActivateWindow(2600)</onclick>
+            <visible>!Skin.HasSetting(HideWeather) + Skin.HasSetting(HideWeatherFanart)</visible>
           </item>
           <item id="4">
             <description>My Programs Menu</description>

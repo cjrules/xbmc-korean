@@ -157,6 +157,7 @@
           <onright>10</onright>
           <onup>21</onup>
           <ondown>21</ondown>
+          <label>$LOCALIZE[12319]</label>
           <include>KeyboardNumericButton</include>
         </control>
 
