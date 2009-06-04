@@ -1,5 +1,17 @@
 <includes>
 
+	<include name="ListFade">
+		<control type="image" id="102">
+			<posx>0</posx>
+			<posy>0</posy>
+			<width>0</width>
+			<height>0</height>
+			<texture>-</texture>
+			<visible>Control.HasFocus(50) + [!Container(50).OnNext + !Container(50).OnPrevious]</visible>
+			<animation effect="fade" start="0" end="100" time="150" >Visible</animation>
+		</control>
+	</include>
+
 	<include name="ListLabel_Width">
 		<width>520</width>	
 	</include>
@@ -34,7 +46,7 @@
 	
 	<include name="ListLabel_MainMusic">
 		<posx>105</posx>
-		<posy>0</posy>
+		<posy>2</posy>
 		<width>480</width>
 		<height>41</height>
 		<font>Font_List</font>
@@ -56,7 +68,7 @@
 	
 	<include name="ListLabel_SubMusic">
 		<posx>105</posx>
-		<posy>20</posy>
+		<posy>22</posy>
 		<width>470</width>
 		<height>41</height>
 		<font>Font_ListSub</font>
@@ -1032,7 +1044,7 @@
 				<width>346</width>
 				<height>511</height>
 				<fadetime>400</fadetime>
-				<texture diffuse="list/list_movieicon_mask.png">defaultvideobig.png</texture>
+				<texture diffuse="list/list_movieicon_mask.png">defaultVideo.png</texture>
 				<info>ListItem.Icon</info>
 				<bordertexture border="-28">list/list_movieicon_frame.png</bordertexture>
 				<visible>[Window.IsActive(1) + !Skin.HasSetting(listgamessquare)] | [Window.IsActive(24) + !Skin.HasSetting(listvideosquare)] | [Window.IsActive(25) + !Container.Content(episodes) + !Container.Content(musicvideos)]</visible>
@@ -1049,18 +1061,18 @@
 
 			<control type="largeimage">
 				<width>346</width>
-				<height>511</height>
-				<fadetime>400</fadetime>			
+				<height>511</height>			
 				<texture diffuse="list/list_movieicon_mask.png">$INFO[listitem.path,,movie.tbn]</texture>
-				<visible>Container.Content(movies)</visible>
+				<animation effect="fade" start="0" end="100" time="000">VisibleChange</animation>
+				<visible>Control.IsVisible(102) + Container.Content(movies)</visible>
 			</control>
 			
 			<control type="largeimage">
 				<width>346</width>
-				<height>511</height>
-				<fadetime>400</fadetime>			
+				<height>511</height>			
 				<texture diffuse="list/list_movieicon_mask.png">$INFO[listitem.path,,folder.jpg]</texture>
-				<visible>Container.Content(tvshows)</visible>
+				<animation effect="fade" start="0" end="100" time="000">VisibleChange</animation>
+				<visible>Control.IsVisible(102) + Container.Content(tvshows)</visible>
 			</control>			
 
 			<control type="image">
@@ -1076,7 +1088,7 @@
 				<height>511</height>
 				<fadetime>400</fadetime>			
 				<texture diffuse="list/list_movieicon_mask.png">$INFO[listitem.path,,folder.jpg]</texture>
-				<visible>Container.Content(tvshows) | Container.Content(seasons)</visible>				
+				<visible>[Container.Content(tvshows) + !Skin.HasSetting(listvideosquare)] | [Container.Content(seasons) + !Skin.HasSetting(listvideosquare)]</visible>			
 			</control>
 
 			<control type="image">

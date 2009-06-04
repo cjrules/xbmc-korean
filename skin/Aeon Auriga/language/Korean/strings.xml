@@ -3,12 +3,12 @@
 <!--  strings 31000 thru 31999 reserved for skins  -->
 
  <strings>
-	  <string id="31000">0.9 (STARK)</string> <!-- DO NOT CHANGE -->
-	  <string id="31001">정보없음</string> 
-	  <string id="31002">음소거</string>
-	  <string id="31003"></string>
-	  <string id="31004">초기화</string>
-    <string id="31005">항목:</string>
+	<string id="31000">0.9 (STARK)</string> <!-- DO NOT CHANGE -->
+	<string id="31001">정보없음</string>
+	<string id="31002">음소거</string>
+	<string id="31003">날씨화면 옵션 없음</string>
+	<string id="31004">초기화</string>
+    <string id="31005">항목</string>
     <string id="31006">지금 재생중</string>
     <string id="31007">일시정지</string>
     <string id="31008">현재온도</string>
@@ -17,7 +17,7 @@
 <!-- Main Menu -->
   
     <string id="31010">음악</string>
-    <string id="31011">게임</string>
+    <string id="31011">프로그램</string>
     <string id="31012">사진</string>
     <string id="31013">영화</string>
     <string id="31014">티비쇼</string>
@@ -54,16 +54,16 @@
 	  <string id="31047">레이아웃</string>
 	  <string id="31048">수동</string>
 	  <string id="31049">자동</string>
-	  <string id="31050">보기: </string>
+    <string id="31050">보기 형식: </string>
     <string id="31051">무작위</string>
     <string id="31052">두껍게</string>
-    <string id="31053">가늘게</string>
+    <string id="31053">얇게</string>
     <string id="31054">설정</string>
-    <string id="31055">연결재생: 켜기</string>
-    <string id="31056">썸네일: 정사각형</string>
+    <string id="31055">연결재생</string>
+    <string id="31056">미리보기: 정사각형</string>
     <string id="31057">파일</string>
     <string id="31058">미시청 숨김</string>
-    <string id="31059">썸네일: 포스터</string>
+    <string id="31059">미리보기: 포스터</string>
     <string id="31060">배치: 고정</string>
     <string id="31061">배치: 유동</string>
     <string id="31062">시즌</string>
@@ -74,11 +74,11 @@
     <string id="31067">배경</string>
     <string id="31068">라이브러리</string>
     <string id="31069">플래그</string>
-    <string id="31070">영화정보</string>
-  	<string id="31071">간단히</string>
-	  <string id="31072">자세히</string>
-  	<string id="31073">기본</string>
-	  <string id="31074">최대</string>
+    <string id="31070">정보</string>
+	<string id="31071">간단히</string>
+	<string id="31072">자세히</string>
+  	<string id="31073">기본값</string>
+	<string id="31074">최대</string>
 	 	<string id="31075">레이아웃</string>
 	  <string id="31076">그리드</string>
 	  <string id="31077">켜기</string>
@@ -158,12 +158,12 @@
     <string id="31158">고급</string>
     <string id="31159">확장된 AEON 옵션</string>
     <string id="31160">프로파일</string>
-  	<string id="31161">사용자 계정</string>
-  	<string id="31162">로그인 화면</string>
-  	<string id="31163">옵션</string>
-  	<string id="31164">로그인 화면</string>
-  	<string id="31165">사용자</string>
-  	<string id="31166">프로파일 관리</string>
+	<string id="31161">사용자 계정</string>
+	<string id="31162">로그인 화면</string>
+	<string id="31163">옵션</string>
+	<string id="31164">로그인 화면</string>
+	<string id="31165">사용자</string>
+	<string id="31166">프로파일 관리</string>
 
 <!--  Button / Shutdown Menu  --> 
 
@@ -177,7 +177,7 @@
     <string id="31207">다시 시작</string>
     <string id="31208">종료</string>
     <string id="31209">로그 아웃</string>
-  	<string id="31210">꺼내기</string> 
+	<string id="31210">꺼내기</string> 
 
 <!--  Set Content / Add Source dialogs  --> 
   
@@ -295,9 +295,9 @@
 <!--  Fullscreen info panel  -->
 
     <string id="31400">포스터가 없나요?[CR][CR]따로 "큰" 미리보기를 가지고 있는지와[CR]명명 규칙을 따르는 영화파일인지 확인하세요[CR](BARBARELLA.MKV-BIG.PNG)[CR][CR]더 상세내용을 AEON 설명서를 확인하세요</string>
-    <string id="31401">저자:</string>
-    <string id="31402">감독:</string>
-    <string id="31403">에피소드:</string>
+    <string id="31401">저자</string>
+    <string id="31402">감독</string>
+    <string id="31403">에피소드</string>
     <string id="31404">스튜디오:</string>
     <string id="31405">배우</string>
     <string id="31406">에피소드</string>
@@ -427,10 +427,10 @@
     <string id="31753">패널</string>
     <string id="31754">선택</string>
     <string id="31755">방향으로 보기모드 선택[CR]나가려면 누름</string>	
-	  <string id="31756">ONLY LIST VIEW IS AVAILABLE FOR EPISODES</string>
+  	<string id="31756">에피소드에서는 목록보기만 가능</string>
   	<string id="31757">멀티플렉스</string>
 	  <string id="31578">스트립쇼</string>
-	  
+
 <!-- Aeon Settings panel labels -->
   
     <string id="31800">별도 자막</string>
@@ -469,8 +469,7 @@
 	<string id="31908">...그리고 여러분</string>
 	<string id="31909">AEON은 돌아옵니다</string>
 	<string id="31910">날씨 배경</string>
-
-  	
+    
 <!-- Submenu / Objects -->
 
 	<string id="31920">최근</string>
@@ -492,5 +491,5 @@
 	<string id="31936">트랙</string>
 	<string id="31937">시즌</string>
 	<string id="31938">에피소드</string>
-	  
+    
 </strings>

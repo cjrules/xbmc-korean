@@ -84,7 +84,7 @@
 		<height>720</height>
 		<texture>info/movieinfogradient.png</texture>
 		<aspectratio>stretch</aspectratio>
-		<visible>!Container.Content(episodes)</visible>
+		<visible>!Skin.HasSetting(videotv)</visible>	
 	</control>
 
 	<control type="largeimage">
@@ -95,7 +95,6 @@
 		<height>720</height>
 		<texture>$INFO[listitem.thumb]</texture>
 		<aspectratio>stretch</aspectratio>
-		<visible>!Container.Content(episodes)</visible>		
 	</control>
 	
 	<control type="largeimage">
@@ -107,8 +106,20 @@
 		<texture>$INFO[listitem.path]movie.tbn</texture>
 		<aspectratio>stretch</aspectratio>
 		<fadetime>500</fadetime>
-		<visible>!Container.Content(episodes)</visible>		
+		<visible>!Skin.HasSetting(videotv)</visible>		
 	</control>
+	
+	<control type="largeimage">
+		<description>Cover image</description>
+		<posx>0</posx>
+		<posy>0</posy>
+		<width>486</width>
+		<height>720</height>
+		<texture>$INFO[listitem.path]poster.jpg</texture>
+		<aspectratio>stretch</aspectratio>
+		<fadetime>500</fadetime>
+		<visible>Skin.HasSetting(videotv)</visible>		
+	</control>	
 	
 	<control type="largeimage">
 		<description>Cover image</description>
@@ -119,18 +130,17 @@
 		<texture>$INFO[listitem.path]-big.png</texture>
 		<aspectratio>stretch</aspectratio>
 		<fadetime>500</fadetime>
-		<visible>!Container.Content(episodes)</visible>		
+		<visible>!Skin.HasSetting(videotv)</visible>		
 	</control>	
-
+	
 	<control type="image">
 		<description>background image</description>
 		<posx>486</posx>
 		<posy>0</posy>
 		<width>795</width>
 		<height>720</height>
-		<texture>info/info_rightpaneltop.png</texture>
-		<animation effect="slide" time="0" start="22,0" end="22,0" condition="Container.Content(episodes)">Conditional</animation>		
-	</control>
+		<texture>info/lite/info_rightpaneltop.png</texture>
+	</control>	
 
 <!-- Movie info -->
 
@@ -148,6 +158,7 @@
 			<width>695</width>
 			<height>569</height>
 			<texture>info/info_panellines_movie.png</texture>
+			<animation effect="fade" start="70" end="70" time="0" condition="Skin.HasSetting(lite)">Conditional</animation>				
 		</control>
 
 		<control type="image">
@@ -297,6 +308,7 @@
 			<control type="button" id="11">
 			<label>31409</label>
 			<include>Objects_FSInfoButton</include>
+			<visible>!IsEmpty(ListItem.Trailer)</visible>
 			</control>
 		</control>
 
@@ -385,6 +397,7 @@
 			<height>569</height>
 			<texture>info/info_tv_panellines.png</texture>
 			<visible>Container.Content(tvshows)</visible>
+			<animation effect="fade" start="70" end="70" time="0" condition="Skin.HasSetting(lite)">Conditional</animation>				
 		</control>
 		
 		<control type="label">
@@ -558,6 +571,7 @@
 			<width>695</width>
 			<height>569</height>
 			<texture>info/info_tv_panellines.png</texture>
+			<animation effect="fade" start="70" end="70" time="0" condition="Skin.HasSetting(lite)">Conditional</animation>				
 		</control>
 		
 		<control type="label">
