@@ -13,7 +13,7 @@ __author__ = "nuka1195"
 __url__ = "http://code.google.com/p/xbmc-addons/"
 __svn_url__ = "http://xbmc-addons.googlecode.com/svn/trunk/plugins/video/Apple%20Movie%20Trailers%20Lite"
 __credits__ = "Team XBMC"
-__version__ = "1.6.2"
+__version__ = "1.7.3a"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -29,4 +29,12 @@ if ( __name__ == "__main__" ):
     elif ( sys.argv[ 2 ].startswith( "?Download_Trailer" ) ):
         import resources.lib.xbmcplugin_download as download
         download.Main()
-sys.modules.clear()
+    elif ( sys.argv[ 2 ].startswith( "?OpenSettings" ) ):
+        import xbmcplugin
+        xbmcplugin.openSettings( sys.argv[ 0 ] )
+        # sleep for a few milliseconds, to give dialog time to close.  had issues early, may not be necessary
+        #TODO: verify this is necessary
+        xbmc.sleep( 50 )
+        # refresh listing in case settings changed
+        xbmc.executebuiltin( "Container.Refresh" )
+

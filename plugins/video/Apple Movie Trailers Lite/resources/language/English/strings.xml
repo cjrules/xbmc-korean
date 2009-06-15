@@ -32,6 +32,10 @@
     <string id="30130">- Always play saved trailers</string>
     <string id="30140">- Add '-trailer' to saved trailers</string>
 
+    <!-- plugin buttons -->
+    <string id="30201">Search...</string>
+    <string id="30202">Settings</string>
+
     <!-- messages -->
     <string id="30500">Downloading: %s</string>
     <string id="30501">Saving: %s</string>

@@ -1,5 +1,5 @@
 ﻿<window>
-    <defaultcontrol>100</defaultcontrol>
+    <defaultcontrol>50</defaultcontrol>
 	<coordinates>
 		<system>1</system>
 		<posx>161</posx>
@@ -16,7 +16,7 @@
 			<texture>showtimes-dialog-panel.png</texture>
 		</control>
 		<!-- ** Required ** Do not change <description> or <type> -->
-		<control type="label" id="20">
+		<control type="label">
 			<description>Showtimes Label1</description>
 			<posx>-30</posx>
 			<posy>28</posy>
@@ -24,9 +24,10 @@
 			<align>left</align>
 			<font>font12</font>
             <textcolor>FFFFFFFF</textcolor>
+            <label>$INFO[Container(50).Property(Title)]</label>
 		</control>
 		<!-- ** Required ** Do not change <description> or <type> -->
-		<control type="label" id="30">
+		<control type="label">
 			<description>Showtimes Label2</description>
 			<posx>-30</posx>
 			<posy>50</posy>
@@ -34,9 +35,10 @@
 			<align>left</align>
 			<font>font10</font>
 			<textcolor>DDced8da</textcolor>
+            <label>$INFO[Container(50).Property(Location)]$INFO[Container(50).Property(Phone), - ,]</label>
 		</control>
 		<!-- ** Required ** Do not change <description> or <type> -->
-		<control type="label" id="40">
+		<control type="label">
 			<description>Showtimes Label3</description>
 			<posx>-30</posx>
 			<posy>72</posy>
@@ -44,9 +46,10 @@
 			<align>left</align>
 			<font>font10</font>
 			<textcolor>DDced8da</textcolor>
+            <label>$INFO[Container(50).Property(Date)]</label>
 		</control>
 		<!-- ** Required ** Do not change <description> or <type> -->
-		<control type="label" id="50">
+		<control type="label">
 			<description>Showtimes Label4</description>
 			<posx>440</posx>
 			<posy>28</posy>
@@ -54,9 +57,10 @@
 			<align>right</align>
 			<font>font10</font>
 			<textcolor>DDced8da</textcolor>
+            <label>$INFO[Container(50).Property(Locale)]</label>
 		</control>
 		<!-- ** Required ** Do not change <id> or <type> -->
-		<control type="list" id="100">
+		<control type="list" id="50">
 			<description>List</description>
 			<posx>-30</posx>
 			<posy>100</posy>
@@ -93,7 +97,7 @@
                     <textcolor>FFFFFFFF</textcolor>
 					<aligny>center</aligny>
 					<align>right</align>
-					<info>ListItem.Thumb</info>
+					<info>ListItem.Property(Phone)</info>
 				</control>
 				<control type="label">
 					<posx>5</posx>
@@ -104,7 +108,7 @@
                     <textcolor>FFFFFFFF</textcolor>
 					<aligny>center</aligny>
 					<align>left</align>
-					<info>ListItem.ActualIcon</info>
+					<info>ListItem.Property(Address)</info>
 				</control>
 				<control type="label">
 					<posx>5</posx>
@@ -115,7 +119,7 @@
                     <textcolor>60FFFFFF</textcolor>
 					<aligny>center</aligny>
 					<align>left</align>
-					<info>ListItem.Label2</info>
+					<info>ListItem.Property(ShowTimes)</info>
 				</control>
 			</itemlayout>
 			<focusedlayout height="65">
@@ -146,7 +150,7 @@
                     <textcolor>FFFFFFFF</textcolor>
 					<aligny>center</aligny>
 					<align>right</align>
-					<info>ListItem.Thumb</info>
+					<info>ListItem.Property(Phone)</info>
 				</control>
 				<control type="label">
 					<posx>5</posx>
@@ -157,7 +161,7 @@
                     <textcolor>FFFFFFFF</textcolor>
 					<aligny>center</aligny>
 					<align>left</align>
-					<info>ListItem.ActualIcon</info>
+					<info>ListItem.Property(Address)</info>
 				</control>
 				<control type="label">
 					<posx>5</posx>
@@ -168,7 +172,7 @@
                     <textcolor>60FFFFFF</textcolor>
 					<aligny>center</aligny>
 					<align>left</align>
-					<info>ListItem.Label2</info>
+					<info>ListItem.Property(ShowTimes)</info>
 				</control>
 			</focusedlayout>
 		</control>

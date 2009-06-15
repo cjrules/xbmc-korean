@@ -29,10 +29,7 @@ class _Parser:
         self.settings = settings
         self.MediaWindow = MediaWindow
         # get our regions format
-        try:
-            self.date_format = xbmc.getRegion( "datelong" ).replace( "DDDD,", "" ).replace( "MMMM", "%B" ).replace( "D", "%d" ).replace( "YYYY", "%Y" ).strip()
-        except:
-            self.date_format = "%B %d, %Y"
+        self.date_format = xbmc.getRegion( "datelong" ).replace( "DDDD,", "" ).replace( "MMMM", "%B" ).replace( "D", "%d" ).replace( "YYYY", "%Y" ).strip()
         # get the list
         self.success = self._get_current_videos( xmlSource )
 
@@ -92,7 +89,7 @@ class _Parser:
                 trailer = re.findall( "<large[^>]*>(.*?)</large>", preview[ 0 ] )[ 0 ]
                 # replace with 1080p if quality == 1080p
                 if ( self.settings[ "quality" ] == "_1080p" ):
-                    trailer = trailer.replace( "a720p.", "h1080p." )
+                    trailer = trailer.replace( "a720p.m4v", "h1080p.mov" )
                 # size
                 size = long( re.findall( "filesize=\"([0-9]*)", preview[ 0 ] )[ 0 ] )
                 # add the item to our media list
@@ -150,6 +147,8 @@ class _Parser:
                 items += [ ( xbmc.getLocalizedString( 30910 ), "XBMC.RunPlugin(%s?Download_Trailer=True&trailer_url=%s)" % ( sys.argv[ 0 ], urllib.quote_plus( repr( video[ "trailer" ] ) ), ), ) ]
             # add the movie information item
             items += [ ( xbmc.getLocalizedString( 30930 ), "XBMC.Action(Info)", ) ]
+            # add settings menu item
+            items += [ ( xbmc.getLocalizedString( 1045 ), "XBMC.RunPlugin(%s?OpenSettings)" % ( sys.argv[ 0 ], ) ) ]
             # add items to listitem with replaceItems = True so only ours show
             dirItem.listitem.addContextMenuItems( items, replaceItems=True )
             # add the item to the media list
@@ -176,8 +175,13 @@ class Main:
                                  xbmcplugin.SORT_METHOD_MPAA_RATING, xbmcplugin.SORT_METHOD_STUDIO, )
         # helper functions
         self.MediaWindow = MediaWindow( int( sys.argv[ 1 ] ), category=self.PluginCategory, content="movies", sortmethods=sortmethods, fanart=( self.settings[ "fanart_image" ], self.Fanart, ) )
+        # set plugin buttons
+        self._set_buttons()
         # fetch videos
         self.MediaWindow.end( self.get_videos() )
+
+    def _set_buttons( self ):
+        self.MediaWindow.setButton( 1045, onclick="XBMC.RunPlugin(%s?OpenSettings)" % ( sys.argv[ 0 ], ), bId=2 )
 
     def _get_settings( self ):
         self.settings = {}

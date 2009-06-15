@@ -34,7 +34,7 @@ class MediaWindow:
             self.m_window = xbmcgui.Window( wId )
         # reset button counter
         self.m_buttonId = 0
-        # set plugin category property
+        # set plugin category
         if ( category is not None ):
             xbmcplugin.setPluginCategory( handle=self.m_handle, category=category )
         # set plugin content
@@ -50,7 +50,7 @@ class MediaWindow:
         if ( sortmethods is not None ):
             # enumerate thru and add each sort method
             for sortmethod in sortmethods:
-                xbmcplugin.addSortMethod( self.m_handle, sortmethod )
+                xbmcplugin.addSortMethod( handle=self.m_handle, sortMethod=sortmethod )
 
     def _setFanart( self, fanart ):
         # if user passed fanart tuple (path, method,)

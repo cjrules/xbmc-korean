@@ -33,19 +33,23 @@ class GUI( xbmcgui.WindowXMLDialog ):
 
     def onInit( self ):
         self._show_dialog()
-        self._get_showtimes()
+        self._get_showtimes( movie=self.args.title, day=self.settings[ "day" ] )
 
     def _parse_argv( self ):
         # call _Info() with our formatted argv to create the self.args object
         exec "self.args = _Info(%s)" % ( unquote_plus( sys.argv[ 2 ][ 1 : ].replace( "&", ", " ) ), )
 
     def _show_dialog( self ):
-        self.getControl( 20 ).setLabel( self.args.title )
-        self.getControl( 30 ).setLabel( "%s: %s" % ( xbmc.getLocalizedString( 30603 ), self.settings[ "local" ] ), )
-        self.getControl( 40 ).setLabel( "%s:" % ( xbmc.getLocalizedString(30602 ), ) )
-        self.getControl( 50 ).setLabel( "" )
-        self.getControl( 100 ).reset()
-        self.getControl( 100 ).addItem( xbmc.getLocalizedString( 30601 ) )
+        self._set_title_info( self.args.title, "", "%s:" % ( xbmc.getLocalizedString(30602 ), ), "" )
+
+    def _set_title_info( self, title="", location="", date="", phone="" ):
+        self.clearList()
+        self.setProperty( "Title", title )
+        self.setProperty( "Locale", self.settings[ "local" ] )
+        self.setProperty( "Location", location )
+        self.setProperty( "Date", date )
+        self.setProperty( "Phone", phone )
+        self.addItem( xbmc.getLocalizedString( 30601 ) )
 
     def _get_settings( self ):
         self.settings = {}
@@ -55,42 +59,39 @@ class GUI( xbmcgui.WindowXMLDialog ):
 
     def _get_scraper( self ):
         exec "import resources.scrapers.%s.showtimesScraper as showtimesScraper" % ( self.settings[ "scraper" ], )
-        self.ShowtimesFetcher = showtimesScraper.ShowtimesFetcher()
+        self.ShowtimesFetcher = showtimesScraper.ShowtimesFetcher( self.settings[ "local" ] )
 
-    def _get_showtimes( self ):
-        date, self.movie_showtimes = self.ShowtimesFetcher.get_showtimes( self.args.title, self.settings[ "local" ] )
-        if ( date is None ): date = xbmc.getLocalizedString( 30600 )
-        else: date = "%s: %s" % ( xbmc.getLocalizedString( 30602 ), date, )
-        self.getControl( 40 ).setLabel( date )
+    def _get_showtimes( self, movie=None, day=0 ):
+        self.movie_showtimes = self.ShowtimesFetcher.get_showtimes( movie, day )
+        if ( self.movie_showtimes[ "date" ] is None ):
+            date = xbmc.getLocalizedString( 30600 )
+        else:
+            self.setProperty( "Title", self.movie_showtimes[ "title" ] )
+            date = "%s: %s" % ( xbmc.getLocalizedString( 30602 ), self.movie_showtimes[ "date" ], )
+        self.setProperty( "Date", date )
         self._fill_list()
 
     def _get_selection( self, choice ):
-        self.getControl( 20 ).setLabel( choice )
-        self.getControl( 30 ).setLabel( self.movie_showtimes[ choice ][ 0 ] )
-        self.getControl( 40 ).setLabel( "%s:" % ( xbmc.getLocalizedString( 30602 ), ) )
-        self.getControl( 50 ).setLabel( self.movie_showtimes[ choice ][ 2 ] )
-        self.getControl( 100 ).reset()
-        self.getControl( 100 ).addItem( xbmc.getLocalizedString( 30601 ) )
-        date, self.movie_showtimes = self.ShowtimesFetcher.get_selection( self.movie_showtimes[ choice ][ 3 ] )
-        self.getControl( 40 ).setLabel( "%s: %s" % ( xbmc.getLocalizedString( 30602 ), date, ) )
-        self._fill_list()
+        self._set_title_info( self.movie_showtimes[ "theaters" ][ choice ][ 0 ], self.movie_showtimes[ "theaters" ][ choice ][ 1 ], "%s:" % ( xbmc.getLocalizedString( 30602 ), ), self.movie_showtimes[ "theaters" ][ choice][ 3 ] )
+        self._get_showtimes( self.movie_showtimes[ "theaters" ][ choice ][ 4 ], int( self.movie_showtimes[ "day" ] ) )
 
     def _fill_list( self ):
-        self.getControl( 100 ).reset()
-        if ( self.movie_showtimes ):
-            self.theaters = self.movie_showtimes.keys()
-            self.theaters.sort()
-            for theater in self.theaters:
-                list_item = xbmcgui.ListItem( theater, self.movie_showtimes[ theater ][ 1 ], self.movie_showtimes[ theater ][ 0 ], self.movie_showtimes[ theater ][ 2 ] )
-                self.getControl( 100 ).addItem( list_item )
+        self.clearList()
+        if ( self.movie_showtimes[ "theaters" ] ):
+            for theater in self.movie_showtimes[ "theaters" ]:
+                list_item = xbmcgui.ListItem( theater[ 0 ] )
+                list_item.setProperty( "Address", theater[ 1 ] )
+                list_item.setProperty( "ShowTimes", theater[ 2 ] )
+                list_item.setProperty( "Phone", theater[ 3 ] )
+                self.addItem( list_item )
         else:
-            self.getControl( 100 ).addItem( xbmc.getLocalizedString( 30600 ) )
+            self.addItem( xbmc.getLocalizedString( 30600 ) )
 
     def _close_dialog( self ):
         self.close()
 
     def onClick( self, controlId ):
-        self._get_selection( self.theaters[ self.getControl( controlId ).getSelectedPosition() ] )
+        self._get_selection( self.getCurrentListPosition() )
 
     def onFocus( self, controlId ):
         pass
