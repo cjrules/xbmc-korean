@@ -184,7 +184,7 @@ class Main:
                 # we set the thumb so XBMC does not try and cache the next pictures
                 thumbnail = os.path.join( self.BASE_PLUGIN_THUMBNAIL_PATH, "next.png" )
                 # set the default icon
-                icon = "DefaultFolderBig.png"
+                icon = "DefaultFolder.png"
                 # set stringid
                 stringid = 30908 + ( kind == "album" )
                 # only need to add label and icon, setInfo() and addSortMethod() takes care of label2
@@ -203,7 +203,7 @@ class Main:
                 # we set the thumb so XBMC does not try and cache the previous pictures
                 thumbnail = os.path.join( self.BASE_PLUGIN_THUMBNAIL_PATH, "previous.png" )
                 # set the default icon
-                icon = "DefaultFolderBig.png"
+                icon = "DefaultFolder.png"
                 # set stringid
                 stringid = 30908 + ( kind == "album" )
                 # only need to add label and icon, setInfo() and addSortMethod() takes care of label2
@@ -238,7 +238,7 @@ class Main:
                     # no photo_url, must be an album
                     isfolder = True
                     # set the default icon
-                    icon = "DefaultFolderBig.png"
+                    icon = "DefaultFolder.png"
                 # we add total items if this is an album, we add author if it is a photo
                 if ( item[ "photo_url" ] ):
                     title = item[ "title" ]
