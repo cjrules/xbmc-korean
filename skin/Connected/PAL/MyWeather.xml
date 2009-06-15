@@ -9,27 +9,7 @@
   <control type="group">
     <include>DefaultFade</include>
     <visible>Weather.IsFetched</visible>
-    <control type="image">
-      <description>Weather Background Image</description>
-      <posx>0</posx>
-      <posy>170</posy>
-      <width>720</width>
-      <height>406</height>
-      <texture>Black.png</texture>
-      <aspectratio>stretch</aspectratio>
-      <include>WrapBackFade</include>
-      <visible>Skin.HasSetting(WeatherBackEnable)</visible>
-    </control>
-    <control type="image">
-      <description>Weather Window Image</description>
-      <posx>-15</posx>
-      <posy>510</posy>
-      <width>80</width>
-      <height>80</height>
-      <aspectratio align="left">keep</aspectratio>
-      <texture>HomeWeather.png</texture>
-      <include>ContentImageFade</include>
-    </control>
+    <include>WeatherBack</include>
     <control type="label">
       <description>Weather Window Title</description>
       <posx>25</posx>

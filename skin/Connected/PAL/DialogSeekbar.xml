@@ -76,12 +76,12 @@
     
 		<control type="label" id="1">
 			<description>Elapsed Time Label</description>
-			<posx>0</posx>
-			<posy>55</posy>
+			<posx>10</posx>
+			<posy>50</posy>
 			<font>18BdFont</font>
 			<label>$INFO[Player.Time] | $INFO[Player.Duration]</label>
-			<textcolor>FocusedTextColor</textcolor>
-			<width>300</width>
+			<textcolor>DefaultTextColor</textcolor>
+			<width>280</width>
 			<height>25</height>
 			<align>center</align>
       <aligny>center</aligny>
@@ -89,12 +89,12 @@
 		</control>
 		<control type="label" id="1">
 			<description>Seek Time Label</description>
-			<posx>0</posx>
-			<posy>55</posy>
+			<posx>10</posx>
+			<posy>50</posy>
 			<font>16BdFont</font>
-			<textcolor>FocusedTextColor</textcolor>
+			<textcolor>DefaultTextColor</textcolor>
 			<label>$INFO[Player.SeekTime] | $INFO[Player.Duration]</label>
-			<width>300</width>
+			<width>280</width>
 			<height>25</height>
 			<align>center</align>
       <aligny>center</aligny>
@@ -103,19 +103,34 @@
 		<control type="progress" id="23">
 			<description>Progressbar</description>
       <posx>10</posx>
-      <posy>90</posy>
+      <posy>85</posy>
       <width>280</width>
       <info>Player.Progress</info>
 		</control>
     <control type="slider" id="401">
       <description>Seekbar</description>
       <posx>10</posx>
-      <posy>90</posy>
+      <posy>85</posy>
       <width>280</width>
       <height>13</height>
       <texturesliderbar>ProgressBackSmall.png</texturesliderbar>
       <textureslidernib>ScrollBarSeek.png</textureslidernib>
       <textureslidernibfocus>ScrollBarSeek.png</textureslidernibfocus>
+    </control>
+
+    <control type="label" id="1">
+      <description>Music Next Label</description>
+      <posx>10</posx>
+      <posy>100</posy>
+      <font>14BdFont</font>
+      <textcolor>DefaultTextColor</textcolor>
+      <label>$LOCALIZE[209]: $INFO[MusicPlayer.Offset(1).Title]</label>
+      <width>280</width>
+      <height>25</height>
+      <scroll>true</scroll>
+      <align>center</align>
+      <aligny>center</aligny>
+      <visible>!IsEmpty(MusicPlayer.Offset(1).Title)</visible>
     </control>
 	</control>
   

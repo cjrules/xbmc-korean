@@ -35,6 +35,11 @@
 		<filename>SeoulNamsanM.ttf</filename>
 		<size>36</size>
 	</font>
+  <font>
+    <name>16BdFont</name>
+    <filename>DINBd.ttf</filename>
+    <size>36</size>
+  </font>
 
 <!-- Required for system -->
   <font>
@@ -88,6 +93,12 @@
     <style>bold</style>
 		<size>40</size>
 	</font>
+  <font>
+    <name>16BdFont</name>
+    <filename>Arial.ttf</filename>
+    <style>bold</style>
+    <size>36</size>
+  </font>
 
 <!-- Required for system -->
   <font>

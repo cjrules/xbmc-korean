@@ -41,22 +41,20 @@
       <onright>1</onright>
       <onup>60</onup>
       <ondown>60</ondown>
-      <visible>[Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsDialogs)]</visible>
-      <animation effect="fade" time="0" start="0" end="60">Visible</animation>
+      <visible>Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsDialogs)</visible>
+      <animation effect="fade" time="0" start="0" end="60" condition="Control.HasFocus(60)">Conditional</animation>
     </control>
     <control type="scrollbar" id="60">
       <description>Scroll Bar</description>
       <posx>650</posx>
       <posy>55</posy>
       <height>380</height>
-      <showonepage>false</showonepage>
       <onleft>11</onleft>
       <onright>1</onright>
       <onup>60</onup>
       <ondown>60</ondown>
-      <visible>[!Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsDialogs)]</visible>
-      <animation effect="fade" time="0" start="0" end="30">WindowOpen</animation>
-      <animation effect="fade" time="0" start="0" end="30">WindowClose</animation>
+      <visible>!Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsDialogs)</visible>
+      <animation effect="fade" time="0" start="0" end="30" condition="!Control.HasFocus(60)">Conditional</animation>
     </control>
     <control type="grouplist" id="1">
       <posx>10</posx>
@@ -64,6 +62,7 @@
       <width>-</width>
       <height>155</height>
 			<itemgap>10</itemgap>
+      <pagecontrol>60</pagecontrol>
 			<onleft>60</onleft>
 			<onright>11</onright>
 			<onup>1</onup>

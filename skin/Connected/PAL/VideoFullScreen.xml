@@ -13,12 +13,11 @@
   		<control type="label" id="10">
   			<description>row 1 label</description>
   			<posx>10</posx>
-  			<posy>25</posy>
+  			<posy>5</posy>
         <width>660</width>
-        <height>30</height>
         <label>-</label>
         <align>left</align>
-        <font>18BdFont</font>
+        <font>16BdFont</font>
 				<textcolor>FocusedTextColor</textcolor>
         <scroll>false</scroll>
         <wrapmultiline>true</wrapmultiline>
@@ -26,12 +25,11 @@
   		<control type="label" id="11">
   			<description>row 2 label</description>
   			<posx>10</posx>
-  			<posy>95</posy>
+  			<posy>45</posy>
         <width>660</width>
-        <height>30</height>
         <label>-</label>
         <align>left</align>
-        <font>18BdFont</font>
+        <font>16BdFont</font>
 				<textcolor>FocusedTextColor</textcolor>
         <scroll>false</scroll>
         <wrapmultiline>true</wrapmultiline>
@@ -39,18 +37,16 @@
   		<control type="label" id="12">
   			<description>row 3 label</description>
   			<posx>10</posx>
-  			<posy>165</posy>
+  			<posy>85</posy>
         <width>660</width>
-        <height>30</height>
   			<label>-</label>
         <align>left</align>
-        <font>18BdFont</font>
+        <font>16BdFont</font>
 				<textcolor>FocusedTextColor</textcolor>
         <scroll>false</scroll>
         <wrapmultiline>true</wrapmultiline>
-  		</control>
-      
-      </control>
+  		</control>  
+    </control>
 
 		<!-- Buffering Dialog -->
     <control type="label" id="24">

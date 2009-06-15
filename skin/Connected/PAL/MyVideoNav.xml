@@ -197,17 +197,12 @@
           <width>304</width>
           <height>45</height>
           <align>left</align>
-          <aligny>center</aligny>
           <label>-</label>
           <font>22BdFont</font>
-          <textcolor>DefaultTextColor</textcolor>
           <focusedcolor>DefaultTextColor</focusedcolor>
-          <disabledcolor>DisabledTextColor</disabledcolor>
           <texturefocus>ButtonNF.png</texturefocus>
-          <texturenofocus>ButtonNF.png</texturenofocus>
           <textoffsetx>35</textoffsetx>
           <onfocus>SetFocus(2002)</onfocus>
-          <pulseonselect>false</pulseonselect>
           <onleft>-</onleft>
           <onright>-</onright>
           <onup>-</onup>
@@ -249,16 +244,11 @@
             <width>285</width>
             <height>30</height>
             <align>left</align>
-            <aligny>center</aligny>
             <label>$LOCALIZE[535]</label>
             <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
             <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
             <onclick>Container.SetViewMode(51)</onclick>
             <onleft>51</onleft>
             <onright>51</onright>
@@ -283,16 +273,11 @@
             <width>285</width>
             <height>30</height>
             <align>left</align>
-            <aligny>center</aligny>
             <label>$LOCALIZE[537]</label>
             <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
             <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
             <onclick>Container.SetViewMode(52)</onclick>
             <onleft>51</onleft>
             <onright>51</onright>
@@ -317,16 +302,11 @@
             <width>285</width>
             <height>30</height>
             <align>left</align>
-            <aligny>center</aligny>
             <label>$LOCALIZE[536]</label>
             <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
             <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
             <onclick>Container.SetViewMode(53)</onclick>
             <onleft>51</onleft>
             <onright>51</onright>
@@ -351,16 +331,11 @@
             <width>285</width>
             <height>30</height>
             <align>left</align>
-            <aligny>center</aligny>
             <label>$LOCALIZE[31021]</label>
             <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
             <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
             <onclick>Container.SetViewMode(54)</onclick>
             <onleft>51</onleft>
             <onright>51</onright>
@@ -385,16 +360,11 @@
             <width>285</width>
             <height>30</height>
             <align>left</align>
-            <aligny>center</aligny>
             <label>$LOCALIZE[31022]</label>
             <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
             <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
             <onclick>Container.SetViewMode(56)</onclick>
             <onleft>51</onleft>
             <onright>51</onright>
@@ -419,16 +389,11 @@
             <width>285</width>
             <height>30</height>
             <align>left</align>
-            <aligny>center</aligny>
             <label>$LOCALIZE[31026]</label>
             <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
             <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
             <onclick>Container.SetViewMode(55)</onclick>
             <onleft>51</onleft>
             <onright>51</onright>
@@ -460,16 +425,11 @@
           <width>304</width>
           <height>45</height>
           <align>left</align>
-          <aligny>center</aligny>
           <label>-</label>
           <font>22BdFont</font>
-          <textcolor>DefaultTextColor</textcolor>
           <focusedcolor>DefaultTextColor</focusedcolor>
-          <disabledcolor>DisabledTextColor</disabledcolor>
           <texturefocus>ButtonNF.png</texturefocus>
-          <texturenofocus>ButtonNF.png</texturenofocus>
           <textoffsetx>35</textoffsetx>
-          <pulseonselect>false</pulseonselect>
           <onfocus>SetFocus(3)</onfocus>
           <onleft>51</onleft>
           <onright>51</onright>
@@ -512,15 +472,10 @@
             <width>285</width>
             <height>30</height>
             <align>left</align>
-            <aligny>center</aligny>
             <label>$LOCALIZE[581]</label>
             <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
-            <pulseonselect>false</pulseonselect>
             <textoffsetx>45</textoffsetx>
             <onleft>51</onleft>
             <onright>51</onright>
@@ -535,19 +490,14 @@
             <width>285</width>
             <height>30</height>
             <align>left</align>
-            <aligny>center</aligny>
             <label>$LOCALIZE[584]</label>
             <altlabel>$LOCALIZE[585]</altlabel>
             <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
             <alttexturefocus>-</alttexturefocus>
             <alttexturenofocus>-</alttexturenofocus>
             <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
             <onleft>51</onleft>
             <onright>51</onright>
             <onup>3</onup>
@@ -569,16 +519,12 @@
           <width>304</width>
           <height>45</height>
           <align>left</align>
-          <aligny>center</aligny>
           <label>-</label>
           <font>22BdFont</font>
-          <textcolor>DefaultTextColor</textcolor>
           <focusedcolor>DefaultTextColor</focusedcolor>
-          <disabledcolor>DisabledTextColor</disabledcolor>
           <texturefocus>ButtonNF.png</texturefocus>
           <texturenofocus>ButtonNF.png</texturenofocus>
           <textoffsetx>35</textoffsetx>
-          <pulseonselect>false</pulseonselect>
           <onfocus>SetFocus(99)</onfocus>
           <onleft>51</onleft>
           <onright>51</onright>
@@ -620,19 +566,11 @@
             <posy>45</posy>
             <height>30</height>
             <width>270</width>
-            <align>left</align>
-            <aligny>center</aligny>
             <font>18BdFont</font>
             <label>$LOCALIZE[14022] $LOCALIZE[744]</label>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
-            <textureradiofocus>RadiobuttonFo.png</textureradiofocus>
-            <textureradionofocus>RadiobuttonNF.png</textureradionofocus>
             <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
             <onclick>replacewindow(MyVideoFiles)</onclick>
             <selected>window.isvisible(myvideolibrary)</selected>
             <onleft>51</onleft>
@@ -648,16 +586,11 @@
             <width>285</width>
             <height>30</height>
             <align>left</align>
-            <aligny>center</aligny>
             <label>$LOCALIZE[137]</label>
             <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
             <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
             <onleft>51</onleft>
             <onright>51</onright>
             <onup>99</onup>
@@ -671,16 +604,11 @@
             <width>285</width>
             <height>30</height>
             <align>left</align>
-            <aligny>center</aligny>
             <label>$LOCALIZE[368]</label>
             <font>18BdFont</font>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
             <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
             <onleft>51</onleft>
             <onright>51</onright>
             <onup>8</onup>
@@ -693,19 +621,11 @@
             <posy>135</posy>
             <height>30</height>
             <width>270</width>
-            <align>left</align>
-            <aligny>center</aligny>
             <font>18BdFont</font>
             <label>$LOCALIZE[16101]</label>
-            <textcolor>DefaultTextColor</textcolor>
-            <focusedcolor>FocusedTextColor</focusedcolor>
-            <disabledcolor>DisabledTextColor</disabledcolor>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
-            <textureradiofocus>RadiobuttonFo.png</textureradiofocus>
-            <textureradionofocus>RadiobuttonNF.png</textureradionofocus>
             <textoffsetx>45</textoffsetx>
-            <pulseonselect>false</pulseonselect>
             <onleft>51</onleft>
             <onright>51</onright>
             <onup>9</onup>

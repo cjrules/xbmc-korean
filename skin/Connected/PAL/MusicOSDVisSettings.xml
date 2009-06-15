@@ -53,7 +53,7 @@
         <onup>60</onup>
         <ondown>60</ondown>
         <visible>Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsDialogs)</visible>
-        <animation effect="fade" time="0" start="0" end="60">Visible</animation>
+        <animation effect="fade" time="0" start="0" end="60" condition="Control.HasFocus(60)">Conditional</animation>
       </control>
       <control type="scrollbar" id="61">
         <description>Scroll Bar</description>
@@ -64,8 +64,7 @@
         <onup>60</onup>
         <ondown>60</ondown>
         <visible>!Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsDialogs)</visible>
-        <animation effect="fade" time="0" start="0" end="30">WindowOpen</animation>
-        <animation effect="fade" time="0" start="0" end="30">WindowClose</animation>
+        <animation effect="fade" time="0" start="0" end="30" condition="!Control.HasFocus(60)">Conditional</animation>
       </control>
       <control type="grouplist" id="5">
         <description>Control Area</description>

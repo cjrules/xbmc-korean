@@ -94,6 +94,28 @@
     <pulseonselect>false</pulseonselect>
   </default>
   
+  <default type="selectbutton">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>100</width>
+    <height>30</height>
+    <label>-</label>
+    <font>font13</font>
+    <textcolor>DefaultTextColor</textcolor>
+    <focusedcolor>FocusedTextColor</focusedcolor>
+    <disabledcolor>DialogDisabledText</disabledcolor>
+    <texturenofocus>ButtonNF.png</texturenofocus>
+    <texturefocus>ButtonFo.png</texturefocus>
+    <texturebg>VolumeBarBack.png</texturebg>
+    <textureleft>ArrowLeftNF.png</textureleft>
+    <textureleftfocus>ArrowLeftFo.png</textureleftfocus>
+    <textureright>ArrowRightNF.png</textureright>
+    <texturerightfocus>ArrowRightFo.png</texturerightfocus>
+    <align>center</align>
+    <aligny>center</aligny>
+    <pulseonselect>false</pulseonselect>
+  </default>
+  
   <default type="scrollbar">
     <posx>0</posx>
     <posy>0</posy>
@@ -145,7 +167,7 @@
     <sliderheight>15</sliderheight>
     <texturesliderbar>OSDSliderBack.png</texturesliderbar>
     <textureslidernib>OSDSliderNibNF.png</textureslidernib>
-    <textureslidernibfocus>OSDSliderNibFO.png</textureslidernibfocus>
+    <textureslidernibfocus>OSDSliderNibFo.png</textureslidernibfocus>
     <font>font13</font>
     <textcolor>DefaultTextColor</textcolor>
     <focusedcolor>FocusedTextColor</focusedcolor>

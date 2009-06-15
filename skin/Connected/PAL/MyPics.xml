@@ -56,7 +56,7 @@
 
     <control type="group" id="9000">
       <posx>208</posx>
-      <posy>173</posy>
+      <posy>128</posy>
       <visible allowhiddenfocus="true">ControlGroup(9000).HasFocus</visible>
 
       <control type="group">

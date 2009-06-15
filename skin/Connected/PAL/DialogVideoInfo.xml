@@ -1017,42 +1017,25 @@
       <description>Scroll Bar</description>
       <posx>635</posx>
       <posy>315</posy>
-      <width>32</width>
       <height>140</height>
-      <texturesliderbackground>ScrollBarBack.png</texturesliderbackground>
-      <texturesliderbar>-</texturesliderbar>
-      <texturesliderbarfocus>-</texturesliderbarfocus>
-      <textureslidernib>ScrollBarNib.png</textureslidernib>
-      <textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
-      <orientation>vertical</orientation>
-      <showonepage>false</showonepage>
       <onleft>50</onleft>
       <onright>5</onright>
       <onup>60</onup>
       <ondown>60</ondown>
-      <visible>[Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsDialogs)] + Control.IsVisible(50)</visible>
-      <animation effect="fade" time="0" start="0" end="60">Visible</animation>
+      <visible>Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsDialogs) + Control.IsVisible(50)</visible>
+      <animation effect="fade" time="0" start="0" end="60" condition="Control.HasFocus(60)">Conditional</animation>
     </control>
     <control type="scrollbar" id="60">
       <description>Scroll Bar</description>
       <posx>635</posx>
       <posy>315</posy>
-      <width>32</width>
       <height>140</height>
-      <texturesliderbackground>ScrollBarBack.png</texturesliderbackground>
-      <texturesliderbar>-</texturesliderbar>
-      <texturesliderbarfocus>-</texturesliderbarfocus>
-      <textureslidernib>ScrollBarNib.png</textureslidernib>
-      <textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
-      <orientation>vertical</orientation>
-      <showonepage>false</showonepage>
       <onleft>50</onleft>
       <onright>5</onright>
       <onup>60</onup>
       <ondown>60</ondown>
-      <visible>[!Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsDialogs)] + Control.IsVisible(50)</visible>
-      <animation effect="fade" time="0" start="0" end="30">WindowOpen</animation>
-      <animation effect="fade" time="0" start="0" end="30">WindowClose</animation>
+      <visible>!Control.HasFocus(60) + !Skin.HasSetting(ScrollBarsDialogs) + Control.IsVisible(50)</visible>
+      <animation effect="fade" time="0" start="0" end="30" condition="!Control.HasFocus(60)">Conditional</animation>
     </control>
     <control type="list" id="50">
       <description>Cast</description>
@@ -1172,16 +1155,8 @@
 			<posy>0</posy>
 			<width>80</width>
 			<height>45</height>
-			<align>center</align>
-			<aligny>center</aligny>
 			<label>$LOCALIZE[208]</label>
 			<font>18BdFont</font>
-			<textcolor>DefaultTextColor</textcolor>
-			<focusedcolor>FocusedTextColor</focusedcolor>
-			<disabledcolor>DisabledTextColor</disabledcolor>
-			<texturefocus>ButtonFo.png</texturefocus>
-			<texturenofocus>ButtonNF.png</texturenofocus>
-			<pulseonselect>false</pulseonselect>
 			<onleft>12</onleft>
 			<onright>9</onright>
       <onup>50</onup>
@@ -1194,16 +1169,8 @@
 			<posy>0</posy>
 			<width>80</width>
 			<height>45</height>
-			<align>center</align>
-			<aligny>center</aligny>
 			<label>$LOCALIZE[13404]</label>
 			<font>18BdFont</font>
-			<textcolor>DefaultTextColor</textcolor>
-			<focusedcolor>FocusedTextColor</focusedcolor>
-			<disabledcolor>DisabledTextColor</disabledcolor>
-			<texturefocus>ButtonFo.png</texturefocus>
-			<texturenofocus>ButtonNF.png</texturenofocus>
-			<pulseonselect>false</pulseonselect>
 			<onleft>8</onleft>
 			<onright>5</onright>
       <onup>50</onup>
@@ -1216,16 +1183,8 @@
 			<posy>0</posy>
 			<width>80</width>
 			<height>45</height>
-			<align>center</align>
-			<aligny>center</aligny>
 			<label>$LOCALIZE[206]/$LOCALIZE[207]</label>
 			<font>18BdFont</font>
-			<textcolor>DefaultTextColor</textcolor>
-			<focusedcolor>FocusedTextColor</focusedcolor>
-			<disabledcolor>DisabledTextColor</disabledcolor>
-			<texturefocus>ButtonFo.png</texturefocus>
-			<texturenofocus>ButtonNF.png</texturenofocus>
-			<pulseonselect>false</pulseonselect>
 			<onleft>9</onleft>
 			<onright>6</onright>
 			<onup>50</onup>
@@ -1238,16 +1197,8 @@
 			<posy>0</posy>
 			<width>80</width>
 			<height>45</height>
-			<align>center</align>
-			<aligny>center</aligny>
 			<label>$LOCALIZE[184]</label>
 			<font>18BdFont</font>
-			<textcolor>DefaultTextColor</textcolor>
-			<focusedcolor>FocusedTextColor</focusedcolor>
-			<disabledcolor>DisabledTextColor</disabledcolor>
-			<texturefocus>ButtonFo.png</texturefocus>
-			<texturenofocus>ButtonNF.png</texturenofocus>
-			<pulseonselect>false</pulseonselect>
 			<onleft>5</onleft>
 			<onright>10</onright>
       <onup>50</onup>
@@ -1260,16 +1211,8 @@
 			<posy>0</posy>
 			<width>100</width>
 			<height>45</height>
-			<align>center</align>
-			<aligny>center</aligny>
 			<label>$LOCALIZE[13405]</label>
 			<font>18BdFont</font>
-			<textcolor>DefaultTextColor</textcolor>
-			<focusedcolor>FocusedTextColor</focusedcolor>
-			<disabledcolor>DisabledTextColor</disabledcolor>
-			<texturefocus>ButtonFo.png</texturefocus>
-			<texturenofocus>ButtonNF.png</texturenofocus>
-			<pulseonselect>false</pulseonselect>
 			<onleft>6</onleft>
 			<onright>11</onright>
       <onup>50</onup>
@@ -1282,16 +1225,8 @@
 			<posy>0</posy>
 			<width>80</width>
 			<height>45</height>
-			<align>center</align>
-			<aligny>center</aligny>
 			<label>$LOCALIZE[20410]</label>
 			<font>18BdFont</font>
-			<textcolor>DefaultTextColor</textcolor>
-			<focusedcolor>FocusedTextColor</focusedcolor>
-			<disabledcolor>DisabledTextColor</disabledcolor>
-			<texturefocus>ButtonFo.png</texturefocus>
-			<texturenofocus>ButtonNF.png</texturenofocus>
-			<pulseonselect>false</pulseonselect>
 			<onleft>10</onleft>
 			<onright>12</onright>
       <onup>50</onup>
@@ -1304,16 +1239,8 @@
 			<posy>0</posy>
 			<width>100</width>
 			<height>45</height>
-			<align>center</align>
-			<aligny>center</aligny>
 			<label>$LOCALIZE[20413]</label>
 			<font>18BdFont</font>
-			<textcolor>DefaultTextColor</textcolor>
-			<focusedcolor>FocusedTextColor</focusedcolor>
-			<disabledcolor>DisabledTextColor</disabledcolor>
-			<texturefocus>ButtonFo.png</texturefocus>
-			<texturenofocus>ButtonNF.png</texturenofocus>
-			<pulseonselect>false</pulseonselect>
 			<onleft>11</onleft>
 			<onright>8</onright>
       <onup>50</onup>

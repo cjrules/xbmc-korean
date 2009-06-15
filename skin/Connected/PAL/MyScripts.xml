@@ -56,11 +56,11 @@
 
     <control type="group" id="9000">
       <posx>208</posx>
-      <posy>158</posy>
+      <posy>150</posy>
       <visible allowhiddenfocus="true">ControlGroup(9000).HasFocus</visible>
 
       <control type="group">
-        <include>OptionBack3-5</include>
+        <include>OptionBack2-6</include>
         <visible>ControlGroup(9001).HasFocus</visible>
       </control>
       <control type="group">
