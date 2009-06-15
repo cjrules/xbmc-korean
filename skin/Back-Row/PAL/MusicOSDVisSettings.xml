@@ -2,7 +2,7 @@
 	<defaultcontrol>2</defaultcontrol>
 	<coordinates>
 	<system>1</system>
-	<origin x="150" y="88">true</origin>
+	<origin x="10" y="95">true</origin>
 	</coordinates>
 	<controls>
 
@@ -12,7 +12,7 @@
 		<posy>25</posy>
 		<width>420</width>
 		<height>320</height>
-		<texture>OSD Background.png</texture>
+		<texture>black.png</texture>
 	</control>
 
 	<control type="image" id="12">
@@ -22,8 +22,8 @@
 		<posy>0</posy>
 		<width>420</width>
 		<height>26</height>
-		<texture>osd_settings_header.png</texture>
-		<colordiffuse>99ffffff</colordiffuse>
+		<texture>background2.png</texture>
+		<colordiffuse>bbffffff</colordiffuse>
 	</control>
 
 	<control type="label" id="2">
@@ -82,7 +82,8 @@
 		<font>font12</font>
 		<textoffsetx>12</textoffsetx>
 		<aligny>center</aligny>
-		<texturefocus>list-focus.png</texturefocus>
+		<texturefocus>input-focus.png</texturefocus>
+		<colordiffuse>bbffffff</colordiffuse>
 		<texturenofocus>-</texturenofocus>
 	</control>
 
@@ -92,8 +93,9 @@
 		<posy>150</posy>
 		<height>31</height>
 		<font>font12</font>
-		<texturefocus>list-focus.png</texturefocus>
+		<texturefocus>input-focus.png</texturefocus>
 		<texturenofocus>-</texturenofocus>
+		<colordiffuse>bbffffff</colordiffuse>
 		<textoffsetx>12</textoffsetx>
 		<aligny>center</aligny>
 		<textureradiofocus>settings-check-box.png</textureradiofocus>
@@ -106,8 +108,9 @@
 		<posy>150</posy>
 		<height>31</height>
 		<width>300</width>
-		<texturefocus>list-focus.png</texturefocus>
+		<texturefocus>input-focus.png</texturefocus>
 		<texturenofocus>-</texturenofocus>
+		<colordiffuse>bbffffff</colordiffuse>
 		<textureup>scroll-up.png</textureup>
 		<texturedown>scroll-down.png</texturedown>
 		<textureupFocus>scroll-up-focus.png</textureupFocus>

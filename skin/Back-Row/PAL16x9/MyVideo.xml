@@ -165,7 +165,7 @@
     <width>730</width>
     <height>576</height>
     <texture>black.png</texture>
-    <visible allowhiddenfocus="true">![Window.Next(Home) | Control.HasFocus(50) | Control.HasFocus(51) |Control.HasFocus(52) | Control.HasFocus(53) | Control.HasFocus(54) | Control.HasFocus(55) | Control.HasFocus(23) | Control.HasFocus(24) | Control.HasFocus(56) | Control.HasFocus(57) | Control.HasFocus(58) |  Control.HasFocus(59) | Control.HasFocus(90)]</visible>
+    <visible allowhiddenfocus="true">![Window.Next(Home) | Control.HasFocus(50) | Control.HasFocus(51) | Control.HasFocus(52) | Control.HasFocus(53) | Control.HasFocus(54) | Control.HasFocus(55) | Control.HasFocus(23) | Control.HasFocus(24) | Control.HasFocus(56) | Control.HasFocus(57) | Control.HasFocus(58) | Control.HasFocus(59) | Control.HasFocus(90)]</visible>
    </control>
 
 

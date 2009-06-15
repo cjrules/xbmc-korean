@@ -1,145 +1,169 @@
 <window id="115">
 	<defaultcontrol>1</defaultcontrol>
-	<visible>Player.Seeking | Player.DisplayAfterSeek | Window.IsActive(VideoOSD) | Window.IsActive(MusicOSD) | Player.Paused | Player.Forwarding | Player.Rewinding</visible>
+	<visible>Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding</visible>
 	
 	
 	
 	<coordinates>
 		<system>1</system>
 		<posx>0</posx>
-		<posy>0</posy>
+		<posy>25</posy>
 	</coordinates>
 
 <controls>
-	
+
+<control>
+<description>Seekbar Background Image</description>
+<type>image</type>
+<id>1</id>
+<posx>505</posx>
+<posy>180</posy>
+<width>205</width>
+<height>60</height>
+<texture>black.png</texture>
+<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
+</control>
+
 		<control type="label">
 			<description>playing</description>
-			<posx>660</posx>
-			<posy>455</posy>
-			<align>right</align>
-			<font>fontKB</font>
-			<label>31038</label>
+			<posx>505</posx>
+			<posy>220</posy>
+			<width>205</width>
+			<align>center</align>
+			<font>font12</font>
+			<label>[UPPERCASE]$LOCALIZE[31038][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
 			<visible>![Player.Paused | Player.Rewinding | Player.Forwarding]</visible>
 			<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
 		</control>
 		<control type="label">
 			<description>paused</description>
-			<posx>660</posx>
-			<posy>455</posy>
-			<align>right</align>
-			<font>fontKB</font>
-			<label>31039</label>
+			<posx>505</posx>
+			<posy>220</posy>
+			<width>205</width>
+			<align>center</align>
+			<font>font12</font>
+			<label>[UPPERCASE]$LOCALIZE[31039][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
 			<visible>Player.Paused</visible>
 			<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
 		</control>
 		<control type="label">
 			<description>rewind 2x</description>
-			<posx>660</posx>
-			<posy>455</posy>
-			<align>right</align>
-			<font>fontKB</font>
-			<label>31040</label>
+			<posx>505</posx>
+			<posy>220</posy>
+			<width>205</width>
+			<align>center</align>
+			<font>font12</font>
+			<label>[UPPERCASE]$LOCALIZE[31040][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
 			<visible>Player.Rewinding2x</visible>
 			<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
 		</control>
 		<control type="label">
 			<description>forward 2x</description>
-			<posx>660</posx>
-			<posy>455</posy>
-			<align>right</align>
-			<font>fontKB</font>
-			<label>31041</label>
+			<posx>505</posx>
+			<posy>220</posy>
+			<width>205</width>
+			<align>center</align>
+			<font>font12</font>
+			<label>[UPPERCASE]$LOCALIZE[31041][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
 			<visible>Player.Forwarding2x</visible>
 			<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
 		</control>
 		<control type="label">
 			<description>rewind 4x</description>
-			<posx>660</posx>
-			<posy>455</posy>
-			<align>right</align>
-			<font>fontKB</font>
-			<label>31042</label>
+			<posx>505</posx>
+			<posy>220</posy>
+			<width>205</width>
+			<align>center</align>
+			<font>font12</font>
+			<label>[UPPERCASE]$LOCALIZE[31042][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
 			<visible>Player.Rewinding4x</visible>
 			<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
 		</control>
 		<control type="label">
 			<description>forward 4x</description>
-			<posx>660</posx>
-			<posy>455</posy>
-			<align>right</align>
-			<font>fontKB</font>
-			<label>31043</label>
+			<posx>505</posx>
+			<posy>220</posy>
+			<width>205</width>
+			<align>center</align>
+			<font>font12</font>
+			<label>[UPPERCASE]$LOCALIZE[31043][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
 			<visible>Player.Forwarding4x</visible>
 			<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
 		</control>
 		<control type="label">
 			<description>rewind 8x</description>
-			<posx>660</posx>
-			<posy>455</posy>
-			<align>right</align>
-			<font>fontKB</font>
-			<label>31044</label>
+			<posx>505</posx>
+			<posy>220</posy>
+			<width>205</width>
+			<align>center</align>
+			<font>font12</font>
+			<label>[UPPERCASE]$LOCALIZE[31044][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
 			<visible>Player.Rewinding8x</visible>
 			<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
 		</control>
 		<control type="label">
 			<description>forward 8x</description>
-			<posx>660</posx>
-			<posy>455</posy>
-			<align>right</align>
-			<font>fontKB</font>
-			<label>31045</label>
+			<posx>505</posx>
+			<posy>220</posy>
+			<width>205</width>
+			<align>center</align>
+			<font>font12</font>
+			<label>[UPPERCASE]$LOCALIZE[31045][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
 			<visible>Player.Forwarding8x</visible>
 			<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
 		</control>
 		<control type="label">
 			<description>rewind 16x</description>
-			<posx>660</posx>
-			<posy>455</posy>
-			<align>right</align>
-			<font>fontKB</font>
-			<label>31046</label>
+			<posx>505</posx>
+			<posy>220</posy>
+			<width>205</width>
+			<align>center</align>
+			<font>font12</font>
+			<label>[UPPERCASE]$LOCALIZE[31046][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
 			<visible>Player.Rewinding16x</visible>
 			<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
 		</control>
 		<control type="label">
 			<description>forward 16x</description>
-			<posx>660</posx>
-			<posy>455</posy>
-			<align>right</align>
-			<font>fontKB</font>
-			<label>31047</label>
+			<posx>505</posx>
+			<posy>220</posy>
+			<width>205</width>
+			<align>center</align>
+			<font>font12</font>
+			<label>[UPPERCASE]$LOCALIZE[31047][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
 			<visible>Player.Forwarding16x</visible>
 			<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
 		</control>
 		<control type="label">
 			<description>rewind 32x</description>
-			<posx>660</posx>
-			<posy>455</posy>
-			<align>right</align>
-			<font>fontKB</font>
-			<label>31048</label>
+			<posx>505</posx>
+			<posy>220</posy>
+			<width>205</width>
+			<align>center</align>
+			<font>font12</font>
+			<label>[UPPERCASE]$LOCALIZE[31048][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
 			<visible>Player.Rewinding32x</visible>
 			<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
 		</control>
 		<control type="label">
 			<description>forward 32x</description>
-			<posx>660</posx>
-			<posy>455</posy>
-			<align>right</align>
-			<font>fontKB</font>
-			<label>31049</label>
+			<posx>505</posx>
+			<posy>220</posy>
+			<width>205</width>
+			<align>center</align>
+			<font>font12</font>
+			<label>[UPPERCASE]$LOCALIZE[31049][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
 			<visible>Player.Forwarding32x</visible>
 			<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
@@ -152,37 +176,33 @@
 <description>Time Info Label</description>
 <type>label</type>
 <id>1</id>
-<width>720</width>
-<posx>40</posx>
-<posy>413</posy>
+<width>90</width>
+<posx>510</posx>
+<posy>185</posy>
 <label>$INFO[VideoPlayer.Time]</label>
-<font>fontKB</font>
+<font>font12</font>
 <visible>Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding</visible>
-<visible>!Window.IsActive(2901)</visible>
-<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
 </control>
 
 <control>
 <description>Time Info Label</description>
 <type>label</type>
 <id>1</id>
-<width>50</width>
-<posx>660</posx>
-<posy>413</posy>
+<width>90</width>
+<posx>705</posx>
+<posy>185</posy>
 <align>right</align>
 <label>$INFO[VideoPlayer.Duration]</label>
-<font>fontKB</font>
+<font>font12</font>
 <visible>Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding</visible>
-<visible>!Window.IsActive(2901)</visible>
-<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
 </control>
 
 		
 		<control type="progress" id="23">
 			<description>Progressbar</description>
-			<posx>0</posx>
-			<posy>430</posy>
-			<width>720</width>
+			<posx>510</posx>
+			<posy>200</posy>
+			<width>195</width>
 			<height>22</height>
 			<info>Player.Progress</info>
 			<texturebg>Seekbar background.png</texturebg>
@@ -190,14 +210,13 @@
 			<midtexture>Seekbar progress.png</midtexture>
 			<righttexture></righttexture>
 			<overlaytexture>-</overlaytexture>
-			<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
 			</control>
 		
 		<control type="slider" id="401">
 			<description>Seek Slider</description>
-			<posx>0</posx>
-			<posy>438.38</posy>
-			<width>725</width>
+			<posx>510</posx>
+			<posy>208.38</posy>
+			<width>195</width>
 			<height>4.5</height>
 			<texturesliderbar>seekslider.png</texturesliderbar>
 			<textureslidernib>seekbar-marker.png</textureslidernib>
@@ -206,9 +225,7 @@
 			<ondown>1</ondown>
 			<onleft>1</onleft>
 			<onright>1</onright>
-			<visible>[Window.IsActive(2005) | Window.IsActive(2006)]</visible>
-			
-		</control>
+			</control>
 
 		
 	</controls>

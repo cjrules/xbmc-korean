@@ -676,15 +676,41 @@
 			<posx>0</posx>
 			<posy>-30</posy>
 			
+			
 			<control type="image">
 				<description>Cover image</description>
-				<posx>470</posx>
+				<posx>450</posx>
 				<posy>115</posy>
-				<width>200</width>
+				<width>240</width>
 				<height>200</height>
-                <texture diffuse="Mask.png"></texture>
-				<info>ListItem.Icon</info>
+                <info>ListItem.Icon</info>
 				<aspectratio>keep</aspectratio>
+				<visible>container.content(episodes)</visible>
+				<visible>IsEmpty(ListItem.Thumb)</visible>
+			</control>
+
+			<control type="image">
+				<description>Cover image</description>
+				<posx>450</posx>
+				<posy>115</posy>
+				<width>240</width>
+				<height>200</height>
+                <texture diffuse="Mask episode.png"></texture>
+				<info>ListItem.thumb</info>
+				<aspectratio scalediffuse="false">scale</aspectratio>
+				<visible>container.content(episodes)</visible>
+				<visible>!IsEmpty(ListItem.Thumb)</visible>
+			</control>
+
+<control type="image">
+				<description>Cover image</description>
+				<posx>450</posx>
+				<posy>115</posy>
+				<width>240</width>
+				<height>200</height>
+                <texture>Mask episode glass.png</texture>
+				<aspectratio>stretch</aspectratio>
+				<colordiffuse>77ffffff</colordiffuse>
 				<visible>container.content(episodes)</visible>
 			</control>
 

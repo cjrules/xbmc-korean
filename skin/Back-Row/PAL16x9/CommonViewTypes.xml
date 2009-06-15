@@ -3797,7 +3797,7 @@
 <alignx>left</alignx>
 <textcolor>white</textcolor>
 <include>selectedcolor</include>
-<label>$LOCALIZE[20360]:</label>
+<label>$LOCALIZE[20360]: $INFO[listitem.episode]</label>
 <visible>Control.IsVisible(50)</visible>
 <visible>container.content(tvshows)</visible>
 </control>
@@ -3812,7 +3812,7 @@
 <scroll>true</scroll>
 <textcolor>white</textcolor>
 <include>selectedcolor</include>
-<label>$INFO[listitem.episode]   ($INFO[ListItem.Property(WatchedEpisodes),, $LOCALIZE[16102]] - $INFO[ListItem.Property(UnWatchedEpisodes), , $LOCALIZE[16101]])</label>
+<label>($INFO[ListItem.Property(WatchedEpisodes),, $LOCALIZE[16102]] - $INFO[ListItem.Property(UnWatchedEpisodes), , $LOCALIZE[16101]])</label>
 <visible>Control.IsVisible(50)</visible>
 <visible>container.content(tvshows)</visible>
 </control>
@@ -3991,15 +3991,30 @@
 <control type="image">
 <description>list item icon</description>
 <posx>43</posx>
-<posy>105</posy>
+<posy>95</posy>
 <width>292</width>
-<height>234</height>
-<texture diffuse="Mask.png"></texture>
+<height>245</height>
 <info>ListItem.Icon</info>
 <aspectratio>keep</aspectratio>
 <visible>Control.IsVisible(50)</visible>
+<visible>IsEmpty(ListItem.thumb)</visible>
 <visible>container.content(episodes)</visible>
 </control>
+
+<control type="image">
+<description>list item icon</description>
+<posx>43</posx>
+<posy>95</posy>
+<width>292</width>
+<height>245</height>
+<info>ListItem.thumb</info>
+<texture diffuse="Mask episode.png"></texture>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<visible>Control.IsVisible(50)</visible>
+<visible>container.content(episodes)</visible>
+<visible>!IsEmpty(ListItem.thumb)</visible>
+</control>
+
 
 <control type="image">
 <posx>310</posx>
@@ -4393,7 +4408,7 @@
 <posy>60</posy>
 <posx>35</posx>
 
-<control type="image">>
+<control type="image">
 <posx>3.5</posx>
 <posy>3.5</posy>
 <width>643.5</width>
@@ -4415,7 +4430,6 @@
 
 <control type="panel" id="59">
 <viewtype label="Wide Icons">Wide Icons</viewtype>
-<visible>!Skin.HasSetting(TV Poster)</visible>
 <posx>0</posx>
 <posy>0</posy>
 <width>720</width>
@@ -7398,8 +7412,22 @@
 <posy>55</posy>
 <width>134</width>
 <height>134</height>
-<info>ListItem.icon</info>
+<info>ListItem.Icon</info>
 <aspectratio>keep</aspectratio>
+<visible>IsEmpty(ListItem.Thumb)</visible>
+<colordiffuse>baFFFFFF</colordiffuse>
+<animation effect="fade" time="10">Windowclose</animation>
+</control>
+
+<control type="image">
+<posx>5</posx>
+<posy>60</posy>
+<width>134</width>
+<height>124</height>
+<info>ListItem.thumb</info>
+<texture diffuse="Mask episode.png"></texture>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<visible>!IsEmpty(ListItem.Thumb)</visible>
 <colordiffuse>baFFFFFF</colordiffuse>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>
@@ -7442,8 +7470,21 @@
 <posy>55</posy>
 <width>134</width>
 <height>134</height>
-<info>ListItem.icon</info>
+<info>ListItem.Icon</info>
 <aspectratio>keep</aspectratio>
+<visible>IsEmpty(ListItem.Thumb)</visible>
+<animation effect="fade" time="10">Windowclose</animation>
+</control>
+
+<control type="image">
+<posx>5</posx>
+<posy>60</posy>
+<width>134</width>
+<height>124</height>
+<info>ListItem.thumb</info>
+<texture diffuse="Mask episode.png"></texture>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<visible>!IsEmpty(ListItem.Thumb)</visible>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>
 
@@ -7551,7 +7592,7 @@
 <textcolor>white</textcolor>
 <align>left</align>
 <aligny>top</aligny>
-<info>ListItem.Title</info>
+<info>ListItem.label</info>
 <include>selectedcolor</include>
 <shadowcolor>shadow</shadowcolor>
 <visible>Control.IsVisible(55)</visible>
@@ -14629,7 +14670,7 @@
 
 <control type="group">
 <visible>system.platform.xbox</visible>
-<visible>!Container.OnNext + !Container.OnPrevious + System.IdleTime(1)</visible>
+<visible>!Container.OnNext + !Container.OnPrevious</visible>
 <animation effect="fade" start="0" end="100" time="300" delay="200">Visible</animation>
 
 <control type="image" description="Fanart Image">
@@ -15360,9 +15401,11 @@
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
 
+
+
 <control type="image">
 <posx>3</posx>
-<posy>25</posy>
+<posy>23</posy>
 <width>234</width>
 <height>65</height>
 <info>ListItem.thumb</info>
@@ -15372,7 +15415,7 @@
 
 <control type="image">
 <posx>3</posx>
-<posy>25</posy>
+<posy>23</posy>
 <width>234</width>
 <height>65</height>
 <texture>mask glass wide.png</texture>
@@ -15397,14 +15440,22 @@
 <posy>2</posy>
 <width>240</width>
 <height>110</height>
-<texture>5.png</texture>
+<texture>4.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
 
+<control type="image">
+<posx>0</posx>
+<posy>19</posy>
+<width>240</width>
+<height>73</height>
+<texture>wide case.png</texture>
+<aspectratio>stretch</aspectratio>
+</control>
 
 <control type="image">
 <posx>3</posx>
-<posy>25</posy>
+<posy>23</posy>
 <width>234</width>
 <height>65</height>
 <info>ListItem.thumb</info>
@@ -15414,7 +15465,7 @@
 
 <control type="image">
 <posx>3</posx>
-<posy>25</posy>
+<posy>23</posy>
 <width>234</width>
 <height>65</height>
 <texture>mask glass wide.png</texture>
@@ -15580,7 +15631,7 @@
 <textcolor>white</textcolor>
 <align>center</align>
 <aligny>top</aligny>
-<info>ListItem.Title</info>
+<info>ListItem.label</info>
 <shadowcolor>shadow</shadowcolor>
 <visible>Control.HasFocus(53) + Container.Content(Seasons)</visible>
 </control>
@@ -15621,25 +15672,55 @@
 <aspectratio>keep</aspectratio>
 </control>
 
-
-<control type="label">
-<posx>3</posx>
-<posy>25</posy>
-<width>15</width>
-<height>15</height>
-<textcolor>grey</textcolor>
-<font>font10</font>
-<label>$INFO[ListItem.episode]</label>
-<align>left</align>
+<control type="image">
+<posx>17</posx>
+<posy>24</posy>
+<width>110</width>
+<height>97</height>
+<info>ListItem.Icon</info>
+<aspectratio>keep</aspectratio>
+<visible>IsEmpty(ListItem.Thumb)</visible>
 </control>
 
 <control type="image">
 <posx>17</posx>
-<posy>23</posy>
+<posy>24</posy>
 <width>110</width>
-<height>99</height>
-<info>ListItem.Icon</info>
-<aspectratio>keep</aspectratio>
+<height>97</height>
+<info>ListItem.thumb</info>
+<texture diffuse="Mask episode.png"></texture>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<visible>!IsEmpty(ListItem.Thumb)</visible>
+</control>
+
+<control type="image">
+<posx>17</posx>
+<posy>104</posy>
+<width>110</width>
+<height>16</height>
+<texture>black.png</texture>
+<visible>!IsEmpty(ListItem.episode)</visible>
+</control>
+
+<control type="label">
+<posx>72</posx>
+<posy>105</posy>
+<width>104</width>
+<height>15</height>
+<textcolor>white</textcolor>
+<font>font12</font>
+<label>[UPPERCASE]$LOCALIZE[20359] $INFO[ListItem.episode][/UPPERCASE]</label>
+<align>center</align>
+<visible>!IsEmpty(ListItem.episode)</visible>
+</control>
+
+<control type="image">
+<posx>17</posx>
+<posy>24</posy>
+<width>110</width>
+<height>97</height>
+<texture>Mask episode glass.png</texture>
+<aspectratio>stretch</aspectratio>
 </control>
 
 
@@ -15675,31 +15756,67 @@
 <posy>0</posy>
 <width>144</width>
 <height>145</height>
-<texture>7.png</texture>
+<texture>6.png</texture>
 <aspectratio>keep</aspectratio>
 </control>
 
 
-<control type="label">
-<posx>3</posx>
-<posy>25</posy>
-<width>15</width>
-<height>15</height>
-<textcolor>grey</textcolor>
-<font>font10</font>
-<label>$INFO[ListItem.episode]</label>
-<align>left</align>
+<control type="image">
+<posx>17</posx>
+<posy>24</posy>
+<width>110</width>
+<height>97</height>
+<info>ListItem.Icon</info>
+<aspectratio>keep</aspectratio>
+<visible>IsEmpty(ListItem.Thumb)</visible>
+</control>
+
+
+<control type="image">
+<posx>17</posx>
+<posy>24</posy>
+<width>110</width>
+<height>97</height>
+<info>ListItem.thumb</info>
+<texture diffuse="Mask episode.png"></texture>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<visible>!IsEmpty(ListItem.Thumb)</visible>
 </control>
 
 <control type="image">
 <posx>17</posx>
-<posy>23</posy>
+<posy>104</posy>
 <width>110</width>
-<height>99</height>
-<info>ListItem.Icon</info>
-<aspectratio>keep</aspectratio>
-<visible>Control.IsVisible(53)</visible>
+<height>16</height>
+<texture>black.png</texture>
+<visible>!IsEmpty(ListItem.episode)</visible>
 </control>
+
+
+<control type="label">
+<posx>72</posx>
+<posy>105</posy>
+<width>104</width>
+<height>15</height>
+<textcolor>white</textcolor>
+<font>font12</font>
+<label>[UPPERCASE]$LOCALIZE[20359] $INFO[ListItem.episode][/UPPERCASE]</label>
+<align>center</align>
+<visible>!IsEmpty(ListItem.episode)</visible>
+</control>
+
+
+
+<control type="image">
+<posx>3</posx>
+<posy>8</posy>
+<width>138</width>
+<height>129</height>
+<texture>Mask episode outline.png</texture>
+<aspectratio>stretch</aspectratio>
+</control>
+
+
 
 <control type="image">
 <posx>120</posx>
@@ -18537,9 +18654,9 @@
 
 <control type="image">
 <posx>200</posx>
-<posy>155</posy>
+<posy>150</posy>
 <width>320</width>
-<height>400</height>
+<height>405</height>
 <texture>List background.png</texture>
 <aspectratio>stretch</aspectratio>
 <visible>container.content(episodes)</visible>
@@ -18550,11 +18667,34 @@
 <posy>172.5</posy>
 <width>285</width>
 <height>245</height>
-<texture diffuse="Mask.png"></texture>
 <info>ListItem.Icon</info>
-<align>bottom</align>
-<aspectratio>keep</aspectratio>
+<aspectratio>Keep</aspectratio>
 <visible>container.content(episodes)</visible>
+<visible>IsEmpty(ListItem.thumb)</visible>
+</control>
+
+<control type="image">
+<posx>217.5</posx>
+<posy>172.5</posy>
+<width>285</width>
+<height>245</height>
+<info>ListItem.thumb</info>
+<texture diffuse="Mask episode.png"></texture>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<visible>container.content(episodes)</visible>
+<visible>!IsEmpty(ListItem.thumb)</visible>
+</control>
+
+<control type="image">
+<posx>217.5</posx>
+<posy>172.5</posy>
+<width>285</width>
+<height>245</height>
+<texture>Mask episode glass.png</texture>
+<aspectratio>stretch</aspectratio>
+<colordiffuse>88ffffff</colordiffuse>
+<visible>container.content(episodes)</visible>
+<visible>!IsEmpty(ListItem.thumb)</visible>
 </control>
 
 
@@ -18649,9 +18789,22 @@
 <posy>0</posy>
 <width>240</width>
 <height>145</height>
-<texture>5.png</texture>
+<texture>4.png</texture>
 <visible>container.content(tvshows)</visible>
 <aspectratio>keep</aspectratio>
+</control>
+
+<control type="image">
+<posx>0</posx>
+<posy>32</posy>
+<width>240</width>
+<height>80</height>
+<texture>wide case.png</texture>
+<aspectratio>stretch</aspectratio>
+<visible>container.content(tvshows)</visible>
+<colordiffuse>88ffffff</colordiffuse>
+<animation type="Focus">
+</animation>
 </control>
 
 
@@ -18962,22 +19115,7 @@
 
 <--------->
 
-<control type="label">
-<posx>535</posx>
-<posy>40</posy>
-<width>180</width>
-<height>16</height>
-<font>special14</font>
-<textcolor>white</textcolor>
-<align>center</align>
-<info>ListItem.Label</info>
-<scroll>true</scroll>
-<textcolor>white</textcolor>
-<shadowcolor>shadow</shadowcolor>
-<visible>container.content(movies) + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation> 
-</control>
+
 
 <control type="label">
 <description>Director txt</description>
@@ -19087,7 +19225,7 @@
 <posy>102</posy>
 <width>133</width>
 <height>268</height>
-<texture>mask glass wall.png</texture>
+<texture>mask glass wall left.png</texture>
 <aspectratio aligny="center">stretch</aspectratio>
 <visible>Control.IsVisible(58)</visible>
 <animation effect="fade" time="200">WindowOpen</animation>
@@ -19783,6 +19921,50 @@
 
 
 <control type="group">
+
+<control type="button" id ="11">
+<description>Trailer</description>
+<posx>535</posx>
+<posy>20</posy>
+<width>180</width>
+<height>40</height>
+<aspectratio>stretch</aspectratio>
+<font>font64</font>
+<textcolor>grey</textcolor>
+<label></label>
+<align>right</align>
+<aligny>top</aligny>
+<onclick>PlayMedia($INFO[ListItem.Trailer],1)</onclick>
+<texturefocus>button-focus.png</texturefocus>
+<texturenofocus>button-nofocus.png</texturenofocus>
+<visible>Container.Content(Movies)</visible>
+<visible>!IsEmpty(ListItem.Trailer)</visible>
+<colordiffuse>ddffffff</colordiffuse>
+<onleft>58</onleft>
+<onright>58</onright>
+<onup>2</onup>
+<ondown>58</ondown>
+<animation effect="fade" time="200">WindowOpen</animation>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+<control type="label">
+<posx>535</posx>
+<posy>32</posy>
+<width>180</width>
+<height>16</height>
+<font>special14</font>
+<textcolor>white</textcolor>
+<align>center</align>
+<info>ListItem.Label</info>
+<scroll>true</scroll>
+<textcolor>white</textcolor>
+<shadowcolor>shadow</shadowcolor>
+<visible>container.content(movies) + Control.IsVisible(58)</visible>
+<animation effect="fade" time="200">WindowOpen</animation>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
 <control type="wraplist" id="58">
 <visible>Container.Content(Movies)</visible>
 <viewtype label="FanArt">Plot List</viewtype>
@@ -19797,7 +19979,7 @@
 <orientation>horizontal</orientation>
 <onleft>58</onleft>
 <onright>58</onright>
-<onup>2</onup>
+<onup>11</onup>
 <ondown>2</ondown>
 <pagecontrol>90</pagecontrol>
 
@@ -19932,7 +20114,7 @@
 <posy>23</posy>
 <width>50</width>
 <height>99</height>
-<texture>mask glass wall.png</texture>
+<texture>mask glass wall left.png</texture>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -19967,9 +20149,11 @@
 <posy>0</posy>
 <width>144</width>
 <height>145</height>
-<texture>7.png</texture>
+<texture>6.png</texture>
 <aspectratio>keep</aspectratio>
 </control>
+
+
 
 <control type="image">
 <posx>47</posx>
@@ -19982,14 +20166,13 @@
 </control>
 
 <control type="image">
-<posx>47</posx>
-<posy>23</posy>
-<width>50</width>
-<height>99</height>
-<texture>mask glass wall.png</texture>
+<posx>40</posx>
+<posy>12</posy>
+<width>64</width>
+<height>121</height>
+<texture>mask season outline.png</texture>
 <aspectratio>stretch</aspectratio>
 </control>
-
 
 <control type="image">
 <posx>120</posx>
@@ -20047,16 +20230,35 @@
 <aspectratio>keep</aspectratio>
 </control>
 
-
-
 <control type="image">
 <posx>12</posx>
 <posy>23</posy>
 <width>120</width>
 <height>99</height>
-<texture diffuse="Mask.png"></texture>
 <info>ListItem.Icon</info>
 <aspectratio>keep</aspectratio>
+<visible>IsEmpty(ListItem.thumb)</visible>
+</control>
+
+
+<control type="image">
+<posx>14</posx>
+<posy>24</posy>
+<width>116</width>
+<height>97</height>
+<info>ListItem.thumb</info>
+<texture diffuse="Mask episode.png"></texture>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<visible>!IsEmpty(ListItem.thumb)</visible>
+</control>
+
+<control type="image">
+<posx>14</posx>
+<posy>24</posy>
+<width>116</width>
+<height>97</height>
+<texture>Mask episode glass.png</texture>
+<aspectratio>stretch</aspectratio>
 </control>
 
 
@@ -20089,21 +20291,41 @@
 <posy>0</posy>
 <width>144</width>
 <height>145</height>
-<texture>7.png</texture>
+<texture>6.png</texture>
 <aspectratio>keep</aspectratio>
 </control>
+
 
 <control type="image">
 <posx>12</posx>
 <posy>23</posy>
 <width>120</width>
 <height>99</height>
-<texture diffuse="Mask.png"></texture>
 <info>ListItem.Icon</info>
 <aspectratio>keep</aspectratio>
-<visible>Control.IsVisible(58)</visible>
+<visible>IsEmpty(ListItem.thumb)</visible>
 </control>
 
+
+<control type="image">
+<posx>14</posx>
+<posy>24</posy>
+<width>116</width>
+<height>97</height>
+<info>ListItem.thumb</info>
+<texture diffuse="Mask episode.png"></texture>
+<aspectratio scalediffuse="false">scale</aspectratio>
+<visible>!IsEmpty(ListItem.thumb)</visible>
+</control>
+
+<control type="image">
+<posx>0</posx>
+<posy>8</posy>
+<width>144</width>
+<height>129</height>
+<texture>Mask episode outline.png</texture>
+<aspectratio>stretch</aspectratio>
+</control>
 
 <control type="image">
 <posx>120</posx>

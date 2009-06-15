@@ -65,18 +65,22 @@
 
 	<control type="label" id="2">
 		<description>coordinates label</description>
-		<posx>55</posx>
-		<posy>260</posy>
+		<posx>0</posx>
+		<posy>460</posy>
+		<width>720</width>
 		<label>-</label>
 		<font>font14</font>
+		<align>center</align>
 	</control>
 
 	<control type="label" id="3">
 		<description>help information</description>
-		<posx>55</posx>
-		<posy>280</posy>
+		<posx>0</posx>
+		<posy>480</posy>
 		<label>-</label>
+		<width>720</width>
 		<font>font14</font>
+		<align>center</align>
 	</control>
 
 	</controls>

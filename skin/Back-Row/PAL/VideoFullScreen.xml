@@ -10,7 +10,7 @@
 		<posx>-10</posx>
 		<posy>0</posy>
 		<width>740</width>
-		<height>100</height>
+		<height>90</height>
 		<texture>black.png</texture>
 		<include>media-infopanel-effect</include>
 	</control>

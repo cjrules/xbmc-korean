@@ -2,13 +2,12 @@
 	<id>114</id>
 	<defaultcontrol>403</defaultcontrol>
 	<visible>Player.HasMedia + Window.IsActive(PlayerControls) + !Window.IsActive(FullscreenVideo)</visible>
-	<animation effect="slide" start="-175,0" acceleration="-1" time="200">WindowOpen</animation>
-	<animation effect="slide" end="-175,0" acceleration="1" time="200">WindowClose</animation>
+	
 	<type>dialog</type>
 	<coordinates>
 	<system>1</system>
-	<posx>47</posx>
-	<posy>50</posy>
+	<posx>100</posx>
+	<posy>401</posy>
 	</coordinates>
 	<controls>
 
@@ -35,8 +34,8 @@
 		<id>400</id>
 		<posx>0</posx>
 		<posy>3</posy>
-		<width>23</width>
-		<height>32</height>
+		<width>22</width>
+		<height>22</height>
 		<label>-</label>
 		<texturefocus>music-skipminus-focus.png</texturefocus>
 		<texturenofocus>music-skipminus-nofocus.png</texturenofocus>
@@ -54,7 +53,7 @@
 		<id>401</id>
 		<posx>22</posx>
 		<posy>0</posy>
-		<width>21</width>
+		<width>22</width>
 		<height>22</height>
 		<label>-</label>
 		<texturefocus>music-rw-focus.png</texturefocus>
@@ -71,8 +70,8 @@
 		<id>401</id>
 		<posx>25</posx>
 		<posy>3</posy>
-		<width>23</width>
-		<height>32</height>
+		<width>22</width>
+		<height>22</height>
 		<label>-</label>
 		<texturefocus>music-rw-focus.png</texturefocus>
 		<texturenofocus>music-rw-nofocus.png</texturenofocus>
@@ -90,7 +89,7 @@
 		<id>402</id>
 		<posx>43</posx>
 		<posy>0</posy>
-		<width>21</width>
+		<width>22</width>
 		<height>22</height>
 		<label>-</label>
 		<texturefocus>music-stop-focus.png</texturefocus>
@@ -107,8 +106,8 @@
 		<id>402</id>
 		<posx>50</posx>
 		<posy>3</posy>
-		<width>23</width>
-		<height>32</height>
+		<width>22</width>
+		<height>22</height>
 		<label>-</label>
 		<texturefocus>music-stop-focus.png</texturefocus>
 		<texturenofocus>music-stop-nofocus.png</texturenofocus>
@@ -126,7 +125,7 @@
 		<id>403</id>
 		<posx>64</posx>
 		<posy>0</posy>
-		<width>21</width>
+		<width>22</width>
 		<height>22</height>
 		<label>-</label>
 		<texturefocus>music-pause-focus.png</texturefocus>
@@ -146,8 +145,8 @@
 		<id>403</id>
 		<posx>75</posx>
 		<posy>3</posy>
-		<width>23</width>
-		<height>32</height>
+		<width>22</width>
+		<height>22</height>
 		<label>-</label>
 		<texturefocus>music-pause-focus.png</texturefocus>
 		<texturenofocus>music-pause-nofocus.png</texturenofocus>
@@ -168,7 +167,7 @@
 		<id>404</id>
 		<posx>85</posx>
 		<posy>0</posy>
-		<width>21</width>
+		<width>22</width>
 		<height>22</height>
 		<label>-</label>
 		<texturefocus>music-ff-focus.png</texturefocus>
@@ -185,8 +184,8 @@
 		<id>404</id>
 		<posx>100</posx>
 		<posy>3</posy>
-		<width>23</width>
-		<height>32</height>
+		<width>22</width>
+		<height>22</height>
 		<label>-</label>
 		<texturefocus>music-ff-focus.png</texturefocus>
 		<texturenofocus>music-ff-nofocus.png</texturenofocus>
@@ -221,8 +220,8 @@
 		<id>405</id>
 		<posx>125</posx>
 		<posy>3</posy>
-		<width>23</width>
-		<height>32</height>
+		<width>22</width>
+		<height>22</height>
 		<label>-</label>
 		<texturefocus>music-skipplus-focus.png</texturefocus>
 		<texturenofocus>music-skipplus-nofocus.png</texturenofocus>

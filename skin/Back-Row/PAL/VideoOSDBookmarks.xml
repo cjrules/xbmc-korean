@@ -4,7 +4,7 @@
 	<include>dialog-effect</include> 
 	<coordinates>
 	<system>1</system>
-	<origin x="150" y="88">true</origin>
+	<origin x="10" y="95">true</origin>
 	</coordinates>
 	<controls>
 
@@ -14,8 +14,8 @@
 		<posx>0</posx>
 		<posy>25</posy>
 		<width>420</width>
-		<height>320</height>
-		<texture>OSD Background.png</texture>
+		<height>325</height>
+		<texture>black.png</texture>
 	</control>
 
 	<control>
@@ -25,7 +25,8 @@
 		<posy>-5</posy>
 		<width>420</width>
 		<height>31</height>
-		<texture>osd_settings_header.png</texture>
+		<texture>background2.png</texture>
+		<colordiffuse>bbffffff</colordiffuse>
 	</control>
 
 	<control>
@@ -45,11 +46,12 @@
 		<id>2</id>
 		<posx>10</posx>
 		<posy>35</posy>
-		<width>195</width>
+		<width>198</width>
 		<height>31</height>
 		<font>font12</font>
 		<textoffsetx>12</textoffsetx>
-		<texture>button-focus-dialog.png</texture>
+		<texture></texture>
+		<colordiffuse>bbffffff</colordiffuse>
 		<aligny>center</aligny>
 		<align>center</align>
 		<label>294</label>
@@ -63,12 +65,13 @@
 		<description>Clear Bookmarks Button</description>
 		<type>button</type>
 		<id>3</id>
-		<posx>215</posx>
+		<posx>212</posx>
 		<posy>35</posy>
-		<width>195</width>
+		<width>198</width>
 		<height>31</height>
 		<font>font12</font>
-		<texture>list-focus1.png</texture>
+		<texture></texture>
+		<colordiffuse>bbffffff</colordiffuse>
 		<aligny>center</aligny>
 		<align>center</align>
 		<label>296</label>
@@ -78,29 +81,82 @@
 		<onup>11</onup>
 	</control>
 
-	<control>
-		<description>Bookmarks Thumbnail Panel</description>
-		<type>thumbnailpanel</type>
-		<id>11</id>
-		<posx>10</posx>
-		<posy>80</posy>
-		<width>400</width>
-		<height>300</height>
-		<spinposx>360</spinposx>
-		<spinposy>240</spinposy>
-		<itemwidth>100</itemwidth> 
-		<itemheight>110</itemheight>
-		<texturewidth>90</texturewidth>
-		<textureheight>80</textureheight>
-		<thumbwidth>80</thumbwidth>
-		<thumbheight>70</thumbheight>
-		<thumbposx>5</thumbposx>
-		<thumbposy>5</thumbposy>
-		<onleft>2</onleft>
-		<onright>3</onright>
-		<ondown>2</ondown>
-		<onup>2</onup>
-	</control>
+<control type="panel" id="11">
+			<posx>10</posx>
+			<posy>70</posy>
+			<width>400</width>
+			<height>275</height>
+			<onleft>2</onleft>
+			<onright>3</onright>
+			<ondown>2</ondown>
+			<onup>2</onup>
+			<scrolltime>200</scrolltime>
+			<viewtype label="536">icon</viewtype>
+			<pagecontrol>-</pagecontrol>
+			
+			<itemlayout height="91.660" width="133.33">
+			
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>133.33</width>
+					<height>91.66</height>
+					<texture border="5">input-nofocus.png</texture>
+				</control>
+
+				<control type="image">
+					<posx>5</posx>
+					<posy>5</posy>
+					<width>123.33</width>
+					<height>81.660</height>
+					<info>ListItem.Icon</info>
+				</control>
+
+				<control type="label">
+					<posx>66.665</posx>
+					<posy>72.660</posy>
+					<width>123.33</width>
+					<height>10</height>
+					<font>fontkb</font>
+					<selectedcolor>white</selectedcolor>
+					<align>center</align>
+					<info>ListItem.Label</info>
+				</control>
+
+			</itemlayout>
+
+			<focusedlayout height="91.660" width="133.33">
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>133.33</width>
+					<height>91.66</height>
+					<texture border="5">input-focus.png</texture>
+				</control>
+
+				<control type="image">
+					<posx>5</posx>
+					<posy>5</posy>
+					<width>123.33</width>
+					<height>81.660</height>
+					<info>ListItem.Icon</info>
+				</control>
+
+				<control type="label">
+					<posx>66.665</posx>
+					<posy>72.660</posy>
+					<width>123.33</width>
+					<height>10</height>
+					<font>fontkb</font>
+					<selectedcolor>white</selectedcolor>
+					<align>center</align>
+					<info>ListItem.Label</info>
+				</control>
+
+			</focusedlayout>
+
+		</control>
+
 
 	</controls>
 </window>

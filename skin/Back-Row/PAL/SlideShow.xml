@@ -11,10 +11,11 @@
 			<visible>no</visible>
 			<texture>osd-button-pause-focus.png</texture>
 		</control>
+
 		<!-- media infos -->
 		<control type="group" id="1">
 			<posx>-10</posx>
-			<posy>410</posy>
+			<posy>456</posy>
 			<visible>Player.ShowInfo + Player.HasMedia</visible>
 			<animation effect="fade" time="500">VisibleChange</animation>
 			<control type="image" id="1">
@@ -23,14 +24,14 @@
 				<posy>0</posy>
 				<width>740</width>
 				<height>120</height>
-				<texture>osd_menu_bg.png</texture>
+				<texture>OSD.png</texture>
 			</control>
 			<control type="image" id="1">
 				<description>cover image</description>
 				<posx>50</posx>
-				<posy>0</posy>
-				<width>120</width>
-				<height>120</height>
+				<posy>5</posy>
+				<width>110</width>
+				<height>110</height>
 				<info>MusicPlayer.Cover</info>
 				<aspectratio>keep</aspectratio>
 			</control>
@@ -41,7 +42,7 @@
 				<posy>5</posy>
 				<info>System.Time</info>
 				<align>right</align>
-				<textcolor>red</textcolor>
+				<textcolor>white</textcolor>
 				<font>special13</font>
 			</control>
 			<control type="label" id="1">
@@ -90,7 +91,7 @@
 				<label>$INFO[musicplayer.Time]$INFO[musicplayer.Duration, / ]</label>
 				<align>left</align>
 				<font>font10</font>
-			</control>
+				</control>
 			<control type="label" id="1">
 				<description>Playlist Pos No</description>
 				<width>200</width>
@@ -114,15 +115,17 @@
 			<control type="progress" id="1">
 				<description>Progressbar</description>
 				<posx>180</posx>
-				<posy>105</posy>
+				<posy>95</posy>
 				<width>500</width>
-				<height>5</height>
+				<height>20</height>
 				<info>Player.Progress</info>
-				<texturebg>progress_back.png</texturebg>
-				<lefttexture>progress_left.png</lefttexture>
-				<midtexture>progress_mid.png</midtexture>
-				<righttexture>progress_right.png</righttexture>
-				<overlaytexture>-</overlaytexture>
+			<texturebg>Seekbar background.png</texturebg>
+			<lefttexture></lefttexture>
+			<midtexture>Seekbar progress.png</midtexture>
+			<righttexture></righttexture>
+			<overlaytexture>-</overlaytexture>
+				<colordiffuse>99ffffff</colordiffuse>
+
 				<visible>true</visible>
 			</control>
 		</control>

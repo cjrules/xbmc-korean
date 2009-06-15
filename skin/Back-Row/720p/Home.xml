@@ -735,18 +735,18 @@
 
 <!-- Home Layout -->
 <control type="visualisation">
-<posx>0</posx>
-<posy>0</posy>
-<width>1280</width>
-<height>720</height>
+<posx>-5</posx>
+<posy>-5</posy>
+<width>1290</width>
+<height>730</height>
 <visible>!Skin.HasSetting(home-visualisation)</visible>
 </control>
 
 <control type="videowindow">
-<posx>0</posx>
-<posy>0</posy>
-<width>1280</width>
-<height>720</height>
+<posx>-5</posx>
+<posy>-5</posy>
+<width>1290</width>
+<height>730</height>
 <aspectratio>stretch</aspectratio>
 <visible>!Skin.HasSetting(home-video-preview)</visible>
 </control>
@@ -1162,7 +1162,7 @@
 <control type="wraplist" id="11">
 <visible>Skin.HasSetting(Small Film Strip)</visible>
 <posx>0</posx>
-<posy>255</posy>
+<posy>502</posy>
 <height>625</height>
 <width>1280</width>
 <onup>157</onup>
