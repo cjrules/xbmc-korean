@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes" ?>
+<!-- $Revision: 204$ -->
+<!--  strings 31000 thru 31999 reserved for skins  -->
+
+<strings>
+  <!-- Home / General -->
+  <string id="31000">Filhanterare</string>
+  <string id="31001">Info</string>
+  <string id="31002">Nollställ</string>
+  <string id="31003">Analysera</string>
+  <string id="31004">Ändra</string>
+  <string id="31005">Diverse</string>
+  <string id="31006">Visuell</string>
+  <string id="31007">Av/På</string>
+  <string id="31008">Ej Angedd</string>
+  <string id="31009">Se Dina</string> <!-- used for Movies -->
+  <string id="31010">Se Dina</string> <!-- used for TV Shows -->
+  <string id="31011">Se Dina</string> <!-- used for Videos -->
+  <string id="31012">Lyssna På</string>
+  <string id="31013">Se Dina</string>
+  <string id="31014">Använd Dina</string>
+  <string id="31015">Undersök</string>
+  <string id="31016">Konfigurera</string>
+  <string id="31017">Ström</string>
+  <string id="31018">Grundläggande Info</string>
+  <string id="31019">Spela</string>
+  <string id="31020">Undersök</string>
+  <string id="31021">Av</string>
+  <string id="31022">Nyligen tillagt</string>
+
+  <!-- Options Menu -->
+  <string id="31100">Poster Info</string>
+  <string id="31101">Ordna efter</string>
+  <string id="31102">Inställningar</string>
+  <string id="31103">Showcase</string>
+  <string id="31104">Visa större klocka</string>
+  <string id="31105">Vattenfall</string>
+  <string id="31106">Visning</string>
+  <string id="31107">Låg lista</string>
+  <string id="31108">Exponering</string>
+  <string id="31109">Hög lista</string>
+
+  <!-- Settings -->
+  <string id="31200">Visa Handling</string>
+  <string id="31201">Senast Uppdaterad</string>
+  <string id="31202">Bakgrundsmapp</string>
+  <string id="31203">Bakgrunder</string>
+  <string id="31204">Inställningsmeny</string>
+  <string id="31205">Göm</string>
+  <string id="31206">Klocka</string>
+  <string id="31207">Göm Väderprognos I Huvudmenyn</string>
+  <string id="31208">Avaktivera</string>
+  <string id="31209">Konfigurera Inställning för</string>
+  <string id="31210">Meny</string>
+  <string id="31211">Göm Handling i OSD</string>
+  <string id="31212">Göm Sedd Överlappning</string>
+  <string id="31213">Göm Miniatyr</string>
+  <string id="31214">Visa Granskning</string>
+  <string id="31215">Visa Innehållstyp</string>
+  <string id="31216">Göm Mediasammanräkning</string>
+  <string id="31217">Visa Porträttminiatyrer för TV</string>
+  <string id="31218">Visa Minimal Video OSD</string>
+  <string id="31219">Göm Vitt Brus BG</string>
+
+  <!-- Video -->
+  <string id="31300">Ej Tillgänglig</string>
+  <string id="31301">Miniatyr</string>
+  <string id="31302">Fanart</string>
+  <string id="31303">Säsonger</string>
+  <string id="31304">Uppskattad Sluttid</string>
+
+  <!-- Music -->
+  <string id="31400">Avslutad</string>
+  <string id="31401">Nuvarande</string>
+  <string id="31402">Välj Visualisering</string>
+  <string id="31403">Förinställda Visualiseringar</string>
+  <string id="31404">Visualiserings Inställningar</string>
+  <string id="31405">Texter</string>
+  <string id="31406">Ange Textsökväg</string>
+
+  <!-- Dialogs -->
+  <string id="31500">Välj Profil</string>
+  <string id="31501">Tyst</string>
+  <string id="31502">Skapa</string>
+
+</strings>

@@ -125,6 +125,9 @@
 
       <control type="group">
         <posx>418</posx>
+        <animation effect="slide" start="0,0" end="74,0" time="0" condition="!System.HasLocks + System.HasLoginScreen">Conditional</animation>
+        <animation effect="slide" start="0,0" end="74,0" time="0" condition="System.HasLocks + !System.HasLoginScreen">Conditional</animation>
+        <animation effect="slide" start="0,0" end="148,0" time="0" condition="System.HasLocks + System.HasLoginScreen">Conditional</animation>
 
         <control type="image">
           <description>Shutdown Timer Arrow</description>

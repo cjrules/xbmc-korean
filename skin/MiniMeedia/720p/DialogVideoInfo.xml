@@ -281,6 +281,7 @@
               <posy>12</posy>
               <visible>Container.Content(tvshows)</visible>
               <include>VideoFlags</include>
+              <include>ExtraVideoFlags</include>
             </control>
 
             <control type="label">
@@ -330,6 +331,7 @@
             <control type="group">
               <visible>Container.Content(movies)</visible>
               <include>VideoFlags</include>
+              <include>ExtraVideoFlags</include>
             </control>
 
             <control type="group">
@@ -337,6 +339,7 @@
               <posy>60</posy>
               <visible>Container.Content(episodes)</visible>
               <include>VideoFlags</include>
+              <include>ExtraVideoFlags</include>
             </control>
 
             <control type="group">

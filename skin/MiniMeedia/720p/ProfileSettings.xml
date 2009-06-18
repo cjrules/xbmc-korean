@@ -56,12 +56,14 @@
         <control type="grouplist" id="5">
           <description>Profile Options</description>
           <posy>102</posy>
-          <width>620</width>
+          <width>600</width>
           <height>100</height>
           <onup>1000</onup>
           <ondown>28</ondown>
+          <onleft>28</onleft>
           <onright>5</onright>
           <itemgap>0</itemgap>
+          <pagecontrol>61</pagecontrol>
         </control>
 
         <control type="button" id="7">
@@ -81,9 +83,19 @@
 
         <control type="spincontrolex" id="9">
           <description>Default Spincontrol</description>
+          <height>30</height>
           <textoffsetx>10</textoffsetx>
           <align>left</align>
           <font>MediumDefaultFont</font>
+          <texturefocus border="3">black_rounded.png</texturefocus>
+        </control>
+
+        <control type="scrollbar" id="61">
+          <posx>600</posx>
+          <posy>96</posy>
+          <height>112</height>
+          <onleft>50</onleft>
+          <onright>9009</onright>
         </control>
 
         <control type="group">
@@ -100,20 +112,8 @@
             <description>cancel button</description>
             <posx>150</posx>
             <onup>5</onup>
-            <onright>4</onright>
             <onleft>28</onleft>
             <label>$LOCALIZE[222]</label>
-          </control>
-
-          <control type="radiobutton" id="4">
-            <description>Login Screen</description>
-            <posx>350</posx>
-            <onleft>29</onleft>
-            <onup>5</onup>
-            <width>270</width>
-            <height>28</height>
-            <textoffsetx>10</textoffsetx>
-            <label>$LOCALIZE[20096]</label>
           </control>
         </control>
       </control>

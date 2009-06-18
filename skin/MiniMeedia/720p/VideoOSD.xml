@@ -119,7 +119,7 @@
 		  <description>Player Controls</description>
       <posx>490</posx>
       <posy>592</posy>
-      <animation effect="slide" time="0" start="0,0" end="-30,24" condition="Skin.HasSetting(UseMinimalVideoOSD)">Conditional</animation>
+      <animation effect="slide" time="0" start="0,0" end="-30,-1" condition="Skin.HasSetting(UseMinimalVideoOSD)">Conditional</animation>
       <animation effect="slide" time="300" tween="circle" easing="out" start="0,200" end="0,0">WindowOpen</animation>
       <animation effect="slide" time="300" tween="circle" easing="out" start="0,200" end="0,0">Visible</animation>
       <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,200">WindowClose</animation>

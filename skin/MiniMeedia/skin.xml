@@ -2,7 +2,7 @@
   <defaultresolution>720p</defaultresolution>
   <defaultresolutionwide>720p</defaultresolutionwide>
   <version>2.11</version>
-  <skinversion>v0.86</skinversion>
+  <skinversion>v0.90</skinversion>
 
   <credits>
     <skinname>MiniMeedia</skinname>
@@ -18,5 +18,6 @@
     <name>PiNCH (Danish)</name>
     <name>ZIOLele (Italian)</name>
     <name>Haggy (German)</name>
+    <name>exal (Swedish)</name>
   </credits>
 </skin>

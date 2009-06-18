@@ -12,11 +12,11 @@
       <animation effect="slide" time="200" delay="0" tween="circle" easing="in" start="0,0" end="-1500,0" reversible="false" condition="Window.Next(Home)">WindowClose</animation>
 
       <control type="group">
-        <description>Settings Menu Text (from Home)</description>
+        <description>Profiles Menu Text (from Home)</description>
         <include>HomeMainMenuPos</include>
 
         <control type="group">
-          <description>Settings Category Menu Text</description>
+          <description>Profiles Menu</description>
           <posx>HomeSubMenuBGOffset</posx>
 
           <control type="group">
@@ -31,11 +31,85 @@
 
               <control type="wraplist" id="2">
                 <description>Main Menu</description>
-                <include>HomeMainMenuWrapList</include>
-              </control>
-            </control>
+                <onright>4</onright>
+                <include>HomeMainMenuWrapListProps</include>
 
-            <include>HomeMainMenuNavIndics</include>
+                <include>HomeMainMenuWrapListItemLayout</include>
+
+                <focusedlayout width="HomeMainMenuTextWidth" height="60">
+                  <control type="label">
+                    <label>$LOCALIZE[20067]</label>
+                    <include>HomeMainMenuSubLabelProps</include>
+                    <visible>Control.HasFocus(2)</visible>
+                  </control>
+                  <control type="label">
+                    <include>HomeMainMenuMainLabel</include>
+                    <visible>Control.HasFocus(2)</visible>
+                  </control>
+
+                  <control type="label">
+                    <label>$LOCALIZE[20067]</label>
+                    <textcolor>Unfocused</textcolor>
+                    <include>HomeMainMenuSubLabelProps</include>
+                    <visible>!Control.HasFocus(2)</visible>
+                  </control>
+                  <control type="label">
+                    <textcolor>Unfocused</textcolor>
+                    <include>HomeMainMenuMainLabel</include>
+                    <visible>!Control.HasFocus(2)</visible>
+                  </control>
+                </focusedlayout>
+              </control>
+
+              <control type="group" id="301">
+                <posx>HomeMainMenuBGWidth</posx>
+                <posy>100</posy>
+                <visible>!Window.IsVisible(ProfileSettings)</visible>
+                <animation effect="slide" time="300" delay="100" tween="circle" easing="out" start="0,50" end="0,0" reversible="false">Visible</animation>
+                <animation effect="slide" time="200" delay="0" tween="circle" easing="in" start="0,0" end="0,50" reversible="false">Hidden</animation>
+
+                <control type="image">
+                  <posx>-1</posx>
+                  <width>HomeMainMenuBGWidth</width>
+                  <height>30</height>
+                  <include>OverlayAreaRight</include>
+                </control>
+
+                <control type="image">
+                  <description>Right Indicator Arrow</description>
+                  <posx>12</posx>
+                  <posy>10</posy>
+                  <width>6</width>
+                  <height>12</height>
+                  <texture>arrow_right.png</texture>
+                  <colordiffuse>CCFFFFFF</colordiffuse>
+                  <visible>!ControlGroup(301).HasFocus()</visible>
+                </control>
+                <control type="image">
+                  <description>Left Indicator Arrow</description>
+                  <posx>12</posx>
+                  <posy>10</posy>
+                  <width>6</width>
+                  <height>12</height>
+                  <texture flipx="true">arrow_right.png</texture>
+                  <colordiffuse>CCFFFFFF</colordiffuse>
+                  <visible>ControlGroup(301).HasFocus()</visible>
+                </control>
+
+                <control type="radiobutton" id="4">
+                  <description>Login Screen</description>
+                  <posx>20</posx>
+                  <onleft>2</onleft>
+                  <width>HomeMainMenuTextWidth</width>
+                  <textoffsetx>10</textoffsetx>
+                  <textoffsety>7</textoffsety>
+                  <label>$LOCALIZE[20096]</label>
+                  <font>SmallTitleFont</font>
+                  <texturefocus>-</texturefocus>
+                </control>
+              </control>
+
+            </control>
           </control>
 
           <control type="group">
@@ -82,7 +156,7 @@
         </control>
       </control>
     </control>
-      
+
     <include>MusicNowPlaying</include>
     <include>VideoOverlayUI</include>
 

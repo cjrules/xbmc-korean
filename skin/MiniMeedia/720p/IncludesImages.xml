@@ -7,6 +7,11 @@
     <include>VideoTVRatingFlags</include>
   </include>
 
+  <include name="ExtraVideoFlags">
+    <include>VideoResFlags</include>
+    <include>VideoAudioFlags</include>
+  </include>
+
   <include name="VideoFlagDefault">
     <aspectratio alignx="center">keep</aspectratio>
   </include>
@@ -151,7 +156,7 @@
         <texture>studios\bandapart.png</texture>
         <visible>substring(ListItem.Studio,Band Apart)</visible>
       </control>
-  
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\bazmark.png</texture>
@@ -293,7 +298,7 @@
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\dc.png</texture>
-        <visible>stringcompare(ListItem.Studio,DC)</visible>
+        <visible>substring(ListItem.Studio,DC)</visible>
       </control>
 
       <control type="image">
@@ -442,6 +447,12 @@
 
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\goldcrest.png</texture>
+        <visible>substring(ListItem.Studio,Goldcrest)</visible>
+      </control>
+  
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\gramercy.png</texture>
         <visible>substring(ListItem.Studio,Gramercy)</visible>
       </control>
@@ -452,6 +463,12 @@
         <visible>substring(ListItem.Studio,GreeneStreet)</visible>
       </control>
 
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\grosvenorpark.png</texture>
+        <visible>substring(ListItem.Studio,Grosvenor Park)</visible>
+      </control>
+  
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\gutek.png</texture>
@@ -468,6 +485,12 @@
         <include>VideoStudioFlagsDims</include>
         <texture>studios\handmade.png</texture>
         <visible>substring(ListItem.Studio,Hand Made)</visible>
+      </control>
+  
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
+        <texture>studios\hanway.png</texture>
+        <visible>substring(ListItem.Studio,Hanway)</visible>
       </control>
   
       <control type="image">
@@ -607,7 +630,7 @@
         <texture>studios\linsefilm.png</texture>
         <visible>substring(ListItem.Studio,Linsefilm)</visible>
       </control>
-  
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\lionsgate.png</texture>
@@ -637,7 +660,7 @@
         <texture>studios\madman.png</texture>
         <visible>substring(ListItem.Studio,Madman)</visible>
       </control>
-  
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\magnolia.png</texture>
@@ -1000,6 +1023,12 @@
 
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\serendipity.png</texture>
+        <visible>substring(ListItem.Studio,Serendipity)</visible>
+      </control>
+  
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\shoutfactory.png</texture>
         <visible>substring(ListItem.Studio,Shout)</visible>
       </control>
@@ -1051,7 +1080,7 @@
         <texture>studios\storyline.png</texture>
         <visible>substring(ListItem.Studio,Storyline)</visible>
       </control>
-  
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\summit.png</texture>
@@ -1075,7 +1104,7 @@
         <texture>studios\telos.png</texture>
         <visible>substring(ListItem.Studio,Telos)</visible>
       </control>
-  
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\thinkfilm.png</texture>
@@ -1090,16 +1119,22 @@
   
       <control type="image">
         <include>VideoStudioFlagsDims</include>
+        <texture>studios\tobis.png</texture>
+        <visible>substring(ListItem.Studio,Tobis)</visible>
+      </control>
+  
+      <control type="image">
+        <include>VideoStudioFlagsDims</include>
         <texture>studios\touchstone.png</texture>
         <visible>substring(ListItem.Studio,Touchstone)</visible>
       </control>
-  
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\tristar.png</texture>
         <visible>substring(ListItem.Studio,TriStar)</visible>
       </control>
-  
+
       <control type="image">
         <include>VideoStudioFlagsDims</include>
         <texture>studios\turner.png</texture>
@@ -1242,6 +1277,49 @@
     </control>
   </include>
 
+  <include name="VideoMPAASmallFlagsDims">
+    <posx>270</posx>
+    <posy>70</posy>
+    <height>36</height>
+    <include>VideoFlagDefault</include>
+  </include>
+
+  <include name="VideoMPAASmallFlags">
+    <control type="group">
+      <visible>Container.Content(movies)</visible>
+
+  		<control type="image">
+        <include>VideoMPAASmallFlagsDims</include>
+  			<texture>mpaa\restricted_small.png</texture>
+  			<visible>substring(ListItem.MPAA,Rated R)</visible>
+  		</control>
+
+  		<control type="image">
+        <include>VideoMPAASmallFlagsDims</include>
+  			<texture>mpaa\pg13_small.png</texture>
+  			<visible>substring(ListItem.MPAA,Rated PG-13)</visible>
+  		</control>
+
+  		<control type="image">
+        <include>VideoMPAASmallFlagsDims</include>
+  			<texture>mpaa\pg_small.png</texture>
+  			<visible>substring(ListItem.MPAA,Rated PG) + !substring(ListItem.MPAA,Rated PG-13)</visible>
+  		</control>
+
+  		<control type="image">
+        <include>VideoMPAASmallFlagsDims</include>
+  			<texture>mpaa\nc17_small.png</texture>
+  			<visible>substring(ListItem.MPAA,Rated NC)</visible>
+  		</control>
+
+  		<control type="image">
+        <include>VideoMPAASmallFlagsDims</include>
+        <texture>mpaa\general_small.png</texture>
+  			<visible>substring(ListItem.MPAA,Rated G)</visible>
+  		</control>
+    </control>
+  </include>
+
   <!-- TV Studio flags -->
   <include name="VideoTVNetworkFlagsDims">
     <posx>110</posx>
@@ -1283,6 +1361,12 @@
 
       <control type="image">
         <include>VideoTVNetworkFlagsDims</include>
+        <texture>networks\animalplanet.png</texture>
+        <visible>substring(ListItem.Studio,Animal Planet)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoTVNetworkFlagsDims</include>
         <texture>networks\ard.png</texture>
         <visible>substring(ListItem.Studio,ARD)</visible>
       </control>
@@ -1297,6 +1381,12 @@
         <include>VideoTVNetworkFlagsDims</include>
         <texture>networks\bbc.png</texture>
         <visible>substring(ListItem.Studio,BBC)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoTVNetworkFlagsDims</include>
+        <texture>networks\bet.png</texture>
+        <visible>substring(ListItem.Studio,BET)</visible>
       </control>
 
       <control type="image">
@@ -1343,6 +1433,12 @@
 
       <control type="image">
         <include>VideoTVNetworkFlagsDims</include>
+        <texture>networks\cw.png</texture>
+        <visible>substring(ListItem.Studio,CW)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoTVNetworkFlagsDims</include>
         <texture>networks\discovery.png</texture>
         <visible>substring(ListItem.Studio,Discovery)</visible>
       </control>
@@ -1369,6 +1465,12 @@
         <include>VideoTVNetworkFlagsDims</include>
         <texture>networks\five.png</texture>
         <visible>substring(ListItem.Studio,Five)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoTVNetworkFlagsDims</include>
+        <texture>networks\foodnetwork.png</texture>
+        <visible>substring(ListItem.Studio,Food Network)</visible>
       </control>
 
       <control type="image">
@@ -1427,6 +1529,12 @@
 
       <control type="image">
         <include>VideoTVNetworkFlagsDims</include>
+        <texture>networks\pbs.png</texture>
+        <visible>substring(ListItem.Studio,PBS)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoTVNetworkFlagsDims</include>
         <texture>networks\premiere.png</texture>
         <visible>substring(ListItem.Studio,Premiere)</visible>
       </control>
@@ -1463,6 +1571,12 @@
 
       <control type="image">
         <include>VideoTVNetworkFlagsDims</include>
+        <texture>networks\space.png</texture>
+        <visible>substring(ListItem.Studio,Space)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoTVNetworkFlagsDims</include>
         <texture>networks\spike.png</texture>
         <visible>substring(ListItem.Studio,Spike)</visible>
       </control>
@@ -1475,8 +1589,20 @@
 
       <control type="image">
         <include>VideoTVNetworkFlagsDims</include>
+        <texture>networks\tbs.png</texture>
+        <visible>substring(ListItem.Studio,TBS)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoTVNetworkFlagsDims</include>
         <texture>networks\tnt.png</texture>
         <visible>substring(ListItem.Studio,TNT)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoTVNetworkFlagsDims</include>
+        <texture>networks\upn.png</texture>
+        <visible>substring(ListItem.Studio,UPN)</visible>
       </control>
 
       <control type="image">
@@ -1487,8 +1613,26 @@
 
       <control type="image">
         <include>VideoTVNetworkFlagsDims</include>
+        <texture>networks\versus.png</texture>
+        <visible>substring(ListItem.Studio,Versus)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoTVNetworkFlagsDims</include>
         <texture>networks\vh1.png</texture>
         <visible>substring(ListItem.Studio,VH1)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoTVNetworkFlagsDims</include>
+        <texture>networks\wb.png</texture>
+        <visible>substring(ListItem.Studio,WB)</visible>
+      </control>
+
+      <control type="image">
+        <include>VideoTVNetworkFlagsDims</include>
+        <texture>networks\wgn.png</texture>
+        <visible>substring(ListItem.Studio,WGN)</visible>
       </control>
 
       <control type="image">
@@ -1553,6 +1697,190 @@
   			<visible>stringcompare(ListItem.MPAA,TV-Y7 FV)</visible>
   		</control>
   	</control>
+  </include>
+
+  <!-- Video Resolution Flags -->
+  <include name="VideoResFlagsDims">
+    <posx>-18</posx>
+    <posy>66</posy>
+    <height>48</height>
+    <include>VideoFlagDefault</include>
+  </include>
+
+  <include name="VideoResFlags">
+    <control type="group">
+
+  		<control type="image">
+        <include>VideoResFlagsDims</include>
+        <texture>$INFO[ListItem.VideoResolution,flags\,.png]</texture>
+  		</control>
+    </control>
+  </include>
+
+  <!-- Video Audio Flags -->
+  <include name="VideoAudioFlagsDims">
+    <posx>60</posx>
+    <posy>66</posy>
+    <height>48</height>
+    <include>VideoFlagDefault</include>
+  </include>
+
+  <include name="VideoAudioFlags">
+    <control type="group">
+
+  		<control type="image">
+        <include>VideoAudioFlagsDims</include>
+        <texture>flags\aac.png</texture>
+  			<visible>stringcompare(ListItem.AudioCodec,aac)</visible>
+  		</control>
+
+      <control type="group">
+        <description>Dolby</description>
+        <visible>stringcompare(ListItem.AudioCodec,ac3)</visible>
+
+    		<control type="image">
+          <include>VideoAudioFlagsDims</include>
+          <texture>flags\dd20.png</texture>
+    			<visible>stringcompare(ListItem.AudioChannels,2)</visible>
+    		</control>
+
+    		<control type="image">
+          <include>VideoAudioFlagsDims</include>
+          <texture>flags\dd51.png</texture>
+    			<visible>stringcompare(ListItem.AudioChannels,6)</visible>
+    		</control>
+
+    		<control type="image">
+          <include>VideoAudioFlagsDims</include>
+          <texture>flags\dd71.png</texture>
+    			<visible>stringcompare(ListItem.AudioChannels,8)</visible>
+    		</control>
+      </control>
+
+      <control type="group">
+        <description>DTS</description>
+        <visible>stringcompare(ListItem.AudioCodec,dca)</visible>
+
+    		<control type="image">
+          <include>VideoAudioFlagsDims</include>
+          <texture>flags\dts51.png</texture>
+    			<visible>stringcompare(ListItem.AudioChannels,6)</visible>
+    		</control>
+
+    		<control type="image">
+          <include>VideoAudioFlagsDims</include>
+          <texture>flags\dts71.png</texture>
+    			<visible>stringcompare(ListItem.AudioChannels,8)</visible>
+    		</control>
+
+    		<control type="image">
+          <include>VideoAudioFlagsDims</include>
+          <texture>flags\dts.png</texture>
+    			<visible>![stringcompare(ListItem.AudioChannels,6) | stringcompare(ListItem.AudioChannels,8)]</visible>
+    		</control>
+  		</control>
+
+  		<control type="image">
+        <include>VideoAudioFlagsDims</include>
+        <texture>flags\flac.png</texture>
+  			<visible>substring(ListItem.AudioCodec,flac)</visible>
+  		</control>
+
+  		<control type="image">
+        <include>VideoAudioFlagsDims</include>
+        <texture>flags\mp3.png</texture>
+  			<visible>stringcompare(ListItem.AudioCodec,mp3)</visible>
+  		</control>
+
+  		<control type="image">
+        <include>VideoAudioFlagsDims</include>
+        <texture>flags\mono.png</texture>
+  			<visible>stringcompare(ListItem.AudioChannels,1) + ![stringcompare(ListItem.AudioCodec,aac) | stringcompare(ListItem.AudioCodec,mp3) | stringcompare(ListItem.AudioCodec,dca) | substring(ListItem.AudioCodec,flac)]</visible>
+  		</control>
+    </control>
+  </include>
+
+  <include name="VideoAudioSmallFlagsDims">
+    <posx>60</posx>
+    <posy>66</posy>
+    <height>48</height>
+    <include>VideoFlagDefault</include>
+  </include>
+
+  <include name="VideoAudioSmallFlags">
+    <control type="group">
+
+  		<control type="image">
+        <include>VideoAudioSmallFlagsDims</include>
+        <texture>flags\aac.png</texture>
+  			<visible>stringcompare(ListItem.AudioCodec,aac)</visible>
+  		</control>
+
+      <control type="group">
+        <description>Dolby</description>
+        <visible>stringcompare(ListItem.AudioCodec,ac3)</visible>
+
+    		<control type="image">
+          <include>VideoAudioSmallFlagsDims</include>
+          <texture>flags\dd20_small.png</texture>
+    			<visible>stringcompare(ListItem.AudioChannels,2)</visible>
+    		</control>
+
+    		<control type="image">
+          <include>VideoAudioSmallFlagsDims</include>
+          <texture>flags\dd51_small.png</texture>
+    			<visible>stringcompare(ListItem.AudioChannels,6)</visible>
+    		</control>
+
+    		<control type="image">
+          <include>VideoAudioSmallFlagsDims</include>
+          <texture>flags\dd71_small.png</texture>
+    			<visible>stringcompare(ListItem.AudioChannels,8)</visible>
+    		</control>
+      </control>
+
+      <control type="group">
+        <description>DTS</description>
+        <visible>stringcompare(ListItem.AudioCodec,dca)</visible>
+
+    		<control type="image">
+          <include>VideoAudioSmallFlagsDims</include>
+          <texture>flags\dts51.png</texture>
+    			<visible>stringcompare(ListItem.AudioChannels,6)</visible>
+    		</control>
+
+    		<control type="image">
+          <include>VideoAudioSmallFlagsDims</include>
+          <texture>flags\dts71.png</texture>
+    			<visible>stringcompare(ListItem.AudioChannels,8)</visible>
+    		</control>
+
+    		<control type="image">
+          <include>VideoAudioSmallFlagsDims</include>
+          <texture>flags\dts.png</texture>
+    			<visible>![stringcompare(ListItem.AudioChannels,6) | stringcompare(ListItem.AudioChannels,8)]</visible>
+    		</control>
+  		</control>
+
+  		<control type="image">
+        <include>VideoAudioSmallFlagsDims</include>
+        <texture>flags\flac.png</texture>
+  			<visible>substring(ListItem.AudioCodec,flac)</visible>
+  		</control>
+
+  		<control type="image">
+        <include>VideoAudioSmallFlagsDims</include>
+        <texture>flags\mono.png</texture>
+  			<visible>stringcompare(ListItem.AudioChannels,1) + ![stringcompare(ListItem.AudioCodec,mp3) | stringcompare(ListItem.AudioCodec,dca) | substring(ListItem.AudioCodec,flac)]</visible>
+  		</control>
+
+  		<control type="image">
+        <include>VideoAudioSmallFlagsDims</include>
+        <texture>flags\mp3.png</texture>
+  			<visible>stringcompare(ListItem.AudioCodec,mp3)</visible>
+  		</control>
+
+    </control>
   </include>
 
 </includes>

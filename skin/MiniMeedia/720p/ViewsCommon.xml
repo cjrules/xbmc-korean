@@ -444,58 +444,117 @@
 
       <control type="wraplist" id="52">
         <viewtype label="Showcase">list</viewtype>
-        <posx>-15</posx>
+        <posx>-55</posx>
         <posy>-50</posy>
-        <width>1340</width>
+        <width>1660</width>
         <height>240</height>
         <scrolltime>200</scrolltime>
         <onup>9009</onup>
         <ondown>Skin.ToggleSetting(HideMusicNowPlayingInfo)</ondown>
         <orientation>horizontal</orientation>
-        <focusposition>7</focusposition>
+        <focusposition>8</focusposition>
 
-        <itemlayout width="80" height="240">
+        <itemlayout width="80" height="240" condition="![[Container.Content(tvshows) + !Skin.HasSetting(UsePortraitTVThumbs)] | [Container.Content(episodes)]]">
           <control type="image">
             <posy>30</posy>
             <width>130</width>
             <height>240</height>
             <texture diffuse="GreyDark.png"/>
             <include>ListViewThumb</include>
+            <animation effect="rotate" time="0" delay="0" start="0" end="-15" condition="true">Conditional</animation>
           </control>
         </itemlayout>
 
-        <focusedlayout width="170" height="240" condition="![Window.IsVisible(MyMusicFiles) | [Window.IsVisible(MyMusicLibrary) + !Container.Content(artists)] | Window.IsVisible(MyMusicPlaylist)]">
+        <itemlayout width="80" height="240" condition="[Container.Content(tvshows) + !Skin.HasSetting(UsePortraitTVThumbs)]">
+          <control type="image">
+            <posy>30</posy>
+            <width>360</width>
+            <height>240</height>
+            <texture diffuse="GreyDark.png"/>
+            <include>ListViewThumb</include>
+            <animation effect="rotate" time="0" delay="0" start="0" end="-45" condition="true">Conditional</animation>
+          </control>
+        </itemlayout>
+
+        <itemlayout width="80" height="240" condition="[Container.Content(episodes)]">
+          <control type="image">
+            <posy>30</posy>
+            <width>220</width>
+            <height>240</height>
+            <texture diffuse="GreyDark.png"/>
+            <include>ListViewThumb</include>
+            <animation effect="rotate" time="0" delay="0" start="0" end="-30" condition="true">Conditional</animation>
+          </control>
+        </itemlayout>
+
+        <focusedlayout width="170" height="240" condition="![Container.Content(episodes)] + ![Container.Content(tvshows) + !Skin.HasSetting(UsePortraitTVThumbs)] + ![Window.IsVisible(MyMusicFiles) | [Window.IsVisible(MyMusicLibrary) + !Container.Content(artists)] | Window.IsVisible(MyMusicPlaylist)]">
           <control type="image">
             <posy>30</posy>
             <width>130</width>
             <height>240</height>
             <include>ListViewThumb</include>
-            <animation effect="zoom" time="200" delay="100" tween="circle" easing="in" end="-15,-50,210,340">Focus</animation>
-            <animation effect="zoom" time="100" delay="0" tween="cubic" easing="out" start="-15,-50,210,340">Unfocus</animation>
+            <animation type="focus" reversible="false">
+              <effect type="zoom" tween="quadratic" end="-33,-70,195,360" time="200" delay="100"/>
+              <effect type="rotate" start="-15" end="0" time="200" delay="100"/>
+            </animation>
+            <animation type="unfocus" reversible="false">
+              <effect type="zoom" tween="quadratic" start="-33,-70,195,360" end="0,0,130,240" time="100" delay="0"/>
+              <effect type="rotate" start="0" end="-15" time="100" delay="0"/>
+            </animation>
           </control>
+        </focusedlayout>
 
+        <focusedlayout width="170" height="240" condition="[Container.Content(tvshows) + !Skin.HasSetting(UsePortraitTVThumbs)]">
           <control type="image">
-            <description>Watched Overlay</description>
-            <posx>0</posx>
-            <posy>226</posy>
-            <include>WatchedOverlay</include>
-            <animation effect="fade" start="0" end="100" time="200" delay="300" reversible="false">Focus</animation>
-            <animation effect="fade" start="100" end="0" time="100" delay="0" reversible="false">Unfocus</animation>
+            <posy>30</posy>
+            <width>360</width>
+            <height>240</height>
+            <include>ListViewThumb</include>
+            <animation type="focus" reversible="false">
+              <effect type="zoom" tween="quadratic" end="-230,-40,540,360" time="200" delay="100"/>
+              <effect type="rotate" start="-45" end="0" time="200" delay="100"/>
+            </animation>
+            <animation type="unfocus" reversible="false">
+              <effect type="zoom" tween="quadratic" start="-230,-40,540,360" end="0,0,360,240" time="100" delay="50"/>
+              <effect type="rotate" start="0" end="-45" time="100" delay="50"/>
+            </animation>
+          </control>
+        </focusedlayout>
+
+        <focusedlayout width="170" height="240" condition="[Container.Content(episodes)]">
+          <control type="image">
+            <posy>30</posy>
+            <width>220</width>
+            <height>240</height>
+            <include>ListViewThumb</include>
+            <animation type="focus" reversible="false">
+              <effect type="zoom" tween="quadratic" end="-100,-44,352,384" time="200" delay="100"/>
+              <effect type="rotate" start="-30" end="0" time="200" delay="100"/>
+            </animation>
+            <animation type="unfocus" reversible="false">
+              <effect type="zoom" tween="quadratic" start="-100,-44,352,384" end="0,0,220,240" time="100" delay="50"/>
+              <effect type="rotate" start="0" end="-30" time="100" delay="50"/>
+            </animation>
           </control>
         </focusedlayout>
 
         <focusedlayout width="170" height="240" condition="[Window.IsVisible(MyMusicFiles) | [Window.IsVisible(MyMusicLibrary) + !Container.Content(artists)] | Window.IsVisible(MyMusicPlaylist)]">
           <control type="image">
-            <posy>85</posy>
+            <posy>30</posy>
             <width>130</width>
-            <height>130</height>
+            <height>240</height>
             <include>ListViewThumb</include>
-            <animation effect="zoom" time="200" delay="100" tween="circle" easing="in" end="-15,20,240,240">Focus</animation>
-            <animation effect="zoom" time="100" delay="0" tween="cubic" easing="out" start="-15,20,240,240">Unfocus</animation>
+            <animation type="focus" reversible="false">
+              <effect type="zoom" tween="quadratic" end="-46,-60,220,391" time="200" delay="100"/>
+              <effect type="rotate" start="-15" end="0" time="200" delay="100"/>
+            </animation>
+            <animation type="unfocus" reversible="false">
+              <effect type="zoom" tween="quadratic" start="-46,-60,220,391" end="0,0,130,240" time="100" delay="0"/>
+              <effect type="rotate" start="0" end="-15" time="100" delay="0"/>
+            </animation>
           </control>
         </focusedlayout>
       </control>
-
     </control>
 
     <control type="group">
@@ -504,28 +563,127 @@
       <control type="group">
         <description>Title</description>
         <posx>30</posx>
-        <posy>686</posy>
-        <animation effect="slide" time="300" tween="circle" easing="out" start="0,50" end="0,0">WindowOpen</animation>
-        <animation effect="slide" time="300" tween="circle" easing="out" start="0,50" end="0,0">Visible</animation>
-        <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,50">WindowClose</animation>
-        <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,50">Hidden</animation>
+        <posy>672</posy>
+        <animation effect="slide" time="300" tween="circle" easing="out" start="0,120" end="0,0">WindowOpen</animation>
+        <animation effect="slide" time="300" tween="circle" easing="out" start="0,120" end="0,0">Visible</animation>
+        <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,120">WindowClose</animation>
+        <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="0,120">Hidden</animation>
         <visible>!IsEmpty(ListItem.Label)</visible>
         <include>HideWhenLowerDialogActive</include>
 
         <control type="image">
           <width>1220</width>
-          <height>44</height>
+          <height>98</height>
           <include>OverlayDarkArea</include>
         </control>
 
+        <!-- Left Hand Info -->
         <control type="label">
-          <posy>8</posy>
-          <width>1220</width>
-          <height>34</height>
+          <info>ListItem.Label2</info>
+          <include>ShowcaseViewLeftLabel</include>
+          <visible>![Container.Content(movies) | Container.Content(seasons) | Container.Content(episodes)]</visible>
+        </control>
+
+        <control type="label">
+          <info>ListItem.Year</info>
+          <include>ShowcaseViewLeftLabel</include>
+          <visible>Container.Content(movies)</visible>
+        </control>
+
+        <control type="label">
+          <label>$INFO[ListItem.Episode] $LOCALIZE[20360]</label>
+          <include>ShowcaseViewLeftLabel</include>
+          <visible>Container.Content(seasons)</visible>
+        </control>
+
+        <control type="label">
+          <info>ListItem.Date</info>
+          <include>ShowcaseViewLeftLabel</include>
+          <visible>Container.Content(episodes)</visible>
+        </control>
+
+        <control type="group">
+          <description>Movie Studio Logo</description>
+          <posx>0</posx>
+          <posy>-42</posy>
+          <include>VideoStudioFlags</include>
+          <visible>Container.Content(movies)</visible>
+          <animation effect="zoom" start="100" end="75" time="0" condition="true">Conditional</animation>
+        </control>
+
+        <control type="group">
+          <description>TV Network Logo</description>
+          <posx>35</posx>
+          <posy>12</posy>
+          <include>VideoTVNetworkFlags</include>
+          <visible>[Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
+          <animation effect="zoom" start="100" end="75" time="0" condition="true">Conditional</animation>
+        </control>
+
+        <control type="group">
+          <description>Video Resolution Logo</description>
+          <posx>220</posx>
+          <posy>-42</posy>
+          <include>VideoResFlags</include>
+          <visible>[Container.Content(movies) | Container.Content(episodes)]</visible>
+          <animation effect="zoom" start="100" end="75" time="0" condition="true">Conditional</animation>
+        </control>
+
+        <!-- Central Info -->
+        <control type="label">
+          <posx>300</posx>
+          <posy>12</posy>
+          <width>620</width>
           <align>center</align>
           <textcolor>Selected</textcolor>
           <font>MediumTitleFont</font>
           <info>ListItem.Label</info>
+        </control>
+
+        <!-- Right Hand Info -->
+        <control type="group">
+          <description>Movie MPAA Logo</description>
+          <posx>800</posx>
+          <posy>-24</posy>
+          <include>VideoMPAASmallFlags</include>
+          <visible>Container.Content(movies)</visible>
+          <animation effect="zoom" start="100" end="56" time="0" condition="true">Conditional</animation>
+        </control>
+
+        <control type="group">
+          <description>TV Rating Logo</description>
+          <posx>870</posx>
+          <posy>10</posy>
+          <include>VideoTVRatingFlags</include>
+          <visible>[Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
+          <animation effect="slide" time="0" start="0,0" end="-80,0" condition="Container.Content(episodes)">Conditional</animation>
+          <animation effect="zoom" start="100" end="80" time="0" condition="true">Conditional</animation>
+        </control>
+
+        <control type="group">
+          <description>Video Audio Format Logo</description>
+          <posx>980</posx>
+          <posy>-42</posy>
+          <include>VideoAudioSmallFlags</include>
+          <visible>[Container.Content(movies) | Container.Content(episodes)]</visible>
+          <animation effect="zoom" start="100" end="75" time="0" condition="true">Conditional</animation>
+        </control>
+
+        <control type="image">
+          <description>Watched Overlay</description>
+          <posx>1118</posx>
+          <posy>18</posy>
+          <include>WatchedOverlay</include>
+        </control>
+
+        <control type="image">
+          <description>Star Rating</description>
+          <posx>1146</posx>
+          <posy>8</posy>
+          <width>64</width>
+          <aspectratio>keep</aspectratio>
+          <align>right</align>
+          <info>ListItem.StarRating</info>
         </control>
       </control>
     </control>

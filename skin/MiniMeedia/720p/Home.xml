@@ -388,7 +388,7 @@
           </item>
           <item id="3">
             <description>Restart Button</description>
-            <label> $LOCALIZE[13313] </label>
+            <label> $LOCALIZE[13313] XBMC</label>
             <onclick>XBMC.RestartApp()</onclick>
           </item>
           <item id="4">
