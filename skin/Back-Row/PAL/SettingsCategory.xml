@@ -74,25 +74,25 @@
 
 <control type="image">
 <description>Background image</description>
-<posx>-80</posx>
+<posx>-120</posx>
 <posy>0</posy>
 <width>720</width>
 <height>576</height>
 <texture>Left Curtain.png</texture>
 <animation effect="fade" time="300">WindowOpen</animation>
-<animation effect="slide" end="-320,0" delay="0" time="700">Windowclose</animation>
+<animation effect="slide" end="-600,0" delay="0" time="1500">Windowclose</animation>
 <visible>!Skin.HasSetting(Background)</visible>
 </control>
 
 <control type="image">
 <description>Background image</description>
-<posx>80</posx>
+<posx>120</posx>
 <posy>0</posy>
 <width>720</width>
 <height>576</height>
 <texture>right Curtain.png</texture>
-<animation effect="fade" time="700">WindowOpen</animation>
-<animation effect="slide" end="720,0" delay="0" time="1400">Windowclose</animation>
+<animation effect="fade" time="300">WindowOpen</animation>
+<animation effect="slide" end="500,0" delay="0" time="1500">Windowclose</animation>
 <visible>!Skin.HasSetting(Background)</visible>
 </control>
 

@@ -1162,7 +1162,7 @@
 <control type="wraplist" id="11">
 <visible>Skin.HasSetting(Small Film Strip)</visible>
 <posx>0</posx>
-<posy>502</posy>
+<posy>250</posy>
 <height>625</height>
 <width>1280</width>
 <onup>157</onup>
@@ -1203,11 +1203,20 @@
 <height>25</height>
 <texture>homebutton-horizontal-nofocus.png</texture>
 <animation effect="fade" time="10">Windowclose</animation>
-</control>			
+</control>	
+
+<control type="image">
+<posx>0</posx>
+<posy>138</posy>
+<width>182.85</width>
+<height>25</height>
+<texture>homebutton-horizontal-nofocus.png</texture>
+<animation effect="fade" time="10">Windowclose</animation>
+</control>		
 
 <control type="label">
 <posx>91.42</posx>
-<posy>137</posy>
+<posy>138.5</posy>
 <width>182.85</width>
 <height>22</height>
 <label>[UPPERCASE]$INFO[ListItem.Label][/UPPERCASE]</label>
@@ -1263,11 +1272,20 @@
 <height>25</height>
 <texture>homebutton-horizontal-nofocus.png</texture>
 <animation effect="fade" time="10">Windowclose</animation>
-</control>			
+</control>		
+
+<control type="image">
+<posx>0</posx>
+<posy>138</posy>
+<width>182.85</width>
+<height>25</height>
+<texture>homebutton-horizontal-nofocus.png</texture>
+<animation effect="fade" time="10">Windowclose</animation>
+</control>		
 
 <control type="label">
 <posx>91.42</posx>
-<posy>137</posy>
+<posy>138.5</posy>
 <width>182.85</width>
 <height>22</height>
 <label>[UPPERCASE]$INFO[ListItem.Label][/UPPERCASE]</label>

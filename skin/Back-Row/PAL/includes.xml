@@ -1,6 +1,7 @@
 <includes>
 <include file="Defaults.xml" />
 <include file="CommonViewTypes.xml" />
+<include file="IncludesCodecFlagging.xml" />
 
 <include name="20000"><label>513</label></include>
 <include name="20001"><label>-</label></include>

@@ -79,7 +79,7 @@
 
 <include>BigIcons</include>	
  
-<include>Tilted SmallIcons</include>	
+<include>SmallIcons</include>	
 
 <include>BigWideView 1</include>
 
@@ -330,6 +330,7 @@
    </control>
 
 </control>
+
 
 
 	<include>Music-Info</include>

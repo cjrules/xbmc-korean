@@ -330,7 +330,7 @@
 <texture diffuse="mask wall.png">defaultdvdposter.png</texture>
 <visible>IsEmpty(ListItem.Thumb)</visible>
 <aspectratio>stretch</aspectratio>
-
+<colordiffuse>88FFFFFF</colordiffuse>
 </control>
 
 <control type="image">
@@ -339,6 +339,7 @@
 <width>80</width>
 <height>144</height>
 <texture>mask glass wall.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -476,6 +477,7 @@
 <width>80</width>
 <height>144</height>
 <texture>mask glass wall.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <!-- Center Icons -->
 <animation effect="zoom" time="0" end="-9,-32,106,208" condition="![Container(59).Row(0) + Container(59).Column(0) | Container(59).Row(0) + Container(59).Column(1) | Container(59).Row(0) + Container(59).Column(2) | Container(59).Row(0) + Container(59).Column(3) | Container(59).Row(0) + Container(59).Column(4) | Container(59).Row(0) + Container(59).Column(5) | Container(59).Row(0) + Container(59).Column(6) | Container(59).Row(0) + Container(59).Column(7) | Container(59).Row(1) + Container(59).Column(0) | Container(59).Row(2) + Container(59).Column(0) | Container(59).Row(3) + Container(59).Column(0) | Container(59).Row(3) + Container(59).Column(1) | Container(59).Row(3) + Container(59).Column(2) | Container(59).Row(3) + Container(59).Column(3) | Container(59).Row(3) + Container(59).Column(4) | Container(59).Row(3) + Container(59).Column(5) | Container(59).Row(3) + Container(59).Column(6) | Container(59).Row(3) + Container(59).Column(7) | Container(59).Row(0) + Container(59).Column(8) | Container(59).Row(1) + Container(59).Column(8) | Container(59).Row(2) + Container(59).Column(8) | Container(59).Row(3) + Container(59).Column(8)]">Conditional</animation>
@@ -538,6 +540,7 @@
 <width>80</width>
 <height>144</height>
 <texture>mask glass wall.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <colordiffuse>88FFFFFF</colordiffuse>
 <visible>Control.IsVisible(899)</visible>
@@ -668,6 +671,7 @@
 <width>112</width>
 <height>218</height>
 <texture>mask glass wall.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -714,9 +718,9 @@
 
 <control type="textbox">
 <posx>130</posx>
-<posy>76</posy>
+<posy>78</posy>
 <width>230</width>
-<height>150</height>
+<height>112</height>
 <font>font13</font>
 <label>$INFO[ListItem.Plot]</label>
 <align>left</align>
@@ -724,7 +728,16 @@
 <scroll>true</scroll>
 </control>
 
-
+<control type="grouplist">
+<description>Media Codec Flagging Images</description>
+<posx>130</posx>
+<posy>208</posy>
+<width>230</width>
+<itemgap>0</itemgap>
+<orientation>horizontal</orientation>
+<include>CodecFlaggingConditions</include>
+<align>center</align>
+</control>
 
 
 </control>
@@ -994,7 +1007,7 @@
 
 </include>
 
-<include name="Tilted SmallIcons">
+<include name="SmallIcons">
 
 <control>
 <description>Background</description>
@@ -1167,7 +1180,6 @@
 
 
 <control type="panel" id="52">
-<animation effect= "rotatex" start="0" end="2" time="0" condition="true">Conditional</animation>
 <visible>Container.Content(Movies)</visible>
 <visible>!system.platform.xbox</visible>
 <posx>40</posx>
@@ -1179,7 +1191,7 @@
 <onup>2</onup>
 <ondown>2</ondown>
 <include></include>
-<viewtype label="Tilted Icons">Icons</viewtype>
+<viewtype label="Small Wall Icons">Icons</viewtype>
 <scrolltime>200</scrolltime>
 <pagecontrol>90</pagecontrol>
 <orientation>horizontal</orientation>
@@ -1214,6 +1226,7 @@
 <width>80</width>
 <height>144</height>
 <texture>mask glass wall.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -1276,6 +1289,7 @@
 <width>80</width>
 <height>144</height>
 <texture>mask glass wall.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <animation effect="zoom" time="0" end="-9,-32,106,208">focus</animation>
 <visible>!Control.IsVisible(899)</visible>
@@ -1313,6 +1327,7 @@
 <width>80</width>
 <height>144</height>
 <texture>mask glass wall.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <colordiffuse>88FFFFFF</colordiffuse>
 <visible>Control.IsVisible(899)</visible>
@@ -1397,6 +1412,7 @@
 <width>112</width>
 <height>218</height>
 <texture diffuse="mask wall.png">mask glass wall.png</texture>
+<visible>!system.platform.xbox</visible>
 <colordiffuse>99ffffff</colordiffuse>
 <aspectratio>stretch</aspectratio>
 </control>
@@ -1440,19 +1456,29 @@
 <scroll>true</scroll>
 </control>
 
-
-
 <control type="textbox">
 <posx>130</posx>
-<posy>76</posy>
+<posy>78</posy>
 <width>230</width>
-<height>150</height>
+<height>112</height>
 <font>font13</font>
 <label>$INFO[ListItem.Plot]</label>
 <align>left</align>
 <autoscroll time="2000" delay="10000" repeat="10000">Visible</autoscroll>
 <scroll>true</scroll>
 </control>
+
+<control type="grouplist">
+<description>Media Codec Flagging Images</description>
+<posx>130</posx>
+<posy>208</posy>
+<width>230</width>
+<itemgap>0</itemgap>
+<orientation>horizontal</orientation>
+<include>CodecFlaggingConditions</include>
+<align>center</align>
+</control>
+
 
 </control>
 
@@ -1496,6 +1522,7 @@
 <width>150</width>
 <height>190</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -1542,6 +1569,7 @@
 <width>150</width>
 <height>190</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -1635,6 +1663,7 @@
 <width>150</width>
 <height>190</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -1693,6 +1722,7 @@
 <width>150</width>
 <height>190</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -1799,6 +1829,7 @@
 <width>144</width>
 <height>192</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <colordiffuse>88FFFFFF</colordiffuse>
 </control>
@@ -1934,6 +1965,7 @@
 <width>144</width>
 <height>192</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <!-- Center Icons -->
 <animation effect="zoom" time="0" end="-25.5,-33.5,195,260" condition="[Container(56).Row(1) + Container(56).Column(1) | Container(56).Row(1) + Container(56).Column(2) | Container(56).Row(1) + Container(56).Column(3)]">Conditional</animation>
@@ -1999,6 +2031,7 @@
 <width>144</width>
 <height>192</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <colordiffuse>88FFFFFF</colordiffuse>
 <visible>Control.IsVisible(899)</visible>
@@ -2070,6 +2103,7 @@
 <width>144</width>
 <height>192</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -2186,6 +2220,7 @@
 <width>144</width>
 <height>192</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -2273,6 +2308,7 @@
 <width>144</width>
 <height>192</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -2413,18 +2449,17 @@
 <!-- List -->
 <include name="listcontrol">
 
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
-<texture>Back-Row.png</texture>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(Background)</visible>
+<fadetime>300</fadetime>
 <visible>Control.IsVisible(50)</visible>
+<visible>IsEmpty(FanArt.Image)</visible>
+<texture>back-row.png</texture>
+<visible>!Skin.HasSetting(Background)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
 </control>
 
 <control type="image" description="Fanart Image">
@@ -2435,12 +2470,10 @@
 <aspectratio>scale</aspectratio>
 <imagepath>Menus</imagepath>
 <texture>$INFO[Skin.String(CustomMenu)]</texture>
-<visible>Container.Scrolling</visible>
 <visible>!Skin.HasSetting(CustomMenu)</visible>
 <visible>Skin.HasSetting(Background)</visible>
 <visible>Control.IsVisible(50)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
 </control>
 
 <control type="multiimage" description="Fanart Image">
@@ -2454,38 +2487,31 @@
 <timeperimage>5000</timeperimage>
 <fadetime>2000</fadetime>
 <randomize>true</randomize>
-<visible>Container.Scrolling</visible>
 <visible>!Skin.HasSetting(CustomMenuFolder)</visible>
 <visible>Skin.HasSetting(Background)</visible>
 <visible>Control.IsVisible(50)</visible>
 <animation effect="fade" time="200">WindowClose</animation>
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
 </control>
 
-<control type="image">
-<description>background image</description>
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>ListItem.Property(fanart_image)</info>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
-<texture>Back-Row.png</texture>
-<visible>!Skin.HasSetting(Background)</visible>
+<fadetime>300</fadetime>
 <visible>Control.IsVisible(50)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
-<control type="image">
-<description>background image</description>
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>Fanart.Image</info>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
-<texture>$INFO[ListItem.Property(Fanart_Image)]</texture>
+<fadetime>300</fadetime>
 <visible>Control.IsVisible(50)</visible>
-<visible>!Container.OnNext + !Container.OnPrevious</visible>
-<animation effect="fade" start="0" end="100" time="300" delay="200">Visible</animation>
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
@@ -2605,18 +2631,17 @@
 <!-- List -->
 <include name="listcontrol Music Library">
 
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
-<texture>Back-Row.png</texture>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(Background)</visible>
+<fadetime>300</fadetime>
 <visible>Control.IsVisible(50)</visible>
+<visible>IsEmpty(FanArt.Image)</visible>
+<texture>back-row.png</texture>
+<visible>!Skin.HasSetting(Background)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
 </control>
 
 <control type="image" description="Fanart Image">
@@ -2627,12 +2652,10 @@
 <aspectratio>scale</aspectratio>
 <imagepath>Menus</imagepath>
 <texture>$INFO[Skin.String(CustomMenu)]</texture>
-<visible>Container.Scrolling</visible>
 <visible>!Skin.HasSetting(CustomMenu)</visible>
 <visible>Skin.HasSetting(Background)</visible>
 <visible>Control.IsVisible(50)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
 </control>
 
 <control type="multiimage" description="Fanart Image">
@@ -2646,35 +2669,30 @@
 <timeperimage>5000</timeperimage>
 <fadetime>2000</fadetime>
 <randomize>true</randomize>
-<visible>Container.Scrolling</visible>
 <visible>!Skin.HasSetting(CustomMenuFolder)</visible>
 <visible>Skin.HasSetting(Background)</visible>
 <visible>Control.IsVisible(50)</visible>
 <animation effect="fade" time="200">WindowClose</animation>
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
 </control>
 
-<control type="image">
-<description>background image</description>
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>ListItem.Property(fanart_image)</info>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
-<texture>Back-Row.png</texture>
-<visible>!Skin.HasSetting(Background)</visible>
+<fadetime>300</fadetime>
 <visible>Control.IsVisible(50)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
-<control type="image">
-<description>background image</description>
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>Fanart.Image</info>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
-<texture>$INFO[ListItem.Property(Fanart_Image)]</texture>
+<fadetime>300</fadetime>
 <visible>Control.IsVisible(50)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
@@ -2827,17 +2845,17 @@
 <!-- VID NAV List -->
 <include name="listcontrol2">
 
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<visible>Control.IsVisible(50)</visible>
+<visible>IsEmpty(FanArt.Image)</visible>
 <texture>back-row.png</texture>
 <visible>!Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(50)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
-<visible>!system.platform.xbox</visible>
 </control>
 
 <control type="image" description="Fanart Image">
@@ -2852,7 +2870,6 @@
 <visible>Skin.HasSetting(Background)</visible>
 <visible>Control.IsVisible(50)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
-<visible>!system.platform.xbox</visible>
 </control>
 
 <control type="multiimage" description="Fanart Image">
@@ -2870,159 +2887,27 @@
 <visible>Skin.HasSetting(Background)</visible>
 <visible>Control.IsVisible(50)</visible>
 <animation effect="fade" time="200">WindowClose</animation>
-<visible>!system.platform.xbox</visible>
 </control>
 
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>ListItem.Property(fanart_image)</info>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
-<texture>back-row.png</texture>
-<visible>!Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(50) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-<visible>system.platform.xbox</visible>
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<imagepath>Menus</imagepath>
-<texture>$INFO[Skin.String(CustomMenu)]</texture>
-<visible>!Skin.HasSetting(CustomMenu)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(50) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-<visible>system.platform.xbox</visible>
-</control>
-
-<control type="multiimage" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<imagepath>-</imagepath>
-<aspectratio>scale</aspectratio>
-<info>Skin.String(CustomMenuFolder)</info>
-<timeperimage>5000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
-<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(50) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>system.platform.xbox</visible>
-</control>
-
-
-<control type="group">
-<visible>!system.platform.xbox</visible>
-<visible>!Container.OnNext + !Container.OnPrevious</visible>
-<animation effect="fade" start="0" end="100" time="300" delay="200">Visible</animation>
-
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[ListItem.Property(Fanart_Image)]</texture>
-<visible>Control.IsVisible(50) + !IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>[!Container.Content(episodes) | !Container.Content(seasons)]</visible>
-</control>
-
-</control>
-
-<control type="group">
-<visible>system.platform.xbox</visible>
-<visible>!Container.OnNext + !Container.OnPrevious</visible>
-<animation effect="fade" start="0" end="100" time="300" delay="200">Visible</animation>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[ListItem.Property(Fanart_Image)]</texture>
-<visible>!Container.Scrolling</visible>
-<visible>!Container.Content(seasons) + Control.IsVisible(50) + !IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation>
-</control>
-
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<texture>back-row.png</texture>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(Background)</visible>
+<fadetime>300</fadetime>
 <visible>Control.IsVisible(50)</visible>
-<visible>system.platform.xbox</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
 </control>
 
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>Fanart.Image</info>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
-<imagepath>Menus</imagepath>
-<texture>$INFO[Skin.String(CustomMenu)]</texture>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(CustomMenu)</visible>
-<visible>Skin.HasSetting(Background)</visible>
+<fadetime>300</fadetime>
 <visible>Control.IsVisible(50)</visible>
-<visible>system.platform.xbox</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
-</control>
-
-<control type="multiimage" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<imagepath>-</imagepath>
-<aspectratio>scale</aspectratio>
-<info>Skin.String(CustomMenuFolder)</info>
-<timeperimage>5000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(50)</visible>
-<visible>system.platform.xbox</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
-</control>
-
-
-<control type="image">
-<description>background image</description>
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[FanArt.Image]</texture>
-<visible>[Container.Content(episodes) | Container.Content(seasons)] + !IsEmpty(FanArt.Image) + Control.IsVisible(50)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
@@ -3236,6 +3121,7 @@
 <width>106</width>
 <height>208</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -3300,14 +3186,25 @@
 
 <control type="textbox">
 <posx>385</posx>
-<posy>331</posy>
+<posy>321</posy>
 <width>300</width>
-<height>185.5</height>
+<height>166.95</height>
 <font>font13</font>
 <label>$INFO[ListItem.Plot]</label>
 <align>left</align>
 <autoscroll time="2000" delay="10000" repeat="10000">Visible</autoscroll>
 <scroll>true</scroll>
+</control>
+
+<control type="grouplist">
+<description>Media Codec Flagging Images</description>
+<posx>385</posx>
+<posy>500</posy>
+<width>300</width>
+<itemgap>0</itemgap>
+<orientation>horizontal</orientation>
+<include>CodecFlaggingConditions</include>
+<align>center</align>
 </control>
 
 <control type="image">
@@ -3730,7 +3627,7 @@
 <control type="label">
 <description>list item label</description>
 <posx>30</posx>
-<posy>360</posy>
+<posy>345</posy>
 <width>310</width>
 <height>30</height>
 <label>$INFO[ListItem.title]</label>
@@ -3755,7 +3652,7 @@
 <control type="image">
 <description>seperator</description>
 <posx>30</posx>
-<posy>380</posy>
+<posy>362</posy>
 <width>320</width>
 <height>10</height>
 <texture>separator.png</texture>
@@ -3820,9 +3717,9 @@
 
 <control type="textbox" id="80">
 <posx>30</posx>
-<posy>395</posy>
+<posy>375</posy>
 <width>320</width>
-<height>80</height>
+<height>84</height>
 <font>font12</font>
 <label>$INFO[ListItem.Plot]</label>
 <visible>Control.IsVisible(50)</visible>
@@ -3845,12 +3742,12 @@
 
 <control type="label">
 <posx>30</posx>
-<posy>488</posy>
+<posy>464</posy>
 <width>100</width>
 <height>16</height>
 <font>font14</font>
 <align>left</align>
-<textcolor>white</textcolor>
+<textcolor>grey</textcolor>
 <include>selectedcolor</include>
 <label>20359</label>
 <visible>Control.IsVisible(50)</visible>
@@ -3859,17 +3756,32 @@
 
 <control type="label">
 <posx>349</posx>
-<posy>488</posy>
+<posy>464</posy>
 <width>230</width>
 <height>16</height>
 <font>font14</font>
 <align>right</align>
-<textcolor>white</textcolor>
+<textcolor>grey</textcolor>
 <include>selectedcolor</include>
 <label>$INFO[ListItem.Episode]</label>
 <visible>Control.IsVisible(50)</visible>
 <visible>container.content(episodes)</visible>
 </control>
+
+<control type="grouplist">
+<description>Media Codec Flagging Images</description>
+<posx>43</posx>
+<posy>488</posy>
+<width>292</width>
+<itemgap>0</itemgap>
+<orientation>horizontal</orientation>
+<include>CodecFlaggingConditions</include>
+<align>center</align>
+<visible>Control.IsVisible(50)</visible>
+<visible>container.content(episodes)</visible>
+</control>
+
+
 
 <control type="image">
 <description>list item icon</description>
@@ -3907,6 +3819,7 @@
 <width>210</width>
 <height>410</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <visible>Control.IsVisible(50)</visible>
 <visible>container.content(seasons)</visible>
@@ -4014,6 +3927,7 @@
 <visible>container.content(episodes)</visible>
 <visible>!IsEmpty(ListItem.thumb)</visible>
 </control>
+
 
 
 <control type="image">
@@ -4761,6 +4675,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="-40" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -4781,6 +4696,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="10" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -4802,6 +4718,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="60" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -4822,6 +4739,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="110" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -4842,6 +4760,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="810" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -4863,6 +4782,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="760" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -4883,6 +4803,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="710" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -4903,6 +4824,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="660" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -4928,6 +4850,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <visible>Container.OnNext</visible>
 <animation effect="rotatey" center="220" start="0" end="-65" time="200" reversible="false">Hidden</animation>
 </control>
@@ -4953,6 +4876,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <visible>Container.OnNext</visible>
 <animation effect="rotatey" center="610" start="0" end="-65" time="200" reversible="false">Hidden</animation>
 <animation effect="rotatey" center="610" start="60" end="65" time="200" condition="true">Conditional</animation>
@@ -4984,6 +4908,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="-90" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5003,6 +4928,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="-40" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5022,6 +4948,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="10" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5041,6 +4968,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="60" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5061,6 +4989,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="760" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5081,6 +5010,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="710" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5100,6 +5030,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="660" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5119,6 +5050,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="610" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5143,6 +5075,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <visible>Container.OnPrevious</visible>
 <animation effect="rotatey" center="500" start="0" end="65" time="200" reversible="false">Hidden</animation>
 </control>
@@ -5166,6 +5099,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <visible>Container.OnPrevious</visible>
 <animation effect="rotatey" center="110" start="0" end="65" time="200" reversible="false">Hidden</animation>
 <animation effect="rotatey" center="110" start="-60" end="-65" time="0" condition="true">Conditional</animation>
@@ -5197,6 +5131,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="-40" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5217,6 +5152,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="10" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5237,6 +5173,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="60" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5257,6 +5194,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="110" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5277,6 +5215,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="760" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5297,6 +5236,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="710" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5316,6 +5256,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="660" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5336,6 +5277,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="610" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5347,7 +5289,6 @@
 <width>200</width>
 <height>385</height>
 <aspectratio>stretch</aspectratio>
-<visible>!Contol.HasFocus(54)</visible>
 <info>Container.ListItem(0).Thumb</info>
 <texture diffuse="Mask3.png">defaultdvdposter.png</texture>
 </control>
@@ -5358,8 +5299,8 @@
 <width>200</width>
 <height>385</height>
 <aspectratio>stretch</aspectratio>
-<visible>!Contol.HasFocus(54)</visible>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 </control>
 
 
@@ -5569,6 +5510,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="-40" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5589,6 +5531,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="10" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5610,6 +5553,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="60" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5630,6 +5574,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="110" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5650,6 +5595,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="810" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5671,6 +5617,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="760" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5691,6 +5638,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="710" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5711,6 +5659,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="660" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5736,6 +5685,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <visible>Container.OnNext</visible>
 <animation effect="rotatey" center="220" start="0" end="-65" time="200" reversible="false">Hidden</animation>
 </control>
@@ -5761,6 +5711,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <visible>Container.OnNext</visible>
 <animation effect="rotatey" center="610" start="0" end="-65" time="200" reversible="false">Hidden</animation>
 <animation effect="rotatey" center="610" start="60" end="65" time="200" condition="true">Conditional</animation>
@@ -5792,6 +5743,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="-90" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5811,6 +5763,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="-40" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5830,6 +5783,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="10" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5849,6 +5803,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="60" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5869,6 +5824,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="760" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5889,6 +5845,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="710" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5908,6 +5865,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="660" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5927,6 +5885,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="610" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -5951,6 +5910,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <visible>Container.OnPrevious</visible>
 <animation effect="rotatey" center="500" start="0" end="65" time="200" reversible="false">Hidden</animation>
 </control>
@@ -5974,6 +5934,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <visible>Container.OnPrevious</visible>
 <animation effect="rotatey" center="110" start="0" end="65" time="200" reversible="false">Hidden</animation>
 <animation effect="rotatey" center="110" start="-60" end="-65" time="0" condition="true">Conditional</animation>
@@ -6005,6 +5966,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="-40" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -6025,6 +5987,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="10" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -6045,6 +6008,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="60" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -6065,6 +6029,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="110" start="-60" end="-65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -6085,6 +6050,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="760" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -6105,6 +6071,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="710" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -6124,6 +6091,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="660" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -6144,6 +6112,7 @@
 <width>200</width>
 <height>385</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <animation effect="rotatey" center="610" start="60" end="65" time="0" condition="true">Conditional</animation>
 </control>
 
@@ -6155,7 +6124,6 @@
 <width>200</width>
 <height>385</height>
 <aspectratio>stretch</aspectratio>
-<visible>!Contol.HasFocus(54)</visible>
 <info>Container.ListItem(0).Thumb</info>
 <texture diffuse="Mask3.png">defaultdvdposter.png</texture>
 </control>
@@ -6166,8 +6134,8 @@
 <width>200</width>
 <height>385</height>
 <aspectratio>stretch</aspectratio>
-<visible>!Contol.HasFocus(54)</visible>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 </control>
 
 
@@ -6216,15 +6184,16 @@
 <itemlayout height="250" width="100">
 </itemlayout>
 <focusedlayout height="250"  width="200">
+
 <control type="image">
 <posx>0</posx>
 <posy>0</posy>
 <width>200</width>
 <height>375</height>
-
 <visible>!Control.IsVisible(3001)  + !Control.IsVisible(3002)</visible>
 <aspectratio>stretch</aspectratio>
 </control>
+
 </focusedlayout>
 </control>
 
@@ -6628,17 +6597,17 @@
 
 <include name="PlotList">
 
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<visible>Control.IsVisible(55)</visible>
+<visible>IsEmpty(FanArt.Image)</visible>
 <texture>back-row.png</texture>
 <visible>!Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(55)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
-<visible>!system.platform.xbox</visible>
 </control>
 
 <control type="image" description="Fanart Image">
@@ -6653,7 +6622,6 @@
 <visible>Skin.HasSetting(Background)</visible>
 <visible>Control.IsVisible(55)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
-<visible>!system.platform.xbox</visible>
 </control>
 
 <control type="multiimage" description="Fanart Image">
@@ -6671,159 +6639,27 @@
 <visible>Skin.HasSetting(Background)</visible>
 <visible>Control.IsVisible(55)</visible>
 <animation effect="fade" time="200">WindowClose</animation>
-<visible>!system.platform.xbox</visible>
 </control>
 
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>ListItem.Property(fanart_image)</info>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
-<texture>back-row.png</texture>
-<visible>!Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(55) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-<visible>system.platform.xbox</visible>
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<imagepath>Menus</imagepath>
-<texture>$INFO[Skin.String(CustomMenu)]</texture>
-<visible>!Skin.HasSetting(CustomMenu)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(55) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-<visible>system.platform.xbox</visible>
-</control>
-
-<control type="multiimage" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<imagepath>-</imagepath>
-<aspectratio>scale</aspectratio>
-<info>Skin.String(CustomMenuFolder)</info>
-<timeperimage>5000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
-<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(55) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>system.platform.xbox</visible>
-</control>
-
-
-<control type="group">
-<visible>!system.platform.xbox</visible>
-<visible>!Container.OnNext + !Container.OnPrevious</visible>
-<animation effect="fade" start="0" end="100" time="300" delay="200">Visible</animation>
-
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[ListItem.Property(Fanart_Image)]</texture>
-<visible>Control.IsVisible(55) + !IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>[!Container.Content(episodes) | !Container.Content(seasons)]</visible>
-</control>
-
-</control>
-
-<control type="group">
-<visible>system.platform.xbox</visible>
-<visible>!Container.OnNext + !Container.OnPrevious</visible>
-<animation effect="fade" start="0" end="100" time="300" delay="200">Visible</animation>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[ListItem.Property(Fanart_Image)]</texture>
-<visible>!Container.Scrolling</visible>
-<visible>!Container.Content(seasons) + Control.IsVisible(55) + !IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation>
-</control>
-
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<texture>back-row.png</texture>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(Background)</visible>
+<fadetime>300</fadetime>
 <visible>Control.IsVisible(55)</visible>
-<visible>system.platform.xbox</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
 </control>
 
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>Fanart.Image</info>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
-<imagepath>Menus</imagepath>
-<texture>$INFO[Skin.String(CustomMenu)]</texture>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(CustomMenu)</visible>
-<visible>Skin.HasSetting(Background)</visible>
+<fadetime>300</fadetime>
 <visible>Control.IsVisible(55)</visible>
-<visible>system.platform.xbox</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
-</control>
-
-<control type="multiimage" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<imagepath>-</imagepath>
-<aspectratio>scale</aspectratio>
-<info>Skin.String(CustomMenuFolder)</info>
-<timeperimage>5000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(55)</visible>
-<visible>system.platform.xbox</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
-</control>
-
-
-<control type="image">
-<description>background image</description>
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[FanArt.Image]</texture>
-<visible>[Container.Content(episodes) | Container.Content(seasons)] + !IsEmpty(FanArt.Image) + Control.IsVisible(55)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
@@ -6900,6 +6736,7 @@
 <width>87</width>
 <height>170</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <colordiffuse>44FFFFFF</colordiffuse>
 <animation effect="fade" time="10">Windowclose</animation>
@@ -6957,6 +6794,7 @@
 <width>87</width>
 <height>170</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>
@@ -7292,6 +7130,7 @@
 <width>68</width>
 <height>139</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <colordiffuse>baFFFFFF</colordiffuse>
 <animation effect="fade" time="10">Windowclose</animation>
@@ -7347,6 +7186,7 @@
 <width>68</width>
 <height>139</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <animation effect="fade" time="10">Windowclose</animation>
 </control>
@@ -8764,7 +8604,6 @@
 <width>200</width>
 <height>375</height>
 <aspectratio>stretch</aspectratio>
-<visible>!Contol.HasFocus(54)</visible>
 <info>Container.ListItem(0).Icon</info>
 </control>
 
@@ -8797,7 +8636,6 @@
 <width>200</width>
 <height>375</height>
 <aspectratio>stretch</aspectratio>
-<visible>!Contol.HasFocus(54)</visible>
 <info>Container.ListItem(0).Icon</info>
 <texture flipy="true" diffuse="Thumb_Mask.png">-</texture>
 </control>
@@ -9684,7 +9522,6 @@
 <width>250</width>
 <height>340</height>
 <aspectratio>stretch</aspectratio>
-<visible>!Contol.HasFocus(54)</visible>
 <info>Container.ListItem(0).Icon</info>
 </control>
 <control type="image">
@@ -9693,7 +9530,6 @@
 <width>250</width>
 <height>340</height>
 <aspectratio>stretch</aspectratio>
-<visible>!Contol.HasFocus(54)</visible>
 <texture flipy="true" >background2.png</texture>
 </control>
 <control type="image">
@@ -9702,7 +9538,6 @@
 <width>250</width>
 <height>340</height>
 <aspectratio>stretch</aspectratio>
-<visible>!Contol.HasFocus(54)</visible>
 <info>Container.ListItem(0).Icon</info>
 <texture flipy="true" diffuse="Thumb_Mask.png">-</texture>
 </control>
@@ -9835,6 +9670,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="-40" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -9869,6 +9705,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="10" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -9902,6 +9739,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="60" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -9935,6 +9773,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="110" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -9968,6 +9807,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="810" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10001,6 +9841,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="760" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10034,6 +9875,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="710" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10067,6 +9909,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="660" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10105,6 +9948,7 @@
 		<width>180</width>
 		<height>240</height>
 		<texture>mask glass.png</texture>
+		<visible>!system.platform.xbox</visible>
 		<aspectratio aligny="bottom">stretch</aspectratio>
 		<visible>Container.OnNext</visible>
 		<animation effect="rotatey" center="220" start="0" end="-60" time="200" reversible="false">Hidden</animation>
@@ -10141,6 +9985,7 @@
 		<width>180</width>
 		<height>240</height>
 		<texture>mask glass.png</texture>
+		<visible>!system.platform.xbox</visible>
 		<aspectratio aligny="bottom">stretch</aspectratio>
 		<visible>Container.OnNext</visible>
 		<animation effect="rotatey" center="610" start="0" end="-60" time="200" reversible="false">Hidden</animation>
@@ -10188,6 +10033,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="-90" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10221,6 +10067,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="-40" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10254,6 +10101,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="10" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10287,6 +10135,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="60" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10320,6 +10169,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="760" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10353,6 +10203,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="710" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10386,6 +10237,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="660" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10419,6 +10271,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="610" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10457,6 +10310,7 @@
 		<width>180</width>
 		<height>240</height>
 		<texture>mask glass.png</texture>
+		<visible>!system.platform.xbox</visible>
 		<aspectratio aligny="bottom">stretch</aspectratio>
 		<visible>Container.OnPrevious</visible>
 		<animation effect="rotatey" center="500" start="0" end="60" time="200" reversible="false">Hidden</animation>
@@ -10494,6 +10348,7 @@
 		<width>180</width>
 		<height>240</height>
 		<texture>mask glass.png</texture>
+		<visible>!system.platform.xbox</visible>
 		<aspectratio aligny="bottom">stretch</aspectratio>
 		<visible>Container.OnPrevious</visible>
 		<animation effect="rotatey" center="110" start="0" end="60" time="200" reversible="false">Hidden</animation>
@@ -10540,6 +10395,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="-40" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10573,6 +10429,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="10" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10606,6 +10463,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="60" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10639,6 +10497,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="110" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10672,6 +10531,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="760" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10705,6 +10565,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="710" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10738,6 +10599,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="660" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10771,6 +10633,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="610" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10795,7 +10658,6 @@
 <info>Container.ListItem(0).thumb</info>
 <texture diffuse="Mask.png">defaultcdposter.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
-<visible>!Contol.HasFocus(54)</visible>
 </control>
 
 <control type="image">
@@ -10804,8 +10666,8 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
-<visible>!Contol.HasFocus(54)</visible>
 </control>
 
 <control type="image">
@@ -10816,7 +10678,6 @@
 <info>Container.ListItem(0).thumb</info>
 <aspectratio aligny="top">stretch</aspectratio>
 <texture flipy="true" diffuse="mask bottom.png">defaultcdposter.png</texture>
-<visible>!Contol.HasFocus(54)</visible>
 <colordiffuse>60FFFFFF</colordiffuse>
 </control>
 
@@ -10958,6 +10819,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="-40" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -10992,6 +10854,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="10" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11025,6 +10888,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="60" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11058,6 +10922,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="110" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11091,6 +10956,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="810" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11124,6 +10990,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="760" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11157,6 +11024,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="710" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11190,6 +11058,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="660" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11228,6 +11097,7 @@
 		<width>180</width>
 		<height>240</height>
 		<texture>mask glass.png</texture>
+		<visible>!system.platform.xbox</visible>
 		<aspectratio aligny="bottom">stretch</aspectratio>
 		<visible>Container.OnNext</visible>
 		<animation effect="rotatey" center="220" start="0" end="-60" time="200" reversible="false">Hidden</animation>
@@ -11264,6 +11134,7 @@
 		<width>180</width>
 		<height>240</height>
 		<texture>mask glass.png</texture>
+		<visible>!system.platform.xbox</visible>
 		<aspectratio aligny="bottom">stretch</aspectratio>
 		<visible>Container.OnNext</visible>
 		<animation effect="rotatey" center="610" start="0" end="-60" time="200" reversible="false">Hidden</animation>
@@ -11311,6 +11182,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="-90" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11344,6 +11216,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="-40" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11377,6 +11250,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="10" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11410,6 +11284,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="60" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11443,6 +11318,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="760" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11476,6 +11352,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="710" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11509,6 +11386,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="660" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11542,6 +11420,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="610" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11580,6 +11459,7 @@
 		<width>180</width>
 		<height>240</height>
 		<texture>mask glass.png</texture>
+		<visible>!system.platform.xbox</visible>
 		<aspectratio aligny="bottom">stretch</aspectratio>
 		<visible>Container.OnPrevious</visible>
 		<animation effect="rotatey" center="500" start="0" end="60" time="200" reversible="false">Hidden</animation>
@@ -11617,6 +11497,7 @@
 		<width>180</width>
 		<height>240</height>
 		<texture>mask glass.png</texture>
+		<visible>!system.platform.xbox</visible>
 		<aspectratio aligny="bottom">stretch</aspectratio>
 		<visible>Container.OnPrevious</visible>
 		<animation effect="rotatey" center="110" start="0" end="60" time="200" reversible="false">Hidden</animation>
@@ -11663,6 +11544,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="-40" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11696,6 +11578,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="10" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11729,6 +11612,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="60" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11762,6 +11646,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="110" start="-60" end="-60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11795,6 +11680,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="760" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11828,6 +11714,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="710" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11861,6 +11748,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="660" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11894,6 +11782,7 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="rotatey" center="610" start="60" end="60" time="0" condition="true">Conditional</animation>
 </control>
@@ -11918,7 +11807,6 @@
 <info>Container.ListItem(0).thumb</info>
 <texture diffuse="Mask.png">defaultcdposter.png</texture>
 <aspectratio aligny="bottom">stretch</aspectratio>
-<visible>!Contol.HasFocus(54)</visible>
 </control>
 
 <control type="image">
@@ -11927,8 +11815,8 @@
 <width>180</width>
 <height>240</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
-<visible>!Contol.HasFocus(54)</visible>
 </control>
 
 <control type="image">
@@ -11939,7 +11827,6 @@
 <info>Container.ListItem(0).thumb</info>
 <aspectratio aligny="top">stretch</aspectratio>
 <texture flipy="true" diffuse="mask bottom.png">defaultcdposter.png</texture>
-<visible>!Contol.HasFocus(54)</visible>
 <colordiffuse>60FFFFFF</colordiffuse>
 </control>
 
@@ -12113,6 +12000,7 @@
 <width>103</width>
 <height>215</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
 
@@ -12170,6 +12058,7 @@
 <width>103</width>
 <height>215</height>
 <texture>mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation type="Focus">
 <effect type="zoom" tween="cubic" end="-21.5,-35.5,146,286" time="400"/>
@@ -13390,6 +13279,7 @@
 <width>144</width>
 <height>188</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
 
@@ -13451,6 +13341,7 @@
 <width>144</width>
 <height>188</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="zoom" tween="cubic" end="-70,-75,284,397" time="500">Focus</animation>
 </control>
@@ -13540,6 +13431,7 @@
 <width>144</width>
 <height>144</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -13585,6 +13477,7 @@
 <width>144</width>
 <height>144</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -13704,6 +13597,7 @@
 <width>144</width>
 <height>188</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
 
@@ -13766,6 +13660,7 @@
 <width>144</width>
 <height>188</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <animation effect="zoom" tween="cubic" end="-70,-75,284,397" time="500">Focus</animation>
 </control>
@@ -14554,17 +14449,17 @@
 <include name="DVD Case Wrap 3">
 
 
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<visible>Control.IsVisible(53)</visible>
+<visible>IsEmpty(FanArt.Image)</visible>
 <texture>back-row.png</texture>
 <visible>!Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(53)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
-<visible>!system.platform.xbox</visible>
 </control>
 
 <control type="image" description="Fanart Image">
@@ -14579,7 +14474,6 @@
 <visible>Skin.HasSetting(Background)</visible>
 <visible>Control.IsVisible(53)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
-<visible>!system.platform.xbox</visible>
 </control>
 
 <control type="multiimage" description="Fanart Image">
@@ -14597,160 +14491,27 @@
 <visible>Skin.HasSetting(Background)</visible>
 <visible>Control.IsVisible(53)</visible>
 <animation effect="fade" time="200">WindowClose</animation>
-<visible>!system.platform.xbox</visible>
 </control>
 
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>ListItem.Property(fanart_image)</info>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
-<texture>back-row.png</texture>
-<visible>!Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(53) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-<visible>system.platform.xbox</visible>
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<imagepath>Menus</imagepath>
-<texture>$INFO[Skin.String(CustomMenu)]</texture>
-<visible>!Skin.HasSetting(CustomMenu)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(53) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-<visible>system.platform.xbox</visible>
-</control>
-
-<control type="multiimage" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<imagepath>-</imagepath>
-<aspectratio>scale</aspectratio>
-<info>Skin.String(CustomMenuFolder)</info>
-<timeperimage>5000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
-<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(53) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>system.platform.xbox</visible>
-</control>
-
-
-<control type="group">
-<visible>!system.platform.xbox</visible>
-<visible>!Container.OnNext + !Container.OnPrevious</visible>
-<animation effect="fade" start="0" end="100" time="300" delay="200">Visible</animation>
-
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[ListItem.Property(Fanart_Image)]</texture>
-<visible>Control.IsVisible(53) + !IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>[!Container.Content(episodes) | !Container.Content(seasons)]</visible>
-</control>
-
-</control>
-
-<control type="group">
-<visible>system.platform.xbox</visible>
-<visible>!Container.OnNext + !Container.OnPrevious</visible>
-<animation effect="fade" start="0" end="100" time="300" delay="200">Visible</animation>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[ListItem.Property(Fanart_Image)]</texture>
-<visible>!Container.Scrolling</visible>
-<visible>Control.IsVisible(53) + !IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>[!Container.Content(episodes) | !Container.Content(seasons)]</visible>
-</control>
-
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>keep</aspectratio>
-<texture>back-row.png</texture>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(Background)</visible>
+<fadetime>300</fadetime>
 <visible>Control.IsVisible(53)</visible>
-<visible>system.platform.xbox</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
 </control>
 
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>Fanart.Image</info>
 <width>720</width>
 <height>576</height>
 <aspectratio>scale</aspectratio>
-<imagepath>Menus</imagepath>
-<texture>$INFO[Skin.String(CustomMenu)]</texture>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(CustomMenu)</visible>
-<visible>Skin.HasSetting(Background)</visible>
+<fadetime>300</fadetime>
 <visible>Control.IsVisible(53)</visible>
-<visible>system.platform.xbox</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
-</control>
-
-<control type="multiimage" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<imagepath>-</imagepath>
-<aspectratio>scale</aspectratio>
-<info>Skin.String(CustomMenuFolder)</info>
-<timeperimage>5000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(53)</visible>
-<visible>system.platform.xbox</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
-</control>
-
-
-<control type="image">
-<description>background image</description>
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[FanArt.Image]</texture>
-<visible>[Container.Content(episodes) | Container.Content(seasons)] + !IsEmpty(FanArt.Image) + Control.IsVisible(53)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
@@ -14904,6 +14665,7 @@
 <width>80</width>
 <height>159</height>
 <texture diffuse="Mask3.png">mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <colordiffuse>88ffffff</colordiffuse>
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
@@ -14976,6 +14738,7 @@
 <width>80</width>
 <height>159</height>
 <texture diffuse="Mask3.png">mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <colordiffuse>88ffffff</colordiffuse>
 <animation type="Focus">
@@ -15047,6 +14810,7 @@
 <width>80</width>
 <height>159</height>
 <texture diffuse="Mask3.png">mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <colordiffuse>88ffffff</colordiffuse>
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
@@ -15085,6 +14849,7 @@
 <width>80</width>
 <height>159</height>
 <texture diffuse="Mask3.png">mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <colordiffuse>88ffffff</colordiffuse>
 <animation type="Focus">
@@ -15137,18 +14902,6 @@
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
 
-<control type="image">
-<posx>0</posx>
-<posy>0</posy>
-<width>80</width>
-<height>159</height>
-<texture diffuse="Mask3.png">black.png</texture>
-<aspectratio aligny="bottom">stretch</aspectratio>
-<visible>!Container(53).OnNext + !Container(53).OnPrevious</visible>
-<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
-<animation effect="fade" start="0" end="100" time="800" delay="2500">WindowOpen</animation>
-<animation effect="fade" start="0" end="100" time="800" delay="2500">Visible</animation>
-</control>
 
 <control type="image">
 <posx>0</posx>
@@ -15156,6 +14909,7 @@
 <width>80</width>
 <height>159</height>
 <texture diffuse="Mask3.png">mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <colordiffuse>88ffffff</colordiffuse>
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
@@ -15198,6 +14952,7 @@
 <width>80</width>
 <height>159</height>
 <texture diffuse="Mask3.png">mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <colordiffuse>88ffffff</colordiffuse>
 <animation type="Focus">
@@ -15269,6 +15024,7 @@
 <width>80</width>
 <height>159</height>
 <texture diffuse="Mask3.png">mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <colordiffuse>88ffffff</colordiffuse>
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
@@ -15341,6 +15097,7 @@
 <width>80</width>
 <height>159</height>
 <texture diffuse="Mask3.png">mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <colordiffuse>88ffffff</colordiffuse>
 <animation type="Focus">
@@ -15702,6 +15459,15 @@
 <visible>!IsEmpty(ListItem.episode)</visible>
 </control>
 
+<control type="image">
+<posx>17</posx>
+<posy>104</posy>
+<width>110</width>
+<height>16</height>
+<texture>black.png</texture>
+<visible>!IsEmpty(ListItem.episode)</visible>
+</control>
+
 <control type="label">
 <posx>72</posx>
 <posy>105</posy>
@@ -15792,6 +15558,14 @@
 <visible>!IsEmpty(ListItem.episode)</visible>
 </control>
 
+<control type="image">
+<posx>17</posx>
+<posy>104</posy>
+<width>110</width>
+<height>16</height>
+<texture>black.png</texture>
+<visible>!IsEmpty(ListItem.episode)</visible>
+</control>
 
 <control type="label">
 <posx>72</posx>
@@ -15936,12 +15710,23 @@
 <posx>10</posx>
 <posy>76</posy>
 <width>350</width>
-<height>148</height>
+<height>112</height>
 <font>font13</font>
 <label>$INFO[ListItem.Plot]</label>
 <align>left</align>
 <autoscroll time="2000" delay="10000" repeat="10000">Visible</autoscroll>
 <scroll>true</scroll>
+</control>
+
+<control type="grouplist">
+<description>Media Codec Flagging Images</description>
+<posx>10</posx>
+<posy>200</posy>
+<width>350</width>
+<itemgap>0</itemgap>
+<orientation>horizontal</orientation>
+<include>CodecFlaggingConditions</include>
+<align>center</align>
 </control>
 
 
@@ -16048,7 +15833,7 @@
 <posx>10</posx>
 <posy>76</posy>
 <width>350</width>
-<height>148</height>
+<height>118</height>
 <font>font13</font>
 <label>$INFO[ListItem.Plot]</label>
 <align>left</align>
@@ -16056,6 +15841,16 @@
 <scroll>true</scroll>
 </control>
 
+<control type="grouplist">
+<description>Media Codec Flagging Images</description>
+<posx>10</posx>
+<posy>200</posy>
+<width>350</width>
+<itemgap>0</itemgap>
+<orientation>horizontal</orientation>
+<include>CodecFlaggingConditions</include>
+<align>center</align>
+</control>
 
 </control>
 
@@ -16232,9 +16027,9 @@
 
 <control type="textbox">
 <posx>40</posx>
-<posy>81</posy>
+<posy>76</posy>
 <width>290</width>
-<height>112.5</height>
+<height>94</height>
 <font>font13</font>
 <label>$INFO[ListItem.Plot]</label>
 <align>left</align>
@@ -16242,6 +16037,16 @@
 <scroll>true</scroll>
 </control>
 
+<control type="grouplist">
+<description>Media Codec Flagging Images</description>
+<posx>40</posx>
+<posy>176</posy>
+<width>290</width>
+<itemgap>0</itemgap>
+<orientation>horizontal</orientation>
+<include>CodecFlaggingConditions</include>
+<align>center</align>
+</control>
 
 </control>
 
@@ -16361,17 +16166,17 @@
 
 <include name="File Mode DVD Case Wrap">
 
-<control>
-<description>Background</description>
-<type>image</type>
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
 <width>720</width>
 <height>576</height>
-<texture>Back-Row.png</texture>
-<animation effect="fade" time="200">WindowOpen</animation>
-<visible>!Skin.HasSetting(Background)</visible>
+<aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
 <visible>Control.IsVisible(53)</visible>
+<visible>IsEmpty(FanArt.Image)</visible>
+<texture>back-row.png</texture>
+<visible>!Skin.HasSetting(Background)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
 <control type="image" description="Fanart Image">
@@ -16384,7 +16189,7 @@
 <texture>$INFO[Skin.String(CustomMenu)]</texture>
 <visible>!Skin.HasSetting(CustomMenu)</visible>
 <visible>Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(53) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
+<visible>Control.IsVisible(53)</visible>
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
@@ -16401,40 +16206,30 @@
 <randomize>true</randomize>
 <visible>!Skin.HasSetting(CustomMenuFolder)</visible>
 <visible>Skin.HasSetting(Background)</visible>
-<visible>Control.IsVisible(53) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-</control>
-
-<control type="group">
-<visible>!Container.OnNext + !Container.OnPrevious</visible>
-<animation effect="fade" start="0" end="100" time="400" delay="200">Visible</animation>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[ListItem.Property(Fanart_Image)]</texture>
-<visible>[Control.IsVisible(53) + !IsEmpty(listitem.property(fanart_image)}]</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation>
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>720</width>
-<height>576</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[FanArt.Image]</texture>
 <visible>Control.IsVisible(53)</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
 <animation effect="fade" time="200">WindowClose</animation>
 </control>
 
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>ListItem.Property(fanart_image)</info>
+<width>720</width>
+<height>576</height>
+<aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<visible>Control.IsVisible(53)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
 
-
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>Fanart.Image</info>
+<width>720</width>
+<height>576</height>
+<aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<visible>Control.IsVisible(53)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
 <control type="image">
@@ -16516,6 +16311,7 @@
 <width>80</width>
 <height>159</height>
 <texture diffuse="Mask3.png">mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <colordiffuse>88ffffff</colordiffuse>
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
@@ -16588,6 +16384,7 @@
 <width>80</width>
 <height>159</height>
 <texture diffuse="Mask3.png">mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <colordiffuse>88ffffff</colordiffuse>
 <animation type="Focus">
@@ -16660,6 +16457,7 @@
 <width>80</width>
 <height>159</height>
 <texture diffuse="Mask3.png">mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <colordiffuse>88ffffff</colordiffuse>
 <aspectratio aligny="bottom">stretch</aspectratio>
 </control>
@@ -16697,6 +16495,7 @@
 <width>80</width>
 <height>159</height>
 <texture diffuse="Mask3.png">mask4.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio aligny="bottom">stretch</aspectratio>
 <colordiffuse>88ffffff</colordiffuse>
 <animation type="Focus">
@@ -18204,414 +18003,221 @@
 
 <include name="FanArt">
 
-
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
+<control type="largeimage">
+<description>Fanart BG</description>
 <width>550</width>
 <height>440</height>
 <aspectratio>scale</aspectratio>
-<texture>back-row.png</texture>
-<visible>!Skin.HasSetting(Background)</visible>
-<visible>[Container.Content(tvshows)] + Control.IsVisible(58) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>system.platform.xbox</visible>
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>420</height>
-<aspectratio>scale</aspectratio>
-<texture>back-row.png</texture>
-<visible>!Skin.HasSetting(Background)</visible>
-<visible>[Container.Content(movies)] + Control.IsVisible(58) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>system.platform.xbox</visible>
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>440</height>
-<aspectratio>scale</aspectratio>
-<imagepath>Menus</imagepath>
-<texture>$INFO[Skin.String(CustomMenu)]</texture>
-<visible>!Skin.HasSetting(CustomMenu)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>[!Container.Content(movies)] + Control.IsVisible(58) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>system.platform.xbox</visible>
-</control>
-
-<control type="multiimage" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>440</height>
-<imagepath>-</imagepath>
-<aspectratio>scale</aspectratio>
-<info>Skin.String(CustomMenuFolder)</info>
-<timeperimage>5000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
-<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>[!Container.Content(movies)] + Control.IsVisible(58) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>system.platform.xbox</visible>
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>420</height>
-<aspectratio>scale</aspectratio>
-<imagepath>Menus</imagepath>
-<texture>$INFO[Skin.String(CustomMenu)]</texture>
-<visible>!Skin.HasSetting(CustomMenu)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>[Container.Content(movies)] + Control.IsVisible(58) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>system.platform.xbox</visible>
-</control>
-
-<control type="multiimage" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>420</height>
-<imagepath>-</imagepath>
-<aspectratio>scale</aspectratio>
-<info>Skin.String(CustomMenuFolder)</info>
-<timeperimage>5000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
-<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>[Container.Content(movies)] + Control.IsVisible(58) + IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>system.platform.xbox</visible>
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>440</height>
-<aspectratio>scale</aspectratio>
-<texture>back-row.png</texture>
-<visible>!Skin.HasSetting(Background)</visible>
-<visible>[Container.Content(tvshows)] + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>!system.platform.xbox</visible>
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>420</height>
-<aspectratio>scale</aspectratio>
-<texture>back-row.png</texture>
-<visible>!Skin.HasSetting(Background)</visible>
-<visible>[Container.Content(movies)] + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>!system.platform.xbox</visible>
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>440</height>
-<aspectratio>scale</aspectratio>
-<imagepath>Menus</imagepath>
-<texture>$INFO[Skin.String(CustomMenu)]</texture>
-<visible>!Skin.HasSetting(CustomMenu)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>[!Container.Content(movies)] + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>!system.platform.xbox</visible>
-</control>
-
-<control type="multiimage" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>440</height>
-<imagepath>-</imagepath>
-<aspectratio>scale</aspectratio>
-<info>Skin.String(CustomMenuFolder)</info>
-<timeperimage>5000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
-<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>[!Container.Content(movies)] + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>!system.platform.xbox</visible>
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>420</height>
-<aspectratio>scale</aspectratio>
-<imagepath>Menus</imagepath>
-<texture>$INFO[Skin.String(CustomMenu)]</texture>
-<visible>!Skin.HasSetting(CustomMenu)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>[Container.Content(movies)] + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>!system.platform.xbox</visible>
-</control>
-
-<control type="multiimage" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>420</height>
-<imagepath>-</imagepath>
-<aspectratio>scale</aspectratio>
-<info>Skin.String(CustomMenuFolder)</info>
-<timeperimage>5000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
-<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>[Container.Content(movies)] + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>!system.platform.xbox</visible>
-</control>
-
-
-<control type="group">
-<visible>!system.platform.xbox</visible>
-<visible>!Container.OnNext + !Container.OnPrevious</visible>
-<animation effect="fade" start="0" end="100" time="300" delay="200">Visible</animation>
-
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>420</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[ListItem.Property(Fanart_Image)]</texture>
-<visible>[Container.Content(movies)] + Control.IsVisible(58) + !IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation>
-</control>
-
-</control>
-
-<control type="group">
-<visible>system.platform.xbox</visible>
-<visible>!Container.OnNext + !Container.OnPrevious</visible>
-<animation effect="fade" start="0" end="100" time="300" delay="200">Visible</animation>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>420</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[ListItem.Property(Fanart_Image)]</texture>
-<visible>!Container.Scrolling</visible>
-<visible>[Container.Content(movies)] + Control.IsVisible(58) + !IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation>
-</control>
-
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>420</height>
-<aspectratio>scale</aspectratio>
-<texture>back-row.png</texture>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(Background)</visible>
-<visible>[Container.Content(movies)] + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>420</height>
-<aspectratio>scale</aspectratio>
-<imagepath>Menus</imagepath>
-<texture>$INFO[Skin.String(CustomMenu)]</texture>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(CustomMenu)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>[Container.Content(movies)] + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
-</control>
-
-<control type="multiimage" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>420</height>
-<imagepath>-</imagepath>
-<aspectratio>scale</aspectratio>
-<info>Skin.String(CustomMenuFolder)</info>
-<timeperimage>5000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>[Container.Content(movies)] + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
-</control>
-
-
-
-
-<control type="group">
-<visible>!system.platform.xbox</visible>
-<visible>!Container.OnNext + !Container.OnPrevious</visible>
-<animation effect="fade" start="0" end="100" time="400" delay="200">Visible</animation>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>440</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[ListItem.Property(Fanart_Image)]</texture>
-<visible>[Container.Content(tvshows)] + Control.IsVisible(58) + !IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation>
-</control>
-
-
-</control>
-
-
-
-
-<control type="group">
-<visible>system.platform.xbox</visible>
-<visible>!Container.OnNext + !Container.OnPrevious</visible>
-<animation effect="fade" start="0" end="100" time="400" delay="300">Visible</animation>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>440</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[ListItem.Property(Fanart_Image)]</texture>
-<visible>!Container.Scrolling</visible>
-<visible>[Container.Content(tvshows)] + Control.IsVisible(58) + !IsEmpty(ListItem.Property(Fanart_Image))</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation>
-</control>
-
-</control>
-
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>440</height>
-<aspectratio>scale</aspectratio>
-<texture>back-row.png</texture>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(Background)</visible>
-<visible>[Container.Content(tvshows)] + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
-</control>
-
-<control type="image" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>440</height>
-<aspectratio>scale</aspectratio>
-<imagepath>Menus</imagepath>
-<texture>$INFO[Skin.String(CustomMenu)]</texture>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(CustomMenu)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>[Container.Content(tvshows)] + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
-</control>
-
-<control type="multiimage" description="Fanart Image">
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>440</height>
-<imagepath>-</imagepath>
-<aspectratio>scale</aspectratio>
-<info>Skin.String(CustomMenuFolder)</info>
-<timeperimage>5000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
-<visible>Container.Scrolling</visible>
-<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
-<visible>Skin.HasSetting(Background)</visible>
-<visible>[Container.Content(tvshows)] + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowClose</animation>
-<animation effect="fade" start="0" end="100" time="200">Visible</animation>
-</control>
-
-
-
-<control type="image">
-<description>background image</description>
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>440</height>
-<aspectratio>scale</aspectratio>
-<texture>Back-Row.png</texture>
-<visible>[Container.Content(episodes) | Container.Content(seasons)] + IsEmpty(FanArt.Image) + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-</control>
-
-<control type="image">
-<description>background image</description>
-<posx>0</posx>
-<posy>0</posy>
-<width>550</width>
-<height>440</height>
-<aspectratio>scale</aspectratio>
-<texture>$INFO[FanArt.Image]</texture>
-<visible>[Container.Content(episodes) | Container.Content(seasons)] + !IsEmpty(FanArt.Image) + Control.IsVisible(58)</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-</control>
-
-<control type="image">
-<texture>Fanart Mask1.png</texture>
+<fadetime>300</fadetime>
 <visible>Control.IsVisible(58)</visible>
+<visible>IsEmpty(FanArt.Image)</visible>
+<visible>Container.Content(tvshows)</visible>
+<texture>back-row.png</texture>
+<visible>!Skin.HasSetting(Background)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+<control type="image" description="Fanart Image">
 <posx>0</posx>
 <posy>0</posy>
 <width>550</width>
-<height>576</height>
-<animation effect="fade" time="200">WindowClose</animation>
-<visible>[Container.Content(episodes) | Container.Content(seasons)]</visible>
+<height>440</height>
+<aspectratio>scale</aspectratio>
+<imagepath>Menus</imagepath>
+<texture>$INFO[Skin.String(CustomMenu)]</texture>
+<visible>!Skin.HasSetting(CustomMenu)</visible>
+<visible>Skin.HasSetting(Background)</visible>
+<visible>Container.Content(tvshows)</visible>
+<visible>Control.IsVisible(58)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
 </control>
+
+<control type="multiimage" description="Fanart Image">
+<posx>0</posx>
+<posy>0</posy>
+<width>550</width>
+<height>440</height>
+<imagepath>-</imagepath>
+<aspectratio>scale</aspectratio>
+<info>Skin.String(CustomMenuFolder)</info>
+<timeperimage>5000</timeperimage>
+<fadetime>2000</fadetime>
+<randomize>true</randomize>
+<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
+<visible>Skin.HasSetting(Background)</visible>
+<visible>Container.Content(tvshows)</visible>
+<visible>Control.IsVisible(58)</visible>
+<animation effect="fade" time="200">WindowClose</animation>
+</control>
+
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>ListItem.Property(fanart_image)</info>
+<width>550</width>
+<height>440</height>
+<aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<visible>Control.IsVisible(58)</visible>
+<visible>Container.Content(tvshows)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>Fanart.Image</info>
+<width>550</width>
+<height>440</height>
+<aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<visible>Control.IsVisible(58)</visible>
+<visible>Container.Content(tvshows)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+<control type="largeimage">
+<description>Fanart BG</description>
+<width>550</width>
+<height>420</height>
+<aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<visible>Control.IsVisible(58)</visible>
+<visible>IsEmpty(FanArt.Image)</visible>
+<texture>back-row.png</texture>
+<visible>!Skin.HasSetting(Background)</visible>
+<visible>Container.Content(movies)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+<control type="image" description="Fanart Image">
+<posx>0</posx>
+<posy>0</posy>
+<width>550</width>
+<height>420</height>
+<aspectratio>scale</aspectratio>
+<imagepath>Menus</imagepath>
+<texture>$INFO[Skin.String(CustomMenu)]</texture>
+<visible>!Skin.HasSetting(CustomMenu)</visible>
+<visible>Skin.HasSetting(Background)</visible>
+<visible>Control.IsVisible(58)</visible>
+<visible>Container.Content(movies)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+<control type="multiimage" description="Fanart Image">
+<posx>0</posx>
+<posy>0</posy>
+<width>550</width>
+<height>420</height>
+<imagepath>-</imagepath>
+<aspectratio>scale</aspectratio>
+<info>Skin.String(CustomMenuFolder)</info>
+<timeperimage>5000</timeperimage>
+<fadetime>2000</fadetime>
+<randomize>true</randomize>
+<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
+<visible>Skin.HasSetting(Background)</visible>
+<visible>Control.IsVisible(58)</visible>
+<visible>Container.Content(movies)</visible>
+<animation effect="fade" time="200">WindowClose</animation>
+</control>
+
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>ListItem.Property(fanart_image)</info>
+<width>550</width>
+<height>420</height>
+<aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<visible>Control.IsVisible(58)</visible>
+<visible>Container.Content(movies)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>Fanart.Image</info>
+<width>550</width>
+<height>420</height>
+<aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<visible>Control.IsVisible(58)</visible>
+<visible>Container.Content(movies)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+
+<control type="largeimage">
+<description>Fanart BG</description>
+<width>550</width>
+<height>440</height>
+<aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<visible>Control.IsVisible(58)</visible>
+<visible>IsEmpty(FanArt.Image)</visible>
+<visible>[Container.Content(episodes) | Container.Content(seasons)]</visible>
+<texture>back-row.png</texture>
+<visible>!Skin.HasSetting(Background)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+<control type="image" description="Fanart Image">
+<posx>0</posx>
+<posy>0</posy>
+<width>550</width>
+<height>440</height>
+<aspectratio>scale</aspectratio>
+<imagepath>Menus</imagepath>
+<texture>$INFO[Skin.String(CustomMenu)]</texture>
+<visible>!Skin.HasSetting(CustomMenu)</visible>
+<visible>Skin.HasSetting(Background)</visible>
+<visible>[Container.Content(episodes) | Container.Content(seasons)]</visible>
+<visible>Control.IsVisible(58)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+<control type="multiimage" description="Fanart Image">
+<posx>0</posx>
+<posy>0</posy>
+<width>550</width>
+<height>440</height>
+<imagepath>-</imagepath>
+<aspectratio>scale</aspectratio>
+<info>Skin.String(CustomMenuFolder)</info>
+<timeperimage>5000</timeperimage>
+<fadetime>2000</fadetime>
+<randomize>true</randomize>
+<visible>!Skin.HasSetting(CustomMenuFolder)</visible>
+<visible>Skin.HasSetting(Background)</visible>
+<visible>[Container.Content(episodes) | Container.Content(seasons)]</visible>
+<visible>Control.IsVisible(58)</visible>
+<animation effect="fade" time="200">WindowClose</animation>
+</control>
+
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>ListItem.Property(fanart_image)</info>
+<width>550</width>
+<height>440</height>
+<aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<visible>Control.IsVisible(58)</visible>
+<visible>[Container.Content(episodes) | Container.Content(seasons)]</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>Fanart.Image</info>
+<width>550</width>
+<height>440</height>
+<aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<visible>Control.IsVisible(58)</visible>
+<visible>[Container.Content(episodes) | Container.Content(seasons)]</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+
 
 <control type="image">
 <texture>Fanart Mask1.png</texture>
@@ -18648,6 +18254,16 @@
 <visible>!Skin.HasSetting(TV Poster)</visible>
 </control>
 
+<control type="image">
+<texture>Fanart Mask1.png</texture>
+<visible>Control.IsVisible(58)</visible>
+<posx>0</posx>
+<posy>0</posy>
+<width>550</width>
+<height>576</height>
+<animation effect="fade" time="200">WindowClose</animation>
+<visible>[Container.Content(episodes) | Container.Content(seasons)]</visible>
+</control>
 
 
 <control type="group">
@@ -18696,7 +18312,6 @@
 <visible>container.content(episodes)</visible>
 <visible>!IsEmpty(ListItem.thumb)</visible>
 </control>
-
 
 
 <visible>Control.IsVisible(58) + System.IdleTime(1)</visible>
@@ -19194,7 +18809,7 @@
 </control>
 
 <control type="image" description="Ratings Image">
-<posx>597</posx>
+<posx>592</posx>
 <posy>115</posy>
 <width>180</width>
 <height>18</height>
@@ -19276,17 +18891,6 @@
 
 <control type="image">
 <posx>535</posx>
-<posy>90</posy>
-<width>180</width>
-<height>10</height>
-<texture>separator.png</texture>
-<visible>container.content(episodes) + Control.IsVisible(58)</visible>
-<visible>!Skin.HasSetting(TV Poster)</visible>
-<animation effect="fade" time="200">WindowClose</animation> 
-</control>
-
-<control type="image">
-<posx>535</posx>
 <posy>60</posy>
 <width>180</width>
 <height>10</height>
@@ -19305,6 +18909,30 @@
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
+<control type="grouplist">
+<description>Media Codec Flagging Images</description>
+<posx>535</posx>
+<posy>147.5</posy>
+<width>180</width>
+<itemgap>0</itemgap>
+<orientation>horizontal</orientation>
+<include>CodecFlaggingConditions2</include>
+<align>center</align>
+<visible>Control.IsVisible(58)</visible>
+<visible>container.content(movies)</visible>
+<animation effect="fade" time="200">WindowOpen</animation>
+<animation effect="fade" time="200">WindowClose</animation>
+</control>
+
+<control type="image">
+<posx>535</posx>
+<posy>165</posy>
+<width>180</width>
+<height>10</height>
+<texture>separator.png</texture>
+<visible>container.content(movies) + Control.IsVisible(58)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
 
 <control type="image">
 <posx>535</posx>
@@ -19401,12 +19029,11 @@
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
-
 <control type="textbox">
 <posx>535</posx>
-<posy>150</posy>
+<posy>180</posy>
 <width>180</width>
-<height>177.46</height>
+<height>148</height>
 <font>font12</font>
 <textcolor>lightgrey</textcolor>
 <info>ListItem.Plot</info>
@@ -19460,32 +19087,9 @@
 <visible>Skin.HasSetting(TV Poster)</visible>
 </control>
 
-
-
-
-
 <control type="label">
 <posx>535</posx>
-<posy>75</posy>
-<width>180</width>
-<height>16</height>
-<font>font04</font>
-<textcolor>white</textcolor>
-<shadowcolor>shadow</shadowcolor>
-<align>left</align>
-<info>ListItem.TVShowTitle</info>
-<scroll>true</scroll>
-<include>selectedcolor</include>
-<shadowcolor>black</shadowcolor>
-<visible>container.content(episodes) + Control.IsVisible(58)</visible>
-<visible>!Skin.HasSetting(TV Poster)</visible>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation> 
-</control>
-
-<control type="label">
-<posx>535</posx>
-<posy>100</posy>
+<posy>80</posy>
 <width>180</width>
 <height>16</height>
 <font>font04</font>
@@ -19502,7 +19106,7 @@
 
 <control type="label">
 <posx>715</posx>
-<posy>100</posy>
+<posy>80</posy>
 <width>180</width>
 <height>16</height>
 <font>font04</font>
@@ -19520,7 +19124,7 @@
 
 <control type="label">
 <posx>535</posx>
-<posy>130</posy>
+<posy>110</posy>
 <width>180</width>
 <height>16</height>
 <font>font04</font>
@@ -19537,7 +19141,7 @@
 
 <control type="label">
 <posx>715</posx>
-<posy>130</posy>
+<posy>110</posy>
 <width>180</width>
 <height>16</height>
 <font>font04</font>
@@ -19554,7 +19158,7 @@
 
 <control type="label">
 <posx>535</posx>
-<posy>160</posy>
+<posy>140</posy>
 <width>180</width>
 <height>16</height>
 <font>font04</font>
@@ -19571,7 +19175,7 @@
 
 <control type="label">
 <posx>715</posx>
-<posy>160</posy>
+<posy>140</posy>
 <width>180</width>
 <height>16</height>
 <font>font04</font>
@@ -19588,7 +19192,45 @@
 
 <control type="image">
 <posx>535</posx>
-<posy>176</posy>
+<posy>70</posy>
+<width>180</width>
+<height>10</height>
+<texture>separator.png</texture>
+<visible>container.content(episodes) + Control.IsVisible(58)</visible>
+<visible>!Skin.HasSetting(TV Poster)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+<control type="image">
+<posx>535</posx>
+<posy>156</posy>
+<width>180</width>
+<height>10</height>
+<texture>separator.png</texture>
+<visible>container.content(episodes) + Control.IsVisible(58)</visible>
+<visible>!Skin.HasSetting(TV Poster)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+<control type="grouplist">
+<description>Media Codec Flagging Images</description>
+<posx>535</posx>
+<posy>168</posy>
+<width>180</width>
+<itemgap>0</itemgap>
+<orientation>horizontal</orientation>
+<include>CodecFlaggingConditions2</include>
+<align>center</align>
+<visible>Control.IsVisible(58)</visible>
+<visible>container.content(episodes)</visible>
+<visible>!Skin.HasSetting(TV Poster)</visible>
+<animation effect="fade" time="200">WindowOpen</animation>
+<animation effect="fade" time="200">WindowClose</animation>
+</control>
+
+<control type="image">
+<posx>535</posx>
+<posy>185</posy>
 <width>180</width>
 <height>10</height>
 <texture>separator.png</texture>
@@ -19599,7 +19241,7 @@
 
 <control type="label">
 <posx>535</posx>
-<posy>185</posy>
+<posy>205</posy>
 <width>180</width>
 <height>16</height>
 <font>font04</font>
@@ -19616,11 +19258,13 @@
 <visible>container.content(episodes)</visible>
 </control>
 
+
+
 <control type="textbox">
 <posx>535</posx>
-<posy>210</posy>
+<posy>230</posy>
 <width>180</width>
-<height>194</height>
+<height>180</height>
 <font>font12</font>
 <textcolor>lightgrey</textcolor>
 <info>ListItem.Plot</info>
@@ -19782,9 +19426,37 @@
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
+<control type="grouplist">
+<description>Media Codec Flagging Images</description>
+<posx>535</posx>
+<posy>141</posy>
+<width>180</width>
+<itemgap>0</itemgap>
+<orientation>horizontal</orientation>
+<include>CodecFlaggingConditions2</include>
+<align>center</align>
+<visible>Control.IsVisible(58)</visible>
+<visible>container.content(episodes)</visible>
+<visible>Skin.HasSetting(TV Poster)</visible>
+<animation effect="fade" time="200">WindowOpen</animation>
+<animation effect="fade" time="200">WindowClose</animation>
+</control>
+
+<control type="image">
+<posx>535</posx>
+<posy>161</posy>
+<width>180</width>
+<height>10</height>
+<texture>separator.png</texture>
+<visible>container.content(episodes) + Control.IsVisible(58)</visible>
+<visible>Skin.HasSetting(TV Poster)</visible>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+
 <control type="label">
 <posx>535</posx>
-<posy>135</posy>
+<posy>173</posy>
 <width>180</width>
 <height>16</height>
 <font>font04</font>
@@ -19803,9 +19475,9 @@
 
 <control type="textbox">
 <posx>535</posx>
-<posy>164</posy>
+<posy>194</posy>
 <width>180</width>
-<height>245</height>
+<height>215</height>
 <font>font12</font>
 <textcolor>lightgrey</textcolor>
 <info>ListItem.Plot</info>
@@ -19819,6 +19491,9 @@
 <visible>container.content(episodes) + Control.IsVisible(58)</visible>
 <visible>Skin.HasSetting(TV Poster)</visible>
 </control>
+
+
+
 
 <--------->
 
@@ -19863,6 +19538,7 @@
 <width>80</width>
 <height>156</height>
 <texture>mask glass wall.png</texture>
+<visible>!system.platform.xbox</visible>
 <colordiffuse>88ffffff</colordiffuse>
 <aspectratio>stretch</aspectratio>
 </control>
@@ -19893,6 +19569,7 @@
 <width>80</width>
 <height>156</height>
 <texture>mask glass wall.png</texture>
+<visible>!system.platform.xbox</visible>
 <colordiffuse>88ffffff</colordiffuse>
 <aspectratio>stretch</aspectratio>
 <animation effect="zoom"  end="-15,-62,110,220" time="200">Focus</animation>
@@ -20002,6 +19679,7 @@
 <width>80</width>
 <height>156</height>
 <texture>mask glass wall.png</texture>
+<visible>!system.platform.xbox</visible>
 <colordiffuse>88ffffff</colordiffuse>
 <aspectratio>stretch</aspectratio>
 </control>
@@ -20032,6 +19710,7 @@
 <width>80</width>
 <height>156</height>
 <texture>mask glass wall.png</texture>
+<visible>!system.platform.xbox</visible>
 <colordiffuse>88ffffff</colordiffuse>
 <aspectratio>stretch</aspectratio>
 <animation effect="zoom"  end="-15,-62,110,220" time="200">Focus</animation>
@@ -20115,6 +19794,7 @@
 <width>50</width>
 <height>99</height>
 <texture>mask glass wall left.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -20698,6 +20378,7 @@
 <width>144</width>
 <height>192</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <colordiffuse>88FFFFFF</colordiffuse>
 </control>
@@ -20833,6 +20514,7 @@
 <width>144</width>
 <height>192</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <!-- Center Icons -->
 <animation effect="zoom" time="0" end="-25.5,-33.5,195,260" condition="[Container(56).Row(1) + Container(56).Column(1) | Container(56).Row(1) + Container(56).Column(2) | Container(56).Row(1) + Container(56).Column(3)]">Conditional</animation>
@@ -20898,6 +20580,7 @@
 <width>144</width>
 <height>192</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 <colordiffuse>88FFFFFF</colordiffuse>
 <visible>Control.IsVisible(899)</visible>
@@ -20964,6 +20647,7 @@
 <width>144</width>
 <height>192</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -21334,6 +21018,7 @@
 <width>150</width>
 <height>190</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 
@@ -21379,6 +21064,7 @@
 <width>150</width>
 <height>190</height>
 <texture>mask glass.png</texture>
+<visible>!system.platform.xbox</visible>
 <aspectratio>stretch</aspectratio>
 </control>
 

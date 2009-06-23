@@ -19,6 +19,16 @@
 <texture>OSD.png</texture>
 </control>
 
+<control>
+<description>Media Info Background Image</description>
+<type>image</type>
+<id>1</id>
+<posx>-10</posx>
+<posy>435</posy>
+<width>740</width>
+<height>3</height>
+<texture>separatorosd.png</texture>
+</control>
 
 
 

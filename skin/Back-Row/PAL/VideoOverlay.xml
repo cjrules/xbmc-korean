@@ -7,8 +7,14 @@
 <posx>0</posx>
 <posy>149</posy>
 
-<animation effect="slide" time="600" start="-328,0" end="0,0" acceleration="-1">WindowOpen</animation>
-<animation effect="slide" time="600" start="0,0" end="-328,0" acceleration="-1">WindowClose</animation>
+<animation type="WindowOpen">
+<effect type="fade" start="0" end="95" time="0"/>
+</animation>
+
+<animation type="WindowClose">
+<effect type="fade" start="95" end="0" time="0"/>
+</animation>
+
 
 <control type="image">
 <description>Background image</description>
@@ -22,7 +28,7 @@
 <visible>!Window.IsActive(7) + !Window.IsActive(56) + !Window.IsActive(2700)</visible>
 <visible>!Window.IsActive(AppearanceSettings) + !Window.IsActive(MyVideosSettings)</visible>
 <visible>!Window.IsActive(MyMusicSettings) + !Window.IsActive(SystemSettings)</visible>
-<visible>Player.HasMedia + !Skin.HasSetting(video-preview)</visible>
+<visible>Player.HasMedia + !Skin.HasSetting(video-preview) + System.IdleTime(5)</visible>
 <animation effect="fade" time="300">Visible</animation>
 </control>
 
@@ -39,7 +45,7 @@
 <visible>!Window.IsActive(7) + !Window.IsActive(56) + !Window.IsActive(2700)</visible>
 <visible>!Window.IsActive(AppearanceSettings) + !Window.IsActive(MyVideosSettings)</visible>
 <visible>!Window.IsActive(MyMusicSettings) + !Window.IsActive(SystemSettings)</visible>
-<visible>Player.HasMedia + !Skin.HasSetting(video-preview)</visible>
+<visible>Player.HasMedia + !Skin.HasSetting(video-preview) + System.IdleTime(5)</visible>
 <animation effect="fade" time="300">Visible</animation>
 </control>
 
@@ -54,7 +60,7 @@
 <visible>!Window.IsActive(7) + !Window.IsActive(56) + !Window.IsActive(2700)</visible>
 <visible>!Window.IsActive(AppearanceSettings) + !Window.IsActive(MyVideosSettings)</visible>
 <visible>!Window.IsActive(MyMusicSettings) + !Window.IsActive(SystemSettings)</visible>
-<visible>Player.HasMedia + !Skin.HasSetting(video-preview)</visible>
+<visible>Player.HasMedia + !Skin.HasSetting(video-preview) + System.IdleTime(5)</visible>
 <animation effect="fade" time="300">Visible</animation>
 </control>
 
@@ -70,7 +76,7 @@
 <visible>!Window.IsActive(7) + !Window.IsActive(56) + !Window.IsActive(2700)</visible>
 <visible>!Window.IsActive(AppearanceSettings) + !Window.IsActive(MyVideosSettings)</visible>
 <visible>!Window.IsActive(MyMusicSettings) + !Window.IsActive(SystemSettings)</visible>
-<visible>Player.HasMedia + !Skin.HasSetting(video-preview)</visible>
+<visible>Player.HasMedia + !Skin.HasSetting(video-preview) + System.IdleTime(5)</visible>
 <animation effect="fade" time="300">Visible</animation>
 </control>
 
@@ -85,7 +91,7 @@
 <visible>!Window.IsActive(7) + !Window.IsActive(56) + !Window.IsActive(2700)</visible>
 <visible>!Window.IsActive(AppearanceSettings) + !Window.IsActive(MyVideosSettings)</visible>
 <visible>!Window.IsActive(MyMusicSettings) + !Window.IsActive(SystemSettings)</visible>
-<visible>Player.HasMedia + !Skin.HasSetting(video-preview)</visible>
+<visible>Player.HasMedia + !Skin.HasSetting(video-preview) + System.IdleTime(5)</visible>
 <animation effect="fade" time="300">Visible</animation>
 </control>
 
@@ -100,7 +106,7 @@
 <visible>!Window.IsActive(7) + !Window.IsActive(56) + !Window.IsActive(2700)</visible>
 <visible>!Window.IsActive(AppearanceSettings) + !Window.IsActive(MyVideosSettings)</visible>
 <visible>!Window.IsActive(MyMusicSettings) + !Window.IsActive(SystemSettings)</visible>
-<visible>Player.HasMedia + !Skin.HasSetting(video-preview)</visible>
+<visible>Player.HasMedia + !Skin.HasSetting(video-preview) + System.IdleTime(5)</visible>
 <animation effect="fade" time="300">Visible</animation>
 </control>
 

@@ -10,7 +10,7 @@
 	<controls>
 
 <control type="group" id="3">
-
+<include>media-infopanel-effect</include>
 <visible></visible>
 
 <control>
@@ -24,6 +24,16 @@
 <texture>OSD.png</texture>
 </control>
 
+<control>
+<description>Media Info Background Image</description>
+<type>image</type>
+<id>1</id>
+<posx>-10</posx>
+<posy>445</posy>
+<width>740</width>
+<height>3</height>
+<texture>separatorosd.png</texture>
+</control>
 
 
 <control type="button" id ="1">
@@ -102,7 +112,7 @@
 <posy>475</posy>
 <visible>!videoplayer.content(Movies) + !videoplayer.content(episodes) + !videoplayer.content(musicvideos) + !videoplayer.content(livetv) + !Control.HasFocus(2)</visible>
 <visible></visible>
-
+<include>media-infopanel-effect</include>
 <control type="label">
 <id>1</id>
 <description>current_event_name</description>
@@ -121,7 +131,7 @@
 <posy>475</posy>
 <visible>videoplayer.content(Movies) + !Control.HasFocus(2)</visible>
 <visible></visible>
-
+<include>media-infopanel-effect</include>
 <control type="label">
 <id>1</id>
 <description>current_event_name</description>
@@ -173,7 +183,7 @@
 <control type="group" id="1">
 <posy>475</posy>
 <visible>videoplayer.content(livetv) + !Control.HasFocus(2)</visible>
-
+<include>media-infopanel-effect</include>
 <control type="label">
 <id>1</id>
 <description>current_event_name</description>
@@ -201,7 +211,7 @@
 <control type="group" id="1">
 <posy>475</posy>
 <visible>videoplayer.content(episodes) + !Control.HasFocus(2)</visible>
-
+<include>media-infopanel-effect</include>
 <control type="label">
 <id>1</id>
 <description>current_event_name</description>
@@ -241,7 +251,7 @@
 
 <posy>475</posy>
 <visible>videoplayer.content(musicvideos) + !Control.HasFocus(2)</visible>
-
+<include>media-infopanel-effect</include>
 <control type="label">
 <id>1</id>
 <description>Artist label</description>
@@ -278,6 +288,7 @@
 </control>
 
 <control type="group" id="1">
+<include>media-infopanel-effect</include>
 <visible>!Control.HasFocus(2)</visible>
 <control>
 <description>System time Label</description>
@@ -329,8 +340,8 @@
 
 
 <control type="group">
-
-	<posy>8</posy>
+<include>media-infopanel-effect</include>
+	<posy>10</posy>
     <posx>60</posx>
 	
 	<control>

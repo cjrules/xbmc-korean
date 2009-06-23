@@ -10,20 +10,32 @@
 		<posx>-10</posx>
 		<posy>0</posy>
 		<width>740</width>
-		<height>90</height>
+		<height>91</height>
 		<texture>black.png</texture>
 		<include>media-infopanel-effect</include>
 	</control>
+
+<control>
+<description>Media Info Background Image</description>
+<type>image</type>
+<id>0</id>
+<posx>-10</posx>
+<posy>88</posy>
+<width>740</width>
+<height>3</height>
+<texture>separatorosd.png</texture>
+<include>media-infopanel-effect</include>
+</control>
 
 	<control>
 		<description>Row 1 Label</description>
 		<type>label</type>
 		<id>10</id>
 		<posx>70</posx>
-		<posy>10</posy>
+		<posy>5</posy>
 		<label>-</label>
 		<align>left</align>
-		<font>fontKB</font>
+		<font>font13</font>
 		<include>media-infopanel-effect</include>
 	</control>
 
@@ -32,10 +44,10 @@
 		<type>label</type>
 		<id>11</id>
 		<posx>70</posx>
-		<posy>35</posy>
+		<posy>25</posy>
 		<label>-</label>
 		<align>left</align>
-		<font>fontKB</font>
+		<font>font13</font>
 		<include>media-infopanel-effect</include>
 	</control>
 
@@ -44,10 +56,10 @@
 		<type>label</type>
 		<id>12</id>
 		<posx>70</posx>
-		<posy>55</posy>
+		<posy>50</posy>
 		<label>-</label>
 		<align>left</align>
-		<font>fontKB</font>
+		<font>font13</font>
 		<include>media-infopanel-effect</include>
 	</control>
 
@@ -60,13 +72,13 @@
 		<label>15107</label>
 		<width>291</width>
 		<align>center</align>
-		<font>fontKB</font>
+		<font>font13</font>
 		<include>textcolorwhite</include>
 	</control>
 
 
 <control type="group" id="3">
-
+<include>media-infopanel-effect</include>
 <visible>Player.ShowInfo</visible>
 
 <control>
@@ -80,6 +92,17 @@
 <texture>OSD.png</texture>
 </control>
 
+
+<control>
+<description>Media Info Background Image</description>
+<type>image</type>
+<id>1</id>
+<posx>-10</posx>
+<posy>445</posy>
+<width>740</width>
+<height>3</height>
+<texture>separatorosd.png</texture>
+</control>
 
 <control type="button" id ="2">
 <description>Plot Info</description>
