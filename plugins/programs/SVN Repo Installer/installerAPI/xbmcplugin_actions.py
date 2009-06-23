@@ -10,7 +10,7 @@ from xbmcplugin_lib import *
 from shutil import rmtree, copytree
 
 __plugin__ = sys.modules["__main__"].__plugin__
-__date__ = '29-04-2009'
+__date__ = '19-06-2009'
 log("Module: %s Dated: %s loaded!" % (__name__, __date__))
 
 class Main:
@@ -18,7 +18,7 @@ class Main:
 	INSTALLED_ITEMS_FILENAME = os.path.join( os.getcwd(), "installed_items.dat" )
 	
 	def __init__( self ):
-		log(__name__ + " started!")
+		log( "%s started!" % self.__class__ )
 		try:
 			self._parse_argv()
 			if ( self.args.has_key("delete") ):
@@ -39,10 +39,12 @@ class Main:
 
 		if xbmcgui.Dialog().yesno(__plugin__, self.args.title,"", "", xbmc.getLocalizedString( 30020 ), xbmc.getLocalizedString( 30022 )):	# Delete, Skip
 			items = loadFileObj(self.INSTALLED_ITEMS_FILENAME)
+			if items is None and self.args.has_key( "delete_from_list" ):
+				items = {'filepath': self.args.delete}
 			filepath = self.args.delete
 			# find addon from installed list
 			for i, item in enumerate(items):
-				if item['filepath'] == filepath:
+				if item['filepath'] == filepath or self.args.has_key( "delete_from_list" ):
 					log("addon details: %s" % item)
 					# make backup - if not deleting a backup copy
 					if ".backup" not in filepath:
@@ -64,7 +66,8 @@ class Main:
 							else:
 								# update filepath to indicated Deleted
 								items[i]['filepath'] = backupPath
-							saveFileObj(self.INSTALLED_ITEMS_FILENAME, items)
+							if not self.args.has_key( "delete_from_list" ):
+								saveFileObj(self.INSTALLED_ITEMS_FILENAME, items)
 							if not removeList:
 								xbmcgui.Dialog().ok(__plugin__, xbmc.getLocalizedString( 30018 ), xbmc.getLocalizedString( 30004 ), category)
 							else:
@@ -139,8 +142,8 @@ class Main:
 
 	########################################################################################################################
 	def _parseCategoryPath(self):
-			# extract category in .backups
-			category = re.search("(plugins.*|scripts.*)$", backupPath).group(1)
+		# extract category in .backups
+		category = re.search("(plugins.*|scripts.*)$", backupPath).group(1)
 
 	########################################################################################################################
 	def self_update(self):

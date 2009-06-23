@@ -2,16 +2,14 @@
 <!--Language file translated with Team XBMC Translator-->
 <!--Translator: blittan-->
 <!--Email: blittan@xbmc.org-->
-<!--Date of translation: 04/16/2009-->
+<!--Date of translation: 05/30/2009-->
 <!--$Revision$-->
 <strings>
   <string id="30000">Vill du installera detta tillägg?</string>
-  <string id="30001">
-  </string>
+  <string id="30001">Hämtar fil...</string>
   <string id="30002">Hämtar fillista...</string>
   <string id="30003">Var god vänta...</string>
-  <string id="30004">
-  </string>
+  <string id="30004">Säkerhetskopia skapad</string>
   <string id="30005">Hämtar:</string>
   <string id="30006">Sökväg:</string>
   <string id="30007">Fil:</string>
@@ -25,10 +23,12 @@
   <string id="30015">Inte kompatibel</string>
   <string id="30016">Uppdatering</string>
   <string id="30017">Ändringslogg</string>
+  <string id="30018">Borttagen</string>
   <string id="30020">Hoppa över</string>
   <string id="30021">Installera</string>
+  <string id="30022">Ta bort</string>
   <string id="30030">Ett fel uppstod under installationen av tillägget!</string>
-  <string id="30500">Förråd att lista</string>
+  <string id="30500">Kontrollera uppdateringar</string>
   <string id="30510">Uppdateringar: Visa tillägg som inte finns i SVN?</string>
   <string id="30520">Uppdateringar: Visa tillägg med okänd version?</string>
   <string id="30530">Visa LäsMig</string>

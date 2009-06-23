@@ -2,13 +2,12 @@
  Common functions
 """
 
-import sys
+import os,sys
 import xbmc
-from urllib import unquote_plus
+from urllib import unquote_plus, urlopen
 
 __plugin__ = sys.modules["__main__"].__plugin__
-__date__ = '22-04-2009'
-xbmc.log("[PLUGIN] Module: %s Date: %s loaded!" % (__name__, __date__), xbmc.LOGDEBUG)
+__date__ = '19-06-2009'
 
 #################################################################################################################
 def log(msg):
@@ -27,7 +26,7 @@ def handleException(msg=""):
 class Info:
 	def __init__( self, *args, **kwargs ):
 		self.__dict__.update( kwargs )
-		log( "Info() self.__dict__=%s" % self.__dict__ )
+		log( "Info() dict=%s" % self.__dict__ )
 	def has_key(self, key):
 		return self.__dict__.has_key(key)
 
@@ -54,3 +53,25 @@ def saveFileObj( filename, saveObj ):
 	except Exception, e:
 		log( "save_file_obj() " + str(e) )
 		return False
+
+#################################################################################################################
+def readURL( url ):
+	log("readURL() url=" + url)
+	try:
+		sock = urlopen( url )
+		doc = sock.read()
+		sock.close()
+		if ( "404 Not Found" in doc ):
+			log("readURL() 404, Not found")
+			doc = ""
+		return doc
+	except:
+		log("readURL() %s" % sys.exc_info()[ 1 ])
+		return None
+
+#################################################################################################################
+def deleteFile( fn ):
+	try:
+		os.remove( fn )
+		log("deleteFile() deleted: " + fn)
+	except: pass
