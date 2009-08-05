@@ -23,6 +23,8 @@ class Main:
 			self._parse_argv()
 			if ( self.args.has_key("delete") ):
 				self.delete_update_item()
+			elif ( self.args.has_key("update") ):
+				self.update()
 			elif ( self.args.has_key("self_update") ):
 				self.self_update()
 		except Exception, e:

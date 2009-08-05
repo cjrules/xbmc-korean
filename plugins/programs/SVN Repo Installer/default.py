@@ -12,17 +12,17 @@ __author__ = "nuka1195/BigBellyBilly"
 __url__ = "http://code.google.com/p/xbmc-addons/"
 __svn_url__ = "http://xbmc-addons.googlecode.com/svn/trunk/plugins/programs/SVN%20Repo%20Installer"
 __credits__ = "Team XBMC"
-__version__ = "1.7.8a"
-__svn_revision__ = "$Revision: 1077 $"
+__version__ = "1.8.0b"
+__date__ = "$Date: 2009-08-02 11:53:25 -0400 (Sun, 02 Aug 2009) $"
+__svn_revision__ = "$Revision: 1204 $"
 __XBMC_Revision__ = "19001"
 
 def _check_compatible():
     try:
         # spam plugin statistics to log
-        xbmc.log( "[PLUGIN] '%s: Version - %s-r%s' initialized!" % ( __plugin__, __version__, __svn_revision__.replace( "$", "" ).replace( "Revision:", "" ).strip() ), xbmc.LOGNOTICE )
+        xbmc.log( "[PLUGIN] '%s: Version - %s-r%s' initialized!" % ( __plugin__, __version__, __svn_revision__.replace( "$", "" ).replace( "Revision", "" ).replace( ":", "" ).strip() ), xbmc.LOGNOTICE )
         # get xbmc revision
-        xbmc_version = xbmc.getInfoLabel( "System.BuildVersion" )
-        xbmc_rev = int( xbmc_version.split( " " )[ 1 ].replace( "r", "" ) )
+        xbmc_rev = int( xbmc.getInfoLabel( "System.BuildVersion" ).split( " r" )[ -1 ] )
         # compatible?
         ok = xbmc_rev >= int( __XBMC_Revision__ )
     except:
@@ -45,6 +45,8 @@ if ( __name__ == "__main__" ):
         # check for compatibility, only need to check this once, continue if ok
         if ( _check_compatible() ):
             from installerAPI import xbmcplugin_list as plugin
+    elif ( "show_info=" in sys.argv[ 2 ] ):
+        from installerAPI import xbmcplugin_info as plugin
     elif ( "delete=" in sys.argv[ 2 ] ):
         from installerAPI import xbmcplugin_actions as plugin
     elif ( "self_update" in sys.argv[ 2 ] ):
@@ -61,4 +63,6 @@ if ( __name__ == "__main__" ):
     try:
         plugin.Main()
     except:
-        pass
+        import traceback
+        traceback.print_exc()
+#        pass

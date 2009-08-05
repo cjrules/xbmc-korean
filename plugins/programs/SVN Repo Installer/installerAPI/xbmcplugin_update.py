@@ -37,7 +37,7 @@ class Main:
 	UPDATE_ALL_FILENAME = os.path.join( os.getcwd(), "update_all.dat" )
 
 	def __init__( self ):
-		log( "%s started!" % self.__class__ )
+		log( "%s init!" % self.__class__ )
 		ok = False
 		# set our plugin category
 		xbmcplugin.setPluginCategory( handle=int( sys.argv[ 1 ] ), category=xbmc.getLocalizedString( 30500 ) )
@@ -46,9 +46,9 @@ class Main:
 		self.showNoSVN = bool(xbmcplugin.getSetting( "show_no_svn" ) == "true")
 		self.showNoVer = bool(xbmcplugin.getSetting( "show_no_ver" ) == "true")
 
-		self._get_xbmc_revision()
+		self.XBMC_REVISION = get_xbmc_revision()
+		self.SVN_URL_LIST = load_repos()
 
-		self.SVN_URL_LIST = self._get_repos()
 		#['plugin://programs/SVN Repo Installer/', '-1', '?download_url="%2Ftrunk%2Fplugins%2Fmusic/iTunes%2F"&repo=\'xbmc-addons\'&install=""&ioffset=2&voffset=0']
 		# create all XBMC script/plugin paths
 		paths = ("plugins/programs","plugins/video","plugins/music","plugins/pictures","plugins/weather","scripts")
@@ -76,29 +76,12 @@ class Main:
 		log("endOfDirectory() ok=%s" % ok)
 		xbmcplugin.endOfDirectory( int( sys.argv[ 1 ] ), ok, cacheToDisc=False)
 
-	def _get_repos( self ):
-		repo_list = []
-		# now add all the repos
-		repos = os.listdir( os.path.join( os.getcwd(), "resources", "repositories" ) )
-		# enumerate through the list of categories and add the item to the media list
-		for repo in repos:
-			if ( os.path.isdir( os.path.join( os.getcwd(), "resources", "repositories", repo ) ) and "(tagged)" not in repo ):
-				repo_list += [ repo ]
-		log("Loaded repos=%s" % repo_list)
-		return repo_list
-
-	def _get_xbmc_revision( self ):
-		try:
-			self.XBMC_REVISION = re.search("r([0-9]+)",  xbmc.getInfoLabel( "System.BuildVersion" ), re.IGNORECASE).group(1)
-		except:
-			self.XBMC_REVISION = 0
-		log("XBMC_REVISION-%s" % self.XBMC_REVISION)
 
 	def findInstalled(self):
 		log("> findInstalled()")
 		
 		self.INSTALLED = []
-		ignoreList = (".","..",".backups")
+		ignoreList = (".","..",".backups",".svn")
 		self.dialogProgress.update(0, xbmc.getLocalizedString( 30009 )) # Looking for installed addons
 		TOTAL_PATHS = len(self.XBMC_PATHS)
 		for count, p in enumerate(self.XBMC_PATHS):
@@ -106,7 +89,7 @@ class Main:
 
 			files = os.listdir(p)
 			for f in files:
-				# ignore parent dirs
+				# ignore some
 				if f in ignoreList: continue
 
 				percent = int( count * 100.0 / TOTAL_PATHS )
@@ -115,16 +98,30 @@ class Main:
 				# extract version
 				try:
 					filepath = os.path.join( p, f )
+					log("filepath=" + filepath)
 					doc = open( os.path.join(filepath, "default.py"), "r" ).read()
-					ver = self.parseVersion(doc)
-					xbmc_rev = self.parseXBMCRevision(doc)
-					thumb = ""
-					if os.path.isfile( os.path.join(filepath, "default.tbn") ):
+					docTags = parseAllDocTags( doc )
+					ver = docTags["version"]
+
+					if docTags and (ver or self.showNoVer):
 						thumb = os.path.join(filepath, "default.tbn")
-					if ver or self.showNoVer:
-						self.INSTALLED.append({"filepath": filepath, "ver": ver, "thumb": thumb, "xbmc_rev": xbmc_rev })
+						if not os.path.isfile( thumb ):
+							thumb = "DefaultFile.png"
+						cat = self.parseCategory(filepath)
+						# if no title, parse category for it
+						if not docTags["title"]:
+							docTags["title"] = cat.split("/")[-1]
+						self.INSTALLED.append({"filepath": filepath,
+											   "ver": ver,
+											   "thumb": thumb,
+											   "xbmc_rev": docTags["XBMC_Revision"],
+											   'category': cat,
+											   'title': docTags["title"],
+											   'author': docTags["author"],
+											   'date': docTags["date"]
+											   })
 				except:
-					pass#traceback.print_exc()
+					logError()
 
 		log("< findInstalled()  installed count=%d" % len(self.INSTALLED))
 
@@ -132,35 +129,37 @@ class Main:
 	def checkUpdates(self):
 		log("> checkUpdates()")
 
-		actionMsg = xbmc.getLocalizedString( 30010 )        # Checking SVN
+		actionMsg = xbmc.getLocalizedString( 30010 )
 		self.dialogProgress.update(0, actionMsg)
 
 		TOTAL_PATHS = len(self.INSTALLED)
 		quit = False
+		# enumarate throu each installed Addon, checking svn for update
 		for count, info in enumerate(self.INSTALLED):
-			log("%d checking installed=%s" % (count, info))
+			log("%d) checking installed=%s" % (count, info))
 
 			if not info.get('ver',None):
-				log("no version tag: %s" % info)
-				continue            # ignore installed without version doc tag
+				log("ignored, no version tag")
+				continue
 
 			# find installed category from filepath
-			installedCategory  = self.parseCategory(info['filepath'])
+			installedCategory  = info['category']
 
 			for repo in self.SVN_URL_LIST:
-				repo_info = self._get_repo_info( repo )
-				if not repo_info:
-					continue
-				base_url = repo_info[ 0 ] + repo_info[ 1 ]
+				try:
+					REPO_URL, REPO_ROOT, REPO_STRUCTURES = get_repo_info( repo )
+					repo_name, repo_noffset, repo_install, repo_ioffset, repo_voffset = REPO_STRUCTURES[0]
+				except:
+					continue	# repo info missing
+
+				base_url = REPO_URL + REPO_ROOT
 				# xbmc-scripting has no 'scripts' in svn path, so remove it from installedCategory
 				if base_url.startswith(self.URL_BASE_SVN_SCRIPTING):
 					installedCategory = installedCategory.replace('scripts/','')
-
 				url = "/".join( [base_url, installedCategory, "default.py"] )
-				readme_url = "/".join( [base_url, installedCategory, "resources", "readme.txt"] )
 
 				percent = int( count * 100.0 / TOTAL_PATHS )
-				self.dialogProgress.update(percent, actionMsg, installedCategory)
+				self.dialogProgress.update(percent, actionMsg,"%s   %s" % (repo, installedCategory))
 				if self.dialogProgress.iscanceled():
 					quit = True
 					break
@@ -171,19 +170,21 @@ class Main:
 					quit = True
 					break
 				elif doc:
-					# check __version__ tag
-					svn_ver = self.parseVersion(doc)
+					# check remote file __version__ tag
+					svn_ver = parseDocTag(doc, "version")
 					if svn_ver:
+						try:
+							svn_xbmc_rev = int(parseDocTag( doc, "XBMC_Revision" ))
+						except:
+							svn_xbmc_rev = 0
 						self.INSTALLED[count]['svn_ver'] = svn_ver
-						self.INSTALLED[count]['svn_xbmc_rev'] = self.parseXBMCRevision(doc)
-						# _check_readme() removed as it slows creation of list too much for a large installed list.
-#						self.INSTALLED[count]['readme'] = self._check_readme( readme_url.replace(' ','%20') )
-						self.INSTALLED[count]['readme'] = readme_url.replace(' ','%20')
+						self.INSTALLED[count]['svn_xbmc_rev'] = svn_xbmc_rev
+						self.INSTALLED[count]['readme'] = check_readme( "/".join( [base_url, installedCategory] ) )
 						self.INSTALLED[count]['svn_url'] = url.replace('/default.py','')
 						self.INSTALLED[count]['repo'] = repo
-						self.INSTALLED[count]['install'] = repo_info[ 2 ][ 2 ]
-						self.INSTALLED[count]['ioffset'] = repo_info[ 2 ][ 3 ]
-						self.INSTALLED[count]['voffset'] = repo_info[ 2 ][ 4 ]
+						self.INSTALLED[count]['install'] = repo_install
+						self.INSTALLED[count]['ioffset'] = repo_ioffset
+						self.INSTALLED[count]['voffset'] = repo_voffset
 						
 						break # found in svn, move to next installed
 
@@ -191,53 +192,6 @@ class Main:
 
 		log("< checkUpdates() updated count=%d" % len(self.INSTALLED))
 
-	#####################################################################################################
-	def _get_repo_info( self, repo ):
-		# path to info file
-		repopath = os.path.join( os.getcwd(), "resources", "repositories", repo, "repo.xml" )
-		try:
-			# grab a file object
-			fileobject = open( repopath, "r" )
-			# read the info
-			info = fileobject.read()
-			# close the file object
-			fileobject.close()
-			# repo's base url
-			REPO_URL = re.findall( '<url>([^<]+)</url>', info )[ 0 ]
-			# root of repository
-			REPO_ROOT = re.findall( '<root>([^<]*)</root>', info )[ 0 ]
-			# structure of repo
-			REPO_STRUCTURES = re.findall( '<structure name="([^"]+)" noffset="([^"]+)" install="([^"]*)" ioffset="([^"]+)" voffset="([^"]+)"', info )
-			return ( REPO_URL, REPO_ROOT, REPO_STRUCTURES[ 0 ], )
-		except:
-			log("_get_repo_info() %s" % sys.exc_info()[ 1 ])
-			return None
-
-	#####################################################################################################
-	def parseXBMCRevision(self, doc):
-		try:
-			rev = re.search("__XBMC_Revision__.*?[\"'](.*?)[\"']",  doc, re.IGNORECASE).group(1)
-		except:
-			rev = ""
-		log("parseXBMCRevision() revision=%s" % rev)
-		return rev
-
-	#####################################################################################################
-	def parseVersion(self, doc):
-		try:
-			ver = re.search("__version__.*?[\"'](.*?)[\"']",  doc, re.IGNORECASE).group(1)
-		except:
-			ver = ""
-		log("parseVersion() version=%s" % ver)
-		return ver
-
-	#####################################################################################################
-	def _check_readme( self, url ):
-		doc = readURL( url )
-		if not doc:
-			return None		# file not found
-		else:
-			return url
 
 	#####################################################################################################
 	def parseCategory(self, filepath):
@@ -262,7 +216,7 @@ class Main:
 			# create display list
 			sz = len(self.INSTALLED)
 			for info in self.INSTALLED:
-#				print info
+#				print "info=", info
 				svn_url = info.get('svn_url','')
 				svn_ver = info.get('svn_ver','')
 
@@ -277,7 +231,7 @@ class Main:
 				rev = info.get('xbmc_rev', '')
 				svn_xbmc_rev = info.get('svn_xbmc_rev','')
 				readme = info.get('readme',None)
-				category = self.parseCategory(filepath)
+				category = info.get('category','')
 				repo = info.get('repo','SVN ?')
 
 				# add ContextMenu: Delete (unless already deleted status)
@@ -297,19 +251,21 @@ class Main:
 					verState = xbmc.getLocalizedString( 30012 )             # not in SVN
 				elif ver >= svn_ver:
 					verState = xbmc.getLocalizedString( 30011 )				# OK
+					url_args = "show_info=%s" % urllib.quote_plus( repr(filepath) )
+					path = '%s?%s' % ( sys.argv[ 0 ], url_args, )
 				elif (svn_xbmc_rev and self.XBMC_REVISION and self.XBMC_REVISION >= svn_xbmc_rev) or (not svn_xbmc_rev or not self.XBMC_REVISION):
 					# NEW AVAILABLE - setup callback url for plugin SVN Repo Installer
 					verState = "v%s (%s)" % ( svn_ver, xbmc.getLocalizedString( 30014 ) )        # eg. !New! v1.1
 					trunk_url = re.search('(/trunk.*?)$', svn_url, re.IGNORECASE).group(1)
 					#['plugin://programs/SVN Repo Installer/', '-1', '?download_url="%2Ftrunk%2Fplugins%2Fmusic/iTunes%2F"&repo=\'xbmc-addons\'&install=""&ioffset=2&voffset=0']
-
-					# special self update url
-					url_args = "download_url=%s&repo=%s&install=%s&ioffset=%s&voffset=%s" % \
+					info['download_url'] = "download_url=%s&repo=%s&install=%s&ioffset=%s&voffset=%s" % \
 								(repr(urllib.quote_plus(trunk_url + "/")),
 								repr(urllib.quote_plus(repo)),
 								repr(info["install"]),
 								info["ioffset"],
 								info["voffset"],)
+
+					url_args = "show_info=%s" % urllib.quote_plus( repr(filepath) )
 
 					# for self update alter url
 					if "SVN Repo Installer" in category:
@@ -327,17 +283,8 @@ class Main:
 				log("path=" + path)
 
 				# Addon status text as label2
-				text = "[COLOR=%s][%s] %s v%s[/COLOR]" % (labelColour, repo, category, ver)
-				if verState.endswith( "(%s)" % xbmc.getLocalizedString( 30014 ) ):			# New
-					label2 = "[COLOR=FF00FFFF]%s[/COLOR]" % verState
-				elif verState.endswith( "(%s)" % xbmc.getLocalizedString( 30015 ) ):
-					label2 = "[COLOR=FFFF0000]%s[/COLOR]" % verState
-				elif verState == xbmc.getLocalizedString( 30011 ):							# OK
-					label2 = "[COLOR=FF00FF00]%s[/COLOR]" % verState
-				elif verState == xbmc.getLocalizedString( 30018 ):							# Deleted
-					label2 = "[COLOR=66FFFFFF]%s[/COLOR]" % verState
-				else:
-					label2 = "[COLOR=FFFFFF00]%s[/COLOR]" % verState
+				text = "[COLOR=%s][%s] %s (v%s)[/COLOR]" % (labelColour, repo, category, ver)
+				label2 = makeLabel2( verState )
 
 				# determine default icon according to addon type
 				icon = ""
@@ -355,18 +302,12 @@ class Main:
 				if not icon or not xbmc.skinHasImage(icon):
 					icon = "DefaultFile.png"
 
-				# assign thumbnail, in order from: local, svn, icon
-				thumbnail = info["thumb"]
-				if not thumbnail:
-					if path.endswith(".tbn"):
-						thumbnail = path
-					elif svn_url:
-						thumbnail = "/".join( [svn_url.replace(' ','%20'), "default.tbn"] )
-					else:
-						thumbnail = iconbvbv
-				log("thumbnail=" + thumbnail)
+				# assign thumb, in order from: local, svn, icon
+				thumb = info.get('thumb','')
+				if not thumb:
+					thumb = icon
 
-				li=xbmcgui.ListItem( text, label2, icon, thumbnail)
+				li=xbmcgui.ListItem( text, label2, icon, thumb)
 				li.setInfo( type="Video", infoLabels={ "Title": text, "Genre": label2 } )
 
 				# add ContextMenu: Changelog
@@ -416,6 +357,10 @@ class Main:
 		else:
 			runStr = "XBMC.%s(%s)" % ( runType, sys.argv[ 0 ] )
 		return [ (title, runStr), ]
+
+	def show_info( self ):
+		log("show_info()")
+		
 
 if ( __name__ == "__main__" ):
 	try:
