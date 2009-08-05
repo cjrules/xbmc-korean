@@ -8,11 +8,10 @@
   <posy>101</posy>
 </coordinates>
   
-<include>DefaultFade</include>
-  
 <controls>
   
   <control type="group">
+    <include>DefaultFade</include>
     <include>DialogBackWide</include>
     <control type="image">
       <description>Header Back</description>
@@ -29,7 +28,7 @@
       <height>45</height>
       <align>left</align>
       <aligny>center</aligny>
-      <label>$LOCALIZE[31010]</label>
+      <label>$LOCALIZE[31000]</label>
       <font>22BdFont</font>
       <textcolor>FocusedTextColor</textcolor>
     </control>
@@ -40,7 +39,7 @@
       <posy>55</posy>
       <width>520</width>
       <height>120</height>
-      <label>$LOCALIZE[31011] [COLOR=FocusedTextColor]$LOCALIZE[31012][/COLOR].[CR]$LOCALIZE[31013].[CR][CR]$LOCALIZE[31014].[CR]$LOCALIZE[31015].</label>
+      <label>$LOCALIZE[31001] [COLOR=FocusedTextColor]$LOCALIZE[31002][/COLOR].[CR]$LOCALIZE[31003].[CR][CR]$LOCALIZE[31004].[CR]$LOCALIZE[31005].</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <wrapmultiline>true</wrapmultiline>
@@ -107,6 +106,7 @@
       <font>18BdFont</font>
       <onfocus>Skin.SetBool(WelcomeScreen)</onfocus>
       <onclick>Dialog.Close(56)</onclick>
+      <onclick>SetFocus(3000)</onclick>
       <onup>-</onup>
       <ondown>-</ondown>
       <onleft>-</onleft>

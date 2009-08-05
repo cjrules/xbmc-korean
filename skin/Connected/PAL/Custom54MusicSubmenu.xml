@@ -37,46 +37,9 @@
     </control>
 
     <control type="button" id="2002">
-      <description>Albums</description>
-      <posx>10</posx>
-      <posy>55</posy>
-      <width>284</width>
-      <align>left</align>
-      <textoffsetx>40</textoffsetx>
-      <label>$LOCALIZE[132]</label>
-      <font>18BdFont</font>
-      <texturefocus>-</texturefocus>
-      <texturenofocus>-</texturenofocus>
-      <onclick>Dialog.Close(54)</onclick>
-      <onclick>XBMC.ActivateWindow(musiclibrary,albums)</onclick>
-      <onleft>-</onleft>
-      <onright>-</onright>
-      <onup>2007</onup>
-      <ondown>2003</ondown>
-    </control>
-    <control type="button" id="2003">
-      <description>Songs</description>
-      <posx>10</posx>
-      <posy>90</posy>
-      <width>284</width>
-      <align>left</align>
-      <textoffsetx>40</textoffsetx>
-      <aligny>center</aligny>
-      <label>$LOCALIZE[134]</label>
-      <font>18BdFont</font>
-      <texturefocus>-</texturefocus>
-      <texturenofocus>-</texturenofocus>
-      <onclick>Dialog.Close(54)</onclick>
-      <onclick>XBMC.ActivateWindow(musiclibrary,songs)</onclick>
-      <onleft>-</onleft>
-      <onright>-</onright>
-      <onup>2002</onup>
-      <ondown>2004</ondown>
-    </control>
-    <control type="button" id="2004">
       <description>Artists</description>
       <posx>10</posx>
-      <posy>125</posy>
+      <posy>55</posy>
       <width>284</width>
       <align>left</align>
       <textoffsetx>40</textoffsetx>
@@ -85,54 +48,53 @@
       <texturefocus>-</texturefocus>
       <texturenofocus>-</texturenofocus>
       <onclick>Dialog.Close(54)</onclick>
-      <onclick>XBMC.ActivateWindow(musiclibrary,artists)</onclick>
+      <onclick>ActivateWindow(MusicLibrary,Artists,return)</onclick>
+      <onleft>-</onleft>
+      <onright>-</onright>
+      <onup>2007</onup>
+      <ondown>2003</ondown>
+    </control>
+    <control type="button" id="2003">
+      <description>Albums</description>
+      <posx>10</posx>
+      <posy>90</posy>
+      <width>284</width>
+      <align>left</align>
+      <textoffsetx>40</textoffsetx>
+      <aligny>center</aligny>
+      <label>$LOCALIZE[132]</label>
+      <font>18BdFont</font>
+      <texturefocus>-</texturefocus>
+      <texturenofocus>-</texturenofocus>
+      <onclick>Dialog.Close(54)</onclick>
+      <onclick>ActivateWindow(MusicLibrary,Albums,return)</onclick>
+      <onleft>-</onleft>
+      <onright>-</onright>
+      <onup>2002</onup>
+      <ondown>2004</ondown>
+    </control>
+    <control type="button" id="2004">
+      <description>Songs</description>
+      <posx>10</posx>
+      <posy>125</posy>
+      <width>284</width>
+      <align>left</align>
+      <textoffsetx>40</textoffsetx>
+      <label>$LOCALIZE[134]</label>
+      <font>18BdFont</font>
+      <texturefocus>-</texturefocus>
+      <texturenofocus>-</texturenofocus>
+      <onclick>Dialog.Close(54)</onclick>
+      <onclick>ActivateWindow(MusicLibrary,Songs,return)</onclick>
       <onleft>-</onleft>
       <onright>-</onright>
       <onup>2003</onup>
       <ondown>2005</ondown>
     </control>
     <control type="button" id="2005">
-      <description>Genre</description>
-      <posx>10</posx>
-      <posy>160</posy>
-      <width>284</width>
-      <align>left</align>
-      <textoffsetx>40</textoffsetx>
-      <label>$LOCALIZE[135]</label>
-      <font>18BdFont</font>
-      <texturefocus>-</texturefocus>
-      <texturenofocus>-</texturenofocus>
-      <pulseonselect>false</pulseonselect>
-      <onclick>Dialog.Close(54)</onclick>
-      <onclick>XBMC.ActivateWindow(musiclibrary,genres)</onclick>
-      <onleft>-</onleft>
-      <onright>-</onright>
-      <onup>2004</onup>
-      <ondown>2006</ondown>
-    </control>
-    <control type="button" id="2006">
-      <description>Playlists</description>
-      <posx>10</posx>
-      <posy>195</posy>
-      <width>284</width>
-      <align>left</align>
-      <textoffsetx>40</textoffsetx>
-      <label>$LOCALIZE[136]</label>
-      <font>18BdFont</font>
-      <texturefocus>-</texturefocus>
-      <texturenofocus>-</texturenofocus>
-      <pulseonselect>false</pulseonselect>
-      <onclick>Dialog.Close(54)</onclick>
-      <onclick>XBMC.ActivateWindow(musiclibrary,playlists)</onclick>
-      <onleft>-</onleft>
-      <onright>-</onright>
-      <onup>2005</onup>
-      <ondown>2007</ondown>
-    </control>
-    <control type="button" id="2007">
       <description>Music Files</description>
       <posx>10</posx>
-      <posy>230</posy>
+      <posy>160</posy>
       <width>284</width>
       <align>left</align>
       <textoffsetx>40</textoffsetx>
@@ -140,11 +102,49 @@
       <font>18BdFont</font>
       <texturefocus>-</texturefocus>
       <texturenofocus>-</texturenofocus>
+      <pulseonselect>false</pulseonselect>
+      <onclick>Dialog.Close(54)</onclick>
+      <onclick>ActivateWindow(MusicFiles)</onclick>
+      <onleft>-</onleft>
+      <onright>-</onright>
+      <onup>2004</onup>
+      <ondown>2006</ondown>
+    </control>
+    <control type="button" id="2006">
+      <description>Library</description>
+      <posx>10</posx>
+      <posy>195</posy>
+      <width>284</width>
+      <align>left</align>
+      <textoffsetx>40</textoffsetx>
+      <label>$LOCALIZE[14022]</label>
+      <font>18BdFont</font>
+      <texturefocus>-</texturefocus>
+      <texturenofocus>-</texturenofocus>
+      <pulseonselect>false</pulseonselect>
+      <onclick>Dialog.Close(54)</onclick>
+      <onclick>ActivateWindow(MusicLibrary)</onclick>
+      <onleft>-</onleft>
+      <onright>-</onright>
+      <onup>2005</onup>
+      <ondown>2007</ondown>
+    </control>
+    <control type="button" id="2007">
+      <description>Plugins</description>
+      <posx>10</posx>
+      <posy>230</posy>
+      <width>284</width>
+      <align>left</align>
+      <textoffsetx>40</textoffsetx>
+      <label>$LOCALIZE[31044]</label>
+      <font>18BdFont</font>
+      <texturefocus>-</texturefocus>
+      <texturenofocus>-</texturenofocus>
       <textcolor>DefaultTextColor</textcolor>
       <focusedcolor>FocusedTextColor</focusedcolor>
       <disabledcolor>DisabledTextColor</disabledcolor>
       <onclick>Dialog.Close(54)</onclick>
-      <onclick>ActivateWindow(musicfiles)</onclick>
+      <onclick>ActivateWindow(MusicLibrary,Plugins)</onclick>
       <onleft>-</onleft>
       <onright>-</onright>
       <onup>2006</onup>

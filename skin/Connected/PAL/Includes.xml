@@ -46,11 +46,11 @@
     </control>
   </include>
   
-  <include name="WeatherInfo">
+  <include name="HomeWeatherInfo">
     <control type="group">
       <posx>460</posx>
       <posy>10</posy>
-      <visible>Skin.HasSetting(WeatherInfo) + Weather.IsFetched</visible>
+      <visible>Skin.HasSetting(HomeWeatherInfo) + Weather.IsFetched</visible>
       <control type="image">
         <posx>195</posx>
         <width>55</width>
@@ -71,9 +71,8 @@
     </control>
   </include>
   
-	<include name="Backgrounds">
+	<include name="Backgrounds">    
     <control type="group">
-      
       <!-- Default Background -->
       <control type="image">
         <posx>0</posx>
@@ -82,9 +81,9 @@
         <height>576</height>
         <aspectratio>scale</aspectratio>
         <texture>BackgroundDefault.png</texture>
-        <visible>!Skin.String(CustomBackImage) + !Skin.String(CustomBackFolder)</visible>
+        <visible>!Skin.String(CustomBackImage) + !Skin.String(CustomBackFolder) + !Skin.HasSetting(DefaultBackground)</visible>
       </control>
-      
+
       <!-- Default Background Colored -->
       <control type="image">
         <posx>0</posx>
@@ -93,11 +92,9 @@
         <height>576</height>
         <aspectratio>scale</aspectratio>
         <texture>$INFO[Skin.String(DefaultBackground)]</texture>
-        <visible>!Skin.String(CustomBackImage) + !Skin.String(CustomBackFolder) + !Skin.HasSetting(DefaultBackground)</visible>
+        <visible>!Skin.String(CustomBackImage) + !Skin.String(CustomBackFolder) + !Skin.HasSetting(DefaultBackground)]</visible>
       </control>
 
-
-<!-- No Diffuse -->            
       <!-- Custom Background Image -->
       <control type="image">
         <posx>0</posx>
@@ -106,7 +103,7 @@
         <height>576</height>
         <aspectratio>scale</aspectratio>
         <info>Skin.String(CustomBackImage)</info>
-        <visible>Skin.String(CustomBackImage) + !Skin.String(CustomBackFolder) + Skin.HasSetting(BackgroundDiffuse)</visible>
+        <visible>Skin.String(CustomBackImage) + !Skin.String(CustomBackFolder)</visible>
       </control>
 
       <!-- Custom Background Folder -->
@@ -123,289 +120,12 @@
         <aspectratio>scale</aspectratio>
         <info>Skin.String(CustomBackFolder)</info>
         <fadetime>400</fadetime>
-        <visible>!Skin.String(CustomBackImage) + Skin.String(CustomBackFolder) + Skin.HasSetting(BackgroundDiffuse)</visible>
+        <visible>!Skin.String(CustomBackImage) + Skin.String(CustomBackFolder)</visible>
       </control>
 
-      <!-- Video Fanart-->
-      <control type="group">
-        <visible>!Skin.HasSetting(VideoFanart) + Skin.HasSetting(VideoFanartDiffuse) + [Window.IsVisible(24) | Window.IsVisible(25)]</visible>
-        <control type="largeimage">
-          <posx>0</posx>
-          <posy>0</posy>
-          <width>720</width>
-          <height>576</height>
-          <aspectratio>scale</aspectratio>
-          <info>ListItem.Property(fanart_image)</info>
-          <fadetime>400</fadetime>
-        </control>
-        <control type="largeimage">
-          <posx>0</posx>
-          <posy>0</posy>
-          <width>720</width>
-          <height>576</height>
-          <aspectratio>scale</aspectratio>
-          <info>Fanart.Image</info>
-          <fadetime>400</fadetime>
-        </control>
-      </control>
-
-      <!-- Music Fanart -->
-      <control type="group">
-        <visible>!Skin.HasSetting(MusicFanart) + Skin.HasSetting(MusicFanartDiffuse) + [Window.IsVisible(501) | Window.IsVisible(502)]</visible>
-        <control type="largeimage">
-          <posx>0</posx>
-          <posy>0</posy>
-          <width>720</width>
-          <height>576</height>
-          <aspectratio>scale</aspectratio>
-          <info>ListItem.Property(fanart_image)</info>
-          <fadetime>400</fadetime>
-        </control>
-        <control type="largeimage">
-          <posx>0</posx>
-          <posy>0</posy>
-          <width>720</width>
-          <height>576</height>
-          <aspectratio>scale</aspectratio>
-          <info>Fanart.Image</info>
-          <fadetime>400</fadetime>
-        </control>
-      </control>
-
-      <!-- Photo Back -->
-      <control type="largeimage">
-        <posx>0</posx>
-        <posy>0</posy>
-        <width>720</width>
-        <height>576</height>
-        <aspectratio>scale</aspectratio>
-        <info>ListItem.FileNameAndPath</info>
-        <fadetime>400</fadetime>
-        <visible>Window.IsActive(2) + Skin.HasSetting(PhotoBack) + Skin.HasSetting(PhotoDiffuse)</visible>
-      </control>
-
-      <!-- Weather Fanart -->
-      <control type="multiimage">
-        <description>Weather Fanart</description>
-        <width>720</width>
-        <height>576</height>
-        <imagepath>$INFO[Skin.String(WeatherFanartPath),]$INFO[Weather.FanartCode]</imagepath>
-        <timeperimage>5000</timeperimage>
-        <fadetime>2000</fadetime>
-        <pauseatend>10000</pauseatend>
-        <randomize>true</randomize>
-        <loop>no</loop>
-        <aspectratio>scale</aspectratio>
-        <fadetime>400</fadetime>
-        <visible>Window.IsActive(2600) + Skin.String(WeatherFanartPath) + Skin.HasSetting(WeatherDiffuse)</visible>
-      </control>
-
-      <!-- Full Screen Video and Visual -->
-      <control type="group">
-        <visible>[Player.HasVideo | Player.HasAudio] + [Skin.HasSetting(FullScreenVideoEnable) |  Skin.HasSetting(FullScreenVisualEnable)]</visible>
-        <control type="videowindow">
-          <description>Video Preview Window</description>
-          <posx>0</posx>
-          <posy>0</posy>
-          <width>720</width>
-          <height>576</height>
-          <visible>Skin.HasSetting(FullScreenVideoEnable)</visible>
-        </control>
-        <control type="visualisation">
-          <posx>0</posx>
-          <posy>0</posy>
-          <width>720</width>
-          <height>576</height>
-          <visible>Skin.HasSetting(FullScreenVisualEnable)</visible>
-        </control>
-        <control type="image">
-          <width>720</width>
-          <height>576</height>
-          <aspectratio>stretch</aspectratio>
-          <texture>black.png</texture>
-          <animation effect="fade" delay="0" end="70" time="0" condition="true">Conditional</animation>
-        </control>
-      </control>
-      
-
-<!-- With Diffuse -->
-      <!-- Custom Background Image -->
-      <control type="image">
-        <posx>0</posx>
-        <posy>0</posy>
-        <width>720</width>
-        <height>576</height>
-        <aspectratio>scale</aspectratio>
-        <colordiffuse>BackgroundDiffuseColor</colordiffuse>
-        <info>Skin.String(CustomBackImage)</info>
-        <visible>Skin.String(CustomBackImage) + !Skin.String(CustomBackFolder) + !Skin.HasSetting(BackgroundDiffuse)</visible>
-      </control>
-
-      <!-- Custom Background Folder -->
-      <control type="multiimage">
-        <posx>0</posx>
-        <posy>0</posy>
-        <width>720</width>
-        <height>576</height>
-        <timeperimage>5000</timeperimage>
-        <fadetime>2000</fadetime>
-        <pauseatend>10000</pauseatend>
-        <randomize>true</randomize>
-        <loop>no</loop>
-        <aspectratio>scale</aspectratio>
-        <colordiffuse>BackgroundDiffuseColor</colordiffuse>
-        <info>Skin.String(CustomBackFolder)</info>
-        <fadetime>400</fadetime>
-        <visible>!Skin.String(CustomBackImage) + Skin.String(CustomBackFolder) + !Skin.HasSetting(BackgroundDiffuse)</visible>
-      </control>
-
-      <!-- Video Fanart -->
-      <control type="group">
-        <visible>!Skin.HasSetting(VideoFanart) + !Skin.HasSetting(VideoFanartDiffuse) + [Window.IsVisible(24) | Window.IsVisible(25)]</visible>
-        <control type="largeimage">
-          <posx>0</posx>
-          <posy>0</posy>
-          <width>720</width>
-          <height>576</height>
-          <aspectratio>scale</aspectratio>
-          <colordiffuse>BackgroundDiffuseColor</colordiffuse>
-          <info>ListItem.Property(fanart_image)</info>
-          <fadetime>400</fadetime>
-        </control>
-        <control type="largeimage">
-          <posx>0</posx>
-          <posy>0</posy>
-          <width>720</width>
-          <height>576</height>
-          <aspectratio>scale</aspectratio>
-          <colordiffuse>BackgroundDiffuseColor</colordiffuse>
-          <info>Fanart.Image</info>
-          <fadetime>400</fadetime>
-        </control>
-      </control>
-      
-      <!-- Music Fanart -->
-      <control type="group">
-        <visible>!Skin.HasSetting(MusicFanart) + !Skin.HasSetting(MusicFanartDiffuse) + [Window.IsVisible(501) | Window.IsVisible(502)]</visible>
-        <control type="largeimage">
-          <posx>0</posx>
-          <posy>0</posy>
-          <width>720</width>
-          <height>576</height>
-          <aspectratio>scale</aspectratio>
-          <colordiffuse>BackgroundDiffuseColor</colordiffuse>
-          <info>ListItem.Property(fanart_image)</info>
-          <fadetime>400</fadetime>
-        </control>
-        <control type="largeimage">
-          <posx>0</posx>
-          <posy>0</posy>
-          <width>720</width>
-          <height>576</height>
-          <aspectratio>scale</aspectratio>
-          <colordiffuse>BackgroundDiffuseColor</colordiffuse>
-          <info>Fanart.Image</info>
-          <fadetime>400</fadetime>
-        </control>
-      </control>
-
-      <!-- Photo Back -->
-      <control type="largeimage">
-        <posx>0</posx>
-        <posy>0</posy>
-        <width>720</width>
-        <height>576</height>
-        <aspectratio>scale</aspectratio>
-        <info>ListItem.FileNameAndPath</info>
-        <colordiffuse>BackgroundDiffuseColor</colordiffuse>
-        <fadetime>400</fadetime>
-        <visible>Window.IsActive(2) + Skin.HasSetting(PhotoBack) + !Skin.HasSetting(PhotoDiffuse)</visible>
-      </control>
-
-      <!-- Weather Fanart -->
-      <control type="multiimage">
-        <description>Weather Fanart</description>
-        <width>720</width>
-        <height>576</height>
-        <imagepath>$INFO[Skin.String(WeatherFanartPath),]$INFO[Weather.FanartCode]</imagepath>
-        <timeperimage>5000</timeperimage>
-        <fadetime>2000</fadetime>
-        <pauseatend>10000</pauseatend>
-        <randomize>true</randomize>
-        <loop>no</loop>
-        <aspectratio>scale</aspectratio>
-        <colordiffuse>BackgroundDiffuseColor</colordiffuse>
-        <fadetime>400</fadetime>
-        <visible>Window.IsActive(2600) + Skin.String(WeatherFanartPath) + !Skin.HasSetting(WeatherDiffuse)</visible>
-      </control>
     </control>
 	</include>
-  
-  <include name="WeatherBack">
-    <control type="image">
-      <description>Weather Background Image</description>
-      <posx>0</posx>
-      <posy>170</posy>
-      <width>720</width>
-      <height>406</height>
-      <texture>Black.png</texture>
-      <aspectratio>stretch</aspectratio>
-      <include>MediaBackFade</include>
-      <visible>Skin.HasSetting(WeatherBackEnable)</visible>
-    </control>
-  </include>
-  
-  <include name="WrapBack">
-    <control type="group">
-      <posx>0</posx>
-      <posy>330</posy>
-      <include>DefaultFade</include>
-      <visible>Control.IsVisible(55) + Skin.HasSetting(WrapBack)</visible>
-      <control type="image">
-        <posx>0</posx>
-        <posy>0</posy>
-        <width>720</width>
-        <height>247</height>
-        <texture>Black.png</texture>
-        <aspectratio>stretch</aspectratio>
-        <include>MediaBackFade</include>
-      </control>
-      <control type="label">
-        <posx>25</posx>
-        <width>670</width>
-        <height>35</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label>$INFO[ListItem.Title]</label>
-        <font>20BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-        <visible>Skin.HasSetting(WrapInfo)</visible>
-      </control>
-      <control type="label">
-        <posx>25</posx>
-        <width>670</width>
-        <height>30</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <label>$INFO[ListItem.Label]</label>
-        <font>20BdFont</font>
-        <textcolor>FocusedTextColor</textcolor>
-        <visible>IsEmpty(ListItem.Title) + Skin.HasSetting(WrapInfo)</visible>
-      </control>
-      <control type="image">
-        <posx>545</posx>
-        <posy>10</posy>
-        <width>-</width>
-        <height>20</height>
-        <align>left</align>
-        <aligny>center</aligny>
-        <info>ListItem.StarRating</info>
-        <aspectratio>keep</aspectratio>
-        <visible>!IsEmpty(ListItem.StarRating) + Skin.HasSetting(WrapInfo) + [Container.Content(Movies) | Container.Content(Songs) | Container.Content(TVShows) | Container.Content(Episodes)]</visible>
-      </control>
-    </control>
-  </include>
-  
+      
 	<include name="MediaInfoBack">
     <!-- <posx>20 <posy>20 -->
 		<control type="image">
@@ -580,6 +300,524 @@
       </control>
     </control>
   </include>
+  
+  <include name="DefaultViewOptions">
+    <control type="group" id="9001">
+      <posx>0</posx>
+      <posy>0</posy>
+      <control type="button" id="2001">
+        <description>View Header</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>304</width>
+        <height>45</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>-</label>
+        <font>22BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+        <focusedcolor>DefaultTextColor</focusedcolor>
+        <disabledcolor>DisabledTextColor</disabledcolor>
+        <texturefocus>ButtonNF.png</texturefocus>
+        <texturenofocus>ButtonNF.png</texturenofocus>
+        <textoffsetx>35</textoffsetx>
+        <onfocus>SetFocus(2002)</onfocus>
+        <pulseonselect>false</pulseonselect>
+        <onleft>-</onleft>
+        <onright>-</onright>
+        <onup>-</onup>
+        <ondown>-</ondown>
+      </control>
+      <control type="label">
+        <description>View Header Label</description>
+        <posx>35</posx>
+        <posy>0</posy>
+        <width>268</width>
+        <height>45</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[31023]</label>
+        <font>22BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+        <visible>ControlGroup(9001).HasFocus</visible>
+      </control>
+      <control type="label">
+        <description>View Header Label</description>
+        <posx>35</posx>
+        <posy>0</posy>
+        <width>268</width>
+        <height>45</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[31023]</label>
+        <font>22BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+        <visible>!ControlGroup(9001).HasFocus</visible>
+      </control>
+
+      <control type="group">
+        <animation effect="fade" time="10" delay="120" end="100" condition="ControlGroup(9001).HasFocus">Conditional</animation>
+        <control type="button" id="2002">
+          <description>List</description>
+          <posx>0</posx>
+          <posy>45</posy>
+          <width>285</width>
+          <height>30</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>$LOCALIZE[535]</label>
+          <font>18BdFont</font>
+          <textcolor>DefaultTextColor</textcolor>
+          <focusedcolor>FocusedTextColor</focusedcolor>
+          <disabledcolor>DisabledTextColor</disabledcolor>
+          <texturefocus>-</texturefocus>
+          <texturenofocus>-</texturenofocus>
+          <textoffsetx>45</textoffsetx>
+          <pulseonselect>false</pulseonselect>
+          <onclick>Container.SetViewMode(51)</onclick>
+          <onleft>51</onleft>
+          <onright>51</onright>
+          <onup>2021</onup>
+          <ondown>2003</ondown>
+          <visible>ControlGroup(9001).HasFocus + [!Window.IsVisible(20) + !Window.IsVisible(35)]</visible>
+        </control>
+        <control type="button" id="2002">
+          <description>List Scripts</description>
+          <posx>0</posx>
+          <posy>45</posy>
+          <width>285</width>
+          <height>30</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>$LOCALIZE[535]</label>
+          <font>18BdFont</font>
+          <textcolor>DefaultTextColor</textcolor>
+          <focusedcolor>FocusedTextColor</focusedcolor>
+          <disabledcolor>DisabledTextColor</disabledcolor>
+          <texturefocus>-</texturefocus>
+          <texturenofocus>-</texturenofocus>
+          <textoffsetx>45</textoffsetx>
+          <pulseonselect>false</pulseonselect>
+          <onclick>Container.SetViewMode(51)</onclick>
+          <onleft>51</onleft>
+          <onright>51</onright>
+          <onup>2011</onup>
+          <ondown>2003</ondown>
+          <visible>ControlGroup(9001).HasFocus + [Window.IsVisible(20) | Window.IsVisible(35)]</visible>
+        </control>
+        <control type="image">
+          <description>Selected Dot</description>
+          <posx>15</posx>
+          <posy>49</posy>
+          <width>30</width>
+          <height>30</height>
+          <aspectratio align="left">keep</aspectratio>
+          <texture>ButtonDot.png</texture>
+          <visible>ControlGroup(9001).HasFocus + Control.IsVisible(51)</visible>
+        </control>
+        <control type="button" id="2003">
+          <description>Big List</description>
+          <posx>0</posx>
+          <posy>75</posy>
+          <width>285</width>
+          <height>30</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>$LOCALIZE[537]</label>
+          <font>18BdFont</font>
+          <textcolor>DefaultTextColor</textcolor>
+          <focusedcolor>FocusedTextColor</focusedcolor>
+          <disabledcolor>DisabledTextColor</disabledcolor>
+          <texturefocus>-</texturefocus>
+          <texturenofocus>-</texturenofocus>
+          <textoffsetx>45</textoffsetx>
+          <pulseonselect>false</pulseonselect>
+          <onclick>Container.SetViewMode(52)</onclick>
+          <onleft>51</onleft>
+          <onright>51</onright>
+          <onup>2002</onup>
+          <ondown>2004</ondown>
+          <visible>ControlGroup(9001).HasFocus</visible>
+        </control>
+        <control type="image">
+          <description>Selected Dot</description>
+          <posx>15</posx>
+          <posy>78</posy>
+          <width>30</width>
+          <height>30</height>
+          <aspectratio align="left">keep</aspectratio>
+          <texture>ButtonDot.png</texture>
+          <visible>ControlGroup(9001).HasFocus + Control.IsVisible(52)</visible>
+        </control>
+        <control type="button" id="2004">
+          <description>Icons</description>
+          <posx>0</posx>
+          <posy>105</posy>
+          <width>285</width>
+          <height>30</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>$LOCALIZE[536]</label>
+          <font>18BdFont</font>
+          <textcolor>DefaultTextColor</textcolor>
+          <focusedcolor>FocusedTextColor</focusedcolor>
+          <disabledcolor>DisabledTextColor</disabledcolor>
+          <texturefocus>-</texturefocus>
+          <texturenofocus>-</texturenofocus>
+          <textoffsetx>45</textoffsetx>
+          <pulseonselect>false</pulseonselect>
+          <onclick>Container.SetViewMode(53)</onclick>
+          <onleft>51</onleft>
+          <onright>51</onright>
+          <onup>2003</onup>
+          <ondown>2005</ondown>
+          <visible>ControlGroup(9001).HasFocus</visible>
+        </control>
+        <control type="image">
+          <description>Selected Dot</description>
+          <posx>15</posx>
+          <posy>108</posy>
+          <width>30</width>
+          <height>30</height>
+          <aspectratio align="left">keep</aspectratio>
+          <texture>ButtonDot.png</texture>
+          <visible>ControlGroup(9001).HasFocus + Control.IsVisible(53)</visible>
+        </control>
+        <control type="button" id="2005">
+          <description>Wide</description>
+          <posx>0</posx>
+          <posy>135</posy>
+          <width>285</width>
+          <height>30</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>$LOCALIZE[31020]</label>
+          <font>18BdFont</font>
+          <textcolor>DefaultTextColor</textcolor>
+          <focusedcolor>FocusedTextColor</focusedcolor>
+          <disabledcolor>DisabledTextColor</disabledcolor>
+          <texturefocus>-</texturefocus>
+          <texturenofocus>-</texturenofocus>
+          <textoffsetx>45</textoffsetx>
+          <pulseonselect>false</pulseonselect>
+          <onclick>Container.SetViewMode(54)</onclick>
+          <onleft>51</onleft>
+          <onright>51</onright>
+          <onup>2004</onup>
+          <ondown>2006</ondown>
+          <visible>ControlGroup(9001).HasFocus</visible>
+        </control>
+        <control type="image">
+          <description>Selected Dot</description>
+          <posx>15</posx>
+          <posy>138</posy>
+          <width>30</width>
+          <height>30</height>
+          <aspectratio align="left">keep</aspectratio>
+          <texture>ButtonDot.png</texture>
+          <visible>ControlGroup(9001).HasFocus + Control.IsVisible(54)</visible>
+        </control>
+        <control type="button" id="2006">
+          <description>Tilted</description>
+          <posx>0</posx>
+          <posy>165</posy>
+          <width>285</width>
+          <height>30</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>$LOCALIZE[31021]</label>
+          <font>18BdFont</font>
+          <textcolor>DefaultTextColor</textcolor>
+          <focusedcolor>FocusedTextColor</focusedcolor>
+          <disabledcolor>DisabledTextColor</disabledcolor>
+          <texturefocus>-</texturefocus>
+          <texturenofocus>-</texturenofocus>
+          <textoffsetx>45</textoffsetx>
+          <pulseonselect>false</pulseonselect>
+          <onclick>Container.SetViewMode(56)</onclick>
+          <onleft>51</onleft>
+          <onright>51</onright>
+          <onup>2005</onup>
+          <ondown>2007</ondown>
+          <visible>ControlGroup(9001).HasFocus</visible>
+        </control>
+        <control type="image">
+          <description>Selected Dot</description>
+          <posx>15</posx>
+          <posy>168</posy>
+          <width>30</width>
+          <height>30</height>
+          <aspectratio align="left">keep</aspectratio>
+          <texture>ButtonDot.png</texture>
+          <visible>ControlGroup(9001).HasFocus + Control.IsVisible(56)</visible>
+        </control>
+        <control type="button" id="2007">
+          <description>Wrap</description>
+          <posx>0</posx>
+          <posy>195</posy>
+          <width>285</width>
+          <height>30</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>$LOCALIZE[31022]</label>
+          <font>18BdFont</font>
+          <textcolor>DefaultTextColor</textcolor>
+          <focusedcolor>FocusedTextColor</focusedcolor>
+          <disabledcolor>DisabledTextColor</disabledcolor>
+          <texturefocus>-</texturefocus>
+          <texturenofocus>-</texturenofocus>
+          <textoffsetx>45</textoffsetx>
+          <pulseonselect>false</pulseonselect>
+          <onclick>Container.SetViewMode(55)</onclick>
+          <onleft>51</onleft>
+          <onright>51</onright>
+          <onup>2006</onup>
+          <ondown>2011</ondown>
+          <visible>ControlGroup(9001).HasFocus</visible>
+        </control>
+        <control type="image">
+          <description>Selected Dot</description>
+          <posx>15</posx>
+          <posy>198</posy>
+          <width>30</width>
+          <height>30</height>
+          <aspectratio align="left">keep</aspectratio>
+          <texture>ButtonDot.png</texture>
+          <visible>ControlGroup(9001).HasFocus + Control.IsVisible(55)</visible>
+        </control>
+      </control>
+    </control>
+    <control type="group" id="9002">
+      <posx>0</posx>
+      <posy>230</posy>
+      <animation effect="slide" time="10" end="0,-185" condition="ControlGroup(9002).HasFocus | ControlGroup(9003).HasFocus">Conditional</animation>
+      <control type="button" id="2011">
+        <description>View Options Header</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>304</width>
+        <height>45</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>-</label>
+        <font>22BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+        <focusedcolor>DefaultTextColor</focusedcolor>
+        <disabledcolor>DisabledTextColor</disabledcolor>
+        <texturefocus>ButtonNF.png</texturefocus>
+        <texturenofocus>ButtonNF.png</texturenofocus>
+        <textoffsetx>35</textoffsetx>
+        <pulseonselect>false</pulseonselect>
+        <onfocus>SetFocus(3)</onfocus>
+        <onleft>51</onleft>
+        <onright>51</onright>
+        <onup>-</onup>
+        <ondown>-</ondown>
+        <visible>!Window.IsVisible(28) + !Window.IsVisible(500)</visible>
+      </control>
+      <control type="button" id="2011">
+        <description>View Options Header</description>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>304</width>
+        <height>45</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>-</label>
+        <font>22BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+        <focusedcolor>DefaultTextColor</focusedcolor>
+        <disabledcolor>DisabledTextColor</disabledcolor>
+        <texturefocus>ButtonNF.png</texturefocus>
+        <texturenofocus>ButtonNF.png</texturenofocus>
+        <textoffsetx>35</textoffsetx>
+        <pulseonselect>false</pulseonselect>
+        <onfocus>SetFocus(20)</onfocus>
+        <onleft>51</onleft>
+        <onright>51</onright>
+        <onup>-</onup>
+        <ondown>-</ondown>
+        <visible>Window.IsVisible(28) | Window.IsVisible(500)</visible>
+      </control>
+      <control type="label">
+        <description>View Options Header Label</description>
+        <posx>35</posx>
+        <posy>0</posy>
+        <width>268</width>
+        <height>45</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[31024]</label>
+        <font>22BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+        <visible>ControlGroup(9002).HasFocus</visible>
+      </control>
+      <control type="label">
+        <description>View Options Header Label</description>
+        <posx>35</posx>
+        <posy>0</posy>
+        <width>268</width>
+        <height>45</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$LOCALIZE[31024]</label>
+        <font>22BdFont</font>
+        <textcolor>DefaultTextColor</textcolor>
+        <visible>!ControlGroup(9002).HasFocus</visible>
+      </control>
+
+      <control type="group">
+        <animation effect="fade" time="10" delay="120" end="100" condition="ControlGroup(9002).HasFocus">Conditional</animation>
+        <control type="group">
+          <visible>!Window.IsVisible(28) + !Window.IsVisible(500) + !Window.IsVisible(20)</visible>
+          <control type="button" id="3">
+            <description>Sort By</description>
+            <posx>0</posx>
+            <posy>45</posy>
+            <width>285</width>
+            <height>30</height>
+            <align>left</align>
+            <aligny>center</aligny>
+            <label>$LOCALIZE[581]</label>
+            <font>18BdFont</font>
+            <textcolor>DefaultTextColor</textcolor>
+            <focusedcolor>FocusedTextColor</focusedcolor>
+            <disabledcolor>DisabledTextColor</disabledcolor>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <pulseonselect>false</pulseonselect>
+            <textoffsetx>45</textoffsetx>
+            <onleft>51</onleft>
+            <onright>51</onright>
+            <onup>2001</onup>
+            <ondown>2012</ondown>
+            <visible>ControlGroup(9002).HasFocus</visible>
+          </control>
+          <control type="togglebutton" id="2012">
+            <description>Up/Down</description>
+            <posx>0</posx>
+            <posy>75</posy>
+            <width>285</width>
+            <height>30</height>
+            <font>18BdFont</font>
+            <label>$LOCALIZE[31034]</label>
+            <altlabel>$LOCALIZE[31035]</altlabel>
+            <texturenofocus>-</texturenofocus>
+            <texturefocus>-</texturefocus>
+            <alttexturenofocus>-</alttexturenofocus>
+            <alttexturefocus>-</alttexturefocus>
+            <onclick>Container.SortDirection(ascending)</onclick>
+            <align>left</align>
+            <textoffsetx>45</textoffsetx>
+            <onleft>51</onleft>
+            <onright>51</onright>
+            <onup>3</onup>
+            <ondown>2021</ondown>
+            <visible>ControlGroup(9002).HasFocus</visible>
+          </control>
+        </control>
+        <control type="group">
+          <visible>Window.IsVisible(20) | Window.IsVsible(35)</visible>
+          <control type="button" id="3">
+            <description>Sort By</description>
+            <posx>0</posx>
+            <posy>45</posy>
+            <width>285</width>
+            <height>30</height>
+            <align>left</align>
+            <aligny>center</aligny>
+            <label>$LOCALIZE[581]</label>
+            <font>18BdFont</font>
+            <textcolor>DefaultTextColor</textcolor>
+            <focusedcolor>FocusedTextColor</focusedcolor>
+            <disabledcolor>DisabledTextColor</disabledcolor>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <pulseonselect>false</pulseonselect>
+            <textoffsetx>45</textoffsetx>
+            <onleft>51</onleft>
+            <onright>51</onright>
+            <onup>2001</onup>
+            <ondown>2012</ondown>
+            <visible>ControlGroup(9002).HasFocus</visible>
+          </control>
+          <control type="togglebutton" id="2012">
+            <description>Up/Down</description>
+            <posx>0</posx>
+            <posy>75</posy>
+            <width>285</width>
+            <height>30</height>
+            <font>18BdFont</font>
+            <label>$LOCALIZE[31034]</label>
+            <altlabel>$LOCALIZE[31035]</altlabel>
+            <texturenofocus>-</texturenofocus>
+            <texturefocus>-</texturefocus>
+            <alttexturenofocus>-</alttexturenofocus>
+            <alttexturefocus>-</alttexturefocus>
+            <onclick>Container.SortDirection(ascending)</onclick>
+            <align>left</align>
+            <textoffsetx>45</textoffsetx>
+            <onleft>51</onleft>
+            <onright>51</onright>
+            <onup>3</onup>
+            <ondown>2001</ondown>
+            <visible>ControlGroup(9002).HasFocus</visible>
+          </control>
+        </control>
+        <control type="group">
+          <visible>Window.IsVisible(28) | Window.IsVisible(500)</visible>
+          <control type="radiobutton" id="20">
+            <description>Shuffle button</description>
+            <posx>0</posx>
+            <posy>45</posy>
+            <height>30</height>
+            <width>270</width>
+            <align>left</align>
+            <aligny>center</aligny>
+            <font>18BdFont</font>
+            <label>$LOCALIZE[191]</label>
+            <textcolor>DefaultTextColor</textcolor>
+            <focusedcolor>FocusedTextColor</focusedcolor>
+            <disabledcolor>DisabledTextColor</disabledcolor>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <textureradiofocus>RadiobuttonFo.png</textureradiofocus>
+            <textureradionofocus>RadiobuttonNF.png</textureradionofocus>
+            <textoffsetx>45</textoffsetx>
+            <pulseonselect>false</pulseonselect>
+            <onleft>51</onleft>
+            <onright>51</onright>
+            <onup>2001</onup>
+            <ondown>26</ondown>
+            <visible>ControlGroup(9002).HasFocus</visible>
+          </control>
+          <control type="button" id="26">
+            <description>Repeat button</description>
+            <posx>0</posx>
+            <posy>75</posy>
+            <width>285</width>
+            <height>30</height>
+            <align>left</align>
+            <aligny>center</aligny>
+            <label>-</label>
+            <font>18BdFont</font>
+            <textcolor>DefaultTextColor</textcolor>
+            <focusedcolor>FocusedTextColor</focusedcolor>
+            <disabledcolor>DisabledTextColor</disabledcolor>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <pulseonselect>false</pulseonselect>
+            <textoffsetx>45</textoffsetx>
+            <onleft>51</onleft>
+            <onright>51</onright>
+            <onup>20</onup>
+            <ondown>2021</ondown>
+            <visible>ControlGroup(9002).HasFocus</visible>
+          </control>
+        </control>
+      </control>
+    </control>
+  </include>
 
 	<!-- Option Menus #Headers-#Buttons -->
   <include name="OptionBack1-1">
@@ -652,6 +890,18 @@
       <height>290</height>
       <aspectratio align="left">stretch</aspectratio>
       <texture>OptionBack1-6.png</texture>
+    </control>
+  </include>
+  <include name="OptionBack1-7">
+    <!-- <posx>208 <posy>135 -->
+    <control type="image">
+      <description>Menu Background Image </description>
+      <posx>-10</posx>
+      <posy>-10</posy>
+      <width>324</width>
+      <height>325</height>
+      <aspectratio align="left">stretch</aspectratio>
+      <texture>OptionBack1-7.png</texture>
     </control>
   </include>
   
@@ -1239,7 +1489,33 @@
   </include>
 
   <!-- Media Flags -->
-  <include name="MediaFlags">
+  <include name="MediaFlagConditions">
+    <control type="group">
+      <visible>Control.IsVisible(51) + !Skin.HasSetting(MediaFlagsList)</visible>
+      <include>MediaFlagImages</include>
+    </control>
+    <control type="group">
+      <visible>Control.IsVisible(52) + !Skin.HasSetting(MediaFlagsBigList)</visible>
+      <include>MediaFlagImages</include>
+    </control>
+    <control type="group">
+      <visible>Control.IsVisible(53) + !Skin.HasSetting(MediaFlagsIcons)</visible>
+      <include>MediaFlagImages</include>
+    </control>
+    <control type="group">
+      <visible>Control.IsVisible(54) + !Skin.HasSetting(MediaFlagsWide)</visible>
+      <include>MediaFlagImages</include>
+    </control>
+    <control type="group">
+      <visible>Control.IsVisible(56) + !Skin.HasSetting(MediaFlagsTilted)</visible>
+      <include>MediaFlagImages</include>
+    </control>
+    <control type="group">
+      <visible>Control.IsVisible(55) + !Skin.HasSetting(MediaFlagsWrap)</visible>
+      <include>MediaFlagImages</include>
+    </control>
+  </include>
+  <include name="MediaFlagImages">
     <control type="grouplist">
       <posx>350</posx>
       <posy>535</posy>
@@ -1251,7 +1527,7 @@
       <onleft>-</onleft>
       <onright>-</onright>
       <orientation>horizontal</orientation>
-      <visible>!Skin.HasSetting(MediaFlags) + !Container.Content(movies)</visible>
+      <visible>!Container.Content(movies)</visible>
       <include>MediaFlagFade</include>
 
       <control type="image" id="202">
@@ -1260,9 +1536,9 @@
         <aspectratio>keep</aspectratio>
         <info>ListItem.Overlay</info>
       </control>
-      
+
     </control>
-    
+
     <control type="grouplist">
       <description>Main Categories</description>
       <posx>165</posx>
@@ -1275,148 +1551,148 @@
       <onleft>-</onleft>
       <onright>-</onright>
       <orientation>horizontal</orientation>
-      <visible>!Skin.HasSetting(MediaFlags) + Container.Content(movies)</visible>
+      <visible>Container.Content(movies)</visible>
       <include>MediaFlagFade</include>
-      
-        <control type="image" id="202">
-          <width>25</width>
-          <height>25</height>
-          <aspectratio>keep</aspectratio>
-          <info>ListItem.Overlay</info>
-        </control>
-      
-<!-- Video Resolutions -->
-        <control type="image" id="212">
-          <width>56</width>
-          <height>25</height>
-          <texture>resolutions/sd.png</texture>
-          <aspectratio>keep</aspectratio>
-          <visible>substring(listitem.studio,sd)</visible>
-        </control>
-        <control type="image" id="213">
-          <width>56</width>
-          <height>25</height>
-          <texture>resolutions/480i.png</texture>
-          <aspectratio>keep</aspectratio>
-          <visible>substring(listitem.studio,480i)</visible>
-        </control>
-        <control type="image" id="214">
-          <width>56</width>
-          <height>25</height>
-          <texture>resolutions/576i.png</texture>
-          <aspectratio>keep</aspectratio>
-          <visible>substring(listitem.studio,576i)</visible>
-        </control>
-        <control type="image" id="215">
-          <width>56</width>
-          <height>25</height>
-          <texture>resolutions/720i.png</texture>
-          <aspectratio>keep</aspectratio>
-          <visible>substring(listitem.studio,720i)</visible>
-        </control>
-        <control type="image" id="216">
-          <width>56</width>
-          <height>25</height>
-          <texture>resolutions/1080i.png</texture>
-          <aspectratio>keep</aspectratio>
-          <visible>substring(listitem.studio,1080i)</visible>
-        </control>
-        <control type="image" id="217">
-          <width>56</width>
-          <height>25</height>
-          <texture>resolutions/480p.png</texture>
-          <aspectratio>keep</aspectratio>
-          <visible>substring(listitem.studio,480p)</visible>
-        </control>
-        <control type="image" id="218">
-          <width>56</width>
-          <height>25</height>
-          <texture>resolutions/576p.png</texture>
-          <aspectratio>keep</aspectratio>
-          <visible>substring(listitem.studio,576p)</visible>
-        </control>
-        <control type="image" id="219">
-          <width>56</width>
-          <height>25</height>
-          <texture>resolutions/720p.png</texture>
-          <aspectratio>keep</aspectratio>
-          <visible>substring(listitem.studio,720p)</visible>
-        </control>
-        <control type="image" id="220">
-          <width>56</width>
-          <height>25</height>
-          <texture>resolutions/1080p.png</texture>
-          <aspectratio>keep</aspectratio>
-          <visible>substring(listitem.studio,1080p)</visible>
-        </control>
-      
-<!-- Video Codecs -->
-        <control type="image" id="232">
-          <width>78</width>
-          <height>25</height>
-          <aspectratio>keep</aspectratio>
-          <texture>video_codecs/xvid.png</texture>
-          <visible>substring(listitem.studio,xvid)</visible>
-        </control>
-        <control type="image" id="233">
-          <width>78</width>
-          <height>25</height>
-          <aspectratio>keep</aspectratio>
-          <texture>video_codecs/divx.png</texture>
-          <visible>substring(listitem.studio,divx)</visible>
-        </control>
-      
-<!-- Audio Codecs -->
-        <control type="image" id="252">
-          <width>109</width>
-          <height>25</height>
-          <aspectratio>keep</aspectratio>
-          <texture>audio_codecs/dd51.png</texture>
-          <visible>substring(listitem.studio,6ch) + substring(listitem.studio,ac-3)</visible>
-        </control>
-        <control type="image" id="253">
-          <width>109</width>
-          <height>25</height>
-          <aspectratio>keep</aspectratio>
-          <texture>audio_codecs/dd71.png</texture>
-          <visible>substring(listitem.studio,8ch) + substring(listitem.studio,ac-3)</visible>
-        </control>
-        <control type="image" id="254">
-          <width>109</width>
-          <height>25</height>
-          <aspectratio>keep</aspectratio>
-          <texture>audio_codecs/dts51.png</texture>
-          <visible>substring(listitem.studio,6ch) + substring(listitem.studio,dts)</visible>
-        </control>
-        <control type="image" id="255">
-          <width>109</width>
-          <height>25</height>
-          <aspectratio>keep</aspectratio>
-          <texture>audio_codecs/dts71.png</texture>
-          <visible>substring(listitem.studio,8ch) + substring(listitem.studio,dts)</visible>
-        </control>
-        <control type="image" id="256">
-          <width>109</width>
-          <height>25</height>
-          <aspectratio>keep</aspectratio>
-          <texture>audio_codecs/dd20.png</texture>
-          <visible>substring(listitem.studio,2ch)</visible>
-        </control>
-        <control type="image" id="257">
-          <width>109</width>
-          <height>25</height>
-          <aspectratio>keep</aspectratio>
-          <texture>audio_codecs/mono.png</texture>
-          <visible>substring(listitem.studio,mono)</visible>
-        </control>
 
-        <control type="image" id="272">
-          <width>33</width>
-          <height>25</height>
-          <aspectratio>keep</aspectratio>
-          <texture>audio_codecs/cc.png</texture>
-          <visible>substring(listitem.studio,sub)</visible>
-        </control>
+      <control type="image" id="202">
+        <width>25</width>
+        <height>25</height>
+        <aspectratio>keep</aspectratio>
+        <info>ListItem.Overlay</info>
+      </control>
+
+      <!-- Video Resolutions -->
+      <control type="image" id="212">
+        <width>56</width>
+        <height>25</height>
+        <texture>resolutions/sd.png</texture>
+        <aspectratio>keep</aspectratio>
+        <visible>substring(listitem.studio,sd)</visible>
+      </control>
+      <control type="image" id="213">
+        <width>56</width>
+        <height>25</height>
+        <texture>resolutions/480i.png</texture>
+        <aspectratio>keep</aspectratio>
+        <visible>substring(listitem.studio,480i)</visible>
+      </control>
+      <control type="image" id="214">
+        <width>56</width>
+        <height>25</height>
+        <texture>resolutions/576i.png</texture>
+        <aspectratio>keep</aspectratio>
+        <visible>substring(listitem.studio,576i)</visible>
+      </control>
+      <control type="image" id="215">
+        <width>56</width>
+        <height>25</height>
+        <texture>resolutions/720i.png</texture>
+        <aspectratio>keep</aspectratio>
+        <visible>substring(listitem.studio,720i)</visible>
+      </control>
+      <control type="image" id="216">
+        <width>56</width>
+        <height>25</height>
+        <texture>resolutions/1080i.png</texture>
+        <aspectratio>keep</aspectratio>
+        <visible>substring(listitem.studio,1080i)</visible>
+      </control>
+      <control type="image" id="217">
+        <width>56</width>
+        <height>25</height>
+        <texture>resolutions/480p.png</texture>
+        <aspectratio>keep</aspectratio>
+        <visible>substring(listitem.studio,480p)</visible>
+      </control>
+      <control type="image" id="218">
+        <width>56</width>
+        <height>25</height>
+        <texture>resolutions/576p.png</texture>
+        <aspectratio>keep</aspectratio>
+        <visible>substring(listitem.studio,576p)</visible>
+      </control>
+      <control type="image" id="219">
+        <width>56</width>
+        <height>25</height>
+        <texture>resolutions/720p.png</texture>
+        <aspectratio>keep</aspectratio>
+        <visible>substring(listitem.studio,720p)</visible>
+      </control>
+      <control type="image" id="220">
+        <width>56</width>
+        <height>25</height>
+        <texture>resolutions/1080p.png</texture>
+        <aspectratio>keep</aspectratio>
+        <visible>substring(listitem.studio,1080p)</visible>
+      </control>
+
+      <!-- Video Codecs -->
+      <control type="image" id="232">
+        <width>78</width>
+        <height>25</height>
+        <aspectratio>keep</aspectratio>
+        <texture>video_codecs/xvid.png</texture>
+        <visible>substring(listitem.studio,xvid)</visible>
+      </control>
+      <control type="image" id="233">
+        <width>78</width>
+        <height>25</height>
+        <aspectratio>keep</aspectratio>
+        <texture>video_codecs/divx.png</texture>
+        <visible>substring(listitem.studio,divx)</visible>
+      </control>
+
+      <!-- Audio Codecs -->
+      <control type="image" id="252">
+        <width>109</width>
+        <height>25</height>
+        <aspectratio>keep</aspectratio>
+        <texture>audio_codecs/dd51.png</texture>
+        <visible>substring(listitem.studio,6ch) + substring(listitem.studio,ac-3)</visible>
+      </control>
+      <control type="image" id="253">
+        <width>109</width>
+        <height>25</height>
+        <aspectratio>keep</aspectratio>
+        <texture>audio_codecs/dd71.png</texture>
+        <visible>substring(listitem.studio,8ch) + substring(listitem.studio,ac-3)</visible>
+      </control>
+      <control type="image" id="254">
+        <width>109</width>
+        <height>25</height>
+        <aspectratio>keep</aspectratio>
+        <texture>audio_codecs/dts51.png</texture>
+        <visible>substring(listitem.studio,6ch) + substring(listitem.studio,dts)</visible>
+      </control>
+      <control type="image" id="255">
+        <width>109</width>
+        <height>25</height>
+        <aspectratio>keep</aspectratio>
+        <texture>audio_codecs/dts71.png</texture>
+        <visible>substring(listitem.studio,8ch) + substring(listitem.studio,dts)</visible>
+      </control>
+      <control type="image" id="256">
+        <width>109</width>
+        <height>25</height>
+        <aspectratio>keep</aspectratio>
+        <texture>audio_codecs/dd20.png</texture>
+        <visible>substring(listitem.studio,2ch)</visible>
+      </control>
+      <control type="image" id="257">
+        <width>109</width>
+        <height>25</height>
+        <aspectratio>keep</aspectratio>
+        <texture>audio_codecs/mono.png</texture>
+        <visible>substring(listitem.studio,mono)</visible>
+      </control>
+
+      <control type="image" id="272">
+        <width>33</width>
+        <height>25</height>
+        <aspectratio>keep</aspectratio>
+        <texture>audio_codecs/cc.png</texture>
+        <visible>substring(listitem.studio,sub)</visible>
+      </control>
     </control>
   </include>
   
@@ -1441,10 +1717,10 @@
   </include>
   
   <include name="MediaBackFade">
-    <animation effect="fade" delay="0" end="75" time="0">WindowOpen</animation>
-    <animation effect="fade" delay="0" start="75" end="0" time="0">WindowClose</animation>
-    <animation effect="fade" delay="0" end="75" time="0">Visible</animation>
-    <animation effect="fade" delay="0" start="75" end="0" time="0">Hidden</animation>
+    <animation effect="fade" delay="0" end="80" time="0">WindowOpen</animation>
+    <animation effect="fade" delay="0" start="80" end="0" time="0">WindowClose</animation>
+    <animation effect="fade" delay="0" end="80" time="0">Visible</animation>
+    <animation effect="fade" delay="0" start="80" end="0" time="0">Hidden</animation>
   </include>
 
   <include name="HomeSubMenuFade">

@@ -63,17 +63,19 @@
     <posy>20</posy>
     <include>DefaultFade</include>
     <visible>!Window.IsActive(2006) + !VideoPlayer.IsFullscreen + Skin.HasSetting(SmallScan)</visible>
-
     <include>MediaScanBackSmall</include>
     
-    <control type="label">
+    <control type="label" id="402">
       <description>Scanning Media Label</description>
-      <width>220</width>
+      <posx>10</posx>
+      <width>200</width>
       <height>30</height>
       <align>center</align>
       <label>$LOCALIZE[189]</label>
-      <font>18BdFont</font>
+      <scroll>true</scroll>
+      <font>16BdFont</font>
       <textcolor>FocusedTextColor</textcolor>
+      <haspath>yes</haspath>
     </control>
   </control>
 	

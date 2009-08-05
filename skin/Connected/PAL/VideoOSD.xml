@@ -44,7 +44,7 @@
         <posy>40</posy>
         <width>101</width>
         <font>18BdFont</font>
-        <label>$LOCALIZE[31034]</label>
+        <label>$LOCALIZE[31064]</label>
         <onclick>XBMC.PlayerControl(Previous)</onclick>
         <onleft>220</onleft>
         <onright>216</onright>
@@ -57,7 +57,7 @@
         <posy>40</posy>
         <width>101</width>
         <font>18BdFont</font>
-        <label>$LOCALIZE[31035]</label>
+        <label>$LOCALIZE[31065]</label>
         <onclick>XBMC.PlayerControl(Rewind)</onclick>
         <onleft>215</onleft>
         <onright>217</onright>
@@ -70,7 +70,7 @@
         <posy>40</posy>
         <width>101</width>
         <font>18BdFont</font>
-        <label>$LOCALIZE[31036]</label>
+        <label>$LOCALIZE[31066]</label>
         <onclick>XBMC.PlayerControl(Stop)</onclick>
         <onleft>216</onleft>
         <onright>218</onright>
@@ -83,8 +83,8 @@
         <posy>40</posy>
         <width>101</width>
         <font>18BdFont</font>
-        <label>$LOCALIZE[31037]</label>
-        <altlabel>$LOCALIZE[31040]</altlabel>
+        <label>$LOCALIZE[31067]</label>
+        <altlabel>$LOCALIZE[31068]</altlabel>
         <usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
         <onclick>XBMC.PlayerControl(Play)</onclick>
         <onleft>217</onleft>
@@ -98,7 +98,7 @@
         <posy>40</posy>
         <width>101</width>
         <font>18BdFont</font>
-        <label>$LOCALIZE[31038]</label>
+        <label>$LOCALIZE[31069]</label>
         <onclick>XBMC.PlayerControl(Forward)</onclick>
         <onleft>218</onleft>
         <onright>220</onright>
@@ -111,7 +111,7 @@
         <posy>40</posy>
         <width>101</width>
         <font>18BdFont</font>
-        <label>$LOCALIZE[31039]</label>
+        <label>$LOCALIZE[31070]</label>
         <onclick>XBMC.PlayerControl(Next)</onclick>
         <onleft>219</onleft>
         <onright>215</onright>

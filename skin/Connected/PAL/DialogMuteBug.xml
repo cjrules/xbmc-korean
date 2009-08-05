@@ -22,7 +22,7 @@
     <font>18BdFont</font>
     <textcolor>FocusedTextColor</textcolor>
     <align>center</align>
-    <label>[UPPERCASE]$LOCALIZE[31041][/UPPERCASE]</label>
+    <label>[UPPERCASE]$LOCALIZE[31071][/UPPERCASE]</label>
   </control>
 
 </controls>

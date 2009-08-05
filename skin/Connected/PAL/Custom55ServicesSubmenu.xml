@@ -5,7 +5,7 @@
 <coordinates>
   <system>1</system>
   <posx>208</posx>
-  <posy>170</posy>
+  <posy>153</posy>
 </coordinates>
   
 <include>DefaultFade</include>
@@ -13,7 +13,7 @@
 <controls>
 
   <control type="group">
-      <include>OptionBack1-5</include>
+      <include>OptionBack1-6</include>
       <control type="image">
         <description>Header Back</description>
         <posx>0</posx>
@@ -49,7 +49,7 @@
         <texturenofocus>-</texturenofocus>
         <onclick>Dialog.Close(55)</onclick>
         <onclick>XBMC.ActivateWindow(MyPrograms,Games)</onclick>
-        <onup>2006</onup>
+        <onup>2007</onup>
         <ondown>2003</ondown>
       </control>
       <control type="button" id="2003">
@@ -58,7 +58,7 @@
         <posy>90</posy>
         <width>284</width>
         <align>left</align>
-        <label>$LOCALIZE[31004]</label>
+        <label>$LOCALIZE[31013]</label>
         <font>18BdFont</font>
         <textoffsetx>40</textoffsetx>
         <texturefocus>-</texturefocus>
@@ -114,6 +114,22 @@
         <onclick>Dialog.Close(55)</onclick>
         <onclick>XBMC.ActivateWindow(MyPrograms)</onclick>
         <onup>2005</onup>
+        <ondown>2007</ondown>
+      </control>
+      <control type="button" id="2007">
+        <description>Plugins</description>
+        <posx>10</posx>
+        <posy>230</posy>
+        <width>284</width>
+        <align>left</align>
+        <label>$LOCALIZE[31044]</label>
+        <font>18BdFont</font>
+        <textoffsetx>40</textoffsetx>
+        <texturefocus>-</texturefocus>
+        <texturenofocus>-</texturenofocus>
+        <onclick>Dialog.Close(55)</onclick>
+        <onclick>XBMC.ActivateWindow(MyPrograms,Program plugins)</onclick>
+        <onup>2006</onup>
         <ondown>2002</ondown>
       </control>
     </control>

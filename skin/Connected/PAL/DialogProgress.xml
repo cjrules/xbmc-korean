@@ -99,15 +99,18 @@
     <posy>15</posy>
     <visible>Skin.HasSetting(SmallScan)</visible>
     <include>MediaScanBackSmall</include>
-    <control type="label">
-      <description>Header Label</description>
-      <posx>5</posx>
-      <width>210</width>
+
+    <control type="label" id="2">
+      <description>Scanning Media Label</description>
+      <posx>10</posx>
+      <width>200</width>
       <height>30</height>
       <align>center</align>
-      <label>$LOCALIZE[20186]...</label>
-      <font>18BdFont</font>
+      <label>$LOCALIZE[189]</label>
+      <scroll>true</scroll>
+      <font>16BdFont</font>
       <textcolor>FocusedTextColor</textcolor>
+      <haspath>yes</haspath>
     </control>
   </control>
   

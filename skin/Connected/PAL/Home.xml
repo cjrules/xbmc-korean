@@ -1,5 +1,5 @@
 <window id="0">
-<defaultcontrol always="true">9001</defaultcontrol>
+<defaultcontrol always="true">3000</defaultcontrol>
 <allowoverlay>yes</allowoverlay>
 	
 <controls>
@@ -8,6 +8,24 @@
 
   <control type="group">
     <include>DefaultFade</include>
+    
+    <control type="button" id="3000">
+      <description>trigger</description>
+      <onfocus>ActivateWindow(56)</onfocus>
+      <texturenofocus>-</texturenofocus>
+      <texturefocus>-</texturefocus>
+      <animation effect="fade" start="0" end="0">Focus</animation>
+      <visible>!Skin.HasSetting(WelcomeScreen)</visible>
+    </control>
+    <control type="button" id="3000">
+      <description>trigger</description>
+      <onfocus>SetFocus(9001)</onfocus>
+      <texturenofocus>-</texturenofocus>
+      <texturefocus>-</texturefocus>
+      <animation effect="fade" start="0" end="0">Focus</animation>
+      <visible>Skin.HasSetting(WelcomeScreen)</visible>
+    </control>
+    
     <control type="videowindow">
       <description>Video Preview Window</description>
       <posx>320</posx>
@@ -52,7 +70,7 @@
       <posy>0</posy>
       <width>720</width>
       <height>576</height>
-      <visible>!Window.IsVisible(56)</visible>
+      <visible>!Window.IsVisible(56) + Skin.HasSetting(WelcomeScreen)</visible>
       <onup>9001</onup>
       <ondown>9001</ondown>
       <onleft>ActivateWindow(52)</onleft>
@@ -111,23 +129,23 @@
         </item>
         <item id="4">
           <description>Photos</description>
-          <label>$LOCALIZE[31000]</label>
+          <label>$LOCALIZE[31010]</label>
           <icon>HomePhotos.png</icon>
           <thumb>HomePhotosThumb.png</thumb>
           <onclick>ActivateWindow(MyPictures)</onclick>
           <visible>!Skin.HasSetting(HomePhotos)</visible>
         </item>
         <item id="5">
-          <description>Plug-ins</description>
-          <label>$LOCALIZE[31002]</label>
-          <icon>HomePlugins.png</icon>
-          <thumb>HomePluginsThumb.png</thumb>
+          <description>Scripts</description>
+          <label>$LOCALIZE[247]</label>
+          <icon>HomeScripts.png</icon>
+          <thumb>HomeScriptsThumb.png</thumb>
           <onclick>ActivateWindow(MyScripts)</onclick>
-          <visible>!Skin.HasSetting(HomePlugins)</visible>
+          <visible>!Skin.HasSetting(HomeScripts)</visible>
         </item>
         <item id="6">
           <description>Services</description>
-          <label>$LOCALIZE[31001]</label>
+          <label>$LOCALIZE[31011]</label>
           <icon>HomeServices.png</icon>
           <thumb>HomeServicesThumb.png</thumb>
           <onclick>ActivateWindow(55)</onclick>
@@ -135,7 +153,7 @@
         </item>
         <item id="6">
           <description>Services</description>
-          <label>$LOCALIZE[31001]</label>
+          <label>$LOCALIZE[31011]</label>
           <icon>HomeServices.png</icon>
           <thumb>HomeServicesThumb.png</thumb>
           <onclick>ActivateWindow(MyPrograms)</onclick>
@@ -540,7 +558,7 @@
       </control>
     </control>
     <include>HomeSelection</include>
-    <include>WeatherInfo</include>
+    <include>HomeWeatherInfo</include>
     
   </control>
 

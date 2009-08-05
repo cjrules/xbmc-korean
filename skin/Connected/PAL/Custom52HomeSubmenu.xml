@@ -31,7 +31,7 @@
       <height>45</height>
       <align>left</align>
       <aligny>center</aligny>
-      <label>$LOCALIZE[31012]</label>
+      <label>$LOCALIZE[31002]</label>
       <font>22BdFont</font>
       <textcolor>FocusedTextColor</textcolor>
     </control>
@@ -100,7 +100,7 @@
       <width>284</width>
       <align>left</align>
       <textoffsetx>40</textoffsetx>
-      <label>$LOCALIZE[13005] $LOCALIZE[31020]</label>
+      <label>$LOCALIZE[31026]</label>
       <font>18BdFont</font>
       <texturefocus>-</texturefocus>
       <texturenofocus>-</texturenofocus>

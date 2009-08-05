@@ -40,7 +40,7 @@
       <height>45</height>
       <align>right</align>
       <aligny>center</aligny>
-      <label>$LOCALIZE[31023]: $INFO[system.profilename]</label>
+      <label>$LOCALIZE[31028]: $INFO[system.profilename]</label>
       <font>18BdFont</font>
       <textcolor>FocusedTextColor</textcolor>
     </control>
@@ -77,7 +77,7 @@
       <posy>55</posy>
       <width>640</width>
       <font>18BdFont</font>
-      <label>$LOCALIZE[31504] $LOCALIZE[20096]</label>
+      <label>$LOCALIZE[20096]</label>
       <onright>2</onright>
       <onleft>2</onleft>
       <onup>2</onup>

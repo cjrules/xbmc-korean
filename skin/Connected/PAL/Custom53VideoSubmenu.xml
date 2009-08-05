@@ -48,7 +48,7 @@
       <texturefocus>-</texturefocus>
       <texturenofocus>-</texturenofocus>
       <onclick>Dialog.Close(53)</onclick>
-      <onclick>XBMC.ActivateWindow(MyVideoLibrary,movietitles)</onclick>
+      <onclick>ActivateWindow(VideoLibrary,MovieTitles,return)</onclick>
       <onleft>-</onleft>
       <onright>-</onright>
       <onup>2007</onup>
@@ -66,7 +66,7 @@
       <texturefocus>-</texturefocus>
       <texturenofocus>-</texturenofocus>
       <onclick>Dialog.Close(53)</onclick>
-      <onclick>XBMC.ActivateWindow(MyVideoLibrary,tvshowtitles)</onclick>
+      <onclick>ActivateWindow(VideoLibrary,TvShowTitles,return)</onclick>
       <onleft>-</onleft>
       <onright>-</onright>
       <onup>2002</onup>
@@ -84,52 +84,16 @@
       <texturefocus>-</texturefocus>
       <texturenofocus>-</texturenofocus>
       <onclick>Dialog.Close(53)</onclick>
-      <onclick>XBMC.ActivateWindow(MyVideoLibrary,musicvideotitles)</onclick>
+      <onclick>ActivateWindow(VideoLibrary,MusicVideoTitles,return)</onclick>
       <onleft>-</onleft>
       <onright>-</onright>
       <onup>2003</onup>
       <ondown>2005</ondown>
     </control>
     <control type="button" id="2005">
-      <description>Clips</description>
-      <posx>10</posx>
-      <posy>160</posy>
-      <width>284</width>
-      <align>left</align>
-      <textoffsetx>40</textoffsetx>
-      <label>$LOCALIZE[31003]</label>
-      <font>18BdFont</font>
-      <texturefocus>-</texturefocus>
-      <texturenofocus>-</texturenofocus>
-      <onclick>Dialog.Close(53)</onclick>
-      <onclick>XBMC.ActivateWindow(24,Clips)</onclick>
-      <onleft>-</onleft>
-      <onright>-</onright>
-      <onup>2004</onup>
-      <ondown>2006</ondown>
-    </control>
-    <control type="button" id="2006">
-      <description>Playlists</description>
-      <posx>10</posx>
-      <posy>195</posy>
-      <width>284</width>
-      <align>left</align>
-      <textoffsetx>40</textoffsetx>
-      <label>$LOCALIZE[136]</label>
-      <font>18BdFont</font>
-      <texturefocus>-</texturefocus>
-      <texturenofocus>-</texturenofocus>
-      <onclick>Dialog.Close(53)</onclick>
-      <onclick>XBMC.ActivateWindow(MyVideoLibrary,playlists)</onclick>
-      <onleft>-</onleft>
-      <onright>-</onright>
-      <onup>2005</onup>
-      <ondown>2007</ondown>
-    </control>
-    <control type="button" id="2007">
       <description>Video Files</description>
       <posx>10</posx>
-      <posy>230</posy>
+      <posy>160</posy>
       <width>284</width>
       <align>left</align>
       <textoffsetx>40</textoffsetx>
@@ -138,7 +102,43 @@
       <texturefocus>-</texturefocus>
       <texturenofocus>-</texturenofocus>
       <onclick>Dialog.Close(53)</onclick>
-      <onclick>ActivateWindow(videofiles)</onclick>
+      <onclick>ActivateWindow(VideoFiles)</onclick>
+      <onleft>-</onleft>
+      <onright>-</onright>
+      <onup>2004</onup>
+      <ondown>2006</ondown>
+    </control>
+    <control type="button" id="2006">
+      <description>Library</description>
+      <posx>10</posx>
+      <posy>195</posy>
+      <width>284</width>
+      <align>left</align>
+      <textoffsetx>40</textoffsetx>
+      <label>$LOCALIZE[14022]</label>
+      <font>18BdFont</font>
+      <texturefocus>-</texturefocus>
+      <texturenofocus>-</texturenofocus>
+      <onclick>Dialog.Close(53)</onclick>
+      <onclick>ActivateWindow(VideoLibrary)</onclick>
+      <onleft>-</onleft>
+      <onright>-</onright>
+      <onup>2005</onup>
+      <ondown>2007</ondown>
+    </control>
+    <control type="button" id="2007">
+      <description>Plugins</description>
+      <posx>10</posx>
+      <posy>230</posy>
+      <width>284</width>
+      <align>left</align>
+      <textoffsetx>40</textoffsetx>
+      <label>$LOCALIZE[31044]</label>
+      <font>18BdFont</font>
+      <texturefocus>-</texturefocus>
+      <texturenofocus>-</texturenofocus>
+      <onclick>Dialog.Close(53)</onclick>
+      <onclick>ActivateWindow(VideoLibrary,Plugins)</onclick>
       <onleft>-</onleft>
       <onright>-</onright>
       <onup>2006</onup>

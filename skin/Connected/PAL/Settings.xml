@@ -67,7 +67,7 @@
         <description>Photos</description>
         <posy>125</posy>
         <width>140</width>
-        <label>$LOCALIZE[31000]</label>
+        <label>$LOCALIZE[31010]</label>
         <font>18BdFont</font>
         <onclick>ActivateWindow(MyPicturesSettings)</onclick>
         <onup>2003</onup>
@@ -77,7 +77,7 @@
         <description>Services</description>
         <posy>160</posy>
         <width>140</width>
-        <label>$LOCALIZE[31001]</label>
+        <label>$LOCALIZE[31011]</label>
         <font>18BdFont</font>
         <onclick>ActivateWindow(MyProgramsSettings)</onclick>
         <onup>2004</onup>
@@ -164,7 +164,7 @@
       <description>Videos</description>
       <posy>55</posy>
       <align>left</align>
-      <label>$LOCALIZE[31300]:</label>
+      <label>$LOCALIZE[31150]:</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2002)</visible>
@@ -173,7 +173,7 @@
       <posy>95</posy>
       <align>left</align>
       <aligny>top</aligny>
-      <label> - $LOCALIZE[31301][CR] - $LOCALIZE[31302][CR] - $LOCALIZE[31303][CR] - $LOCALIZE[31304][CR] - $LOCALIZE[31305]</label>
+      <label> - $LOCALIZE[31151][CR] - $LOCALIZE[31152][CR] - $LOCALIZE[31153][CR] - $LOCALIZE[31154][CR] - $LOCALIZE[31155]</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2002)</visible>
@@ -183,7 +183,7 @@
       <description>Music</description>
       <posy>55</posy>
       <align>left</align>
-      <label>$LOCALIZE[31310]:</label>
+      <label>$LOCALIZE[31160]:</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2003)</visible>
@@ -192,7 +192,7 @@
       <posy>95</posy>
       <align>left</align>
       <aligny>top</aligny>
-      <label> - $LOCALIZE[31311][CR] - $LOCALIZE[31312][CR] - $LOCALIZE[31313][CR] - $LOCALIZE[31314][CR] - $LOCALIZE[31315]</label>
+      <label> - $LOCALIZE[31161][CR] - $LOCALIZE[31162][CR] - $LOCALIZE[31163][CR] - $LOCALIZE[31164][CR] - $LOCALIZE[31165]</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2003)</visible>
@@ -202,7 +202,7 @@
       <description>Photos</description>
       <posy>55</posy>
       <align>left</align>
-      <label>$LOCALIZE[31320]:</label>
+      <label>$LOCALIZE[31170]:</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2004)</visible>
@@ -211,7 +211,7 @@
       <posy>95</posy>
       <align>left</align>
       <aligny>top</aligny>
-      <label> - $LOCALIZE[31321][CR] - $LOCALIZE[31322]</label>
+      <label> - $LOCALIZE[31171][CR] - $LOCALIZE[31172]</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2004)</visible>
@@ -221,7 +221,7 @@
       <description>Services</description>
       <posy>55</posy>
       <align>left</align>
-      <label>$LOCALIZE[31330]:</label>
+      <label>$LOCALIZE[31180]:</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2005)</visible>
@@ -230,7 +230,7 @@
       <posy>95</posy>
       <align>left</align>
       <aligny>top</aligny>
-      <label> - $LOCALIZE[31331][CR] - $LOCALIZE[31332]</label>
+      <label> - $LOCALIZE[31181][CR] - $LOCALIZE[31182]</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2005)</visible>
@@ -241,7 +241,7 @@
       <description>Weather</description>
       <posy>55</posy>
       <align>left</align>
-      <label>$LOCALIZE[31340]:</label>
+      <label>$LOCALIZE[31190]:</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2006)</visible>
@@ -250,7 +250,7 @@
       <posy>95</posy>
       <align>left</align>
       <aligny>top</aligny>
-      <label> - $LOCALIZE[31341][CR] - $LOCALIZE[31342][CR] - $LOCALIZE[31343]</label>
+      <label> - $LOCALIZE[31191][CR] - $LOCALIZE[31192][CR] - $LOCALIZE[31193]</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2006)</visible>
@@ -261,7 +261,7 @@
       <description>Network</description>
       <posy>55</posy>
       <align>left</align>
-      <label>$LOCALIZE[31350]:</label>
+      <label>$LOCALIZE[31200]:</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2007)</visible>
@@ -270,7 +270,7 @@
       <posy>95</posy>
       <align>left</align>
       <aligny>top</aligny>
-      <label> - $LOCALIZE[31351][CR] - $LOCALIZE[31352][CR] - $LOCALIZE[31353][CR] - $LOCALIZE[31354][CR] - $LOCALIZE[31355][CR]</label>
+      <label> - $LOCALIZE[31201][CR] - $LOCALIZE[31202][CR] - $LOCALIZE[31203][CR] - $LOCALIZE[31204][CR] - $LOCALIZE[31205][CR]</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2007)</visible>
@@ -281,7 +281,7 @@
       <description>System</description>
       <posy>55</posy>
       <align>left</align>
-      <label>$LOCALIZE[31360]:</label>
+      <label>$LOCALIZE[31210]:</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2008)</visible>
@@ -290,7 +290,7 @@
       <posy>95</posy>
       <align>left</align>
       <aligny>top</aligny>
-      <label> - $LOCALIZE[31361][CR] - $LOCALIZE[31362][CR] - $LOCALIZE[31363][CR] - $LOCALIZE[31364][CR] - $LOCALIZE[31365][CR] - $LOCALIZE[31366][CR] - $LOCALIZE[31367][CR] - $LOCALIZE[31368]</label>
+      <label> - $LOCALIZE[31211][CR] - $LOCALIZE[31212][CR] - $LOCALIZE[31213][CR] - $LOCALIZE[31214][CR] - $LOCALIZE[31215][CR] - $LOCALIZE[31216][CR] - $LOCALIZE[31217][CR] - $LOCALIZE[31218]</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2008)</visible>
@@ -301,7 +301,7 @@
       <description>Appearance</description>
       <posy>55</posy>
       <align>left</align>
-      <label>$LOCALIZE[31370]:</label>
+      <label>$LOCALIZE[31220]:</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2009)</visible>
@@ -310,7 +310,7 @@
       <posy>95</posy>
       <align>left</align>
       <aligny>top</aligny>
-      <label> - $LOCALIZE[31371][CR] - $LOCALIZE[31372][CR] - $LOCALIZE[31373][CR] - $LOCALIZE[31374][CR] - $LOCALIZE[31375][CR] - $LOCALIZE[31376]</label>
+      <label> - $LOCALIZE[31221][CR] - $LOCALIZE[31222][CR] - $LOCALIZE[31223][CR] - $LOCALIZE[31224][CR] - $LOCALIZE[31225][CR] - $LOCALIZE[31226]</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2009)</visible>
@@ -321,7 +321,7 @@
       <description>Profiles</description>
       <posy>55</posy>
       <align>left</align>
-      <label>$LOCALIZE[31380]:</label>
+      <label>$LOCALIZE[31230]:</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2010)</visible>
@@ -330,7 +330,7 @@
       <posy>95</posy>
       <align>left</align>
       <aligny>top</aligny>
-      <label> - $LOCALIZE[31381][CR] - $LOCALIZE[31382][CR] - $LOCALIZE[31383][CR] - $LOCALIZE[31384]</label>
+      <label> - $LOCALIZE[31231][CR] - $LOCALIZE[31232][CR] - $LOCALIZE[31233][CR] - $LOCALIZE[31234]</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2010)</visible>
@@ -341,7 +341,7 @@
       <description>System Information</description>
       <posy>55</posy>
       <align>left</align>
-      <label>$LOCALIZE[31390]:</label>
+      <label>$LOCALIZE[31240]:</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2011)</visible>
@@ -350,7 +350,7 @@
       <posy>95</posy>
       <align>left</align>
       <aligny>top</aligny>
-      <label> - $LOCALIZE[31391][CR] - $LOCALIZE[31392][CR] - $LOCALIZE[31393][CR] - $LOCALIZE[31394][CR] - $LOCALIZE[31395]</label>
+      <label> - $LOCALIZE[31241][CR] - $LOCALIZE[31242][CR] - $LOCALIZE[31243][CR] - $LOCALIZE[31244][CR] - $LOCALIZE[31245]</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2011)</visible>
@@ -361,7 +361,7 @@
       <description>Skin Settings</description>
       <posy>55</posy>
       <align>left</align>
-      <label>$LOCALIZE[31400]:</label>
+      <label>$LOCALIZE[31250]:</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2012)</visible>
@@ -370,11 +370,10 @@
       <posy>95</posy>
       <align>left</align>
       <aligny>top</aligny>
-      <label> - $LOCALIZE[31401][CR] - $LOCALIZE[31402][CR] - $LOCALIZE[31403][CR] - $LOCALIZE[31404][CR] - $LOCALIZE[31405]</label>
+      <label> - $LOCALIZE[31251][CR] - $LOCALIZE[31252][CR] - $LOCALIZE[31253][CR] - $LOCALIZE[31254]</label>
       <font>18BdFont</font>
       <textcolor>DefaultTextColor</textcolor>
       <visible>Control.HasFocus(2012)</visible>
-    
   </control>
     </control>
     

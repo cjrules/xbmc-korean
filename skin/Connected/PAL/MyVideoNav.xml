@@ -3,17 +3,87 @@
 <allowoverlay>yes</allowoverlay>
 <controls>
 
-<include>Backgrounds</include>
+  <control type="group">
+  <include>Backgrounds</include>
+  </control>
+  
+  <control type="group">
+    <visible>Control.IsVisible(55)</visible>
+    <control type="largeimage">
+      <posx>0</posx>
+      <posy>0</posy>
+      <width>720</width>
+      <height>576</height>
+      <aspectratio>scale</aspectratio>
+      <info>ListItem.Property(fanart_image)</info>
+      <fadetime>400</fadetime>
+    </control>
+    <control type="largeimage">
+      <posx>0</posx>
+      <posy>0</posy>
+      <width>720</width>
+      <height>576</height>
+      <aspectratio>scale</aspectratio>
+      <info>Fanart.Image</info>
+      <fadetime>400</fadetime>
+    </control>
+    <control type="group">
+      <posy>330</posy>
+      <include>DefaultFade</include>
+      <control type="image">
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>720</width>
+        <height>247</height>
+        <texture>Black.png</texture>
+        <aspectratio>stretch</aspectratio>
+        <include>MediaBackFade</include>
+      </control>
+      <control type="label">
+        <posx>25</posx>
+        <width>670</width>
+        <height>35</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$INFO[ListItem.Title]</label>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+      </control>
+      <control type="label">
+        <posx>25</posx>
+        <width>670</width>
+        <height>30</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <label>$INFO[ListItem.Label]</label>
+        <font>20BdFont</font>
+        <textcolor>FocusedTextColor</textcolor>
+        <visible>IsEmpty(ListItem.Title)</visible>
+      </control>
+      <control type="image">
+        <posx>545</posx>
+        <posy>10</posy>
+        <width>-</width>
+        <height>20</height>
+        <align>left</align>
+        <aligny>center</aligny>
+        <info>ListItem.StarRating</info>
+        <aspectratio>keep</aspectratio>
+        <visible>!IsEmpty(ListItem.StarRating) + [Container.Content(Movies) | Container.Content(TVShows)]</visible>
+      </control>
+    </control>
+  </control>
   
   <control type="group">
     <include>DefaultFade</include>
-    <include>WrapBack</include>
     <include>List</include>
     <include>BigList</include>
     <include>Icons</include>
     <include>Wide</include>
-    <include>Wrap</include>
     <include>Tilted</include>
+    <include>Fanart</include>
+    
+    <include>MediaFlagConditions</include>
 
     <control type="image">
       <description>Videos Library Window Image</description>
@@ -91,7 +161,7 @@
       <height>80</height>
       <align>left</align>
       <aligny>center</aligny>
-      <label>$LOCALIZE[31005]</label>
+      <label>$LOCALIZE[31014]</label>
       <scroll>true</scroll>
       <font>22BdFont</font>
       <textcolor>FocusedTextColor</textcolor>
@@ -179,334 +249,16 @@
         <visible>ControlGroup(9001).HasFocus</visible>
       </control>
       <control type="group">
-        <include>OptionBack3-4</include>
-        <visible>ControlGroup(9003).HasFocus</visible>
-      </control>
-      <control type="group">
         <include>OptionBack3-2</include>
         <visible>ControlGroup(9002).HasFocus</visible>
       </control>
-
-      <control type="group" id="9001">
-        <posx>0</posx>
-        <posy>0</posy>
-        <control type="button" id="2001">
-          <description>View Header</description>
-          <posx>0</posx>
-          <posy>0</posy>
-          <width>304</width>
-          <height>45</height>
-          <align>left</align>
-          <label>-</label>
-          <font>22BdFont</font>
-          <focusedcolor>DefaultTextColor</focusedcolor>
-          <texturefocus>ButtonNF.png</texturefocus>
-          <textoffsetx>35</textoffsetx>
-          <onfocus>SetFocus(2002)</onfocus>
-          <onleft>-</onleft>
-          <onright>-</onright>
-          <onup>-</onup>
-          <ondown>-</ondown>
-        </control>
-        <control type="label">
-          <description>View Header Label</description>
-          <posx>35</posx>
-          <posy>0</posy>
-          <width>268</width>
-          <height>45</height>
-          <align>left</align>
-          <aligny>center</aligny>
-          <label>$LOCALIZE[582]</label>
-          <font>22BdFont</font>
-          <textcolor>FocusedTextColor</textcolor>
-          <visible>ControlGroup(9001).HasFocus</visible>
-        </control>
-        <control type="label">
-          <description>View Header Label</description>
-          <posx>35</posx>
-          <posy>0</posy>
-          <width>268</width>
-          <height>45</height>
-          <align>left</align>
-          <aligny>center</aligny>
-          <label>$LOCALIZE[582]</label>
-          <font>22BdFont</font>
-          <textcolor>DefaultTextColor</textcolor>
-          <visible>!ControlGroup(9001).HasFocus</visible>
-        </control>
-
-        <control type="group">
-          <animation effect="fade" time="10" delay="120" end="100" condition="ControlGroup(9001).HasFocus">Conditional</animation>
-          <control type="button" id="2002">
-            <description>List</description>
-            <posx>0</posx>
-            <posy>45</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <label>$LOCALIZE[535]</label>
-            <font>18BdFont</font>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <onclick>Container.SetViewMode(51)</onclick>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>2021</onup>
-            <ondown>2003</ondown>
-            <visible>ControlGroup(9001).HasFocus</visible>
-          </control>
-          <control type="image">
-            <description>Selected Dot</description>
-            <posx>15</posx>
-            <posy>49</posy>
-            <width>30</width>
-            <height>30</height>
-            <aspectratio align="left">keep</aspectratio>
-            <texture>ButtonDot.png</texture>
-            <visible>ControlGroup(9001).HasFocus + Control.IsVisible(51)</visible>
-          </control>
-          <control type="button" id="2003">
-            <description>Big List</description>
-            <posx>0</posx>
-            <posy>75</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <label>$LOCALIZE[537]</label>
-            <font>18BdFont</font>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <onclick>Container.SetViewMode(52)</onclick>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>2002</onup>
-            <ondown>2004</ondown>
-            <visible>ControlGroup(9001).HasFocus</visible>
-          </control>
-          <control type="image">
-            <description>Selected Dot</description>
-            <posx>15</posx>
-            <posy>78</posy>
-            <width>30</width>
-            <height>30</height>
-            <aspectratio align="left">keep</aspectratio>
-            <texture>ButtonDot.png</texture>
-            <visible>ControlGroup(9001).HasFocus + Control.IsVisible(52)</visible>
-          </control>
-          <control type="button" id="2004">
-            <description>Icons</description>
-            <posx>0</posx>
-            <posy>105</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <label>$LOCALIZE[536]</label>
-            <font>18BdFont</font>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <onclick>Container.SetViewMode(53)</onclick>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>2003</onup>
-            <ondown>2005</ondown>
-            <visible>ControlGroup(9001).HasFocus</visible>
-          </control>
-          <control type="image">
-            <description>Selected Dot</description>
-            <posx>15</posx>
-            <posy>108</posy>
-            <width>30</width>
-            <height>30</height>
-            <aspectratio align="left">keep</aspectratio>
-            <texture>ButtonDot.png</texture>
-            <visible>ControlGroup(9001).HasFocus + Control.IsVisible(53)</visible>
-          </control>
-          <control type="button" id="2005">
-            <description>Wide</description>
-            <posx>0</posx>
-            <posy>135</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <label>$LOCALIZE[31021]</label>
-            <font>18BdFont</font>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <onclick>Container.SetViewMode(54)</onclick>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>2004</onup>
-            <ondown>2006</ondown>
-            <visible>ControlGroup(9001).HasFocus</visible>
-          </control>
-          <control type="image">
-            <description>Selected Dot</description>
-            <posx>15</posx>
-            <posy>138</posy>
-            <width>30</width>
-            <height>30</height>
-            <aspectratio align="left">keep</aspectratio>
-            <texture>ButtonDot.png</texture>
-            <visible>ControlGroup(9001).HasFocus + Control.IsVisible(54)</visible>
-          </control>
-          <control type="button" id="2006">
-            <description>Tilted</description>
-            <posx>0</posx>
-            <posy>165</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <label>$LOCALIZE[31022]</label>
-            <font>18BdFont</font>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <onclick>Container.SetViewMode(56)</onclick>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>2005</onup>
-            <ondown>2007</ondown>
-            <visible>ControlGroup(9001).HasFocus</visible>
-          </control>
-          <control type="image">
-            <description>Selected Dot</description>
-            <posx>15</posx>
-            <posy>168</posy>
-            <width>30</width>
-            <height>30</height>
-            <aspectratio align="left">keep</aspectratio>
-            <texture>ButtonDot.png</texture>
-            <visible>ControlGroup(9001).HasFocus + Control.IsVisible(56)</visible>
-          </control>
-          <control type="button" id="2007">
-            <description>Wrap</description>
-            <posx>0</posx>
-            <posy>195</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <label>$LOCALIZE[31026]</label>
-            <font>18BdFont</font>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <onclick>Container.SetViewMode(55)</onclick>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>2006</onup>
-            <ondown>2011</ondown>
-            <visible>ControlGroup(9001).HasFocus</visible>
-          </control>
-          <control type="image">
-            <description>Selected Dot</description>
-            <posx>15</posx>
-            <posy>198</posy>
-            <width>30</width>
-            <height>30</height>
-            <aspectratio align="left">keep</aspectratio>
-            <texture>ButtonDot.png</texture>
-            <visible>ControlGroup(9001).HasFocus + Control.IsVisible(55)</visible>
-          </control>
-        </control>
+      <control type="group">
+        <include>OptionBack3-3</include>
+        <visible>ControlGroup(9003).HasFocus</visible>
       </control>
-
-      <control type="group" id="9002">
-        <posx>0</posx>
-        <posy>230</posy>
-        <animation effect="slide" time="10" end="0,-185" condition="ControlGroup(9002).HasFocus | ControlGroup(9003).HasFocus">Conditional</animation>
-        <control type="button" id="2011">
-          <description>Sort Header</description>
-          <posx>0</posx>
-          <posy>0</posy>
-          <width>304</width>
-          <height>45</height>
-          <align>left</align>
-          <label>-</label>
-          <font>22BdFont</font>
-          <focusedcolor>DefaultTextColor</focusedcolor>
-          <texturefocus>ButtonNF.png</texturefocus>
-          <textoffsetx>35</textoffsetx>
-          <onfocus>SetFocus(3)</onfocus>
-          <onleft>51</onleft>
-          <onright>51</onright>
-          <onup>-</onup>
-          <ondown>-</ondown>
-        </control>
-        <control type="label">
-          <description>Sort Header Label</description>
-          <posx>35</posx>
-          <posy>0</posy>
-          <width>268</width>
-          <height>45</height>
-          <align>left</align>
-          <aligny>center</aligny>
-          <label>$LOCALIZE[581]</label>
-          <font>22BdFont</font>
-          <textcolor>FocusedTextColor</textcolor>
-          <visible>ControlGroup(9002).HasFocus</visible>
-        </control>
-        <control type="label">
-          <description>Sort Header Label</description>
-          <posx>35</posx>
-          <posy>0</posy>
-          <width>268</width>
-          <height>45</height>
-          <align>left</align>
-          <aligny>center</aligny>
-          <label>$LOCALIZE[581]</label>
-          <font>22BdFont</font>
-          <textcolor>DefaultTextColor</textcolor>
-          <visible>!ControlGroup(9002).HasFocus</visible>
-        </control>
-
-        <control type="group">
-          <animation effect="fade" time="10" delay="120" end="100" condition="ControlGroup(9002).HasFocus">Conditional</animation>
-          <control type="button" id="3">
-            <description>Sort By</description>
-            <posx>0</posx>
-            <posy>45</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <label>$LOCALIZE[581]</label>
-            <font>18BdFont</font>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>2001</onup>
-            <ondown>4</ondown>
-            <visible>ControlGroup(9002).HasFocus</visible>
-          </control>
-          <control type="togglebutton" id="4">
-            <description>Sort asc</description>
-            <posx>0</posx>
-            <posy>75</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <label>$LOCALIZE[584]</label>
-            <altlabel>$LOCALIZE[585]</altlabel>
-            <font>18BdFont</font>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <alttexturefocus>-</alttexturefocus>
-            <alttexturenofocus>-</alttexturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>3</onup>
-            <ondown>2021</ondown>
-            <visible>ControlGroup(9002).HasFocus</visible>
-          </control>
-        </control>
-      </control>
-
+      
+      <include>DefaultViewOptions</include>
+      
       <control type="group" id="9003">
         <posx>0</posx>
         <posy>275</posy>
@@ -539,10 +291,10 @@
           <height>45</height>
           <align>left</align>
           <aligny>center</aligny>
-          <label>$LOCALIZE[14022] $LOCALIZE[31020]</label>
+          <label>$LOCALIZE[31027]</label>
           <font>22BdFont</font>
           <textcolor>FocusedTextColor</textcolor>
-          <visible>ControlGroup(9003).HasFocus</visible>
+          <visible>ControlGroup(9004).HasFocus</visible>
         </control>
         <control type="label">
           <description>Library Header Label</description>
@@ -552,10 +304,10 @@
           <height>45</height>
           <align>left</align>
           <aligny>center</aligny>
-          <label>$LOCALIZE[14022] $LOCALIZE[31020]</label>
+          <label>$LOCALIZE[31027]</label>
           <font>22BdFont</font>
           <textcolor>DefaultTextColor</textcolor>
-          <visible>!ControlGroup(9003).HasFocus</visible>
+          <visible>!ControlGroup(9004).HasFocus</visible>
         </control>
 
         <control type="group">
@@ -567,7 +319,7 @@
             <height>30</height>
             <width>270</width>
             <font>18BdFont</font>
-            <label>$LOCALIZE[14022] $LOCALIZE[744]</label>
+            <label>$LOCALIZE[14022] $LOCALIZE[456]</label>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
             <textoffsetx>45</textoffsetx>
@@ -586,7 +338,7 @@
             <width>285</width>
             <height>30</height>
             <align>left</align>
-            <label>$LOCALIZE[137]</label>
+            <label>$LOCALIZE[137] $LOCALIZE[14022]</label>
             <font>18BdFont</font>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
@@ -594,50 +346,32 @@
             <onleft>51</onleft>
             <onright>51</onright>
             <onup>99</onup>
-            <ondown>9</ondown>
-            <visible>ControlGroup(9003).HasFocus</visible>
-          </control>
-          <control type="button" id="9">
-            <description>IMDB button</description>
-            <posx>0</posx>
-            <posy>105</posy>
-            <width>285</width>
-            <height>30</height>
-            <align>left</align>
-            <label>$LOCALIZE[368]</label>
-            <font>18BdFont</font>
-            <texturefocus>-</texturefocus>
-            <texturenofocus>-</texturenofocus>
-            <textoffsetx>45</textoffsetx>
-            <onleft>51</onleft>
-            <onright>51</onright>
-            <onup>8</onup>
             <ondown>14</ondown>
             <visible>ControlGroup(9003).HasFocus</visible>
           </control>
           <control type="radiobutton" id="14">
             <description>Watched button</description>
             <posx>0</posx>
-            <posy>135</posy>
+            <posy>105</posy>
             <height>30</height>
             <width>270</width>
             <font>18BdFont</font>
-            <label>$LOCALIZE[16101]</label>
+            <label>$LOCALIZE[31025]</label>
             <texturefocus>-</texturefocus>
             <texturenofocus>-</texturenofocus>
             <textoffsetx>45</textoffsetx>
             <onleft>51</onleft>
             <onright>51</onright>
-            <onup>9</onup>
+            <onup>8</onup>
             <ondown>2001</ondown>
             <visible>ControlGroup(9003).HasFocus</visible>
           </control>
         </control>
       </control>
+
     </control>
   </control>
   
-  <include>MediaFlags</include>
   <include>NowPlaying</include>
   
 </controls>

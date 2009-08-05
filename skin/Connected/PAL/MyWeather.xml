@@ -5,11 +5,45 @@
 <controls>
 
 <include>Backgrounds</include>
+
+  <control type="group">
+    <control type="multiimage">
+      <description>Weather Fanart</description>
+      <width>720</width>
+      <height>576</height>
+      <imagepath>$INFO[Skin.String(WeatherFanartPath),]$INFO[Weather.FanartCode]</imagepath>
+      <timeperimage>5000</timeperimage>
+      <fadetime>2000</fadetime>
+      <pauseatend>10000</pauseatend>
+      <randomize>true</randomize>
+      <loop>no</loop>
+      <aspectratio>scale</aspectratio>
+      <fadetime>400</fadetime>
+      <visible>Window.IsVisible(2600)</visible>
+    </control>
+    <control type="image">
+      <posy>170</posy>
+      <width>720</width>
+      <height>406</height>
+      <texture>Black.png</texture>
+      <aspectratio>stretch</aspectratio>
+      <include>MediaBackFade</include>
+    </control>
+  </control>
   
   <control type="group">
     <include>DefaultFade</include>
     <visible>Weather.IsFetched</visible>
-    <include>WeatherBack</include>
+    <control type="image">
+      <description>Weather Window Image</description>
+      <posx>-15</posx>
+      <posy>510</posy>
+      <width>80</width>
+      <height>80</height>
+      <aspectratio align="left">keep</aspectratio>
+      <texture>HomeWeather.png</texture>
+      <include>ContentImageFade</include>
+    </control>
     <control type="label">
       <description>Weather Window Title</description>
       <posx>25</posx>
@@ -36,7 +70,7 @@
       <reverse>yes</reverse>
       <font>-</font>
       <onleft>2000</onleft>
-      <onright>2</onright>
+      <onright>9000</onright>
       <onup>2</onup>
       <ondown>2</ondown>
     </control>
@@ -82,7 +116,7 @@
           <height>30</height>
           <align>left</align>
           <aligny>center</aligny>
-          <label>$LOCALIZE[31025]:</label>
+          <label>$LOCALIZE[31030]:</label>
           <scroll>true</scroll>
           <font>20BdFont</font>
           <textcolor>FocusedTextColor</textcolor>
@@ -467,53 +501,412 @@
         </control>
       </control>
     </control>
-    
-    <control type="group">
-      <posx>340</posx>
-      <posy>520</posy>
+
+    <control type="group" id="9000">
+      <posx>208</posx>
+      <posy>158</posy>
+      <visible allowhiddenfocus="true">ControlGroup(9000).HasFocus</visible>
       <control type="group">
-        <animation effect="slide" time="0" end="120,0" condition="!Skin.HasSetting(WeatherScriptEnable)">Conditional</animation>
-        <control type="button" id="2">
-          <description>Refresh button</description>
+        <include>OptionBack3-2</include>
+        <visible>ControlGroup(9001).HasFocus + !Skin.String(WeatherScript_Name)</visible>
+      </control>
+      <control type="group">
+        <include>OptionBack3-3</include>
+        <visible>ControlGroup(9001).HasFocus + Skin.String(WeatherScript_Name)</visible>
+      </control>
+      <control type="group">
+        <include>OptionBack3-2</include>
+        <visible>ControlGroup(9002).HasFocus</visible>
+      </control>
+      <control type="group">
+        <include>OptionBack3-1</include>
+        <visible>ControlGroup(9003).HasFocus + !Skin.String(WeatherFanartPath)</visible>
+      </control>
+      <control type="group">
+        <include>OptionBack3-2</include>
+        <visible>ControlGroup(9003).HasFocus + Skin.String(WeatherFanartPath)</visible>
+      </control>
+
+
+      <control type="group" id="9001">
+        <posx>0</posx>
+        <posy>0</posy>
+        <control type="button" id="2001">
+          <description>View Header</description>
           <posx>0</posx>
-          <width>110</width>
+          <posy>0</posy>
+          <width>304</width>
           <height>45</height>
+          <align>left</align>
+          <aligny>center</aligny>
           <label>-</label>
-          <font>20BdFont</font>
-          <onleft>2000</onleft>
-          <onright>4</onright>
-          <onup>3</onup>
-          <ondown>3</ondown>
+          <font>22BdFont</font>
+          <textcolor>DefaultTextColor</textcolor>
+          <focusedcolor>DefaultTextColor</focusedcolor>
+          <disabledcolor>DisabledTextColor</disabledcolor>
+          <texturefocus>ButtonNF.png</texturefocus>
+          <texturenofocus>ButtonNF.png</texturenofocus>
+          <textoffsetx>35</textoffsetx>
+          <onfocus>SetFocus(2)</onfocus>
+          <pulseonselect>false</pulseonselect>
+          <onleft>-</onleft>
+          <onright>-</onright>
+          <onup>-</onup>
+          <ondown>-</ondown>
         </control>
-        <control type="button" id="4">
-          <description>Settings button</description>
-          <posx>120</posx>
-          <width>110</width>
+        <control type="label">
+          <description>View Header Label</description>
+          <posx>35</posx>
+          <posy>0</posy>
+          <width>268</width>
           <height>45</height>
-          <label>$LOCALIZE[5]</label>
-          <font>20BdFont</font>
-          <onclick>ActivateWindow(MyWeatherSettings)</onclick>
-          <onleft>2</onleft>
-          <onright>2000</onright>
-          <onup>3</onup>
-          <ondown>3</ondown>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>$LOCALIZE[31040]</label>
+          <font>22BdFont</font>
+          <textcolor>FocusedTextColor</textcolor>
+          <visible>ControlGroup(9001).HasFocus</visible>
         </control>
-        <control type="button" id="2000">
-          <description>Weather Script Button</description>
-          <posx>240</posx>
-          <width>110</width>
+        <control type="label">
+          <description>View Header Label</description>
+          <posx>35</posx>
+          <posy>0</posy>
+          <width>268</width>
           <height>45</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>$LOCALIZE[31040]</label>
+          <font>22BdFont</font>
+          <textcolor>DefaultTextColor</textcolor>
+          <visible>!ControlGroup(9001).HasFocus</visible>
+        </control>
+
+        <control type="group">
+          <animation effect="fade" time="10" delay="120" end="100" condition="ControlGroup(9001).HasFocus">Conditional</animation>
+          <control type="button" id="2">
+            <description>Refresh</description>
+            <posx>0</posx>
+            <posy>45</posy>
+            <width>285</width>
+            <height>30</height>
+            <align>left</align>
+            <aligny>center</aligny>
+            <label>-</label>
+            <font>18BdFont</font>
+            <textcolor>DefaultTextColor</textcolor>
+            <focusedcolor>FocusedTextColor</focusedcolor>
+            <disabledcolor>DisabledTextColor</disabledcolor>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <textoffsetx>45</textoffsetx>
+            <pulseonselect>false</pulseonselect>
+            <onleft>3</onleft>
+            <onright>3</onright>
+            <onup>2021</onup>
+            <ondown>4</ondown>
+            <visible>ControlGroup(9001).HasFocus</visible>
+          </control>
+          <control type="button" id="4">
+            <description>Settings</description>
+            <posx>0</posx>
+            <posy>75</posy>
+            <width>285</width>
+            <height>30</height>
+            <align>left</align>
+            <aligny>center</aligny>
+            <label>$LOCALIZE[5]</label>
+            <font>18BdFont</font>
+            <textcolor>DefaultTextColor</textcolor>
+            <focusedcolor>FocusedTextColor</focusedcolor>
+            <disabledcolor>DisabledTextColor</disabledcolor>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <textoffsetx>45</textoffsetx>
+            <pulseonselect>false</pulseonselect>
+            <onclick>ActivateWindow(MyWeatherSettings)</onclick>
+            <onleft>3</onleft>
+            <onright>3</onright>
+            <onup>2</onup>
+            <ondown>2002</ondown>
+            <visible>ControlGroup(9001).HasFocus + Skin.String(WeatherScript_Name)</visible>
+          </control>
+          <control type="button" id="4">
+            <description>Settings</description>
+            <posx>0</posx>
+            <posy>75</posy>
+            <width>285</width>
+            <height>30</height>
+            <align>left</align>
+            <aligny>center</aligny>
+            <label>$LOCALIZE[5]</label>
+            <font>18BdFont</font>
+            <textcolor>DefaultTextColor</textcolor>
+            <focusedcolor>FocusedTextColor</focusedcolor>
+            <disabledcolor>DisabledTextColor</disabledcolor>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <textoffsetx>45</textoffsetx>
+            <pulseonselect>false</pulseonselect>
+            <onclick>ActivateWindow(MyWeatherSettings)</onclick>
+            <onleft>3</onleft>
+            <onright>3</onright>
+            <onup>2</onup>
+            <ondown>2011</ondown>
+            <visible>ControlGroup(9001).HasFocus + !Skin.String(WeatherScript_Name)</visible>
+          </control>
+          <control type="button" id="2002">
+            <description>Custom Script</description>
+            <posx>0</posx>
+            <posy>105</posy>
+            <width>285</width>
+            <height>30</height>
+            <align>left</align>
+            <aligny>center</aligny>
+            <label>$INFO[Skin.String(WeatherScript_Name)]</label>
+            <font>18BdFont</font>
+            <textcolor>DefaultTextColor</textcolor>
+            <focusedcolor>FocusedTextColor</focusedcolor>
+            <disabledcolor>DisabledTextColor</disabledcolor>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <textoffsetx>45</textoffsetx>
+            <pulseonselect>false</pulseonselect>
+            <onclick>XBMC.RunScript($INFO[Skin.String(WeatherScript_Path)])</onclick>
+            <onleft>3</onleft>
+            <onright>3</onright>
+            <onup>4</onup>
+            <ondown>2011</ondown>
+            <visible>ControlGroup(9001).HasFocus + Skin.String(WeatherScript_Name)</visible>
+          </control>
+        </control>
+      </control>
+      
+      <control type="group" id="9002">
+        <posx>0</posx>
+        <posy>140</posy>
+        <animation effect="slide" time="10" end="0,-95" condition="Skin.String(WeatherScript_Name) + [ControlGroup(9002).HasFocus | ControlGroup(9003).HasFocus]">Conditional</animation>
+        <animation effect="slide" time="10" end="0,-95" condition="!Skin.String(WeatherScript_Name) + [ControlGroup(9002).HasFocus | ControlGroup(9003).HasFocus]">Conditional</animation>
+        <animation effect="slide" time="10" end="0,-30" condition="ControlGroup(9001).HasFocus + !Skin.String(WeatherScript_Name)">Conditional</animation>
+        <control type="button" id="2011">
+          <description>View Header</description>
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>304</width>
+          <height>45</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>-</label>
+          <font>22BdFont</font>
+          <textcolor>DefaultTextColor</textcolor>
+          <focusedcolor>DefaultTextColor</focusedcolor>
+          <disabledcolor>DisabledTextColor</disabledcolor>
+          <texturefocus>ButtonNF.png</texturefocus>
+          <texturenofocus>ButtonNF.png</texturenofocus>
+          <textoffsetx>35</textoffsetx>
+          <onfocus>SetFocus(2012)</onfocus>
+          <pulseonselect>false</pulseonselect>
+          <onleft>-</onleft>
+          <onright>-</onright>
+          <onup>-</onup>
+          <ondown>-</ondown>
+        </control>
+        <control type="label">
+          <description>View Header Label</description>
+          <posx>35</posx>
+          <posy>0</posy>
+          <width>268</width>
+          <height>45</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>$LOCALIZE[31041]</label>
+          <font>22BdFont</font>
+          <textcolor>FocusedTextColor</textcolor>
+          <visible>ControlGroup(9002).HasFocus + !Skin.String(WeatherScript_Name)</visible>
+        </control>
+        <control type="label">
+          <description>View Header Label</description>
+          <posx>35</posx>
+          <posy>0</posy>
+          <width>268</width>
+          <height>45</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>$LOCALIZE[31041]</label>
+          <font>22BdFont</font>
+          <textcolor>DefaultTextColor</textcolor>
+          <visible>!ControlGroup(9002).HasFocus + !Skin.String(WeatherScript_Name)</visible>
+        </control>
+        
+        <control type="label">
+          <description>View Header Label</description>
+          <posx>35</posx>
+          <posy>0</posy>
+          <width>268</width>
+          <height>45</height>
+          <align>left</align>
+          <aligny>center</aligny>
           <label>$INFO[Skin.String(WeatherScript_Name)]</label>
-          <font>20BdFont</font>
-          <onclick>XBMC.RunScript($INFO[Skin.String(WeatherScript_Path)])</onclick>
-          <onleft>4</onleft>
-          <onright>2</onright>
-          <onup>3</onup>
-          <ondown>3</ondown>
-          <visible>Skin.HasSetting(WeatherScriptEnable)</visible>
+          <font>22BdFont</font>
+          <textcolor>FocusedTextColor</textcolor>
+          <visible>ControlGroup(9002).HasFocus + Skin.String(WeatherScript_Name)</visible>
+        </control>
+        <control type="label">
+          <description>View Header Label</description>
+          <posx>35</posx>
+          <posy>0</posy>
+          <width>268</width>
+          <height>45</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>$INFO[Skin.String(WeatherScript_Name)]</label>
+          <font>22BdFont</font>
+          <textcolor>DefaultTextColor</textcolor>
+          <visible>!ControlGroup(9002).HasFocus + Skin.String(WeatherScript_Name)</visible>
+        </control>
+
+        <control type="group">
+          <animation effect="fade" time="10" delay="120" end="100" condition="ControlGroup(9002).HasFocus">Conditional</animation>
+          <control type="button" id="2012">
+            <description>Weather Script Label Button</description>
+            <posx>0</posx>
+            <posy>45</posy>
+            <width>285</width>
+            <align>left</align>
+            <label>$LOCALIZE[31045]</label>
+            <font>18BdFont</font>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <textoffsetx>45</textoffsetx>
+            <onclick>Skin.SetString(WeatherScript_Name)</onclick>
+            <onleft>3</onleft>
+            <onright>3</onright>
+            <onup>2001</onup>
+            <ondown>2013</ondown>
+            <visible>ControlGroup(9002).HasFocus</visible>
+          </control>
+          <control type="button" id="2013">
+            <description>Weather Script Path Button</description>
+            <posx>0</posx>
+            <posy>75</posy>
+            <width>285</width>
+            <align>left</align>
+            <label>$LOCALIZE[31046]</label>
+            <font>18BdFont</font>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <textoffsetx>45</textoffsetx>
+            <scroll>true</scroll>
+            <onclick>Skin.SetFile(WeatherScript_Path,.py,Q:\scripts\)</onclick>
+            <onleft>3</onleft>
+            <onright>3</onright>
+            <onup>2012</onup>
+            <ondown>2021</ondown>
+            <visible>ControlGroup(9002).HasFocus</visible>
+          </control>
+        </control>
+      </control>
+
+      <control type="group" id="9003">
+        <posx>0</posx>
+        <posy>185</posy>
+        <animation effect="slide" time="10" end="0,-30" condition="ControlGroup(9002).HasFocus">Conditional</animation>
+        <animation effect="slide" time="10" end="0,-95" condition="ControlGroup(9003).HasFocus">Conditional</animation>
+        <animation effect="slide" time="10" end="0,-30" condition="ControlGroup(9001).HasFocus + !Skin.String(WeatherScript_Name)">Conditional</animation>
+        <control type="button" id="2021">
+          <description>View Header</description>
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>304</width>
+          <height>45</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>-</label>
+          <font>22BdFont</font>
+          <textcolor>DefaultTextColor</textcolor>
+          <focusedcolor>DefaultTextColor</focusedcolor>
+          <disabledcolor>DisabledTextColor</disabledcolor>
+          <texturefocus>ButtonNF.png</texturefocus>
+          <texturenofocus>ButtonNF.png</texturenofocus>
+          <textoffsetx>35</textoffsetx>
+          <onfocus>SetFocus(2022)</onfocus>
+          <pulseonselect>false</pulseonselect>
+          <onleft>-</onleft>
+          <onright>-</onright>
+          <onup>-</onup>
+          <ondown>-</ondown>
+        </control>
+        <control type="label">
+          <description>View Header Label</description>
+          <posx>35</posx>
+          <posy>0</posy>
+          <width>268</width>
+          <height>45</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>$LOCALIZE[31042]</label>
+          <font>22BdFont</font>
+          <textcolor>FocusedTextColor</textcolor>
+          <visible>ControlGroup(9003).HasFocus</visible>
+        </control>
+        <control type="label">
+          <description>View Header Label</description>
+          <posx>35</posx>
+          <posy>0</posy>
+          <width>268</width>
+          <height>45</height>
+          <align>left</align>
+          <aligny>center</aligny>
+          <label>$LOCALIZE[31042]</label>
+          <font>22BdFont</font>
+          <textcolor>DefaultTextColor</textcolor>
+          <visible>!ControlGroup(9003).HasFocus</visible>
+        </control>
+
+        <control type="group">
+          <animation effect="fade" time="10" delay="120" end="100" condition="ControlGroup(9003).HasFocus">Conditional</animation>
+          <control type="button" id="2022">
+            <description>Weather Fanart Path Button</description>
+            <posx>0</posx>
+            <posy>45</posy>
+            <width>285</width>
+            <align>left</align>
+            <label>$LOCALIZE[31047]</label>
+            <font>18BdFont</font>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <textoffsetx>45</textoffsetx>
+            <scroll>true</scroll>
+            <onclick>Skin.SetPath(WeatherFanartPath)</onclick>
+            <onleft>3</onleft>
+            <onright>3</onright>
+            <onup>2011</onup>
+            <ondown>2023</ondown>
+            <visible>ControlGroup(9003).HasFocus</visible>
+          </control>
+          <control type="button" id="2023">
+            <description>Reset Fanart</description>
+            <posx>0</posx>
+            <posy>75</posy>
+            <width>285</width>
+            <align>left</align>
+            <label>$LOCALIZE[31048]</label>
+            <font>18BdFont</font>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <textoffsetx>45</textoffsetx>
+            <scroll>true</scroll>
+            <onclick>Skin.Reset(WeatherFanartPath)</onclick>
+            <onclick>SetFocus(165)</onclick>
+            <onleft>3</onleft>
+            <onright>3</onright>
+            <onup>2022</onup>
+            <ondown>2001</ondown>
+            <visible>ControlGroup(9003).HasFocus + Skin.String(WeatherFanartPath)</visible>
+          </control>
         </control>
       </control>
     </control>
+    
   </control>
   
   <include>NowPlaying</include>

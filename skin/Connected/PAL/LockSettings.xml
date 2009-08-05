@@ -29,7 +29,7 @@
       <height>45</height>
       <align>left</align>
       <aligny>center</aligny>
-      <label>$LOCALIZE[31024]</label>
+      <label>$LOCALIZE[20043]</label>
       <font>22BdFont</font>
       <textcolor>FocusedTextColor</textcolor>
     </control>

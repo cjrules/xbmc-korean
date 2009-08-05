@@ -1,26 +1,9 @@
 <window>
-<defaultcontrol always="true">5</defaultcontrol>
+<defaultcontrol always="true">10</defaultcontrol>
 <allowoverlay>no</allowoverlay>
 	
 <controls>
   
-  <control type="button" id="5">
-    <description>trigger</description>
-    <onfocus>ReplaceWindow(home)</onfocus>
-    <onfocus>ReplaceWindow(56)</onfocus>
-    <texturenofocus>-</texturenofocus>
-    <texturefocus>-</texturefocus>
-    <animation effect="fade" start="0" end="0">Focus</animation>
-    <visible>!Skin.HasSetting(WelcomeScreen)</visible>
-  </control>
-  <control type="button" id="5">
-    <description>trigger</description>
-    <onfocus>SetFocus(10)</onfocus>
-    <texturenofocus>-</texturenofocus>
-    <texturefocus>-</texturefocus>
-    <animation effect="fade" start="0" end="0">Focus</animation>
-    <visible>Skin.HasSetting(WelcomeScreen)</visible>
-  </control>
 	<control type="button" id="10">
 		<description>trigger</description>
 		<onfocus>ReplaceWindow(Home)</onfocus>
