@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+  <!-- home page labels -->
+  <string id="31000">시청</string>
+  <string id="31001">감상</string>
+  <string id="31002">보기</string>
+  <string id="31003">실행</string>
+  <string id="31004">확인</string>
+  <string id="31005">설정</string>
+  <string id="31006">전원</string>
+  <string id="31007">플러그인</string>
+  <string id="31008">종료</string>
+  <string id="31009">열기</string>
+  <string id="31010">재생</string>
+  <string id="31011">디스크</string>
+  <string id="31012"></string>
+  <string id="31013"></string>
+  <string id="31014"></string>
+  <string id="31015"></string>
+  <string id="31016"></string>
+  <string id="31017"></string>
+  <string id="31018"></string>
+  <string id="31019"></string>
+
+  <string id="31020"></string>
+  <string id="31021">비디오 - 파일</string>
+  <string id="31022">음악 - 파일</string>
+  <string id="31023">재생중</string>
+  <string id="31024">페이지</string>
+  <string id="31025">항목</string>
+  <string id="31026">세부 옵션</string>
+  <string id="31027">위치</string>
+ 
+  <!-- View Type labels -->
+  <string id="31028">포스터</string>
+  <string id="31029">DVD 목록</string>
+  <string id="31030">팬아트</string>
+  <string id="31031">전체 목록</string>
+  <string id="31032"></string>
+  <string id="31033">썸네일</string>
+  <string id="31034">넓은 아이콘</string>
+  <string id="31035">세부</string>
+  <string id="31036">Info Wrap</string>
+  <string id="31037">Image Wrap</string>
+
+  <string id="31040">지금 재생중...</string>
+  <string id="31041">다음 트랙...</string>
+  <string id="31042">재생중</string>
+  <string id="31043">일시 정지</string>
+  <string id="31044">빨기 감기</string>
+  <string id="31045">되감기</string>
+  <string id="31046">오디오 속성</string>
+  <string id="31047">현재 프리셋</string>
+  <string id="31048">시작화 설정</string>
+  <string id="31049">프리셋 변경</string>
+  <string id="31050">설정 변경</string>
+  <string id="31051">시각화 프리셋</string>
+  <string id="31052">자세히</string>
+
+
+  <!-- Playlist Editor labels -->
+  <string id="31055">재생목록 열기</string>
+  <string id="31056">재생목록 저장</string>
+  <string id="31057">재생목록 닫기</string>
+  <string id="31058">시스템 음악 파일</string>
+  <string id="31059">현재 재생목록</string>
+  <string id="31060">This file is stacked, select the part you want to play from.</string>
+  
+  <!-- Skin Settings labels -->
+  <string id="31100">배경 옵션</string>
+  <string id="31101">홈화면 옵션</string>
+  <string id="31102">배경</string>
+  <string id="31103">슬라이드쇼에 "일시정지" 보이기</string>
+  <string id="31104">홈화면 버튼</string>
+  <string id="31105">Show media titles in background scanner</string>
+  <string id="31106">세부 옵션</string>
+  <string id="31107">"시청" "감상" 등 숨기기</string>
+  <string id="31108">메인메뉴 버튼 숨기기</string>
+  <string id="31109">홈화면 배경</string>
+  <string id="31110">홈화면 배경 변경</string>
+  <string id="31111">숨기기</string>
+  <string id="31112">옵션</string>
+  <string id="31113">단일 배경</string>
+  <string id="31114">복수 배경</string>
+  <string id="31115">사용자설정</string>
+  <string id="31116">스크립트</string>
+  <string id="31117">최근에 추가된 비디오 보이기</string>
+
+  <string id="31118">홈화면 서브메뉴</string>
+  <string id="31119">사용자 스크립트 버튼 활성화</string>
+  <string id="31120">버튼 레이블</string>
+  <string id="31121">스크립트 경로</string>
+  <string id="31122">날씨 화면</string>
+  <string id="31123">티비쇼에 배너대신 포스터 사용</string>
+  <string id="31124">Use Video Preview Instead of Cover</string>
+  <string id="31125">Show Disc Drive only when media inserted</string>
+
+  <string id="31126">Enable Lyrics in Music OSD</string>
+  <string id="31127">PATH TO LYRICS SCRIPT</string>
+  <string id="31128">XBMC Lyrics</string>
+
+  <!-- Script labels -->
+  <string id="31200">바로가기</string>
+  <string id="31201">카테고리</string>
+  <string id="31202">Show Cast</string>
+  <string id="31203">Other Options</string>
+  <string id="31204">Section Links</string>
+  <string id="31205">Lyrics Source</string>
+  <string id="31206">Choose Your Song</string>
+  <string id="31207">Song Lyrics</string>
+  <string id="31208"></string>
+  <string id="31209"></string>
+
+  <!-- The Weather Channel Script labels -->
+  <string id="31250">Radar &amp; Forecast</string>
+  <string id="31251">Forecast</string>
+  <string id="31252">TWC Script</string>
+
+  <!-- Extra labels -->
+  <string id="31300">현재 기온</string>
+  <string id="31301">마지막 업데이트</string>
+  <string id="31302">메뉴</string>
+  <string id="31303">변경</string>
+  <string id="31304">사진</string>
+  <string id="31305">디스크 없음</string>
+  <string id="31306">꺼내기</string>
+  <string id="31307">팬아트 보이기</string>
+  <string id="31308">Movie Details</string>
+  <string id="31309">Memory Used</string>
+  <string id="31310">Track Number</string>
+  <string id="31311">FANART IMAGE[CR][CR]UNAVAILABLE[CR][CR] CLICK BUTTON TO SET</string>
+  <string id="31312">Current Scraper</string>
+  <string id="31313">Choose a Scraper</string>
+  <string id="31314">Content Scanning Options</string>
+  <string id="31315">Basic</string>
+  <string id="31316">Login As</string>
+  <string id="31317">Set Fanart Path</string>
+  <string id="31318">Small Fanart</string>
+  <string id="31319">Selected Profile</string>
+  <string id="31320">Last Logged In</string>
+  <string id="31321">Karaoke Song Selector</string>
+  <string id="31322">Aired</string>
+  <string id="31323">Latest Movies</string>
+  <string id="31324">Latest Episodes</string>
+  <string id="31325">Playlist Options</string>
+  <string id="31326">Created</string>
+  <string id="31327">Resolution</string>
+  <string id="31328">Recently Added</string>
+  <string id="31329">[B]TIMER SET![/B] [COLOR=grey2] - SYSTEM AUTO SHUTDOWN IN[/COLOR]</string>
+
+  <!-- Description Labels  -->
+  <string id="31400">[B]모양새를 설정합니다.[/B][CR][CR]GUI 화면 설정. 스킨 변경. 화면보호기 설정. 지역 설정. 전체적인 보기 옵션 설정.</string>
+  <string id="31401">[B]비디오 환경을 설정합니다.[/B][CR][CR]비디오 라이브러리 관리. 동영상 재생기 렌더러와 품질 설정. 자막 설정. 자동 재시작 설정.</string>
+  <string id="31402">[B]음악 환경을 설정합니다.[/B][CR][CR]시각화 선택. 음악 라이브러리 관리. Last.FM 계정 설정. 노래방 글꼴과 설정.</string>
+  <string id="31403">[B]사진 환경을 설정합니다.[/B][CR][CR]자동 썸네일 생성과 EXIF 태그 읽기. 슬라이드쇼 효과 조정. 스크린샷 폴더 설정.</string>
+  <string id="31404">[B]날씨 환경을 설정합니다.[/B][CR][CR]날씨 화면에 표시할 지역 설정. 온도 단위 변경.</string>
+  <string id="31405">[B]네트워크 환경을 설정합니다.[/B][CR][CR]웹서버 활성화. SMB 설정. UPNP 서버와 클라이언트 설정. 이벤트서버 설정.</string>
+  <string id="31406">[B]시스템 환경을 설정합니다.[/B][CR][CR]종료시 기본 동작 설정. 자동재생 설정. 오디오 하드웨어 설정. 마스터 유저 비밀번호 설정. </string>
+  <string id="31407">[B]MediaStream_Redux 스킨을 설정합니다.[/B][CR][CR]홈 메뉴버튼 변경. 배경 화면 변경. </string>
+
+
+  <string id="31420">[B][COLOR=white]디스크를 찾지 못했습니다.[/COLOR][/B][CR][CR]디스크를 삽입하고 재시도를 누르거나 취소하세요.</string>
+</strings>
