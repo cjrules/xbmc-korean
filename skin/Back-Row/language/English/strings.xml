@@ -19,7 +19,7 @@
 <string id="31016">Show Video Information in Menu's</string>
 <string id="31017">Enable Video Preview in Home</string>
 <string id="31018">Enable Video Preview in Menu's</string>
-<string id="31019">Enable Menu Descriptions</string>
+<string id="31019">Enable Time &amp; Date</string>
 <string id="31020">Reset Skin</string>
 <string id="31021">Switch Off Curtain Background</string>
 <string id="31022">Toggle Now Showing in coverflow view</string>
@@ -53,7 +53,7 @@
 <string id="31050">DVD Case Animation toggle</string>
 <string id="31051">Approx. Ending Time:</string>
 <string id="31052">TV Show Banner / Poster toggle</string>
-<string id="31053">File mode fanart toggle</string>
+<string id="31053">Ken Burns effect on backgrounds</string>
 <string id="31054">Wallpaper</string>
 <string id="31055">Sub Menu Control</string>
 <string id="31056">Set Menu background image</string>
@@ -106,5 +106,7 @@
 <string id="31103">Clear TV Shows background folder</string>
 <string id="31104">Scroll Bar Toggle</string>
 <string id="31105">Smaller Film Strip in Home screen</string>
-
+<string id="31106">New Movies</string>
+<string id="31107">New Episodes</string>
+<string id="31108">Recently Added Movies & TV Episodes</string>
 </strings>

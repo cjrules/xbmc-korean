@@ -17,6 +17,37 @@
 		<texture>Blacknwhite.png</texture>
 		</control>
 
+				<control type="largeimage">
+<description>Fanart BG</description>
+<info>ListItem.Property(fanart_image)</info>
+<width>720</width>
+<height>576</height>
+<aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<animation effect="fade" time="200">WindowClose</animation>
+<include>Ken Burns Effect</include>
+</control>
+
+<control type="largeimage">
+<description>Fanart BG</description>
+<info>Fanart.Image</info>
+<width>720</width>
+<height>576</height>
+<aspectratio>scale</aspectratio>
+<fadetime>300</fadetime>
+<animation effect="fade" time="200">WindowClose</animation>
+<include>Ken Burns Effect</include>
+</control>
+
+<control type="image">
+		<description>Background</description>
+		<posx>0</posx>
+		<posy>0</posy>
+		<width>720</width>
+		<height>576</height>
+		<texture>Black.png</texture>
+		</control>
+
 	<control type="label">
 		<description>dialog Heading</description>
 		<posx>0</posx>
@@ -60,28 +91,7 @@
 
 
 
-<!--Reflection-->
 
-	<control type="image">
-   		<description>Cover reflection</description>
-   		<posx>72</posx>
-   		<posy>440</posy>
-   		<width>292</width>
-   		<height>309</height>
-   		<texture flipy="true" diffuse="Thumb_Mask.png" /> 
-   		<info>MusicPlayer.Cover</info>
-		</control> 
-
-	<control type="image">
-		<description>Case bg Image reflection</description>
-		<posx>30</posx>
-		<posy>423</posy>
-		<width>350</width>
-		<height>342</height>
-		<texture flipy="true" diffuse="Thumb_Mask.png">case1.png</texture>
-		</control>	
-
-	
 
 <control type="image">
 		<description>TextBox</description>
@@ -177,12 +187,19 @@
 
 <control type="image">
 		<description>Rating</description>
-		<posx>730</posx>
-		<posy>360</posy>
+		<posx>725</posx>
+		<posy>365</posy>
 		<font>font04</font>
 		<info>ListItem.Rating</info>
+		<width>140</width>
+        <height>25</height>
+        <info>ListItem.StarRating</info>
+        <align>left</align>
+        <aspectratio>keep</aspectratio>
 		<animation effect="slide" end="-360,0" delay="100" time="300">WindowOpen</animation>
+		<animation effect="fade" time="200">WindowClose</animation>
 		</control>
+
 
 	<control type="label">
 			<description>playing</description>
@@ -313,30 +330,21 @@
 <type>label</type>
 <id>1</id>
 <width>720</width>
-<posx>50</posx>
-<posy>503</posy>
-<label>$INFO[VideoPlayer.Time]</label>
+<posx>0</posx>
+<posy>545</posy>
+<label>$INFO[VideoPlayer.Time] / $INFO[VideoPlayer.Duration</label>
+<align>center</align>
 <font>fontKB</font>
 </control>
 
-<control>
-<description>Time Info Label</description>
-<type>label</type>
-<id>1</id>
-<width>50</width>
-<posx>670</posx>
-<posy>503</posy>
-<align>right</align>
-<label>$INFO[VideoPlayer.Duration]</label>
-<font>fontKB</font>
-</control>
+
 
 		
 		<control type="progress" id="23">
 			<description>Progressbar</description>
-			<posx>-15</posx>
+			<posx>-5</posx>
 			<posy>564</posy>
-			<width>760</width>
+			<width>730</width>
 			<height>22</height>
 			<info>Player.Progress</info>
 			<texturebg>Seekbar background.png</texturebg>

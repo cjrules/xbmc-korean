@@ -24,6 +24,36 @@
 <animation effect="slide" time="600" start="0,-230" end="0,0" acceleration="-1" condition="!Skin.HasSetting(animated)">WindowOpen</animation>
 <animation effect="slide" time="600" start="0,0" end="0,-460" acceleration="-1" condition="!Skin.HasSetting(animated)">WindowClose</animation>
 
+<control>
+<description>Black Background</description>
+<type>image</type>
+<posx>-190</posx>
+<posy>-10</posy>
+<width>730</width>
+<height>171</height>
+<texture>background2.png</texture>
+</control>
+
+<control>
+<description>Black Background</description>
+<type>image</type>
+<posx>-190</posx>
+<posy>-12</posy>
+<width>730</width>
+<height>8</height>
+<texture>separator.png</texture>
+</control>
+
+<control>
+<description>Black Background</description>
+<type>image</type>
+<posx>-190</posx>
+<posy>157</posy>
+<width>730</width>
+<height>8</height>
+<texture>separator.png</texture>
+</control>
+
 	<control>
 		<description>Description Label</description>
 		<type>label</type>

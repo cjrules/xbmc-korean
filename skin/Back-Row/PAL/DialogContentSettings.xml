@@ -196,8 +196,8 @@
 <font>font10</font>
 <textcolor>lightgrey</textcolor>
 <label>5</label>
-<texturenofocus>keyboard-btn-backspace.png</texturenofocus>
-<texturefocus>keyboard-btn-backspace-focus.png</texturefocus>
+<texturenofocus>button-nofocus.png</texturenofocus>
+		<texturefocus>button-focus.png</texturefocus>
 <onleft>29</onleft>
 <onright>28</onright>
 <onup>30</onup>
@@ -214,8 +214,8 @@
 <label>186</label>
 <font>font10</font>
 <textcolor>lightgrey</textcolor>
-<texturenofocus>keyboard-btn-backspace.png</texturenofocus>
-<texturefocus>keyboard-btn-backspace-focus.png</texturefocus>
+<texturenofocus>button-nofocus.png</texturenofocus>
+		<texturefocus>button-focus.png</texturefocus>
 <onleft>6</onleft>
 <onright>29</onright>
 <onup>30</onup>
@@ -232,8 +232,8 @@
 <label>222</label>
 <font>font10</font>
 <textcolor>lightgrey</textcolor>
-<texturenofocus>keyboard-btn-backspace.png</texturenofocus>
-<texturefocus>keyboard-btn-backspace-focus.png</texturefocus>
+<texturenofocus>button-nofocus.png</texturenofocus>
+		<texturefocus>button-focus.png</texturefocus>
 <onleft>28</onleft>
 <onright>6</onright>
 <onup>30</onup>

@@ -380,13 +380,14 @@
 		<description>Time</description>
  		<type>label</type>
 		<posx>212</posx>
-        <posy>392</posy>
+        <posy>390</posy>
         <textwidth>125</textwidth>
 		<width>205</width>
-		<height>36</height>
+		<height>40</height>
 		<label>time</label>
 		<info>System.Time</info>
         <align>center</align>
+		<aligny>center</aligny>
 		<font>special16</font>
 		<textcolor>white</textcolor>
 		</control>

@@ -1,5 +1,5 @@
 <window id="0">
-  <defaultcontrol always="true">11</defaultcontrol>
+  <defaultcontrol always="true">8999</defaultcontrol>
   
 
 <allowoverlay>yes</allowoverlay>
@@ -174,9 +174,7 @@
 <height>720</height>
 <imagepath>Videos</imagepath>
 <info>Skin.String(CustomVideos)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
+<texture background="true"></texture>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomVideos) + !Skin.HasSetting(CustomVideosFoldOn)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
@@ -185,6 +183,10 @@
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 
@@ -194,18 +196,65 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>-</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomVideosFolder)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomVideosFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
-<visible>!Control.IsVisible(87)</visible>
 <visible>[Container(11).HasFocus(3)]</visible>
+<visible>!Control.IsVisible(87)</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
+</control>
+
+<control type="multiimage">
+<posx>0</posx>
+<posy>0</posy>
+<width>1280</width>
+<height>720</height>
+<imagepath>Videos</imagepath>
+<texture background="true"></texture>
+<info>Skin.String(CustomVideos)</info>
+<visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomVideos) + !Skin.HasSetting(CustomVideosFoldOn)</visible>
+<visible>!Skin.HasSetting(Default Wallpaper)</visible>
+<visible>!Control.IsVisible(87)</visible>
+<visible>[Container(11).HasFocus(4)]</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
+<animation effect="fade" time="800">Visible</animation>
+<animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
+</control>
+
+
+<control type="multiimage">
+<posx>0</posx>
+<posy>0</posy>
+<width>1280</width>
+<height>720</height>
+<imagepath>-</imagepath>
+<texture background="true"></texture>
+<info>Skin.String(CustomVideosFolder)</info>
+<visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomVideosFolder)</visible>
+<visible>!Skin.HasSetting(Default Wallpaper)</visible>
+<visible>!Control.IsVisible(87)</visible>
+<visible>[Container(11).HasFocus(4)]</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
+<animation effect="fade" time="800">Visible</animation>
+<animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -214,19 +263,21 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>Movies</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomMovies)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomMovies) + !Skin.HasSetting(CustomMoviesFoldOn)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(4)]</visible>
+<visible>[Container(11).HasFocus(5)]</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 
@@ -236,19 +287,21 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>-</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomMoviesFolder)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomMoviesFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(4)]</visible>
+<visible>[Container(11).HasFocus(5)]</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 
@@ -258,19 +311,21 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>TV</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomTV)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper) + !Skin.HasSetting(CustomTV) + !Skin.HasSetting(CustomTVFoldOn)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(5)]</visible>
+<visible>[Container(11).HasFocus(6)]</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -279,19 +334,21 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>-</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomTVFolder)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomTVFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(5)]</visible>
+<visible>[Container(11).HasFocus(6)]</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -300,18 +357,20 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>Music</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomMusic)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper) + !Skin.HasSetting(CustomMusic) + !Skin.HasSetting(CustomMusicFoldOn)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(6)]</visible>
+<visible>[Container(11).HasFocus(7)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -320,18 +379,20 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>-</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomMusicFolder)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper) + !Skin.HasSetting(CustomMusicFolder)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(6)]</visible>
+<visible>[Container(11).HasFocus(7)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -340,18 +401,20 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>Photos</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomPictures)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper) + !Skin.HasSetting(CustomPictures) + !Skin.HasSetting(CustomPicturesFoldOn)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(7)]</visible>
+<visible>[Container(11).HasFocus(8)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -360,18 +423,20 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>-</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomPicturesFolder)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomPicturesFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(7)]</visible>
+<visible>[Container(11).HasFocus(8)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -380,18 +445,20 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>Apps</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomApps)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper) + !Skin.HasSetting(CustomApps) + !Skin.HasSetting(CustomAppsFoldOn)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(8)]</visible>
+<visible>[Container(11).HasFocus(9)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -400,18 +467,20 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>-</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomAppsFolder)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomAppsFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(8)]</visible>
+<visible>[Container(11).HasFocus(9)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 
@@ -421,18 +490,20 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>Scripts</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomScripts)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomScripts) + !Skin.HasSetting(CustomScriptsFoldOn)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(9)]</visible>
+<visible>[Container(11).HasFocus(10)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -441,18 +512,20 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>-</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomScriptsFolder)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomScriptsFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(9)]</visible>
+<visible>[Container(11).HasFocus(10)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -461,18 +534,20 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>Files</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomFiles)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomFiles) + !Skin.HasSetting(CustomFilesFoldOn)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(10)]</visible>
+<visible>[Container(11).HasFocus(11)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -481,18 +556,20 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>-</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomFilesFolder)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomFilesFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(10)]</visible>
+<visible>[Container(11).HasFocus(11)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -501,10 +578,8 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>Weather</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomWeather)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomWeather) + !Skin.HasSetting(CustomWeatherFoldOn)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
@@ -513,6 +588,10 @@
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -521,10 +600,8 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>-</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomWeatherFolder)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomWeatherFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
@@ -533,6 +610,10 @@
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 
@@ -543,10 +624,8 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>Settings</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomSettings)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomSettings) + !Skin.HasSetting(CustomSettingsFoldOn)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
@@ -555,6 +634,10 @@
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 
@@ -566,10 +649,8 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>-</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(CustomSettingsFolder)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomSettingsFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
@@ -578,6 +659,10 @@
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
 <animation effect="fade" delay = "200" time="800">Hidden</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -586,12 +671,14 @@
 <width>1280</width>
 <height>720</height>
 <imagepath>Default Wallpaper</imagepath>
+<texture background="true"></texture>
 <info>Skin.String(Customdef)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
 <visible>Skin.HasSetting(Default Wallpaper) + !Skin.HasSetting(Customdef) + !Skin.HasSetting(CustomdefFoldOn)</visible>
 <animation effect="fade" time="1000">Windowclose</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 <control type="multiimage">
@@ -601,11 +688,13 @@
 <height>720</height>
 <imagepath>-</imagepath>
 <info>Skin.String(CustomdefFolder)</info>
-<timeperimage>20000</timeperimage>
-<fadetime>2000</fadetime>
-<randomize>true</randomize>
+<texture background="true"></texture>
 <visible>Skin.HasSetting(Default Wallpaper) + !Skin.HasSetting(CustomdefFolder)</visible>
 <animation effect="fade" time="1000">Windowclose</animation>
+<timeperimage>20000</timeperimage>
+<randomize>true</randomize>
+<fadetime>1000</fadetime>
+<include>Ken Burns Effect</include>
 </control>
 
 
@@ -734,6 +823,29 @@
 </control>
 
 <!-- Home Layout -->
+
+<control type="image">
+<posx>-5</posx>
+<posy>-5</posy>
+<width>1290</width>
+<height>730</height>
+<aspectratio>stretch</aspectratio>
+<texture>background2.png</texture>
+<visible>!Skin.HasSetting(home-visualisation)</visible>
+<visible>Player.HasAudio</visible>
+</control>
+
+<control type="image">
+<posx>-5</posx>
+<posy>-5</posy>
+<width>1290</width>
+<height>730</height>
+<aspectratio>stretch</aspectratio>
+<texture>background2.png</texture>
+<visible>!Skin.HasSetting(home-video-preview)</visible>
+<visible>Player.HasVideo</visible>
+</control>
+
 <control type="visualisation">
 <posx>-5</posx>
 <posy>-5</posy>
@@ -995,6 +1107,8 @@
 <texture>black.png</texture>
 <colordiffuse>aaffffff</colordiffuse>
 <visible>!Skin.HasSetting(rss)</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
 </control>
 
 <control>
@@ -1010,6 +1124,8 @@
 <titlecolor>rss head</titlecolor>
 <headlinecolor>rss main</headlinecolor>
 <visible>!Skin.HasSetting(rss)</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
 </control>
 
 
@@ -1026,6 +1142,8 @@
 <align>center</align>
 <font>font18</font>
 <visible>!Skin.HasSetting(rss)</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
 </control>
 
 
@@ -1034,8 +1152,8 @@
 <control> 
 <description>Weather Conditions</description> 
 <type>image</type>  
-<posx>53.10</posx> 
-<posy>25</posy> 
+<posx>30</posx> 
+<posy>610</posy> 
 <width>79.65</width> 
 <height>61.25</height> 
 <aspectratio>scale</aspectratio>
@@ -1051,8 +1169,8 @@
 <control> 
 <description>Weather Temperature</description> 
 <type>label</type>  
-<posx>132.75</posx> 
-<posy>37.50</posy> 
+<posx>110</posx> 
+<posy>640</posy> 
 <info>Weather.Temperature</info> 
 <font>special12</font> 
 <align>left</align>
@@ -1074,18 +1192,20 @@
 <type>button</type>
 <id>162</id>
 <posx>1141.65</posx>
-<posy>625</posy>
+<posy>620</posy>
 <width>70.08</width>
 <height>62.5</height>
 <onclick>XBMC.ActivateWindow(shutdownmenu)</onclick>
 <texturefocus>home-power-focus.png</texturefocus>
 <texturenofocus>home-power.png</texturenofocus>
 <onleft>161</onleft>
-<onright>160</onright>
+<onright>157</onright>
 <onup>11</onup>
 <ondown>11</ondown>
 <include>home-global-button</include>
 <visible>Control.HasFocus(162) | ControlGroup(10).HasFocus()</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
 </control>
 
 <control>
@@ -1093,7 +1213,7 @@
 <type>button</type>
 <id>161</id>
 <posx>1062</posx>
-<posy>625</posy>
+<posy>620</posy>
 <width>70.08</width>
 <height>62.5</height>
 <onclick>XBMC.ActivateWindow(submenu)</onclick>
@@ -1105,6 +1225,8 @@
 <ondown>11</ondown>
 <include>home-global-button</include>
 <visible>Control.HasFocus(161) | ControlGroup(10).HasFocus()</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
 </control>
 
 <control>
@@ -1112,39 +1234,21 @@
 <type>button</type>
 <id>157</id>
 <posx>982.35</posx>
-<posy>625</posy>
+<posy>620</posy>
 <width>70.08</width>
 <height>62.5</height>
 <onclick>XBMC.ActivateWindow(Favourites)</onclick>
 <texturefocus>home-fav-focus.png</texturefocus>
 <texturenofocus>home-fav.png</texturenofocus>
-<onleft>160</onleft>
+<onleft>162</onleft>
 <onright>161</onright>
 <onup>11</onup>
 <ondown>11</ondown>
 <include>home-global-button</include>
 <visible>Control.HasFocus(157) | ControlGroup(10).HasFocus()</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
 </control>
-
-<control>
-<description>DVD launch Button</description>
-<type>button</type>
-<id>160</id>
-<posx>902.70</posx>
-<posy>625</posy>
-<width>70.08</width>
-<height>62.5</height>
-<texturefocus>home-tray-focus.png</texturefocus>
-<texturenofocus>home-tray.png</texturenofocus>
-<onclick>XBMC.PlayDVD()</onclick>
-<onleft>162</onleft>
-<onright>157</onright>
-<onup>11</onup>
-<ondown>11</ondown>
-<include>home-dvd-button</include>
-</control>
-
-
 
 </control>
 
@@ -1157,7 +1261,7 @@
 
 <animation effect="slide" time="600" start="0,720" end="0,0" acceleration="-1">WindowOpen</animation>
 <animation effect="fade" time="400" start="100" end="0">WindowClose</animation>
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
+<visible allowhiddenfocus="true">Control.HasFocus(11) | Control.HasFocus(8001) | Control.HasFocus(8000)</visible>
 
 <control type="wraplist" id="11">
 <visible>Skin.HasSetting(Small Film Strip)</visible>
@@ -1165,7 +1269,7 @@
 <posy>250</posy>
 <height>625</height>
 <width>1280</width>
-<onup>157</onup>
+<onup>8000</onup>
 <ondown>161</ondown>
 <onleft>300</onleft>
 <onright>300</onright>
@@ -1334,6 +1438,14 @@
 </item>
 
 <item id="3">
+<label>341</label>
+<icon>My-DiscDrive.png</icon>
+<thumb>My-DiscDrive.png</thumb>
+<onclick>XBMC.PlayDVD()</onclick>
+<visible allowhiddenfocus="false">System.hasmediadvd</visible>
+</item>
+
+<item id="4">
 <label>3</label>
 <icon>My-Videos.png</icon>
 <thumb>My-Videos.png</thumb>
@@ -1343,7 +1455,7 @@
 <onclick>ActivateWindow(MyVideoFiles,Route)</onclick>
 </item>
 
-<item id="4">
+<item id="5">
 <label>342</label>
 <icon>cinema.png</icon>
 <thumb>cinema.png</thumb>
@@ -1355,7 +1467,7 @@
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
-<item id="4">
+<item id="5">
 <label>342</label>
 <icon>cinema.png</icon>
 <thumb>cinema.png</thumb>
@@ -1367,7 +1479,7 @@
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
-<item id="5">
+<item id="6">
 <label>20343</label>
 <icon>watch tv.png</icon>
 <thumb>watch tv.png</thumb>
@@ -1379,7 +1491,7 @@
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
-<item id="5">
+<item id="6">
 <label>20343</label>
 <icon>watch tv.png</icon>
 <thumb>watch tv.png</thumb>
@@ -1391,7 +1503,7 @@
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
-<item id="6">
+<item id="7">
 <label>2</label>
 <icon>Listen Music.png</icon>
 <thumb>Listen Music.png</thumb>
@@ -1400,8 +1512,7 @@
 </item>
 
 
-<item id="7">
-
+<item id="8">
 <label>1</label>
 <icon>Photo Gallery.png</icon>
 <thumb>Photo Gallery.png</thumb>
@@ -1409,16 +1520,16 @@
 <onclick>XBMC.ActivateWindow(MyPictures)</onclick>
 </item>
 
-<item id="8">
+<item id="9">
 <label>0</label>
 <icon>My Apps.png</icon>
 <thumb>My Apps.png</thumb>
-<onclick>XBMC.ActivateWindow(MyPrograms)</onclick>
 <onclick>SetFocus(21)</onclick>
+<onclick>ActivateWindow(Programs)</onclick>
 <visible>!Skin.HasSetting(Programs)</visible>
  </item>
 
-<item id="9">
+<item id="10">
 <label>247</label>
 <icon>My Scripts.png</icon>
 <thumb>My Scripts.png</thumb>
@@ -1427,7 +1538,7 @@
 <onclick>XBMC.ActivateWindow(MyScripts)</onclick>
 </item>
 		 
-<item id="10">
+<item id="11">
 <label>7</label>
 <icon>my files.png</icon>
 <thumb>my files.png</thumb>
@@ -1452,7 +1563,7 @@
 
 <visible>!Skin.HasSetting(Small Film Strip)</visible>
 
-<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
+<visible allowhiddenfocus="true">Control.HasFocus(11) | Control.HasFocus(8001) | Control.HasFocus(8000)</visible>
 
 <animation effect="slide" time="600" start="0,720" end="0,0" acceleration="-1">WindowOpen</animation>
 <animation effect="fade" time="400" start="100" end="0">WindowClose</animation>
@@ -1464,7 +1575,7 @@
 <posy>215</posy>
 <height>625</height>
 <width>1280</width>
-<onup>157</onup>
+<onup>8000</onup>
 <ondown>161</ondown>
 <onleft>300</onleft>
 <onright>300</onright>
@@ -1614,6 +1725,14 @@
 </item>
 
 <item id="3">
+<label>341</label>
+<icon>My-DiscDrive.png</icon>
+<thumb>My-DiscDrive.png</thumb>
+<onclick>XBMC.PlayDVD()</onclick>
+<visible allowhiddenfocus="false">System.hasmediadvd</visible>
+</item>
+
+<item id="4">
 <label>3</label>
 <icon>My-Videos.png</icon>
 <thumb>My-Videos.png</thumb>
@@ -1623,7 +1742,7 @@
 <onclick>ActivateWindow(MyVideoFiles,Route)</onclick>
 </item>
 
-<item id="4">
+<item id="5">
 <label>342</label>
 <icon>cinema.png</icon>
 <thumb>cinema.png</thumb>
@@ -1635,7 +1754,7 @@
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
-<item id="4">
+<item id="5">
 <label>342</label>
 <icon>cinema.png</icon>
 <thumb>cinema.png</thumb>
@@ -1647,7 +1766,7 @@
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
-<item id="5">
+<item id="6">
 <label>20343</label>
 <icon>watch tv.png</icon>
 <thumb>watch tv.png</thumb>
@@ -1659,7 +1778,7 @@
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
-<item id="5">
+<item id="6">
 <label>20343</label>
 <icon>watch tv.png</icon>
 <thumb>watch tv.png</thumb>
@@ -1671,7 +1790,7 @@
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
-<item id="6">
+<item id="7">
 <label>2</label>
 <icon>Listen Music.png</icon>
 <thumb>Listen Music.png</thumb>
@@ -1680,8 +1799,7 @@
 </item>
 
 
-<item id="7">
-
+<item id="8">
 <label>1</label>
 <icon>Photo Gallery.png</icon>
 <thumb>Photo Gallery.png</thumb>
@@ -1689,25 +1807,25 @@
 <onclick>XBMC.ActivateWindow(MyPictures)</onclick>
 </item>
 
-<item id="8">
+<item id="9">
 <label>0</label>
 <icon>My Apps.png</icon>
 <thumb>My Apps.png</thumb>
-<onclick>XBMC.ActivateWindow(MyPrograms)</onclick>
 <onclick>SetFocus(21)</onclick>
+<onclick>ActivateWindow(Programs)</onclick>
 <visible>!Skin.HasSetting(Programs)</visible>
  </item>
 
-<item id="9">
+<item id="10">
 <label>247</label>
 <icon>My Scripts.png</icon>
 <thumb>My Scripts.png</thumb>
- <visible>Skin.HasSetting(Scripts)</visible>
+<visible>Skin.HasSetting(Scripts)</visible>
 <onclick>SetFocus(21)</onclick>
 <onclick>XBMC.ActivateWindow(MyScripts)</onclick>
 </item>
 		 
-<item id="10">
+<item id="11">
 <label>7</label>
 <icon>my files.png</icon>
 <thumb>my files.png</thumb>
@@ -1728,9 +1846,376 @@
 
 </control>
 
+<control type="button" id="8999">
+				<description>Run Recently added</description>
+				<posx>-20</posx>
+				<posy>-20</posy>
+				<width>1</width>
+				<height>1</height>
+				<label>-</label>
+				<font>-</font>
+				<onfocus>XBMC.RunScript(special://skin/extras/RecentlyAdded.py,limit=6&amp;albums=True)</onfocus>
+				<onfocus>SetFocus(11)</onfocus>
+				<visible>!Skin.HasSetting(Recently Added)</visible>
+				<texturenofocus>-</texturenofocus>
+				<texturefocus>-</texturefocus>
+				</control>
+
+<control type="button" id="8999">
+				<description>Run Recently added</description>
+				<posx>-20</posx>
+				<posy>-20</posy>
+				<width>1</width>
+				<height>1</height>
+				<label>-</label>
+				<font>-</font>
+				<onfocus>SetFocus(11)</onfocus>
+				<visible>Skin.HasSetting(Recently Added)</visible>
+				<texturenofocus>-</texturenofocus>
+				<texturefocus>-</texturefocus>
+				</control>
+
+<control type="group">
+			<visible>!Skin.HasSetting(Recently Added)</visible>
+			<animation effect="fade" time="300">Visible</animation>
+		<animation effect="fade" time="300">Hidden</animation>
+			<animation effect="fade" time="300" delay="1000">WindowOpen</animation>
+			<animation effect="fade" time="200">WindowClose</animation>
+			
+			
+			<control type="group">
+				<posx>5</posx>
+				<posy>10</posy>
+				<visible>Control.HasFocus(11) | Control.HasFocus(8000)</visible>
+				<visible>Container(11).Hasfocus(5)</visible>
+				
+	
+				<control type="image">
+					<description>background</description>
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>525</width>
+					<height>206</height>
+					<texture>List background3.png</texture>
+				</control>
+				
+				<control type="label">
+					<description>Title label</description>
+					<posx>5</posx>
+					<posy>10</posy>
+					<height>20</height>
+					<width>515</width>
+					<label>[UPPERCASE]$LOCALIZE[31106][/UPPERCASE]</label>
+					<align>center</align>
+					<aligny>center</aligny>
+					<font>font14</font>
+					<textcolor>red</textcolor>
+					<shadowcolor>00000000</shadowcolor>
+					<selectedcolor>selected</selectedcolor>
+				</control>
+
+				<control type="image">
+					<description>Main Icon -3</description>
+					<posx>185</posx>
+					<posy>60</posy>
+					<width>120</width>
+					<height>90</height>
+					<aspectratio align="left">keep</aspectratio>
+					<texture background="true">$INFO[Window.Property(LatestMovie.4.Thumb)]</texture>
+					<bordertexture border="8">ThumbShadow.png</bordertexture>
+					<bordersize>8</bordersize>
+				</control>
+				<control type="image">
+					<description>Main Icon -2</description>
+					<posx>140</posx>
+					<posy>47.5</posy>
+					<width>120</width>
+					<height>120</height>
+					<aspectratio align="left">keep</aspectratio>
+					<texture background="true">$INFO[Window.Property(LatestMovie.3.Thumb)]</texture>
+					<bordertexture border="8">ThumbShadow.png</bordertexture>
+					<bordersize>8</bordersize>
+				</control>
+				<control type="image">
+					<description>Main Icon -1</description>
+					<posx>80</posx>
+					<posy>32.5</posy>
+					<width>120</width>
+					<height>150</height>
+					<aspectratio align="left">keep</aspectratio>
+					<texture background="true">$INFO[Window.Property(LatestMovie.2.Thumb)]</texture>
+					<bordertexture border="8">ThumbShadow.png</bordertexture>
+					<bordersize>8</bordersize>
+				</control>
+				<control type="image">
+					<description>Main Icon</description>
+					<posx>20</posx>
+					<posy>17.5</posy>
+					<width>120</width>
+					<height>180</height>
+					<aspectratio align="left">keep</aspectratio>
+					<texture background="true">$INFO[Window.Property(LatestMovie.1.Thumb)]</texture>
+					<bordertexture border="8">ThumbShadow.png</bordertexture>
+					<bordersize>8</bordersize>
+				</control>
+				<control type="list" id="8000">
+					<posx>260</posx>
+					<posy>40</posy>
+					<width>250</width>
+					<height>136</height>
+					<onleft>11</onleft>
+					<onright>11</onright>
+					<onup>8001</onup>
+					<ondown>8000</ondown>
+
+					
+					<viewtype label="535">list</viewtype>
+					<pagecontrol>-</pagecontrol>
+					<scrolltime>0</scrolltime>
+					<itemlayout height="34" width="230">
+						
+						<control type="label">
+							<posx>10</posx>
+							<posy>0</posy>
+							<width>230</width>
+							<height>34</height>
+							<font>font64</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>00000000</shadowcolor>
+							<selectedcolor>selected</selectedcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<label>[UPPERCASE]$INFO[ListItem.Label][/UPPERCASE]</label>
+						</control>
+					</itemlayout>
+					
+					<focusedlayout height="34" width="230">
+						<control type="image">
+							<posx>0</posx>
+							<posy>0</posy>
+							<width>250</width>
+							<height>34</height>
+							<texture>button1.png</texture>
+							<colordiffuse>99ffffff</colordiffuse>
+							<visible>Control.HasFocus(8000)</visible>
+							<animation effect="fade" time="300">Visible</animation>
+		<animation effect="fade" time="300">Hidden</animation>
+						</control>
+						<control type="label">
+							<posx>10</posx>
+							<posy>0</posy>
+							<width>230</width>
+							<height>34</height>
+							<font>font64</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>00000000</shadowcolor>
+							<selectedcolor>selected</selectedcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<label>[UPPERCASE]$INFO[ListItem.Label][/UPPERCASE]</label>
+						</control>
+					</focusedlayout>
+					
+					<content>
+						<item id="1">
+							<label>$INFO[Window.Property(LatestMovie.1.Title)]</label>
+							<label2></label2>
+							<onclick>PlayMedia($INFO[Window.Property(LatestMovie.1.Path)])</onclick>
+							<icon>-</icon>
+							<thumb>-</thumb>
+						</item>
+						<item id="2">
+							<label>$INFO[Window.Property(LatestMovie.2.Title)]</label>
+							<label2></label2>
+							<onclick>PlayMedia($INFO[Window.Property(LatestMovie.2.Path)])</onclick>
+							<icon>-</icon>
+							<thumb>-</thumb>
+						</item>
+						<item id="3">
+							<label>$INFO[Window.Property(LatestMovie.3.Title)]</label>
+							<label2></label2>
+							<onclick>PlayMedia($INFO[Window.Property(LatestMovie.3.Path)])</onclick>
+							<icon>-</icon>
+							<thumb>-</thumb>
+						</item>
+						<item id="4">
+							<label>$INFO[Window.Property(LatestMovie.4.Title)]</label>
+							<label2></label2>
+							<onclick>PlayMedia($INFO[Window.Property(LatestMovie.4.Path)])</onclick>
+							<icon>-</icon>
+							<thumb>-</thumb>
+						</item>
+					</content>
+				</control>
+			</control>
+			
+			
+			
+			<control type="group">
+				<posx>5</posx>
+				<posy>10</posy>
+				<visible>Control.HasFocus(11) | Control.HasFocus(8001)</visible>
+				<visible>Container(11).Hasfocus(6)</visible>
+							
+
+				<control type="image">
+					<description>background</description>
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>525</width>
+					<height>206</height>
+					<texture diffuse="">List background3.png</texture>
+				</control>
+
+				<control type="label">
+					<description>Title label</description>
+					<posx>5</posx>
+					<posy>10</posy>
+					<height>20</height>
+					<width>515</width>
+					<label>[UPPERCASE]$LOCALIZE[31107][/UPPERCASE]</label>
+					<align>center</align>
+					<aligny>center</aligny>
+					<font>font14</font>
+					<textcolor>red</textcolor>
+					<shadowcolor>00000000</shadowcolor>
+					<selectedcolor>white</selectedcolor>
+				</control>
 
 
-
+				<control type="image">
+					<description>Main Icon</description>
+					<posx>30</posx>
+					<posy>40</posy>
+					<width>225</width>
+					<height>136</height>
+					<aspectratio scalediffuse="false">scale</aspectratio>
+					<texture background="true" diffuse="mask episode.png">$INFO[Window.Property(LatestEpisode.1.Thumb)]</texture>
+					<animation effect="fade" time="300">Visible</animation>
+		<animation effect="fade" time="300">Hidden</animation>
+				</control>
+				<control type="image">
+					<description>Main Icon</description>
+					<posx>30</posx>
+					<posy>40</posy>
+					<width>225</width>
+					<height>136</height>
+					<aspectratio scalediffuse="false">scale</aspectratio>
+					<fadetime>200</fadetime>
+					<texture background="true" diffuse="mask episode.png">$INFO[Container(8001).ListItem.Thumb]</texture>
+					<animation effect="fade" time="300">Visible</animation>
+		<animation effect="fade" time="300">Hidden</animation>
+				</control>
+				<control type="list" id="8001">
+					<posx>260</posx>
+					<posy>40</posy>
+					<width>250</width>
+					<height>136</height>
+					<onleft>11</onleft>
+					<onright>11</onright>
+					<onup>8001</onup>
+					<ondown>8001</ondown>
+					<viewtype label="535">list</viewtype>
+					<pagecontrol>-</pagecontrol>
+					<scrolltime>0</scrolltime>
+					<itemlayout height="34" width="230">
+						<control type="label">
+							<posx>10</posx>
+							<posy>2</posy>
+							<width>230</width>
+							<height>10</height>
+							<font>font10</font>
+							<textcolor>grey</textcolor>
+							<shadowcolor>00000000</shadowcolor>
+							<selectedcolor>white</selectedcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<label>[UPPERCASE]$INFO[ListItem.Label2][/UPPERCASE]</label>
+						</control>
+						<control type="label">
+							<posx>10</posx>
+							<posy>14</posy>
+							<width>230</width>
+							<height>20</height>
+							<font>font64</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>00000000</shadowcolor>
+							<selectedcolor>white</selectedcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<label>[UPPERCASE]$INFO[ListItem.Label][/UPPERCASE]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="34" width="230">
+						<control type="image">
+							<posx>5</posx>
+							<posy>0</posy>
+							<width>250</width>
+							<height>34</height>
+							<texture>button1.png</texture>
+							<colordiffuse>99ffffff</colordiffuse>
+							<visible>Control.HasFocus(8001)</visible>
+							</control>
+						<control type="label">
+							<posx>10</posx>
+							<posy>2</posy>
+							<width>230</width>
+							<height>10</height>
+							<font>font10</font>
+							<textcolor>grey</textcolor>
+							<shadowcolor>00000000</shadowcolor>
+							<selectedcolor>white</selectedcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<label>[UPPERCASE]$INFO[ListItem.Label2][/UPPERCASE]</label>
+						</control>
+						<control type="label">
+							<posx>10</posx>
+							<posy>14</posy>
+							<width>230</width>
+							<height>20</height>
+							<font>font64</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>00000000</shadowcolor>
+							<selectedcolor>white</selectedcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<label>[UPPERCASE]$INFO[ListItem.Label][/UPPERCASE]</label>
+						</control>
+					</focusedlayout>
+					<content>
+						<item id="1">
+							<label>$INFO[Window.Property(LatestEpisode.1.EpisodeTitle)]</label>
+							<label2>$INFO[Window.Property(LatestEpisode.1.ShowTitle)] - $INFO[Window.Property(LatestEpisode.1.EpisodeNo)]</label2>
+							<onclick>PlayMedia($INFO[Window.Property(LatestEpisode.1.Path)])</onclick>
+							<icon>-</icon>
+							<thumb>$INFO[Window.Property(LatestEpisode.1.Thumb)]</thumb>
+						</item>
+						<item id="2">
+							<label>$INFO[Window.Property(LatestEpisode.2.EpisodeTitle)]</label>
+							<label2>$INFO[Window.Property(LatestEpisode.2.ShowTitle)] - $INFO[Window.Property(LatestEpisode.2.EpisodeNo)]</label2>
+							<onclick>PlayMedia($INFO[Window.Property(LatestEpisode.2.Path)])</onclick>
+							<icon>-</icon>
+							<thumb>$INFO[Window.Property(LatestEpisode.2.Thumb)]</thumb>
+						</item>
+						<item id="3">
+							<label>$INFO[Window.Property(LatestEpisode.3.EpisodeTitle)]</label>
+							<label2>$INFO[Window.Property(LatestEpisode.3.ShowTitle)] - $INFO[Window.Property(LatestEpisode.3.EpisodeNo)]</label2>
+							<onclick>PlayMedia($INFO[Window.Property(LatestEpisode.3.Path)])</onclick>
+							<icon>-</icon>
+							<thumb>$INFO[Window.Property(LatestEpisode.3.Thumb)]</thumb>
+						</item>
+						<item id="4">
+							<label>$INFO[Window.Property(LatestEpisode.4.EpisodeTitle)]</label>
+							<label2>$INFO[Window.Property(LatestEpisode.4.ShowTitle)] - $INFO[Window.Property(LatestEpisode.4.EpisodeNo)]</label2>
+							<onclick>PlayMedia($INFO[Window.Property(LatestEpisode.4.Path)])</onclick>
+							<icon>-</icon>
+							<thumb>$INFO[Window.Property(LatestEpisode.4.Thumb)]</thumb>
+						</item>
+					</content>
+				</control>
+			</control>
+		</control>
 
 
 </controls>

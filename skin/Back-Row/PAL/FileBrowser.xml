@@ -41,7 +41,7 @@
 <align>left</align>
 <font>Heading-M</font>
 <label>1023</label>
-<textcolor>red</textcolor>
+<textcolor>grey</textcolor>
 </control>
 
 <control type="label" id="412">

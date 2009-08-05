@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--Language file translated with Team XBMC Translator-->
 <!--Translator: blittan-->
 <!--Email: blittan@xbmc.org-->
@@ -24,7 +24,7 @@
   <string id="31016">Visa videoinformation i menyer</string>
   <string id="31017">Aktivera videoförhandsgranskning i hemfönster</string>
   <string id="31018">Aktivera videoförhandsgranskning i menyer</string>
-  <string id="31019">Aktivera menybeskrivningar</string>
+  <string id="31019">Enable Time &amp; Date</string>
   <string id="31020">Starta om skal</string>
   <string id="31021">Stäng av ridåbakgrund</string>
   <string id="31022">Slå Av/På nu visas i omslagsflödesvisning</string>
@@ -111,4 +111,7 @@
   <string id="31103">Återställ TV-seriers bakgrundsmapp</string>
   <string id="31104">Skrollhandtagsväxling</string>
   <string id="31105">Mindre filmremsa på hemfönstret</string>
+  <string id="31106">New Movies</string>
+  <string id="31107">New Episodes</string>
+  <string id="31108">Recently Added Movies & TV Episodes</string>
 </strings>

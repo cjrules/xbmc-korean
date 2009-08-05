@@ -59,8 +59,13 @@
 
     <font>
       <name>font10</name>
+<<<<<<< .mine
       <filename>NanumGothicBold.ttf</filename>
       <size>28</size>
+=======
+      <filename>FrancophilSans.ttf</filename>
+      <size>20</size>
+>>>>>>> .r2278
       <style>bold</style>
       <shadow>ff000000</shadow>
     </font>

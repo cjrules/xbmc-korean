@@ -2,7 +2,28 @@
  <defaultcontrol>2</defaultcontrol>
 	<controls>
 
+<control type="group">
+		<posx>0</posx>
+		<posy>0</posy>
 	<!-- Codec Infos -->
+<visible>Control.IsVisible(10)</visible>
+		<animation type="Visible">
+			<effect type="fade" time="400" start="0" end="100" />
+			<effect type="slide" time="400" start="0,-91" end="0,0" easing="out" tween="cubic" />
+		</animation>
+		<animation type="Hidden">
+			<effect type="fade" time="400" start="100" end="0" />
+			<effect type="slide" time="400" start="0,0" end="0,-91" easing="in" tween="cubic" />
+		</animation>
+		<animation type="WindowOpen">
+			<effect type="fade" time="400" start="0" end="100" />
+			<effect type="slide" time="400" start="0,-91" end="0,0" easing="out" tween="cubic" />
+		</animation>
+		<animation type="WindowClose">
+			<effect type="fade" time="400" start="100" end="0" />
+			<effect type="slide" time="400" start="0,0" end="0,-91" easing="in" tween="cubic" />
+		</animation>		
+
 	<control>
 		<description>Media Info Background Image</description>
 		<type>image</type>
@@ -12,7 +33,6 @@
 		<width>740</width>
 		<height>91</height>
 		<texture>black.png</texture>
-		<include>media-infopanel-effect</include>
 	</control>
 
 <control>
@@ -24,7 +44,6 @@
 <width>740</width>
 <height>3</height>
 <texture>separatorosd.png</texture>
-<include>media-infopanel-effect</include>
 </control>
 
 	<control>
@@ -36,7 +55,6 @@
 		<label>-</label>
 		<align>left</align>
 		<font>font13</font>
-		<include>media-infopanel-effect</include>
 	</control>
 
 	<control>
@@ -48,7 +66,6 @@
 		<label>-</label>
 		<align>left</align>
 		<font>font13</font>
-		<include>media-infopanel-effect</include>
 	</control>
 
 	<control>
@@ -60,7 +77,8 @@
 		<label>-</label>
 		<align>left</align>
 		<font>font13</font>
-		<include>media-infopanel-effect</include>
+	</control>
+
 	</control>
 
 	<control>

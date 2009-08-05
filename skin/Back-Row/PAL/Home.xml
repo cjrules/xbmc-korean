@@ -212,6 +212,47 @@
 <posy>0</posy>
 <width>720</width>
 <height>576</height>
+<imagepath>Videos</imagepath>
+<info>Skin.String(CustomVideos)</info>
+<timeperimage>20000</timeperimage>
+<fadetime>2000</fadetime>
+<randomize>true</randomize>
+<visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomVideos) + !Skin.HasSetting(CustomVideosFoldOn)</visible>
+<visible>!Skin.HasSetting(Default Wallpaper)</visible>
+<visible>!Control.IsVisible(87)</visible>
+<visible>[Container(11).HasFocus(4)]</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
+<animation effect="fade" time="800">Visible</animation>
+<animation effect="fade" delay = "200" time="800">Hidden</animation>
+</control>
+
+
+<control type="multiimage">
+<posx>0</posx>
+<posy>0</posy>
+<width>720</width>
+<height>576</height>
+<imagepath>-</imagepath>
+<info>Skin.String(CustomVideosFolder)</info>
+<timeperimage>20000</timeperimage>
+<fadetime>2000</fadetime>
+<randomize>true</randomize>
+<visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomVideosFolder)</visible>
+<visible>!Skin.HasSetting(Default Wallpaper)</visible>
+<visible>!Control.IsVisible(87)</visible>
+<visible>[Container(11).HasFocus(4)]</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
+<animation effect="fade" time="800">Visible</animation>
+<animation effect="fade" delay = "200" time="800">Hidden</animation>
+</control>
+
+<control type="multiimage">
+<posx>0</posx>
+<posy>0</posy>
+<width>720</width>
+<height>576</height>
 <imagepath>Movies</imagepath>
 <info>Skin.String(CustomMovies)</info>
 <timeperimage>20000</timeperimage>
@@ -220,7 +261,7 @@
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomMovies) + !Skin.HasSetting(CustomMoviesFoldOn)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(4)]</visible>
+<visible>[Container(11).HasFocus(5)]</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
@@ -242,7 +283,7 @@
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomMoviesFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(4)]</visible>
+<visible>[Container(11).HasFocus(5)]</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
@@ -264,7 +305,7 @@
 <visible>Skin.HasSetting(Wallpaper)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper) + !Skin.HasSetting(CustomTV) + !Skin.HasSetting(CustomTVFoldOn)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(5)]</visible>
+<visible>[Container(11).HasFocus(6)]</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
@@ -285,7 +326,7 @@
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomTVFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(5)]</visible>
+<visible>[Container(11).HasFocus(6)]</visible>
 <visible>!Skin.HasSetting(tv-library)</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
@@ -306,7 +347,7 @@
 <visible>Skin.HasSetting(Wallpaper)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper) + !Skin.HasSetting(CustomMusic) + !Skin.HasSetting(CustomMusicFoldOn)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(6)]</visible>
+<visible>[Container(11).HasFocus(7)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
@@ -326,7 +367,7 @@
 <visible>Skin.HasSetting(Wallpaper)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper) + !Skin.HasSetting(CustomMusicFolder)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(6)]</visible>
+<visible>[Container(11).HasFocus(7)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
@@ -346,7 +387,7 @@
 <visible>Skin.HasSetting(Wallpaper)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper) + !Skin.HasSetting(CustomPictures) + !Skin.HasSetting(CustomPicturesFoldOn)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(7)]</visible>
+<visible>[Container(11).HasFocus(8)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
@@ -366,7 +407,7 @@
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomPicturesFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(7)]</visible>
+<visible>[Container(11).HasFocus(8)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
@@ -386,7 +427,7 @@
 <visible>Skin.HasSetting(Wallpaper)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper) + !Skin.HasSetting(CustomApps) + !Skin.HasSetting(CustomAppsFoldOn)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(8)]</visible>
+<visible>[Container(11).HasFocus(9)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
@@ -406,7 +447,7 @@
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomAppsFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(8)]</visible>
+<visible>[Container(11).HasFocus(9)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
@@ -427,7 +468,7 @@
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomScripts) + !Skin.HasSetting(CustomScriptsFoldOn)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(9)]</visible>
+<visible>[Container(11).HasFocus(10)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
@@ -447,7 +488,7 @@
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomScriptsFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(9)]</visible>
+<visible>[Container(11).HasFocus(10)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
@@ -467,7 +508,7 @@
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomFiles) + !Skin.HasSetting(CustomFilesFoldOn)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(10)]</visible>
+<visible>[Container(11).HasFocus(11)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
@@ -487,7 +528,7 @@
 <visible>Skin.HasSetting(Wallpaper) + !Skin.HasSetting(CustomFilesFolder)</visible>
 <visible>!Skin.HasSetting(Default Wallpaper)</visible>
 <visible>!Control.IsVisible(87)</visible>
-<visible>[Container(11).HasFocus(10)]</visible>
+<visible>[Container(11).HasFocus(11)]</visible>
 <animation effect="fade" time="400">WindowOpen</animation>
 <animation effect="fade" time="300">WindowClose</animation>
 <animation effect="fade" time="800">Visible</animation>
@@ -734,6 +775,29 @@
 
 
 <!-- Home Layout -->
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>720</width>
+<height>576</height>
+<aspectratio>stretch</aspectratio>
+<texture>background2.png</texture>
+<visible>!Skin.HasSetting(home-visualisation)</visible>
+<visible>Player.HasAudio</visible>
+</control>
+
+<control type="image">
+<posx>0</posx>
+<posy>0</posy>
+<width>720</width>
+<height>576</height>
+<aspectratio>stretch</aspectratio>
+<texture>background2.png</texture>
+<visible>!Skin.HasSetting(home-video-preview)</visible>
+<visible>Player.HasVideo</visible>
+</control>
+
 <control type="visualisation">
 <posx>0</posx>
 <posy>0</posy>
@@ -1000,6 +1064,8 @@
 <texture>black.png</texture>
 <colordiffuse>aaffffff</colordiffuse>
 <visible>!Skin.HasSetting(rss)</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
 </control>
 
 <control>
@@ -1015,6 +1081,8 @@
 <titlecolor>rss head</titlecolor>
 <headlinecolor>rss main</headlinecolor>
 <visible>!Skin.HasSetting(rss)</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
 </control>
 
 
@@ -1031,6 +1099,8 @@
 <align>center</align>
 <font>font18</font>
 <visible>!Skin.HasSetting(rss)</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
 </control>
 
 
@@ -1085,11 +1155,13 @@
 <texturefocus>home-power-focus.png</texturefocus>
 <texturenofocus>home-power.png</texturenofocus>
 <onleft>161</onleft>
-<onright>160</onright>
+<onright>157</onright>
 <onup>11</onup>
 <ondown>11</ondown>
 <include>home-global-button</include>
 <visible>Control.HasFocus(162) | ControlGroup(10).HasFocus()</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
 </control>
 
 <control>
@@ -1109,6 +1181,8 @@
 <ondown>11</ondown>
 <include>home-global-button</include>
 <visible>Control.HasFocus(161) | ControlGroup(10).HasFocus()</visible>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
 </control>
 
 <control>
@@ -1122,30 +1196,14 @@
 <onclick>XBMC.ActivateWindow(Favourites)</onclick>
 <texturefocus>home-fav-focus.png</texturefocus>
 <texturenofocus>home-fav.png</texturenofocus>
-<onleft>160</onleft>
+<onleft>162</onleft>
 <onright>161</onright>
 <onup>11</onup>
 <ondown>11</ondown>
 <include>home-global-button</include>
 <visible>Control.HasFocus(157) | ControlGroup(10).HasFocus()</visible>
-</control>
-
-<control>
-<description>DVD launch Button</description>
-<type>button</type>
-<id>160</id>
-<posx>510</posx>
-<posy>500</posy>
-<width>40</width>
-<height>40</height>
-<texturefocus>home-tray-focus.png</texturefocus>
-<texturenofocus>home-tray.png</texturenofocus>
-<onclick>XBMC.PlayDVD()</onclick>
-<onleft>162</onleft>
-<onright>157</onright>
-<onup>11</onup>
-<ondown>11</ondown>
-<include>home-dvd-button</include>
+<animation effect="fade" time="400">WindowOpen</animation>
+<animation effect="fade" time="300">WindowClose</animation>
 </control>
 
 
@@ -1325,6 +1383,14 @@
 </item>
 
 <item id="3">
+<label>341</label>
+<icon>My-DiscDrive.png</icon>
+<thumb>My-DiscDrive.png</thumb>
+<onclick>XBMC.PlayDVD()</onclick>
+<visible allowhiddenfocus="false">System.hasmediadvd</visible>
+</item>
+
+<item id="4">
 <label>3</label>
 <icon>My-Videos.png</icon>
 <thumb>My-Videos.png</thumb>
@@ -1334,8 +1400,7 @@
 <onclick>ActivateWindow(MyVideoFiles,Route)</onclick>
 </item>
 
-
-<item id="4">
+<item id="5">
 <label>342</label>
 <icon>cinema.png</icon>
 <thumb>cinema.png</thumb>
@@ -1347,7 +1412,7 @@
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
-<item id="4">
+<item id="5">
 <label>342</label>
 <icon>cinema.png</icon>
 <thumb>cinema.png</thumb>
@@ -1359,8 +1424,7 @@
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
-
-<item id="5">
+<item id="6">
 <label>20343</label>
 <icon>watch tv.png</icon>
 <thumb>watch tv.png</thumb>
@@ -1372,7 +1436,7 @@
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
-<item id="5">
+<item id="6">
 <label>20343</label>
 <icon>watch tv.png</icon>
 <thumb>watch tv.png</thumb>
@@ -1384,18 +1448,16 @@
 <visible>!Skin.HasSetting(tv-library)</visible>
 </item>
 
-<item id="6">
+<item id="7">
 <label>2</label>
 <icon>Listen Music.png</icon>
 <thumb>Listen Music.png</thumb>
 <onclick>SetFocus(21)</onclick>
 <onclick>XBMC.ActivateWindow(MyMusic)</onclick>
-
 </item>
 
 
-<item id="7">
-
+<item id="8">
 <label>1</label>
 <icon>Photo Gallery.png</icon>
 <thumb>Photo Gallery.png</thumb>
@@ -1403,30 +1465,30 @@
 <onclick>XBMC.ActivateWindow(MyPictures)</onclick>
 </item>
 
-<item id="8">
+<item id="9">
 <label>0</label>
 <icon>My Apps.png</icon>
 <thumb>My Apps.png</thumb>
 <onclick>SetFocus(21)</onclick>
-<onclick>XBMC.ActivateWindow(MyPrograms)</onclick>
- <visible>!Skin.HasSetting(Programs)</visible>
-</item>
+<onclick>ActivateWindow(Programs)</onclick>
+<visible>!Skin.HasSetting(Programs)</visible>
+ </item>
 
-<item id="9">
+<item id="10">
 <label>247</label>
 <icon>My Scripts.png</icon>
 <thumb>My Scripts.png</thumb>
-<onclick>SetFocus(21)</onclick>
  <visible>Skin.HasSetting(Scripts)</visible>
+<onclick>SetFocus(21)</onclick>
 <onclick>XBMC.ActivateWindow(MyScripts)</onclick>
 </item>
 		 
-<item id="10">
+<item id="11">
 <label>7</label>
 <icon>my files.png</icon>
 <thumb>my files.png</thumb>
+<visible>Skin.HasSetting(Files)</visible>
 <onclick>SetFocus(21)</onclick>
- <visible>Skin.HasSetting(Files)</visible>
 <onclick>XBMC.ActivateWindow(Myfiles)</onclick>
 </item>	
 

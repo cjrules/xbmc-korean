@@ -19,16 +19,13 @@
 
 
 
-<control type="multiimage">
+<control type="largeimage">
 		<posx>0</posx>
 		<posy>0</posy>
 		<width>720</width>
 		<height>576</height>
 		<imagepath>Menus</imagepath>
 		<info>Skin.String(CustomMenu)</info>
-		<timeperimage>5000</timeperimage>
-		<fadetime>2000</fadetime>
-        <randomize>true</randomize>
 		<visible>!Skin.HasSetting(CustomMenu)</visible>
 		<visible>Skin.HasSetting(Background)</visible>
 		<animation effect="fade" time="200">WindowOpen</animation>
@@ -87,7 +84,7 @@
     <height>365</height>
     <texture>Case1.png</texture>
     <visible>Control.IsVisible(50)</visible>
-	<visible>Container.Content(Albums) | Container.Content(Artists) | Container.Content(Songs)</visible>
+	<visible>Container.Content(Albums) | Container.Content(Songs)</visible>
      </control>
    
    <control type="image">
@@ -99,7 +96,7 @@
     <info>ListItem.Icon</info>
     <visible>!IsEmpty(ListItem.Thumb)</visible>
     <visible>Control.IsVisible(50)</visible>
-	<visible>Container.Content(Albums) | Container.Content(Artists) | Container.Content(Songs)</visible>
+	<visible>Container.Content(Albums) | Container.Content(Songs)</visible>
     </control>
 
  <control type="image">
@@ -111,7 +108,7 @@
     <texture>defaultcdposter.png</texture>
     <visible>IsEmpty(ListItem.Thumb)</visible>
     <visible>Control.IsVisible(50)</visible>
-	<visible>Container.Content(Albums) | Container.Content(Artists) | Container.Content(Songs)</visible>
+	<visible>Container.Content(Albums) | Container.Content(Songs)</visible>
     </control>
 
 
@@ -123,27 +120,40 @@
     <height>367</height>
     <texture>Case2.png</texture>
     <visible>Control.IsVisible(50)</visible>
-	<visible>Container.Content(Albums) | Container.Content(Artists) | Container.Content(Songs)</visible>
+	<visible>Container.Content(Albums) | Container.Content(Songs)</visible>
+    </control>
+
+
+
+	 <control type="image">
+    <description>list item icon</description>
+    <posx>83</posx>
+    <posy>142.5</posy>
+    <width>244</width>
+    <height>333</height>
+    <info>ListItem.Icon</info>
+	<texture diffuse="Mask.png"></texture>
+<visible>!IsEmpty(ListItem.Thumb)</visible>
+<aspectratio>stretch</aspectratio>
+    <visible>Control.IsVisible(50)</visible>
+	<visible>Container.Content(Artists)</visible>
+    </control>
+
+
+ <control type="image">
+    <description>list item icon</description>
+     <posx>83</posx>
+    <posy>142.5</posy>
+    <width>244</width>
+    <height>333</height>
+    <texture diffuse="Mask.png">unknown-Artist.png</texture>
+	<aspectratio>stretch</aspectratio>
+    <visible>IsEmpty(ListItem.Thumb)</visible>
+    <visible>Control.IsVisible(50)</visible>
+	<visible>Container.Content(Artists)</visible>
     </control>
    
-
-
-	
-<control type="label">
-	<posx>20</posx>
-	<posy>30</posy>
-	<align>left</align>
-	<aligny>center</aligny>
-	<font>Heading-M</font>
-	<textcolor>white</textcolor>
-	<visible>!Skin.HasSetting(menulabels)</visible>
-	<visible>[!Control.IsVisible(56) | !Container(56).Row(0)]</visible>
-	<animation effect="fade" time="200">WindowOpen</animation>
-	<animation effect="fade" time="200">WindowClose</animation>
-    <label>10516</label>
-</control>
-
-
+   
 
 
    <control type="image">
@@ -163,12 +173,25 @@
   <control type="image">
     <description>Button Background</description>
     <posx>240</posx>
-    <posy>105</posy>
+    <posy>100</posy>
     <width>255</width>
-    <height>420</height>
+    <height>425</height>
     <texture>button-menu-background.png</texture>
     <visible allowhiddenfocus="true">![Window.Next(Home) | Control.HasFocus(50) | Control.HasFocus(51) | Control.HasFocus(52) | Control.HasFocus(53) | Control.HasFocus(54) | Control.HasFocus(55) | Control.HasFocus(23) | Control.HasFocus(24) | Control.HasFocus(56) | Control.HasFocus(57) | Control.HasFocus(58) | Control.HasFocus(59) | Control.HasFocus(90)]</visible>
    </control>
+
+   <control type="label">	
+	<posx>241</posx>
+	<posy>150</posy>
+	<width>222</width>
+    <height>45</height>
+	<align>center</align>
+	<aligny>center</aligny>
+	<font>font13</font>
+	<textcolor>white</textcolor>
+	<label>10516</label>
+	<visible allowhiddenfocus="true">![Window.Next(Home) | Control.HasFocus(50) | Control.HasFocus(51) | Control.HasFocus(52) | Control.HasFocus(53) | Control.HasFocus(54) | Control.HasFocus(55) | Control.HasFocus(23) | Control.HasFocus(24) | Control.HasFocus(56) | Control.HasFocus(57) | Control.HasFocus(58) | Control.HasFocus(59) | Control.HasFocus(90)]</visible>
+	</control>
 
    <control type="button" id="2">
     <description>View As Icons button</description>
@@ -307,5 +330,11 @@
 <include>Music-Info</include>
 
 <include>Alpha Scroll Label</include>
+
+<control type="group">
+<visible>[!Control.IsVisible(56) | !Container(56).Row(0)]</visible>
+<include>Time</include>
+</control>
+
 	</controls>
 </window>

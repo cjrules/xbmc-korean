@@ -92,22 +92,7 @@
 
 
 
-<control type="label">
-	<posx>20</posx>
-	<posy>30</posy>
-	<align>left</align>
-	<aligny>center</aligny>
-	<font>Heading-M</font>
-	<textcolor>white</textcolor>
-	<visible>!Skin.HasSetting(menulabels)</visible>
-	<animation effect="fade" time="200">WindowOpen</animation>
-	<animation effect="fade" time="200">WindowClose</animation>
-    <label>20011</label>
-</control>
-
-
-
-    
+   
   <control type="image">
     <description>list item icon</description>
      <posx>45</posx>
@@ -170,12 +155,26 @@
    <control type="image">
     <description>Button Background</description>
     <posx>240</posx>
-    <posy>105</posy>
+    <posy>100</posy>
     <width>255</width>
-    <height>365</height>
+    <height>370</height>
     <texture>button-menu-background.png</texture>
     <visible allowhiddenfocus="true">![Window.Next(Home) | Control.HasFocus(50) | Control.HasFocus(51) | Control.HasFocus(52) | Control.HasFocus(53) | Control.HasFocus(54) | Control.HasFocus(55) | Control.HasFocus(23) | Control.HasFocus(24) | Control.HasFocus(56) | Control.HasFocus(57) | Control.HasFocus(58) | Control.HasFocus(59) | Control.HasFocus(90)]</visible>
    </control>
+
+ <control type="label">	
+	<posx>241</posx>
+	<posy>140</posy>
+	<width>222</width>
+    <height>45</height>
+	<align>center</align>
+	<aligny>center</aligny>
+	<font>font13</font>
+	<textcolor>white</textcolor>
+	<label>20011</label>
+	<visible allowhiddenfocus="true">![Window.Next(Home) | Control.HasFocus(50) | Control.HasFocus(51) | Control.HasFocus(52) | Control.HasFocus(53) | Control.HasFocus(54) | Control.HasFocus(55) | Control.HasFocus(23) | Control.HasFocus(24) | Control.HasFocus(56) | Control.HasFocus(57) | Control.HasFocus(58) | Control.HasFocus(59) | Control.HasFocus(90)]</visible>
+	</control>
+
 
  <control type="button" id="2">
     <description>View As Icons button</description>
@@ -280,5 +279,12 @@
 	
 <include>Music-Info</include>
 <include>Alpha Scroll Label</include>
+
+<control type="group">
+<visible>[!Control.IsVisible(56) | !Container(56).Row(0)]</visible>
+<include>Time</include>
+</control>
+
+
 	</controls>
 </window>

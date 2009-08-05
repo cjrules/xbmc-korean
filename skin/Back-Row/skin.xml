@@ -1,7 +1,7 @@
 <skin>
   <defaultresolution>pal</defaultresolution>
   <defaultresolutionwide>pal16x9</defaultresolutionwide>
-  <version>2.1</version>
+  <version>2.11</version>
   <zoom>1.0</zoom>
 
   <credits>
@@ -10,7 +10,6 @@
    <name>& djdafreund</name>
    <name>Thanks to the devs of XBMC</name>
    <name>Originally a mod of the PDM skin</name>
-   <name>Influenced by the awesome xTV skin</name>   
    </credits>
 </skin>
 

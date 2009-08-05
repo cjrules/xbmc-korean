@@ -94,21 +94,11 @@
     <info>ListItem.Icon</info>
     <aspectratio>keep</aspectratio>
     <visible>Control.IsVisible(50)</visible>
+	 <animation effect="fade" time="300">WindowClose</animation>
     </control>
 
    	
 	
-	<control>
-		<description>Description label</description>
-		<label>1</label>
-		<font>Heading-M</font>
-	<textcolor>white</textcolor>
-		<include>description</include>
-		<visible>[!Control.IsVisible(56) | !Container(56).Row(0)]</visible>
-	</control>
-
-
-
    <control type="image">
     <description>Background shadow</description>
     <posx>0</posx>
@@ -125,12 +115,26 @@
    <control type="image">
     <description>Button Background</description>
     <posx>240</posx>
-    <posy>105</posy>
+    <posy>100</posy>
     <width>255</width>
-    <height>365</height>
+    <height>370</height>
     <texture>button-menu-background.png</texture>
     <visible allowhiddenfocus="true">![Window.Next(Home) | Control.HasFocus(50) | Control.HasFocus(51) | Control.HasFocus(52) | Control.HasFocus(53) | Control.HasFocus(54) | Control.HasFocus(55) | Control.HasFocus(57) | Control.HasFocus(58) | Control.HasFocus(23) | Control.HasFocus(24) | Control.HasFocus(56) | Control.HasFocus(59) | Control.HasFocus(90)]</visible>
    </control>
+
+  <control type="label">	
+	<posx>241</posx>
+	<posy>140</posy>
+	<width>222</width>
+    <height>45</height>
+	<align>center</align>
+	<aligny>center</aligny>
+	<font>font13</font>
+	<textcolor>white</textcolor>
+	<label>1</label>
+	<visible allowhiddenfocus="true">![Window.Next(Home) | Control.HasFocus(50) | Control.HasFocus(51) | Control.HasFocus(52) | Control.HasFocus(53) | Control.HasFocus(54) | Control.HasFocus(55) | Control.HasFocus(57) | Control.HasFocus(58) | Control.HasFocus(23) | Control.HasFocus(24) | Control.HasFocus(56) | Control.HasFocus(59) | Control.HasFocus(90)]</visible>
+	</control>
+
 
    <control type="button" id="2">
     <description>View As Icons button</description>
@@ -247,5 +251,11 @@
   </control>
 <include>Music-Info</include>
 <include>Alpha Scroll Label</include>
+
+<control type="group">
+<include>Time</include>
+<visible>[!Control.IsVisible(56) | !Container(56).Row(0)]</visible>
+</control>
+
 	</controls>
 </window>

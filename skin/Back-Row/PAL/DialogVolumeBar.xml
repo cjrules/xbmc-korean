@@ -1,6 +1,6 @@
 <window id="104">
 <defaultcontrol>1</defaultcontrol>
-<include>dialogeffect</include>
+<include>dialog-effect</include>
 <coordinates>
 <system>1</system>
 <posx>605</posx>

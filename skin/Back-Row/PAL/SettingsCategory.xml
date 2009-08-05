@@ -97,26 +97,6 @@
 </control>
 
 
-<control type="image">
-<posx>0</posx>
-<posy>6</posy>
-<width>720</width>
-<height>52</height>
-<texture>homebutton-horizontal-nofocus.png</texture>
-</control>
-
-
-
-
-
-
-<control>
-<description>Description label</description>
-<font>Heading-M</font>
-<textcolor>white</textcolor>
-<label>5</label>
-<include>description</include>
-</control>
 
 <control type="label" id="2">
 <description>Title label2</description>
@@ -144,25 +124,14 @@
 <description>Panel Image</description>
 <type>image</type>
 <posx>65</posx>
-<posy>80</posy>
+<posy>75</posy>
 <width>590</width>
-<height>460</height>
+<height>470</height>
 <texture>black.png</texture>
 <animation effect="fade" time="200">WindowOpen</animation>
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
-<control type="image">
-<description>header</description>
-<posx>65</posx>
-<posy>75</posy>
-<width>590</width>
-<height>38</height>
-<texture>input-focus.png</texture>
-<colordiffuse>ffffffff</colordiffuse>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation> 
-</control>
 
 
 <control type="grouplist" id="3">
@@ -188,10 +157,23 @@
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
+<control type="image">
+<description>header</description>
+<posx>66</posx>
+<posy>112.5</posy>
+<width>588</width>
+<height>2</height>
+<texture border="10,0,10,0">Separator.png</texture>
+<colordiffuse>80ffffff</colordiffuse>
+<animation effect="fade" time="200">WindowOpen</animation>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
+
 <control type="grouplist" id="5">
 <description>control area</description>
 <posx>70</posx>
-<posy>130</posy>
+<posy>125</posy>
 <width>580</width>
 <height>410</height>
 <onup>5</onup>
@@ -275,6 +257,8 @@
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
+
+
 <control type="image" id="11">
 <description>separator image</description>
 <width>580</width>
@@ -291,13 +275,16 @@
 <posx>65</posx>
 <posy>76</posy>
 <width>590</width>
-<height>465</height>
+<height>470</height>
 <texture>edge.png</texture>
+<colordiffuse>80ffffff</colordiffuse>
 <animation effect="fade" time="200">WindowOpen</animation>
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
 <include>Music-Info</include>
+
+<include>Time</include>
 
 </controls>
 

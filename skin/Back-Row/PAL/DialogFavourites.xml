@@ -97,13 +97,14 @@
 		<description>Time</description>
  		<type>label</type>
 		<posx>-205</posx>
-        <posy>427</posy>
+        <posy>425</posy>
         <textwidth>125</textwidth>
 		<width>200</width>
-		<height>36</height>
+		<height>40</height>
 		<label>Date</label>
 		<info>System.Time</info>
         <align>center</align>
+		<aligny>center</aligny>
 		<font>special16</font>
 		<textcolor>white</textcolor>
 		</control>

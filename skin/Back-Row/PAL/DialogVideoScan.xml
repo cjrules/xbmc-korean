@@ -11,8 +11,8 @@
 
 <control type="image" id="1">
 			<description>Scan Dialog Background</description>
-			<posx>164</posx>
-			<posy>15</posy>
+			<posx>0</posx>
+			<posy>5</posy>
 			<width>391</width>
 			<height>88</height>
 			<texture diffuse="mask wide.png">background2.png</texture>
@@ -23,17 +23,27 @@
 
 <control type="label" id="401">
 <description>Caption Label</description>
-<posx>174</posx>
-<posy>23</posy>
+<posx>10</posx>
+<posy>13</posy>
 <font>font12</font>
 <align>left</align>
 <width>370</width>
 <height>20</height>
 </control>
+
 <control type="label" id="402">
 <description>Current Directory Label</description>
-<posx>174</posx>
-<posy>43</posy>
+<posx>10</posx>
+<posy>33</posy>
+<width>370</width>
+<haspath>yes</haspath>
+<font>font10</font>
+</control>
+
+<control type="label" id="405">
+<description>Current Title Label</description>
+<posx>10</posx>
+<posy>53</posy>
 <width>370</width>
 <haspath>yes</haspath>
 <font>font10</font>
@@ -41,8 +51,8 @@
 
 <control type="progress" id="403">
 <description>progress control</description>
-<posx>174</posx>
-<posy>82</posy>
+<posx>10</posx>
+<posy>72</posy>
 <width>370</width>
 <height>10</height>
 <texturebg>progress_back.png</texturebg>
@@ -55,8 +65,8 @@
 
 <control type="progress" id="404">
 <description>progress control</description>
-<posx>174</posx>
-<posy>82</posy>
+<posx>10</posx>
+<posy>72</posy>
 <width>370</width>
 <height>10</height>
 <texturebg>progress_back.png</texturebg>
@@ -70,8 +80,8 @@
 <control>
 <description>Media Progressbar overlay</description>
 <type>image</type>
-<posx>174</posx>
-<posy>82</posy>
+<posx>10</posx>
+<posy>72</posy>
 <width>370</width>
 <height>10</height>
 <texture>progress_over_home.png</texture>
@@ -81,8 +91,8 @@
 
 <control type="image" id="1">
 			<description>Scan Dialog Background</description>
-			<posx>164</posx>
-			<posy>15</posy>
+			<posx>0</posx>
+			<posy>5</posy>
 			<width>391</width>
 			<height>88</height>
 			<texture>mask glass wide.png</texture>

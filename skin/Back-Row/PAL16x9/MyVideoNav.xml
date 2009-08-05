@@ -75,7 +75,7 @@
 
 <include>DVD Case Wrap 3</include>
 
-<include>VideoLibWraplist</include>	
+<include>Movie Coverflow</include>	
 
 <include>BigIcons</include>	
  
@@ -85,73 +85,9 @@
 
 <include>Library Root View</include>
 
-<control type="label">
-	<posx>20</posx>
-	<posy>30</posy>
-	<align>left</align>
-	<aligny>center</aligny>
-	<font>Heading-M</font>
-	<textcolor>white</textcolor>
-	<visible>!Skin.HasSetting(menulabels)</visible>
-	<animation effect="fade" time="200">WindowOpen</animation>
-	<animation effect="fade" time="200">WindowClose</animation>
-    <label>31035</label>
-	<visible>container.content(movies)</visible>
-	<visible>![Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
-    <visible>[!Control.IsVisible(59) | !Container(59).Row(0) | !Container.Content(Movies)]</visible>
-	<visible>[!Control.IsVisible(52) | !Container(52).Row(0) | !Container.Content(Movies)]</visible>
-	</control>
-
-	<control type="label">
-	<posx>20</posx>
-	<posy>30</posy>
-	<align>left</align>
-	<aligny>center</aligny>
-	<font>Heading-M</font>
-	<textcolor>white</textcolor>
-	<visible>!Skin.HasSetting(menulabels)</visible>
-	<animation effect="fade" time="200">WindowOpen</animation>
-	<animation effect="fade" time="200">WindowClose</animation>
-    <label>20314</label>
-	<visible>![container.content(movies)]</visible>
-    <visible>![Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
-	</control>
-
-<control type="label">
-	<posx>20</posx>
-	<posy>30</posy>
-	<align>left</align>
-	<aligny>center</aligny>
-	<font>Heading-M</font>
-	<textcolor>white</textcolor>
-	<visible>!Skin.HasSetting(menulabels)</visible>
-	<animation effect="fade" time="200">WindowOpen</animation>
-	<animation effect="fade" time="200">WindowClose</animation>
-    <label>31036</label>
-    <visible>Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
-	</control>
 
 
-
-<control type="image">
-			<description>folder image</description>
-			<posx>0</posx>
-			<posy>0</posy>
-			<width>720</width>
-			<height>55</height>
-			<aspectratio align="right">keep</aspectratio>
-            <info>Container.TVShowThumb</info>
-            <visible>Control.IsVisible(50)| Control.isVisible(55) | !Control.isVisible(58)</visible>
-			<visible>!Container.Content(seasons)</visible>
-            <visible>IsEmpty(FanArt.Image)</visible>
-			<animation effect="fade" time="200">WindowOpen</animation>
-	    <animation effect="fade" time="200">WindowClose</animation> 
-		    </control>
-
-
-	
-	
-</control>
+</control>	
 
 	
    <control type="image">
@@ -172,12 +108,53 @@
    <control type="image">
     <description>Button Background</description>
     <posx>240</posx>
-    <posy>105</posy>
+    <posy>100</posy>
     <width>255</width>
-    <height>455</height>
+    <height>460</height>
     <texture>button-menu-background.png</texture>
      <visible allowhiddenfocus="true">![Window.Next(Home) | Control.HasFocus(50) | Control.HasFocus(51) | Control.HasFocus(52) | Control.HasFocus(53) | Control.HasFocus(54) | Control.HasFocus(55) | Control.HasFocus(23) | Control.HasFocus(24) | Control.HasFocus(56) | Control.HasFocus(57) | Control.HasFocus(58) | Control.HasFocus(59) | Control.HasFocus(90) | Control.HasFocus(91) | Control.HasFocus(92) | Control.HasFocus(11)]</visible>
    </control>
+
+<control type="label">
+	<posx>241</posx>
+	<posy>160</posy>
+	<width>222</width>
+    <height>45</height>
+	<align>center</align>
+	<font>font13</font>
+	<textcolor>white</textcolor>
+	<label>31035</label>
+	<visible>container.content(movies)</visible>
+	<visible>![Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
+     <visible allowhiddenfocus="true">![Window.Next(Home) | Control.HasFocus(50) | Control.HasFocus(51) | Control.HasFocus(52) | Control.HasFocus(53) | Control.HasFocus(54) | Control.HasFocus(55) | Control.HasFocus(23) | Control.HasFocus(24) | Control.HasFocus(56) | Control.HasFocus(57) | Control.HasFocus(58) | Control.HasFocus(59) | Control.HasFocus(90) | Control.HasFocus(91) | Control.HasFocus(92) | Control.HasFocus(11)]</visible>
+	</control>
+
+	<control type="label">
+	<posx>241</posx>
+	<posy>160</posy>
+	<width>222</width>
+    <height>45</height>
+	<align>center</align>
+	<font>font13</font>
+	<textcolor>white</textcolor>
+	<label>20314</label>
+	<visible>![container.content(movies)]</visible>
+    <visible>![Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
+     <visible allowhiddenfocus="true">![Window.Next(Home) | Control.HasFocus(50) | Control.HasFocus(51) | Control.HasFocus(52) | Control.HasFocus(53) | Control.HasFocus(54) | Control.HasFocus(55) | Control.HasFocus(23) | Control.HasFocus(24) | Control.HasFocus(56) | Control.HasFocus(57) | Control.HasFocus(58) | Control.HasFocus(59) | Control.HasFocus(90) | Control.HasFocus(91) | Control.HasFocus(92) | Control.HasFocus(11)]</visible>
+	</control>
+
+<control type="label">
+	<posx>241</posx>
+	<posy>160</posy>
+	<width>222</width>
+    <height>45</height>
+	<align>center</align>
+	<font>font13</font>
+	<textcolor>white</textcolor>
+	<label>31036</label>
+    <visible>Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
+     <visible allowhiddenfocus="true">![Window.Next(Home) | Control.HasFocus(50) | Control.HasFocus(51) | Control.HasFocus(52) | Control.HasFocus(53) | Control.HasFocus(54) | Control.HasFocus(55) | Control.HasFocus(23) | Control.HasFocus(24) | Control.HasFocus(56) | Control.HasFocus(57) | Control.HasFocus(58) | Control.HasFocus(59) | Control.HasFocus(90) | Control.HasFocus(91) | Control.HasFocus(92) | Control.HasFocus(11)]</visible>
+	</control>
 
    <control type="button" id="2">
     <description>View As Icons button</description>
@@ -336,6 +313,8 @@
 	<include>Music-Info</include>
 
 <include>Alpha Scroll Label</include>
+
+<include>Time</include>
 
 	</controls>
 </window>

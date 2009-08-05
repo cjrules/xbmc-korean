@@ -116,16 +116,7 @@
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
-<control type="image">
-<description>header</description>
-<posx>65</posx>
-<posy>105</posy>
-<width>590</width>
-<height>39</height>
-<texture>input-focus.png</texture>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation> 
-</control>
+
 
 <control>
 <description>Panel Image</description>
@@ -135,38 +126,12 @@
 <width>590</width>
 <height>475</height>
 <texture>edge.png</texture>
+<colordiffuse>80ffffff</colordiffuse>
 <animation effect="fade" time="200">WindowOpen</animation>
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
-<control type="image">
-				<posx>0</posx>
-				<posy>35</posy>
-				<width>720</width>
-				<height>52</height>
-				<texture>homebutton-horizontal-nofocus.png</texture>
-				<animation effect="fade" time="200">WindowOpen</animation>
-                <animation effect="fade" time="200">WindowClose</animation>
-				</control>
 
-
-<control>
-		<description>Description label</description>
-		<font>Heading-M</font>
-	    <textcolor>white</textcolor>
-		<label>5</label>
-		<type>label</type>
-	    <posx>20</posx>
-	    <posy>57</posy>
-	    <width>600</width>
-	    <align>left</align>
-	    <aligny>center</aligny>
-	    <font>Heading-M</font>
-	    <textcolor>white</textcolor>
-	    <visible>!Skin.HasSetting(menulabels)</visible>
-	    <animation effect="fade" time="200">WindowOpen</animation>
-	    <animation effect="fade" time="200">WindowClose</animation>
-	</control>
 
 
 
@@ -179,7 +144,6 @@
 	<height>42</height>
 	<font>special16</font>
 	<textcolor>white</textcolor>
-	<visible>!Skin.HasSetting(menulabels)</visible>
 	<animation effect="fade" time="200">WindowOpen</animation>
 	<animation effect="fade" time="200">WindowClose</animation>
     <label>20077</label>
@@ -313,6 +277,18 @@
 
 </control>
 
+<control type="image">
+<description>header</description>
+<posx>66</posx>
+<posy>146.5</posy>
+<width>588</width>
+<height>2</height>
+<texture border="10,0,10,0">Separator.png</texture>
+<colordiffuse>80ffffff</colordiffuse>
+<animation effect="fade" time="200">WindowOpen</animation>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
+
 <!-- Home Options - Weather -->
 <control type="group" id="2">
 <posy>40</posy>
@@ -322,7 +298,7 @@
 <type>radiobutton</type>
 <id>502</id>
 <posx>80</posx>
-<posy>115</posy>
+<posy>112.5</posy>
 <include>20005</include>
 <font>font64</font>
 <selected>Skin.HasSetting(weather)</selected>
@@ -334,7 +310,7 @@
 <height>30</height>
 <onleft>1</onleft>
 <onright>1</onright>
-<onup>515</onup>
+<onup>516</onup>
 <ondown>503</ondown>
 <include>slideright</include>
 <visible>Control.HasFocus(66) | ControlGroup(2).HasFocus()</visible>
@@ -346,7 +322,7 @@
 <type>radiobutton</type>
 <id>503</id>
 <posx>80</posx>
-<posy>145</posy>
+<posy>142.5</posy>
 <include>20006</include>
 <font>font64</font>
 <selected>!Skin.HasSetting(rss)</selected>
@@ -364,19 +340,6 @@
 <visible>Control.HasFocus(66) | ControlGroup(2).HasFocus()</visible>
 </control>
 
-<control>
-<description>separator image</description>
-<type>image</type>
-<posx>80</posx>
-<posy>178</posy>
-<width>560</width>
-<height>10</height>
-<texture>separator.png</texture>
-<include>slideright</include>
-<visible>Control.HasFocus(66) | ControlGroup(2).HasFocus()</visible>
-</control>
-
-
 
 <!-- Home Options - Settings Toggle -->
 <control>
@@ -384,7 +347,7 @@
 <type>radiobutton</type>
 <id>504</id>
 <posx>80</posx>
-<posy>187</posy>
+<posy>172.5</posy>
 <include>20016</include>
 <font>font64</font>
 <onclick>Skin.ToggleSetting(Settings)</onclick>
@@ -408,7 +371,7 @@
 <type>radiobutton</type>
 <id>505</id>
 <posx>80</posx>
-<posy>217</posy>
+<posy>202.5</posy>
 <include>20013</include>
 <font>font64</font>
 <onclick>Skin.ToggleSetting(Programs)</onclick>
@@ -432,7 +395,7 @@
 <type>radiobutton</type>
 <id>506</id>
 <posx>80</posx>
-<posy>247</posy>
+<posy>233.5</posy>
 <include>20015</include>
 <font>font64</font>
 <onclick>Skin.ToggleSetting(tv-library)</onclick>
@@ -456,7 +419,7 @@
 <type>radiobutton</type>
 <id>507</id>
 <posx>80</posx>
-<posy>277</posy>
+<posy>262.5</posy>
 <include>200018</include>
 <font>font64</font>
 <onclick>Skin.ToggleSetting(Files)</onclick>
@@ -481,7 +444,7 @@
 <type>radiobutton</type>
 <id>508</id>
 <posx>80</posx>
-<posy>307</posy>
+<posy>292.5</posy>
 <include>200017</include>
 <font>font64</font>
 <onclick>Skin.ToggleSetting(Scripts)</onclick>
@@ -508,7 +471,7 @@
 <type>radiobutton</type>
 <id>509</id>
 <posx>80</posx>
-<posy>337</posy>
+<posy>322.5</posy>
 <include>200019</include>
 <font>font64</font>
 <onclick>Skin.ToggleSetting(Weather1)</onclick>
@@ -526,26 +489,13 @@
 <visible>Control.HasFocus(66) | ControlGroup(2).HasFocus()</visible>
 </control>
 
-
-<control>
-<description>separator image</description>
-<type>image</type>
-<posx>80</posx>
-<posy>370</posy>
-<width>560</width>
-<height>10</height>
-<texture>separator.png</texture>
-<include>slideright</include>
-<visible>Control.HasFocus(66) | ControlGroup(2).HasFocus()</visible>
-</control>
-
 <!-- Home Options - Library Toggle -->
 <control>
 <description>"Toggle Video Libary Mode" Switch</description>
 <type>radiobutton</type>
 <id>510</id>
 <posx>80</posx>
-<posy>379</posy>
+<posy>352.5</posy>
 <include>20014</include>
 <font>font64</font>
 <onclick>Skin.ToggleSetting(movie-library)</onclick>
@@ -570,7 +520,7 @@
 <type>radiobutton</type>
 <id>512</id>
 <posx>80</posx>
-<posy>409</posy>
+<posy>382.5</posy>
 <include>20017</include>
 <font>font64</font>
 <onclick>Skin.ToggleSetting(Wallpaper)</onclick>
@@ -596,7 +546,7 @@
 <type>radiobutton</type>
 <id>513</id>
 <posx>80</posx>
-<posy>439</posy>
+<posy>412.5</posy>
 <include>20019</include>
 <font>font64</font>
 <onclick>Skin.ToggleSetting(Default Wallpaper)</onclick>
@@ -620,7 +570,7 @@
 <type>radiobutton</type>
 <id>514</id>
 <posx>80</posx>
-<posy>469</posy>
+<posy>442.5</posy>
 <include>20032</include>
 <font>font64</font>
 <onclick>Skin.ToggleSetting(Mask Overlay)</onclick>
@@ -644,7 +594,7 @@
 <type>radiobutton</type>
 <id>515</id>
 <posx>80</posx>
-<posy>499</posy>
+<posy>472.5</posy>
 <include>20033</include>
 <font>font64</font>
 <onclick>Skin.ToggleSetting(Small Film Strip)</onclick>
@@ -657,6 +607,30 @@
 <onleft>1</onleft>
 <onright>1</onright>
 <onup>514</onup>
+<ondown>516</ondown>
+<include>slideright</include>
+<visible>Control.HasFocus(66) | ControlGroup(2).HasFocus()</visible>
+</control>
+
+<!-- Home Options - Reecently Added -->
+<control>
+<description>"Show Recently Added</description>
+<type>radiobutton</type>
+<id>516</id>
+<posx>80</posx>
+<posy>502.5</posy>
+<label>31108</label>
+<font>font64</font>
+<onclick>Skin.ToggleSetting(Recently Added)</onclick>
+<selected>!Skin.HasSetting(Recently Added)</selected>
+<align>left</align>
+<texturefocus>input-focus.png</texturefocus>
+<texturenofocus></texturenofocus>
+<width>560</width>
+<height>30</height>
+<onleft>1</onleft>
+<onright>1</onright>
+<onup>515</onup>
 <ondown>502</ondown>
 <include>slideright</include>
 <visible>Control.HasFocus(66) | ControlGroup(2).HasFocus()</visible>
@@ -672,18 +646,18 @@
 <control type="group" id="13">
 <posy>40</posy>
 <control>
-<description>"Menu Labels" Switch</description>
+<description>Display Time & Date Switch</description>
 <type>radiobutton</type>
 <id>600</id>
 <posx>80</posx>
 <posy>115</posy>
 <include>20061</include>
 <font>font64</font>
-<selected>!Skin.HasSetting(menulabels)</selected>
+<selected>!Skin.HasSetting(Time&Date)</selected>
 <align>left</align>
 <texturefocus>input-focus.png</texturefocus>
 <texturenofocus></texturenofocus>
-<onclick>Skin.ToggleSetting(menulabels)</onclick>
+<onclick>Skin.ToggleSetting(Time&Date)</onclick>
 <width>560</width>
 <height>30</height>
 <onleft>4</onleft>
@@ -830,9 +804,9 @@
 <visible>Control.HasFocus(4) | ControlGroup(13).HasFocus()</visible>
 </control>
 
-<!-- Menu Options - File mode fanart toggle -->
+<!-- Menu Options - Ken Burns effect toggle -->
 <control type="radiobutton" id="608">
-<description>File Mode fanart toggle</description>
+<description>Ken Burns effect toggle</description>
 <font>font64</font>
 <posx>80</posx>
 <posy>374</posy>
@@ -842,8 +816,8 @@
 <texturenofocus>-</texturenofocus>
 <label>31053</label>
 <align>left</align>
-<selected>Skin.HasSetting(File mode fanart)</selected>
-<onclick>Skin.ToggleSetting(File mode fanart)</onclick>
+<onclick>Skin.ToggleSetting(animation_bg)</onclick>
+<selected>Skin.HasSetting(animation_bg)</selected>
 <onleft>4</onleft>
 <onright>4</onright>
 <onup>607</onup>
@@ -2001,14 +1975,18 @@
 <description>Background</description>
 <type>image</type>
 <posx>353</posx>
-<posy>160</posy>
-<width>286</width>
-<height>242</height>
-<texture>Plot panel.png</texture>
+<posy>156</posy>
+<width>289</width>
+<height>240</height>
+<texture>black.png</texture>
 <visible allowhiddenfocus="true">ControlGroup(32).HasFocus()</visible>
 <animation effect="fade" time="200">WindowOpen</animation>
 <animation effect="fade" time="200">WindowClose</animation>
+<aspectratio>stretch</aspectratio>
 </control>
+
+
+
 
 <control type="multiimage">
 <imagepath>Default Wallpaper</imagepath>
@@ -2020,6 +1998,7 @@
 <height>220</height>
 <animation effect="fade" time="200">WindowOpen</animation>
 <animation effect="fade" time="200">WindowClose</animation>
+<aspectratio>stretch</aspectratio>
 </control>
 
 <control type="multiimage">
@@ -2035,6 +2014,7 @@
 <height>220</height>
 <animation effect="fade" time="200">WindowOpen</animation>
 <animation effect="fade" time="200">WindowClose</animation>
+<aspectratio>stretch</aspectratio>
 </control>
 
 <control type="multiimage">
@@ -2047,6 +2027,7 @@
 <height>220</height>
 <animation effect="fade" time="200">WindowOpen</animation>
 <animation effect="fade" time="200">WindowClose</animation>
+<aspectratio>stretch</aspectratio>
 </control>
 
 <control type="multiimage">
@@ -2062,6 +2043,7 @@
 <height>220</height>
 <animation effect="fade" time="200">WindowOpen</animation>
 <animation effect="fade" time="200">WindowClose</animation>
+<aspectratio>stretch</aspectratio>
 </control>
 
 
@@ -2076,6 +2058,7 @@
 <height>220</height>
 <animation effect="fade" time="200">WindowOpen</animation>
 <animation effect="fade" time="200">WindowClose</animation>
+<aspectratio>stretch</aspectratio>
 </control>
 
 <control type="multiimage">
@@ -2092,6 +2075,7 @@
 <height>220</height>
 <animation effect="fade" time="200">WindowOpen</animation>
 <animation effect="fade" time="200">WindowClose</animation>
+<aspectratio>stretch</aspectratio>
 </control>
 
 <control type="multiimage">
@@ -2358,7 +2342,7 @@
 <posy>0</posy>
 <width>465</width>
 <height>69</height>
-<texture>button-focus.png</texture>
+<texture>black.png</texture>
 <visible>Player.HasAudio</visible>
 </control>
 
@@ -2473,6 +2457,10 @@
 
 </control>
 
+<control type="group">
+<posy>30</posy>
+<include>Time</include>
+</control>
 
 </controls>
 </window>

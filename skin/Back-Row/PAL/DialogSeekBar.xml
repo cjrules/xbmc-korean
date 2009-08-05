@@ -1,7 +1,9 @@
 <window id="115">
 	<defaultcontrol>1</defaultcontrol>
+
+    <visible>Player.HasMedia + !Window.IsActive(PlayerControls) + Window.IsActive(FullscreenVideo)</visible>
 	<visible>Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding</visible>
-	
+	 
 	
 	
 	<coordinates>
@@ -20,6 +22,7 @@
 <posy>180</posy>
 <width>205</width>
 <height>60</height>
+<visible>!Window.IsVisible(2004)</visible>
 <texture>black.png</texture>
 </control>
 
@@ -32,6 +35,7 @@
 			<font>font12</font>
 			<label>[UPPERCASE]$LOCALIZE[31038][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
+			<visible>!Window.IsVisible(2004)</visible>
 			<visible>![Player.Paused | Player.Rewinding | Player.Forwarding]</visible>
 			</control>
 		<control type="label">
@@ -43,6 +47,7 @@
 			<font>font12</font>
 			<label>[UPPERCASE]$LOCALIZE[31039][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
+			<visible>!Window.IsVisible(2004)</visible>
 			<visible>Player.Paused</visible>
 			</control>
 		<control type="label">
@@ -54,6 +59,7 @@
 			<font>font12</font>
 			<label>[UPPERCASE]$LOCALIZE[31040][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
+			<visible>!Window.IsVisible(2004)</visible>
 			<visible>Player.Rewinding2x</visible>
 			</control>
 		<control type="label">
@@ -65,6 +71,7 @@
 			<font>font12</font>
 			<label>[UPPERCASE]$LOCALIZE[31041][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
+			<visible>!Window.IsVisible(2004)</visible>
 			<visible>Player.Forwarding2x</visible>
 			</control>
 		<control type="label">
@@ -76,6 +83,7 @@
 			<font>font12</font>
 			<label>[UPPERCASE]$LOCALIZE[31042][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
+			<visible>!Window.IsVisible(2004)</visible>
 			<visible>Player.Rewinding4x</visible>
 			</control>
 		<control type="label">
@@ -87,6 +95,7 @@
 			<font>font12</font>
 			<label>[UPPERCASE]$LOCALIZE[31043][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
+			<visible>!Window.IsVisible(2004)</visible>
 			<visible>Player.Forwarding4x</visible>
 			</control>
 		<control type="label">
@@ -98,6 +107,7 @@
 			<font>font12</font>
 			<label>[UPPERCASE]$LOCALIZE[31044][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
+			<visible>!Window.IsVisible(2004)</visible>
 			<visible>Player.Rewinding8x</visible>
 			</control>
 		<control type="label">
@@ -109,6 +119,7 @@
 			<font>font12</font>
 			<label>[UPPERCASE]$LOCALIZE[31045][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
+			<visible>!Window.IsVisible(2004)</visible>
 			<visible>Player.Forwarding8x</visible>
 			</control>
 		<control type="label">
@@ -120,6 +131,7 @@
 			<font>font12</font>
 			<label>[UPPERCASE]$LOCALIZE[31046][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
+			<visible>!Window.IsVisible(2004)</visible>
 			<visible>Player.Rewinding16x</visible>
 			</control>
 		<control type="label">
@@ -131,6 +143,7 @@
 			<font>font12</font>
 			<label>[UPPERCASE]$LOCALIZE[31047][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
+			<visible>!Window.IsVisible(2004)</visible>
 			<visible>Player.Forwarding16x</visible>
 			</control>
 		<control type="label">
@@ -142,6 +155,7 @@
 			<font>font12</font>
 			<label>[UPPERCASE]$LOCALIZE[31048][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
+			<visible>!Window.IsVisible(2004)</visible>
 			<visible>Player.Rewinding32x</visible>
 			</control>
 		<control type="label">
@@ -153,6 +167,7 @@
 			<font>font12</font>
 			<label>[UPPERCASE]$LOCALIZE[31049][/UPPERCASE]</label>
 			<textcolor>white</textcolor>
+			<visible>!Window.IsVisible(2004)</visible>
 			<visible>Player.Forwarding32x</visible>
 			</control>
 
@@ -168,7 +183,9 @@
 <posy>185</posy>
 <label>$INFO[VideoPlayer.Time]</label>
 <font>font12</font>
+<visible>!Window.IsVisible(2004)</visible>
 <visible>Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding</visible>
+
 </control>
 
 <control>
@@ -181,6 +198,7 @@
 <align>right</align>
 <label>$INFO[VideoPlayer.Duration]</label>
 <font>font12</font>
+<visible>!Window.IsVisible(2004)</visible>
 <visible>Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding</visible>
 </control>
 
@@ -197,6 +215,7 @@
 			<midtexture>Seekbar progress.png</midtexture>
 			<righttexture></righttexture>
 			<overlaytexture>-</overlaytexture>
+			<visible>!Window.IsVisible(2004)</visible>
 			<visible>Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding</visible>
 			</control>
 		
@@ -213,6 +232,7 @@
 			<ondown>1</ondown>
 			<onleft>1</onleft>
 			<onright>1</onright>
+			<visible>!Window.IsVisible(2004)</visible>
 			<visible>Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding</visible>
 			</control>
 

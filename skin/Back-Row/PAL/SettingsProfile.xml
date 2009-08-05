@@ -117,55 +117,19 @@
 <width>590</width>
 <height>465</height>
 <texture>edge.png</texture>
-<animation effect="fade" time="200">WindowOpen</animation>
-<animation effect="fade" time="200">WindowClose</animation> 
-</control>
-
-<control type="image">
-<description>header</description>
-<posx>65</posx>
-<posy>75</posy>
-<width>590</width>
-<height>38</height>
-<texture>input-focus.png</texture>
-<colordiffuse>ffffffff</colordiffuse>
+<colordiffuse>80ffffff</colordiffuse>
 <animation effect="fade" time="200">WindowOpen</animation>
 <animation effect="fade" time="200">WindowClose</animation> 
 </control>
 
 
 
-<control type="image">
-				<posx>0</posx>
-				<posy>6</posy>
-				<width>720</width>
-				<height>52</height>
-				<texture>homebutton-horizontal-nofocus.png</texture>
-				<animation effect="fade" time="200">WindowOpen</animation>
-                <animation effect="fade" time="200">WindowClose</animation>
-				</control>
 
 
-
-
-
-
-<control>
-		<description>Description label</description>
-		<font>Heading-M</font>
-	    <textcolor>white</textcolor>
-		<label>5</label>
-		<include>description</include>
-		<animation effect="fade" time="200">WindowOpen</animation>
-        <animation effect="fade" time="300">WindowClose</animation>
-	</control>
-
-
-
-	<control type="radiobutton" id="4">
+<control type="radiobutton" id="4">
 		<description>Enable Login Screen</description>
 		<posx>70</posx>
-		<posy>78</posy>
+		<posy>79</posy>
 		<height>30</height>
 		<width>110</width>
 		<label>20096</label>
@@ -176,6 +140,18 @@
 		<animation effect="fade" time="200">WindowOpen</animation>
         <animation effect="fade" time="300">WindowClose</animation>
 		</control>
+
+<control type="image">
+<description>header</description>
+<posx>66</posx>
+<posy>112.5</posy>
+<width>588</width>
+<height>2</height>
+<texture border="10,0,10,0">Separator.png</texture>
+<colordiffuse>80ffffff</colordiffuse>
+<animation effect="fade" time="200">WindowOpen</animation>
+<animation effect="fade" time="200">WindowClose</animation> 
+</control>
 
 
 	<control type="fadelabel" id="3">
@@ -312,6 +288,8 @@
 </control>
 
 <include>Music-Info</include>
+
+<include>Time</include>
 
 	</controls>
 </window>

@@ -41,10 +41,10 @@
 <label>-</label>
 <texturenofocus>-</texturenofocus>
 <texturefocus>-</texturefocus>
-<onleft>2</onleft>
-<onright>2</onright>
-<onup>2</onup>
-<ondown>2</ondown>
+<onleft></onleft>
+<onright></onright>
+<onup></onup>
+<ondown></ondown>
 
 </control>
 
@@ -57,25 +57,9 @@
 <onright>1</onright>
 <onup>2</onup>
 <ondown>2</ondown>
-<visible>!IsEmpty(VideoPlayer.Plot)</visible>
 </control>
 
-<control type="textbox">
-<description>Textbox</description>
-<id>1</id>
-<posx>120</posx>
-<posy>478</posy>
-<width>500</width>
-<height>80</height>
-<font>font13</font>
-<label>$INFO[VideoPlayer.Plot]</label>
-<align>justify</align>
-<pagecontrol>91</pagecontrol>
-<autoscroll time="4000" delay="5000" repeat="15000"></autoscroll>
-<align>justify</align>
-<visible>Control.HasFocus(2)</visible>
-<include>media-infopanel-effect</include>
-</control>
+
 
 <control>
 <description>Cover Image</description>
@@ -118,7 +102,7 @@
 <description>current_event_name</description>
 <width>370</width>
 <posx>120</posx>
-<posy>15</posy>
+<posy>45</posy>
 <info>VideoPlayer.Title</info>
 <align>left</align>
 <font>Heading-S</font>
@@ -140,7 +124,7 @@
 <posy>15</posy>
 <info>VideoPlayer.Title</info>
 <align>left</align>
-<font>Heading-M</font>
+<font>Heading-S</font>
 </control>
 
 <control type="label">
@@ -374,8 +358,8 @@
 		<posy>440</posy>
 		<width>30</width>
 		<height>40</height>
-		<texturefocus>osd-button-random-focus.png</texturefocus>
-		<texturenofocus>osd-button-random-nofocus.png</texturenofocus>
+		<texturefocus>osd-button-list-focus.png</texturefocus>
+		<texturenofocus>osd-button-list-nofocus.png</texturenofocus>
 		<pulseonselect>yes</pulseonselect>
 		<onclick>XBMC.ActivateWindow(125)</onclick>
 		<label>-</label>
@@ -397,8 +381,8 @@
 		<posy>440</posy>
 		<width>30</width>
 		<height>40</height>
-		<texturefocus>osd-button-list-focus.png</texturefocus>
-		<texturenofocus>osd-button-list-nofocus.png</texturenofocus>
+		<texturefocus>osd-button-info-focus.png</texturefocus>
+		<texturenofocus>osd-button-info-nofocus.png</texturenofocus>
 		<pulseonselect>yes</pulseonselect>
 		<onclick>XBMC.ActivateWindow(28)</onclick>
 		<label>-</label>

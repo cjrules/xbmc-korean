@@ -66,7 +66,7 @@
 		<texture>blackgloss.png</texture>
 		<visible>!system.platform.xbox</visible>
 		<aspectratio>stretch</aspectratio>
-		<colordiffuse>e1ffffff</colordiffuse>
+		<colordiffuse>E1ffffff</colordiffuse>
 		</control>
 
 		<control type="image">

@@ -90,7 +90,7 @@
 <width>720</width>
 <height>576</height>
 <texture>dark mask.png</texture>
-<visible>!Skin.HasSetting(Mask Overlay)</visible>
+<visible>!Skin.HasSetting(Background)</visible>
 </control>
 <control>
 <description>Panel Image</description>
@@ -100,18 +100,9 @@
 <width>720</width>
 <height>576</height>
 <texture>dark mask.png</texture>
-<visible>!Skin.HasSetting(Mask Overlay)</visible>
+<visible>!Skin.HasSetting(Background)</visible>
 </control>
 
-
-<control>
-		<description>Description label</description>
-		<label>5</label>
-		<font>Heading-M</font>
-	<textcolor>white</textcolor>
-		<include>description</include>
-	</control>
-	
 
 <control type="group">
 
@@ -374,5 +365,8 @@
 
 
 <include>Music-Info</include>
+
+<include>Time</include>
+
 	</controls>
 </window>

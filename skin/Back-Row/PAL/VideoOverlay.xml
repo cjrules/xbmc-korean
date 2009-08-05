@@ -1,116 +1,135 @@
 <window>
 <id>2004</id>
 <defaultcontrol>2</defaultcontrol>
+<animation effect="fade" time="1000">WindowOpen</animation>
+<animation effect="fade" time="1000">WindowClose</animation>
+
 <controls>
 
 <control type="group">
-<posx>0</posx>
-<posy>149</posy>
-
-<animation type="WindowOpen">
-<effect type="fade" start="0" end="95" time="0"/>
-</animation>
-
-<animation type="WindowClose">
-<effect type="fade" start="95" end="0" time="0"/>
-</animation>
+<posx>10</posx>
+<posy>385</posy>
 
 
 <control type="image">
 <description>Background image</description>
 <posx>0</posx>
 <posy>0</posy>
-<width>328</width>
-<height>278</height>
+<width>164</width>
+<height>167</height>
 <texture>List background2.png</texture>
 <aspectratio>stretch</aspectratio>
-<visible>!Window.IsActive(3) + !Window.IsActive(4)</visible>
-<visible>!Window.IsActive(7) + !Window.IsActive(56) + !Window.IsActive(2700)</visible>
-<visible>!Window.IsActive(AppearanceSettings) + !Window.IsActive(MyVideosSettings)</visible>
-<visible>!Window.IsActive(MyMusicSettings) + !Window.IsActive(SystemSettings)</visible>
-<visible>Player.HasMedia + !Skin.HasSetting(video-preview) + System.IdleTime(5)</visible>
-<animation effect="fade" time="300">Visible</animation>
+<visible>!Window.Next(Home)</visible>
+<animation effect="fade" time="1" delay="500">WindowOpen</animation>
+<animation effect="fade" time="1" delay="0">VisibleChange</animation>
+<visible>Player.HasMedia + !Skin.HasSetting(video-preview)</visible>
 </control>
-
 
 <control type="image">
 <description>Background image</description>
 <posx>0</posx>
 <posy>0</posy>
-<width>328</width>
-<height>278</height>
+<width>164</width>
+<height>167</height>
 <texture>List background2.png</texture>
 <aspectratio>stretch</aspectratio>
-<visible>!Window.IsActive(3) + !Window.IsActive(4)</visible>
-<visible>!Window.IsActive(7) + !Window.IsActive(56) + !Window.IsActive(2700)</visible>
-<visible>!Window.IsActive(AppearanceSettings) + !Window.IsActive(MyVideosSettings)</visible>
-<visible>!Window.IsActive(MyMusicSettings) + !Window.IsActive(SystemSettings)</visible>
-<visible>Player.HasMedia + !Skin.HasSetting(video-preview) + System.IdleTime(5)</visible>
-<animation effect="fade" time="300">Visible</animation>
+<visible>!Window.Next(Home)</visible>
+<animation effect="fade" time="1" delay="500">WindowOpen</animation>
+<animation effect="fade" time="1" delay="0">VisibleChange</animation>
+<visible>Player.HasMedia + !Skin.HasSetting(video-preview)</visible>
 </control>
 
 <control type="image">
 <description>Background image</description>
-<posx>20</posx>
-<posy>20</posy>
-<width>288</width>
-<height>230.40</height>
+<posx>0</posx>
+<posy>0</posy>
+<width>164</width>
+<height>167</height>
+<texture>List background2.png</texture>
+<aspectratio>stretch</aspectratio>
+<visible>!Window.Next(Home)</visible>
+<animation effect="fade" time="1" delay="500">WindowOpen</animation>
+<animation effect="fade" time="1" delay="0">VisibleChange</animation>
+<visible>Player.HasMedia + !Skin.HasSetting(video-preview)</visible>
+</control>
+
+<control type="label">
+<posx>5</posx>
+<posy>140</posy>
+<width>154</width>
+<height>15</height>
+<font>fontKB</font>
+<align>center</align>
+<aligny>center</aligny>
+<textcolor>white</textcolor>
+<include>selectedcolor</include>
+<info>VideoPlayer.Title</info>
+<visible>!Window.Next(Home)</visible>
+<animation effect="fade" time="1" delay="500">WindowOpen</animation>
+<animation effect="fade" time="1" delay="0">VisibleChange</animation>
+<visible>Player.HasMedia + !Skin.HasSetting(video-preview)</visible>
+<visible>!Window.IsActive(PlayerControls)</visible>
+</control>
+
+<control type="image">
+<description>Background image</description>
+<posx>10</posx>
+<posy>10</posy>
+<width>144</width>
+<height>115.20</height>
 <texture>background2.png</texture>
-<visible>!Window.IsActive(3) + !Window.IsActive(4)</visible>
-<visible>!Window.IsActive(7) + !Window.IsActive(56) + !Window.IsActive(2700)</visible>
-<visible>!Window.IsActive(AppearanceSettings) + !Window.IsActive(MyVideosSettings)</visible>
-<visible>!Window.IsActive(MyMusicSettings) + !Window.IsActive(SystemSettings)</visible>
-<visible>Player.HasMedia + !Skin.HasSetting(video-preview) + System.IdleTime(5)</visible>
-<animation effect="fade" time="300">Visible</animation>
+<visible>!Window.Next(Home)</visible>
+<animation effect="fade" time="1" delay="500">WindowOpen</animation>
+<animation effect="fade" time="1" delay="0">VisibleChange</animation>
+<visible>Player.HasMedia + !Skin.HasSetting(video-preview)</visible>
 </control>
 
 <control>
 <description>Video Preview</description>
 <type>videowindow</type>
-<posx>20</posx>
-<posy>40</posy>
-<width>288</width>
-<height>180</height>
+<posx>10</posx>
+<posy>20</posy>
+<width>144</width>
+<height>90</height>
 <aspectratio>keep</aspectratio>
-<visible>!Window.IsActive(3) + !Window.IsActive(4)</visible>
-<visible>!Window.IsActive(7) + !Window.IsActive(56) + !Window.IsActive(2700)</visible>
-<visible>!Window.IsActive(AppearanceSettings) + !Window.IsActive(MyVideosSettings)</visible>
-<visible>!Window.IsActive(MyMusicSettings) + !Window.IsActive(SystemSettings)</visible>
-<visible>Player.HasMedia + !Skin.HasSetting(video-preview) + System.IdleTime(5)</visible>
-<animation effect="fade" time="300">Visible</animation>
+<visible>!Window.Next(Home)</visible>
+<animation effect="fade" time="1" delay="500">WindowOpen</animation>
+<animation effect="fade" time="1" delay="0">VisibleChange</animation>
+<visible>Player.HasMedia + !Skin.HasSetting(video-preview)</visible>
 </control>
 
 <control type="image">
 <description>Background image</description>
-<posx>20</posx>
-<posy>20</posy>
-<width>40</width>
-<height>230.40</height>
+<posx>10</posx>
+<posy>10</posy>
+<width>20</width>
+<height>115.20</height>
 <texture>Left Curtain panel.png</texture>
-<visible>!Window.IsActive(3) + !Window.IsActive(4)</visible>
-<visible>!Window.IsActive(7) + !Window.IsActive(56) + !Window.IsActive(2700)</visible>
-<visible>!Window.IsActive(AppearanceSettings) + !Window.IsActive(MyVideosSettings)</visible>
-<visible>!Window.IsActive(MyMusicSettings) + !Window.IsActive(SystemSettings)</visible>
-<visible>Player.HasMedia + !Skin.HasSetting(video-preview) + System.IdleTime(5)</visible>
-<animation effect="fade" time="300">Visible</animation>
+<visible>!Window.Next(Home)</visible>
+<animation effect="fade" time="1" delay="500">WindowOpen</animation>
+<animation effect="fade" time="1" delay="0">VisibleChange</animation>
+<visible>Player.HasMedia + !Skin.HasSetting(video-preview)</visible>
 </control>
 
 <control type="image">
 <description>Background image</description>
-<posx>268</posx>
-<posy>20</posy>
-<width>40</width>
-<height>230.40</height>
+<posx>134</posx>
+<posy>10</posy>
+<width>20</width>
+<height>115.20</height>
 <texture>right Curtain panel.png</texture>
-<visible>!Window.IsActive(3) + !Window.IsActive(4)</visible>
-<visible>!Window.IsActive(7) + !Window.IsActive(56) + !Window.IsActive(2700)</visible>
-<visible>!Window.IsActive(AppearanceSettings) + !Window.IsActive(MyVideosSettings)</visible>
-<visible>!Window.IsActive(MyMusicSettings) + !Window.IsActive(SystemSettings)</visible>
-<visible>Player.HasMedia + !Skin.HasSetting(video-preview) + System.IdleTime(5)</visible>
-<animation effect="fade" time="300">Visible</animation>
+<visible>!Window.Next(Home)</visible>
+<animation effect="fade" time="1" delay="500">WindowOpen</animation>
+<animation effect="fade" time="1" delay="0">VisibleChange</animation>
+<visible>Player.HasMedia + !Skin.HasSetting(video-preview)</visible>
 </control>
 
 
+
+<visible>!Window.IsActive(3) + !Window.IsActive(4)</visible>
+<visible>!Window.IsActive(7) + !Window.IsActive(56) + !Window.IsActive(2700) + !Window.IsActive(28)</visible>
+<visible>!Window.IsActive(AppearanceSettings) + !Window.IsActive(MyVideosSettings)</visible>
+<visible>!Window.IsActive(MyMusicSettings) + !Window.IsActive(SystemSettings)</visible>
 <visible>!Window.IsActive(0)</visible>
 </control>
 
