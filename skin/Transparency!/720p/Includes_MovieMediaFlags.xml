@@ -1,0 +1,404 @@
+<includes>
+	<include name="MovieResolutionflagsVars">
+		<width>59</width>
+		<height>40</height>
+		<visible>IsEmpty(ListItem.VideoResolution)</visible>
+	</include>
+	<include name="MovieVideoCodecflagsVars">
+		<width>59</width>
+		<height>40</height>
+		<visible>IsEmpty(ListItem.VideoCodec)</visible>
+	</include>
+	<include name="MovieAudioCodecflagsVars">
+		<width>59</width>
+		<height>40</height>
+		<visible>IsEmpty(ListItem.AudioCodec)</visible>
+	</include>
+	<include name="MovieSubtitlesflagsVars">
+		<width>59</width>
+		<height>40</height>
+		<visible>IsEmpty(ListItem.SubtitleLanguage)</visible>
+	</include>
+	<include name="MovieStudioflagsVars">
+		<width>93</width>
+		<height>63</height>
+	</include>
+	<include name="MovieStudioflagsVarsSmall">
+		<width>59</width>
+		<height>40</height>
+		<visible>!Control.IsVisible(56)</visible>
+	</include>
+	<include name="MovieMediaflagsVars">
+		<width>59</width>
+		<height>40</height>
+	</include>
+	<include name="MovieMediaflags">
+		<include>Window_OpenClose_Animation</include>
+	<!-- Resolution (Native) -->
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
+			<visible>!IsEmpty(ListItem.VideoResolution)</visible>
+		</control>
+	<!-- Resolution (Studio Tag) -->
+		<control type="image">
+			<include>MovieResolutionflagsVars</include>
+			<texture>special://skin/images/flags/movies/resolution/sd.png</texture>
+			<visible>substring(listitem.studio,SDp) | substring(listitem.studio,SDi)</visible>
+		</control>
+		<control type="image">
+			<include>MovieResolutionflagsVars</include>
+			<texture>special://skin/images/flags/movies/resolution/480p.png</texture>
+			<visible>substring(listitem.studio,480p)</visible>
+		</control>
+		<control type="image">
+			<include>MovieResolutionflagsVars</include>
+			<texture>special://skin/images/flags/movies/resolution/576p.png</texture>
+			<visible>substring(listitem.studio,576p)</visible>
+		</control>
+		<control type="image">
+			<include>MovieResolutionflagsVars</include>
+			<texture>special://skin/images/flags/movies/resolution/720p.png</texture>
+			<visible>substring(listitem.studio,720p)</visible>
+		</control>
+		<control type="image">
+			<include>MovieResolutionflagsVars</include>
+			<texture>special://skin/images/flags/movies/resolution/1080p.png</texture>
+			<visible>substring(listitem.studio,1080p)</visible>
+		</control>
+		<control type="image">
+			<include>MovieResolutionflagsVars</include>
+			<texture>special://skin/images/flags/movies/resolution/480i.png</texture>
+			<visible>substring(listitem.studio,480i)</visible>
+		</control>
+		<control type="image">
+			<include>MovieResolutionflagsVars</include>
+			<texture>special://skin/images/flags/movies/resolution/576i.png</texture>
+			<visible>substring(listitem.studio,576i)</visible>
+		</control>
+		<control type="image">
+			<include>MovieResolutionflagsVars</include>
+			<texture>special://skin/images/flags/movies/resolution/720i.png</texture>
+			<visible>substring(listitem.studio,720i)</visible>
+		</control>
+		<control type="image">
+			<include>MovieResolutionflagsVars</include>
+			<texture>special://skin/images/flags/movies/resolution/1080i.png</texture>
+			<visible>substring(listitem.studio,1080i)</visible>
+		</control>
+	<!-- Aspect Ratio -->
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/aspectratio/$INFO[ListItem.VideoAspect,,.png]</texture>
+			<visible>!IsEmpty(ListItem.VideoAspect)</visible>
+		</control>
+	<!-- Video Codec (Native) -->
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/videocodec/$INFO[ListItem.VideoCodec,,.png]</texture>
+			<visible>!IsEmpty(ListItem.VideoCodec)</visible>
+		</control>
+	<!-- Video Codec  (Studio Tag) -->
+		<control type="image">
+			<include>MovieVideoCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/videocodec/divx.png</texture>
+			<visible>substring(listitem.studio,DX50) | substring(listitem.studio,divx) | substring(listitem.studio,DIV3)</visible>
+		</control>
+		<control type="image">
+			<include>MovieVideoCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/videocodec/xvid.png</texture>
+			<visible>substring(listitem.studio,xvid)</visible>
+		</control>
+		<control type="image">
+			<include>MovieVideoCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/videocodec/h.264.png</texture>
+			<visible>substring(listitem.studio,V_MPEG4)</visible>
+		</control>
+		<control type="image">
+			<include>MovieVideoCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/videocodec/quicktime.png</texture>
+			<visible>substring(listitem.studio,SVQ3)</visible>
+		</control>
+		<control type="image">
+			<include>MovieVideoCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/videocodec/wmv.png</texture>
+			<visible>substring(listitem.studio,WMV) | substring(listitem.studio,WMV2)</visible>
+		</control>
+		<control type="image">
+			<include>MovieVideoCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/videocodec/wmvhd.png</texture>
+			<visible>substring(listitem.studio,WVC1)</visible>
+		</control>
+		<control type="image">
+			<include>MovieVideoCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/videocodec/mpeg.png</texture>
+			<visible>!substring(listitem.filename,hddvd) + [substring(listitem.filename,.ifo,Right) | substring(listitem.filename,.iso,Right) | substring(listitem.filename,.img,Right) | substring(listitem.filename,.mpg,Right) | substring(listitem.filename,.vob,Right)] + ![substring(listitem.studio,720) | substring(listitem.studio,1080)] + ![substring(listitem.studio,DX50) | substring(listitem.studio,divx) | substring(listitem.studio,DIV3) | substring(listitem.studio,xvid) | substring(listitem.studio,V_MPEG4) | substring(listitem.studio,WVC1) | substring(listitem.studio,WMV)]</visible>
+		</control>
+	<!-- Audio Codec (Native) -->
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/aac.png</texture>
+			<visible>substring(ListItem.AudioCodec,aac)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/mono.png</texture>
+			<visible>[substring(ListItem.AudioCodec,ac3) | substring(ListItem.AudioCodec,ac-3)] + substring(ListItem.AudioChannels,1)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dolby20.png</texture>
+			<visible>[substring(ListItem.AudioCodec,ac3) | substring(ListItem.AudioCodec,ac-3)] + substring(ListItem.AudioChannels,2)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dd40.png</texture>
+			<visible>[substring(ListItem.AudioCodec,ac3) | substring(ListItem.AudioCodec,ac-3)] + substring(ListItem.AudioChannels,4)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dd41.png</texture>
+			<visible>[substring(ListItem.AudioCodec,ac3) | substring(ListItem.AudioCodec,ac-3)] + substring(ListItem.AudioChannels,5)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dd51.png</texture>
+			<visible>[substring(ListItem.AudioCodec,ac3) | substring(ListItem.AudioCodec,ac-3)] + substring(ListItem.AudioChannels,6)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dd71.png</texture>
+			<visible>[substring(ListItem.AudioCodec,ac3) | substring(ListItem.AudioCodec,ac-3)] + substring(ListItem.AudioChannels,8)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dts.png</texture>
+			<visible>[substring(ListItem.AudioCodec,dca) | substring(ListItem.AudioCodec,dts)] + substring(ListItem.AudioChannels,2)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dts51.png</texture>
+			<visible>[substring(ListItem.AudioCodec,dca) | substring(ListItem.AudioCodec,dts)] + substring(ListItem.AudioChannels,6)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dts71.png</texture>
+			<visible>[substring(ListItem.AudioCodec,dca) | substring(ListItem.AudioCodec,dts)] + substring(ListItem.AudioChannels,8)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/mpeg audio.png</texture>
+			<visible>substring(ListItem.AudioCodec,mp1)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/mp2.png</texture>
+			<visible>substring(ListItem.AudioCodec,mp2) | substring(ListItem.AudioCodec,mpeg audio)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/mp3.png</texture>
+			<visible>substring(ListItem.AudioCodec,mp3)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/ogg.png</texture>
+			<visible>substring(ListItem.AudioCodec,vorbis)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/wav.png</texture>
+			<visible>substring(ListItem.AudioCodec,pcm)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/wma.png</texture>
+			<visible>substring(ListItem.AudioCodec,wmav2) | substring(ListItem.AudioCodec,wma2)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/wmahd.png</texture>
+			<visible>substring(ListItem.AudioCodec,wmapro) | substring(ListItem.AudioCodec,wma3)</visible>
+		</control>
+	<!-- Audio Codec (Studio Tag) -->
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dts.png</texture>
+			<visible>substring(listitem.studio,dts) + ![substring(listitem.studio,6ch) | substring(listitem.studio,8ch)]</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dd40.png</texture>
+			<visible>substring(listitem.studio,4ch) + substring(listitem.studio,ac-3)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dd41.png</texture>
+			<visible>substring(listitem.studio,5ch) + substring(listitem.studio,ac-3)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dd51.png</texture>
+			<visible>substring(listitem.studio,6ch) + substring(listitem.studio,ac-3)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dd71.png</texture>
+			<visible>substring(listitem.studio,8ch) + substring(listitem.studio,ac-3)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dts51.png</texture>
+			<visible>substring(listitem.studio,6ch) + substring(listitem.studio,dts)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dts71.png</texture>
+			<visible>substring(listitem.studio,8ch) + substring(listitem.studio,dts)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dolby20.png</texture>
+			<visible>substring(listitem.studio,2ch) + substring(listitem.studio,ac-3)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dolbypro.png</texture>
+			<visible>substring(listitem.studio,dolbypro)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/mono.png</texture>
+			<visible>substring(listitem.studio,1ch) + substring(listitem.studio,ac-3)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dolbytruehd.png</texture>
+			<visible>substring(listitem.studio,truehd) | substring(listitem.studio,true hd)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/dtsma.png</texture>
+			<visible>substring(listitem.studio,dtsma) | substring(listitem.studio,master audio) + !substring(listitem.studio,ac-3)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/mp2.png</texture>
+			<visible>substring(listitem.studio,MPEG Audio) + [substring(listitem.filename,.ifo,Right) | substring(listitem.filename,.vob,Right) | substring(listitem.filename,.iso,Right) | substring(listitem.filename,.img,Right)] + ![substring(listitem.studio,720) | substring(listitem.studio,1080)]</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/mp3.png</texture>
+			<visible>substring(listitem.studio,MPEG Audio) + [substring(listitem.studio,DX50) | substring(listitem.studio,divx) | substring(listitem.studio,DIV3) | substring(listitem.studio,svq3) | substring(listitem.studio,xvid)]</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/flac.png</texture>
+			<visible>substring(listitem.studio,flac)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/ogg.png</texture>
+			<visible>substring(listitem.studio,vorbis)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/aac.png</texture>
+			<visible>substring(listitem.studio,aac)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/wav.png</texture>
+			<visible>substring(listitem.studio,PCM)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/wma.png</texture>
+			<visible>substring(listitem.studio,WMA) + !substring(listitem.studio,WMA3)</visible>
+		</control>
+		<control type="image">
+			<include>MovieAudioCodecflagsVars</include>
+			<texture>special://skin/images/flags/movies/audiocodec/wmahd.png</texture>
+			<visible>substring(listitem.studio,WMA3)</visible>
+		</control>
+	<!-- Source -->
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/source/dvd.png</texture>
+			<visible>substring(listitem.filename,sddvd) | substring(listitem.filename,.ifo,Right) | substring(listitem.filename,.vob,Right) | [[!substring(listitem.filename,hddvd) + !substring(listitem.filename,bluray) + !substring(listitem.filename,sdtv) + !substring(listitem.filename,hdtv)] + [substring(listitem.filename,.iso,Right) | substring(listitem.filename,.img,Right) | substring(listitem.filename,.avi,Right) | substring(listitem.filename,.mkv,Right) | substring(listitem.filename,.mov,Right) | substring(listitem.filename,.mpg,Right) | substring(listitem.filename,.mpeg,Right) | substring(listitem.filename,.ts,Right) | substring(listitem.filename,.wmv,Right)] + ![substring(listitem.studio,720) | substring(listitem.studio,1080) | substring(ListItem.VideoResolution,720) | substring(ListItem.VideoResolution,1080)]]</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/source/hddvd.png</texture>
+			<visible>substring(listitem.filename,hddvd) | substring(listitem.filename,.evo,Right)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/source/bluray.png</texture>
+			<visible>substring(listitem.filename,bluray) | substring(listitem.filename,blu-ray) | substring(listitem.filename,brrip) | substring(listitem.filename,.mt2s,Right) | [[!substring(listitem.filename,sddvd) + !substring(listitem.filename,blu-ray) + !substring(listitem.filename,brrip) + !substring(listitem.filename,tvrip) + !substring(listitem.filename,pdtv) + !substring(listitem.filename,hddvd) + !substring(listitem.filename,sdtv) + !substring(listitem.filename,hdtv)] + [substring(listitem.filename,.iso,Right) | substring(listitem.filename,.img,Right) | substring(listitem.filename,.avi,Right) | substring(listitem.filename,.mkv,Right) | substring(listitem.filename,.mov,Right) | substring(listitem.filename,.mpg,Right) | substring(listitem.filename,.mpeg,Right) | substring(listitem.filename,.ts,Right) | substring(listitem.filename,.wmv,Right)] + [substring(listitem.studio,720) | substring(listitem.studio,1080) | substring(ListItem.VideoResolution,720) | substring(ListItem.VideoResolution,1080)]]</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/source/sdtv.png</texture>
+			<visible>substring(listitem.filename,sdtv) | substring(listitem.filename,tvrip)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/source/hdtv.png</texture>
+			<visible>substring(listitem.filename,hdtv) | substring(listitem.filename,pdtv)</visible>
+		</control>
+	<!-- Subtitles (Native) -->
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/subtitles/cc.png</texture>
+			<visible>!IsEmpty(ListItem.SubtitleLanguage)</visible>
+		</control>
+	<!-- Subtitles (Studio Tag) -->
+		<control type="image">
+			<include>MovieSubtitlesflagsVars</include>
+			<texture>special://skin/images/flags/movies/subtitles/cc.png</texture>
+			<visible>substring(listitem.studio,sub)</visible>
+		</control>
+	<!-- Rating -->
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/rating/rating-g.png</texture>
+			<visible>substring(listitem.mpaa,Rated G)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/rating/rating-pg.png</texture>
+			<visible>substring(listitem.mpaa,Rated PG) + !substring(listitem.mpaa,Rated PG-13)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/rating/rating-pg13.png</texture>
+			<visible>substring(listitem.mpaa,Rated PG-13)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/rating/rating-r.png</texture>
+			<visible>substring(listitem.mpaa,Rated R)</visible>
+		</control>
+		<control type="image">
+			<include>MovieMediaflagsVars</include>
+			<texture>special://skin/images/flags/movies/rating/rating-nc17.png</texture>
+			<visible>substring(listitem.mpaa,Rated NC-17)</visible>
+		</control>
+	<!-- Studio  -->
+		<control type="image">
+			<include>MovieStudioflagsVarsSmall</include>
+			<texture>special://skin/images/flags/movies/studio/$INFO[ListItem.Studio,,.png]</texture>
+			<visible>!IsEmpty(ListItem.Studio)</visible>
+		</control>
+	</include>
+	<include name="MovieStudioflag">
+		<include>Window_OpenClose_Animation</include>
+	<!-- Studio  -->
+		<control type="image">
+			<include>MovieStudioflagsVars</include>
+			<texture>special://skin/images/flags/movies/studio/$INFO[ListItem.Studio,,.png]</texture>
+			<visible>!IsEmpty(ListItem.Studio)</visible>
+		</control>
+	</include>
+</includes>
