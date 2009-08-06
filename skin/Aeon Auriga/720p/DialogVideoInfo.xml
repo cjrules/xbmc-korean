@@ -1,4 +1,4 @@
-<window type="dialog" id="2003">
+﻿<window type="dialog" id="2003">
 	<defaultcontrol>8</defaultcontrol>
 	<zorder>2</zorder>
 	<coordinates>
@@ -159,6 +159,33 @@
 			<height>569</height>
 			<texture>info/info_panellines_movie.png</texture>
 			<animation effect="fade" start="70" end="70" time="0" condition="Skin.HasSetting(lite)">Conditional</animation>				
+		</control>
+
+    <!-- Korea Certification -->
+    <control type="image" id="171">
+			<include>Objects_FSInfoCertificate</include>
+			<texture>flags/ratings/kr/KR_Certificate_R_Info.png</texture>
+			<visible>substring(listitem.mpaa,제한)</visible>
+		</control>
+    <control type="image" id="171">
+			<include>Objects_FSInfoCertificate</include>
+			<texture>flags/rating/kr/KR_Certificate_15_Info.png</texture>
+			<visible>substring(listitem.mpaa,15세)</visible>
+    </control>
+    <control type="image" id="171">
+			<include>Objects_FSInfoCertificate</include>
+			<texture>flags/rating/kr/KR_Certificate_12_Info.png</texture>
+			<visible>substring(listitem.mpaa,12세)</visible>
+    </control>
+    <control type="image" id="171">
+			<include>Objects_FSInfoCertificate</include>
+			<texture>flags/rating/kr/KR_Certificate_18_Info.png</texture>
+			<visible>substring(listitem.mpaa,청소년)</visible>
+    </control>
+    <control type="image" id="171">
+			<include>Objects_FSInfoCertificate</include>
+			<texture>flags/rating/kr/KR_Certificate_All_Info.png</texture>
+			<visible>substring(listitem.mpaa,전체)</visible>
 		</control>
 
 		<control type="image">

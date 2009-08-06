@@ -164,11 +164,12 @@
 		
 	</control>
 
-	<include condition="Skin.HasSetting(videomovies)">Furniture_ShowcaseMediaFlags</include>	
+	<include condition="Skin.HasSetting(videomovies)">Furniture_ShowcaseMediaFlags</include>
+	<include condition="Skin.HasSetting(videotv)">Furniture_EpisodeMediaFlags</include>
 	
 	<include>Furniture_DarkGradient</include>
 	<include>ViewChange</include>
-	<include>Background_ContextBlack</include>
+	<!--<include>Background_ContextBlack</include>-->
 	<include condition="Skin.HasSetting(debug)">Furniture_Debug</include>
 	
 </controls>	
