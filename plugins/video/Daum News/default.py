@@ -42,19 +42,25 @@ def INDEX(main_url):
         match=re.compile('<dl class="TV_RL">\s+<dd class="fl"><a href=".+?"><img src="(.+?)" width="100" height="76" alt="" /></a><br /></dd>\s+<dt class="fl"><a href="(.+?)">(.+?)</a><br /></dt>').findall(link)
         count=1
         for thumbnail,url,name in match:
+                name = re.sub('&lt;','<',name)
+                name = re.sub('&gt;','>',name)
+                name = re.sub('&#39;','\'',name)
                 url = re.sub('&amp;','&',url)
                 VIDEOLINKS("%02d - "%(count) + name,main_url+url,thumbnail)
                 count += 1
         if count == 1:
                 match=re.compile('''<a href="(.+?)"><img src="(.+?)" width="120" height="90" alt="" class="img" /></a>\s+ <div class="R">\s+<h4><a href=".+?" class="tit">(.+?)</a></h4>''').findall(link)
                 for url,thumbnail,name in match:
+                    name = re.sub('&lt;','<',name)
+                    name = re.sub('&gt;','>',name)
+                    name = re.sub('&#39;','\'',name)
                     url = re.sub('&amp;','&',url)
                     VIDEOLINKS("%02d - "%(count) + name,main_url+url,thumbnail)
                     count += 1
 
 
 def VIDEOLINKS(name,url,thumbnail):
-        print "in videolinks" + url
+        print "in videolinks " + url
         req = urllib2.Request(url)
         req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
         response = urllib2.urlopen(req)
@@ -84,7 +90,7 @@ def DaumGetFlvByVid(referer, vid):
     req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14')
     req.add_header('Referer', referer)
     page = urllib2.urlopen(req);response=page.read();page.close()
-    query_match = re.compile('''<MovieLocation url="(.+?)"/>''').findall(response)
+    query_match = re.compile('''<MovieLocation regdate="\d+" url="(.+?)" storage=".+?"/>''').findall(response)
     if len(query_match) > 0:
         query_match[0] = re.sub('&amp;','&',query_match[0])
         print query_match[0]
