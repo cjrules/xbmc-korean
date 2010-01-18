@@ -18,11 +18,10 @@ def INDEX(url):
         for thumbnail,url,name in match:
                 VIDEOLINKS("%02d - "%(count) + name,url,thumbnail)
                 count += 1
-        match=re.compile('''<a href="(.+?)">(.+?)</a>\r\n		</td>\r\n		<td class="td5"><a href=".+?"><img src="http://img-contents.daum-img.net/movie/2008_home/ranking/btn_play.gif"''').findall(link)
+        match=re.compile('<a href="(.+?)">(.+?)</a>\s*</td>\s*<td class="td5"><a href=".+?"><img src="[^"]*/btn_play.gif"').findall(link)
         for url,name in match:
                 VIDEOLINKS("%02d - "%(count) + name,url,'')
                 count += 1
-        #match=re.compile('<img src="(.+?)" width="73" height="55" alt=".+?" class="poster" /></a>\s*<p style="width:360px;"><a href="(.+?)">(.+?)</a></p>').findall(link)
 
 def VIDEOLINKS(name, url, thumbnail):
         req = urllib2.Request(url)
@@ -53,7 +52,7 @@ def DaumMovie(referer, vid):
     req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14')
     req.add_header('Referer', referer)
     page = urllib2.urlopen(req);response=page.read();page.close()
-    query_match = re.compile('''<MovieLocation url="(.+?)"/>''').findall(response)
+    query_match = re.compile('''<MovieLocation regdate="\d+" url="(.+?)" storage=".+?"/>''').findall(response)
     if len(query_match) > 0:
         query_match[0] = re.sub('&amp;','&',query_match[0])
         return DaumGetFLV(referer, query_match[0])
