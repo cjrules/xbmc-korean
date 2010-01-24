@@ -28,17 +28,16 @@ def INDEX(url):
                 url = re.sub(' ','',url)
                 VIDEOLINKS("%02d - "%(count) + name,url,thumbnail)
                 count += 1
-	print "matched ",count
+	print "matched item %d"%count
 
 def VIDEOLINKS(name,url,thumbnail):
-	print name,url
+	#print "in videolink",name,url
         req = urllib2.Request(url)
         req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
         response = urllib2.urlopen(req)
         link=response.read()
         response.close()
-        #match=re.compile('''daumEmbed_.+?\('.+?','(.+?)','.+?'\)''').findall(link)
-        match=re.compile('''daumEmbed_.+?\('[^']+','([^']+)','[^']+'\)''').findall(link)
+        match=re.compile('''daumEmbed_.+?\('.+?','(.+?)','.+?','.+?'\)''').findall(link)
         for vid in match:
                 flv = DaumGetFlvByVid(url,vid)
                 addLink(name,flv,thumbnail)
@@ -47,26 +46,25 @@ def VIDEOLINKS(name,url,thumbnail):
 #Courtesy of Voinage, Coolblaze.        
 
 def DaumGetFLV(referer, url):
+    print "daum loc="+url
     req = urllib2.Request(url)
     req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14')
     req.add_header('Referer', referer)
     page = urllib2.urlopen(req);response=page.read();page.close()
-    #query_match = re.compile('''<MovieLocation movieURL="(.+?)"''').findall(response)
-    query_match = re.compile('''<MovieLocation movieURL="([^"]+)"''').findall(response)
+    query_match = re.compile('''<MovieLocation movieURL="(.+?)"''').findall(response)
     if len(query_match) > 0:
         return query_match[0]
     return None
 
 def DaumGetFlvByVid(referer, vid):
+    print "daum vid="+str(vid)
     req = urllib2.Request("http://flvs.daum.net/viewer/MovieLocation.do?vid="+vid)
     req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14')
     req.add_header('Referer', referer)
     page = urllib2.urlopen(req);response=page.read();page.close()
-    #query_match = re.compile('''<MovieLocation regdate="\d+" url="(.+?)" storage=".+?"/>''').findall(response)
-    query_match = re.compile('''<MovieLocation regdate="\d+" url="([^"]+)" storage=".+?"/>''').findall(response)
+    query_match = re.compile('''<MovieLocation regdate="\d+" url="(.+?)" storage=".+?"/>''').findall(response)
     if len(query_match) > 0:
         query_match[0] = re.sub('&amp;','&',query_match[0])
-        print query_match[0]
         return DaumGetFLV(referer, query_match[0])
 
 
