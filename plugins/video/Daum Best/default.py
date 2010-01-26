@@ -31,13 +31,14 @@ def INDEX(url):
 	print "matched item %d"%count
 
 def VIDEOLINKS(name,url,thumbnail):
-	#print "in videolink",name,url
+	print "daum videolink("+name+")="+url
         req = urllib2.Request(url)
         req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
         response = urllib2.urlopen(req)
         link=response.read()
         response.close()
-        match=re.compile('''daumEmbed_.+?\('.+?','(.+?)','.+?','.+?'\)''').findall(link)
+	# daumEmbed_jingle2 had 3 arguments, but daumEmbed_standard had 4
+        match=re.compile('''daumEmbed_.+?\('.+?','(.+?)','.+?'[,\)]''').findall(link)
         for vid in match:
                 flv = DaumGetFlvByVid(url,vid)
                 addLink(name,flv,thumbnail)
@@ -66,6 +67,7 @@ def DaumGetFlvByVid(referer, vid):
     if len(query_match) > 0:
         query_match[0] = re.sub('&amp;','&',query_match[0])
         return DaumGetFLV(referer, query_match[0])
+    return None
 
 
                 

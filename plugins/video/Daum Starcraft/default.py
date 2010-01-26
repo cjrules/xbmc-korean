@@ -14,16 +14,30 @@ def STAR_LEAGUE(main_url):
         link=response.read()
         response.close()
 
-	# NOTE: the below is not working at all. too long for lazy match?
-	#match1=re.compile('''<div class="matchGroup">\s*<h5><strong>(\d{4}.\d{2}.\d{2})</strong>([^<]*)</h5>\s*<p>\s*([^/]+)</p>(.+?)</ol>\s*</div>\s*</div>''').findall(link)
+	mgrpc=re.compile('''\s*<h5><strong>(\d{4}.\d{2}.\d{2})</strong>.*?</h5>\s*<p>\s*(.*?\S)\s*</p>''')
+	setc1=re.compile('''([^<]+)</strong>\s*<dl>\s*<dt[^/]+</dt>\s*<dd class="player">\s*<a class=[^>]+>([^<]+)</a>\s*<em[^/]+</em>\s*</dd>\s*</dl>\s*<span>VS</span>\s*<dl class="right">\s*<dt[^/]+</dt>\s*<dd class="player">\s*<a class=[^>]+>([^<]+)</a>\s*<em[^/]+</em>\s*</dd>\s*</dl>\s*<a href="/clip/ClipView.do\?clipid=(\d+)" class="playBtn on">''')
+	setc2=re.compile('''([^<]+)</strong>\s*<dl>\s*<dt[^/]+</dt>\s*<dd class="description">([^<]+)</dd>\s*</dl>\s*<a href="/clip/ClipView.do\?clipid=(\d+)" class="playBtn on"''')
 
-	match=re.compile('''<strong class="set">([^<]+)</strong>\s*<dl>\s*<dt[^/]+</dt>\s*<dd class="player">\s*<a class=[^>]+>([^<]+)</a>\s*<em[^/]+</em>\s*</dd>\s*</dl>\s*<span>VS</span>\s*<dl class="right">\s*<dt[^/]+</dt>\s*<dd class="player">\s*<a class=[^>]+>([^<]+)</a>\s*<em[^/]+</em>\s*</dd>\s*</dl>\s*<a href="/clip/ClipView.do\?clipid=(\d+)" class="playBtn on">''').findall(link)
+	mgrp=re.split('''<div class="matchGroup">''',link)
+	print "#match groups=%d"%(len(mgrp)-1)
+	for mgdata in mgrp[1:]:		#skip first chunk
+		mginfo = mgrpc.match(mgdata)
+		if (mginfo is None):
+			continue
+		mtitle = re.sub('<br>',' ',mginfo.group(2))
 
-	count=1
-	for setname,player1,player2,clipid in match:
-		url = "http://tvpot.daum.net/clip/ClipView.do?clipid=%s" % (clipid)
-		VIDEOLINKS("%02d - %s[%s vs %s]"%(count, setname, player1, player2),url,'')
-		count += 1
+		mset=re.split('''<strong class="set">''',mgdata)
+		for setdata in mset[1:]:	#skip first chunk
+			match = setc1.findall(setdata)
+			for setname,player1,player2,clipid in match:
+				url = "http://tvpot.daum.net/clip/ClipView.do?clipid=%s" % (clipid)
+				VIDEOLINKS("%s %s - %s[%s vs %s]" % (mginfo.group(1),mtitle,setname,player1,player2),url,'')
+			match=setc2.findall(mgdata)
+			for setname,descr,clipid in match:
+				if clipid == 0:
+					continue
+				url = "http://tvpot.daum.net/clip/ClipView.do?clipid=%s" % (clipid)
+				VIDEOLINKS("%s %s - %s[%s]" % (mginfo.group(1),mtitle,setname,descr),url,'')
 
 
 def INDEX(main_url):
@@ -53,7 +67,8 @@ def VIDEOLINKS(name,url,thumbnail):
         response = urllib2.urlopen(req)
         link=response.read()
         response.close()
-        match=re.compile('''daumEmbed_.+?\('.+?','(.+?)','.+?','.+?'\)''').findall(link)
+	# daumEmbed_jingle2 had 3 arguments, but daumEmbed_standard had 4
+        match=re.compile('''daumEmbed_.+?\('.+?','(.+?)','.+?'[,\)]''').findall(link)
         for vid in match:
                 flv = DaumGetFlvByVid(url,vid)
                 addLink(name,flv,thumbnail)
@@ -81,8 +96,8 @@ def DaumGetFlvByVid(referer, vid):
     query_match = re.compile('''<MovieLocation regdate="\d+" url="(.+?)" storage=".+?"/>''').findall(response)
     if len(query_match) > 0:
         query_match[0] = re.sub('&amp;','&',query_match[0])
-        #print query_match[0]
         return DaumGetFLV(referer, query_match[0])
+    return None
 
 
                 
