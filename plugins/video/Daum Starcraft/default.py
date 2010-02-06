@@ -14,30 +14,43 @@ def STAR_LEAGUE(main_url):
         link=response.read()
         response.close()
 
-	mgrpc=re.compile('''\s*<h5><strong>(\d{4}.\d{2}.\d{2})</strong>.*?</h5>\s*<p>\s*(.*?\S)\s*</p>''')
+	minfc=re.compile('''\s*<h5><strong>(\d{4}.\d{2}.\d{2})</strong>.*?</h5>\s*<p>\s*(.*)</p>''')
 	setc1=re.compile('''([^<]+)</strong>\s*<dl>\s*<dt[^/]+</dt>\s*<dd class="player">\s*<a class=[^>]+>([^<]+)</a>\s*<em[^/]+</em>\s*</dd>\s*</dl>\s*<span>VS</span>\s*<dl class="right">\s*<dt[^/]+</dt>\s*<dd class="player">\s*<a class=[^>]+>([^<]+)</a>\s*<em[^/]+</em>\s*</dd>\s*</dl>\s*<a href="/clip/ClipView.do\?clipid=(\d+)" class="playBtn on">''')
 	setc2=re.compile('''([^<]+)</strong>\s*<dl>\s*<dt[^/]+</dt>\s*<dd class="description">([^<]+)</dd>\s*</dl>\s*<a href="/clip/ClipView.do\?clipid=(\d+)" class="playBtn on"''')
 
 	mgrp=re.split('''<div class="matchGroup">''',link)
 	print "#match groups=%d"%(len(mgrp)-1)
+	match_cnt=0
 	for mgdata in mgrp[1:]:		#skip first chunk
-		mginfo = mgrpc.match(mgdata)
-		if (mginfo is None):
-			continue
-		mtitle = re.sub('<br>',' ',mginfo.group(2))
+		match_cnt = match_cnt+1
 
 		mset=re.split('''<strong class="set">''',mgdata)
-		for setdata in mset[1:]:	#skip first chunk
+		print "#set in match%d=%d"%(match_cnt, len(mset)-1)
+
+		# match date & title
+		mhdr = re.sub('\s+',' ',mset[0])
+		mginfo = minfc.match(mhdr)
+		if (mginfo is None):
+			match_date = ""
+			match_title = ""
+		else:
+			match_date  = mginfo.group(1)
+			match_title = re.sub('<br\s*/?>',' ',mginfo.group(2))
+			match_title = re.sub('<[^>]*>','',match_title)
+			match_title = re.sub('\s*$','',match_title)
+
+		# players in each set
+		for setdata in mset[1:]:
 			match = setc1.findall(setdata)
 			for setname,player1,player2,clipid in match:
 				url = "http://tvpot.daum.net/clip/ClipView.do?clipid=%s" % (clipid)
-				VIDEOLINKS("%s %s - %s[%s vs %s]" % (mginfo.group(1),mtitle,setname,player1,player2),url,'')
-			match=setc2.findall(mgdata)
+				VIDEOLINKS("%s %s - %s[%s vs %s]" % (match_date,match_title,setname,player1,player2),url,'')
+			match=setc2.findall(setdata)
 			for setname,descr,clipid in match:
 				if clipid == 0:
 					continue
 				url = "http://tvpot.daum.net/clip/ClipView.do?clipid=%s" % (clipid)
-				VIDEOLINKS("%s %s - %s[%s]" % (mginfo.group(1),mtitle,setname,descr),url,'')
+				VIDEOLINKS("%s %s - %s[%s]" % (match_date,match_title,setname,descr),url,'')
 
 
 def INDEX(main_url):
@@ -46,7 +59,7 @@ def INDEX(main_url):
         response = urllib2.urlopen(req)
         link=response.read()
         response.close()
-        match=re.compile('''daumEmbed_jingle\('.+?','(.+?)','.+?','.+?'\)''').findall(link)
+        match=re.compile('''daumEmbed_.+?\('.+?','(.+?)','.+?'[,\)]''').findall(link)
         count=1
         for thumbnail,url,name in match:
                 url = re.sub('&amp;','&',url)
