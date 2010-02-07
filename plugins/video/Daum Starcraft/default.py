@@ -1,115 +1,147 @@
-# encoding: utf-8
+# coding=utf-8
+"""
+  Daum tvpot / Starcraft gamecast
+"""
+
 import urllib,urllib2,re,xbmcplugin,xbmcgui
 
-#TV DASH - by You 2008.
+# plugin constants
+__plugin__ = "Daum Starcraft"
+__author__ = "edge"
+__url__ = "http://xbmc-korea.com/"
+__svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/Daum%20Starcraft"
+__credits__ = "XBMC Korean User Group"
+__version__ = "0.1.0"
+
+xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
+
+# site
+slHome  = "http://tvpot.daum.net/game/sl/"
+clipUrl = "http://tvpot.daum.net/clip/ClipView.do?clipid="
 
 def CATEGORIES():
-        addDir("01 - 프로리그","http://tvpot.daum.net/game/sl/LeagueList.do?league=pro&type=list",3,'')
-        addDir("02 - 온게임넷 스타리그","http://tvpot.daum.net/game/sl/LeagueList.do?league=osl&type=list",3,'')
+        addDir("01 - 프로리그", slHome+"LeagueList.do?league=pro&type=list",2,'')
+        addDir("02 - 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",2,'')
+        addDir("03 - (지난게임) 프로리그", slHome+"LeagueList.do?league=pro&type=list",1,'')
+        addDir("04 - (지난게임) 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",1,'')
 
 def STAR_LEAGUE(main_url):
         req = urllib2.Request(main_url)
-        req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+        req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; ko-KR; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
         response = urllib2.urlopen(req)
         link=response.read()
         response.close()
 
-	minfc=re.compile('''\s*<h5><strong>(\d{4}.\d{2}.\d{2})</strong>.*?</h5>\s*<p>\s*(.*)</p>''')
-	setc1=re.compile('''([^<]+)</strong>\s*<dl>\s*<dt[^/]+</dt>\s*<dd class="player">\s*<a class=[^>]+>([^<]+)</a>\s*<em[^/]+</em>\s*</dd>\s*</dl>\s*<span>VS</span>\s*<dl class="right">\s*<dt[^/]+</dt>\s*<dd class="player">\s*<a class=[^>]+>([^<]+)</a>\s*<em[^/]+</em>\s*</dd>\s*</dl>\s*<a href="/clip/ClipView.do\?clipid=(\d+)" class="playBtn on">''')
-	setc2=re.compile('''([^<]+)</strong>\s*<dl>\s*<dt[^/]+</dt>\s*<dd class="description">([^<]+)</dd>\s*</dl>\s*<a href="/clip/ClipView.do\?clipid=(\d+)" class="playBtn on"''')
+        minfc=re.compile('''\s*<h5><strong>(\d{4}.\d{2}.\d{2})</strong>.*?</h5>\s*<p>\s*(.*)</p>''')
+        setc1=re.compile('''([^<]+)</strong>\s*<dl>\s*<dt[^/]+</dt>\s*<dd class="player">\s*<a class=[^>]+>([^<]+)</a>\s*<em[^/]+</em>\s*</dd>\s*</dl>\s*<span>VS</span>\s*<dl class="right">\s*<dt[^/]+</dt>\s*<dd class="player">\s*<a class=[^>]+>([^<]+)</a>\s*<em[^/]+</em>\s*</dd>\s*</dl>\s*<a href="/clip/ClipView.do\?clipid=(\d+)" class="playBtn on">''')
+        setc2=re.compile('''([^<]+)</strong>\s*<dl>\s*<dt[^/]+</dt>\s*<dd class="description">([^<]+)</dd>\s*</dl>\s*<a href="/clip/ClipView.do\?clipid=(\d+)" class="playBtn on"''')
 
-	mgrp=re.split('''<div class="matchGroup">''',link)
-	print "#match groups=%d"%(len(mgrp)-1)
-	match_cnt=0
-	for mgdata in mgrp[1:]:		#skip first chunk
-		match_cnt = match_cnt+1
+        mgrp=re.split('''<div class="matchGroup">''',link)
+        xbmc.log( "#match groups=%d"%(len(mgrp)-1), xbmc.LOGDEBUG )
+        match_cnt=0
+        for mgdata in mgrp[1:]:                #skip first chunk
+                match_cnt = match_cnt+1
 
-		mset=re.split('''<strong class="set">''',mgdata)
-		print "#set in match%d=%d"%(match_cnt, len(mset)-1)
+                mset=re.split('''<strong class="set">''',mgdata)
+                xbmc.log( "#set in match%d=%d"%(match_cnt, len(mset)-1), xbmc.LOGDEBUG )
 
-		# match date & title
-		mhdr = re.sub('\s+',' ',mset[0])
-		mginfo = minfc.match(mhdr)
-		if (mginfo is None):
-			match_date = ""
-			match_title = ""
-		else:
-			match_date  = mginfo.group(1)
-			match_title = re.sub('<br\s*/?>',' ',mginfo.group(2))
-			match_title = re.sub('<[^>]*>','',match_title)
-			match_title = re.sub('\s*$','',match_title)
+                # match date & title
+                mhdr = re.sub('\s+',' ',mset[0])
+                mginfo = minfc.match(mhdr)
+                if (mginfo is None):
+                        match_date = ""
+                        match_title = ""
+                else:
+                        match_date  = mginfo.group(1)
+                        match_title = re.sub('<br\s*/?>',' ',mginfo.group(2))
+                        match_title = re.sub('<[^>]*>','',match_title)
+                        match_title = re.sub('\s*$','',match_title)
 
-		# players in each set
-		for setdata in mset[1:]:
-			match = setc1.findall(setdata)
-			for setname,player1,player2,clipid in match:
-				url = "http://tvpot.daum.net/clip/ClipView.do?clipid=%s" % (clipid)
-				VIDEOLINKS("%s %s - %s[%s vs %s]" % (match_date,match_title,setname,player1,player2),url,'')
-			match=setc2.findall(setdata)
-			for setname,descr,clipid in match:
-				if clipid == 0:
-					continue
-				url = "http://tvpot.daum.net/clip/ClipView.do?clipid=%s" % (clipid)
-				VIDEOLINKS("%s %s - %s[%s]" % (match_date,match_title,setname,descr),url,'')
+                # players in each set
+                for setdata in mset[1:]:
+                        match = setc1.findall(setdata)
+                        for setname,player1,player2,clipid in match:
+                                url = clipUrl + clipid
+                                VIDEOLINKS("%s %s - %s[%s vs %s]" % (match_date,match_title,setname,player1,player2),url,'')
+                        match=setc2.findall(setdata)
+                        for setname,descr,clipid in match:
+                                if clipid == 0:
+                                        continue
+                                url = clipUrl + clipid
+                                VIDEOLINKS("%s %s - %s[%s]" % (match_date,match_title,setname,descr),url,'')
 
 
 def INDEX(main_url):
         req = urllib2.Request(main_url)
-        req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+        req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; ko-KR; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
         response = urllib2.urlopen(req)
-        link=response.read()
+        link = response.read()
         response.close()
-        match=re.compile('''daumEmbed_.+?\('.+?','(.+?)','.+?'[,\)]''').findall(link)
-        count=1
-        for thumbnail,url,name in match:
-                url = re.sub('&amp;','&',url)
-                VIDEOLINKS("%02d - "%(count) + name,main_url+url,thumbnail)
-                count += 1
-        if count == 1:
-                match=re.compile('''<a href="(.+?)"><img src="(.+?)" width="120" height="90" alt="" class="img" /></a>\s+ <div class="R">\s+<h4><a href=".+?" class="tit">(.+?)</a></h4>''').findall(link)
-                for url,thumbnail,name in match:
-                    url = re.sub('&amp;','&',url)
-                    VIDEOLINKS("%02d - "%(count) + name,main_url+url,thumbnail)
-                    count += 1
 
+        navhdr = re.search('''<table class="pageNav2"[^>]*>''', link)
+        if (navhdr is None):
+            xbmc.log( "No navigation table is found", xbmc.LOGWARNING )
+            return
+        import string
+        navtend = string.find(link, "</table>", navhdr.end())
+        navtbl = link[ navhdr.end() : navtend ]
+        navpgs = re.split("<t[dh]", navtbl)
+        for navpage in navpgs[1:]:
+            match = re.search( '''<span class="sel">(\d+)</span>''', navpage )
+            if (match is not None):
+                addDir( "%s 페이지" % match.group(1), main_url, 2, '' )
+            elif (navpage[:10] == ''' class="pg'''):
+                match = re.match( ''' class="pg[LR]"><a href="([^"]*)"><em>(.*?)</em></a></th>''', navpage )
+                url = slHome + re.sub('&amp;','&',match.group(1))
+                addDir( "%s 페이지" % match.group(2), url, 1, '' )
+            elif (navpage[:8] == "><a href" or navpage[:13] == ''' class="last"'''):
+                match = re.match( '''\s*[^>]*><a href="([^"]*)">(\d+)</a></td>''', navpage )
+                if (match is None):
+                    xbmc.log( "Unexpected parsing error in %s" % navpage, xbmc.LOGERROR )
+                    continue
+                url = slHome + re.sub('&amp;','&',match.group(1))
+                addDir( "%s 페이지" % match.group(2), url, 2, '' )
 
 def VIDEOLINKS(name,url,thumbnail):
-	#print "in videolink",name,url
+        xbmc.log( "videolink(%s,%s)" % (name,url), xbmc.LOGDEBUG )
         req = urllib2.Request(url)
-        req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+        req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; ko-KR; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
         response = urllib2.urlopen(req)
         link=response.read()
         response.close()
-	# daumEmbed_jingle2 had 3 arguments, but daumEmbed_standard had 4
+        # daumEmbed_jingle2 had 3 arguments, but daumEmbed_standard had 4
         match=re.compile('''daumEmbed_.+?\('.+?','(.+?)','.+?'[,\)]''').findall(link)
         for vid in match:
                 flv = DaumGetFlvByVid(url,vid)
-                addLink(name,flv,thumbnail)
+                if flv is not None:
+                    addLink(name,flv,thumbnail)
 
 #Python Video Decryption and resolving routines.
 #Courtesy of Voinage, Coolblaze.        
 
 def DaumGetFLV(referer, url):
-    print "daum loc=" + url
+    xbmc.log( "daum loc=%s" % url, xbmc.LOGINFO )
     req = urllib2.Request(url)
-    req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14')
+    req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; ko-KR; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14')
     req.add_header('Referer', referer)
     page = urllib2.urlopen(req);response=page.read();page.close()
-    query_match = re.compile('''<MovieLocation movieURL="(.+?)" />''').findall(response)
-    if len(query_match) > 0:
-        return query_match[0]
+    query_match = re.search('''<MovieLocation movieURL="(.+?)"\s*/>''', response)
+    if query_match:
+        return query_match.group(1)
+    xbmc.log( "Fail to find FLV location from %s" % url, xbmc.LOGERROR )
     return None
 
 def DaumGetFlvByVid(referer, vid):
-    print "daum vid=" + str(vid)
+    xbmc.log( "daum vid=%s" % vid, xbmc.LOGDEBUG )
     req = urllib2.Request("http://flvs.daum.net/viewer/MovieLocation.do?vid="+vid)
-    req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14')
+    req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; ko-KR; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14')
     req.add_header('Referer', referer)
     page = urllib2.urlopen(req);response=page.read();page.close()
-    query_match = re.compile('''<MovieLocation regdate="\d+" url="(.+?)" storage=".+?"/>''').findall(response)
-    if len(query_match) > 0:
-        query_match[0] = re.sub('&amp;','&',query_match[0])
-        return DaumGetFLV(referer, query_match[0])
+    query_match = re.search('''<MovieLocation regdate="\d+" url="([^"]*)" storage="[^"]*"\s*/>''', response)
+    if query_match:
+        url = re.sub('&amp;','&',query_match.group(1))
+        return DaumGetFLV(referer, url)
+    xbmc.log( "Fail to find FLV reference with %s" % vid, xbmc.LOGERROR )
     return None
 
 
@@ -117,7 +149,7 @@ def DaumGetFlvByVid(referer, vid):
 def get_params():
         param=[]
         paramstring=sys.argv[2]
-        print "get_params", paramstring
+        xbmc.log( "get_params() %s" % paramstring, xbmc.LOGDEBUG )
         if len(paramstring)>=2:
                 params=sys.argv[2]
                 cleanedparams=params.replace('?','')
@@ -138,7 +170,7 @@ def get_params():
 
 def addLink(name,url,iconimage):
         ok=True
-        print "in addLink ", name, url
+        xbmc.log( "addLink(%s,%s)" % (name, url), xbmc.LOGDEBUG )
         liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
         liz.setInfo( type="Video", infoLabels={ "Title": name } )
         ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=url,listitem=liz)
@@ -151,7 +183,7 @@ def addDir(name,url,mode,iconimage):
         liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
         liz.setInfo( type="Video", infoLabels={ "Title": name } )
         ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
-        print "-------" + str(u)
+        xbmc.log( "addDir(%s)" % u, xbmc.LOGDEBUG )
         return ok
         
               
@@ -173,20 +205,17 @@ try:
 except:
         pass
 
-print "Mode: "+str(mode)
-print "URL: "+str(url)
-print "Name: "+str(name)
+xbmc.log( "Mode: "+str(mode), xbmc.LOGINFO)
+xbmc.log( "URL : "+str(url), xbmc.LOGINFO)
+xbmc.log( "Name: "+str(name), xbmc.LOGINFO)
 
 if mode==None or url==None or len(url)<1:
-        print ""
         CATEGORIES()
        
 elif mode==1:
-        print ""+url
         INDEX(url)
         
-elif mode==3:
-        print ""+url
+elif mode==2:
         STAR_LEAGUE(url)
 
 

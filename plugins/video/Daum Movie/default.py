@@ -1,4 +1,18 @@
+# coding=utf-8
+"""
+  Daum Movie Clips
+"""
 import urllib,urllib2,re,xbmcplugin,xbmcgui
+
+# plugin constants
+__plugin__ = "Daum Movie Clips"
+__author__ = "anonymous"
+__url__ = "http://xbmc-korea.com/"
+__svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/Daum%20Movie"
+__credits__ = "XBMC Korean User Group"
+__version__ = "0.1.0"
+
+xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
 #TV DASH - by You 2008.
 
@@ -9,7 +23,7 @@ def CATEGORIES():
                        
 def INDEX(url):
         req = urllib2.Request(url)
-        req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+        req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; ko-KR; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
         response = urllib2.urlopen(req)
         link=response.read()
         response.close()
@@ -25,44 +39,50 @@ def INDEX(url):
 
 def VIDEOLINKS(name, url, thumbnail):
         req = urllib2.Request(url)
-        req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+        req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; ko-KR; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
         response = urllib2.urlopen(req)
         link=response.read()
         response.close()
         match=re.compile('''UI.embedSWF\("http://flvs.daum.net/flvPlayer.swf\?vid=(.+?)\&''').findall(link)
         for vid in match:
-                flv = DaumMovie(url,vid)
-                addLink(name,flv,thumbnail)
+                flv = DaumGetFlvByVid(url,vid)
+                if flv is not None:
+                    addLink(name,flv,thumbnail)
 
 #Python Video Decryption and resolving routines.
 #Courtesy of Voinage, Coolblaze.        
 
 def DaumGetFLV(referer, url):
+    xbmc.log( "daum loc=%s" % url, xbmc.LOGINFO )
     req = urllib2.Request(url)
-    req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14')
+    req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; ko-KR; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14')
     req.add_header('Referer', referer)
     page = urllib2.urlopen(req);response=page.read();page.close()
-    query_match = re.compile('''<MovieLocation movieURL="(.+?)"''').findall(response)
-    if len(query_match) > 0:
-        return query_match[0]
+    query_match = re.search('''<MovieLocation movieURL="(.+?)"\s*/>''', response)
+    if query_match:
+        return query_match.group(1)
+    xbmc.log( "Fail to find FLV location from %s" % url, xbmc.LOGERROR )
     return None
 
-def DaumMovie(referer, vid):
+def DaumGetFlvByVid(referer, vid):
+    xbmc.log( "daum vid=%s" % vid, xbmc.LOGDEBUG )
     req = urllib2.Request("http://flvs.daum.net/viewer/MovieLocation.do?vid="+vid)
-    req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14')
+    req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; ko-KR; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14')
     req.add_header('Referer', referer)
     page = urllib2.urlopen(req);response=page.read();page.close()
-    query_match = re.compile('''<MovieLocation regdate="\d+" url="(.+?)" storage=".+?"/>''').findall(response)
-    if len(query_match) > 0:
-        query_match[0] = re.sub('&amp;','&',query_match[0])
-        return DaumGetFLV(referer, query_match[0])
+    query_match = re.search('''<MovieLocation regdate="\d+" url="([^"]*)" storage="[^"]*"\s*/>''', response)
+    if query_match:
+        url = re.sub('&amp;','&',query_match.group(1))
+        return DaumGetFLV(referer, url)
+    xbmc.log( "Fail to find FLV reference with %s" % vid, xbmc.LOGERROR )
+    return None
 
 
                 
 def get_params():
         param=[]
         paramstring=sys.argv[2]
-        print "get_params", paramstring
+        xbmc.log( "get_params() %s" % paramstring, xbmc.LOGDEBUG )
         if len(paramstring)>=2:
                 params=sys.argv[2]
                 cleanedparams=params.replace('?','')
@@ -83,7 +103,7 @@ def get_params():
 
 def addLink(name,url,iconimage):
         ok=True
-        print "in addLink ", name, url
+        xbmc.log( "addLink(%s,%s)" % (name, url), xbmc.LOGDEBUG )
         liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
         liz.setInfo( type="Video", infoLabels={ "Title": name } )
         ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=url,listitem=liz)
@@ -117,20 +137,17 @@ try:
 except:
         pass
 
-print "Mode: "+str(mode)
-print "URL: "+str(url)
-print "Name: "+str(name)
+xbmc.log( "Mode: "+str(mode), xbmc.LOGNOTICE )
+xbmc.log( "URL : "+str(url), xbmc.LOGNOTICE )
+xbmc.log( "Name: "+str(name), xbmc.LOGNOTICE )
 
 if mode==None or url==None or len(url)<1:
-        print ""
         CATEGORIES()
        
 elif mode==1:
-        print ""+url
         INDEX(url)
         
 elif mode==2:
-        print ""+url
         VIDEOLINKS(url,name)
 
 
