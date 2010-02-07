@@ -11,7 +11,7 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/Daum%20Starcraft"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -22,8 +22,8 @@ clipUrl = "http://tvpot.daum.net/clip/ClipView.do?clipid="
 def CATEGORIES():
         addDir("01 - 프로리그", slHome+"LeagueList.do?league=pro&type=list",2,'')
         addDir("02 - 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",2,'')
-        addDir("03 - (지난게임) 프로리그", slHome+"LeagueList.do?league=pro&type=list",1,'')
-        addDir("04 - (지난게임) 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",1,'')
+        addDir("03 - (지난방송) 프로리그", slHome+"LeagueList.do?league=pro&type=list",1,'')
+        addDir("04 - (지난방송) 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",1,'')
 
 def STAR_LEAGUE(main_url):
         req = urllib2.Request(main_url)
