@@ -11,21 +11,26 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/Daum%20Starcraft"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
 # site
 slHome  = "http://tvpot.daum.net/game/sl/"
 clipUrl = "http://tvpot.daum.net/clip/ClipView.do?clipid="
+thisDir = "special://home/plugins/video/Daum Starcraft/"
+
+from xbmc import translatePath
+proBanner = translatePath( thisDir+"proleagueBanner.png" )
+oslBanner = translatePath( thisDir+"oslBanner.png" )
 
 def CATEGORIES():
-        addDir("1 - 최근방송 - 프로리그", slHome+"LeagueList.do?league=pro&type=list",2,'')
-        addDir("2 - 최근방송 - 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",2,'')
-        addDir("3 - 지난방송 - 프로리그", slHome+"LeagueList.do?league=pro&type=list",1,'')
-        addDir("4 - 지난방송 - 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",1,'')
-        addDir("5 - 지난리그 - 프로리그", slHome+"LeagueList.do?league=pro&type=list",3,'')
-        addDir("6 - 지난리그 - 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",3,'')
+        addDir("1 - 최근방송 - 프로리그", slHome+"LeagueList.do?league=pro&type=list",2,proBanner)
+        addDir("2 - 최근방송 - 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",2,oslBanner)
+        addDir("3 - 지난방송 - 프로리그", slHome+"LeagueList.do?league=pro&type=list",1,proBanner)
+        addDir("4 - 지난방송 - 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",1,oslBanner)
+        addDir("5 - 지난리그 - 프로리그", slHome+"LeagueList.do?league=pro&type=list",3,proBanner)
+        addDir("6 - 지난리그 - 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",3,oslBanner)
 
 def STAR_LEAGUE(main_url):
         req = urllib2.Request(main_url)
