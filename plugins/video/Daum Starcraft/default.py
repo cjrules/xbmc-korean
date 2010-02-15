@@ -11,7 +11,7 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/Daum%20Starcraft"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.1.1"
+__version__ = "0.2.0"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -20,10 +20,12 @@ slHome  = "http://tvpot.daum.net/game/sl/"
 clipUrl = "http://tvpot.daum.net/clip/ClipView.do?clipid="
 
 def CATEGORIES():
-        addDir("01 - 프로리그", slHome+"LeagueList.do?league=pro&type=list",2,'')
-        addDir("02 - 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",2,'')
-        addDir("03 - (지난방송) 프로리그", slHome+"LeagueList.do?league=pro&type=list",1,'')
-        addDir("04 - (지난방송) 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",1,'')
+        addDir("1 - 최근방송 - 프로리그", slHome+"LeagueList.do?league=pro&type=list",2,'')
+        addDir("2 - 최근방송 - 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",2,'')
+        addDir("3 - 지난방송 - 프로리그", slHome+"LeagueList.do?league=pro&type=list",1,'')
+        addDir("4 - 지난방송 - 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",1,'')
+        addDir("5 - 지난리그 - 프로리그", slHome+"LeagueList.do?league=pro&type=list",3,'')
+        addDir("6 - 지난리그 - 온게임넷 스타리그", slHome+"LeagueList.do?league=osl&type=list",3,'')
 
 def STAR_LEAGUE(main_url):
         req = urllib2.Request(main_url)
@@ -101,6 +103,22 @@ def INDEX(main_url):
                     continue
                 url = slHome + re.sub('&amp;','&',match.group(1))
                 addDir( "%s 페이지" % match.group(2), url, 2, '' )
+
+
+def LEAGUE_SELECT(main_url):
+        req = urllib2.Request(main_url)
+        req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; ko-KR; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+        response = urllib2.urlopen(req)
+        link = response.read()
+        response.close()
+
+        lglist = re.compile('''<li><a href="(LeagueList[^"]*)">([^<]*)</a></li>''').findall(link)
+        if (lglist is None):
+            xbmc.log( "No league list is found", xbmc.LOGWARNING )
+            return
+        for url,title in lglist:
+	    url = slHome + re.sub('&amp;','&',url)
+	    addDir( title, url, 1, '' )
 
 def VIDEOLINKS(name,url,thumbnail):
         xbmc.log( "videolink(%s,%s)" % (name,url), xbmc.LOGDEBUG )
@@ -217,6 +235,9 @@ elif mode==1:
         
 elif mode==2:
         STAR_LEAGUE(url)
+
+elif mode==3:
+        LEAGUE_SELECT(url)
 
 
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
