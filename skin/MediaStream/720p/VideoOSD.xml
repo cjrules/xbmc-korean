@@ -4,13 +4,15 @@
   <controls>
     <!-- OSD Controls -->
     <control type="group">
-      <include>VideoOSDDims</include>
+      <posx>492</posx>
+      <posy>510</posy>
       <include>VideoOSDSlide</include>
 
       <control type="grouplist">
         <posy>69</posy>
         <orientation>horizontal</orientation>
         <itemgap>0</itemgap>
+        <visible>!Window.IsActive(145)</visible>
 
         <include>OSDPlayerControls</include>
 

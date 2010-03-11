@@ -35,7 +35,7 @@
 				<font>HomeSubMenuFont</font>
 				<align>center</align>
 				<aligny>center</aligny>
-				<radioposx>248</radioposx>
+				<radioposx>178</radioposx>
 				<label>$LOCALIZE[20096]</label>
 				<onleft>-</onleft>
 				<onright>-</onright>

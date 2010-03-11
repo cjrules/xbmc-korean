@@ -93,10 +93,7 @@
             <itemlayout width="320" height="42">
               <control type="image">
                 <posx>-66</posx>
-                <posy>-6</posy>
-                <width>679</width>
-                <height>54</height>
-                <texture>MediaItemBG.png</texture>
+                <include>MediaItemBG</include>
               </control>
               <control type="label">
                 <posx>12</posx>
@@ -113,10 +110,7 @@
             <focusedlayout width="320" height="42">
               <control type="image">
                 <posx>-66</posx>
-                <posy>-6</posy>
-                <width>679</width>
-                <height>54</height>
-                <texture>MediaItemBG.png</texture>
+                <include>MediaItemBG</include>
               </control>
               <control type="label">
                 <posx>12</posx>
@@ -133,7 +127,7 @@
                 <posy>0</posy>
                 <width>595</width>
                 <height>42</height>
-                <texture aspectratio="stretch">MenuItemFO.png</texture>
+                <texture border="5,0,0,0" aspectratio="stretch">MenuItemFO2.png</texture>
                 <animation effect="slide" start="0,-42" end="0,0" time="MediaListSlideTime" reversible="false" tween="quadratic" easing="out" condition="Container(450).OnNext">focus</animation>
                 <animation effect="slide" start="0,42" end="0,0" time="MediaListSlideTime" reversible="false"  tween="quadratic" easing="out" condition="Container(450).OnPrevious">focus</animation>
               </control>

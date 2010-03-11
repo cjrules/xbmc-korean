@@ -61,22 +61,15 @@
 
     <control type="image" id="1">
       <description>OSD Background Image</description>
-      <visible>Player.Seeking | Player.DisplayAfterSeek | [Player.ShowInfo + Window.IsActive(FullScreenVideo)] | Window.IsActive(VideoOSD) | Window.IsActive(MusicOSD) | Player.Paused | Player.Forwarding | Player.Rewinding</visible>
+      <include>VideoOSDVisible</include>
       <include>VideoOSDSlide</include>
       <include>OSDBottomBG</include>
     </control>
 
-		<control type="group" id="1">
-			<posx>0</posx>
-			<posy>500</posy>
-			<visible>Player.ShowInfo</visible>
-      <include>VideoOSDSlide</include>
-		</control>
-
     <control type="group" id="1">
       <posx>0</posx>
       <posy>505</posy>
-      <visible>Player.Seeking | Player.DisplayAfterSeek | [Player.ShowInfo + Window.IsActive(FullScreenVideo)] | Window.IsActive(VideoOSD) | Window.IsActive(MusicOSD) | Player.Paused | Player.Forwarding | Player.Rewinding</visible>
+      <include>VideoOSDVisible</include>
       <include>VideoOSDSlide</include>
 
       <control type="group" id="1">
@@ -137,28 +130,11 @@
             <include>MediaFade</include>
 
             <control type="image" id="1">
-              <width>100</width>
-              <height>94</height>
-              <aspectratio align="right">keep</aspectratio>
-              <info>VideoPlayer.Cover</info>
-              <visible>!Skin.HasSetting(HidePlotInVideoOSD)</visible>
-            </control>
-
-            <control type="textbox" id="1">
-              <posx>110</posx>
-              <width>650</width>
-              <height>86</height>
-              <label>$INFO[VideoPlayer.Plot]</label>
-              <visible>!Skin.HasSetting(HidePlotInVideoOSD)</visible>
-            </control>
-
-            <control type="image" id="1">
               <posx>660</posx>
               <width>100</width>
               <height>94</height>
               <aspectratio align="right">keep</aspectratio>
               <info>VideoPlayer.Cover</info>
-              <visible>Skin.HasSetting(HidePlotInVideoOSD)</visible>
             </control>
           </control>
         </control>
@@ -186,7 +162,7 @@
               <width>396</width>
               <posy>42</posy>
               <font>DefaultCapsFont</font>
-              <label>$INFO[VideoPlayer.Title]</label>
+              <label>$INFO[VideoPlayer.Title] $INFO[VideoPlayer.Year,(,)]</label>
             </control>
           </control>
 
@@ -196,28 +172,11 @@
             <include>MediaFade</include>
 
             <control type="image" id="1">
-              <width>170</width>
-              <height>94</height>
-              <aspectratio align="right">keep</aspectratio>
-              <info>VideoPlayer.Cover</info>
-              <visible>!Skin.HasSetting(HidePlotInVideoOSD)</visible>
-            </control>
-
-            <control type="textbox" id="1">
-              <posx>190</posx>
-              <width>576</width>
-              <height>86</height>
-              <label>$INFO[VideoPlayer.Plot]</label>
-              <visible>!Skin.HasSetting(HidePlotInVideoOSD)</visible>
-            </control>
-
-            <control type="image" id="1">
               <posx>596</posx>
               <width>170</width>
               <height>94</height>
               <aspectratio align="right">keep</aspectratio>
               <info>VideoPlayer.Cover</info>
-              <visible>Skin.HasSetting(HidePlotInVideoOSD)</visible>
             </control>
           </control>
         </control>
@@ -347,13 +306,7 @@
         <description>Progress Bar and Time</description>
         <posx>48</posx>
         <posy>152</posy>
-<!--
-        <control type="progress" id="1">
-          <description>Progress Bar</description>
-          <width>1184</width>
-          <info>Player.Progress</info>
-        </control>
--->
+
         <control type="group" id="1">
           <posx>8</posx>
           <posy>23</posy>
@@ -366,7 +319,7 @@
             <width>300</width>
             <visible>!Player.Seeking</visible>
           </control>
-    
+
           <control type="label" id="1">
             <description>Seek Time Label</description>
             <font>MediumSmallAltDefaultFont</font>
@@ -375,23 +328,33 @@
             <width>300</width>
             <visible>Player.Seeking</visible>
           </control>
-    
+
           <control type="label" id="1">
             <description>Paused</description>
             <posx>184</posx>
-            <label>112</label>
-            <font>MediumSmallDefaultFont</font>
+            <label>$LOCALIZE[112]     $INFO[Player.FinishTime,($LOCALIZE[31128]: ,)]</label>
+            <font>MediumSmallDefaultCapsFont</font>
             <textcolor>Unfocused</textcolor>
             <align>center</align>
             <width>800</width>
             <visible>Player.Paused</visible>
           </control>
-    
+          <control type="label" id="1">
+            <description>Finish Time</description>
+            <posx>184</posx>
+            <label>$INFO[Player.FinishTime,($LOCALIZE[31128]: ,)]</label>
+            <font>MediumSmallDefaultCapsFont</font>
+            <textcolor>Unfocused</textcolor>
+            <align>center</align>
+            <width>800</width>
+            <visible>!Player.Paused + !Player.Seeking</visible>
+          </control>
+
           <control type="label" id="1">
             <description>Duration Label</description>
             <posx>1168</posx>
-            <info>Player.Duration</info>
-            <font>MediumSmallAltDefaultFont</font>
+            <label>$INFO[Player.Duration]</label>
+            <font>MediumSmallDefaultCapsFont</font>
             <textcolor>Unfocused</textcolor>
             <align>right</align>
             <width>300</width>

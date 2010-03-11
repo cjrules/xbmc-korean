@@ -45,7 +45,7 @@
 
           <control type="button" id="12">
             <description>server browse</description>
-            <include>NetworkSetupBrowseBtnDims</include>
+            <posx>514</posx>
             <label>1024</label>
             <onup>10</onup>
             <onleft>11</onleft>
@@ -99,7 +99,8 @@
           </control>
 
           <control type="grouplist">
-            <include>NetworkSetupBottomBtnsDims</include>
+            <posx>218</posx>
+            <posy>136</posy>
             <onup>15</onup>
             <orientation>horizontal</orientation>
             <itemgap>8</itemgap>

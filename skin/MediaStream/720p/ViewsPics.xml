@@ -21,6 +21,7 @@
         <onleft>Skin.ToggleSetting(HideNowPlayingMusicInfo)</onleft>
         <onright>61</onright>
         <orientation>vertical</orientation>
+        <preloaditems>8</preloaditems>
 
         <itemlayout width="114" height="110">
           <control type="image">
@@ -197,6 +198,7 @@
         <pagecontrol>-</pagecontrol>
         <orientation>horizontal</orientation>
         <focusposition>3</focusposition>
+        <preloaditems>4</preloaditems>
 
         <itemlayout width="180" height="180">
           <control type="image">

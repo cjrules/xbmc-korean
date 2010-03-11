@@ -9,38 +9,6 @@
 
     <control type="group">
       <include>ListViewVisible</include>
-      <include>MediaListSelectDelay</include>
-      <include>MediaViewTransition</include>
-      <visible>![Skin.HasSetting(HideListViewIcons) | [Skin.HasSetting(HideListViewIconsVideos) + [Window.IsVisible(MyVideoFiles) | Window.IsVisible(MyVideoLibrary) | Window.IsVisible(MyVideoPlaylist)]] | [Skin.HasSetting(HideListViewIconsMusic) + [Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]]]</visible>
-
-      <control type="group">
-        <posx>34</posx>
-        <posy>260</posy>
-
-        <control type="image">
-          <posx>-8</posx>
-          <posy>-8</posy>
-          <width>636</width>
-          <height>364</height>
-          <info>ListItem.Icon</info>
-          <aspectratio aligny="bottom">keep</aspectratio>
-          <bordertexture border="14">ThumbShadow2.png</bordertexture>
-          <bordersize>8</bordersize>
-        </control>
-        <control type="image">
-          <posy>348</posy>
-          <width>620</width>
-          <height>348</height>
-          <info>ListItem.Icon</info>
-          <texture flipy="true" diffuse="DiffuseMirror.png" />
-          <aspectratio aligny="top">keep</aspectratio>
-        </control>
-
-      </control>
-    </control>
-
-    <control type="group">
-      <include>ListViewVisible</include>
       <include>MediaViewFade</include>
       <posx>670</posx>
       <posy>80</posy>
@@ -54,8 +22,8 @@
         <width>640</width>
         <height>378</height>
         <scrolltime>200</scrolltime>
-        <pagecontrol>61</pagecontrol>
-        <onleft>61</onleft>
+        <pagecontrol>101</pagecontrol>
+        <onleft>101</onleft>
         <onright>9009</onright>
         <onup>50</onup>
         <ondown>50</ondown>
@@ -152,25 +120,58 @@
 
       <control type="image">
         <description>List overlay</description>
-        <visible>![Container(50).Position(8)] + !Skin.HasTheme(lite)</visible>
+        <visible>![Container(50).Position(8)]</visible>
         <include condition="[Skin.HasSetting(HideListViewIcons) | [Skin.HasSetting(HideListViewIconsVideos) + [Window.IsVisible(MyVideoFiles) | Window.IsVisible(MyVideoLibrary) | Window.IsVisible(MyVideoPlaylist)]] | [Skin.HasSetting(HideListViewIconsMusic) + [Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]]]">NoIconListViewFadeOverlay</include>
+        <posx>-680</posx>
         <posy>488</posy>
-        <width>660</width>
+        <width>1300</width>
         <height>100</height>
         <texture>BlackGradient2.png</texture>
         <aspectratio>stretch</aspectratio>
       </control>
 
-      <control type="scrollbar" id="61">
+      <control type="scrollbar" id="101">
         <include condition="[Skin.HasSetting(HideListViewIcons) | [Skin.HasSetting(HideListViewIconsVideos) + [Window.IsVisible(MyVideoFiles) | Window.IsVisible(MyVideoLibrary) | Window.IsVisible(MyVideoPlaylist)]] | [Skin.HasSetting(HideListViewIconsMusic) + [Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]]]">NoIconListViewScrollbar</include>
-        <onup>61</onup>
-        <ondown>61</ondown>
+        <onup>101</onup>
+        <ondown>101</ondown>
         <onleft>Skin.ToggleSetting(HideNowPlayingMusicInfo)</onleft>
         <onright>50</onright>
-        <posx>28</posx>
+        <posx>6</posx>
         <posy>179</posy>
         <height>380</height>
         <visible>!Skin.HasSetting(HideScrollBars)</visible>
+      </control>
+    </control>
+
+    <control type="group">
+      <include>ListViewVisible</include>
+      <include>MediaListSelectDelay</include>
+      <include>MediaViewTransition</include>
+      <visible>![Skin.HasSetting(HideListViewIcons) | [Skin.HasSetting(HideListViewIconsVideos) + [Window.IsVisible(MyVideoFiles) | Window.IsVisible(MyVideoLibrary) | Window.IsVisible(MyVideoPlaylist)]] | [Skin.HasSetting(HideListViewIconsMusic) + [Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]]]</visible>
+
+      <control type="group">
+        <posx>34</posx>
+        <posy>260</posy>
+
+        <control type="image">
+          <posx>-8</posx>
+          <posy>-8</posy>
+          <width>636</width>
+          <height>364</height>
+          <info>ListItem.Icon</info>
+          <aspectratio aligny="bottom">keep</aspectratio>
+          <bordertexture border="14">ThumbShadow2.png</bordertexture>
+          <bordersize>8</bordersize>
+        </control>
+        <control type="image">
+          <posy>348</posy>
+          <width>620</width>
+          <height>348</height>
+          <info>ListItem.Icon</info>
+          <texture flipy="true" diffuse="DiffuseMirror.png" />
+          <aspectratio aligny="top">keep</aspectratio>
+        </control>
+
       </control>
     </control>
 
@@ -191,10 +192,65 @@
       <include>InfoListVisible</include>
       <include>MediaViewFade</include>
 
+      <control type="list" id="56">
+        <viewtype label="InfoList">list</viewtype>
+        <include condition="Skin.HasSetting(HideScrollBars)">InfoListNoScrollbars</include>
+        <posx>708</posx>
+        <posy>316</posy>
+        <width>640</width>
+        <height>336</height>
+        <scrolltime>200</scrolltime>
+        <pagecontrol>101</pagecontrol>
+        <onleft>101</onleft>
+        <onright>9009</onright>
+        <onup>56</onup>
+        <ondown>56</ondown>
+
+        <itemlayout height="42" width="640">
+          <include>ListViewItemLayout</include>
+        </itemlayout>
+
+        <focusedlayout height="42" width="640">
+          <include>ListViewFocusedLayout</include>
+        </focusedlayout>
+      </control>
+    </control>
+
+    <control type="group">
+      <posx>726</posx>
+      <include>InfoListVisible</include>
+      <include>MediaViewFade</include>
+
+      <control type="image">
+        <description>List overlay</description>
+        <posx>-726</posx>
+        <posy>582</posy>
+        <visible>![Container(56).Position(7)]</visible>
+        <width>1300</width>
+        <height>100</height>
+        <texture>BlackGradient2.png</texture>
+        <aspectratio>stretch</aspectratio>
+      </control>
+
+      <control type="scrollbar" id="101">
+        <posx>6</posx>
+        <posy>320</posy>
+        <height>330</height>
+        <onup>101</onup>
+        <ondown>101</ondown>
+        <onleft>Skin.ToggleSetting(HideNowPlayingMusicInfo)</onleft>
+        <onright>50</onright>
+        <visible>!Skin.HasSetting(HideScrollBars)</visible>
+      </control>
+    </control>
+
+    <control type="group">
+      <include>InfoListVisible</include>
+      <include>MediaViewFade</include>
+
       <control type="group">
         <posx>28</posx>
         <posy>254</posy>
-        <include>MediaListSelectDelay</include>
 
         <control type="group">
           <visible>!IsEmpty(ListItem.Thumb) | !Skin.HasSetting(HideNoThumbIcon)</visible>
@@ -211,18 +267,20 @@
             <bordertexture border="14">ThumbShadow.png</bordertexture>
             <bordersize>8</bordersize>
           </control>
-  
+
           <control type="label">
             <description>No Thumb label</description>
-            <include>InfoListNoThumbDims</include>
+            <posy>60</posy>
+            <width>260</width>
+            <font>LargeTitleCapsFont</font>
             <include>NoThumbLabel</include>
           </control>
-  
+
           <control type="group">
             <description>Watched/Unwatched Overlay</description>
             <posx>228</posx>
             <posy>30</posy>
-  
+
             <include>WatchedUnwatchedOverlay</include>
           </control>
         </control>
@@ -288,61 +346,20 @@
             </control>
           </control>
         </control>
-      </control>
-    </control>
 
-    <control type="group">
-      <include>InfoListVisible</include>
-      <include>MediaViewFade</include>
+        <control type="group">
+          <description>Media Flags</description>
+          <posy>390</posy>
 
-      <control type="list" id="56">
-        <viewtype label="InfoList">list</viewtype>
-        <include condition="Skin.HasSetting(HideScrollBars)">InfoListNoScrollbars</include>
-        <posx>708</posx>
-        <posy>316</posy>
-        <width>640</width>
-        <height>336</height>
-        <scrolltime>200</scrolltime>
-        <pagecontrol>61</pagecontrol>
-        <onleft>61</onleft>
-        <onright>9009</onright>
-        <onup>56</onup>
-        <ondown>56</ondown>
-    
-        <itemlayout height="42" width="640">
-          <include>ListViewItemLayout</include>
-        </itemlayout>
+          <include>VideoFlags</include>
 
-        <focusedlayout height="42" width="640">
-          <include>ListViewFocusedLayout</include>
-        </focusedlayout>
-      </control>
-    </control>
+          <control type="group">
+            <posx>340</posx>
+            <posy>6</posy>
 
-    <control type="group">
-      <posx>726</posx>
-      <include>InfoListVisible</include>
-      <include>MediaViewFade</include>
-
-      <control type="image">
-        <description>List overlay</description>
-        <posy>582</posy>
-        <visible>![Container(56).Position(7)] + !Skin.HasTheme(lite)</visible>
-        <width>650</width>
-        <height>100</height>
-        <texture>BlackGradient2.png</texture>
-        <aspectratio>stretch</aspectratio>
-      </control>
-
-      <control type="scrollbar" id="61">
-        <posx>6</posx>
-        <posy>320</posy>
-        <height>330</height>
-        <onup>61</onup>
-        <ondown>61</ondown>
-        <onleft>Skin.ToggleSetting(HideNowPlayingMusicInfo)</onleft>
-        <onright>50</onright>
-        <visible>!Skin.HasSetting(HideScrollBars)</visible>
+            <include>ExtraVideoFlags</include>
+          </control>
+        </control>
       </control>
     </control>
 
@@ -371,6 +388,7 @@
         <onleft>Skin.ToggleSetting(HideNowPlayingMusicInfo)</onleft>
         <onright>9009</onright>
         <orientation>vertical</orientation>
+        <preloaditems>6</preloaditems>
         <include condition="Window.IsMedia + !Skin.HasSetting(HideFocusDetailForPanel)">PanelStreamContentWithDetail</include>
         <include condition="!Window.IsMedia | Skin.HasSetting(HideFocusDetailForPanel)">PanelStreamContent</include>
       </control>
@@ -651,6 +669,7 @@
         <onleft>Skin.ToggleSetting(HideNowPlayingMusicInfo)</onleft>
         <onright>9009</onright>
         <orientation>vertical</orientation>
+        <preloaditems>10</preloaditems>
 
         <!-- Generic -->
         <itemlayout condition="![Container.Content(episodes) | Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]" width="WallStreamPosterWidth" height="WallStreamPosterHeight">
@@ -663,21 +682,28 @@
 
         <focusedlayout condition="![Container.Content(episodes) | Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]" width="WallStreamPosterWidth" height="WallStreamPosterHeight">
           <control type="group">
-            <include>WallStreamPosterSlideAnim</include>
+            <animation effect="slide" end="29,0" time="0" reversible="false" condition="Container.Column(0)">Conditional</animation>
+            <animation effect="slide" end="0,42" time="0" reversible="false" condition="Container.Row(0)">Conditional</animation>
+            <animation effect="slide" end="0,-11" time="0" reversible="false" condition="Container.Row(2)">Conditional</animation>
+            <animation effect="slide" end="-29,0" time="0" reversible="false" condition="Container.Column(7)">Conditional</animation>
 
             <control type="image">
               <description>Poster</description>
-              <include>WallStreamPosterFocusDims</include>
+              <posx>-8</posx>
+              <posy>-8</posy>
+              <width>176</width>
+              <height>246</height>
               <include>WallStreamPoster</include>
               <bordertexture border="14">ThumbShadow2.png</bordertexture>
               <bordersize>8</bordersize>
-              <include>WallStreamPosterZoomAnim</include>
+              <animation effect="zoom" tween="quadratic" end="-40,-54,240,338" time="300" delay="100" reversible="false">Focus</animation>
             </control>
             <control type="image">
               <description>Glass Overlay</description>
-              <include>WallStreamPosterOverlayFocusDims</include>
+              <width>150</width>
+              <height>140</height>
               <include>GlassTextureOverlay2</include>
-              <include>WallStreamPosterOverlayZoomAnim</include>
+              <animation effect="zoom" tween="quadratic" end="-28,-43,220,200" time="300" delay="100" reversible="false">Focus</animation>
               <visible>!IsEmpty(ListItem.Thumb)</visible>
             </control>
           </control>
@@ -694,21 +720,27 @@
 
         <focusedlayout condition="[Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]" width="WallStreamCoverWidth" height="WallStreamCoverHeight">
           <control type="group">
-            <include>WallStreamAlbumCoverSlideAnim</include>
+            <animation effect="slide" end="29,0" time="0" delay="100" reversible="false" condition="Container.Column(0)">Conditional</animation>
+            <animation effect="slide" end="0,29" time="0" delay="100" reversible="false" condition="Container.Row(0)">Conditional</animation>
+            <animation effect="slide" end="-29,0" time="0" delay="100" reversible="false" condition="Container.Column(7)">Conditional</animation>
 
             <control type="image">
               <description>Album Cover</description>
-              <include>WallStreamAlbumCoverFocusDims</include>
+              <posx>-8</posx>
+              <posy>-8</posy>
+              <width>176</width>
+              <height>176</height>
               <include>WallStreamAlbumCover</include>
               <bordertexture border="14">ThumbShadow2.png</bordertexture>
               <bordersize>8</bordersize>
-              <include>WallStreamAlbumCoverZoomAnim</include>
+              <animation effect="zoom" tween="quadratic" end="-40,-40,240,240" time="300" delay="100" reversible="false">Focus</animation>
             </control>
             <control type="image">
               <description>Glass Overlay</description>
-              <include>WallStreamAlbumOverlayFocusDims</include>
+              <width>120</width>
+              <height>120</height>
               <include>GlassTextureOverlay2</include>
-              <include>WallStreamAlbumOverlayZoomAnim</include>
+              <animation effect="zoom" tween="quadratic" end="-28,-29,164,164" time="300" delay="100" reversible="false">Focus</animation>
               <visible>!IsEmpty(ListItem.Thumb)</visible>
             </control>
           </control>
@@ -725,21 +757,28 @@
 
         <focusedlayout condition="Container.Content(episodes)" width="WallStreamEpThumbWidth" height="WallStreamEpThumbHeight">
           <control type="group">
-            <include>WallStreamEpThumbSlideAnim</include>
+            <animation effect="slide" end="32,0" time="0" delay="100" reversible="false" condition="Container.Column(0)">Conditional</animation>
+            <animation effect="slide" end="0,16" time="0" delay="100" reversible="false" condition="Container.Row(0)">Conditional</animation>
+            <animation effect="slide" end="-32,0" time="0" delay="100" reversible="false" condition="Container.Column(3)">Conditional</animation>
+            <animation effect="slide" end="0,-16" time="0" delay="100" reversible="false" condition="Container.Row(3)">Conditional</animation>
 
             <control type="image">
               <description>Episode Thumb</description>
-              <include>WallStreamEpThumbFocusDims</include>
+              <posx>-8</posx>
+              <posy>-8</posy>
+              <width>336</width>
+              <height>196</height>
               <include>WallStreamEpThumb</include>
               <bordertexture border="14">ThumbShadow2.png</bordertexture>
               <bordersize>8</bordersize>
-              <include>WallStreamEpThumbZoomAnim</include>
+              <animation effect="zoom" tween="quadratic" end="-40,-24,400,232" time="300" delay="100" reversible="false">Focus</animation>
             </control>
             <control type="image">
               <description>Glass Overlay</description>
-              <include>WallStreamEpThumbOverlayFocusDims</include>
+              <width>240</width>
+              <height>135</height>
               <include>GlassTextureOverlay2</include>
-              <include>WallStreamEpThumbOverlayZoomAnim</include>
+              <animation effect="zoom" tween="quadratic" end="-32,-14,288,155" time="300" delay="100" reversible="false">Focus</animation>
               <visible>!IsEmpty(ListItem.Thumb)</visible>
             </control>
           </control>
@@ -756,7 +795,61 @@
           <visible>![Container.Content(episodes) | Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]</visible>
           <posy>45</posy>
 
-          <include>WallStreamGenericFirstRowInfo</include>
+          <control type="group">
+            <posx>211</posx>
+            <visible>Container(53).Position(0)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>342</posx>
+            <visible>Container(53).Position(1)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>502</posx>
+            <visible>Container(53).Position(2)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>662</posx>
+            <visible>Container(53).Position(3)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>94</posx>
+            <visible>Container(53).Position(4)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>255</posx>
+            <visible>Container(53).Position(5)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>414</posx>
+            <visible>Container(53).Position(6)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>549</posx>
+            <visible>Container(53).Position(7)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
         </control>
 
         <control type="group">
@@ -764,7 +857,61 @@
           <visible>![Container.Content(episodes) | Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]</visible>
           <posy>233</posy>
 
-          <include>WallStreamGenericSecondRowInfo</include>
+          <control type="group">
+            <posx>211</posx>
+            <visible>Container(53).Position(8)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>342</posx>
+            <visible>Container(53).Position(9)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>502</posx>
+            <visible>Container(53).Position(10)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>662</posx>
+            <visible>Container(53).Position(11)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>94</posx>
+            <visible>Container(53).Position(12)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>255</posx>
+            <visible>Container(53).Position(13)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>414</posx>
+            <visible>Container(53).Position(14)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>549</posx>
+            <visible>Container(53).Position(15)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
         </control>
 
         <control type="group">
@@ -772,7 +919,61 @@
           <posy>451</posy>
           <visible>![Container.Content(episodes) | Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]</visible>
 
-          <include>WallStreamGenericThirdRowInfo</include>
+          <control type="group">
+            <posx>211</posx>
+            <visible>Container(53).Position(16)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>342</posx>
+            <visible>Container(53).Position(17)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>502</posx>
+            <visible>Container(53).Position(18)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>662</posx>
+            <visible>Container(53).Position(19)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>94</posx>
+            <visible>Container(53).Position(20)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>255</posx>
+            <visible>Container(53).Position(21)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>414</posx>
+            <visible>Container(53).Position(22)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>549</posx>
+            <visible>Container(53).Position(23)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamInfo</include>
+          </control>
         </control>
 
         <!-- Music Info -->
@@ -781,7 +982,61 @@
           <visible>[Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]</visible>
           <posy>45</posy>
 
-          <include>WallStreamMusicFirstRowInfo</include>
+          <control type="group">
+            <posx>211</posx>
+            <visible>Container(53).Position(0)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>342</posx>
+            <visible>Container(53).Position(1)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>502</posx>
+            <visible>Container(53).Position(2)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>662</posx>
+            <visible>Container(53).Position(3)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>94</posx>
+            <visible>Container(53).Position(4)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>255</posx>
+            <visible>Container(53).Position(5)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>414</posx>
+            <visible>Container(53).Position(6)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>549</posx>
+            <visible>Container(53).Position(7)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
         </control>
 
         <control type="group">
@@ -789,7 +1044,61 @@
           <visible>[Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]</visible>
           <posy>176</posy>
 
-          <include>WallStreamMusicSecondRowInfo</include>
+          <control type="group">
+            <posx>211</posx>
+            <visible>Container(53).Position(8)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>342</posx>
+            <visible>Container(53).Position(9)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>502</posx>
+            <visible>Container(53).Position(10)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>662</posx>
+            <visible>Container(53).Position(11)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>94</posx>
+            <visible>Container(53).Position(12)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>255</posx>
+            <visible>Container(53).Position(13)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>414</posx>
+            <visible>Container(53).Position(14)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>549</posx>
+            <visible>Container(53).Position(15)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
         </control>
 
         <control type="group">
@@ -797,7 +1106,61 @@
           <visible>[Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]</visible>
           <posy>336</posy>
 
-          <include>WallStreamMusicThirdRowInfo</include>
+          <control type="group">
+            <posx>211</posx>
+            <visible>Container(53).Position(16)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>342</posx>
+            <visible>Container(53).Position(17)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>502</posx>
+            <visible>Container(53).Position(18)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>662</posx>
+            <visible>Container(53).Position(19)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>94</posx>
+            <visible>Container(53).Position(20)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>255</posx>
+            <visible>Container(53).Position(21)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>414</posx>
+            <visible>Container(53).Position(22)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>549</posx>
+            <visible>Container(53).Position(23)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
         </control>
 
         <control type="group">
@@ -805,7 +1168,61 @@
           <visible>[Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist)]</visible>
           <posy>496</posy>
 
-          <include>WallStreamMusicFourthRowInfo</include>
+          <control type="group">
+            <posx>211</posx>
+            <visible>Container(53).Position(24)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>342</posx>
+            <visible>Container(53).Position(25)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>502</posx>
+            <visible>Container(53).Position(26)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>662</posx>
+            <visible>Container(53).Position(27)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>94</posx>
+            <visible>Container(53).Position(28)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>255</posx>
+            <visible>Container(53).Position(29)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>414</posx>
+            <visible>Container(53).Position(30)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>549</posx>
+            <visible>Container(53).Position(31)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamMusicInfo</include>
+          </control>
         </control>
 
         <!-- Episode Info -->
@@ -814,7 +1231,33 @@
           <visible>Container.Content(episodes)</visible>
           <posy>45</posy>
 
-          <include>WallStreamEpisodesFirstRowInfo</include>
+          <control type="group">
+            <posx>376</posx>
+            <visible>Container(53).Position(0)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
+
+          <control type="group">
+            <posx>664</posx>
+            <visible>Container(53).Position(1)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
+
+          <control type="group">
+            <posx>92</posx>
+            <visible>Container(53).Position(2)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
+
+          <control type="group">
+            <posx>382</posx>
+            <visible>Container(53).Position(3)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
         </control>
 
         <control type="group">
@@ -822,7 +1265,33 @@
           <visible>Container.Content(episodes)</visible>
           <posy>210</posy>
 
-          <include>WallStreamEpisodesSecondRowInfo</include>
+          <control type="group">
+            <posx>376</posx>
+            <visible>Container(53).Position(4)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>664</posx>
+            <visible>Container(53).Position(5)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>92</posx>
+            <visible>Container(53).Position(6)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>382</posx>
+            <visible>Container(53).Position(7)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
         </control>
 
         <control type="group">
@@ -830,7 +1299,33 @@
           <visible>Container.Content(episodes)</visible>
           <posy>390</posy>
 
-          <include>WallStreamEpisodesThirdRowInfo</include>
+          <control type="group">
+            <posx>376</posx>
+            <visible>Container(53).Position(8)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>664</posx>
+            <visible>Container(53).Position(9)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>92</posx>
+            <visible>Container(53).Position(10)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>382</posx>
+            <visible>Container(53).Position(11)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
         </control>
 
         <control type="group">
@@ -838,7 +1333,33 @@
           <visible>Container.Content(episodes)</visible>
           <posy>554</posy>
 
-          <include>WallStreamEpisodesFourthRowInfo</include>
+          <control type="group">
+            <posx>376</posx>
+            <visible>Container(53).Position(12)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>664</posx>
+            <visible>Container(53).Position(13)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>92</posx>
+            <visible>Container(53).Position(14)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
+      
+          <control type="group">
+            <posx>382</posx>
+            <visible>Container(53).Position(15)</visible>
+            <include>WallStreamFadeAnim</include>
+            <include>WallStreamEpisodeInfo</include>
+          </control>
         </control>
       </control>
 

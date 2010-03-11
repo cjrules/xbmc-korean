@@ -15,7 +15,7 @@
 
         <control type="button" id="10">
           <description>OK Button</description>
-          <include>DialogOkBtnDims</include>
+          <posx>196</posx>
           <posy>ConfirmDialogButtonYPos</posy>
 			    <label>$LOCALIZE[12321]</label>
      			<include>DialogButton</include>

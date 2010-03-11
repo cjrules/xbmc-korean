@@ -179,7 +179,7 @@
                         <include>MediaInfoCaption</include>
                       </control>
                       <control type="label">
-                        <info>ListItem.Property(AlbumMoods)</info>
+                        <info>ListItem.Property(Album_Mood)</info>
                         <include>MediaInfoWideValue</include>
                       </control>
 
@@ -192,7 +192,7 @@
                           <include>MediaInfoCaption</include>
                         </control>
                         <control type="label">
-                          <info>ListItem.Property(AlbumStyles)</info>
+                          <info>ListItem.Property(Album_Style)</info>
                           <include>MediaInfoWideValue</include>
                         </control>
 
@@ -205,7 +205,7 @@
                             <include>MediaInfoCaption</include>
                           </control>
                           <control type="label">
-                            <info>ListItem.Property(AlbumThemes)</info>
+                            <info>ListItem.Property(Album_Theme)</info>
                             <include>MediaInfoWideValue</include>
                           </control>
 
@@ -218,7 +218,7 @@
                               <include>MediaInfoCaption</include>
                             </control>
                             <control type="label">
-                              <info>ListItem.Property(AlbumType)</info>
+                              <info>ListItem.Property(Album_Type)</info>
                               <include>MediaInfoWideValue</include>
                             </control>
                           </control>
@@ -242,13 +242,13 @@
                 <include>MediaInfoCaption</include>
               </control>
               <control type="label">
-                <visible>!IsEmpty(ListItem.Property(Born))</visible>
+                <visible>!IsEmpty(ListItem.Property(Artist_Born))</visible>
                 <info>ListItem.Property(Born)</info>
                 <include>MediaInfoWideValue</include>
               </control>
               <control type="label">
-                <visible>IsEmpty(ListItem.Property(Born))</visible>
-                <info>ListItem.Property(Formed)</info>
+                <visible>IsEmpty(ListItem.Property(Artist_Born))</visible>
+                <info>ListItem.Property(Artist_Formed)</info>
                 <include>MediaInfoWideValue</include>
               </control>
   
@@ -274,7 +274,7 @@
                     <include>MediaInfoCaption</include>
                   </control>
                   <control type="label">
-                    <info>ListItem.Property(Moods)</info>
+                    <info>ListItem.Property(Artist_Mood)</info>
                     <include>MediaInfoWideValue</include>
                   </control>
       
@@ -287,7 +287,7 @@
                       <include>MediaInfoCaption</include>
                     </control>
                     <control type="label">
-                      <info>ListItem.Property(Styles)</info>
+                      <info>ListItem.Property(Artist_Style)</info>
                       <include>MediaInfoWideValue</include>
                     </control>
 
@@ -300,7 +300,7 @@
                         <include>MediaInfoCaption</include>
                       </control>
                       <control type="label">
-                        <info>ListItem.Property(Instruments)</info>
+                        <info>ListItem.Property(Artist_Instrument)</info>
                         <include>MediaInfoWideValue</include>
                       </control>
 
@@ -313,11 +313,11 @@
                           <include>MediaInfoCaption</include>
                         </control>
                         <control type="label">
-                          <info>ListItem.Property(Died)</info>
+                          <info>ListItem.Property(Artist_Died)</info>
                           <include>MediaInfoWideValue</include>
                         </control>
                         <control type="label">
-                          <info>ListItem.Property(Disbanded)</info>
+                          <info>ListItem.Property(Artist_Disbanded)</info>
                           <include>MediaInfoWideValue</include>
                         </control>
 
@@ -330,7 +330,7 @@
                             <include>MediaInfoCaption</include>
                           </control>
                           <control type="label">
-                            <info>ListItem.Property(YearsActive)</info>
+                            <info>ListItem.Property(Artist_YearsActive)</info>
                             <include>MediaInfoWideValue</include>
                           </control>
                         </control>
@@ -349,12 +349,14 @@
 
           <control type="textbox" id="4">
             <description>Review</description>
-            <include>MusicInfoReviewDims</include>
+            <width>450</width>
+            <height>246</height>
           </control>
 
           <control type="list" id="50">
             <description>Tracks/Members</description>
-            <include>MusicInfoListDims</include>
+            <width>MusicInfoListWidth</width>
+            <height>256</height>
             <onup>5</onup>
             <onleft>5</onleft>
             <onright>10</onright>
@@ -376,7 +378,9 @@
             <ondown>61</ondown>
             <onleft>5</onleft>
             <onright>10</onright>
-            <include>MusicInfoListScrollbarDims</include>
+            <posx>482</posx>
+            <posy>-4</posy>
+            <height>266</height>
             <visible>Control.IsVisible(50)</visible>
           </control>
         </control>

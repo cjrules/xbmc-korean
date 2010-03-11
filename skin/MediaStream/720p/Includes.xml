@@ -1,6 +1,6 @@
 <includes>
   <include file="Defaults.xml" />
-  <include file="IncludesDims.xml" />
+  <include file="IncludesFlags.xml" />
   <include file="revision.xml" />
   <include file="OptionsMenu.xml" />
   <include file="ViewsMusic.xml" />
@@ -29,7 +29,7 @@
   <include name="DialogFadeBG">
     <control type="image">
       <description>Background Overlay</description>
-      <include>FullScreenOverlayDims</include>
+      <include>FullScreenBGImageDims</include>
       <aspectratio>stretch</aspectratio>
       <texture>BlackTransparent.png</texture>
       <colordiffuse>66999999</colordiffuse>
@@ -39,7 +39,7 @@
   <include name="DialogDarkFadeBG">
     <control type="image">
       <description>Background Overlay</description>
-      <include>FullScreenOverlayDims</include>
+      <include>FullScreenBGImageDims</include>
       <aspectratio>stretch</aspectratio>
       <texture>BlackTransparent.png</texture>
     </control>
@@ -61,7 +61,7 @@
   </include>
 
   <include name="DialogButton">
-    <include>DialogButtonDims</include>
+    <width>68</width>
     <height>34</height>
     <include>DialogButtonFOTexture</include>
     <include>DialogButtonNFTexture</include>
@@ -82,43 +82,64 @@
 
   <!-- Info Dialogs -->
   <include name="DialogBGTexture">
-    <texture border="23">DialogBG.png</texture>
+    <texture border="12">DialogBG.png</texture>
+  </include>
+
+  <include name="InfoDialogPos">
+    <posx>142</posx>
+    <posy>61</posy>
   </include>
 
   <include name="InfoDialogBG">
     <control type="image">
       <description>Background Image</description>
-      <include>InfoDialogBGDims</include>
-      <include>DialogBGTexture</include>
-      <visible>Skin.HasTheme(lite)</visible>
-    </control>
-    <control type="image">
-      <description>Background Image</description>
-      <include>InfoDialogBGDims</include>
+      <posx>-1</posx>
+      <posy>-2</posy>
+      <width>1000</width>
+      <height>604</height>
       <texture>VideoInfoBG.png</texture>
-      <visible>!Skin.HasTheme(lite)</visible>
     </control>
   </include>
 
+  <constant name="InfoDialogTitleXOffset">506</constant>
+
   <include name="InfoDialogTitle">
-    <include>InfoDialogTitleDims</include>
+    <posy>23</posy>
+    <width>470</width>
     <font>TitleCapsFont</font>
     <align>center</align>
   </include>
 
+  <constant name="InfoDialogLargeThumbPosX">40</constant>
+  <constant name="InfoDialogLargeThumbWidth">426</constant>
+  <constant name="InfoDialogLargeThumbTextWidth">410</constant>
+
+  <constant name="InfoDialogTopButtonsPosY">64</constant>
+
   <include name="DialogTopButton">
     <onup>-</onup>
-    <include>DialogTopButtonDims</include>
+    <width>70</width>
+    <height>23</height>
+    <font>SmallerDefaultCapsFont</font>
+    <textoffsety>0</textoffsety>
     <align>center</align>
     <include>DialogTextColors</include>
-    <texturefocus>HomeBladeSubFO2.png</texturefocus>
+    <texturefocus border="5,0,0,0">MenuItemFO2.png</texturefocus>
   </include>
 
+  <constant name="ToastDialogTextWidth">297</constant>
+
   <!-- Selection Dialogs -->
+  <include name="SelectionDialogPos">
+    <posx>330</posx>
+    <posy>180</posy>
+  </include>
+
   <include name="SelectionDialogBG">
     <control type="image">
       <description>Dialog Background</description>
-      <include>SelectionDialogBGDims</include>
+      <width>620</width>
+      <height>360</height>
       <include>DialogBGTexture</include>
     </control>
 
@@ -131,6 +152,9 @@
       <texture>GlassTitleBar.png</texture>
     </control>
   </include>
+
+  <constant name="SelectionDialogTextWidth">580</constant>
+  <constant name="SelectionDialogShortTextWidth">494</constant>
 
   <include name="SelectionDialogTitle">
     <posx>20</posx>
@@ -150,24 +174,33 @@
     <textcolor>Unfocused</textcolor>
   </include>
 
+  <constant name="MediaSourceLocationButtonsGroupPosX">480</constant>
+  <constant name="MediaSourceDialogButtonWidth">108</constant>
+
   <include name="MediaSourceDialogButton">
     <width>MediaSourceDialogButtonWidth</width>
     <include>DialogButton</include>
   </include>
 
+  <constant name="MediaSourceSetContentBtnWidth">180</constant>
+
   <!-- Progress Dialogs -->
+  <include name="ProgressDialogCenterPos">
+    <posx>384</posx>
+    <posy>284</posy>
+  </include>
+
+  <include name="ProgressDialogHeadingPos">
+    <posx>24</posx>
+    <posy>20</posy>
+  </include>
+
   <include name="ProgressDialogBG">
     <control type="image">
       <description>Background image</description>
-      <include>ProgressDialogBGDims</include>
-      <include>DialogBGTexture</include>
-      <visible>Skin.HasTheme(lite)</visible>
-    </control>
-    <control type="image">
-      <description>Background image</description>
-      <include>ProgressDialogBGDims</include>
+      <width>512</width>
+      <height>152</height>
       <texture>DialogProgressBG.png</texture>
-      <visible>!Skin.HasTheme(lite)</visible>
     </control>
   </include>
 
@@ -177,6 +210,9 @@
     <font>SmallTitleCapsFont</font>
   </include>
 
+  <constant name="ProgressDialogTextWidth">464</constant>
+  <constant name="ProgressDialogProgressWidth">474</constant>
+
   <include name="ProgressDialogText">
     <width>ProgressDialogTextWidth</width>
     <scroll>yes</scroll>
@@ -185,7 +221,8 @@
 
   <include name="ScanDialogControls">
     <control type="group">
-      <include>ProgressDialogPos</include>
+      <posx>768</posx>
+      <posy>58</posy>
       <include>ProgressDialogBG</include>
 
       <control type="group">
@@ -204,9 +241,15 @@
           <include>ProgressDialogText</include>
         </control>
 
+        <control type="label" id="405">
+          <description>Current Title</description>
+          <posy>40</posy>
+          <include>ProgressDialogText</include>
+        </control>
+
         <control type="group">
           <posx>-4</posx>
-          <posy>56</posy>
+          <posy>66</posy>
 
           <control type="progress" id="403">
             <description>progress control</description>
@@ -243,12 +286,13 @@
 
     <control type="label" id="4">
       <description>Line 3</description>
-      <posy>56</posy>
+      <posy>56</posy>                    /
       <include>ProgressDialogText</include>
     </control>
   </include>
 
   <constant name="ConfirmDialogButtonYPos">84</constant>
+  <constant name="DialogYesNoButtonWidth">130</constant>
 
   <!-- File Browser Dialog -->
   <include name="FileBrowserButton">
@@ -278,6 +322,9 @@
   </include>
 
   <!-- Set Content Dialog -->
+  <constant name="SetContentGroupListWidth">450</constant>
+  <constant name="SetContentGroupButtonWidth">400</constant>
+
   <include name="SetContentDialogButton">
     <width>136</width>
     <height>44</height>
@@ -311,7 +358,6 @@
     <width>132</width>
     <height>114</height>
     <texture fallback="Scraper_Default_icon.png">$INFO[ListItem.Label,Scraper_,_icon.png]</texture>
-    <visible>!Skin.HasTheme(lite)</visible>
   </include>
 
   <include name="SetContentDialogIconLabel">
@@ -326,7 +372,9 @@
 
   <!-- Video Info Dialog -->
   <include name="MediaInfoCaption">
-    <include>MediaInfoCaptionDims</include>
+    <posx>0</posx>
+    <width>100</width>
+    <height>24</height>
     <align>left</align>
     <aligny>center</aligny>
     <font>SmallTitleCapsFont</font>
@@ -334,7 +382,9 @@
   </include>
 
   <include name="MediaInfoValue">
-    <include>MediaInfoValueDims</include>
+    <posx>105</posx>
+    <width>240</width>
+    <height>24</height>
     <align>left</align>
     <aligny>center</aligny>
     <font>DefaultCapsFont</font>
@@ -342,13 +392,13 @@
   </include>
 
   <include name="MediaInfoWideValue">
-    <include>MediaInfoWideValueDims</include>
+    <width>345</width>
     <include>MediaInfoValue</include>
   </include>
 
   <include name="VideoInfoButton">
     <ondown>50</ondown>
-    <include>VideoInfoButtonDims</include>
+    <width>62</width>
     <include>DialogTopButton</include>
   </include>
 
@@ -385,6 +435,28 @@
       <visible>Control.HasFocus(5)</visible>
     </control>
 
+    <control type="button" id="5">
+      <description>Plot/Cast</description>
+      <onright>6</onright>
+      <onleft>9</onleft>
+      <font>-</font>
+      <textcolor>-</textcolor>
+      <focusedcolor>-</focusedcolor>
+      <include>VideoInfoButton</include>
+      <visible>!Container.Content(tvshows)</visible>
+    </control>
+
+    <control type="button" id="5">
+      <description>Plot/Cast</description>
+      <onright>6</onright>
+      <onleft>12</onleft>
+      <font>-</font>
+      <textcolor>-</textcolor>
+      <focusedcolor>-</focusedcolor>
+      <include>VideoInfoButton</include>
+      <visible>Container.Content(tvshows)</visible>
+    </control>
+
     <control type="label">
       <description>Plot Label</description>
       <label>$LOCALIZE[207]</label>
@@ -413,28 +485,6 @@
       <textcolor>Focused</textcolor>
       <include>VideoInfoButton</include>
       <visible>Control.HasFocus(5) + Control.IsVisible(4) + !Control.IsVisible(50)</visible>
-    </control>
-
-    <control type="button" id="5">
-      <description>Plot/Cast</description>
-      <onright>6</onright>
-      <onleft>9</onleft>
-      <font>-</font>
-      <textcolor>-</textcolor>
-      <focusedcolor>-</focusedcolor>
-      <include>VideoInfoButton</include>
-      <visible>!Container.Content(tvshows)</visible>
-    </control>
-
-    <control type="button" id="5">
-      <description>Plot/Cast</description>
-      <onright>6</onright>
-      <onleft>12</onleft>
-      <font>-</font>
-      <textcolor>-</textcolor>
-      <focusedcolor>-</focusedcolor>
-      <include>VideoInfoButton</include>
-      <visible>Container.Content(tvshows)</visible>
     </control>
   </include>
 
@@ -497,7 +547,7 @@
   </include>
   
   <include name="VideoInfoFilePathValue">
-    <info>ListItem.Path</info>
+    <info>ListItem.FileNameAndPath</info>
     <haspath>true</haspath>
     <scroll>true</scroll>
     <include>MediaInfoWideValue</include>
@@ -508,7 +558,9 @@
   </include>
 
   <include name="StarRatingImage">
-    <include>StarRatingImageDims</include>
+    <posy>3</posy>
+    <width>100</width>
+    <height>18</height>
     <align>center</align>
     <info>ListItem.StarRating</info>
     <aspectratio>keep</aspectratio>
@@ -528,7 +580,7 @@
       </control>
 
       <control type="group">
-        <include>StarRatingDetailsPos</include>
+        <posx>150</posx>
 
         <control type="image">
           <description>Star Rating</description>
@@ -610,7 +662,7 @@
             </control>
             <control type="image">
               <description>Star Rating</description>
-              <include>MoviesInfoStarRatingDims</include>
+              <posx>340</posx>
               <include>StarRatingImage</include>
               <visible>Container.content(movies)</visible>
             </control>
@@ -622,7 +674,7 @@
             </control>
             <control type="image">
               <description>Star Rating</description>
-              <include>NonMoviesInfoStarRatingDims</include>
+              <posx>200</posx>
               <include>StarRatingImage</include>
               <visible>!Container.content(movies)</visible>
             </control>
@@ -634,9 +686,21 @@
   
   <constant name="VideoInfoPosYAfterBasicDetails">120</constant>
 
+  <constant name="MoviesInfoPlotCastBtnPosX">62</constant>
+  <constant name="MoviesInfoThumbBtnPosX">200</constant>
+  <constant name="MoviesInfoTrailerBtnPosX">268</constant>
+  <constant name="MoviesInfoFanartBtnPosX">350</constant>
+
+  <constant name="TVShowInfoThumbBtnPosX">182</constant>
+  <constant name="TVShowInfoTrailerBtnPosX">268</constant>
+  <constant name="TVShowInfoFanartBtnPosX">346</constant>
+
+  <constant name="EpisodesInfoPlotCastBtnPosX">106</constant>
+  <constant name="EpisodesInfoThumbBtnPosX">328</constant>
+
   <!-- Music Info -->
   <include name="MusicInfoTopButton">
-    <include>MusicInfoTopButtonDims</include>
+    <width>136</width>
     <include>VideoInfoButton</include>
   </include>
 
@@ -644,23 +708,41 @@
 
   <constant name="MusicAlbumInfoDetailOffset">22</constant>
 
+  <constant name="MusicAlbumDetailInfoHeight">32</constant>
+
+  <constant name="MusicInfoListWidth">500</constant>
+
   <include name="MusicInfoListItemContent">
     <control type="image">
-      <include>MusicInfoListItemIconDims</include>
+      <posx>0</posx>
+      <posy>3</posy>
+      <width>22</width>
+      <height>22</height>
       <info>ListItem.Icon</info>
     </control>
 
     <control type="label">
-      <include>MusicInfoListItemLabelDims</include>
+      <posx>30</posx>
+      <posy>3</posy>
+      <width>300</width>
+      <height>22</height>
       <info>ListItem.Label</info>
     </control>
 
     <control type="label">
-      <include>MusicInfoListItemDetailDims</include>
+      <posx>422</posx>
+      <posy>3</posy>
+      <width>86</width>
+      <height>22</height>
       <align>right</align>
       <info>ListItem.Duration</info>
     </control>
    </include>
+
+  <constant name="SongInfoToButtonPosX">20</constant>
+
+  <constant name="SongInfoDecreaseRatingPosX">210</constant>
+  <constant name="SongInfoIncreaseRatingPosX">196</constant>
 
   <constant name="MusicSongInfoDetailOffset">24</constant>
 
@@ -675,6 +757,8 @@
   <constant name="PicInfoTextWidth">580</constant>
 
   <!-- Context Dialog -->
+  <constant name="ContextMenuWidth">334</constant>
+
   <include name="ContextDialogTopTexture">
     <texture border="8,7,7,0">DialogContextTop.png</texture>
   </include>
@@ -690,6 +774,25 @@
   <!-- Smart Playlists -->
   <constant name="SmartPlaylistTextWidth">470</constant>
 
+  <!-- Favorites Dialog -->
+  <constant name="FavouriteTextWidth">250</constant>
+
+  <!-- Button Menu Dialog -->
+  <include name="ButtonMenuOverlay">
+    <posy>90</posy>
+    <width>140</width>
+    <height>140</height>
+    <texture>ButtonMenuGlass.png</texture>
+  </include>
+
+  <constant name="ButtonMenuButtonWidth">128</constant>
+
+  <include name="ButtonMenuButtonDims">
+    <posy>100</posy>
+    <width>ButtonMenuButtonWidth</width>
+    <height>128</height>
+  </include>
+
   <!-- Home screen -->
   <include name="HomeBladeOffset">
     <posx>-440</posx>
@@ -700,64 +803,14 @@
     <animation effect="slide" tween="circle" easing="inout" end="820,0" delay="300" time="800">WindowClose</animation>
   </include>
 
-  <include name="HomeSlideLeft">
+  <include name="HomeBladeSlideLeft">
     <animation effect="slide" tween="cubic" start="-865,0" time="500" delay="90" condition="!Window.Previous(SettingsCategory.xml) + !Window.Previous(1001) + !Window.Previous(7) + !Window.Previous(34)">WindowOpen</animation>
     <animation effect="slide" tween="circle" easing="inout" end="-865,0" delay="300" time="500" condition="!Window.Next(SettingsCategory.xml) + !Window.Next(1001) + !Window.Next(7) + !Window.Next(34)">WindowClose</animation>
+  </include>
+
+  <include name="HomeSlideLeft">
+    <include>HomeBladeSlideLeft</include>
     <animation effect="slide" tween="back" start="0,0" end="-620,0" time="800" delay="100" condition="[Window.Next(SettingsCategory.xml) | Window.Next(1001) | Window.Next(7) | Window.Next(34)]">WindowClose</animation>
-  </include>
-
-  <include name="HomeBackgroundFade">
-    <animation effect="fade" end="100" time="600" delay="300">Visible</animation>
-    <animation effect="fade" end="0" time="200">Hidden</animation>
-  </include>
-
-  <include name="HomeWeatherBGFade">
-    <animation effect="fade" start="0" end="100" time="600" condition="!Window.Previous(MyWeather)">WindowOpen</animation>
-  </include>
-
-  <include name="HomeBackgroundImage">
-    <include>FullScreenBGImage</include>
-    <include>HomeBackgroundFade</include>
-  </include>
-
-  <include name="HomeVideosBGVisible">
-    <visible>Container(300).HasFocus(1) | ![Control.IsVisible(211) | Control.IsVisible(212) | Control.IsVisible(213) | Control.IsVisible(214) | Control.IsVisible(215) | Control.IsVisible(216) | Control.IsVisible(217) | Control.IsVisible(218) | Control.IsVisible(219)]</visible>
-  </include>
-
-  <include name="HomeMusicBGVisible">
-    <visible>Container(300).HasFocus(2) | ![Control.IsVisible(210) | Control.IsVisible(212) | Control.IsVisible(213) | Control.IsVisible(214) | Control.IsVisible(215) | Control.IsVisible(216) | Control.IsVisible(217) | Control.IsVisible(218) | Control.IsVisible(219)]</visible>
-  </include>
-
-  <include name="HomePicturesBGVisible">
-    <visible>Container(300).HasFocus(3) | ![Control.IsVisible(210) | Control.IsVisible(211) | Control.IsVisible(213) | Control.IsVisible(214) | Control.IsVisible(215) | Control.IsVisible(216) | Control.IsVisible(217) | Control.IsVisible(218) | Control.IsVisible(219)]</visible>
-  </include>
-
-  <include name="HomeProgramsBGVisible">
-    <visible>Container(300).HasFocus(4) | ![Control.IsVisible(210) | Control.IsVisible(211) | Control.IsVisible(212) | Control.IsVisible(214) | Control.IsVisible(215) | Control.IsVisible(216) | Control.IsVisible(217) | Control.IsVisible(218) | Control.IsVisible(219)]</visible>
-  </include>
-
-  <include name="HomeWeatherBGVisible">
-    <visible>Container(300).HasFocus(5) | ![Control.IsVisible(210) | Control.IsVisible(211) | Control.IsVisible(212) | Control.IsVisible(213) | Control.IsVisible(215) | Control.IsVisible(216) | Control.IsVisible(217) | Control.IsVisible(218) | Control.IsVisible(219)]</visible>
-  </include>
-
-  <include name="HomeSystemBGVisible">
-    <visible>Container(300).HasFocus(6) | ![Control.IsVisible(210) | Control.IsVisible(211) | Control.IsVisible(212) | Control.IsVisible(213) | Control.IsVisible(214) | Control.IsVisible(216) | Control.IsVisible(217) | Control.IsVisible(218) | Control.IsVisible(219)]</visible>
-  </include>
-
-  <include name="HomePowerBGVisible">
-    <visible>Container(300).HasFocus(7) | ![Control.IsVisible(210) | Control.IsVisible(211) | Control.IsVisible(212) | Control.IsVisible(213) | Control.IsVisible(214) | Control.IsVisible(215) | Control.IsVisible(217) | Control.IsVisible(218) | Control.IsVisible(219)]</visible>
-  </include>
-
-  <include name="HomeTVShowsBGVisible">
-    <visible>Container(300).HasFocus(8) | ![Control.IsVisible(210) | Control.IsVisible(211) | Control.IsVisible(212) | Control.IsVisible(213) | Control.IsVisible(214) | Control.IsVisible(215) | Control.IsVisible(216) | Control.IsVisible(218) | Control.IsVisible(219)]</visible>
-  </include>
-
-  <include name="HomeMoviesBGVisible">
-    <visible>Container(300).HasFocus(9) | ![Control.IsVisible(210) | Control.IsVisible(211) | Control.IsVisible(212) | Control.IsVisible(213) | Control.IsVisible(214) | Control.IsVisible(215) | Control.IsVisible(216) | Control.IsVisible(217) | Control.IsVisible(219)]</visible>
-  </include>
-
-  <include name="HomeDVDBGVisible">
-    <visible>Container(300).HasFocus(10) | ![Control.IsVisible(210) | Control.IsVisible(211) | Control.IsVisible(212) | Control.IsVisible(213) | Control.IsVisible(214) | Control.IsVisible(215) | Control.IsVisible(216) | Control.IsVisible(217) | Control.IsVisible(218)]</visible>
   </include>
 
   <include name="HomeRightOverlay">
@@ -768,7 +821,6 @@
       <height>720</height>
       <texture>HomeRightOverlay.png</texture>
       <animation effect="fade" end="100" time="500" condition="!Window.Previous(0) + !Window.Previous(SettingsCategory) + !Window.Previous(1001) + !Window.Previous(130) + !Window.Previous(34)">WindowOpen</animation>
-      <visible>!Skin.HasTheme(lite)</visible>
     </control>
   </include>
 
@@ -809,7 +861,8 @@
   </include>
 
   <include name="HomeSubMenuBlade">
-    <include>HomeSubMenuBladeDims</include>
+    <width>256</width>
+    <height>720</height>
     <include>HomeBladeSubTexture</include>
   </include>
 
@@ -826,19 +879,27 @@
   <include name="HomeSubMenuIcon">
     <control type="image">
       <description>Media Stream Logo</description>
-      <include>HomeSubMenuIconDims</include>
+      <posx>150</posx>
+      <posy>-66</posy>
+      <width>137</width>
+      <height>56</height>
       <texture>MediaStreamLogo.png</texture>
       <animation effect="fade" time="300" condition="Window.Next(0)">WindowClose</animation>
     </control>
   </include>
 
+  <constant name="HomeSideMenuItemWidth">300</constant>
   <constant name="HomeSideMenuItemHeight">43</constant>
+
+  <include name="HomeSideMenuDims">
+    <width>291</width>
+    <height>500</height>
+  </include>
 
   <include name="HomeSideMenu">
     <include>HomeSideMenuDims</include>
     <scrolltime>200</scrolltime>
     <onleft>300</onleft>
-    <onright>301</onright>
 
     <itemlayout width="HomeSideMenuItemWidth" height="HomeSideMenuItemHeight">
       <control type="image">
@@ -851,13 +912,17 @@
   </include>
   
   <include name="HomeSideMenuNFBGImage">
-    <include>HomeSideMenuNFBGImageDims</include>
+    <posx>4</posx>
+    <posy>0</posy>
+    <width>299</width>
     <height>HomeSideMenuItemHeight</height>
     <texture>HomeBladeSubNF2.png</texture>
   </include>
 
   <include name="HomeSideMenuNFBGLabel">
-    <include>HomeSideMenuNFBGLabelDims</include>
+    <posx>106</posx>
+    <posy>0</posy>
+    <width>230</width>
     <height>HomeSideMenuItemHeight</height>
     <info>ListItem.Label</info>
     <align>left</align>
@@ -867,7 +932,10 @@
   </include>
 
   <include name="HomeSideMenuFOBGImage">
-    <include>HomeSideMenuFOBGImageDims</include>
+    <posx>-4</posx>
+    <posy>0</posy>
+    <width>299</width>
+    <height>44</height>
     <texture>HomeBladeSubFO2.png</texture>
   </include>
 
@@ -876,273 +944,282 @@
     <shadowcolor>HomeShadow</shadowcolor>
     <include>HomeSideMenuNFBGLabel</include>
   </include>
-  
+
+  <include name="HomeWeatherBGFade">
+    <animation effect="fade" start="0" end="100" time="600" condition="!Window.Previous(MyWeather)">WindowOpen</animation>
+  </include>
+
+  <constant name="HomeWeatherImageSize">50</constant>
+
+  <constant name="HomeWeatherTextWidth">220</constant>
+
+  <include name="LatestMediaSlideAnim">
+    <animation effect="slide" time="800" delay="2000" tween="circle" easing="out" start="360,0" end="0,0">WindowOpen</animation>
+    <animation effect="slide" time="800" delay="2000" tween="circle" easing="out" start="360,0" end="0,0">Visible</animation>
+    <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="360,0">WindowClose</animation>
+    <animation effect="slide" time="200" tween="circle" easing="in" start="0,0" end="360,0">Hidden</animation>
+  </include>
+
+  <include name="LatestMediaBG">
+    <control type="image">
+      <posx>-22</posx>
+      <posy>-18</posy>
+      <width>290</width>
+      <height>360</height>
+      <include>DialogBGTexture</include>
+    </control>
+  </include>
+
+  <include name="LatestMediaThumb">
+    <posx>-8</posx>
+    <posy>16</posy>
+    <height>144</height>
+    <width>244</width>
+    <aspectratio align="center" aligny="center">keep</aspectratio>
+    <texture background="true" fallback="DefaultFolder.png"/>
+    <fadetime>200</fadetime>
+    <bordertexture border="14">ThumbShadow2.png</bordertexture>
+    <bordersize>8</bordersize>
+  </include>
+
+  <include name="LatestMediaList">
+    <posx>-4</posx>
+    <posy>160</posy>
+    <width>236</width>
+    <height>160</height>
+    <onleft>300</onleft>
+  </include>
+
+  <include name="LatestMediaItemFocusBG">
+    <posx>0</posx>
+    <posy>-2</posy>
+    <height>46</height>
+    <include>MediaItemFocusBG</include>
+  </include>
+
   <!-- Backgrounds -->
+  <include name="FullScreenBGImageDims">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>1280</width>
+    <height>720</height>
+  </include>
+
   <include name="FullScreenBGImage">
     <include>FullScreenBGImageDims</include>
-  </include>
-
-  <include name="BackgroundLeftImage">
-    <width>256</width>
-    <height>720</height>
-  </include>
-
-  <include name="BackgroundMidImage">
-    <posx>256</posx>
-    <width>512</width>
-    <height>720</height>
-  </include>
-
-  <include name="BackgroundMidRightImage">
-    <posx>768</posx>
-    <width>64</width>
-    <height>720</height>
-  </include>
-
-  <include name="BackgroundRightImage">
-    <posx>768</posx>
-    <width>512</width>
-    <height>720</height>
-  </include>
-
-  <include name="VideosBGVisible">
-    <visible>![[Skin.String(CustomVideosBG) | Skin.String(CustomVideosBGFolder)] + !Skin.HasSetting(HideCustomBGForVideos)] | [Window.IsVisible(Home) + !Skin.HasSetting(EnableCustomBGHome)]</visible>
-  </include>
-
-  <include name="MoviesBGVisible">
-    <visible>![[Skin.String(CustomMoviesBG) | Skin.String(CustomMoviesBGFolder)] + !Skin.HasSetting(HideCustomBGForMovies)] | [Window.IsVisible(Home) + !Skin.HasSetting(EnableCustomBGHome)]</visible>
-  </include>
-
-  <include name="TVShowsBGVisible">
-    <visible>![[Skin.String(CustomTVShowsBG) | Skin.String(CustomTVShowsBGFolder)] + !Skin.HasSetting(HideCustomBGForTVShows)] | [Window.IsVisible(Home) + !Skin.HasSetting(EnableCustomBGHome)] | [!Window.IsVisible(Home) + [Skin.HasSetting(ShowFanartOnTVWall) | Skin.HasSetting(ShowEpThumbOnTVWall)]]</visible>
-  </include>
-
-  <include name="MusicBGVisible">
-    <visible>![[Skin.String(CustomMusicBG) | Skin.String(CustomMusicBGFolder)] + !Skin.HasSetting(HideCustomBGForMusic)] | [Window.IsVisible(Home) + !Skin.HasSetting(EnableCustomBGHome)]</visible>
-  </include>
-
-  <include name="PicturesBGVisible">
-    <visible>![[Skin.String(CustomPicturesBG) | Skin.String(CustomPicturesBGFolder)] + !Skin.HasSetting(HideCustomBGForPictures)] | [Window.IsVisible(Home) + !Skin.HasSetting(EnableCustomBGHome)]</visible>
-  </include>
-
-  <include name="WeatherBGVisible">
-    <visible>![Skin.String(CustomWeatherBG) | Skin.String(CustomWeatherBGFolder)] | [Window.IsVisible(Home) + !Skin.HasSetting(EnableCustomBGHome)]</visible>
-  </include>
-
-  <include name="ProgramsBGVisible">
-    <visible>![Skin.String(CustomProgramsBG) | Skin.String(CustomProgramsBGFolder)] | [Window.IsVisible(Home) + !Skin.HasSetting(EnableCustomBGHome)]</visible>
-  </include>
-
-  <include name="SystemBGVisible">
-    <visible>![Skin.String(CustomSystemBG) | Skin.String(CustomSystemBGFolder)] | [Window.IsVisible(Home) + !Skin.HasSetting(EnableCustomBGHome)]</visible>
-  </include>
-
-  <include name="PowerBGVisible">
-    <visible>![Skin.String(CustomPowerBG) | Skin.String(CustomPowerBGFolder)] | [Window.IsVisible(Home) + !Skin.HasSetting(EnableCustomBGHome)]</visible>
-  </include>
-
-  <include name="DVDBGVisible">
-    <visible>![Skin.String(CustomDVDBG) | Skin.String(CustomDVDBGFolder)] | [Window.IsVisible(Home) + !Skin.HasSetting(EnableCustomBGHome)]</visible>
+    <texture background="true" />
   </include>
 
   <include name="BackgroundFade">
-    <animation effect="fade" end="100" time="800">VisibleChange</animation>
+    <animation effect="fade" start="0" end="100" time="800">VisibleChange</animation>
   </include>
 
   <include name="Background">
     <control type="group">
       <visible>![Control.IsVisible(53) + Window.IsMedia]</visible>
-  
+
       <control type="group">
         <description>Videos Background Image</description>
         <visible>[Window.IsVisible(MyVideoLibrary) | Window.IsVisible(MyVideoFiles) | Window.IsVisible(MyVideoPlaylist)] + ![[Window.IsVisible(MyVideoLibrary) + Control.IsVisible(51)] | [Control.IsVisible(54) | Control.IsVisible(57)]]</visible>
         <visible>!Container.Content(movies)</visible>
-  
+
         <control type="group">
           <visible>IsEmpty(ListItem.Property(fanart_image)) | Skin.HasSetting(HideFanartForFiles)</visible>
           <include>BackgroundFade</include>
-  
+
           <control type="group">
-            <include>VideosBGVisible</include>
-  
+            <visible>![Skin.String(CustomVideosBGFolder) + !Skin.HasSetting(HideCustomBGForVideos)]</visible>
+
             <control type="image">
-              <include>BackgroundLeftImage</include>
-              <texture>HomeBGVideosLeft.png</texture>
-            </control>
-            <control type="image">
-              <include>BackgroundMidImage</include>
-              <texture>HomeBGVideosMid.png</texture>
-            </control>
-            <control type="image">
-              <include>BackgroundRightImage</include>
-              <texture>HomeBGVideosRight.png</texture>
+              <include>FullScreenBGImage</include>
+              <texture>HomeBGVideos.png</texture>
             </control>
           </control>
-  
-          <include>CustomVideosBackground</include>
+
+          <control type="group">
+            <visible>Skin.String(CustomVideosBGFolder) + !Skin.HasSetting(HideCustomBGForVideos)</visible>
+      
+            <control type="multiimage">
+              <info>Skin.String(CustomVideosBGFolder)</info>
+              <include>FullScreenBGImage</include>
+            </control>
+          </control>
         </control>
-  
-        <control type="largeimage">
+
+        <control type="multiimage">
           <description>Fanart background</description>
           <include>FullScreenBGImage</include>
-          <info>ListItem.Property(fanart_image)</info>
+          <imagepath background="true">$INFO[ListItem.Property(fanart_image)]</imagepath>
           <visible>!IsEmpty(ListItem.Property(fanart_image)) + !Skin.HasSetting(HideFanartForFiles)</visible>
           <include>BackgroundFade</include>
         </control>
       </control>
-  
+
       <control type="group">
         <description>Movies Background Image</description>
         <visible>Container.Content(movies)</visible>
-  
+
         <control type="group">
           <visible>IsEmpty(ListItem.Property(fanart_image)) | Skin.HasSetting(HideFanartForMovies)</visible>
           <include>BackgroundFade</include>
-  
+
           <control type="group">
-            <include>MoviesBGVisible</include>
-  
+            <visible>![Skin.String(CustomMoviesBGFolder) + !Skin.HasSetting(HideCustomBGForMovies)]</visible>
+
             <control type="image">
-              <include>BackgroundLeftImage</include>
-              <texture>HomeBGMoviesLeft.png</texture>
-            </control>
-            <control type="image">
-              <include>BackgroundMidImage</include>
-              <texture>HomeBGMoviesMid.png</texture>
-            </control>
-            <control type="image">
-              <include>BackgroundRightImage</include>
-              <texture>HomeBGMoviesRight.png</texture>
+              <include>FullScreenBGImage</include>
+              <texture>HomeBGMovies.png</texture>
             </control>
           </control>
-  
-          <include>CustomMoviesBackground</include>
+
+          <control type="group">
+            <visible>Skin.String(CustomMoviesBGFolder) + !Skin.HasSetting(HideCustomBGForMovies)</visible>
+      
+            <control type="multiimage">
+              <info>Skin.String(CustomMoviesBGFolder)</info>
+              <include>FullScreenBGImage</include>
+            </control>
+          </control>
         </control>
-  
-        <control type="largeimage">
+
+        <control type="multiimage">
           <description>Fanart background</description>
           <include>FullScreenBGImage</include>
-          <info>ListItem.Property(fanart_image)</info>
+          <imagepath background="true">$INFO[ListItem.Property(fanart_image)]</imagepath>
           <visible>!IsEmpty(ListItem.Property(fanart_image)) + !Skin.HasSetting(HideFanartForMovies)</visible>
           <include>BackgroundFade</include>
         </control>
       </control>
-  
+
       <control type="group">
         <description>TV Shows Background Image</description>
         <visible>Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
-  
+
         <control type="group">
-          <visible>[IsEmpty(FanArt.Image) | Skin.HasSetting(HideFanartForTV)] + ![Skin.HasSetting(ShowFanartOnTVList) + !IsEmpty(ListItem.Property(fanart_image))]</visible>
+          <visible>IsEmpty(ListItem.Property(fanart_image))</visible>
           <include>BackgroundFade</include>
-  
+
           <control type="group">
             <description>TV Shows Background Image</description>
-            <include>TVShowsBGVisible</include>
-  
+            <visible>![Skin.String(CustomTVShowsBGFolder) + !Skin.HasSetting(HideCustomBGForTVShows)] | Skin.HasSetting(ShowFanartOnTVWall) | Skin.HasSetting(ShowEpThumbOnTVWall)</visible>
+
             <control type="image">
-              <include>BackgroundLeftImage</include>
-              <texture>HomeBGTVShowsLeft.png</texture>
-            </control>
-            <control type="image">
-              <include>BackgroundMidImage</include>
-              <texture>HomeBGTVShowsMid.png</texture>
-            </control>
-            <control type="image">
-              <include>BackgroundRightImage</include>
-              <texture>HomeBGTVShowsRight.png</texture>
+              <include>FullScreenBGImage</include>
+              <texture>HomeBGTVShows.png</texture>
             </control>
           </control>
-  
-          <include>CustomTVShowsBackground</include>
+
+          <control type="group">
+            <visible>Skin.String(CustomTVShowsBGFolder) + !Skin.HasSetting(HideCustomBGForTVShows) + !Skin.HasSetting(ShowFanartOnTVWall) + !Skin.HasSetting(ShowEpThumbOnTVWall)</visible>
+
+            <control type="multiimage">
+              <info>Skin.String(CustomTVShowsBGFolder)</info>
+              <include>FullScreenBGImage</include>
+            </control>
+          </control>
         </control>
-  
-        <control type="image">
+
+        <control type="multiimage">
           <description>Fanart background</description>
           <include>FullScreenBGImage</include>
-          <info>FanArt.Image</info>
-          <visible>!IsEmpty(FanArt.Image) + !Skin.HasSetting(HideFanartForTV)</visible>
-          <include>BackgroundFade</include>
-        </control>
-        <control type="largeimage">
-          <description>Fanart background</description>
-          <include>FullScreenBGImage</include>
-          <info>ListItem.Property(fanart_image)</info>
-          <visible>Skin.HasSetting(ShowFanartOnTVList) + !IsEmpty(ListItem.Property(fanart_image))</visible>
+          <imagepath background="true">$INFO[ListItem.Property(fanart_image)]</imagepath>
+          <visible>!IsEmpty(ListItem.Property(fanart_image))</visible>
           <include>BackgroundFade</include>
         </control>
       </control>
-  
+
       <control type="group">
         <description>Music Background Image</description>
         <visible>Window.IsVisible(MyMusicFiles) | Window.IsVisible(MyMusicLibrary) | Window.IsVisible(MyMusicPlaylist) | Window.IsVisible(MyMusicPlaylistEditor)</visible>
-  
+
         <control type="group">
-          <include>MusicBGVisible</include>
-  
-          <control type="image">
-            <include>BackgroundLeftImage</include>
-            <texture>HomeBGMusicLeft.png</texture>
+          <visible>IsEmpty(ListItem.Property(fanart_image))</visible>
+          <include>BackgroundFade</include>
+
+          <control type="group">
+            <description>Music Background Image</description>
+            <visible>![Skin.String(CustomMusicBGFolder) + !Skin.HasSetting(HideCustomBGForMusic)]</visible>
+
+            <control type="image">
+              <include>FullScreenBGImage</include>
+              <texture>HomeBGMusic.png</texture>
+            </control>
           </control>
-          <control type="image">
-            <include>BackgroundMidImage</include>
-            <texture>HomeBGMusicMid.png</texture>
-          </control>
-          <control type="image">
-            <include>BackgroundRightImage</include>
-            <texture>HomeBGMusicRight.png</texture>
+
+          <control type="group">
+            <visible>Skin.String(CustomMusicBGFolder) + !Skin.HasSetting(HideCustomBGForMusic)</visible>
+
+            <control type="multiimage">
+              <info>Skin.String(CustomMusicBGFolder)</info>
+              <include>FullScreenBGImage</include>
+            </control>
           </control>
         </control>
-  
-        <include>CustomMusicBackground</include>
+
+        <control type="multiimage">
+          <description>Fanart background</description>
+          <include>FullScreenBGImage</include>
+          <imagepath background="true">$INFO[ListItem.Property(fanart_image)]</imagepath>
+          <visible>!IsEmpty(ListItem.Property(fanart_image))</visible>
+          <include>BackgroundFade</include>
+        </control>
       </control>
-  
+
       <control type="group">
         <description>Pictures Background Image</description>
         <visible>Window.IsVisible(MyPictures)</visible>
-  
+
         <control type="group">
-          <include>PicturesBGVisible</include>
-  
+          <visible>![Skin.String(CustomPicturesBGFolder) + !Skin.HasSetting(HideCustomBGForPictures)]</visible>
+
           <control type="image">
-            <include>BackgroundLeftImage</include>
-            <texture>HomeBGPicturesLeft.png</texture>
-          </control>
-          <control type="image">
-            <include>BackgroundMidImage</include>
-            <texture>HomeBGPicturesMid.png</texture>
-          </control>
-          <control type="image">
-            <include>BackgroundRightImage</include>
-            <texture>HomeBGPicturesRight.png</texture>
+            <include>FullScreenBGImage</include>
+            <texture>HomeBGPictures.png</texture>
           </control>
         </control>
-  
-        <include>CustomPicturesBackground</include>
+
+        <control type="group">
+          <visible>Skin.String(CustomPicturesBGFolder) + !Skin.HasSetting(HideCustomBGForPictures)</visible>
+
+          <control type="multiimage">
+            <info>Skin.String(CustomPicturesBGFolder)</info>
+            <include>FullScreenBGImage</include>
+          </control>
+        </control>
       </control>
-  
+
       <control type="group">
         <description>Weather Background Image</description>
         <visible>Window.IsVisible(MyWeather)</visible>
-  
+
         <control type="group">
-          <include>WeatherBGVisible</include>
+          <visible>!Skin.HasSetting(ShowWeatherFanart)</visible>
+
+          <control type="group">
+            <visible>!Skin.String(CustomWeatherBGFolder)</visible>
   
-          <control type="image">
-            <include>BackgroundLeftImage</include>
-            <texture>HomeBGWeatherLeft.png</texture>
+            <control type="image">
+              <include>FullScreenBGImage</include>
+              <texture>HomeBGWeather.png</texture>
+            </control>
           </control>
-          <control type="image">
-            <include>BackgroundMidImage</include>
-            <texture>HomeBGWeatherMid.png</texture>
-          </control>
-          <control type="image">
-            <include>BackgroundRightImage</include>
-            <texture>HomeBGWeatherRight.png</texture>
+  
+          <control type="group">
+            <visible>Skin.String(CustomWeatherBGFolder)</visible>
+      
+            <control type="multiimage">
+              <info>Skin.String(CustomWeatherBGFolder)</info>
+              <include>FullScreenBGImage</include>
+            </control>
           </control>
         </control>
-  
-        <include>CustomWeatherBackground</include>
+        
+        <control type="multiimage">
+          <description>Weather fanart image</description>
+          <visible>Skin.HasSetting(ShowWeatherFanart)</visible>
+          <imagepath background="true">$INFO[Skin.String(CustomWeatherBGFolder)]$INFO[Weather.FanartCode]</imagepath>
+          <include>FullScreenBGImage</include>
+        </control>
       </control>
   
       <control type="group">
@@ -1150,308 +1227,78 @@
         <visible>Window.IsVisible(MyPrograms)</visible>
   
         <control type="group">
-          <include>ProgramsBGVisible</include>
-  
+          <visible>!Skin.String(CustomProgramsBGFolder)</visible>
+
           <control type="image">
-            <include>BackgroundLeftImage</include>
-            <texture>HomeBGProgramsLeft.png</texture>
-          </control>
-          <control type="image">
-            <include>BackgroundMidImage</include>
-            <texture>HomeBGProgramsMid.png</texture>
-          </control>
-          <control type="image">
-            <include>BackgroundRightImage</include>
-            <texture>HomeBGProgramsRight.png</texture>
+            <include>FullScreenBGImage</include>
+            <texture>HomeBGPrograms.png</texture>
           </control>
         </control>
-  
-        <include>CustomProgramsBackground</include>
+
+        <control type="group">
+          <visible>Skin.String(CustomProgramsBGFolder)</visible>
+
+          <control type="multiimage">
+            <info>Skin.String(CustomProgramsBGFolder)</info>
+            <include>FullScreenBGImage</include>
+          </control>
+        </control>
       </control>
-  
+
       <control type="group">
         <description>System Background Image</description>
         <visible>Window.IsVisible(MyScripts) | Window.IsVisible(FileManager) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(1001) | Window.IsVisible(7) | Window.IsVisible(34) | Window.IsVisible(130)</visible>
-  
+
         <control type="group">
-          <include>SystemBGVisible</include>
-  
+          <visible>!Skin.String(CustomSystemBGFolder)</visible>
+
           <control type="image">
-            <include>BackgroundLeftImage</include>
-            <texture>HomeBGSystemLeft.png</texture>
-          </control>
-          <control type="image">
-            <include>BackgroundMidImage</include>
-            <texture>HomeBGSystemMid.png</texture>
-          </control>
-          <control type="image">
-            <include>BackgroundRightImage</include>
-            <texture>HomeBGSystemRight.png</texture>
+            <include>FullScreenBGImage</include>
+            <texture>HomeBGSystem.png</texture>
           </control>
         </control>
-  
-        <include>CustomSystemBackground</include>
+
+        <control type="group">
+          <visible>Skin.String(CustomSystemBGFolder)</visible>
+
+          <control type="multiimage">
+            <info>Skin.String(CustomSystemBGFolder)</info>
+            <include>FullScreenBGImage</include>
+          </control>
+        </control>
       </control>
-  
+
       <control type="group">
         <description>Power Background Image</description>
         <visible>Window.IsVisible(29)</visible>
-  
+
         <control type="group">
-          <include>PowerBGVisible</include>
-  
+          <visible>!Skin.String(CustomPowerBGFolder)</visible>
+
           <control type="image">
-            <include>BackgroundLeftImage</include>
-            <texture>HomeBGPowerLeft.png</texture>
-          </control>
-          <control type="image">
-            <include>BackgroundMidImage</include>
-            <texture>HomeBGPowerMid.png</texture>
-          </control>
-          <control type="image">
-            <include>BackgroundRightImage</include>
-            <texture>HomeBGPowerRight.png</texture>
+            <include>FullScreenBGImage</include>
+            <texture>HomeBGPower.png</texture>
           </control>
         </control>
-  
-        <include>CustomPowerBackground</include>
-      </control>
-    </control>
-  </include>
 
-  <include name="CustomBGMultiImage">
-    <timeperimage>15000</timeperimage>
-    <fadetime>1000</fadetime>
-    <randomize>true</randomize>
-    <include>FullScreenBGImage</include>
-  </include>
+        <control type="group">
+          <visible>Skin.String(CustomPowerBGFolder)</visible>
 
-  <include name="CustomVideosBackground">
-    <control type="group">
-      <visible>Skin.String(CustomVideosBG) + [!Skin.HasSetting(HideCustomBGForVideos) | Window.IsVisible(Home)]</visible>
-
-      <control type="image">
-        <info>Skin.String(CustomVideosBG)</info>
-        <include>FullScreenBGImage</include>
-      </control>
-    </control>
-
-    <control type="group">
-      <visible>Skin.String(CustomVideosBGFolder) + [!Skin.HasSetting(HideCustomBGForVideos) | Window.IsVisible(Home)]</visible>
-
-      <control type="multiimage">
-        <info>Skin.String(CustomVideosBGFolder)</info>
-        <include>CustomBGMultiImage</include>
-        <include>HomeVideosBGVisible</include>
-      </control>
-    </control>
-  </include>
-
-  <include name="CustomMoviesBackground">
-    <control type="group">
-      <visible>Skin.String(CustomMoviesBG) + [!Skin.HasSetting(HideCustomBGForMovies) | Window.IsVisible(Home)]</visible>
-
-      <control type="image">
-        <info>Skin.String(CustomMoviesBG)</info>
-        <include>FullScreenBGImage</include>
-      </control>
-    </control>
-
-    <control type="group">
-      <visible>Skin.String(CustomMoviesBGFolder) + [!Skin.HasSetting(HideCustomBGForMovies) | Window.IsVisible(Home)]</visible>
-
-      <control type="multiimage">
-        <info>Skin.String(CustomMoviesBGFolder)</info>
-        <include>CustomBGMultiImage</include>
-        <include>HomeMoviesBGVisible</include>
-      </control>
-    </control>
-  </include>
-
-  <include name="CustomTVShowsBackground">
-    <control type="group">
-      <visible>Skin.String(CustomTVShowsBG) + [!Skin.HasSetting(HideCustomBGForTVShows) | Window.IsVisible(Home)] + [Window.IsVisible(Home) | [!Skin.HasSetting(ShowFanartOnTVWall) + !Skin.HasSetting(ShowEpThumbOnTVWall)]]</visible>
-
-      <control type="image">
-        <info>Skin.String(CustomTVShowsBG)</info>
-        <include>FullScreenBGImage</include>
-      </control>
-    </control>
-
-    <control type="group">
-      <visible>Skin.String(CustomTVShowsBGFolder) + [!Skin.HasSetting(HideCustomBGForTVShows) | Window.IsVisible(Home)] + [Window.IsVisible(Home) | [!Skin.HasSetting(ShowFanartOnTVWall) + !Skin.HasSetting(ShowEpThumbOnTVWall)]]</visible>
-
-      <control type="multiimage">
-        <info>Skin.String(CustomTVShowsBGFolder)</info>
-        <include>CustomBGMultiImage</include>
-        <include>HomeTVShowsBGVisible</include>
-      </control>
-    </control>
-  </include>
-
-  <include name="CustomMusicBackground">
-    <control type="group">
-      <visible>Skin.String(CustomMusicBG) + [!Skin.HasSetting(HideCustomBGForMusic) | Window.IsVisible(Home)]</visible>
-
-      <control type="image">
-        <info>Skin.String(CustomMusicBG)</info>
-        <include>FullScreenBGImage</include>
-      </control>
-    </control>
-
-    <control type="group">
-      <visible>Skin.String(CustomMusicBGFolder) + [!Skin.HasSetting(HideCustomBGForMusic) | Window.IsVisible(Home)]</visible>
-
-      <control type="multiimage">
-        <info>Skin.String(CustomMusicBGFolder)</info>
-        <include>CustomBGMultiImage</include>
-        <include>HomeMusicBGVisible</include>
-      </control>
-    </control>
-  </include>
-
-  <include name="CustomPicturesBackground">
-    <control type="group">
-      <visible>Skin.String(CustomPicturesBG) + [!Skin.HasSetting(HideCustomBGForPictures) | Window.IsVisible(Home)]</visible>
-
-      <control type="image">
-        <info>Skin.String(CustomPicturesBG)</info>
-        <include>FullScreenBGImage</include>
-      </control>
-    </control>
-
-    <control type="group">
-      <visible>Skin.String(CustomPicturesBGFolder) + [!Skin.HasSetting(HideCustomBGForPictures) | Window.IsVisible(Home)]</visible>
-
-      <control type="multiimage">
-        <info>Skin.String(CustomPicturesBGFolder)</info>
-        <include>CustomBGMultiImage</include>
-        <include>HomePicturesBGVisible</include>
-      </control>
-    </control>
-  </include>
-
-  <include name="CustomWeatherBackground">
-    <control type="group">
-      <visible>Skin.String(CustomWeatherBG)</visible>
-
-      <control type="image">
-        <info>Skin.String(CustomWeatherBG)</info>
-        <include>FullScreenBGImage</include>
-      </control>
-    </control>
-
-    <control type="group">
-      <visible>Skin.String(CustomWeatherBGFolder)</visible>
-
-      <control type="multiimage">
-        <info>Skin.String(CustomWeatherBGFolder)</info>
-        <include>CustomBGMultiImage</include>
-        <include>HomeWeatherBGVisible</include>
-      </control>
-    </control>
-  </include>
-
-  <include name="CustomProgramsBackground">
-    <control type="group">
-      <visible>Skin.String(CustomProgramsBG)</visible>
-
-      <control type="image">
-        <info>Skin.String(CustomProgramsBG)</info>
-        <include>FullScreenBGImage</include>
-      </control>
-    </control>
-
-    <control type="group">
-      <visible>Skin.String(CustomProgramsBGFolder)</visible>
-
-      <control type="multiimage">
-        <info>Skin.String(CustomProgramsBGFolder)</info>
-        <include>CustomBGMultiImage</include>
-        <include>HomeProgramsBGVisible</include>
-      </control>
-    </control>
-  </include>
-
-  <include name="CustomSystemBackground">
-    <control type="group">
-      <visible>Skin.String(CustomSystemBG)</visible>
-
-      <control type="image">
-        <info>Skin.String(CustomSystemBG)</info>
-        <include>FullScreenBGImage</include>
-      </control>
-    </control>
-
-    <control type="group">
-      <visible>Skin.String(CustomSystemBGFolder)</visible>
-
-      <control type="multiimage">
-        <info>Skin.String(CustomSystemBGFolder)</info>
-        <include>CustomBGMultiImage</include>
-        <include>HomeSystemBGVisible</include>
-      </control>
-    </control>
-  </include>
-
-  <include name="CustomPowerBackground">
-    <control type="group">
-      <visible>Skin.String(CustomPowerBG)</visible>
-
-      <control type="image">
-        <info>Skin.String(CustomPowerBG)</info>
-        <include>FullScreenBGImage</include>
-      </control>
-    </control>
-
-    <control type="group">
-      <visible>Skin.String(CustomPowerBGFolder)</visible>
-
-      <control type="multiimage">
-        <info>Skin.String(CustomPowerBGFolder)</info>
-        <include>CustomBGMultiImage</include>
-        <include>HomePowerBGVisible</include>
-      </control>
-    </control>
-  </include>
-
-  <include name="CustomDVDBackground">
-    <control type="group">
-      <visible>Skin.String(CustomDVDBG)</visible>
-
-      <control type="image">
-        <info>Skin.String(CustomDVDBG)</info>
-        <include>FullScreenBGImage</include>
-      </control>
-    </control>
-
-    <control type="group">
-      <visible>Skin.String(CustomDVDBGFolder)</visible>
-
-      <control type="multiimage">
-        <info>Skin.String(CustomDVDBGFolder)</info>
-        <include>CustomBGMultiImage</include>
-        <include>HomeDVDBGVisible</include>
+          <control type="multiimage">
+            <info>Skin.String(CustomPowerBGFolder)</info>
+            <include>FullScreenBGImage</include>
+          </control>
+        </control>
       </control>
     </control>
   </include>
 
   <include name="CustomAMTBackground">
     <control type="group">
-      <visible>Skin.String(CustomAMTBG)</visible>
-
-      <control type="image">
-        <info>Skin.String(CustomAMTBG)</info>
-        <include>FullScreenBGImage</include>
-      </control>
-    </control>
-
-    <control type="group">
       <visible>Skin.String(CustomAMTBGFolder)</visible>
 
       <control type="multiimage">
         <info>Skin.String(CustomAMTBGFolder)</info>
-        <include>CustomBGMultiImage</include>
       </control>
     </control>
   </include>
@@ -1465,7 +1312,8 @@
   <include name="ClockBG">
     <posx>0</posx>
     <posy>1</posy>
-    <include>ClockBGDims</include>
+    <width>133</width>
+    <height>32</height>
     <texture border="36,0,12,0">ClockBackground.png</texture>
   </include>
 
@@ -1474,18 +1322,6 @@
     <font>MediumAltDefaultFont</font>
     <align>left</align>
     <aligny>center</aligny>
-  </include>
-
-  <include name="ClockBGText">
-    <info>System.Time(hh:mm xx)</info>
-    <textcolor>Highlighted</textcolor>
-    <include>ClockText</include>
-    <visible>Skin.HasSetting(ShowAMPMInClock)</visible>
-  </include>
-
-  <include name="ClockFGText">
-    <info>System.Time(hh:mm)</info>
-    <include>ClockText</include>
   </include>
 
   <include name="Clock">
@@ -1506,10 +1342,17 @@
           <posy>-1</posy>
 
           <control type="label" id="1">
-            <include>ClockBGText</include>
+            <description>Time (AM)</description>
+            <label>$INFO[System.Time(hh:mm)] [COLOR=Highlighted]$LOCALIZE[378][/COLOR]</label>
+            <include>ClockText</include>
+            <visible>System.Time(00:00,11:59)</visible>
           </control>
+
           <control type="label" id="1">
-            <include>ClockFGText</include>
+            <description>Time (PM)</description>
+            <label>$INFO[System.Time(hh:mm)] [COLOR=Highlighted]$LOCALIZE[379][/COLOR]</label>
+            <include>ClockText</include>
+            <visible>System.Time(12:00,23:59)</visible>
           </control>
         </control>
       </control>
@@ -1518,7 +1361,8 @@
         <visible>Skin.HasSetting(LargeClock)</visible>
 
         <control type="image" id="1">
-          <include>LargeClockBGDims</include>
+          <width>176</width>
+          <height>37</height>
           <include>ClockBG</include>
         </control>
 
@@ -1527,12 +1371,19 @@
           <posy>1</posy>
 
           <control type="label" id="1">
+            <description>Time (AM)</description>
+            <label>$INFO[System.Time(hh:mm)] [COLOR=Highlighted]$LOCALIZE[378][/COLOR]</label>
             <font>LargeDefaultFont</font>
-            <include>ClockBGText</include>
+            <include>ClockText</include>
+            <visible>System.Time(00:00,11:59)</visible>
           </control>
+
           <control type="label" id="1">
+            <description>Time (PM)</description>
+            <label>$INFO[System.Time(hh:mm)] [COLOR=Highlighted]$LOCALIZE[379][/COLOR]</label>
             <font>LargeDefaultFont</font>
-            <include>ClockFGText</include>
+            <include>ClockText</include>
+            <visible>System.Time(12:00,23:59)</visible>
           </control>
         </control>
       </control>
@@ -1557,11 +1408,15 @@
 
   <include name="MediaCount">
     <control type="group">
-      <include>MediaCountPos</include>
+      <posx>1112</posx>
+      <posy>683</posy>
       <visible>!Window.IsVisible(2003) + Skin.HasSetting(ShowMediaCount)</visible>
 
       <control type="image">
-        <include>MediaCountBGDims</include>
+        <posx>1</posx>
+        <posy>1</posy>
+        <width>160</width>
+        <height>28</height>
         <texture border="12,0,26,0">MediaCountBackground.png</texture>
       </control>
 
@@ -1628,7 +1483,7 @@
 
       <control type="label">
         <description>Item count</description>
-        <include>MediaCountNumberPos</include>
+        <posx>134</posx>
         <info>Container.NumItems</info>
         <include>MediaCountNumLabel</include>
       </control>
@@ -1679,11 +1534,14 @@
   </include>
 
   <include name="VolumeImage">
-    <include>VolumeImageDims</include>
+    <width>47</width>
+    <height>47</height>
   </include>
 
   <include name="VolumeLabel">
-    <include>VolumeLabelDims</include>
+    <posx>46</posx>
+    <posy>12</posy>
+    <width>90</width>
     <font>MediumSmallTitleFont</font>
   </include>
 
@@ -1704,7 +1562,8 @@
   </include>
 
   <include name="VideOSDControlButton">
-    <include>VideOSDControlButtonDims</include>
+    <width>VideOSDControlButtonWidth</width>
+    <height>49</height>
     <font>-</font>
     <label>-</label>
   </include>
@@ -1825,7 +1684,7 @@
     <posx>-670</posx>
     <width>1280</width>
   </include>
-  
+
   <include name="NoIconListViewScrollbar">
     <posx>-650</posx>
   </include>
@@ -1841,12 +1700,14 @@
 
   <include name="ListViewItemLayout">
     <control type="image">
+      <posx>50</posx>
       <include>MediaItemBG</include>
     </control>
     <control type="label">
       <include>MediaItemMainInfoNF</include>
     </control>
     <control type="image">
+      <visible>!Container.Content(seasons)</visible>
       <include>TVEpisodeItemOverlay</include>
       <include>MediaItemNFFade</include>
     </control>
@@ -1862,9 +1723,11 @@
 
   <include name="ListViewFocusedLayout">
     <control type="image">
+      <posx>50</posx>
       <include>MediaItemBG</include>
     </control>
     <control type="image">
+      <posx>50</posx>
       <include>MediaItemFocusBG</include>
     </control>
     <control type="image">
@@ -1890,6 +1753,7 @@
       <include>MediaListItemFade</include>
     </control>
     <control type="image">
+      <visible>!Container.Content(seasons)</visible>
       <include>TVEpisodeItemOverlay</include>
       <include>MediaListItemFade</include>
     </control>
@@ -1945,20 +1809,39 @@
   <constant name="PanelStreamEpisodeDetailTextWidth">480</constant>
 
   <include name="PanelStreamImage">
-    <include>PanelStreamImageDims</include>
-    <texture>amt-blank-poster.png</texture>
+    <posx>10</posx>
+    <posy>26</posy>
+    <width>166</width>
+    <height>236</height>
+    <texture background="true">amt-blank-poster.png</texture>
     <info>ListItem.Thumb</info>
     <bordertexture border="14">ThumbShadow.png</bordertexture>
     <bordersize>8</bordersize>
   </include>
 
   <include name="PanelStreamNoThumb">
-    <include>PanelStreamNoThumbDims</include>
+    <posx>95</posx>
+    <posy>68</posy>
+    <width>150</width>
+    <font>MediumTitleCapsFont</font>
     <include>NoThumbLabel</include>
   </include>
 
   <include name="PanelStreamNoThumbFade">
     <animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+  </include>
+
+  <include name="PanelStreamNoThumbFocusAnim">
+    <animation type="focus">
+      <effect type="zoom" tween="quadratic" start="100" end="118" time="300" delay="100"/>
+      <effect type="slide" tween="quadratic" start="0,0" end="0,-12" time="300" delay="100"/>
+      <effect type="fade" start="70" end="100" time="300" delay="100"/>
+    </animation>
+    <animation type="unfocus">
+      <effect type="zoom" tween="quadratic" start="118" end="100" time="200"/>
+      <effect type="slide" tween="quadratic" start="0,-12" end="0,0" time="200"/>
+      <effect type="fade" start="100" end="70" time="200"/>
+    </animation>
   </include>
 
   <include name="PanelStreamAlbumNoThumbFocusAnim">
@@ -1975,24 +1858,32 @@
   </include>
 
   <include name="PanelStreamEpisodeImage">
-    <include>PanelStreamEpisodeImageDims</include>
-    <texture>bookmark-resume.png</texture>
+    <width>236</width>
+    <height>148</height>
+    <texture background="true">bookmark-resume.png</texture>
     <include>PanelStreamImage</include>
   </include>
 
   <include name="PanelStreamEpisodeNoThumb">
-    <include>PanelStreamEpisodeNoThumbDims</include>
+    <posx>82</posx>
+    <posy>90</posy>
+    <width>150</width>
+    <font>MediumSmallTitleCapsFont</font>
     <include>NoThumbLabel</include>
   </include>
 
   <include name="PanelStreamAlbumImage">
-    <include>PanelStreamAlbumImageDims</include>
-    <texture>DefaultAlbumCover.png</texture>
+    <width>180</width>
+    <height>180</height>
+    <texture background="true">DefaultAlbumCover.png</texture>
     <include>PanelStreamImage</include>
   </include>
 
   <include name="PanelStreamAlbumNoThumb">
-    <include>PanelStreamAlbumNoThumbDims</include>
+    <posx>102</posx>
+    <posy>54</posy>
+    <width>150</width>
+    <font>MediumSmallTitleCapsFont</font>
     <include>NoThumbLabel</include>
   </include>
 
@@ -2013,7 +1904,8 @@
     <focusedlayout condition="![Container.content(episodes) | Container.content(albums) | Window.IsVisible(MyMusicFiles)]" width="180" height="240">
       <control type="image">
         <description>Poster image</description>
-        <include>PanelStreamImageFocusAnim</include>
+        <animation effect="zoom" tween="quadratic" end="-2,12,190,266" time="200" delay="100">Focus</animation>
+        <animation effect="zoom" tween="quadratic" start="2,-12,190,266" end="0,0,166,236" time="200">Unfocus</animation>
         <include>PanelStreamImage</include>
       </control>
       <control type="label">
@@ -2039,7 +1931,8 @@
     <focusedlayout condition="Container.content(episodes)" width="250" height="160">
       <control type="image">
         <description>Episode thumb</description>
-        <include>PanelStreamEpisodeImageFocusAnim</include>
+        <animation effect="zoom" tween="quadratic" end="-5,20,266,168" time="200" delay="100">Focus</animation>
+        <animation effect="zoom" tween="quadratic" start="-15,-6,266,168" end="0,0,236,148" time="200">Unfocus</animation>
         <include>PanelStreamEpisodeImage</include>
       </control>
       <control type="label">
@@ -2065,7 +1958,8 @@
     <focusedlayout condition="Container.content(albums) | Window.IsVisible(MyMusicFiles)" width="180" height="180">
       <control type="image">
         <description>Album cover</description>
-        <include>PanelStreamAlbumImageFocusAnim</include>
+        <animation effect="zoom" tween="quadratic" start="0,0,180,180" end="-21,-23,202,202" time="200" delay="100">Focus</animation>
+        <animation effect="zoom" tween="quadratic" start="-21,-23,202,202" end="0,0,180,180" time="200">Unfocus</animation>
         <include>PanelStreamAlbumImage</include>
       </control>
       <control type="label">
@@ -2095,15 +1989,18 @@
     <visible>Control.IsVisible(53)</visible>
   </include>
 
+  <constant name="WallStreamPosterWidth">160</constant>
   <constant name="WallStreamPosterHeight">230</constant>
 
   <include name="WallStreamPoster">
     <width>WallStreamPosterWidth</width>
     <height>WallStreamPosterHeight</height>
     <aspectratio>stretch</aspectratio>
+    <texture background="true" />
     <info>ListItem.Thumb</info>
   </include>
 
+  <constant name="WallStreamCoverWidth">160</constant>
   <constant name="WallStreamCoverHeight">160</constant>
 
   <include name="WallStreamAlbumCover">
@@ -2112,6 +2009,7 @@
     <include>WallStreamPoster</include>
   </include>
 
+  <constant name="WallStreamEpThumbWidth">320</constant>
   <constant name="WallStreamEpThumbHeight">180</constant>
 
   <include name="WallStreamEpThumb">
@@ -2407,88 +2305,21 @@
   <!-- Media Views -->
   <include name="MediaViewBGOverlay">
     <control type="group">
-      <include condition="Skin.HasTheme(lite)">MediaViewBGOverlayLite</include>
-      <include condition="!Skin.HasTheme(lite)">MediaViewBGOverlayRich</include>
+      <control type="image">
+        <description>Background Overlay</description>
+        <include>FullScreenBGImageDims</include>
+        <texture>TVFanartOverlay.png</texture>
+      </control>
+
       <include>BackgroundOverlayFade</include>
     </control>
   </include>
 
-  <include name="MediaViewBGOverlayLite">
-    <control type="image">
-      <description>Background Upper Overlay</description>
-      <width>1280</width>
-      <height>54</height>
-      <texture>Black.png</texture>
-      <colordiffuse>99cccccc</colordiffuse>
-    </control>
-
-    <control type="image">
-      <description>Background Lower Overlay (Large)</description>
-      <posy>216</posy>
-      <width>1280</width>
-      <height>504</height>
-      <texture>Black.png</texture>
-      <colordiffuse>ddcccccc</colordiffuse>
-      <visible>![[Container.Content(tvshows) | Container.Content(episodes)] + Skin.HasSetting(UseLowTVOverlay) + Control.IsVisible(55)]</visible>
-    </control>
-    <control type="image">
-      <description>Background Lower Overlay (Small)</description>
-      <posy>416</posy>
-      <width>1280</width>
-      <height>304</height>
-      <texture>Black.png</texture>
-      <colordiffuse>ddcccccc</colordiffuse>
-      <visible>[[Container.Content(tvshows) | Container.Content(episodes)] + Skin.HasSetting(UseLowTVOverlay) + Control.IsVisible(55)]</visible>
-    </control>
-  </include>
-
-  <include name="MediaViewBGOverlayRich">
-    <control type="image">
-      <description>Background Overlay</description>
-      <include>FullScreenOverlayDims</include>
-      <texture>TVFanartOverlay.png</texture>
-    </control>
-  </include>
-
   <include name="MovieViewBGOverlay">
-    <include condition="Skin.HasTheme(lite)">MovieViewBGOverlayLite</include>
-    <include condition="!Skin.HasTheme(lite)">MovieViewBGOverlayRich</include>
-  </include>
-
-  <include name="MovieViewBGOverlayLite">
-    <control type="image">
-      <description>Background Upper Overlay</description>
-      <width>1280</width>
-      <height>64</height>
-      <texture>Black.png</texture>
-      <colordiffuse>77cccccc</colordiffuse>
-    </control>
-
-    <control type="image">
-      <description>Background Central Overlay</description>
-      <posy>64</posy>
-      <width>1280</width>
-      <height>442</height>
-      <texture>Black.png</texture>
-      <colordiffuse>bbcccccc</colordiffuse>
-    </control>
-
-    <control type="image">
-      <description>Background Lower Overlay</description>
-      <posy>506</posy>
-      <width>1280</width>
-      <height>214</height>
-      <texture>Black.png</texture>
-      <colordiffuse>77cccccc</colordiffuse>
-    </control>
-  </include>
-
-  <include name="MovieViewBGOverlayRich">
     <control type="image">
       <description>Movie view background</description>
-      <include>FullScreenOverlayDims</include>
+      <include>FullScreenBGImageDims</include>
       <texture>MovieViewBG.png</texture>
-      <visible>!Skin.HasSetting(HideInfoInMediaPreview) + !Skin.HasSetting(ShowAnimMediaPreview)</visible>
     </control>
   </include>
 
@@ -2538,11 +2369,11 @@
   </include>
 
   <include name="MediaItemBG">
-    <posx>0</posx>
-    <posy>-6</posy>
-    <width>679</width>
-    <height>54</height>
-    <texture>MediaItemBG.png</texture>
+    <posx>12</posx>
+    <posy>-1</posy>
+    <width>660</width>
+    <height>44</height>
+    <texture>MediaItemBG2.png</texture>
   </include>
 
   <include name="MediaItemBGWide">
@@ -2589,11 +2420,11 @@
   </include>
 
   <include name="MediaItemFocusBG">
-    <posx>44</posx>
+    <posx>12</posx>
     <posy>0</posy>
-    <width>595</width>
+    <width>640</width>
     <height>44</height>
-    <texture aspectratio="stretch" flipx="true">MenuItemFO.png</texture>
+    <texture border="5,0,0,0" aspectratio="stretch">MenuItemFO2.png</texture>
     <include>MediaListItemSlide</include>
   </include>
 
@@ -2607,7 +2438,9 @@
   </include>
 
   <include name="MediaItemDetailInfo">
-    <include>MediaItemDetailInfoDims</include>
+    <posx>436</posx>
+    <width>124</width>
+    <height>42</height>
     <align>left</align>
     <aligny>center</aligny>
     <label>$INFO[ListItem.Label2]</label>
@@ -2679,21 +2512,17 @@
     <texture border="156,0,24,0">TVTitleBG.png</texture>
   </include>
 
-  <include name="TVTitleBGImageLite">
-    <texture border="0,0,17,0">TVTitleBG.png</texture>
-  </include>
-
   <include name="TopOverlayTitleAreaBG">
     <posy>5</posy>
     <height>36</height>
-    <include condition="Skin.HasTheme(lite)">TVTitleBGImageLite</include>
-    <include condition="!Skin.HasTheme(lite)">TVTitleBGImage</include>
+    <include>TVTitleBGImage</include>
   </include>
 
   <include name="TopOverlayFirstTitleAreaBG">
     <control type="image">
       <description>First Title background</description>
-      <include>TopOverlayFirstTitleAreaBGDims</include>
+    <posx>20</posx>
+    <width>380</width>
       <include>TopOverlayTitleAreaBG</include>
     </control>
   </include>
@@ -2701,13 +2530,15 @@
   <include name="TopOverlaySecondTitleAreaBG">
     <control type="image">
       <description>Second Title background</description>
-      <include>TopOverlaySecondTitleAreaBGDims</include>
+      <posx>300</posx>
+      <width>310</width>
       <include>TopOverlayTitleAreaBG</include>
     </control>
   </include>
 
   <include name="TopOverlayTitleAreaText">
-    <include>TopOverlayTitleAreaTextDims</include>
+    <posy>3</posy>
+    <height>32</height>
     <scroll>true</scroll>
     <align>right</align>
     <aligny>center</aligny>
@@ -2715,27 +2546,29 @@
   </include>
 
   <include name="TopOverlayFirstTitleAreaText">
-    <include>TopOverlayFirstTitleAreaTextDims</include>
+    <posx>380</posx>
+    <width>352</width>
     <include>TopOverlayTitleAreaText</include>
     <include>TopOverlayFirstTitleSlide</include>
   </include>
 
   <include name="TopOverlaySecondTitleAreaText">
-    <include>TopOverlaySecondTitleAreaTextDims</include>
+    <posx>588</posx>
+    <width>164</width>
     <include>TopOverlayTitleAreaText</include>
     <include>TopOverlaySecondTitleSlide</include>
   </include>
 
   <include name="FanartOnTVProjectorScreen">
     <control type="group">
-      <visible>!IsEmpty(ListItem.Property(fanart_image)) + Skin.HasSetting(ShowFanartOnTVWall) + !Skin.HasSetting(ShowFanartOnTVList)</visible>
+      <visible>!IsEmpty(ListItem.Property(fanart_image)) + Skin.HasSetting(ShowFanartOnTVWall)</visible>
       <include>MediaListSelectDelay</include>
 
       <include>TVProjectScreenOverlay</include>
 
-      <control type="image">
+      <control type="multiimage">
         <description>Fanart background</description>
-        <info>ListItem.Property(fanart_image)</info>
+        <imagepath background="true">$INFO[ListItem.Property(fanart_image)]</imagepath>
         <include>TVProjectScreenImage</include>
       </control>
     </control>
@@ -2772,6 +2605,10 @@
     <visible>Window.IsVisible(MyVideoLibrary) + Control.IsVisible(57) + Container.Content(tvshows)</visible>
   </include>
 
+  <constant name="TVWideInfoValueWidth">434</constant>
+
+  <constant name="TVViewListWidth">650</constant>
+
   <constant name="TVShowsDetailsGap">30</constant>
 
   <include name="TVTotalEpisodesDetails">
@@ -2789,7 +2626,9 @@
   </include>
 
   <include name="TVUnwatchedEpisodesDetails">
-    <include>TVUnwatchedEpisodesDetailsDims</include>
+    <posx>560</posx>
+    <width>200</width>
+    <height>42</height>
     <align>right</align>
     <aligny>center</aligny>
     <label>$INFO[ListItem.Property(unwatchedepisodes)]</label>
@@ -2806,13 +2645,16 @@
   </include>
 
   <include name="TVUnwatchedEpisodesDetailsImage">
-    <include>TVUnwatchedEpisodesDetailsImageDims</include>
+    <posx>568</posx>
+    <posy>14</posy>
+    <width>16</width>
+    <height>16</height>
     <texture>OverlayUnwatched.png</texture>
     <visible>!IsEmpty(ListItem.Property(unwatchedepisodes))</visible>
   </include>
 
   <include name="TVWatchedEpisodesDetails">
-    <include>TVWatchedEpisodesDetailsDims</include>
+    <posx>614</posx>
     <label>$INFO[ListItem.Property(watchedepisodes)]</label>
     <include>TVUnwatchedEpisodesDetails</include>
   </include>
@@ -2828,7 +2670,7 @@
   </include>
 
   <include name="TVWatchedEpisodesDetailsImage">
-    <include>TVWatchedEpisodesDetailsImageDims</include>
+    <posx>622</posx>
     <texture>OverlayWatched.png</texture>
     <visible>!IsEmpty(ListItem.Property(watchedepisodes))</visible>
     <include>TVUnwatchedEpisodesDetailsImage</include>
@@ -2866,8 +2708,16 @@
     <include>MediaItemDetailFontFO</include>
   </include>
 
-  <include name="TVEpisodesVisible">
-    <visible>[Window.IsVisible(MyVideoFiles) | Window.IsVisible(MyVideoLibrary)] + Control.IsVisible(54)</visible>
+  <include name="WtchUnwtchOverlayBGDims">
+    <width>32</width>
+    <height>39</height>
+  </include>
+
+  <include name="WtchUnwtchOverlayDims">
+    <posx>7</posx>
+    <posy>4</posy>
+    <width>23</width>
+    <height>23</height>
   </include>
 
   <include name="WatchedUnwatchedOverlay">
@@ -2885,12 +2735,11 @@
     </control>
   </include>
 
-  <constant name="TVEpisodesAnimTime">600</constant>
-
-  <include name="TVEpisodesSlideAnim">
-    <animation effect="slide" start="733,-32" end="0,0" time="TVEpisodesAnimTime" condition="Container.Content(episodes)">Conditional</animation>
-    <animation effect="rotatey" center="30" start="-48" end="-48" time="TVEpisodesAnimTime" condition="Container.Content(episodes)">Conditional</animation>
+  <include name="TVEpisodesVisible">
+    <visible>[Window.IsVisible(MyVideoFiles) | Window.IsVisible(MyVideoLibrary)] + Control.IsVisible(54)</visible>
   </include>
+
+  <constant name="TVEpisodesAnimTime">600</constant>
 
   <include name="TVEpisodesFadeAnim">
     <animation effect="fade" start="0" end="100" time="TVEpisodesAnimTime" condition="Container.Content(episodes)">Conditional</animation>
@@ -2912,12 +2761,17 @@
   </include>
 
   <include name="TVEpisodeItemOverlay">
-    <include>TVEpisodeItemOverlayDims</include>
+    <posx>428</posx>
+    <posy>9</posy>
+    <width>16</width>
+    <height>25</height>
     <info>ListItem.Overlay</info>
   </include>
 
   <include name="TVEpisodeItemDate">
-    <include>TVEpisodeItemDateDims</include>
+    <posx>450</posx>
+    <width>100</width>
+    <height>42</height>
     <align>left</align>
     <aligny>center</aligny>
     <label>$INFO[ListItem.Date]</label>
@@ -2933,10 +2787,25 @@
     <include>MediaItemDetailFontFO</include>
   </include>
 
-  <constant name="TVEpisodesDetailsGap">24</constant>
+  <constant name="TVEpisodesDetailsGap">44</constant>
 
   <include name="TVEpisodesDetailValue">
-    <include>TVEpisodesDetailValueDims</include>
+    <posx>98</posx>
+    <width>218</width>
+    <scroll>false</scroll>
+    <font>DefaultCapsFont</font>
+    <include>MediaInfoValue</include>
+  </include>
+
+  <include name="TVEpisodesMinCaption">
+    <font>SmallTitleCapsFont</font>
+    <textcolor>Highlighted</textcolor>
+  </include>
+
+  <include name="TVEpisodesMinValue">
+    <posx>0</posx>
+    <posy>15</posy>
+    <width>220</width>
     <scroll>false</scroll>
     <font>DefaultCapsFont</font>
     <include>MediaInfoValue</include>
@@ -2948,18 +2817,57 @@
   </include>
 
   <include name="MediaPreviewThumbDetails">
-    <texture>amt-blank-poster.png</texture>
+    <texture background="true">amt-blank-poster.png</texture>
     <info>ListItem.Thumb</info>
     <visible>!IsEmpty(ListItem.Thumb) | !Skin.HasSetting(HideNoThumbIcon)</visible>
   </include>
 
   <include name="MediaPreviewThumb">
-    <include>MediaPreviewThumbDims</include>
+    <posx>18</posx>
+    <posy>34</posy>
+    <width>106</width>
+    <height>156</height>
     <include>MediaPreviewThumbDetails</include>
   </include>
 
+  <include name="MediaPreviewThumbNoThumb">
+    <posx>71</posx>
+    <posy>52</posy>
+    <width>106</width>
+    <font>SmallTitleCapsFont</font>
+    <include>NoThumbLabel</include>
+  </include>
+
+  <include name="MediaPreviewThumbNoThumbAnim">
+    <animation type="focus">
+      <effect type="zoom" tween="quadratic" start="100" end="120" time="300" delay="100"/>
+      <effect type="slide" tween="quadratic" start="0,0" end="0,-16" time="300" delay="100"/>
+    </animation>
+<!--
+    <animation effect="zoom" tween="quadratic" end="71,36,130,12" time="300" delay="100">Focus</animation>
+-->
+  </include>
+
+  <include name="MediaPreviewThumbRflctn">
+    <posy>190</posy>
+    <texture flipy="true" diffuse="DiffuseMirror.png" background="true">amt-blank-poster.png</texture>
+    <include>MediaPreviewThumb</include>
+  </include>
+
+  <include name="MediaPreviewPoster">
+    <posx>-8</posx>
+    <posy>-8</posy>
+    <width>304</width>
+    <height>438</height>
+    <texture>amt-blank-poster.png</texture>
+  </include>
+
   <include name="MediaPreviewEpThumb">
-    <include>MediaPreviewEpThumbDims</include>
+    <posx>18</posx>
+    <posy>34</posy>
+    <width>226</width>
+    <height>156</height>
+    <aspectratio aligny="bottom">keep</aspectratio>
     <include>MediaPreviewThumbDetails</include>
   </include>
 
@@ -3007,45 +2915,162 @@
     <include>MediaPreviewDetailsLabel</include>
   </include>
 
-  <include name="MediaPreviewAnimList">
-    <posx>780</posx>
-    <posy>-520</posy>
-    <width>500</width>
-    <height>220</height>
-    <scrolltime>300</scrolltime>
-    <focusposition>2</focusposition>
+  <include name="MediaPreviewWrapListBG">
+    <control type="image">
+      <description>Black overlay for thumbs to sit on</description>
+      <posy>2</posy>
+      <width>1280</width>
+      <height>216</height>
+      <texture>Black.png</texture>
+    </control>
   </include>
 
-  <include name="MediaPreviewAnimThumb">
-    <include>MediaPreviewAnimThumbDims</include>
-    <include>MediaPreviewThumb</include>
+  <include name="MediaPreviewContent">
+    <posx>1</posx>
+    <posy>-13</posy>
+    <width>1772</width>
+    <height>720</height>
+    <onup>9009</onup>
+    <scrolltime>200</scrolltime>
+    <pagecontrol>-</pagecontrol>
+    <orientation>horizontal</orientation>
+    <focusposition>4</focusposition>
+    <preloaditems>4</preloaditems>
+    <include>MediaViewFade</include>
+    <animation effect="slide" start="0,0" end="-512,0" time="0" condition="Container.Content(episodes)">Conditional</animation>
+
+    <itemlayout condition="!Container.Content(episodes)" width="142" height="220">
+      <control type="image">
+        <include>MediaPreviewThumb</include>
+        <colordiffuse>ff999999</colordiffuse>
+      </control>
+      <control type="label">
+        <description>No Thumb label</description>
+        <include>MediaPreviewThumbNoThumb</include>
+      </control>
+      <control type="image">
+        <include>MediaPreviewThumbRflctn</include>
+      </control>
+    </itemlayout>
+
+    <focusedlayout condition="!Container.Content(episodes)" width="142" height="220">
+      <control type="image">
+        <include>MediaPreviewThumbRflctn</include>
+        <animation type="focus">
+          <effect type="zoom" tween="quadratic" end="6,201,130,186" time="300" delay="100"/>
+        </animation>
+        <animation type="unfocus">
+          <effect type="zoom" tween="quadratic" start="-6,-201,130,186" end="0,0,106,156" time="200"/>
+        </animation>
+      </control>
+      <control type="image">
+        <posx>9</posx>
+        <posy>25</posy>
+        <width>124</width>
+        <height>176</height>
+        <texture border="12">ThumbBorder.png</texture>
+        <animation type="focus">
+          <effect type="zoom" tween="quadratic" end="-5,5,152,208" time="300" delay="100"/>
+        </animation>
+        <animation type="unfocus">
+          <effect type="zoom" tween="quadratic" start="5,-5,152,208" end="0,0,124,176" time="200"/>
+          <effect type="fade" start="100" end="0" time="200"/>
+        </animation>
+      </control>
+      <control type="image">
+        <include>MediaPreviewThumb</include>
+        <animation type="focus">
+          <effect type="zoom" tween="quadratic" end="6,15,130,186" time="300" delay="100"/>
+        </animation>
+        <animation type="unfocus">
+          <effect type="zoom" tween="quadratic" start="-6,-15,130,186" end="0,0,106,156" time="200"/>
+        </animation>
+      </control>
+      <control type="label">
+        <include>MediaPreviewThumbNoThumb</include>
+        <include>MediaPreviewThumbNoThumbAnim</include>
+      </control>
+    </focusedlayout>
+
+    <itemlayout condition="Container.Content(episodes)" width="256" height="220">
+      <control type="image">
+        <include>MediaPreviewEpThumb</include>
+        <colordiffuse>cc999999</colordiffuse>
+      </control>
+      <control type="label">
+        <description>No Thumb label</description>
+        <include>MediaPreviewThumbNoThumb</include>
+      </control>
+      <include>MediaPreviewEpThumbOverlay</include>
+    </itemlayout>
+
+    <focusedlayout condition="Container.Content(episodes)" width="256" height="220">
+      <control type="image">
+        <include>MediaPreviewEpThumb</include>
+        <animation type="focus">
+          <effect type="zoom" tween="quadratic" end="2,21,256,180" time="300" delay="100"/>
+        </animation>
+        <animation type="unfocus">
+          <effect type="zoom" tween="quadratic" start="-2,-21,256,180" end="0,0,226,156" time="200"/>
+        </animation>
+      </control>
+      <control type="label">
+        <include>MediaPreviewThumbNoThumb</include>
+        <include>MediaPreviewThumbNoThumbAnim</include>
+      </control>
+      <include>MediaPreviewEpThumbOverlay</include>
+    </focusedlayout>
   </include>
 
-  <include name="MediaPreviewNoAnimEpList">
-    <focusposition>2</focusposition>
+  <include name="MediaPreviewWrapListFade">
+    <control type="group">
+      <control type="image">
+        <description>Left hand fade on thumb strip</description>
+        <width>140</width>
+        <height>220</height>
+        <texture>BlackGradient.png</texture>
+      </control>
+  
+      <control type="image">
+        <description>Right hand fade on thumb strip</description>
+        <posx>1140</posx>
+        <width>140</width>
+        <height>220</height>
+        <texture flipx="true">BlackGradient.png</texture>
+      </control>
+    </control>
   </include>
 
-  <include name="MediaPreviewAnimDetailsLabel">
-    <width>700</width>
-    <height>20</height>
-    <font>DefaultFont</font>
-    <autoscroll>false</autoscroll>
+  <include name="MediaPreviewLiteVisible">
+    <visible>[Window.IsVisible(MyVideoFiles) | Window.IsVisible(MyVideoLibrary)] + Control.IsVisible(59)</visible>
   </include>
 
   <include name="ShowcaseVisible">
     <visible>[Window.IsVisible(MyVideoFiles) | Window.IsVisible(MyVideoLibrary)] + Control.IsVisible(58)</visible>
   </include>
 
+  <constant name="ShowcaseItemHeight">316</constant>
+
+  <constant name="ShowcaseFocusHeight">336</constant>
+
   <include name="ShowcasePoster">
     <posx>0</posx>
     <posy>10</posy>
     <width>225</width>
     <height>ShowcaseItemHeight</height>
-    <texture>amt-blank-poster.png</texture>
+    <texture background="true">amt-blank-poster.png</texture>
     <colordiffuse>f0808080</colordiffuse>
     <info>ListItem.Thumb</info>
     <aspectratio aligny="bottom">stretch</aspectratio>
     <visible>!IsEmpty(ListItem.Thumb) | !Skin.HasSetting(HideNoThumbIcon)</visible>
+  </include>
+
+  <include name="ShowcaseNoThumbLabel">
+    <posx>115</posx>
+    <posy>55</posy>
+    <width>238</width>
+    <font>LargeTitleCapsFont</font>
+    <include>NoThumbLabel</include>
   </include>
 
   <include name="ShowcaseFocusAnim">
@@ -3095,17 +3120,7 @@
   </include>
   
   <include name="MusicAlbumCoverTexture">
-    <include condition="Skin.HasTheme(lite)">MusicAlbumCoverTextureLite</include>
-    <include condition="!Skin.HasTheme(lite)">MusicAlbumCoverTextureRich</include>
-  </include>
-
-  <include name="MusicAlbumCoverTextureLite">
-    <texture>Grey.png</texture>
-    <aspectratio aligny="top">stretch</aspectratio>
-  </include>
-
-  <include name="MusicAlbumCoverTextureRich">
-    <texture>DefaultAlbumCover.png</texture>
+    <texture background="true">DefaultAlbumCover.png</texture>
     <aspectratio aligny="top">keep</aspectratio>
   </include>
 
@@ -3144,12 +3159,13 @@
   </include>
 
   <include name="MusicAlbumDetailInfoCaption">
-    <include>MusicAlbumDetailInfoCaptionDims</include>
+    <width>66</width>
     <include>MediaInfoCaption</include>
   </include>
 
   <include name="MusicAlbumDetailInfoValue">
-    <include>MusicAlbumDetailInfoValueDims</include>
+    <posx>72</posx>
+    <width>228</width>
     <include>MediaInfoValue</include>
   </include>
 
@@ -3158,22 +3174,64 @@
   </include>
 
   <include name="CoverflowThumb">
-    <include>CoverflowThumbDims</include>
+    <posx>-8</posx>
+    <posy>-8</posy>
+    <width>366</width>
+    <height>386</height>
     <bordertexture border="14">ThumbShadow2.png</bordertexture>
     <bordersize>8</bordersize>
     <aspectratio aligny="bottom">keep</aspectratio>
+    <texture background="true" />
   </include>
 
   <include name="CoverflowThumbReflection">
-    <include>CoverflowThumbReflectionDims</include>
-    <texture flipy="true" diffuse="DiffuseMirror.png"/>
+    <posx>0</posx>
+    <posy>370</posy>
+    <width>350</width>
+    <height>370</height>
+    <texture flipy="true" diffuse="DiffuseMirror.png" background="true"/>
     <aspectratio aligny="top">keep</aspectratio>
   </include>
 
+  <include name="CoverflowThumbBackdrop">
+    <control type="image">
+      <posx>0</posx>
+      <posy>370</posy>
+      <width>350</width>
+      <height>370</height>
+      <texture>black.png</texture>
+    </control>
+  </include>
+
   <include name="CoverflowMusicThumb">
-    <include>CoverflowMusicThumbDims</include>
+    <posx>-8</posx>
+    <posy>-8</posy>
+    <width>366</width>
+    <height>366</height>
+    <texture background="true" />
     <bordertexture border="14">ThumbShadow2.png</bordertexture>
     <bordersize>8</bordersize>
+  </include>
+
+  <include name="CoverflowMusicThumbBackdrop">
+    <control type="image">
+      <posx>0</posx>
+      <posy>350</posy>
+      <width>350</width>
+      <height>350</height>
+      <texture>black.png</texture>
+    </control>
+  </include>
+
+  <include name="CoverflowLeftShadowOverlay">
+    <width>400</width>
+    <texture>BlackGradient.png</texture>
+  </include>
+
+  <include name="CoverflowRightShadowOverlay">
+    <posx>880</posx>
+    <width>400</width>
+    <texture flipx="true">BlackGradient.png</texture>
   </include>
 
   <include name="GlassTextureOverlay">
@@ -3187,13 +3245,19 @@
   </include>
 
   <include name="CoverflowGlassOverlay">
-    <include>CoverflowGlassOverlayDims</include>
+    <posx>1</posx>
+    <posy>1</posy>
+    <width>240</width>
+    <height>240</height>
     <include>GlassTextureOverlay</include>
   </include>
 
   <include name="CoverflowMusicThumbReflection">
-    <include>CoverflowMusicThumbReflectionDims</include>
-    <texture flipy="true" diffuse="DiffuseMirror.png"/>
+    <posx>0</posx>
+    <posy>350</posy>
+    <width>350</width>
+    <height>350</height>
+    <texture flipy="true" diffuse="DiffuseMirror.png" background="true"/>
   </include>
 
   <include name="CoverflowMainLabel">
@@ -3287,9 +3351,24 @@
     <animation effect="slide" time="700" tween="circle" easing="in" start="0,0" end="700,0">WindowClose</animation>
   </include>
 
+  <constant name="VideOSDControlButtonWidth">49</constant>
+
+  <constant name="VideoOSDPlayerControlsSeparatorWidth">248</constant>
+
+  <constant name="VideoOSDBkmkBtnWidth">240</constant>
+
+  <constant name="VideoOSDBkmkThumbAreaWidth">146</constant>
+  <constant name="VideoOSDBkmkThumbImageWidth">134</constant>
+
+  <constant name="VideoOSDSettingsTextWidth">380</constant>
+
   <include name="VideoOSDSeekIcon">
     <width>64</width>
     <height>64</height>
+  </include>
+
+  <include name="VideoOSDVisible">
+    <visible>[Window.IsActive(VideoOSD) | Window.IsActive(MusicOSD) | [Window.IsActive(FullScreenVideo) + [Player.Seeking | Player.DisplayAfterSeek | Player.ShowInfo | Player.Paused | Player.Forwarding | Player.Rewinding]]] + !Window.IsActive(145)</visible>
   </include>
 
   <!-- Music OSD -->
@@ -3327,6 +3406,10 @@
     <animation effect="slide" time="700" tween="circle" easing="out" start="-1400,0" end="0,0">WindowOpen</animation>
     <animation effect="slide" time="700" tween="circle" easing="out" start="0,0" end="-1400,0">Hidden</animation>
     <animation effect="slide" time="700" tween="circle" easing="out" start="0,0" end="-1400,0">WindowClose</animation>
+  </include>
+
+  <include name="MusicNowPlayingHomeSlideAnim">
+    <animation effect="slide" start="0,0" end="770,0" time="0" condition="Window.IsActive(Home) + !Skin.HasSetting(ShowHomeNPOnLeft)">Conditional</animation>
   </include>
 
   <include name="MusicOSDControlButton">
@@ -3506,6 +3589,9 @@
     </control>
   </include>
 
+  <constant name="MusicNPTextWidth">352</constant>
+  <constant name="MusicNPHomeLeftTextWidth">250</constant>
+
   <include name="MusicNPText">
     <width>MusicNPTextWidth</width>
   </include>
@@ -3515,11 +3601,13 @@
   </include>
 
   <include name="MusicNowPlayingText">
-    <include>MusicNowPlayingTextDims</include>
+    <posx>124</posx>
     <scroll>false</scroll>
-    <include condition="![Window.IsActive(Home) + !Skin.HasSetting(HomeBladeCentre) + Skin.HasSetting(ShowHomeNPOnLeft)]">MusicNPText</include>
-    <include condition="[Window.IsActive(Home) + !Skin.HasSetting(HomeBladeCentre) + Skin.HasSetting(ShowHomeNPOnLeft)]">MusicNPHomeLeftText</include>
+    <include condition="![Window.IsActive(Home) + Skin.HasSetting(ShowHomeNPOnLeft)]">MusicNPText</include>
+    <include condition="[Window.IsActive(Home) + Skin.HasSetting(ShowHomeNPOnLeft)]">MusicNPHomeLeftText</include>
   </include>
+
+  <constant name="MusicNextPrevTextTextWidth">330</constant>
 
   <include name="MusicNextPrevText">
     <width>MusicNextPrevTextTextWidth</width>
@@ -3528,15 +3616,18 @@
   <include name="MusicNextPrevTrackInfo">
     <textcolor>Unfocused</textcolor>
     <scroll>false</scroll>
-    <include condition="![Window.IsActive(Home) + !Skin.HasSetting(HomeBladeCentre) + Skin.HasSetting(ShowHomeNPOnLeft)]">MusicNextPrevText</include>
-    <include condition="[Window.IsActive(Home) + !Skin.HasSetting(HomeBladeCentre) + Skin.HasSetting(ShowHomeNPOnLeft)]">MusicNPHomeLeftText</include>
+    <include condition="![Window.IsActive(Home) + Skin.HasSetting(ShowHomeNPOnLeft)]">MusicNextPrevText</include>
+    <include condition="[Window.IsActive(Home) + Skin.HasSetting(ShowHomeNPOnLeft)]">MusicNPHomeLeftText</include>
   </include>
   
   <include name="MusicNowPlayingDetails">
     <control type="group">
       <control type="image" id="0">
         <description>album cover</description>
-        <include>MusicNowPlayingCoverDims</include>
+        <posx>-8</posx>
+        <posy>-8</posy>
+        <width>130</width>
+        <height>130</height>
         <info>MusicPlayer.Cover</info>
         <aspectratio>stretch</aspectratio>
         <bordertexture border="14">ThumbShadow2.png</bordertexture>
@@ -3577,7 +3668,8 @@
       </control>
 
       <control type="group">
-        <include>MusicNextPrevTextDims</include>
+        <posx>124</posx>
+        <posy>86</posy>
         <visible>!Skin.HasSetting(HideNowPlayingMusicInfo) + !Window.IsActive(PlayerControls)</visible>
         <include>MusicNowPlayingSlideLeft</include>
 
@@ -3613,17 +3705,13 @@
       <include>MusicNowPlayingSlideLeft</include>
       <include>MusicNowPlayingHomeSlideAnim</include>
 
-      <control type="image">
+      <control type="group">
         <description>Background</description>
-        <include>MusicNowPlayingBGDims</include>
-        <include>DialogBGTexture</include>
-        <visible>Skin.HasTheme(lite)</visible>
-      </control>
-      <control type="image">
-        <description>Background</description>
-        <include>MusicNowPlayingBGDims</include>
-        <texture>DialogProgressBG.png</texture>
-        <visible>!Skin.HasTheme(lite)</visible>
+        <posx>0</posx>
+        <posy>-14</posy>
+        <visible>!Window.IsActive(Home) | [Window.IsActive(Home) + !Skin.HasSetting(ShowHomeNPOnLeft)]</visible>
+
+        <include>ProgressDialogBG</include>
       </control>
 
       <control type="group">
@@ -3756,14 +3844,33 @@
       </control>
     </control>
   </include>
-  
+
+  <include name="MusicOverlayNowPlayingDims">
+    <posx>0</posx>
+    <posy>74</posy>
+  </include>
+
   <!-- Music Vis -->
   <include name="MusicVisMediaInfoVisible">
     <visible>Player.ShowInfo | Window.IsActive(120) | Window.IsActive(PlayerControls) | Window.IsVisible(script-XBMC_Lyrics-main.xml)</visible>
   </include>
 
+  <constant name="MusicVisLabelWidth">330</constant>
+
+  <include name="MusicVisAlbumCoverImgDims">
+    <width>MusicVisLabelWidth</width>
+    <height>250</height>
+  </include>
+
+  <include name="MusicVisLabelDims">
+    <posx>20</posx>
+    <width>MusicVisLabelWidth</width>
+  </include>
+
+  <constant name="MusicVisRatingXoffset">0</constant>
+
   <include name="MusicVisBottomOSDText">
-    <include>MusicVisBottomOSDTextDims</include>
+    <width>460</width>
     <align>left</align>
     <scroll>true</scroll>
   </include>
@@ -3813,7 +3920,8 @@
   </include>
 
   <include name="MusicVisLyricsButton">
-    <include>MusicVisLyricsLabelDims</include>
+    <posx>100</posx>
+    <posy>564</posy>
     <label>31223</label>
     <include>MusicVisLyricsOnClick</include>
     <visible>!Window.IsVisible(script-XBMC_Lyrics-main.xml) + !Control.HasFocus(503)</visible>
@@ -3864,7 +3972,9 @@
   </include>
 
   <include name="MusicBottomVisSelectBtn">
-    <include>MusicBottomVisSelectBtnDims</include>
+    <posx>970</posx>
+    <posy>575</posy>
+    <width>235</width>
     <label>-</label>
     <font>SmallTitleCapsFont</font>
     <textcolor>Selected</textcolor>
@@ -3877,12 +3987,54 @@
     <ondown>500</ondown>
   </include>
 
+  <include name="MusicVisSlideAnim">
+    <animation type="WindowOpen" reversible="true" condition="!Window.IsVisible(script-XBMC_Lyrics-main.xml)">
+      <effect type="fade" time="1000" />
+      <effect type="slide" tween="cubic" start="-320,0" end="0,0" time="700" />
+    </animation>
+    <animation type="WindowClose" reversible="true">
+      <effect type="fade" start="100" end="0" time="100" />
+    </animation>
+    <animation type="Visible" reversible="true" condition="!Window.IsVisible(script-XBMC_Lyrics-main.xml)">
+      <effect type="fade" time="1000" />
+      <effect type="slide" tween="cubic" start="-320,0" end="0,0" time="700" />
+    </animation>
+    <animation type="Hidden" reversible="true" condition="!Window.IsVisible(script-XBMC_Lyrics-main.xml)">
+      <effect type="fade" time="300" />
+      <effect type="slide" tween="cubic" start="0,0" end="-320,0" time="700" />
+    </animation>
+    <animation type="Conditional" reversible="true" condition="Window.IsActive(script-XBMC_Lyrics-main.xml)">
+      <effect type="fade" start="100" end="0" time="1000" />
+      <effect type="slide" tween="cubic" start="0,0" end="540,0" time="700" delay="90" />
+    </animation>
+    <animation type="Conditional" reversible="true" condition="Window.Previous(script-XBMC_Lyrics-main.xml)">
+      <effect type="fade" start="0" end="100" time="0" />
+      <effect type="slide" tween="cubic" start="540,0" end="0,0" time="700" delay="90" />
+    </animation>
+  </include>
+
+  <constant name="MusicVisControlBtnWidth">45</constant>
+  <constant name="MusicVisControlBtnHeight">45</constant>
+
+  <include name="MusicVisControlBtnDims">
+    <width>MusicVisControlBtnWidth</width>
+    <height>MusicVisControlBtnHeight</height>
+  </include>
+
+  <include name="MusicVisExtraBtnDims">
+    <width>38</width>
+    <height>38</height>
+  </include>
+
   <include name="MusicVisControls">
     <control type="group">
       <visible>!Skin.HasSetting(ShowHorizMusicVis)</visible>
 
       <control type="group" id="100">
-        <include>MusicVisControlsDims</include>
+        <posx>8</posx>
+        <posy>590</posy>
+        <width>280</width>
+        <height>MusicVisControlBtnHeight</height>
         <visible>!Window.IsVisible(script-XBMC_Lyrics-main.xml) + !Skin.HasSetting(ShowHorizMusicVis)</visible>
         <include>MusicVisSlideAnim</include>
 
@@ -4071,7 +4223,9 @@
       </control>
 
       <control type="grouplist" id="200">
-        <include>MusicVisExtraControlsDims</include>
+        <posx>29</posx>
+        <posy>630</posy>
+        <height>40</height>
         <itemgap>8</itemgap>
         <onup>100</onup>
         <orientation>horizontal</orientation>
@@ -4112,7 +4266,10 @@
     </control>
 
     <control type="group" id="100">
-      <include>MusicVisHorizControlsDims</include>
+      <posx>650</posx>
+      <posy>560</posy>
+      <width>1280</width>
+      <height>45</height>
       <visible>!Window.IsVisible(script-XBMC_Lyrics-main.xml) + Skin.HasSetting(ShowHorizMusicVis) + !Control.HasFocus(503)</visible>
       <defaultcontrol>3</defaultcontrol>
       <include>VideoOSDSlide</include>
@@ -4354,11 +4511,7 @@
     </control>
   </include>
 
-
   <constant name="MusicVisBottomCtlsSepWidth">70</constant>
-
-
-
 
   <constant name="MusicVisBtmNextPrevWidth">465</constant>
 
@@ -4368,9 +4521,9 @@
   <constant name="SettingsTextXOffset">34</constant>
 
   <include name="SettingsSubBlade">
-    <include>SettingsSubBladeDims</include>
-    <animation effect="slide" tween="back" end="-860,0" time="200" delay="0" condition="Window.Next(0) + !Skin.HasSetting(HomeBladeCentre)">WindowClose</animation>
-    <animation effect="slide" tween="back" end="-220,0" time="200" delay="0" condition="Window.Next(0) + Skin.HasSetting(HomeBladeCentre)">WindowClose</animation>
+    <posx>754</posx>
+    <posy>351</posy>
+    <animation effect="slide" tween="back" end="-860,0" time="200" delay="0" condition="Window.Next(0)">WindowClose</animation>
     <animation effect="fade" time="300" condition="Window.Next(0)">WindowClose</animation>
     <animation effect="fade" time="200" condition="!Window.Next(0) + !Window.Next(SettingsCategory.xml) + !Window.Next(1001)">WindowClose</animation>
 
@@ -4383,7 +4536,9 @@
   </include>
 
   <include name="SettingsSideMenu">
-    <include>SettingsSideMenuDims</include>
+    <posx>72</posx>
+    <width>219</width>
+    <height>500</height>
     <scrolltime>200</scrolltime>
 
     <itemlayout width="300" height="HomeSideMenuItemHeight">
@@ -4397,8 +4552,11 @@
     </itemlayout>
   </include>
 
+  <constant name="SettingsCategoryBtnWidth">218</constant>
+
   <include name="SettingsCategoryButton">
-    <include>SettingsCategoryButtonDims</include>
+    <width>SettingsCategoryBtnWidth</width>
+    <height>43</height>
     <texturefocus>HomeBladeSubFO2.png</texturefocus>
     <texturenofocus>HomeBladeSubNF2.png</texturenofocus>
     <align>left</align>
@@ -4419,32 +4577,32 @@
       <width>846</width>
       <height>720</height>
       <texture border="0,0,500,0">HomeBladeLeft.png</texture>
-      <animation effect="slide" tween="cubic" start="0,0" end="180,0" time="300" delay="100" condition="Window.Next(0) + !Window.Next(SettingsCategory.xml) + !Window.Next(1001) + !Skin.HasSetting(HomeBladeCentre)">WindowClose</animation>
-      <animation effect="slide" tween="cubic" start="0,0" end="620,0" time="300" delay="100" condition="Window.Next(0) + !Window.Next(SettingsCategory.xml) + !Window.Next(1001) + Skin.HasSetting(HomeBladeCentre)">WindowClose</animation>
-      <animation effect="slide" tween="cubic" start="0,0" end="-670,0" time="700" delay="100" condition="!Window.Next(0) + !Window.Next(SettingsCategory.xml) + !Window.Next(1001) + !Skin.HasSetting(HomeBladeCentre)">WindowClose</animation>
-      <animation effect="slide" tween="cubic" start="0,0" end="-230,0" time="800" delay="100" condition="!Window.Next(0) + !Window.Next(SettingsCategory.xml) + !Window.Next(1001) + Skin.HasSetting(HomeBladeCentre)">WindowClose</animation>
+      <animation effect="slide" tween="cubic" start="0,0" end="180,0" time="300" delay="100" condition="Window.Next(0) + !Window.Next(SettingsCategory.xml) + !Window.Next(1001)">WindowClose</animation>
+      <animation effect="slide" tween="cubic" start="0,0" end="-670,0" time="700" delay="100" condition="!Window.Next(0) + !Window.Next(SettingsCategory.xml) + !Window.Next(1001)">WindowClose</animation>
     </control>
   </include>
 
   <include name="SettingsCentreBladeBG">
-    <include>SettingsCentreBladeBGDims</include>
+    <posx>210</posx>
+    <posy>0</posy>
+    <width>588</width>
+    <height>720</height>
     <texture>Black.png</texture>
     <colordiffuse>aabbbbbb</colordiffuse>
   </include>
 
   <include name="SettingsCentreBlade">
-    <include>SettingsCentreBladeDims</include>
+    <posx>210</posx>
+    <posy>0</posy>
+    <width>630</width>
+    <height>720</height>
     <include>HomeBladeSubTexture</include>
   </include>
 
   <include name="SettingsTextArea">
     <control type="group">
-<!--
-      <animation effect="fade" time="200" condition="!Window.Next(0) + !Window.Next(SettingsCategory.xml) + !Window.Next(1001)">WindowClose</animation>
-      <animation effect="fade" time="200" delay="800" condition="Window.Next(0) + !Window.Next(SettingsCategory.xml) + !Window.Next(1001)">WindowClose</animation>
--->
-      <animation effect="zoom" tween="linear" center="411,0" start="100,100" end="0,100" time="200" delay="100" condition="Window.Next(0) + !Window.Next(SettingsCategory.xml) + !Window.Next(1001) + !Skin.HasSetting(HomeBladeCentre)">WindowClose</animation>
-      <animation effect="zoom" tween="linear" center="851,0" start="100,100" end="0,100" time="200" delay="100" condition="Window.Next(0) + !Window.Next(SettingsCategory.xml) + !Window.Next(1001) + Skin.HasSetting(HomeBladeCentre)">WindowClose</animation>
+      <animation effect="zoom" tween="linear" center="411,0" start="100,100" end="0,100" time="200" delay="100" condition="Window.Next(0) + !Window.Next(SettingsCategory.xml) + !Window.Next(1001)">WindowClose</animation>
+      <animation effect="slide" tween="cubic" start="0,0" end="-900,0" time="200" delay="100" condition="[Window.Next(MyVideoFiles) | Window.Next(MyVideoLibrary) | Window.Next(Settings)] + !Window.Next(SettingsCategory.xml) + !Window.Next(1001)">WindowClose</animation>
 
       <control type="image">
         <include>SettingsCentreBladeBG</include>
@@ -4457,7 +4615,9 @@
   </include>
 
   <include name="SettingsOptionsArea">
-    <include>SettingsOptionsAreaDims</include>
+    <posx>100</posx>
+    <posy>150</posy>
+    <width>750</width>
     <animation type="WindowOpen">
       <effect type="fade" time="200" />
     </animation>
@@ -4468,21 +4628,28 @@
   </include>
 
   <include name="SettingsUpperTitle">
-    <include>SettingsUpperTitleDims</include>
+    <posx>680</posx>
+    <posy>-50</posy>
+    <width>700</width>
     <scroll>true</scroll>
     <align>right</align>
     <font>XLargeDefaultCapsFont</font>
   </include>
 
   <include name="SettingsLowerTitle">
-    <include>SettingsLowerTitleDims</include>
+    <posx>645</posx>
+    <posy>-20</posy>
+    <width>700</width>
     <scroll>true</scroll>
     <align>right</align>
     <font>XXXLargeTitleCapsFont</font>
   </include>
 
   <include name="CustomSettingsList">
-    <include>CustomSettingsListDims</include>
+    <posx>105</posx>
+    <posy>65</posy>
+    <width>584</width>
+    <height>400</height>
     <itemgap>0</itemgap>
     <onright>101</onright>
     <orientation>vertical</orientation>
@@ -4490,7 +4657,7 @@
   </include>
 
   <constant name="SysInfoTextPosX">135</constant>
-  
+
   <include name="MenuItemNFTexture">
     <texture border="128,4,155,4">MenuItemNF.png</texture>
   </include>
@@ -4504,7 +4671,10 @@
   </include>
 
   <include name="GeneralSkinOption">
-    <include>GeneralSkinOptionDims</include>
+    <width>623</width>
+    <height>43</height>
+    <textoffsetx>45</textoffsetx>
+    <radioposx>560</radioposx>
     <textcolor>Focused</textcolor>
     <disabledcolor>Unfocused</disabledcolor>
     <include>MenuItemNFTextureNF</include>
@@ -4532,6 +4702,8 @@
     <timeperimage>3000</timeperimage>
     <include>CustomBGSettingThumb</include>
   </include>
+
+  <constant name="SettingsCategoryTextWidth">500</constant>
 
   <include name="SettingsCategoryMenu">
     <control type="group">
@@ -4571,7 +4743,10 @@
 
       <control type="wraplist" id="1000">
         <description>Settings Menu</description>
-        <include>SettingsCategoryMenuListDims</include>
+        <posx>248</posx>
+        <posy>134</posy>
+        <width>600</width>
+        <height>100</height>
         <onup>1000</onup>
         <ondown>5</ondown>
         <onleft>1000</onleft>
@@ -4648,6 +4823,22 @@
         </content>
       </control>
     </control>
+  </include>
+
+  <include name="SettingsCatLeftArrowDims">
+    <posx>765</posx>
+    <posy>149</posy>
+    <width>16</width>
+    <height>16</height>
+    <animation effect="rotate" center="765,149" start="-90" end="-90" time="0" condition="true">Conditional</animation>
+  </include>
+
+  <constant name="SettingsCatTextWidth">600</constant>
+
+  <include name="SettingsOptionsScrollbarDims">
+    <posx>702</posx>
+    <posy>65</posy>
+    <height>400</height>
   </include>
 
   <!-- System Info screen -->
@@ -4770,7 +4961,7 @@
 
   <include name="FileMgrFileItemFOImage">
     <width>FileMgrDirectoryWidth</width>
-    <height>FileMgrFileItemHeight</height>
+    <height>34</height>
     <texture>MenuItemFO.png</texture>
   </include>
 
@@ -4857,6 +5048,30 @@
                       <control type="image">
                         <include>FileMgrFileItemDivider</include>
                       </control>
+                      
+                      <control type="group">
+                        <posy>FileMgrFileItemHeight</posy>
+
+                        <control type="image">
+                          <include>FileMgrFileItemDivider</include>
+                        </control>
+
+                        <control type="group">
+                          <posy>FileMgrFileItemHeight</posy>
+
+                          <control type="image">
+                            <include>FileMgrFileItemDivider</include>
+                          </control>
+
+                          <control type="group">
+                            <posy>FileMgrFileItemHeight</posy>
+                
+                            <control type="image">
+                              <include>FileMgrFileItemDivider</include>
+                            </control>
+                          </control>
+                        </control>
+                      </control>
                     </control>
                   </control>
                 </control>
@@ -4887,6 +5102,7 @@
   <constant name="FileMgrInfoTitleHeight">28</constant>
 
   <include name="FileMgrInfoCaption">
+    <posy>4</posy>
     <font>SmallTitleCapsFont</font>
     <textcolor>Unfocused</textcolor>
   </include>
@@ -4899,7 +5115,7 @@
     <textcolor>Unfocused</textcolor>
   </include>
 
-  <constant name="FileMgrInfoHeight">24</constant>
+  <constant name="FileMgrInfoHeight">28</constant>
 
   <include name="FileMgrDriveInfoValue">
     <width>170</width>
@@ -4923,6 +5139,7 @@
     <width>98</width>
     <height>98</height>
     <info>ListItem.Icon</info>
+    <texture background="true" />
     <aspectratio align="left" aligny="top">keep</aspectratio>
   </include>
 
@@ -4956,6 +5173,7 @@
     <width>140</width>
     <height>140</height>
     <info>ListItem.Icon</info>
+    <texture background="true" />
     <aspectratio>keep</aspectratio>
   </include>
 

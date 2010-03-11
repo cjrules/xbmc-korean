@@ -21,6 +21,8 @@
 
       <control type="group">
         <posy>224</posy>
+        <animation effect="slide" time="400" tween="circle" easing="out" start="0,600" end="0,0">WindowOpen</animation>
+        <animation effect="slide" time="100" tween="circle" easing="in" start="0,0" end="0,600">WindowClose</animation>
 
         <control type="group">
           <include>FileMgrDividersBG</include>
@@ -43,7 +45,7 @@
               <onup>20</onup>
               <ondown>20</ondown>
               <include>FileMgrFilesList</include>
-  
+
               <itemlayout height="FileMgrFileItemHeight">
                 <control type="label">
                   <include>FileMgrFileItemLabel</include>
@@ -52,7 +54,7 @@
                   <include>FileMgrFileItemLabel2</include>
                 </control>
               </itemlayout>
-  
+
               <focusedlayout height="FileMgrFileItemHeight">
                 <control type="image">
                   <include>FileMgrFileItemFOImage</include>
@@ -85,7 +87,7 @@
           <control type="group">
             <include>FileMgrDividersBG</include>
           </control>
-  
+
           <control type="label" id="102">
             <description>Current Directory</description>
             <include>FileMgrDirectoryLabel</include>
@@ -100,7 +102,7 @@
               <onup>21</onup>
               <ondown>21</ondown>
               <include>FileMgrFilesList</include>
-  
+
               <itemlayout height="FileMgrFileItemHeight">
                 <control type="label">
                   <include>FileMgrFileItemLabel</include>
@@ -109,7 +111,7 @@
                   <include>FileMgrFileItemLabel2</include>
                 </control>
               </itemlayout>
-  
+
               <focusedlayout height="FileMgrFileItemHeight">
                 <control type="image">
                   <include>FileMgrFileItemFOImage</include>
@@ -142,16 +144,8 @@
           <control type="image">
             <width>296</width>
             <height>504</height>
-            <texture>Black.png</texture>
-            <colordiffuse>99cccccc</colordiffuse>
-            <visible>Skin.HasTheme(lite)</visible>
-          </control>
-          <control type="image">
-            <width>296</width>
-            <height>504</height>
             <texture>FileMgrInfoPanel.png</texture>
             <colordiffuse>99cccccc</colordiffuse>
-            <visible>!Skin.HasTheme(lite)</visible>
           </control>
 
           <control type="group">
@@ -163,7 +157,7 @@
               <label>$LOCALIZE[10007]</label>
               <include>FileMgrInfoTitle</include>
             </control>
-            
+
             <control type="group">
               <description>IP Address</description>
               <posy>FileMgrInfoTitleHeight</posy>
@@ -173,7 +167,7 @@
                 <include>FileMgrInfoCaption</include>
               </control>
               <control type="label">
-                <label>$LOCALIZE[150]: $INFO[Network.IPAddress]</label>
+                <label>$INFO[Network.IPAddress]</label>
                 <include>FileMgrInfoValue</include>
               </control>
 
@@ -206,7 +200,7 @@
                   <control type="group">
                     <description>Free RAM</description>
                     <posy>FileMgrInfoHeight</posy>
-    
+
                     <control type="label">
                       <label>$LOCALIZE[31035]</label>
                       <include>FileMgrInfoCaption</include>
@@ -258,7 +252,7 @@
                   <control type="group">
                     <description>E Drive</description>
                     <posy>FileMgrInfoHeight</posy>
-  
+
                     <control type="label">
                       <label>E $LOCALIZE[155]</label>
                       <include>FileMgrInfoCaption</include>
@@ -271,7 +265,7 @@
                     <control type="group">
                       <description>F Drive</description>
                       <posy>FileMgrInfoHeight</posy>
-    
+
                       <control type="label">
                         <label>F $LOCALIZE[155]</label>
                         <include>FileMgrInfoCaption</include>

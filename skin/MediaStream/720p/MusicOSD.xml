@@ -16,12 +16,20 @@
       </control>
 
       <control type="image" id="1">
-        <include>MusicBottomVisSelLeftArrowDims</include>
+        <posx>935</posx>
+        <posy>578</posy>
+        <width>16</width>
+        <height>16</height>
+        <animation effect="rotate" center="935,578" start="-90" end="-90" time="0" condition="true">Conditional</animation>
         <texture>ArrowDownFO.png</texture>
         <visible>Skin.HasSetting(ShowHorizMusicVis) + Control.HasFocus(503)</visible>
       </control>
       <control type="image" id="1">
-        <include>MusicBottomVisSelRightArrowDims</include>
+        <posx>1250</posx>
+        <posy>578</posy>
+        <width>16</width>
+        <height>16</height>
+        <animation effect="rotate" center="1250,578" start="-90" end="-90" time="0" condition="true">Conditional</animation>
         <texture>ArrowUpFO.png</texture>
         <visible>Skin.HasSetting(ShowHorizMusicVis) + Control.HasFocus(503)</visible>
       </control>

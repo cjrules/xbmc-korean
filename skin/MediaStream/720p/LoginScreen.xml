@@ -13,7 +13,6 @@
 			<height>720</height>
 			<texture>HomeBladeRight.png</texture>
 			<include>HomeSlideRight</include>
-			<visible>!Skin.HasTheme(lite)</visible>
 		</control>
 
 		<control type="image">
@@ -149,7 +148,6 @@
 		
 		<control type="group">
 			<include>HomeSlideRight</include>
-			<visible>!Skin.HasTheme(lite)</visible>
 			
 			<control type="group">
 				<control type="image">

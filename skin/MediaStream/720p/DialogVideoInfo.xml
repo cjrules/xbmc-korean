@@ -86,7 +86,8 @@
 
             <control type="button" id="6">
               <description>Refresh</description>
-              <posx>MoviesInfoRefreshBtnPosX</posx>
+              <posx>123</posx>
+              <width>80</width>
               <include>VideoInfoRefreshBtn</include>
             </control>
 
@@ -146,11 +147,11 @@
                 <info>ListItem.MPAA</info>
                 <include>MediaInfoWideValue</include>
               </control>
-          
+
               <control type="group">
                 <description>Runtime</description>
                 <posy>VideoInfoDetailsGap</posy>
-          
+
                 <control type="label">
                   <description>Caption</description>
                   <label>$LOCALIZE[2050]</label>
@@ -250,7 +251,8 @@
 
             <control type="button" id="6">
               <description>Refresh</description>
-              <posx>TVShowInfoRefreshBtnPosX</posx>
+              <posx>76</posx>
+              <width>80</width>
               <include>VideoInfoRefreshBtn</include>
             </control>
 
@@ -314,11 +316,14 @@
             </control>
 
             <control type="group">
-              <include>TVShowInfoEpsDetailsPos</include>
+              <posx>-190</posx>
+              <posy>156</posy>
               <visible>!IsEmpty(ListItem.Property(unwatchedepisodes)) | !IsEmpty(ListItem.Property(watchedepisodes))</visible>
 
               <control type="label">
-                <include>TVShowInfoEpsLabelDims</include>
+                <posx>436</posx>
+                <posy>12</posy>
+                <width>100</width>
                 <label>$LOCALIZE[20360]</label>
                 <include>MediaInfoCaption</include>
               </control>
@@ -400,7 +405,8 @@
 
             <control type="button" id="6">
               <description>Refresh</description>
-              <posx>EpisodesInfoRefreshBtnPosX</posx>
+              <posx>221</posx>
+              <width>80</width>
               <include>VideoInfoRefreshBtn</include>
             </control>
 
@@ -417,7 +423,7 @@
 
             <control type="group">
               <description>Episode Title</description>
-          
+
               <control type="label">
                 <description>Caption</description>
                 <label>$LOCALIZE[556]</label>
@@ -428,7 +434,7 @@
                 <info>ListItem.Title</info>
                 <include>MediaInfoWideValue</include>
               </control>
-          
+
               <control type="group">
                 <description>Episode No.</description>
                 <posy>VideoInfoDetailsGap</posy>
@@ -458,7 +464,7 @@
                     <info>ListItem.Season</info>
                     <include>MediaInfoWideValue</include>
                   </control>
-          
+
                   <control type="group">
                     <description>Writer</description>
                     <posy>VideoInfoDetailsGap</posy>
@@ -532,6 +538,33 @@
           </control>
         </control>
       </control>
+
+      <control type="group">
+        <description>Media Flags</description>
+        <posx>30</posx>
+        <posy>504</posy>
+        <animation effect="fade" start="100" end="60" time="0" reversible="false" condition="true">Conditional</animation>
+
+        <control type="group">
+          <include>VideoFlags</include>
+        </control>
+
+        <control type="group">
+          <posx>130</posx>
+          <posy>-12</posy>
+
+          <include>VideoAudioFlags</include>
+          <include>VideoCodecFlags</include>
+
+          <control type="group">
+            <posx>165</posx>
+            <posy>40</posy>
+
+            <include>VideoResFlags</include>
+            <include>VideoAspectFlags</include>
+          </control>
+        </control>
+      </control>
     </control>
 
     <control type="group">
@@ -540,7 +573,8 @@
 
       <control type="textbox" id="4">
         <description>Plot</description>
-        <include>VideoInfoPlotDims</include>
+        <width>450</width>
+        <height>236</height>
         <info>ListItem.Plot</info>
       </control>
 
@@ -580,7 +614,10 @@
       </control>
 
       <control type="image">
-        <include>VideoInfoCastThumbDims</include>
+        <posx>4</posx>
+        <posy>0</posy>
+        <width>80</width>
+        <height>234</height>
         <aspectratio>keep</aspectratio>
         <bordertexture>Grey.png</bordertexture>
         <bordersize>1</bordersize>

@@ -70,7 +70,8 @@
 
     <control type="group">
       <description>Context menu for Favourites dialog</description>
-      <include>FavouritesDialogContextMenuPos</include>
+      <posx>1076</posx>
+      <posy>-60</posy>
       <visible>Window.IsVisible(Favourites)</visible>
       <include>DialogFade</include>
 
@@ -90,7 +91,10 @@
 
       <control type="button" id="1000">
         <description>Buttons</description>
-        <include>FavouritesDialogContextBtnDims</include>
+        <posx>1066</posx>
+        <posy>0</posy>
+        <width>334</width>
+        <height>42</height>
         <texturefocus>HomeBladeSubFO2.png</texturefocus>
         <texturenofocus>-</texturenofocus>
         <label>-</label>

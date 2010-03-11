@@ -82,7 +82,10 @@
        </control>
 
       <control type="grouplist" id="1">
-        <include>VideoOSDBkmkBtnsGroupDims</include>
+        <posx>200</posx>
+        <posy>212</posy>
+        <height>30</height>
+        <itemgap>20</itemgap>
         <orientation>horizontal</orientation>
         <onup>11</onup>
         <ondown>11</ondown>

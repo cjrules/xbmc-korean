@@ -22,7 +22,8 @@
 
         <control type="button" id="10">
           <description>Cancel Button</description>
-          <include>ProgressDialogCancelBtnDims</include>
+          <posx>370</posx>
+          <width>101</width>
           <label>$LOCALIZE[222]</label>
      			<include>DialogButton</include>
         </control>

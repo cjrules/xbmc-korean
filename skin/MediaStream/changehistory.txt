@@ -1,6 +1,96 @@
 History of Changes
 ==================
 
+v1.60 (26/01/2010)
+----- ------------
+
+Added: Fanart for music
+Added: the ability to show weather fanart (needs weather fanart images to be placed in the custom weather backgrounds folder)
+Added: ability to display weather fanart on Weather screen as well as Home screen
+Added: ability to display animated weather on home (requires animated weather images to be setup in an icons folder off of the custom weather backgrounds folder)
+Added: full screen versions of the Home screen backgrounds
+
+Updated: skin now uses a single multiimage for the backgrounds on the Home screen
+Updated: added year to Video OSD for episodes (was going to add air date but that's not available)
+Updated: tidied up the display on the File Manager screen
+Updated: tidied up transition from File Manager screen back to Home screen
+Updated: tidied up positioning of progress bars on scan dialogs
+Updated: Chinese (Simple) translations (thanks to taxigps)
+Updated: Spanish translation (thanks to nabz)
+Updated: Greek translation (thanks to ydatografida)
+
+Fixed: conditions for displaying the various parts of the video OSD
+Fixed: Don't display watched/unwatched overlay in List view or Info List view when viewing seasons data
+Fixed: made sure progress bar does not appear when full screen video is not being viewed
+Fixed: animations on Home screen
+Fixed: issues with options for weather on Home screen
+
+Removed: options to set a single custom background image for any of the screens (if you want a single image then place that image in a folder and set the folder)
+Removed: all the split images that used to be used for the default backgrounds
+
+
+v1.50 (15/01/2010)
+----- ------------
+
+Added: media flags to Media Preview view
+Added: media flags to Info List view
+Added: media flags to Showcase view
+Added: media flags to TV/Wide view
+Added: media flags to Episodes view
+Added: displaying of Latest Movies and Episodes on Home screen
+Added: option to hide latest media info on Home screen
+Added: media flags to video info dialog
+Added: new Media Preview Lite view (similar to Media Preview but without the info)
+Added: Finish Time info to the Video OSD
+Added: extra info to be displayed on scan dialogs
+Added: drop shadow behind poster image in Media Preview view
+Added: displaying of TV Network and episode runtime to Media Preview view for Episodes
+Added: initial version of slider dialog
+Added: license file
+
+Fixed: the sorting options on the Options Menu
+Fixed: position of focus image on sub-menus of Home screen
+Fixed: central background for settings is removed when returning to the credits screen
+Fixed: central part of background should not remain on screen when returning from Settings to Videos
+Fixed: issue with Seasons view
+Fixed: missing progress bar in Video OSD
+Fixed: full screen video so that progress bar doesn't appear when codec info is displayed
+
+Updated: Episodes view so that plot is hidden when episode is unwatched (re-arranged other info)
+Updated: tidied up the buttons on the video info dialogs
+Updated: file path on video info dialog to be file name and path
+Updated: slight tweak to the glossy overlay on the large poster image on Media Preview view
+Updated: background for weather on home
+Updated: tidied up animation for weather on home
+Updated: moved all the positional code back from IncludesDims.xml as the code is now fully developed for 720p (XBMC will handle scaling for other resolutions)
+Updated: background texture used in a number of the smaller dialogs
+Updated: the way the lists are displayed to try and tidy up the way items are shown (work in progress)
+Updated: tweak to the focus image for list items
+Updated: tidied up the fade at the bottom of lists
+Updated: Paused text on Video OSD to be in upper case
+Updated: code to background load full screen images
+Updated: how the background images are displayed to get the fanart backgrounds to background load (smoother navigation)
+Updated: how the info is displayed on a number of views to avoid flickers and stutters and make navigation a bit smoother
+Updated: lightened color of disable text so that it is visible on black backgrounds
+Updated: correctly named all the file icon images
+Updated: XBMC skin version to 2.11
+Updated: tidied up info properties for artists and albums
+Updated: linux build script to deploy latest media script
+Updated: Swedish translation (thanks to blittan)
+
+Removed: faq.txt (as it's completely out of date now)
+Removed: lite theme
+Removed: PAL folder (rely on XBMC to do any re-scaling)
+Removed: IncludesDims.xml file (to simplify the code for future updates and modders)
+Removed: option to have blade on home screen in centre of the display
+Removed: plot from being displayed in Video OSD
+Removed: option to hide fanart on tv show views (fanart will be displayed if it is available)
+Removed: option to display fanart on tv show views (fanart will be displayed if it is available)
+Removed: option for Animated Media Preview view (may get added back as a separate view at a later date)
+Removed: option to hide info in Media Preview view
+Removed: images with Big suffix and also those named with incorrect case
+
+
 v1.00 (01/12/2008)
 ----- ------------
 

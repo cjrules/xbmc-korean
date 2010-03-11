@@ -155,7 +155,8 @@
                         <include>MediaInfoCaption</include>
                       </control>
                       <control type="image">
-                        <include>SongInfoRatingImageDims</include>
+                        <width>76</width>
+                        <height>20</height>
                         <info>ListItem.Rating</info>
                         <include>MediaInfoWideValue</include>
                       </control>

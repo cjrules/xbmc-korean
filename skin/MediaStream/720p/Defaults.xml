@@ -60,8 +60,9 @@
 
   <default type="multiimage">
     <timeperimage>15000</timeperimage>
-		<fadetime>1000</fadetime>
+		<fadetime>700</fadetime>
 		<randomize>true</randomize>
+		<imagepath background="true"/>
   </default>
 
   <default type="textbox">

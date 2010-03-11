@@ -38,10 +38,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(-4).Icon</info>
@@ -55,10 +52,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(-4).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(-4).Icon</info>
@@ -81,10 +75,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(-3).Icon</info>
@@ -98,10 +89,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(-3).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(-3).Icon</info>
@@ -124,10 +112,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(-2).Icon</info>
@@ -141,10 +126,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(-2).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(-2).Icon</info>
@@ -169,10 +151,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(3).Icon</info>
@@ -186,10 +165,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(3).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(3).Icon</info>
@@ -212,10 +188,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(2).Icon</info>
@@ -229,10 +202,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(2).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(2).Icon</info>
@@ -255,10 +225,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(1).Icon</info>
@@ -272,10 +239,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(1).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(1).Icon</info>
@@ -304,10 +268,7 @@
                 <description>Glass overlay</description>
                 <include>CoverflowGlassOverlay</include>
               </control>
-              <control type="image">
-                <include>CoverflowMusicThumbBackdropDims</include>
-                <texture>black.png</texture>
-              </control>
+              <include>CoverflowMusicThumbBackdrop</include>
               <control type="image">
                 <include>CoverflowMusicThumbReflection</include>
                 <info>Container(55).ListItem(0).Icon</info>
@@ -321,10 +282,7 @@
                 <include>CoverflowThumb</include>
                 <info>Container(55).ListItem(0).Icon</info>
               </control>
-              <control type="image">
-                <include>CoverflowThumbBackdropDims</include>
-                <texture>black.png</texture>
-              </control>
+              <include>CoverflowThumbBackdrop</include>
               <control type="image">
                 <include>CoverflowThumbReflection</include>
                 <info>Container(55).ListItem(0).Icon</info>
@@ -348,10 +306,7 @@
                 <description>Glass overlay</description>
                 <include>CoverflowGlassOverlay</include>
               </control>
-              <control type="image">
-                <include>CoverflowMusicThumbBackdropDims</include>
-                <texture>black.png</texture>
-              </control>
+              <include>CoverflowMusicThumbBackdrop</include>
               <control type="image">
                 <include>CoverflowMusicThumbReflection</include>
                 <info>Container(55).ListItem(-1).Icon</info>
@@ -365,10 +320,7 @@
                 <include>CoverflowThumb</include>
                 <info>Container(55).ListItem(-1).Icon</info>
               </control>
-              <control type="image">
-                <include>CoverflowThumbBackdropDims</include>
-                <texture>black.png</texture>
-              </control>
+              <include>CoverflowThumbBackdrop</include>
               <control type="image">
                 <include>CoverflowThumbReflection</include>
                 <info>Container(55).ListItem(-1).Icon</info>
@@ -400,10 +352,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(4).Icon</info>
@@ -417,10 +366,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(4).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(4).Icon</info>
@@ -443,10 +389,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(3).Icon</info>
@@ -460,10 +403,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(3).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(3).Icon</info>
@@ -486,10 +426,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(2).Icon</info>
@@ -503,10 +440,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(2).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(2).Icon</info>
@@ -531,10 +465,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(-3).Icon</info>
@@ -548,10 +479,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(-3).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(-3).Icon</info>
@@ -574,10 +502,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(-2).Icon</info>
@@ -591,10 +516,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(-2).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(-2).Icon</info>
@@ -617,10 +539,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(-1).Icon</info>
@@ -634,10 +553,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(-1).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(-1).Icon</info>
@@ -666,10 +582,7 @@
                 <description>Glass overlay</description>
                 <include>CoverflowGlassOverlay</include>
               </control>
-              <control type="image">
-                <include>CoverflowMusicThumbBackdropDims</include>
-                <texture>black.png</texture>
-              </control>
+              <include>CoverflowMusicThumbBackdrop</include>
               <control type="image">
                 <include>CoverflowMusicThumbReflection</include>
                 <info>Container(55).ListItem(0).Icon</info>
@@ -683,10 +596,7 @@
                 <include>CoverflowThumb</include>
                 <info>Container(55).ListItem(0).Icon</info>
               </control>
-              <control type="image">
-                <include>CoverflowThumbBackdropDims</include>
-                <texture>black.png</texture>
-              </control>
+            <include>CoverflowThumbBackdrop</include>
               <control type="image">
                 <include>CoverflowThumbReflection</include>
                 <info>Container(55).ListItem(0).Icon</info>
@@ -710,10 +620,7 @@
                 <description>Glass overlay</description>
                 <include>CoverflowGlassOverlay</include>
               </control>
-              <control type="image">
-                <include>CoverflowMusicThumbBackdropDims</include>
-                <texture>black.png</texture>
-              </control>
+              <include>CoverflowMusicThumbBackdrop</include>
               <control type="image">
                 <include>CoverflowMusicThumbReflection</include>
                 <info>Container(55).ListItem(1).Icon</info>
@@ -727,10 +634,7 @@
                 <include>CoverflowThumb</include>
                 <info>Container(55).ListItem(1).Icon</info>
               </control>
-              <control type="image">
-                <include>CoverflowThumbBackdropDims</include>
-                <texture>black.png</texture>
-              </control>
+            <include>CoverflowThumbBackdrop</include>
               <control type="image">
                 <include>CoverflowThumbReflection</include>
                 <info>Container(55).ListItem(1).Icon</info>
@@ -759,10 +663,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(-3).Icon</info>
@@ -776,10 +677,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(-3).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(-3).Icon</info>
@@ -802,10 +700,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(-2).Icon</info>
@@ -819,10 +714,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(-2).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(-2).Icon</info>
@@ -845,10 +737,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(-1).Icon</info>
@@ -862,10 +751,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(-1).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(-1).Icon</info>
@@ -888,10 +774,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(3).Icon</info>
@@ -905,10 +788,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(3).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(3).Icon</info>
@@ -931,10 +811,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(2).Icon</info>
@@ -948,10 +825,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(2).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(2).Icon</info>
@@ -974,10 +848,7 @@
               <description>Glass overlay</description>
               <include>CoverflowGlassOverlay</include>
             </control>
-            <control type="image">
-              <include>CoverflowMusicThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+              <include>CoverflowMusicThumbBackdrop</include>
             <control type="image">
               <include>CoverflowMusicThumbReflection</include>
               <info>Container(55).ListItem(1).Icon</info>
@@ -991,10 +862,7 @@
               <include>CoverflowThumb</include>
               <info>Container(55).ListItem(1).Icon</info>
             </control>
-            <control type="image">
-              <include>CoverflowThumbBackdropDims</include>
-              <texture>black.png</texture>
-            </control>
+            <include>CoverflowThumbBackdrop</include>
             <control type="image">
               <include>CoverflowThumbReflection</include>
               <info>Container(55).ListItem(1).Icon</info>
@@ -1064,32 +932,28 @@
         <description>Shadow Overlays</description>
 
         <control type="group">
-          <visible>!Skin.HasTheme(lite) | ![[Container.Content(tvshows) | Container.Content(episodes)] + Skin.HasSetting(UseLowTVOverlay) + Control.IsVisible(55)]</visible>
+          <visible>![[Container.Content(tvshows) | Container.Content(episodes)] + Skin.HasSetting(UseLowTVOverlay) + Control.IsVisible(55)]</visible>
 
           <control type="image">
-            <include>CoverflowLeftShadowOverlayDims</include>
+            <include>CoverflowLeftShadowOverlay</include>
             <include>CoverflowShadowOverlayVertDims</include>
-            <texture>BlackGradient.png</texture>
           </control>
           <control type="image">
-            <include>CoverflowRightShadowOverlayDims</include>
+            <include>CoverflowRightShadowOverlay</include>
             <include>CoverflowShadowOverlayVertDims</include>
-            <texture flipx="true">BlackGradient.png</texture>
           </control>
         </control>
 
         <control type="group">
-          <visible>Skin.HasTheme(lite) + [Container.Content(tvshows) + Skin.HasSetting(UseLowTVOverlay) + Control.IsVisible(55)]</visible>
+          <visible>[Container.Content(tvshows) + Skin.HasSetting(UseLowTVOverlay) + Control.IsVisible(55)]</visible>
 
           <control type="image">
-            <include>CoverflowLeftShadowOverlayDims</include>
+            <include>CoverflowLeftShadowOverlay</include>
             <include>CoverflowShadowOverlayLowVertDims</include>
-            <texture>BlackGradient.png</texture>
           </control>
           <control type="image">
-            <include>CoverflowRightShadowOverlayDims</include>
+            <include>CoverflowRightShadowOverlay</include>
             <include>CoverflowShadowOverlayLowVertDims</include>
-            <texture flipx="true">BlackGradient.png</texture>
           </control>
         </control>
       </control>

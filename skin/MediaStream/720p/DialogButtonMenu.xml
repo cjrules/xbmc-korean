@@ -66,8 +66,7 @@
 					<control type="image">
 						<description>Master Button Overlay</description>
 						<posx>34</posx>
-						<include>ButtonMenuOverlayDims</include>
-						<texture>ButtonMenuGlass.png</texture>
+						<include>ButtonMenuOverlay</include>
 						<visible>System.LoggedOn</visible>
 						<visible>Control.HasFocus(3118)</visible>
 					</control>
@@ -99,8 +98,7 @@
 					<control type="image">
 						<description>System Info Button Overlay</description>
 						<posx>202</posx>
-						<include>ButtonMenuOverlayDims</include>
-						<texture>ButtonMenuGlass.png</texture>
+						<include>ButtonMenuOverlay</include>
 						<visible>System.LoggedOn</visible>
 						<visible>Control.HasFocus(3113)</visible>
 					</control>
@@ -128,8 +126,7 @@
           <control type="image">
 						<description>Profile LoggOff Button Overlay</description>
 						<posx>370</posx>
-						<include>ButtonMenuOverlayDims</include>
-						<texture>ButtonMenuGlass.png</texture>
+						<include>ButtonMenuOverlay</include>
 						<visible>System.LoggedOn</visible>
 						<visible>Control.HasFocus(3117)</visible>
 					</control>
@@ -153,7 +150,10 @@
 
           <control type="image">
             <description>Shutdown Timer Arrow</description>
-            <include>ButtonMenuSleepArrowDims</include>
+            <posx>598</posx>
+            <posy>225</posy>
+            <width>20</width>
+            <height>20</height>
             <texture>ArrowDownNF.png</texture>
             <visible>System.LoggedOn</visible>
             <visible>Control.HasFocus(3112) | Control.HasFocus(3120)</visible>
@@ -161,8 +161,7 @@
 					<control type="image">
 						<description>Shutdown Button Overlay</description>
 						<posx>538</posx>
-						<include>ButtonMenuOverlayDims</include>
-						<texture>ButtonMenuGlass.png</texture>
+						<include>ButtonMenuOverlay</include>
 						<visible>System.LoggedOn</visible>
             <visible>Control.HasFocus(3112) | Control.HasFocus(3120)</visible>
 					</control>
@@ -187,8 +186,7 @@
 					<control type="image">
 						<description>Favourites Button Overlay</description>
 						<posx>706</posx>
-						<include>ButtonMenuOverlayDims</include>
-						<texture>ButtonMenuGlass.png</texture>
+						<include>ButtonMenuOverlay</include>
 						<visible>System.LoggedOn</visible>
 						<visible>Control.HasFocus(3110)</visible>
 					</control>
@@ -212,8 +210,7 @@
 					<control type="image">
 						<description>Restart XBMC Button Overlay</description>
 						<posx>874</posx>
-						<include>ButtonMenuOverlayDims</include>
-						<texture>ButtonMenuGlass.png</texture>
+						<include>ButtonMenuOverlay</include>
 						<visible>System.LoggedOn</visible>
 						<visible>Control.HasFocus(3115)</visible>
 					</control>

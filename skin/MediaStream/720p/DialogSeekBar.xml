@@ -1,13 +1,13 @@
 <window id="115">
   <defaultcontrol>1</defaultcontrol>
-  <visible>Player.Seeking | Player.DisplayAfterSeek | Player.ShowCodec | [Player.ShowInfo + Window.IsActive(FullScreenVideo)] | Window.IsActive(VideoOSD) | Player.Paused | Player.Forwarding | Player.Rewinding</visible>
+   <include>VideoOSDVisible</include>
 
   <controls>
 
     <control type="group">
       <posx>48</posx>
       <posy>657</posy>
-      <visible>!Player.HasAudio + Window.IsActive(FullScreenVideo)</visible>
+      <visible>!Player.HasAudio</visible>
       <include>VideoOSDSlide</include>
 
       <control type="progress" id="23">

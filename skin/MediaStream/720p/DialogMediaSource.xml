@@ -118,7 +118,8 @@
         </control>
 
         <control type="grouplist" id="100">
-          <include>MediaSourceBottomBtnsDims</include>
+          <posx>95</posx>
+          <posy>232</posy>
           <onup>12</onup>
           <onright>9000</onright>
           <orientation>horizontal</orientation>

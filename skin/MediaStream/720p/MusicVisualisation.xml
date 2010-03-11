@@ -75,19 +75,26 @@
 
         <control type="image" id="1">
           <description>media info background image</description>
-          <include>MusicVisBGDims</include>
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>390</width>
+          <height>720</height>
           <texture border="0,0,22,0">VisOsdPanel.png</texture>
         </control>
 
         <control type="image" id="1">
           <description>cover image</description>
-          <include>MusicVisAlbumCoverDims</include>
+          <posx>20</posx>
+          <posy>20</posy>
+          <include>MusicVisAlbumCoverImgDims</include>
           <info>MusicPlayer.Cover</info>
           <aspectratio aligny="bottom">keep</aspectratio>
         </control>
         <control type="image" id="1">
           <description>cover image reflection</description>
-          <include>MusicVisAlbumCoverRflctnDims</include>
+          <posx>20</posx>
+          <posy>269</posy>
+          <include>MusicVisAlbumCoverImgDims</include>
           <info>MusicPlayer.Cover</info>
           <texture flipy="true" diffuse="DiffuseMirror.png">DefaultAlbumCover.png</texture>
           <aspectratio aligny="top">keep</aspectratio>
@@ -203,7 +210,6 @@
 
             <control type="image" id="1">
               <description>Click For Options Arrow</description>
-              <include>MusicVisVertButtonBGDims</include>
               <posx>33</posx>
               <width>256</width>
               <height>32</height>

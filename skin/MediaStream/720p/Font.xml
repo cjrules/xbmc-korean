@@ -4,218 +4,218 @@
 <!-- Default fonts -->
     <font>
       <name>XLargeDefaultFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>32</size>
     </font>
 
     <font>
       <name>XLargeDefaultCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>32</size>
     </font>
 
     <font>
       <name>LargeDefaultFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>24</size>
     </font>
 
     <font>
       <name>LargeDefaultCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>24</size>
     </font>
 
     <font>
       <name>MediumDefaultFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>20</size>
     </font>
 
     <font>
       <name>MediumAltDefaultFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>20</size>
     </font>
 
     <font>
       <name>MediumDefaultCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>20</size>
     </font>
 
     <font>
       <name>MediumSmallDefaultFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>18</size>
     </font>
 
     <font>
       <name>MediumSmallAltDefaultFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>18</size>
     </font>
 
     <font>
       <name>MediumSmallDefaultCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>18</size>
     </font>
 
     <font>
       <name>DefaultFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>16</size>
     </font>
 
     <font>
       <name>AltDefaultFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>16</size>
     </font>
 
     <font>
       <name>DefaultCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>16</size>
     </font>
 
     <font>
       <name>SmallDefaultFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>14</size>
     </font>
 
     <font>
       <name>SmallDefaultCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>14</size>
     </font>
 
     <font>
       <name>SmallerDefaultFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>12</size>
     </font>
 
     <font>
       <name>SmallerDefaultCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>12</size>
     </font>
 
 <!-- Title fonts -->
     <font>
       <name>XXXLargeTitleCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>45</size>
     </font>
 
     <font>
       <name>XLargeTitleFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>36</size>
     </font>
 
     <font>
       <name>XLargeTitleCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>36</size>
     </font>
 
     <font>
       <name>LargeTitleFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>30</size>
     </font>
 
     <font>
       <name>LargeTitleCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>30</size>
     </font>
 
     <font>
       <name>MediumLargeTitleFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>28</size>
     </font>
 
     <font>
       <name>MediumLargeTitleCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>28</size>
     </font>
 
     <font>
       <name>TitleFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>24</size>
     </font>
 
     <font>
       <name>TitleCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>24</size>
     </font>
 
     <font>
       <name>MediumTitleFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>21</size>
     </font>
 
     <font>
       <name>MediumTitleCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>21</size>
     </font>
 
     <font>
       <name>MediumSmallTitleFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>18</size>
     </font>
 
     <font>
       <name>MediumSmallTitleCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>18</size>
     </font>
 
     <font>
       <name>SmallTitleFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>15</size>
     </font>
 
     <font>
       <name>SmallTitleCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>15</size>
     </font>
 
     <font>
       <name>SmallTinyTitleFont</name>
-      <filename>SeoulNamsanMttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>12</size>
     </font>
 
     <font>
       <name>SmallTinyTitleCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>12</size>
     </font>
 
     <font>
       <name>TinyTitleFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>8</size>
     </font>
 
     <font>
       <name>TinyTitleCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>8</size>
     </font>
 
@@ -223,13 +223,13 @@
     <font>
       <name>HomeMenuFocusFont</name>
       <filename>NanumGothicBold.ttf</filename>
-      <size>45</size>
+      <size>50</size>
     </font>
 
     <font>
       <name>HomeMenuInfoFont</name>
       <filename>NanumGothicBold.ttf</filename>
-      <size>28</size>
+      <size>18</size>
     </font>
 
     <font>
@@ -241,39 +241,39 @@
 <!-- Video Fonts -->
     <font>
       <name>VideoDetailXFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>30</size>
     </font>
 
     <font>
       <name>VideoDetailXCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>30</size>
     </font>
 
 <!-- Keyboard Focus Font -->
     <font>
       <name>KeyboardFocusFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>26</size>
     </font>
 
     <font>
       <name>KeyboardFocusCapsFont</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>26</size>
     </font>
 
 <!-- font13 needs to be kept to show debug info etc -->
     <font>
       <name>font13</name>
-      <filename>SeoulNamsanM.ttf</filename>
+      <filename>NanumGothicBold.ttf</filename>
       <size>16</size>
     </font>
 
   </fontset>
 
-  <fontset id="Original" unicode="true">
+  <fontset id="Default (Original)" unicode="true">
 
 <!-- Default fonts -->
     <font>
@@ -1756,122 +1756,122 @@
 <!-- Title fonts -->
     <font>
       <name>XXXLargeTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>45</size>
     </font>
 
     <font>
       <name>XLargeTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>36</size>
     </font>
 
     <font>
       <name>XLargeTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>36</size>
     </font>
 
     <font>
       <name>LargeTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>30</size>
     </font>
 
     <font>
       <name>LargeTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>30</size>
     </font>
 
     <font>
       <name>MediumLargeTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>28</size>
     </font>
 
     <font>
       <name>MediumLargeTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>28</size>
     </font>
 
     <font>
       <name>TitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>24</size>
     </font>
 
     <font>
       <name>TitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>24</size>
     </font>
 
     <font>
       <name>MediumTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>21</size>
     </font>
 
     <font>
       <name>MediumTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>21</size>
     </font>
 
     <font>
       <name>MediumSmallTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>18</size>
     </font>
 
     <font>
       <name>MediumSmallTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>18</size>
     </font>
 
     <font>
       <name>SmallTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>15</size>
     </font>
 
     <font>
       <name>SmallTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>15</size>
     </font>
 
     <font>
       <name>SmallTinyTitleFont</name>
-      <filename>arialttf</filename>
+      <filename>Title.ttf</filename>
       <size>12</size>
     </font>
 
     <font>
       <name>SmallTinyTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>12</size>
     </font>
 
     <font>
       <name>TinyTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>8</size>
     </font>
 
     <font>
       <name>TinyTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>8</size>
     </font>
 
 <!-- Home Screen Fonts -->
     <font>
       <name>HomeMenuFocusFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>50</size>
     </font>
 
@@ -1883,7 +1883,7 @@
 
     <font>
       <name>HomeSubMenuFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>17</size>
     </font>
 
@@ -1903,13 +1903,13 @@
 <!-- Keyboard Focus Font -->
     <font>
       <name>KeyboardFocusFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>26</size>
     </font>
 
     <font>
       <name>KeyboardFocusCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>26</size>
     </font>
 
@@ -2031,122 +2031,122 @@
 <!-- Title fonts -->
     <font>
       <name>XXXLargeTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>45</size>
     </font>
 
     <font>
       <name>XLargeTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>36</size>
     </font>
 
     <font>
       <name>XLargeTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>36</size>
     </font>
 
     <font>
       <name>LargeTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>30</size>
     </font>
 
     <font>
       <name>LargeTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>30</size>
     </font>
 
     <font>
       <name>MediumLargeTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>28</size>
     </font>
 
     <font>
       <name>MediumLargeTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>28</size>
     </font>
 
     <font>
       <name>TitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>24</size>
     </font>
 
     <font>
       <name>TitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>24</size>
     </font>
 
     <font>
       <name>MediumTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>21</size>
     </font>
 
     <font>
       <name>MediumTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>21</size>
     </font>
 
     <font>
       <name>MediumSmallTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>18</size>
     </font>
 
     <font>
       <name>MediumSmallTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>18</size>
     </font>
 
     <font>
       <name>SmallTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>15</size>
     </font>
 
     <font>
       <name>SmallTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>15</size>
     </font>
 
     <font>
       <name>SmallTinyTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>12</size>
     </font>
 
     <font>
       <name>SmallTinyTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>12</size>
     </font>
 
     <font>
       <name>TinyTitleFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>8</size>
     </font>
 
     <font>
       <name>TinyTitleCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>8</size>
     </font>
 
 <!-- Home Screen Fonts -->
     <font>
       <name>HomeMenuFocusFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>50</size>
     </font>
 
@@ -2158,7 +2158,7 @@
 
     <font>
       <name>HomeSubMenuFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>17</size>
     </font>
 
@@ -2178,13 +2178,13 @@
 <!-- Keyboard Focus Font -->
     <font>
       <name>KeyboardFocusFont</name>
-      <filename>arial.ttf</filename>
+      <filename>Title.ttf</filename>
       <size>24</size>
     </font>
 
     <font>
       <name>KeyboardFocusCapsFont</name>
-      <filename>arial.ttf</filename>
+      <filename>TitleCaps.ttf</filename>
       <size>24</size>
     </font>
 

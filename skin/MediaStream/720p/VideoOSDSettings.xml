@@ -4,13 +4,18 @@
 
   <controls>
     <control type="group">
-      <include>VideoOSDSettingsPos</include>
+      <visible>!Window.IsActive(145)</visible>
+      <posx>880</posx>
+      <posy>10</posy>
 
       <include>VideoOSDSlideLeft</include>
 
       <control type="image">
         <description>OSD Background Image</description>
-        <include>VideoOSDSettingsBGDims</include>
+        <posx>-28</posx>
+        <posy>-10</posy>
+        <width>440</width>
+        <height>720</height>
         <texture flipx="true" border="22,0,0,0">VisOsdPanel.png</texture>
       </control>
 
@@ -63,7 +68,11 @@
 
       <control type="spincontrolex" id="9">
         <description>default spincontrolex</description>
-        <include>VideoOSDSettingsSpinControlDims</include>
+        <posx>270</posx>
+        <posy>150</posy>
+        <width>300</width>
+        <textoffsetx>10</textoffsetx>
+        <textoffsety>0</textoffsety>
         <include>DialogTextControl</include>
       </control>
 

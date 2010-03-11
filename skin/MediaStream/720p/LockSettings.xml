@@ -12,7 +12,6 @@
 			<width>235</width>
 			<height>720</height>
 			<texture>HomeRightOverlay.png</texture>
-			<visible>!Skin.HasTheme(lite)</visible>
 		</control>
 
 		<!-- Submenu blade -->
@@ -43,7 +42,7 @@
 				<font>HomeSubMenuFont</font>
 				<align>center</align>
 				<aligny>center</aligny>
-				<radioposx>248</radioposx>
+				<radioposx>178</radioposx>
 				<label>$LOCALIZE[20096]</label>
 				<onleft>-</onleft>
 				<onright>-</onright>

@@ -2,7 +2,7 @@
 <!--Language file translated with Team XBMC Translator-->
 <!--Translator: blittan-->
 <!--Email: blittan@xbmc.org-->
-<!--Date of translation: 01/01/2009-->
+<!--Date of translation: 01/07/2010-->
 <!--$Revision$-->
 <!--Based on english strings version 204-->
 <strings>
@@ -51,6 +51,8 @@
   <string id="31044">av</string>
   <string id="31045">Nyligen tillagda</string>
   <string id="31046">Sökväg till sångtextskriptet</string>
+  <string id="31047">Senaste</string>
+  <string id="31048">Dölj senaste media</string>
   <string id="31051">Spel</string>
   <string id="31052">Emulatorer</string>
   <string id="31053">Program</string>
@@ -84,6 +86,7 @@
   <string id="31125">Biografvisningar</string>
   <string id="31126">TV-serie detaljer</string>
   <string id="31127">Avsnittsdetaljer</string>
+  <string id="31128">Färdig vid</string>
   <string id="31220">Spelas nu</string>
   <string id="31221">Föregående spår</string>
   <string id="31222">Kommande spår</string>

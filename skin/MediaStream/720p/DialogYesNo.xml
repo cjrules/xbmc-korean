@@ -16,7 +16,8 @@
         <include>ConfirmDialogControls</include>
 
         <control type="group">
-          <include>DialogYesNoButtonPos</include>
+          <posy>ConfirmDialogButtonYPos</posy>
+          <posx>98</posx>
 
           <control type="button" id="10">
             <description>No Button</description>
@@ -29,7 +30,8 @@
 
           <control type="button" id="11">
             <description>Yes Button</description>
-            <include>DialogYesNoYesBtnDims</include>
+            <posx>138</posx>
+            <width>DialogYesNoButtonWidth</width>
     			  <label>$LOCALIZE[107]</label>
       			<onleft>10</onleft>
       			<onright>10</onright>

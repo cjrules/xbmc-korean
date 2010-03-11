@@ -10,6 +10,7 @@
     <include>TV</include>
     <include>TVEpisodes</include>
     <include>MediaPreview</include>
+    <include>MediaPreviewLite</include>
     <include>Showcase</include>
     <include>List</include>
     <include>InfoList</include>

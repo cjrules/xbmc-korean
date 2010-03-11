@@ -50,7 +50,10 @@
 
       <control type="grouplist" id="5">
         <description>control_area</description>
-        <include>SettingsCatListDims</include>
+        <posx>105</posx>
+        <posy>65</posy>
+        <width>625</width>
+        <height>400</height>
         <onup>1000</onup>
         <ondown>5</ondown>
         <onleft>5</onleft>
@@ -61,7 +64,11 @@
 
       <control type="button" id="7">
         <description>default_button</description>
-        <include>SettingsCatBtnDims</include>
+        <posx>0</posx>
+        <posy>-10</posy>
+        <width>SettingsCatTextWidth</width>
+        <height>43</height>
+        <textoffsetx>45</textoffsetx>
         <include>MenuItemNFTextureNF</include>
         <texturefocus aspectratio="stretch">MenuItemFO.png</texturefocus>
         <textcolor>Focused</textcolor>
@@ -71,7 +78,10 @@
 
       <control type="radiobutton" id="8">
         <description>default_radio_button</description>
-        <include>SettingsCatRadioBtnDims</include>
+        <width>SettingsCatTextWidth</width>
+        <height>43</height>
+        <textoffsetx>45</textoffsetx>
+        <radioposx>560</radioposx>
         <textcolor>Focused</textcolor>
         <disabledcolor>Unfocused</disabledcolor>
         <include>MenuItemNFTextureNF</include>
@@ -82,7 +92,9 @@
 
       <control type="spincontrolex" id="9">
         <description>default_spincontrol</description>
-        <include>SettingsCatSpinCtlDims</include>
+        <width>SettingsCatTextWidth</width>
+        <height>43</height>
+        <textoffsetx>45</textoffsetx>
         <textcolor>Focused</textcolor>
         <disabledcolor>Unfocused</disabledcolor>
         <include>MenuItemNFTextureNF</include>

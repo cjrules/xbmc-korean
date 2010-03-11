@@ -1,10 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<!--Language file translated with Team XBMC Translator-->
-<!--Translator: airplanez-->
-<!--Email: airplanez@gmail.com-->
-<!--Date of translation: 05/12/2009-->
-<!--$Revision$-->
 <!--Based on english strings version 204-->
+<!--  strings 31000 thru 31999 reserved for skins  -->
+
 <strings>
   <string id="31000">찾기</string>
   <string id="31001">비디오</string>
@@ -13,7 +10,7 @@
   <string id="31004">프로그램</string>
   <string id="31005">날씨</string>
   <string id="31006">시스템</string>
-  <string id="31007">켜기/끄기</string>
+  <string id="31007">종료</string>
   <string id="31008">TV 쇼</string>
   <string id="31011">시청하기</string>
   <string id="31012">들어보기</string>
@@ -51,9 +48,15 @@
   <string id="31044">-</string>
   <string id="31045">최근 추가됨</string>
   <string id="31046">가사 스크립트 경로</string>
+  <string id="31047">최근</string>
+  <string id="31048">최근 추가된 미디어 숨기기</string>
+
+<!--  Programs  -->
   <string id="31051">게임</string>
   <string id="31052">에뮬레이터</string>
   <string id="31053">응용 프로그램</string>
+
+<!--  System  -->
   <string id="31060">설정</string>
   <string id="31061">스크립트</string>
   <string id="31062">파일 관리자</string>
@@ -62,11 +65,15 @@
   <string id="31065">정보</string>
   <string id="31066">새로고침</string>
   <string id="31067">정보</string>
-  <string id="31071">종료</string>
+  
+<!--  Power  -->
+<string id="31071">종료</string>
   <string id="31072">재시작</string>
   <string id="31073">XBMC 새로 고침</string>
   <string id="31074">대시보드</string>
   <string id="31075">스킨 새로고침</string>
+
+<!--  Video  -->
   <string id="31111">영화</string>
   <string id="31112">TV 쇼</string>
   <string id="31113">클립</string>
@@ -84,6 +91,9 @@
   <string id="31125">Theater Times</string>
   <string id="31126">TV 쇼 상세정보</string>
   <string id="31127">에피소드 상세정보</string>
+  <string id="31128">종료 시간</string>
+
+<!--  Music  -->
   <string id="31220">현재 재생</string>
   <string id="31221">이전 트랙</string>
   <string id="31222">이번 트랙</string>
@@ -93,6 +103,8 @@
   <string id="31226">변경</string>
   <string id="31227">사전설정</string>
   <string id="31228">가사</string>
+
+<!--  Settings  -->
   <string id="31601">모양새</string>
   <string id="31602">네트워크</string>
   <string id="31603">스킨</string>
@@ -154,13 +166,17 @@
   <string id="31693">옵션 메뉴에 미리보기 숨김</string>
   <string id="31694">왼쪽에 현재 재생 UI 보기</string>
   <string id="31695">시계에 오전/오후 보기</string>
+  <string id="31696">날씨 애니메이션 보기</string>
+  <string id="31697">날씨 팬아트 숨김</string>
+
+<!--  Options Menu  -->
   <string id="31701">설정</string>
   <string id="31702">쇼케이스</string>
   <string id="31703">시즌</string>
   <string id="31704">사진</string>
   <string id="31705">볼록</string>
   <string id="31706">에피소드 미리보기</string>
-  <string id="31707">: 미디어 미리보기</string>
+  <string id="31707">미디어 미리보기</string>
   <string id="31708">미디어 목록</string>
   <string id="31709">오목</string>
   <string id="31710">표시</string>
@@ -171,11 +187,13 @@
   <string id="31715">패널 스트림</string>
   <string id="31716">커버플로우</string>
   <string id="31717">옵션 메뉴</string>
+  <string id="31718">미디어 미리보기 라이트</string>
+
+<!--  Credits  -->
   <string id="31800">만든 사람들</string>
   <string id="31801">환영합니다</string>
   <string id="31802">당신의 미디어는....[COLOR Highlighted]당신의[/COLOR] 방식으로</string>
-  <string id="31803">
-  </string>
+  <string id="31803"></string>
   <string id="31804">MediaStream 은 인기있는 멀티미디어 XBMC 의 새로운 사용자 인터페이스 입니다.  새로 형성된 "Team RazorFish" 에 의해 만들어진, 이 새로운 인터페이스는 외형의 기능성과 형식을 내용에 융합을 결합합니다.  '고화질' 세대를 위해 디자인되고 최적화된, 이 인터페이스는 이미 인기있는 플랫폼에 새로운 경험을 가져다주는것을 추구합니다.</string>
   <string id="31805">주의</string>
   <string id="31806">마지막 XBMC 빌드를 가지고 있는지 확실히 해주세요. 우리는 마지막 SVN 빌드의 XBMC 를 추천하고, 언제나 전체 스킨 꾸러미를 다운로드 하기를 부탁합니다.</string>
@@ -184,6 +202,8 @@
   <string id="31809">특별히 감사드림: XBMC 팀 전체, xbmc 와 xbox-scene 포럼 후원자</string>
   <string id="31810">계속하고 우리의 스킨 사용을 시작하려면 "예" 누르세요</string>
   <string id="31811">주의: "예"를 누르면 다시는 이 메시지를 볼수 없습니다</string>
+
+<!--  Profiles  -->
   <string id="31900">로그인</string>
   <string id="31901">수정</string>
   <string id="31902">프로파일</string>
