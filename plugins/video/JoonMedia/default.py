@@ -11,7 +11,7 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/DramaStyle"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.4"
+__version__ = "0.2.5"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -120,6 +120,10 @@ def GetFLV(name, url):
 	    flv=re.sub('\?1','?8',flv)	#trick to enable on-the-fly streaming
 	    addLink(name, flv, "http://www.video-download-capture.com/wp-content/uploads/2010/01/tudou_logo.jpg")
     elif url.find('56.com')>0:
+	if url.find('vid=')<0:
+	    #obtain redirected url
+	    req = urllib2.Request(url)
+	    response=urllib2.urlopen(req);url=response.geturl();response.close()
 	req = urllib2.Request("http://www.flvcd.com/parse.php?kw="+url)
 	req.add_header('User-Agent', browser_hdr)
 	response=urllib2.urlopen(req);link=response.read();response.close()
@@ -143,10 +147,13 @@ def GetFLV(name, url):
 
 	veoh=re.search('fullPreviewHashPath="(.+?)"',link).group(1)
 	thumb=re.search('fullHighResImagePath="(.+?)"',link).group(1)
-	#obtain redirected url
-	req = urllib2.Request(veoh)
-	response=urllib2.urlopen(req);re_url=response.geturl();response.close()
-	addLink(name, re_url, thumb)
+	if veoh.find("content.veoh.com")>0:
+	    #obtain redirected url
+	    req = urllib2.Request(veoh)
+	    response=urllib2.urlopen(req);re_url=response.geturl();response.close()
+	    addLink(name, re_url, thumb)
+	else:
+	    addLink(name, veoh, thumb)
     elif url.find('youtube')>0:
 	id = re.search('http://www.youtube.com/watch\?v=(.+)',url)
 	xbmc.log( "youtube ID: "+id.group(1), xbmc.LOGDEBUG )
