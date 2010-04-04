@@ -11,7 +11,7 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/DramaStyle"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.8"
+__version__ = "0.2.9"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -91,8 +91,8 @@ def TVSHOW(main_url):
 		addDir( title2, url, 4, '' )
 	    elif sup==u"토두" or sup==u"56com":
 		addDir( title2, url, 5, '' )
-	    #elif sup==u"베오":
-	    #	addDir( title2, url, 5, '' )
+	    elif sup==u"베오":
+		addDir( title2+u" (preview)", url, 5, '' )
 	    elif sup.find(u"유튜브")>=0:
 		addDir( title2, url, 6, '' )
 
