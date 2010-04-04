@@ -11,7 +11,7 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/DramaStyle"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.5"
+__version__ = "0.2.6"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -129,7 +129,10 @@ def GetFLV(name, url):
 	response=urllib2.urlopen(req);link=response.read();response.close()
 	match=re.search('<a href\s*=\s*"(.+?)" target="_blank" ', link)
 	if match:
-	    addLink(name, match.group(1), "http://mallow.wakcdn.com/avatars/000/060/094/normal.png")
+	    #obtain redirected url
+	    req = urllib2.Request(match.group(1))
+	    response=urllib2.urlopen(req);re_url=response.geturl();response.close()
+	    addLink(name, re_url, "http://mallow.wakcdn.com/avatars/000/060/094/normal.png")
     elif url.find('youku')>0:
 	req = urllib2.Request("http://www.flvcd.com/parse.php?kw="+url)
 	req.add_header('User-Agent', browser_hdr)
