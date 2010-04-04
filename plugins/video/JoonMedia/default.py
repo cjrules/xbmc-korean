@@ -190,8 +190,8 @@ def GetFLV(name, url):
 	response=urllib2.urlopen(req);link=response.read();response.close()
 	key = re.search('&t=(.+?)&',link)
 	if key:
-	    addLink(name,"http://www.youtube.com/get_video.php?video_id="+id.group(1)+"&t="+key.group(1),"http://s.ytimg.com/yt/img/creators_corner/youtube_62x62_white_logo.jpg")
-	    addLink(name+" HQ","http://www.youtube.com/get_video.php?video_id="+id.group(1)+"&t="+key.group(1)+"&fmt=18","http://s.ytimg.com/yt/img/creators_corner/youtube_62x62_as_red.jpg")
+	    addLink(name,"http://www.youtube.com/get_video.php?video_id="+id.group(1)+"&t="+key.group(1),"http://s.ytimg.com/yt/img/logos/youtube_logo_standard_againstwhite-vfl95119.png")
+	    addLink(name+" HQ","http://www.youtube.com/get_video.php?video_id="+id.group(1)+"&t="+key.group(1)+"&fmt=18","http://s.ytimg.com/yt/img/logos/youtube_logo_standard_againstblack-vfl95119.png")
     
 #-----------------------------------                
 def get_params():
