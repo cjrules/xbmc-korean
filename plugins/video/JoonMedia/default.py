@@ -11,7 +11,7 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/DramaStyle"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.7"
+__version__ = "0.2.8"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -45,7 +45,10 @@ def VIDEO(main_url):
 	title = tit_match.group(2)
 	thmb_match = re.search('''<img src="(.*?)" width="[1-9]''', mgdata)
 	thumb = thmb_match.group(1)
-	xbmc.log( "TV program: %s" % title.encode("euc-kr"), xbmc.LOGDEBUG )
+	try:
+	    xbmc.log( "TV program: %s" % title.encode("euc-kr"), xbmc.LOGDEBUG )
+	except:
+	    pass    # skip unwanted encoding error (ex: Japanese character)
 	addDir(title, url, 2, thumb)
 
 def RECENT(main_url):
