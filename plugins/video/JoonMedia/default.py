@@ -11,7 +11,7 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/DramaStyle"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.6"
+__version__ = "0.2.7"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -30,6 +30,7 @@ def CATEGORIES():
     addDir("서양영화","http://joonmedia.net/videos/enmovies",1,"")
     addDir("다큐","http://joonmedia.net/videos/docu",1,"")
     addDir("시사교양","http://joonmedia.net/videos/edu",1,"")
+    addDir("최근 업데이트","http://joonmedia.net",7,"")
 
 def VIDEO(main_url):
     req = urllib2.Request(main_url)
@@ -46,6 +47,21 @@ def VIDEO(main_url):
 	thumb = thmb_match.group(1)
 	xbmc.log( "TV program: %s" % title.encode("euc-kr"), xbmc.LOGDEBUG )
 	addDir(title, url, 2, thumb)
+
+def RECENT(main_url):
+    req = urllib2.Request(main_url)
+    req.add_header('User-Agent', browser_hdr)
+    response=urllib2.urlopen(req);link=response.read();response.close()
+    
+    mgrp=re.split('''<h2 align="center">''', link.decode("utf-8"))
+    xbmc.log( "#top categories=%d"%len(mgrp), xbmc.LOGDEBUG )
+    for mgdata in mgrp[1:]:	# skip the first block
+	category = re.match('''(.*?)</h2>''', mgdata).group(1)
+	addDir("--------------------------- "+category+" ---------------------------", "http://joonmedia.net", 7, '')
+	match = re.compile('''<a href="(.*?)" class="arrow">(.*?)</a>''').findall(mgdata)
+	for url,title in match:
+	    xbmc.log( "TV program: %s" % title.encode("euc-kr"), xbmc.LOGDEBUG )
+	    addDir(title, url, 2, '')
 
 def TVSHOW(main_url):
     req = urllib2.Request(main_url)
@@ -67,8 +83,10 @@ def TVSHOW(main_url):
 		addDir( title2.replace(u"멀티로딩",u"유큐"), url, 3, '' )
 	    elif sup==u"하이스피드":
 		addDir( title2, url, 4, '' )
-	    elif sup==u"토두" or sup==u"56com" or sup==u"베오":
+	    elif sup==u"토두" or sup==u"56com":
 		addDir( title2, url, 5, '' )
+	    #elif sup==u"베오":
+	    #	addDir( title2, url, 5, '' )
 	    elif sup.find(u"유튜브")>=0:
 		addDir( title2, url, 6, '' )
 
@@ -148,6 +166,7 @@ def GetFLV(name, url):
 	req.add_header('User-Agent', browser_hdr)
 	response=urllib2.urlopen(req);link=response.read();response.close()
 
+	#preview has 5min play time limitation
 	veoh=re.search('fullPreviewHashPath="(.+?)"',link).group(1)
 	thumb=re.search('fullHighResImagePath="(.+?)"',link).group(1)
 	if veoh.find("content.veoh.com")>0:
@@ -242,5 +261,7 @@ elif mode==5:
     EPISODE_HACK(url)
 elif mode==6:
     EPISODE_YOUTUBE(url)
+elif mode==7:
+    RECENT(url)
 
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
