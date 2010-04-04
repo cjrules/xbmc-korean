@@ -11,7 +11,7 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/DramaStyle"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -69,8 +69,8 @@ def TVSHOW(main_url):
 		addDir( title2, url, 4, '' )
 	    elif sup==u"토두" or sup==u"56com" or sup==u"베오":
 		addDir( title2, url, 5, '' )
-	    #elif sup.find(u"유튜브")>=0:
-	    #	addDir( title2, url, 6, '' )
+	    elif sup.find(u"유튜브")>=0:
+		addDir( title2, url, 6, '' )
 
 def EPISODE(main_url,parmode):
     req = urllib2.Request(main_url)
@@ -96,7 +96,7 @@ def EPISODE_HACK(main_url):
     match=re.compile('''<embed src="(.*?)" ''').findall(link)
     for cntnr in match:
 	xbmc.log( "Container = %s" % cntnr, xbmc.LOGDEBUG )
-	GetFLV(cntnr)
+	GetFLV('Watch', cntnr)
 
 def EPISODE_YOUTUBE(main_url):
     req = urllib2.Request(main_url)
@@ -104,12 +104,12 @@ def EPISODE_YOUTUBE(main_url):
     response=urllib2.urlopen(req);link=response.read();response.close()
 
     match=re.compile('''flashvars="file=(.*?)&amp;''').findall(link)
+    i=0;
     for cntnr in match:
 	xbmc.log( "Container = %s" % cntnr, xbmc.LOGDEBUG )
-	GetFLV(cntnr)
+	i=i+1; GetFLV("Part %d"%i, cntnr)
 
-def GetFLV(url):
-    name = 'Watch'
+def GetFLV(name, url):
     if url.find('tudou')>0:
 	req = urllib2.Request("http://www.flvcd.com/parse.php?kw="+url)
 	req.add_header('User-Agent', browser_hdr)
@@ -118,14 +118,14 @@ def GetFLV(url):
 	if match:
 	    flv=re.sub('&amp;','&',match.group(1))
 	    flv=re.sub('\?1','?8',flv)	#trick to enable on-the-fly streaming
-	    addLink(name, flv, "")
+	    addLink(name, flv, "http://images2.fanpop.com/images/polls/133000/133741_1225149730436_50.jpg")
     elif url.find('56.com')>0:
 	req = urllib2.Request("http://www.flvcd.com/parse.php?kw="+url)
 	req.add_header('User-Agent', browser_hdr)
 	response=urllib2.urlopen(req);link=response.read();response.close()
 	match=re.search('<a href\s*=\s*"(.+?)" target="_blank" ', link)
 	if match:
-	    addLink(name, match.group(1), "")
+	    addLink(name, match.group(1), "http://mallow.wakcdn.com/avatars/000/060/094/normal.png")
     elif url.find('youku')>0:
 	req = urllib2.Request("http://www.flvcd.com/parse.php?kw="+url)
 	req.add_header('User-Agent', browser_hdr)
@@ -133,7 +133,7 @@ def GetFLV(url):
 	match=re.compile('<a href\s*=\s*"(.+?)" target="_blank" ').findall(link)
 	i=0;
 	for url in match:
-	    i=i+1;addLink(name+" part-"+str(i),url,"")
+	    i=i+1;addLink(name+" part-"+str(i),url,"http://static.youku.com/v1.0.0541/index/img/youkulogo.gif")
     elif url.find('veoh')>0:
 	#match=re.search(r'http://www.veoh.com/videos/(.+)',url)
 	match=re.search('permalinkId=(\w+)&',url)
@@ -145,15 +145,15 @@ def GetFLV(url):
 	thumb=re.search('fullHighResImagePath="(.+?)"',link)
 	addLink(name, veoh.group(1), thumb.group(1))
     elif url.find('youtube')>0:
-	# no more working...
-	bit=re.search('http://www.youtube.com/.+?v=(.+?)',url)
+	id = re.search('http://www.youtube.com/watch\?v=(.+)',url)
+	xbmc.log( "youtube ID: "+id.group(1), xbmc.LOGDEBUG )
 	req = urllib2.Request(url)
 	req.add_header('User-Agent', browser_hdr)
 	response=urllib2.urlopen(req);link=response.read();response.close()
-	match=re.compile('"t": "(.+?)"').findall(link)
-	for youtube in match:
-	    addLink(name+"-YOUTUBE","http://www.youtube.com/get_video?video_id="+bit.group(1)+"&t="+youtube,"http://www.webtvwire.com/wp-content/uploads/2007/06/youtube.jpg")
-	    addLink(name+"-YOUTUBE Hi-def","http://www.youtube.com/get_video?video_id="+bit.group(1)+"&t="+youtube+"&fmt=18","http://www.webtvwire.com/wp-content/uploads/2007/06/youtube.jpg")
+	key = re.search('&t=(.+?)&',link)
+	if key:
+	    addLink(name,"http://www.youtube.com/get_video.php?video_id="+id.group(1)+"&t="+key.group(1),"http://s.ytimg.com/yt/img/creators_corner/youtube_62x62_white_logo.jpg")
+	    addLink(name+" HQ","http://www.youtube.com/get_video.php?video_id="+id.group(1)+"&t="+key.group(1)+"&fmt=18","http://s.ytimg.com/yt/img/creators_corner/youtube_62x62_as_red.jpg")
     
 #-----------------------------------                
 def get_params():
