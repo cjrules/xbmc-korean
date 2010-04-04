@@ -11,7 +11,7 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/DramaStyle"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.3"
+__version__ = "0.2.4"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -93,7 +93,7 @@ def EPISODE_HACK(main_url):
     req.add_header('User-Agent', browser_hdr)
     response=urllib2.urlopen(req);link=response.read();response.close()
 
-    match=re.compile('''<embed src="(.*?)" ''').findall(link)
+    match=re.compile('''<embed src=['"](.*?)['"] ''').findall(link)
     for cntnr in match:
 	xbmc.log( "Container = %s" % cntnr, xbmc.LOGDEBUG )
 	GetFLV('Watch', cntnr)
@@ -141,9 +141,12 @@ def GetFLV(name, url):
 	req.add_header('User-Agent', browser_hdr)
 	response=urllib2.urlopen(req);link=response.read();response.close()
 
-	veoh=re.search('fullPreviewHashPath="(.+?)"',link)
-	thumb=re.search('fullHighResImagePath="(.+?)"',link)
-	addLink(name, veoh.group(1), thumb.group(1))
+	veoh=re.search('fullPreviewHashPath="(.+?)"',link).group(1)
+	thumb=re.search('fullHighResImagePath="(.+?)"',link).group(1)
+	#obtain redirected url
+	req = urllib2.Request(veoh)
+	response=urllib2.urlopen(req);re_url=response.geturl();response.close()
+	addLink(name, re_url, thumb)
     elif url.find('youtube')>0:
 	id = re.search('http://www.youtube.com/watch\?v=(.+)',url)
 	xbmc.log( "youtube ID: "+id.group(1), xbmc.LOGDEBUG )
