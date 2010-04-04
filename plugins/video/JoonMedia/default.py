@@ -11,7 +11,7 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/DramaStyle"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.2"
+__version__ = "0.2.3"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -118,7 +118,7 @@ def GetFLV(name, url):
 	if match:
 	    flv=re.sub('&amp;','&',match.group(1))
 	    flv=re.sub('\?1','?8',flv)	#trick to enable on-the-fly streaming
-	    addLink(name, flv, "http://images2.fanpop.com/images/polls/133000/133741_1225149730436_50.jpg")
+	    addLink(name, flv, "http://www.video-download-capture.com/wp-content/uploads/2010/01/tudou_logo.jpg")
     elif url.find('56.com')>0:
 	req = urllib2.Request("http://www.flvcd.com/parse.php?kw="+url)
 	req.add_header('User-Agent', browser_hdr)
