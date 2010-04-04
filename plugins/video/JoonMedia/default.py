@@ -63,7 +63,10 @@ def RECENT(main_url):
 	addDir("--------------------------- "+category+" ---------------------------", "http://joonmedia.net", 7, '')
 	match = re.compile('''<a href="(.*?)" class="arrow">(.*?)</a>''').findall(mgdata)
 	for url,title in match:
-	    xbmc.log( "TV program: %s" % title.encode("euc-kr"), xbmc.LOGDEBUG )
+	    try:
+		xbmc.log( "TV program: %s" % title.encode("euc-kr"), xbmc.LOGDEBUG )
+	    except:
+		pass    # skip unwanted encoding error (ex: Japanese character)
 	    addDir(title, url, 2, '')
 
 def TVSHOW(main_url):
