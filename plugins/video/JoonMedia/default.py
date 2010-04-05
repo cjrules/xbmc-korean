@@ -95,6 +95,8 @@ def TVSHOW(main_url):
 		addDir( title2+u" [preview]", url, 4, '' )
 	    elif sup.find(u"유튜브")>=0:
 		addDir( title2, url, 5, '' )
+	    elif sup==u"데일리모션":
+		addDir( title2, url, 7, '' )
 
 def EPISODE(main_url):
     req = urllib2.Request(main_url)
@@ -133,6 +135,17 @@ def EPISODE_YOUTUBE(main_url):
     response=urllib2.urlopen(req);link=response.read();response.close()
 
     match=re.compile('''flashvars="file=(.*?)&amp;''').findall(link)
+    i=0;
+    for cntnr in match:
+	xbmc.log( "Container = %s" % cntnr, xbmc.LOGDEBUG )
+	i=i+1; GetFLV("Part %d"%i, cntnr)
+
+def EPISODE_FLASH(main_url):
+    req = urllib2.Request(main_url)
+    req.add_header('User-Agent', browser_hdr)
+    response=urllib2.urlopen(req);link=response.read();response.close()
+
+    match=re.compile('''<param name="movie" value="(.*?)"/>''').findall(link)
     i=0;
     for cntnr in match:
 	xbmc.log( "Container = %s" % cntnr, xbmc.LOGDEBUG )
@@ -204,9 +217,23 @@ def GetFLV(name, url):
 	req = urllib2.Request("http://www.4shared.com/get/"+id+"/")
 	req.add_header('User-Agent', browser_hdr)
 	response=urllib2.urlopen(req);link=response.read();response.close()
-	url_match = re.search('''window.location = "(.*?)";''',link)
-	if url_match:
-	    addLink(name, url_match.group(1), "http://userlogos.org/files/logos/veinedstorm/4shared.png")
+	match = re.search('''window.location = "(.*?)";''',link)
+	if match:
+	    addLink(name, match.group(1), "http://userlogos.org/files/logos/veinedstorm/4shared.png")
+    elif url.find('dailymotion')>0:
+	id = re.search('http://www.dailymotion.com/.*?/(.*)',url).group(1)
+	xbmc.log( "dailymotion ID: "+id, xbmc.LOGDEBUG )
+
+	req = urllib2.Request("http://www.dailymotion.com/video/"+id)
+	req.add_header('User-Agent', browser_hdr)
+	response=urllib2.urlopen(req);link=response.read();response.close()
+	match=re.search('''addVariable\("video", "(.*?)"\);''', link)
+	if match:
+	    xbmc.log( "dailymotion wrapper: "+match.group(1), xbmc.LOGDEBUG )
+	    #obtain redirected url
+	    req = urllib2.Request(match.group(1))
+	    response=urllib2.urlopen(req);re_url=response.geturl();response.close()
+	    addLink(name, re_url, "http://www.iconspedia.com/uploads/1687271053.png")
 
 #-----------------------------------                
 def get_params():
@@ -282,5 +309,7 @@ elif mode==5:
     EPISODE_YOUTUBE(url)
 elif mode==6:
     RECENT(url)
+elif mode==7:
+    EPISODE_FLASH(url)
 
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
