@@ -9,9 +9,9 @@ import urllib,urllib2,re,xbmcplugin,xbmcgui
 __plugin__ = "JoonMedia"
 __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
-__svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/DramaStyle"
+__svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/JoonMedia"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.9"
+__version__ = "0.2.10"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -88,29 +88,34 @@ def TVSHOW(main_url):
 	    if sup.find(u"멀티로딩")==0:
 		addDir( title2.replace(u"멀티로딩",u"유큐"), url, 3, '' )
 	    elif sup==u"하이스피드":
-		addDir( title2, url, 4, '' )
+		addDir( title2, url, 3, '' )
 	    elif sup==u"토두" or sup==u"56com":
-		addDir( title2, url, 5, '' )
+		addDir( title2, url, 4, '' )
 	    elif sup==u"베오":
-		addDir( title2+u" (preview)", url, 5, '' )
+		addDir( title2+u" [preview]", url, 4, '' )
 	    elif sup.find(u"유튜브")>=0:
-		addDir( title2, url, 6, '' )
+		addDir( title2, url, 5, '' )
 
-def EPISODE(main_url,parmode):
+def EPISODE(main_url):
     req = urllib2.Request(main_url)
     req.add_header('User-Agent', browser_hdr)
     response=urllib2.urlopen(req);link=response.read();response.close()
 
-    match=re.compile('''vcastr_file=(\S*) ''').findall(link)
     i=0
-    for flv in match:
-	if parmode=="multi":
-	    xbmc.log( "multifile parsing", xbmc.LOGDEBUG )
-	    flvs=flv.split('|')
-	    for flv2 in flvs:
-		i=i+1;addLink("Part %d" % i, flv2, "")
-	else:
-	    i=i+1;addLink("Part %d" % i, flv, "")
+    match=re.compile('''vcastr_file=(\S*) ''').findall(link)
+    if match:
+	for flv in match:
+	    if flv.find('|')>0:
+		xbmc.log( "multifile parsing", xbmc.LOGDEBUG )
+		flvs=flv.split('|')
+		for flv2 in flvs:
+		    i=i+1;addLink("Part %d" % i, flv2, "")
+	    else:
+		i=i+1;addLink("Part %d" % i, flv, "")
+    else:
+	match=re.compile('''<embed [^>]*src="(.*?)"''').findall(link)
+	for flv in match:
+	    i=i+1; GetFLV("Part %d"%i, flv)
 
 def EPISODE_HACK(main_url):
     req = urllib2.Request(main_url)
@@ -192,7 +197,17 @@ def GetFLV(name, url):
 	if key:
 	    addLink(name,"http://www.youtube.com/get_video.php?video_id="+id.group(1)+"&t="+key.group(1),"http://s.ytimg.com/yt/img/logos/youtube_logo_standard_againstwhite-vfl95119.png")
 	    addLink(name+" HQ","http://www.youtube.com/get_video.php?video_id="+id.group(1)+"&t="+key.group(1)+"&fmt=18","http://s.ytimg.com/yt/img/logos/youtube_logo_standard_againstblack-vfl95119.png")
-    
+    elif url.find('4shared')>0:
+	id = re.search('http://www.4shared.com/.*?/(.*)',url).group(1)
+	xbmc.log( "4shared ID: "+id, xbmc.LOGDEBUG )
+
+	req = urllib2.Request("http://www.4shared.com/get/"+id+"/")
+	req.add_header('User-Agent', browser_hdr)
+	response=urllib2.urlopen(req);link=response.read();response.close()
+	url_match = re.search('''<a href=['"](.*?/download/.*?flv.*?)['"]>''',link)
+	if url_match:
+	    addLink(name, url_match.group(1), "http://userlogos.org/files/logos/veinedstorm/4shared.png")
+
 #-----------------------------------                
 def get_params():
     param=[]
@@ -260,14 +275,12 @@ elif mode==1:
 elif mode==2:
     TVSHOW(url)
 elif mode==3:
-    EPISODE(url,'single')
+    EPISODE(url)
 elif mode==4:
-    EPISODE(url,'multi')
-elif mode==5:
     EPISODE_HACK(url)
-elif mode==6:
+elif mode==5:
     EPISODE_YOUTUBE(url)
-elif mode==7:
+elif mode==6:
     RECENT(url)
 
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
