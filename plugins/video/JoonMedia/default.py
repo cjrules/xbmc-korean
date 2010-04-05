@@ -93,7 +93,7 @@ def TVSHOW(main_url):
 		addDir( title2, url, 4, '' )
 	    elif sup==u"베오":
 		addDir( title2+u" [preview]", url, 4, '' )
-	    elif sup.find(u"유튜브")>=0:
+	    elif sup.find(u"유튜브")>=0 or sup==u"Youtube":
 		addDir( title2, url, 5, '' )
 	    elif sup==u"데일리모션":
 		addDir( title2, url, 7, '' )
