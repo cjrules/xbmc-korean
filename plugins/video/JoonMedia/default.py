@@ -204,7 +204,7 @@ def GetFLV(name, url):
 	req = urllib2.Request("http://www.4shared.com/get/"+id+"/")
 	req.add_header('User-Agent', browser_hdr)
 	response=urllib2.urlopen(req);link=response.read();response.close()
-	url_match = re.search('''<a href=['"](.*?/download/.*?flv.*?)['"]>''',link)
+	url_match = re.search('''window.location = "(.*?)";''',link)
 	if url_match:
 	    addLink(name, url_match.group(1), "http://userlogos.org/files/logos/veinedstorm/4shared.png")
 
