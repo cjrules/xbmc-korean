@@ -30,7 +30,7 @@ def CATEGORIES():
     addDir("서양영화","http://joonmedia.net/videos/enmovies",1,"")
     addDir("다큐","http://joonmedia.net/videos/docu",1,"")
     addDir("시사교양","http://joonmedia.net/videos/edu",1,"")
-    addDir("최근 업데이트","http://joonmedia.net",7,"")
+    addDir("최근 업데이트","http://joonmedia.net",6,"")
 
 def VIDEO(main_url):
     req = urllib2.Request(main_url)
