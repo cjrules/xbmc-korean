@@ -11,7 +11,7 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/JoonMedia"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.11"
+__version__ = "1.0.0"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -60,7 +60,7 @@ def RECENT(main_url):
     xbmc.log( "#top categories=%d"%len(mgrp), xbmc.LOGDEBUG )
     for mgdata in mgrp[1:]:	# skip the first block
 	category = re.match('''(.*?)</h2>''', mgdata).group(1)
-	addDir("--------------------------- "+category+" ---------------------------", "http://joonmedia.net", 7, '')
+	addDir("--------------------------- "+category+" ---------------------------", "http://joonmedia.net", 6, '')
 	match = re.compile('''<a href="(.*?)" class="arrow">(.*?)</a>''').findall(mgdata)
 	for url,title in match:
 	    try:
@@ -125,9 +125,10 @@ def EPISODE_HACK(main_url):
     response=urllib2.urlopen(req);link=response.read();response.close()
 
     match=re.compile('''<embed src=['"](.*?)['"] ''').findall(link)
+    i=0;
     for cntnr in match:
 	xbmc.log( "Container = %s" % cntnr, xbmc.LOGDEBUG )
-	GetFLV('Watch', cntnr)
+	i=i+1; GetFLV("Part %d"%i, cntnr)
 
 def EPISODE_YOUTUBE(main_url):
     req = urllib2.Request(main_url)
