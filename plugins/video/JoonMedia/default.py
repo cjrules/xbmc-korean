@@ -11,7 +11,7 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/JoonMedia"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.10"
+__version__ = "0.2.11"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -87,15 +87,15 @@ def TVSHOW(main_url):
 	    xbmc.log( "Found page: %s" % title2.encode("euc-kr"), xbmc.LOGDEBUG )
 	    if sup.find(u"멀티로딩")==0:
 		addDir( title2.replace(u"멀티로딩",u"유큐"), url, 3, '' )
-	    elif sup==u"하이스피드":
+	    elif sup.find(u"하이스피드")==0:
 		addDir( title2, url, 3, '' )
-	    elif sup==u"토두" or sup==u"56com":
+	    elif sup.find(u"토두")==0 or sup.find(u"56com")==0:
 		addDir( title2, url, 4, '' )
-	    elif sup==u"베오":
+	    elif sup.find(u"베오")==0:
 		addDir( title2+u" [preview]", url, 4, '' )
-	    elif sup.find(u"유튜브")>=0 or sup==u"Youtube":
+	    elif sup.find(u"유튜브")==0 or sup.lower()==u"youtube":
 		addDir( title2, url, 5, '' )
-	    elif sup==u"데일리모션":
+	    elif sup.find(u"데일리모션")==0:
 		addDir( title2, url, 7, '' )
 
 def EPISODE(main_url):
@@ -211,13 +211,10 @@ def GetFLV(name, url):
 	    addLink(name,"http://www.youtube.com/get_video.php?video_id="+id.group(1)+"&t="+key.group(1),"http://s.ytimg.com/yt/img/logos/youtube_logo_standard_againstwhite-vfl95119.png")
 	    addLink(name+" HQ","http://www.youtube.com/get_video.php?video_id="+id.group(1)+"&t="+key.group(1)+"&fmt=18","http://s.ytimg.com/yt/img/logos/youtube_logo_standard_againstblack-vfl95119.png")
     elif url.find('4shared')>0:
-	id = re.search('http://www.4shared.com/.*?/(.*)',url).group(1)
-	xbmc.log( "4shared ID: "+id, xbmc.LOGDEBUG )
-
-	req = urllib2.Request("http://www.4shared.com/get/"+id+"/")
+	req = urllib2.Request(url)
 	req.add_header('User-Agent', browser_hdr)
-	response=urllib2.urlopen(req);link=response.read();response.close()
-	match = re.search('''window.location = "(.*?)";''',link)
+	response=urllib2.urlopen(req);re_url=response.geturl();response.close()
+	match = re.search("streamer=(.*?)&",re_url)
 	if match:
 	    addLink(name, match.group(1), "http://userlogos.org/files/logos/veinedstorm/4shared.png")
     elif url.find('dailymotion')>0:
