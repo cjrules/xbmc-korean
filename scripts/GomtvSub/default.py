@@ -8,7 +8,7 @@ __author__     = "edge"
 __url__        = "http://xbmc-korea.com"
 __svn_url__    = "http://xbmc-korean.googlecode.com/svn/trunk/scripts/GomtvSub"
 __credits__    = ""
-__version__    = "0.1.0"
+__version__    = "0.2.0"
 
 #############-----------------Is script runing from OSD? -------------------------------###############
 
@@ -70,30 +70,36 @@ else:
 	req = urllib.urlopen(queryAddr)
 	link = req.read(-1)
 
-	match = re.compile('''<div><a href="/jmdb/view.html\?intSeq=(\d+).*?&searchSeq=(\d+)">''').findall(link)
-	#for intSeq,searchSeq in match:
-	#    print "found %s, %s"%(intSeq,searchSeq)
+	seq_match  = re.compile('''<div><a href="/jmdb/view.html\?intSeq=(\d+).*?&searchSeq=(\d+)">''').findall(link)
+	date_match = re.compile('''<td>(\d{4}.\d{2}.\d{2})</td>''').findall(link)
+	if len(seq_match) != len(date_match): 
+            print "Unusual result page"
+            sys.exit(1)
+
+	import xbmcgui
+
+	if len(seq_match) > 0:
+	    dialog = xbmcgui.Dialog()
+	    selected = dialog.select(u"검색된 자막 갯수: %d".encode("utf-8") % len(date_match),
+			    date_match )
 
 ###---------------------- Download Subtitle -------------------################
-	if len(match) > 0:
-	    # download the first item
-	    try:
-		queryAddr = "http://gom.gomtv.com/jmdb/save.html?intSeq=%s&capSeq=%s"%(match[0][0],match[0][1])
-		req = urllib.urlopen(queryAddr)
-		f = open(smiFullPath,'w')
-	    except IOError:
-		print "File could not be written"
-		sys.exit(1)
-	    f.write( req.read(-1) )
-	    f.close()
+	    if selected>=0:
+		try:
+		    queryAddr = "http://gom.gomtv.com/jmdb/save.html?intSeq=%s&capSeq=%s"%seq_match[selected]
+		    req = urllib.urlopen(queryAddr)
+		    f = open(smiFullPath,'w')
+		except IOError:
+		    print "File could not be written"
+		    sys.exit(1)
+		f.write( req.read(-1) )
+		f.close()
 
-	    import xbmcgui
-	    dialog = xbmcgui.Dialog()
-	    selected = dialog.ok(u"검색된 자막 갯수: %d".encode("utf-8") % len(match),
-			    smiFullPath, u"에 저장되었습니다.".encode("utf-8") )
-	    xbmc.Player().setSubtitles(smiFullPath)
+		dialog = xbmcgui.Dialog()
+		selected = dialog.ok( u"%s 자막이".encode("utf-8"),
+				smiFullPath, u"에 저장되었습니다.".encode("utf-8") )
+		xbmc.Player().setSubtitles(smiFullPath)
 	else:
-	    import xbmcgui
 	    dialog = xbmcgui.Dialog()
 	    selected = dialog.ok(u"검색된 자막이 없습니다.".encode("utf-8"))
 
