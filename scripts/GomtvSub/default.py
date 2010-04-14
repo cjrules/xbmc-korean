@@ -8,7 +8,7 @@ __author__     = "edge"
 __url__        = "http://xbmc-korea.com"
 __svn_url__    = "http://xbmc-korean.googlecode.com/svn/trunk/scripts/GomtvSub"
 __credits__    = ""
-__version__    = "0.2.0"
+__version__    = "0.2.1"
 
 #############-----------------Is script runing from OSD? -------------------------------###############
 
@@ -55,45 +55,51 @@ else:
         
         try:
             f=open(movieFullPath,"rb")
+	    buff = f.read(1024*1024)     # 1MB
         except IOError:
-            print "File could not be opened"
+            print "File could not be read"
             sys.exit(1)
-
-	# calculate MD5 key from file
-	buff = f.read(1024*1024)     # 1MB
-	#key = hashlib.new("md5", buff).hexdigest()
-	m = md5.new(); m.update(buff); key = m.hexdigest()
 	f.close()
 
-###-------------------- Search Subtitle from GomTV site ------------------################
+	# calculate MD5 key from file
+	#key = hashlib.new("md5", buff).hexdigest()
+	m = md5.new(); m.update(buff); key = m.hexdigest()
+
+###----------------- Search subtitle in GomTV site ---------------################
 	queryAddr = "http://gom.gomtv.com/jmdb/search.html?key=%s"%key
 	req = urllib.urlopen(queryAddr)
-	link = req.read(-1)
+	link = req.read(); req.close()
 
-	seq_match  = re.compile('''<div><a href="/jmdb/view.html\?intSeq=(\d+).*?&searchSeq=(\d+)">''').findall(link)
+	url_match  = re.compile('''<div><a href="(.*?)">''').findall(link)
 	date_match = re.compile('''<td>(\d{4}.\d{2}.\d{2})</td>''').findall(link)
-	if len(seq_match) != len(date_match): 
+	if len(url_match) != len(date_match): 
             print "Unusual result page"
             sys.exit(1)
 
 	import xbmcgui
 
-	if len(seq_match) > 0:
+	if len(url_match) > 0:
+###------------------ Select a subtitle to download ---------------################
 	    dialog = xbmcgui.Dialog()
 	    selected = dialog.select(u"검색된 자막 갯수: %d".encode("utf-8") % len(date_match),
 			    date_match )
+	    print "user selects %d"%selected
 
-###---------------------- Download Subtitle -------------------################
 	    if selected>=0:
+		req = urllib.urlopen( "http://gom.gomtv.com"+url_match[selected] )
+		link = req.read(); req.close()
+		downid = re.search('''javascript:save\('(\d+)','(\d+)','.*?'\);''',link).group(1,2)
+
+###----------------- Download the selected subtitle -----------------################
+		queryAddr = "http://gom.gomtv.com/jmdb/save.html?intSeq=%s&capSeq=%s"%downid
+		req = urllib.urlopen(queryAddr)
 		try:
-		    queryAddr = "http://gom.gomtv.com/jmdb/save.html?intSeq=%s&capSeq=%s"%seq_match[selected]
-		    req = urllib.urlopen(queryAddr)
 		    f = open(smiFullPath,'w')
+		    f.write( req.read() )
 		except IOError:
 		    print "File could not be written"
 		    sys.exit(1)
-		f.write( req.read(-1) )
-		f.close()
+		f.close(); req.close()
 
 		dialog = xbmcgui.Dialog()
 		ignored = dialog.ok( u"%s 자막이".encode("utf-8")%date_match[selected],
@@ -104,4 +110,6 @@ else:
 	    selected = dialog.ok(u"검색된 자막이 없습니다.".encode("utf-8"))
 
         if xbmc.getCondVisibility('Player.Paused'): xbmc.Player().pause() # if Paused, un-pause
+
     # end of __main__
+    sys.modules.clear()
