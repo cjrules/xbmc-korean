@@ -96,7 +96,7 @@ else:
 		f.close()
 
 		dialog = xbmcgui.Dialog()
-		selected = dialog.ok( u"%s 자막이".encode("utf-8"),
+		ignored = dialog.ok( u"%s 자막이".encode("utf-8")%date_match[selected],
 				smiFullPath, u"에 저장되었습니다.".encode("utf-8") )
 		xbmc.Player().setSubtitles(smiFullPath)
 	else:
