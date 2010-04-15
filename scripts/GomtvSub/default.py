@@ -102,12 +102,14 @@ else:
 		f.close(); req.close()
 
 		dialog = xbmcgui.Dialog()
-		ignored = dialog.ok( u"%s 자막이".encode("utf-8")%date_match[selected],
+		ignored = dialog.ok(u"다운로드 성공".encode("utf-8"),
+				u"%s 자막이".encode("utf-8")%date_match[selected],
 				smiFullPath, u"에 저장되었습니다.".encode("utf-8") )
 		xbmc.Player().setSubtitles(smiFullPath)
 	else:
 	    dialog = xbmcgui.Dialog()
-	    selected = dialog.ok( u"%s로".encode("utf-8")%os.path.basename(movieFullPath),
+	    selected = dialog.ok(u"검색실패".encode("utf-8"),
+			    u"%s로".encode("utf-8")%os.path.basename(movieFullPath),
 			    u"검색된 자막이 없습니다.".encode("utf-8"))
 
         if xbmc.getCondVisibility('Player.Paused'): xbmc.Player().pause() # if Paused, un-pause
