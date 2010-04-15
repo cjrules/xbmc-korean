@@ -141,21 +141,26 @@ else:
 	    ignored = dialog.create(__scriptname__, 'Downloading subtitle...')
 	    sz = 0
 	    while 1:
+		if dialog.iscanceled():
+		    break
 		buf = resp.read(stepSz)
 		if not buf: break
 		sz += len(buf)
 		f.write( buf )
-		
 		dialog.update( 100*sz/fileSz )
 	    f.close(); resp.close()
 	    dialog.close()
 
 	    dialog = xbmcgui.Dialog()
-	    ignored = dialog.ok(__scriptname__,
-			    "%s is saved to"%subTitle,
-			    smiFullPath )
-	    # enable the downloaded subtitle
-	    xbmc.Player().setSubtitles(smiFullPath)
+	    if sz < fileSz:
+		ignored = dialog.ok(__scriptname__,
+				"Download cancelled" )
+	    else
+		ignored = dialog.ok(__scriptname__,
+				"%s is saved to"%subTitle,
+				smiFullPath )
+		# enable the downloaded subtitle
+		xbmc.Player().setSubtitles(smiFullPath)
 
 	except SearchFailed:
 	    pass
