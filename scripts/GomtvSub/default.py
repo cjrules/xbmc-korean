@@ -8,7 +8,7 @@ __author__     = "edge"
 __url__        = "http://xbmc-korea.com"
 __svn_url__    = "http://xbmc-korean.googlecode.com/svn/trunk/scripts/GomtvSub"
 __credits__    = ""
-__version__    = "0.2.1"
+__version__    = "1.0.0"
 
 #############-----------------Is script runing from OSD? -------------------------------###############
 
@@ -107,7 +107,8 @@ else:
 		xbmc.Player().setSubtitles(smiFullPath)
 	else:
 	    dialog = xbmcgui.Dialog()
-	    selected = dialog.ok(u"검색된 자막이 없습니다.".encode("utf-8"))
+	    selected = dialog.ok( u"%s로".encode("utf-8")%os.path.basename(movieFullPath),
+			    u"검색된 자막이 없습니다.".encode("utf-8"))
 
         if xbmc.getCondVisibility('Player.Paused'): xbmc.Player().pause() # if Paused, un-pause
 
