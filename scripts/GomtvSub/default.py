@@ -16,7 +16,9 @@ __version__    = "1.0.0"
 if not xbmc.Player().isPlayingVideo() :
     import xbmcgui
     dialog = xbmcgui.Dialog()
-    selected = dialog.ok("GomtvSub", u"곰tv 자막검색".encode("utf-8"), "http://gom.gomtv.com/jmdb/" )
+    selected = dialog.ok(__scriptname__,
+			"Download Subtitle from GomTV Database",
+			"http://gom.gomtv.com/jmdb/" )
 else:
     window = False
     skin = "main"
@@ -52,6 +54,7 @@ else:
 ###--------------------- Calculate Key from Movie File ----------------################
         movieFullPath = xbmc.Player().getPlayingFile()
 	smiFullPath = movieFullPath[:movieFullPath.rfind('.')]+'.smi'
+	print "Subtitle will be saved at "+smiFullPath
         
         try:
             f=open(movieFullPath,"rb")
@@ -65,57 +68,98 @@ else:
 	#key = hashlib.new("md5", buff).hexdigest()
 	m = md5.new(); m.update(buff); key = m.hexdigest()
 
-###----------------- Search subtitle in GomTV site ---------------################
-	queryAddr = "http://gom.gomtv.com/jmdb/search.html?key=%s"%key
-	req = urllib2.Request(queryAddr)
-	resp = urllib2.urlopen(req)
-	link = resp.read(); resp.close()
-
-	url_match  = re.compile('''<div><a href="(.*?)">''').findall(link)
-	date_match = re.compile('''<td>(\d{4}.\d{2}.\d{2})</td>''').findall(link)
-	if len(url_match) != len(date_match): 
-            print "Unusual result page"
-            sys.exit(1)
-
 	import xbmcgui
+	browser_hdr = 'GomPlayer 2, 1, 23, 5007 (KOR)'
 
-	if len(url_match) > 0:
+###----------------- Search subtitle in GomTV site ---------------################
+	class SearchFailed(Exception):
+	    pass
+
+	try:
+	    queryAddr1 = "http://gom.gomtv.com/jmdb/search.html?key=%s"%key
+	    print "search subtitle at %s"%queryAddr1
+	    req = urllib2.Request(queryAddr1)
+	    req.add_header('User-Agent', browser_hdr)
+	    resp = urllib2.urlopen(req)
+	    link = resp.read(); resp.close()
+
+	    match = re.match('''<script>location.href = '(.*?)';</script>''',link)
+	    if match:
+		# auto redirected when there is only one result
+		queryAddr2 = "http://gom.gomtv.com/jmdb/"+match.group(1)
+		subTitle = "Subtitle "
+	    else:
+		# regular search result page
+		url_match  = re.compile('''<div><a href="(.*?)">''').findall(link)
+		date_match = re.compile('''<td>(\d{4}.\d{2}.\d{2})</td>''').findall(link)
+		if len(url_match) != len(date_match): 
+		    print "Unusual result page"
+		    raise SearchFailed
+
 ###------------------ Select a subtitle to download ---------------################
+		if len(url_match)==0:
+		    dialog = xbmcgui.Dialog()
+		    ignored = dialog.ok(__scriptname__,
+				    "No subtitle is found for %s"%os.path.basename(movieFullPath) )
+		    raise SearchFailed
+		else:
+		    dialog = xbmcgui.Dialog()
+		    selected = dialog.select("Subtitles Found: %d"%len(date_match), date_match )
+
+		    if selected < 0:	# cancelled by user
+			raise SearchFailed
+		    else:
+			queryAddr2 = "http://gom.gomtv.com"+url_match[selected]
+			subTitle = date_match[selected]
+
+###----------------- Retrieve the selected subtitle -----------------################
+	    print "download script from %s"%queryAddr2
+	    req = urllib2.Request(queryAddr2)
+	    req.add_header('User-Agent', browser_hdr)
+	    req.add_header('Referer', queryAddr1)
+	    resp = urllib2.urlopen(req)
+	    link = resp.read(); resp.close()
+	    downid = re.search('''javascript:save\('(\d+)','(\d+)','.*?'\);''',link).group(1,2)
+
+	    queryAddr3 = "http://gom.gomtv.com/jmdb/save.html?intSeq=%s&capSeq=%s"%downid
+	    print "actual script is located at %s"%queryAddr3
+	    req = urllib2.Request(queryAddr3)
+	    req.add_header('User-Agent', browser_hdr)
+	    req.add_header('Referer', queryAddr2)
+	    resp = urllib2.urlopen(req)
+	    try:
+		f = open(smiFullPath,'w')
+	    except IOError:
+		print "File could not be written"
+		raise SearchFailed
+
+###----------------- Download the file -----------------################
+	    fileSz = int( resp.info()['Content-Length'] )
+	    stepSz = 10*1024	# 10KB step size
+
+	    dialog = xbmcgui.DialogProgress()
+	    ignored = dialog.create(__scriptname__, 'Downloading subtitle...')
+	    sz = 0
+	    while 1:
+		buf = resp.read(stepSz)
+		if not buf: break
+		sz += len(buf)
+		f.write( buf )
+		
+		dialog.update( 100*sz/fileSz )
+	    f.close(); resp.close()
+	    dialog.close()
+
 	    dialog = xbmcgui.Dialog()
-	    selected = dialog.select(u"검색된 자막 갯수: %d".encode("utf-8") % len(date_match),
-			    date_match )
-	    print "user selects %d"%selected
+	    ignored = dialog.ok(__scriptname__,
+			    "%s is saved to"%subTitle,
+			    smiFullPath )
+	    # enable the downloaded subtitle
+	    xbmc.Player().setSubtitles(smiFullPath)
 
-	    if selected>=0:
-		req = urllib2.Request( "http://gom.gomtv.com"+url_match[selected] )
-		resp = urllib2.urlopen(req)
-		link = resp.read(); resp.close()
-		downid = re.search('''javascript:save\('(\d+)','(\d+)','.*?'\);''',link).group(1,2)
-
-###----------------- Download the selected subtitle -----------------################
-		queryAddr = "http://gom.gomtv.com/jmdb/save.html?intSeq=%s&capSeq=%s"%downid
-		req = urllib2.Request(queryAddr)
-		resp = urllib2.urlopen(req)
-		try:
-		    f = open(smiFullPath,'w')
-		    f.write( resp.read() )
-		except IOError:
-		    print "File could not be written"
-		    sys.exit(1)
-		f.close(); resp.close()
-
-		dialog = xbmcgui.Dialog()
-		ignored = dialog.ok(u"다운로드 성공".encode("utf-8"),
-				u"%s 자막이".encode("utf-8")%date_match[selected],
-				smiFullPath, u"에 저장되었습니다.".encode("utf-8") )
-		xbmc.Player().setSubtitles(smiFullPath)
-	else:
-	    dialog = xbmcgui.Dialog()
-	    selected = dialog.ok(u"검색실패".encode("utf-8"),
-			    u"%s로".encode("utf-8")%os.path.basename(movieFullPath),
-			    u"검색된 자막이 없습니다.".encode("utf-8"))
-
-        if xbmc.getCondVisibility('Player.Paused'): xbmc.Player().pause() # if Paused, un-pause
+	except SearchFailed:
+	    pass
+	if xbmc.getCondVisibility('Player.Paused'): xbmc.Player().pause() # if Paused, un-pause
 
     # end of __main__
     sys.modules.clear()
