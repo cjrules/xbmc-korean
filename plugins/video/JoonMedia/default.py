@@ -11,7 +11,7 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/JoonMedia"
 __credits__ = "XBMC Korean User Group"
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -20,6 +20,7 @@ browser_hdr = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; ko-KR; rv:1.9.0.3) Gecko
 #-----------------------------------------------------
 def CATEGORIES():
     ## not parsing homepage for faster speed
+    addDir("최근 업데이트","http://joonmedia.net",6,"")
     addDir("드라마","http://joonmedia.net/videos/dramas",1,"")
     addDir("오락","http://joonmedia.net/videos/shows",1,"")
     addDir("음악","http://joonmedia.net/videos/music",1,"")
@@ -30,7 +31,6 @@ def CATEGORIES():
     addDir("서양영화","http://joonmedia.net/videos/enmovies",1,"")
     addDir("다큐","http://joonmedia.net/videos/docu",1,"")
     addDir("시사교양","http://joonmedia.net/videos/edu",1,"")
-    addDir("최근 업데이트","http://joonmedia.net",6,"")
 
 def VIDEO(main_url):
     req = urllib2.Request(main_url)
@@ -136,10 +136,20 @@ def EPISODE_YOUTUBE(main_url):
     response=urllib2.urlopen(req);link=response.read();response.close()
 
     match=re.compile('''flashvars="file=(.*?)&amp;''').findall(link)
-    i=0;
-    for cntnr in match:
-	xbmc.log( "Container = %s" % cntnr, xbmc.LOGDEBUG )
-	i=i+1; GetFLV("Part %d"%i, cntnr)
+    if match:
+	i=0;
+	for cntnr in match:
+	    xbmc.log( "Container = %s" % cntnr, xbmc.LOGDEBUG )
+	    i=i+1; GetFLV("Part %d"%i, cntnr)
+	return
+
+    match=re.compile('''<embed src="(.*?)[&"]''').findall(link)
+    if match:
+	i=0;
+	for cntnr in match:
+	    xbmc.log( "Container = %s" % cntnr, xbmc.LOGDEBUG )
+	    i=i+1; GetFLV("Part %d"%i, cntnr)
+	return
 
 def EPISODE_FLASH(main_url):
     req = urllib2.Request(main_url)
@@ -203,6 +213,9 @@ def GetFLV(name, url):
 	    addLink(name, veoh, thumb)
     elif url.find('youtube')>0:
 	id = re.search('http://www.youtube.com/watch\?v=(.+)',url)
+	if id is None:
+	    id = re.search('http://www.youtube.com/v/(.+)',url)
+	    url = "http://www.youtube.com/watch?v=%s"%id.group(1)
 	xbmc.log( "youtube ID: "+id.group(1), xbmc.LOGDEBUG )
 	req = urllib2.Request(url)
 	req.add_header('User-Agent', browser_hdr)
