@@ -155,7 +155,7 @@ else:
 	    if sz < fileSz:
 		ignored = dialog.ok(__scriptname__,
 				"Download cancelled" )
-	    else
+	    else:
 		ignored = dialog.ok(__scriptname__,
 				"%s is saved to"%subTitle,
 				smiFullPath )
