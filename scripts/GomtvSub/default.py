@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys,os,xbmc
-import urllib,md5
+import urllib2,md5
 import re
 
 __scriptname__ = "GomtvSub"
@@ -67,8 +67,9 @@ else:
 
 ###----------------- Search subtitle in GomTV site ---------------################
 	queryAddr = "http://gom.gomtv.com/jmdb/search.html?key=%s"%key
-	req = urllib.urlopen(queryAddr)
-	link = req.read(); req.close()
+	req = urllib2.Request(queryAddr)
+	resp = urllib2.urlopen(req)
+	link = resp.read(); resp.close()
 
 	url_match  = re.compile('''<div><a href="(.*?)">''').findall(link)
 	date_match = re.compile('''<td>(\d{4}.\d{2}.\d{2})</td>''').findall(link)
@@ -86,20 +87,22 @@ else:
 	    print "user selects %d"%selected
 
 	    if selected>=0:
-		req = urllib.urlopen( "http://gom.gomtv.com"+url_match[selected] )
-		link = req.read(); req.close()
+		req = urllib2.Request( "http://gom.gomtv.com"+url_match[selected] )
+		resp = urllib2.urlopen(req)
+		link = resp.read(); resp.close()
 		downid = re.search('''javascript:save\('(\d+)','(\d+)','.*?'\);''',link).group(1,2)
 
 ###----------------- Download the selected subtitle -----------------################
 		queryAddr = "http://gom.gomtv.com/jmdb/save.html?intSeq=%s&capSeq=%s"%downid
-		req = urllib.urlopen(queryAddr)
+		req = urllib2.Request(queryAddr)
+		resp = urllib2.urlopen(req)
 		try:
 		    f = open(smiFullPath,'w')
-		    f.write( req.read() )
+		    f.write( resp.read() )
 		except IOError:
 		    print "File could not be written"
 		    sys.exit(1)
-		f.close(); req.close()
+		f.close(); resp.close()
 
 		dialog = xbmcgui.Dialog()
 		ignored = dialog.ok(u"다운로드 성공".encode("utf-8"),
