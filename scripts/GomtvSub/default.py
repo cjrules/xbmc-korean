@@ -8,7 +8,7 @@ __author__     = "edge"
 __url__        = "http://xbmc-korea.com"
 __svn_url__    = "http://xbmc-korean.googlecode.com/svn/trunk/scripts/GomtvSub"
 __credits__    = ""
-__version__    = "1.0.0"
+__version__    = "1.1.0"
 
 #############-----------------Is script runing from OSD? -------------------------------###############
 
@@ -83,34 +83,36 @@ else:
 	    resp = urllib2.urlopen(req)
 	    link = resp.read(); resp.close()
 
-	    match = re.match('''<script>location.href = '(.*?)';</script>''',link)
+	    match = re.match('''<script>location.href = '([^']*)';</script>''',link)
 	    if match:
-		# auto redirected when there is only one result
-		queryAddr2 = "http://gom.gomtv.com/jmdb/"+match.group(1)
-		subTitle = "Subtitle "
-	    else:
-		# regular search result page
-		url_match  = re.compile('''<div><a href="(.*?)">''').findall(link)
-		date_match = re.compile('''<td>(\d{4}.\d{2}.\d{2})</td>''').findall(link)
-		if len(url_match) != len(date_match): 
-		    print "Unusual result page"
-		    raise SearchFailed
-
-###------------------ Select a subtitle to download ---------------################
-		if len(url_match)==0:
+		if 'noResult' in match.group(1):
 		    dialog = xbmcgui.Dialog()
 		    ignored = dialog.ok(__scriptname__,
 				    "No subtitle is found for %s"%os.path.basename(movieFullPath) )
 		    raise SearchFailed
-		else:
-		    dialog = xbmcgui.Dialog()
-		    selected = dialog.select("Subtitles Found: %d"%len(date_match), date_match )
+		# auto redirected when there is only one result
+		queryAddr2 = "http://gom.gomtv.com/jmdb/"+match.group(1)
+		subTitle = "Subtitle"
+	    else:
+		# regular search result page
+		url_match  = re.compile('''<div><a href="([^"]*)">\[([^\]]*)\]''',re.U).findall(link)
+		date_match = re.compile('''<td>(\d{4}.\d{2}.\d{2})</td>''').findall(link)
+		if len(url_match) == 0 or len(url_match) != len(date_match): 
+		    print "Unusual result page"
+		    raise SearchFailed
 
-		    if selected < 0:	# cancelled by user
-			raise SearchFailed
-		    else:
-			queryAddr2 = "http://gom.gomtv.com"+url_match[selected]
-			subTitle = date_match[selected]
+###------------------ Select a subtitle to download ---------------################
+		title_list = []
+		for i in range(0,len(date_match)):
+		    title_list.append( "%s: %s"%(date_match[i],url_match[i][1]) )
+		dialog = xbmcgui.Dialog()
+		selected = dialog.select( "Subtitles Found: %d"%len(title_list), title_list )
+
+		if selected < 0:	# cancelled by user
+		    raise SearchFailed
+		else:
+		    queryAddr2 = "http://gom.gomtv.com"+url_match[selected][0]
+		    subTitle = "%s(%s)"%(date_match[selected],url_match[selected][1])
 
 ###----------------- Retrieve the selected subtitle -----------------################
 	    print "download script from %s"%queryAddr2
