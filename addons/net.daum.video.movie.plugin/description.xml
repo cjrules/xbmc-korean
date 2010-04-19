@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addoninfo>
+  <id>net.daum.video.movie.plugin</id>
+  <type>plugin</type>
+  <supportedcontent>
+    <content>video</content>
+  </supportedcontent>
+  <title>Daum Movie Trailer</title>
+  <library>default.py</library>
+  <version>1.0.0</version>
+  <platforms>
+    <platform>all</platform>
+  </platforms>
+  <minversion>
+    <xbmc>20000</xbmc>
+  </minversion>
+  <summary>Movie trailer in Daum Movie</summary>
+  <description>Play movie trailer in movie.daum.net</description>
+  <author>xbmc-korea</author>
+</addoninfo>
