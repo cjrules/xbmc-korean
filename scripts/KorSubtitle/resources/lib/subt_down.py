@@ -22,6 +22,7 @@ def download_subtitle(queryAddr, smiPath):
     dialog = xbmcgui.DialogProgress()
     ignored = dialog.create(__scriptname__, _(105) )
     sz = 0
+    dialog.update( 0 )
     while 1:
 	if dialog.iscanceled():
 	    break

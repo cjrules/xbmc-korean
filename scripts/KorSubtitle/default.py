@@ -70,8 +70,9 @@ else:
 	###----- fetch list of available subtitles
 	subt_list = []
 	dialog = xbmcgui.DialogProgress()
-	ignored = dialog.create(__scriptname__, _(100) )
+	ignored = dialog.create(__scriptname__ )
 	if __settings__.getSetting( "GomTV" )=='true':
+	    dialog.update( 0, _(100) )
 	    subt_list += gomtv_jamak_from_file(f)
 	if __settings__.getSetting( "Qple" )=='true':
 	    dialog.update( 50, _(101) )
