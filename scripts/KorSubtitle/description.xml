@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addoninfo>
+  <id>com.xbmc-korea.subtitle.script</id>
+  <type>script</type>
+  <supportedcontent>
+    <content>subtitle</content>
+  </supportedcontent>
+  <title>Korean Subtitle</title>
+  <library>default.py</library>
+  <version>1.0.0</version>
+  <platforms>
+    <platform>all</platform>
+  </platforms>
+  <minversion>
+    <xbmc>20000</xbmc>
+  </minversion>
+  <summary>Subtitle from Korean sites</summary>
+  <description>Download a subtitle from GomTV / Qple</description>
+  <author>xbmc-korea.com</author>
+</addoninfo>
