@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 import sys,xbmcgui
 import urllib2
-import re
 
 _ = sys.modules[ "__main__" ].__language__
 __scriptname__ = sys.modules[ "__main__" ].__scriptname__
 
 def download_subtitle(queryAddr, smiPath):
     req = urllib2.Request(queryAddr)
-    resp = urllib2.urlopen(req)
+    try: resp = urllib2.urlopen(req)
+    except urllib2.URLError, e:
+	print e.reason
+	return False
     try:
 	f = open(smiPath,'w')
     except IOError:

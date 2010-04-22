@@ -18,7 +18,10 @@ def gomtv_jamak_from_file(f):
     print "search subtitle at %s"%queryAddr
     req = urllib2.Request(queryAddr)
     req.add_header('User-Agent', browser_hdr)
-    resp = urllib2.urlopen(req)
+    try: resp = urllib2.urlopen(req)
+    except urllib2.URLError, e:
+	print e.reason
+	return []
     link = resp.read(); resp.close()
 
     match = re.match('''<script>location.href = '([^']*)';</script>''',link)
@@ -28,10 +31,10 @@ def gomtv_jamak_from_file(f):
 	    return []
 	else:
 	    # single search result
-	    return [ ('gomtv', _(104), gomtv_home+match.group(1)) ]
+	    return [ ('gomtv', _(104), gomtv_home+'/jmdb/'+match.group(1)) ]
 
     # regular search result page
-    url_match  = re.compile('''<div><a href="([^"]*)">\[([^\]]*)\](.*?)</a>''',re.U).findall(link)
+    url_match  = re.compile('''<div><a href="([^"]*)">\[([^\]]*)\]([^<]*)</a>''',re.U).findall(link)
     date_match = re.compile('''<td>(\d{4}.\d{2}.\d{2})</td>''').findall(link)
     if len(url_match) == 0 or len(url_match) != len(date_match): 
 	print "Unusual result page, "+queryAddr
@@ -48,7 +51,10 @@ def gomtv_jamak_url(url):
     print "parse subtitle page at %s"%url
     req = urllib2.Request(url)
     req.add_header('User-Agent', browser_hdr)
-    resp = urllib2.urlopen(req)
+    try: resp = urllib2.urlopen(req)
+    except urllib2.URLError, e:
+	print e.reason
+	return ''
     link = resp.read(); resp.close()
-    downid = re.search('''javascript:save[^\(]*\('(\d+)','(\d+)','.*?'\);''',link).group(1,2)
+    downid = re.search('''javascript:save[^\(]*\('(\d+)','(\d+)','[^']*'\);''',link).group(1,2)
     return gomtv_home+"/jmdb/save.html?intSeq=%s&capSeq=%s"%downid

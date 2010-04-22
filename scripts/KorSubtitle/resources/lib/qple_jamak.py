@@ -19,7 +19,10 @@ def qple_jamak_from_file(f):
     queryAddr1 = qple_home+"/app/subtitle/view_subtitle.html?q_hash=%s&q_newhash=%s"%(key1,key2)
     print "search subtitle at %s"%queryAddr1
     req = urllib2.Request(queryAddr1)
-    resp = urllib2.urlopen(req)
+    try: resp = urllib2.urlopen(req)
+    except urllib2.URLError, e:
+	print e.reason
+	return []
     link = resp.read(); resp.close()
 
     match = re.search('''location.replace\('([^']*)'\)''',link)
@@ -31,7 +34,10 @@ def qple_jamak_from_file(f):
     print "parse search result at %s"%queryAddr2
     req = urllib2.Request(queryAddr2)
     req.add_header('Referer', queryAddr1)
-    resp = urllib2.urlopen(req)
+    try: resp = urllib2.urlopen(req)
+    except urllib2.URLError, e:
+	print e.reason
+	return []
     link = resp.read(); resp.close()
 
     # regular search result page
