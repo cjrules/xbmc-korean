@@ -25,7 +25,7 @@ def gomtv_jamak_from_file(f):
     if match:
 	if 'noResult' in match.group(1):
 	    print "Unusual result page, "+queryAddr
-	    return None
+	    return []
 	else:
 	    # single search result
 	    return [ ('gomtv', _(104), gomtv_home+match.group(1)) ]
@@ -35,7 +35,7 @@ def gomtv_jamak_from_file(f):
     date_match = re.compile('''<td>(\d{4}.\d{2}.\d{2})</td>''').findall(link)
     if len(url_match) == 0 or len(url_match) != len(date_match): 
 	print "Unusual result page, "+queryAddr
-	return None
+	return []
 
     ###----- Select a subtitle to download
     title_list = []
