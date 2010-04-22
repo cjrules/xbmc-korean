@@ -84,7 +84,7 @@ else:
 	if len(subt_list)==0:
 	    dialog = xbmcgui.Dialog()
 	    ignored = dialog.ok(__scriptname__,
-			    _(102)%os.path.basename(movieFullPath) )
+			    _(102).encode('utf-8')%os.path.basename(movieFullPath) )
 	else:
 	    title_list = []
 	    for i in range(0,len(subt_list)):
