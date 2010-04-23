@@ -1,6 +1,9 @@
-# -*- coding: utf-8 -*-
-import urllib2,md5
+# -*- mode: python; coding: utf-8; tab-width=8; indent-tabs-mode: t; -*-
+import sys,urllib2,md5
 import string,re
+
+_ = sys.modules[ "__main__" ].__language__
+__scriptname__ = sys.modules[ "__main__" ].__scriptname__
 
 def qple_jamak_from_file(f):
     qple_home = 'http://www.tokplayer.com'
@@ -18,13 +21,13 @@ def qple_jamak_from_file(f):
 
     queryAddr1 = qple_home+"/app/subtitle/view_subtitle.html?q_hash=%s&q_newhash=%s"%(key1,key2)
     print "search subtitle at %s"%queryAddr1
-    req = urllib2.Request(queryAddr1)
-    try: resp = urllib2.urlopen(req)
+    try: resp = urllib2.urlopen(queryAddr1)
     except urllib2.URLError, e:
 	print e.reason
-	return []
+	return None
     link = resp.read(); resp.close()
 
+    # empty list if found nothing
     match = re.search('''location.replace\('([^']*)'\)''',link)
     if match is None or "/notice/" in match.group(1):
 	return []
@@ -37,7 +40,7 @@ def qple_jamak_from_file(f):
     try: resp = urllib2.urlopen(req)
     except urllib2.URLError, e:
 	print e.reason
-	return []
+	return None
     link = resp.read(); resp.close()
 
     # regular search result page

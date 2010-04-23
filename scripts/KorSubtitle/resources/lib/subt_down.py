@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- mode: python; coding: utf-8; tab-width=8; indent-tabs-mode: t; -*-
 import sys,xbmcgui
 import urllib2
 
@@ -6,10 +6,11 @@ _ = sys.modules[ "__main__" ].__language__
 __scriptname__ = sys.modules[ "__main__" ].__scriptname__
 
 def download_subtitle(queryAddr, smiPath):
-    req = urllib2.Request(queryAddr)
-    try: resp = urllib2.urlopen(req)
+    try: resp = urllib2.urlopen(queryAddr)
     except urllib2.URLError, e:
 	print e.reason
+	dialog = xbmcgui.Dialog()
+	ignored = dialog.ok(__scriptname__, _(109), _(108) )
 	return False
     try:
 	f = open(smiPath,'w')

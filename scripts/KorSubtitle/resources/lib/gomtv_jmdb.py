@@ -1,8 +1,9 @@
-# -*- coding: utf-8 -*-
+# -*- mode: python; coding: utf-8; tab-width=8; indent-tabs-mode: t; -*-
 import sys,urllib2,md5
 import string,re
 
 _ = sys.modules[ "__main__" ].__language__
+__scriptname__ = sys.modules[ "__main__" ].__scriptname__
 
 browser_hdr = 'GomPlayer 2, 1, 23, 5007 (KOR)'
 gomtv_home  = "http://gom.gomtv.com"
@@ -21,7 +22,7 @@ def gomtv_jamak_from_file(f):
     try: resp = urllib2.urlopen(req)
     except urllib2.URLError, e:
 	print e.reason
-	return []
+	return None
     link = resp.read(); resp.close()
 
     match = re.match('''<script>location.href = '([^']*)';</script>''',link)
@@ -31,7 +32,7 @@ def gomtv_jamak_from_file(f):
 	    return []
 	else:
 	    # single search result
-	    return [ ('gomtv', _(104), gomtv_home+'/jmdb/'+match.group(1)) ]
+	    return [ ('gomtv', _(104)%_(200), gomtv_home+'/jmdb/'+match.group(1)) ]
 
     # regular search result page
     url_match  = re.compile('''<div><a href="([^"]*)">\[([^\]]*)\]([^<]*)</a>''',re.U).findall(link)
