@@ -19,8 +19,8 @@
     <string id="207">파일이름 형식</string>
     <string id="208">재생목록 폴더</string>
     <string id="209">재생목록 섞기</string>
-    <string id="210">xbox호환으로 가사 저장</string>
-    <string id="211">확장자포함 가사 저장</string>
+    <string id="210">xbox호환 가사 저장</string>
+    <string id="211">아티스트 폴더에 가사 저장</string>
 
     <!-- Settings choices -->
     <string id="2070">%A - %T</string>

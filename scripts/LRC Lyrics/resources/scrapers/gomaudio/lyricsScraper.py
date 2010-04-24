@@ -1,40 +1,24 @@
 ﻿# -*- Mode: python; coding: utf-8; tab-width: 8; indent-tabs-mode: t; -*-
 """
-Scraper for http://lyrics.alsong.co.kr/
+Scraper for http://newlyrics.gomtv.com/
 
 edge
 """
 
 import struct,md5
-import urllib2
+import urllib
 import xbmc
-import xml.dom.minidom as xml
+import re
 
-__title__ = "alsong.co.kr"
+__title__ = "gomtv.com"
 __allow_exceptions__ = False
 
 
-ALSONG_URL = "http://lyrics.alsong.net/alsongwebservice/service1.asmx"
+GOM_URL = "http://newlyrics.gomtv.com/cgi-bin/lyrics.cgi?cmd=find_get_lyrics&file_key=%s&title=%s&artist=%s&from=gomaudio_local"
 
-ALSONG_TMPL = '''\
-<?xml version="1.0" encoding="UTF-8"?>
-<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="ALSongWebServer/Service1Soap" xmlns:ns1="ALSongWebServer" xmlns:ns3="ALSongWebServer/Service1Soap12">
-<SOAP-ENV:Body>
-<ns1:GetLyric5>
-    <ns1:stQuery>
-        <ns1:strChecksum>%s</ns1:strChecksum>
-        <ns1:strVersion>2.2</ns1:strVersion>
-        <ns1:strMACAddress />
-        <ns1:strIPAddress />
-    </ns1:stQuery>
-</ns1:GetLyric5>
-</SOAP-ENV:Body>
-</SOAP-ENV:Envelope>
-'''
-
-class alsongClient(object):
+class gomClient(object):
     '''
-    privide alsong specific function, such as key from mp3
+    privide Gom specific function, such as key from mp3
     '''
     @staticmethod
     def GetKeyFromFile(file):
@@ -62,24 +46,29 @@ class alsongClient(object):
                 break
             if buf == '\xff':
                 rbit = struct.unpack('B',f.read(1))[0] >> 5
-                if rbit == 7:
+                if rbit == 7:   # 11 1's in total
                     f.seek(-2,1)
-                    buf = f.read(160*1024)  # 160KB from audio data
+                    buf = f.read(100*1024)  # 100KB from audio data
                     # calculate hashkey
                     m = md5.new(); m.update(buf); key = m.hexdigest()
                     break
         f.close()
         return key
 
+    @staticmethod
+    def mSecConv(msec):
+        s,ms = divmod(msec/10,100)
+        m,s = divmod(s,60)
+        return m,s,ms
 
 class LyricsFetcher:
     def __init__( self ):
-        self.base_url = "http://lyrics.alsong.co.kr/"
+        self.base_url = "http://newlyrics.gomtv.com/"
 
     def get_lyrics(self, artist, song):
         musicFullPath = xbmc.Player().getPlayingFile()
         print musicFullPath
-        key = alsongClient.GetKeyFromFile( musicFullPath )
+        key = gomClient.GetKeyFromFile( musicFullPath )
         if not key:
             return ''
 
@@ -90,20 +79,28 @@ class LyricsFetcher:
     def get_lyrics_from_list(self, link):
         title,key,artist,song = link
         print key, artist, song
+	print GOM_URL %(key, urllib.quote(song.decode("utf-8").encode("euc-kr")), urllib.quote(artist.decode("utf-8").encode("euc-kr")) )
 
-        headers = { 'Content-Type' : 'text/xml; charset=utf-8' }
-        request = urllib2.Request(ALSONG_URL, ALSONG_TMPL % key, headers)
         try:
-            response = urllib2.urlopen(request)
+            response = urllib.urlopen( GOM_URL %(key, urllib.quote(song.decode("utf-8").encode("euc-kr")), urllib.quote(artist.decode("utf-8").encode("euc-kr")) ) )
             Page = response.read()
         except Exception, e:
             print e
 
-        tree = xml.parseString( Page )
-        if tree.getElementsByTagName("strInfoID")[0].childNodes[0].data == '-1':
+        if Page[:Page.find('>')+1] != '<lyrics_reply result="0">':
+	    print Page[:Page.find('>')+1]
             return ''
-        lyric = tree.getElementsByTagName("strLyric")[0].childNodes[0].data.replace('<br>','\n')
-        return lyric.encode('utf-8')
+        syncs = re.compile('<sync start="(\d+)">([^<]*)</sync>').findall(Page)
+        lyric = []
+        lyric.append( "[ti:%s]" %song )
+        lyric.append( "[ar:%s]" %artist )
+        for sync in syncs:
+            # timeformat conversion
+            t = "%02d:%02d.%02d" % gomClient.mSecConv( int(sync[0]) )
+            # unescape string
+            s = unicode(sync[1], "euc-kr").encode("utf-8").replace("&apos;","'").replace("&quot;",'"')
+            lyric.append( "[%s]%s" %(t,s) )
+        return '\n'.join( lyric )
 
 if ( __name__ == '__main__' ):
     # used to test get_lyrics() 
