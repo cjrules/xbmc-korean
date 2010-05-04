@@ -11,7 +11,7 @@ __author__ = "edge"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/JoonMedia"
 __credits__ = "XBMC Korean User Group"
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -20,17 +20,17 @@ browser_hdr = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; ko-KR; rv:1.9.0.3) Gecko
 #-----------------------------------------------------
 def CATEGORIES():
     ## not parsing homepage for faster speed
-    addDir("최근 업데이트","http://joonmedia.net",6,"")
-    addDir("드라마","http://joonmedia.net/videos/dramas",1,"")
-    addDir("오락","http://joonmedia.net/videos/shows",1,"")
-    addDir("음악","http://joonmedia.net/videos/music",1,"")
-    addDir("다시보기","http://joonmedia.net/videos/classics",1,"")
-    addDir("영화","http://joonmedia.net/videos/movies",1,"")
-    addDir("일본영화","http://joonmedia.net/videos/jpmovies",1,"")
-    addDir("중국영화","http://joonmedia.net/videos/chmovies",1,"")
-    addDir("서양영화","http://joonmedia.net/videos/enmovies",1,"")
-    addDir("다큐","http://joonmedia.net/videos/docu",1,"")
-    addDir("시사교양","http://joonmedia.net/videos/edu",1,"")
+    addDir(u"최근 업데이트","http://joonmedia.net",6,"")
+    addDir(u"드라마","http://joonmedia.net/videos/dramas",1,"")
+    addDir(u"오락","http://joonmedia.net/videos/shows",1,"")
+    addDir(u"음악","http://joonmedia.net/videos/music",1,"")
+    addDir(u"다시보기","http://joonmedia.net/videos/classics",1,"")
+    addDir(u"영화","http://joonmedia.net/videos/movies",1,"")
+    addDir(u"일본영화","http://joonmedia.net/videos/jpmovies",1,"")
+    addDir(u"중국영화","http://joonmedia.net/videos/chmovies",1,"")
+    addDir(u"서양영화","http://joonmedia.net/videos/enmovies",1,"")
+    addDir(u"다큐","http://joonmedia.net/videos/docu",1,"")
+    addDir(u"시사교양","http://joonmedia.net/videos/edu",1,"")
 
 def VIDEO(main_url):
     req = urllib2.Request(main_url)
@@ -268,6 +268,7 @@ def get_params():
 
 def addLink(name,url,iconimage):
     ok=True
+    name=name.encode("utf-8")
     xbmc.log( "addLink(%s,%s)" % (name, url), xbmc.LOGDEBUG )
     liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
     liz.setInfo( type="Video", infoLabels={ "Title": name } )
@@ -275,6 +276,7 @@ def addLink(name,url,iconimage):
     return ok
 
 def addDir(name,url,mode,iconimage):
+    name=name.encode("utf-8")
     u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
     ok=True
     liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
