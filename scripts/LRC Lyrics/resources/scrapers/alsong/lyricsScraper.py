@@ -1,11 +1,10 @@
 ﻿# -*- Mode: python; coding: utf-8; tab-width: 8; indent-tabs-mode: t; -*-
 """
 Scraper for http://lyrics.alsong.co.kr/
-
-edge
+by edge @ xbmc-korea.com
 """
 
-import struct,md5
+import md5
 import urllib2
 import xbmc
 import xml.dom.minidom as xml
@@ -38,38 +37,19 @@ class alsongClient(object):
     '''
     @staticmethod
     def GetKeyFromFile(file):
-        f = open(file,'rb')
-        # Searching ID3v2 tag
-        while True:
-            buf = f.read(3)
-            if len(buf) < 3 or f.tell() > 50000:
-                # no ID tag
-                f.seek(0,0)
-                break
-            if buf == 'ID3':
-                f.seek(3,1)     # skip version/flag
-                # ID length (synchsafe integer)
-                tl = struct.unpack('bbbb', f.read(4))
-                taglen = (tl[0]<<21)|(tl[1]<<14)|(tl[2]<<7)|tl[3]
-                f.seek(taglen,1)
-                break
-            f.seek(-2,1)
-        # Searching MPEG SOF
-        while True:
-            buf = f.read(1)
-            if len(buf) < 1 or f.tell() > 100000:
-                key = ''
-                break
-            if buf == '\xff':
-                rbit = struct.unpack('B',f.read(1))[0] >> 5
-                if rbit == 7:
-                    f.seek(-2,1)
-                    buf = f.read(160*1024)  # 160KB from audio data
-                    # calculate hashkey
-                    m = md5.new(); m.update(buf); key = m.hexdigest()
-                    break
-        f.close()
-        return key
+	from resources.lib.audiofile import *
+	musf = AudioFile()
+	musf.Open(file)
+	if file.endswith('.ogg'):
+	    buf = musf.ReadAudioStream(160*1024,11)	# 160KB excluding header
+	elif file.endswith('.wma'):
+	    buf = musf.ReadAudioStream(160*1024,24)	# 160KB excluding header
+	else:
+	    buf = musf.ReadAudioStream(160*1024)	# 160KB from audio data
+	musf.Close()
+	# calculate hashkey
+	m = md5.new(); m.update(buf);
+        return m.hexdigest()
 
 
 class LyricsFetcher:
@@ -106,9 +86,15 @@ class LyricsFetcher:
         return lyric.encode('utf-8')
 
 if ( __name__ == '__main__' ):
+    script_home = 'D:\\work\\test\\LRC Lyrics'
+
+    import sys
+    if not script_home in sys.path:
+	sys.path.append( script_home )
+
     # used to test get_lyrics() 
-    artist = u"소녀시대"
-    song = u"소원을 말해봐"
+    artist = "소녀시대"
+    song = "소원을 말해봐"
 
     lyrics = LyricsFetcher().get_lyrics( artist, song )
     if ( isinstance( lyrics, list ) ):
