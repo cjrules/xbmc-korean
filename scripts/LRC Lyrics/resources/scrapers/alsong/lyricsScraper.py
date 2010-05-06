@@ -40,9 +40,10 @@ class alsongClient(object):
 	from resources.lib.audiofile import *
 	musf = AudioFile()
 	musf.Open(file)
-	if file.endswith('.ogg'):
+	ext = file[file.rfind('.'):].lower()
+	if ext == '.ogg':
 	    buf = musf.ReadAudioStream(160*1024,11)	# 160KB excluding header
-	elif file.endswith('.wma'):
+	elif ext == '.wma':
 	    buf = musf.ReadAudioStream(160*1024,24)	# 160KB excluding header
 	else:
 	    buf = musf.ReadAudioStream(160*1024)	# 160KB from audio data
