@@ -20,7 +20,7 @@ class gomClient(object):
     '''
     @staticmethod
     def GetKeyFromFile(file):
-	from resources.lib.audiofile import *
+	from resources.lib.audiofile import AudioFile
 	musf = AudioFile()
 	musf.Open(file)
 	buf = musf.ReadAudioStream(100*1024)	# 100KB from audio data

@@ -37,7 +37,7 @@ class alsongClient(object):
     '''
     @staticmethod
     def GetKeyFromFile(file):
-	from resources.lib.audiofile import *
+	from resources.lib.audiofile import AudioFile
 	musf = AudioFile()
 	musf.Open(file)
 	ext = file[file.rfind('.'):].lower()

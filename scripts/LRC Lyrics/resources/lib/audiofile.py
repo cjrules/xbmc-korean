@@ -8,6 +8,8 @@ import os
 import struct
 
 class AudioFile(object):
+    f = None
+    audioStart = 0
 
     def AudioFile(self):
         self.f = None
