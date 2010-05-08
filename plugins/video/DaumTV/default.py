@@ -10,7 +10,7 @@ __author__  = "anonymous"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/DaumTV"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -18,14 +18,14 @@ import os
 LIB_DIR = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'lib' ) )
 if not LIB_DIR in sys.path:
     sys.path.append (LIB_DIR)
-icon_dir = os.getcwd()+os.sep
+pic_dir = os.path.join(os.getcwd(),'resources','pic')
 
 # show menu
 def CATEGORIES():
-    addDir(u"영화 예고편", "http://movie.daum.net/ranking/movieclip_ranking/", 10, icon_dir+"daum_trailer.png")
-    addDir(u"뉴스", "http://tvnews.media.daum.net/", 20, icon_dir+"daum_media.png")
-    addDir(u"베스트 동영상", "http://tvpot.daum.net/best/", 30, icon_dir+"daum_tvpot.png")
-    addDir(u"게임", "http://tvpot.daum.net/game/sl/", 40, icon_dir+"daum_tvpot.png")
+    addDir(u"영화 예고편", "http://movie.daum.net/ranking/movieclip_ranking/", 10, pic_dir+"daum_trailer.png")
+    addDir(u"뉴스", "http://tvnews.media.daum.net/", 20, pic_dir+"daum_media.png")
+    addDir(u"베스트 동영상", "http://tvpot.daum.net/best/", 30, pic_dir+"daum_tvpot.png")
+    addDir(u"게임", "http://tvpot.daum.net/game/sl/", 40, pic_dir+"daum_tvpot.png")
                        
 def CAT_TRAILER(base_url):
     addDir(u"일간 베스트",base_url+"bestTrailer.do?datekey=3",11,'')
@@ -48,14 +48,14 @@ def CAT_BEST(base_url):
 def CAT_GAME(base_url):
     from daum_starcraft import DaumStarcraft
     site = DaumStarcraft()
-    addDir(u"---- 스타크래프트 스타리그 ----", '', 40, icon_dir+"oslBanner.png")
+    addDir(u"---- 스타크래프트 스타리그 ----", '', 40, pic_dir+"oslBanner.png")
     site.parseTop(base_url+"LeagueList.do?league=osl&type=list&lu=game_osl_closegame")
     for title,url in site.menu_list:
-        addDir(title, url, 41, icon_dir+"oslBanner.png")
-    addDir(u"---- 스타크래프트 프로리그 ----", '', 40, icon_dir+"proleagueBanner.png")
+        addDir(title, url, 41, pic_dir+"oslBanner.png")
+    addDir(u"---- 스타크래프트 프로리그 ----", '', 40, pic_dir+"proleagueBanner.png")
     site.parseTop(base_url+"LeagueList.do?league=pro&type=list&lu=game_pro_closegame")
     for title,url in site.menu_list:
-        addDir(title,url,41, icon_dir+"proleagueBanner.png")
+        addDir(title,url,41, pic_dir+"proleagueBanner.png")
 
 #------------------------------------------------------------------
 def BROWSE_TRAILER(main_url):
