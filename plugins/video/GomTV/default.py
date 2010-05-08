@@ -4,6 +4,7 @@
 """
 
 import urllib,xbmcplugin,xbmcgui
+import re
 
 # plugin constants
 __plugin__  = "GomTV"
@@ -11,7 +12,7 @@ __author__  = "anonymous"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/GomTV"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -37,6 +38,7 @@ def CAT_MUSIC_CHART(main_url):
 def CAT_GAME(main_url):
     addDir(u"스타크래프트2 XP토너먼트","http://ch.gomtv.com/4002/27523",2,"")
     addDir(u"Star2gether","http://ch.gomtv.com/425/27635",2,"")
+    addDir(u"특별기획-스타2G","http://ch.gomtv.com/439/27503",2,"")
     addDir(u"[4R]프로리그 09-10","http://ch.gomtv.com/412/27633",2,"")
     addDir(u"[2R]프로리그 09-10","http://ch.gomtv.com/412/27713",2,"")
     addDir(u"[1R]프로리그 09-10","http://ch.gomtv.com/412/27607",2,"")
@@ -93,27 +95,39 @@ def STAR2_CH(main_url):
 def SHOW_VIDEO(main_url):
     ids = GetGomId(main_url)
     if ids:
-	st_url = "http://tv.gomtv.com/cgi-bin/gox/gox_channel.cgi?isweb=0&chid=%s&pid=%s&bid=%s&bjvid=%s" % ids
-	vid_url = GetVideoUrl(st_url)
-	if vid_url:
-	    addLink(u"시청", vid_url, '')
+	(chid,pid,bid),sub_ids = ids
+	for bjvid,title in sub_ids:
+	    st_url = "http://tv.gomtv.com/cgi-bin/gox/gox_channel.cgi?isweb=0&chid=%s&pid=%s&bid=%s&bjvid=%s" % (chid,pid,bid,bjvid)
+	    vid_url = GetVideoUrl(st_url)
+	    if vid_url:
+		addLink(title, vid_url, '')
 
 def GetGomId(main_url):
     try:
 	tDoc=urllib.urlopen(main_url).read()
     except:
 	return None
-    
-    pos1 = tDoc.find('obj.useNoneImg')
-    pos2 = tDoc.find('if(isFirst)',pos1)
-    if pos1 < 0 or pos2 < 0:
-	return None
-    list = tDoc[pos1:pos2].split(';')
-    ids = []
-    # order is chid,pid,bjvid,bid
-    for stmt in list[1:]:
-	ids.append( stmt[stmt.rfind("'",0,-1)+1:-1] )
-    return (ids[0],ids[1],ids[3],ids[2])
+
+    #-- chid/pid/bid & default bjvid
+    tSec1 = re.compile('obj\.useNoneImg(.*?)if\(isFirst\)',re.S).search(tDoc).group(1)
+    chid,pid,bjvid,bid = re.compile("'(\d+)'").findall(tSec1)
+    common_ids = (chid,pid,bid)
+
+    #-- multiple bjvid
+    strain = SoupStrainer( "ul", { "id" : "widgetTabs1" } )
+    soup = BeautifulSoup( tDoc, strain, fromEncoding="euc-kr" )
+    sub_ids = []
+    items = soup.findAll('a')
+    if items:
+	for item in items:
+	    ref = item['href']
+	    id = ref[ref.rfind('(')+1:ref.rfind(',')]
+	    title = item['title']
+	    title = title[:title.find('\n')]
+	    sub_ids.append( (id, title) )
+    else:
+	sub_ids.append( (bjvid,u"시청") )	# single video
+    return (common_ids, sub_ids)
 
 def GetVideoUrl(main_url):
     xbmc.log( "vidurl=%s"%main_url, xbmc.LOGDEBUG )
