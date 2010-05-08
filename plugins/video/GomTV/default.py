@@ -12,7 +12,7 @@ __author__  = "anonymous"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/GomTV"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.1.1"
+__version__ = "0.2.0"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -27,21 +27,40 @@ from BeautifulSoup import BeautifulSoup, SoupStrainer
 def CATEGORIES():
     addDir(u"뮤직비디오 차트","-",11,"")
     addDir(u"게임","-",12,"")
+    addDir(u"시청순위","-",13,"")
 
 def CAT_MUSIC_CHART(main_url):
-    addDir(u"실시간","http://www.gomtv.com/chart/index.gom?chart=1",1,"")
-    addDir(u"주간","http://www.gomtv.com/chart/index.gom?chart=3",1,"")
-    addDir(u"월간","http://www.gomtv.com/chart/index.gom?chart=4",1,"")
-    addDir(u"주간1위모음","http://www.gomtv.com/chart/index.gom?chart=6",1,"")
-    addDir(u"명예의전당","http://www.gomtv.com/chart/index.gom?chart=5",1,"")
+    mchart_url = "http://www.gomtv.com/chart/index.gom?chart=%d"
+    addDir(u"실시간",mchart_url % 1,1,"")
+    addDir(u"주간",mchart_url % 3,1,"")
+    addDir(u"월간",mchart_url % 4,1,"")
+    addDir(u"주간1위모음",mchart_url % 6,1,"")
+    addDir(u"명예의전당",mchart_url % 5,1,"")
 
 def CAT_GAME(main_url):
     addDir(u"스타크래프트2 XP토너먼트","http://ch.gomtv.com/4002/27523",2,"")
     addDir(u"Star2gether","http://ch.gomtv.com/425/27635",2,"")
-    addDir(u"특별기획-스타2G","http://ch.gomtv.com/439/27503",2,"")
     addDir(u"[4R]프로리그 09-10","http://ch.gomtv.com/412/27633",2,"")
     addDir(u"[2R]프로리그 09-10","http://ch.gomtv.com/412/27713",2,"")
     addDir(u"[1R]프로리그 09-10","http://ch.gomtv.com/412/27607",2,"")
+    addDir(u"특별기획-스타2G","http://ch.gomtv.com/439/27503",2,"")
+    addDir(u"곰게임넷","http://ch.gomtv.com/439/24776",2,"")
+
+def CAT_HOT(main_url):
+    link=urllib.urlopen( "http://www.gomtv.com/navigation/navigation.gom?navitype=3" )
+    strain = SoupStrainer('ul', {"class" : "lnb_list"})
+    soup = BeautifulSoup( link.read(), strain, fromEncoding="euc-kr" )
+    for item in soup.findAll('li', {"class" : "mbin_list_1"}):
+	ref = item.find('a')
+	addDir(ref.contents[0], "http://www.gomtv.com"+ref['href'], 14, "")
+
+def CAT_HOT_SUB(main_url):
+    link=urllib.urlopen( main_url )
+    strain = SoupStrainer('ul', {"id" : "tab_menu"})
+    soup = BeautifulSoup( link.read(), strain, fromEncoding="euc-kr" )
+    for item in soup.findAll('li'):
+	ref = item.find('a')
+	addDir(ref.contents[0], "http://www.gomtv.com"+ref['href'], 3, "")
 
 #-----------------------------------------------------
 def MUSIC_CHART(main_url):
@@ -57,21 +76,18 @@ def MUSIC_CHART(main_url):
 	ref = list.pop(0)
 	while ref.find('img'):
 	    ref = list.pop(0)
-	title = ref.contents[0]
+	title = ref.contents[0].replace('&amp;','&')
 	list.pop(0)
 	addDir(title,url,10,thumb)
     #-- next page
     strain = SoupStrainer( "div", { "class" : "neo_wchart_index" } )
-    #print soup.find(strain).find(lambda tag: tag.name=='a' and len(tag.attrs)==2)
-    list = soup.find(strain).findAll('a')
-    while list:
-	ref = list.pop(0)
-	if ('class','cho_on') in ref.attrs and list:
-	    ref = list.pop(0)
-	    addDir(u'다음 페이지>', "http://www.gomtv.com"+ref['href'], 1, '')
-	    break
+    thispage = soup.find(strain).find('a', {"class" : "cho_on"})
+    if thispage:
+	nextpage = thispage.findNextSibling('a')
+	if nextpage:
+	    addDir(u'다음 페이지>', "http://www.gomtv.com"+nextpage['href'], 1, '')
     
-def STAR2_CH(main_url):
+def STAR_CH(main_url):
     link=urllib.urlopen(main_url)
     soup = BeautifulSoup( link.read(), fromEncoding="euc-kr" )
     #-- item list
@@ -82,7 +98,7 @@ def STAR2_CH(main_url):
 	refs = item.findAll('a')
 	url = refs[0]['href']
 	thumb = refs[0].find('img')['src']
-	title = refs[1].contents[0]
+	title = refs[1].contents[0].replace('&amp;','&')
 	addDir(title,url,10,thumb)
     #-- next page
     strain = SoupStrainer( "table", { "class" : "page" } )
@@ -92,6 +108,31 @@ def STAR2_CH(main_url):
 	url = curpg.findNextSibling('td').find('a')['href']
 	addDir(u'다음 페이지>', url, 2, '')
 
+def MOST_WATCHED(main_url):
+    link=urllib.urlopen(main_url)
+    soup = BeautifulSoup( link.read(), fromEncoding="euc-kr" )
+    #-- item list
+    for item in soup.findAll('dl', {"id" : "ranking_set"}):
+	#title/url
+	titblk = item.find('h6').find('a')
+	title = titblk.string.replace('&amp;','&')
+	url = titblk['href']
+	#thumb
+	thumb = ''
+	img = item.find('a',{"href" : url}).find('img')
+	if img: thumb = img['src']
+	addDir(title,url,10,thumb)
+    #-- next page
+    strain1 = SoupStrainer( "table", { "class" : "down_page" } )
+    strain2 = SoupStrainer( "td", { "class" : "on" } )
+    nextpage = soup.find(strain1).find(strain2).findNextSibling('td')
+    if nextpage is None: return
+    for attr,value in nextpage.attrs:
+	if attr == 'class' and value.endswith("nv"):
+	    return
+    addDir(u'다음 페이지>', "http://www.gomtv.com"+nextpage.find('a')['href'], 3, '')
+
+#-----------------------------------                
 def SHOW_VIDEO(main_url):
     ids = GetGomId(main_url)
     if ids:
@@ -109,17 +150,22 @@ def GetGomId(main_url):
 	return None
 
     #-- chid/pid/bid & default bjvid
-    tSec1 = re.compile('obj\.useNoneImg(.*?)if\(isFirst\)',re.S).search(tDoc).group(1)
+    query = re.compile('obj\.useNoneImg(.*?)if\(isFirst\)',re.S).search(tDoc)
+    if query is None:
+	xbmc.log( "%s is not allowed to watch"%main_url, xbmc.LOGNOTICE )
+	return None
+    tSec1 = query.group(1)
     chid,pid,bjvid,bid = re.compile("'(\d+)'").findall(tSec1)
     common_ids = (chid,pid,bid)
 
     #-- multiple bjvid
-    strain = SoupStrainer( "ul", { "id" : "widgetTabs1" } )
-    soup = BeautifulSoup( tDoc, strain, fromEncoding="euc-kr" )
     sub_ids = []
-    items = soup.findAll('a')
-    if items:
-	for item in items:
+    soup = BeautifulSoup( tDoc, fromEncoding="euc-kr" )
+    plist = soup.find("ul", {"id" : "widgetTabs1"})	# HQ first
+    if plist is None:
+	plist = soup.find("ul", {"id" : "widgetTabs2"})
+    if plist:
+	for item in plist.findAll('a'):
 	    ref = item['href']
 	    id = ref[ref.rfind('(')+1:ref.rfind(',')]
 	    title = item['title']
@@ -214,12 +260,18 @@ if mode==None or url==None or len(url)<1:
 elif mode==1:
     MUSIC_CHART(url)
 elif mode==2:
-    STAR2_CH(url)
+    STAR_CH(url)
+elif mode==3:
+    MOST_WATCHED(url)
 elif mode==10:
     SHOW_VIDEO(url)
 elif mode==11:
     CAT_MUSIC_CHART(url)
 elif mode==12:
     CAT_GAME(url)
+elif mode==13:
+    CAT_HOT(url)
+elif mode==14:
+    CAT_HOT_SUB(url)
 
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
