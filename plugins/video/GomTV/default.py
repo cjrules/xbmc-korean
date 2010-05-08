@@ -7,11 +7,11 @@ import urllib,xbmcplugin,xbmcgui
 
 # plugin constants
 __plugin__  = "GomTV"
-__author__  = "edge"
+__author__  = "anonymous"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/GomTV"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.0.2"
+__version__ = "0.1.0"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -24,8 +24,8 @@ from BeautifulSoup import BeautifulSoup, SoupStrainer
 
 #-----------------------------------------------------
 def CATEGORIES():
-    addDir(u"뮤직비디오 차트","dummy",11,"")
-    addDir(u"게임","dummy",12,"")
+    addDir(u"뮤직비디오 차트","-",11,"")
+    addDir(u"게임","-",12,"")
 
 def CAT_MUSIC_CHART(main_url):
     addDir(u"실시간","http://www.gomtv.com/chart/index.gom?chart=1",1,"")
