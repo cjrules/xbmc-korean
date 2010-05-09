@@ -12,14 +12,15 @@ __author__  = "anonymous"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/GomTV"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
 import os
-LIB_DIR = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'lib' ) )
-if not LIB_DIR in sys.path:
-    sys.path.append (LIB_DIR)
+BASE_RESOURCE_PATH = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'lib' ) )
+sys.path.append (BASE_RESOURCE_PATH)
+
+__settings__ = xbmc.Settings( path=os.getcwd() ) 
 
 from BeautifulSoup import BeautifulSoup, SoupStrainer
 
@@ -28,6 +29,7 @@ def CATEGORIES():
     addDir(u"뮤직비디오 차트","-",11,"")
     addDir(u"게임","-",12,"")
     addDir(u"시청순위","-",13,"")
+    addDir(u"[설정]","-",100,"")
 
 def CAT_MUSIC_CHART(main_url):
     mchart_url = "http://www.gomtv.com/chart/index.gom?chart=%d"
@@ -149,22 +151,30 @@ def GetGomId(main_url):
     except:
 	return None
 
-    #-- chid/pid/bid & default bjvid
-    query = re.compile('obj\.useNoneImg(.*?)if\(isFirst\)',re.S).search(tDoc)
+    hq_first = __settings__.getSetting( "HQVideo" )=="true"
+
+    #-- chid/pid/bid
+    query = re.compile('@brief add(.*?)\*/',re.S).search(tDoc)
     if query is None:
-	xbmc.log( "%s is not allowed to watch"%main_url, xbmc.LOGNOTICE )
+	print "%s is not allowed" % main_url
 	return None
     tSec1 = query.group(1)
-    chid,pid,bjvid,bid = re.compile("'(\d+)'").findall(tSec1)
+    chid,pid,bjvid,bid = re.compile("'(\d+)'").findall(tSec1)[:4]
     common_ids = (chid,pid,bid)
 
-    #-- multiple bjvid
+    #-- check playlist table
     sub_ids = []
     soup = BeautifulSoup( tDoc, fromEncoding="euc-kr" )
-    plist = soup.find("ul", {"id" : "widgetTabs1"})	# HQ first
-    if plist is None:
-	plist = soup.find("ul", {"id" : "widgetTabs2"})
+    if hq_first:
+	plist = soup.find("ul", {"id" : "widgetTabs1"})	# HQ first
+	if plist is None:
+	    plist = soup.find("ul", {"id" : "widgetTabs2"})
+    else:
+	plist = soup.find("ul", {"id" : "widgetTabs2"})	# Std first
+	if plist is None:
+	    plist = soup.find("ul", {"id" : "widgetTabs1"})
     if plist:
+	#-- bjvid from table
 	for item in plist.findAll('a'):
 	    ref = item['href']
 	    id = ref[ref.rfind('(')+1:ref.rfind(',')]
@@ -172,6 +182,13 @@ def GetGomId(main_url):
 	    title = title[:title.find('\n')]
 	    sub_ids.append( (id, title) )
     else:
+	#-- bjvid for single
+	match = re.compile('this\.arr(?:High|Low)Bjoinv\s*=\s*\[(\d+)\];').findall(tDoc)
+	if len(match) != 2:
+	    print "%s has unsupported format" % main_url
+	    return None
+	if hq_first: bjvid = match[0]
+	else:        bjvid = match[1]
 	sub_ids.append( (bjvid,u"시청") )	# single video
     return (common_ids, sub_ids)
 
@@ -273,5 +290,7 @@ elif mode==13:
     CAT_HOT(url)
 elif mode==14:
     CAT_HOT_SUB(url)
+elif mode==100:
+    __settings__.openSettings()
 
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
