@@ -12,7 +12,7 @@ __author__  = "anonymous"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/GomTV"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.1"
+__version__ = "0.3.0"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -21,32 +21,53 @@ BASE_RESOURCE_PATH = xbmc.translatePath( os.path.join( os.getcwd(), 'resources',
 sys.path.append (BASE_RESOURCE_PATH)
 
 __settings__ = xbmc.Settings( path=os.getcwd() ) 
+hq_first = __settings__.getSetting( "HQVideo" )=="true"
+menu_div = u"------------------------------------------------"
 
 from BeautifulSoup import BeautifulSoup, SoupStrainer
 
 #-----------------------------------------------------
 def CATEGORIES():
-    addDir(u"뮤직비디오 차트","-",11,"")
-    addDir(u"게임","-",12,"")
     addDir(u"시청순위","-",13,"")
+    addDir(u"뮤직비디오 차트","-",11,"")
+    addDir(u"뮤직","-",15,"")
+    addDir(u"게임","-",12,"")
+    addDir(u"연예/오락","-",16,"")
+    addDir(u"교육","-",17,"")
     addDir(u"[설정]","-",100,"")
 
 def CAT_MUSIC_CHART(main_url):
     mchart_url = "http://www.gomtv.com/chart/index.gom?chart=%d"
-    addDir(u"실시간",mchart_url % 1,1,"")
-    addDir(u"주간",mchart_url % 3,1,"")
-    addDir(u"월간",mchart_url % 4,1,"")
-    addDir(u"주간1위모음",mchart_url % 6,1,"")
-    addDir(u"명예의전당",mchart_url % 5,1,"")
+    addDir(u"실시간",mchart_url % 1,3,"")
+    addDir(u"주간",mchart_url % 3,3,"")
+    addDir(u"월간",mchart_url % 4,3,"")
+    addDir(u"주간1위모음",mchart_url % 6,3,"")
+    addDir(u"명예의전당",mchart_url % 5,3,"")
 
 def CAT_GAME(main_url):
     addDir(u"스타크래프트2 XP토너먼트","http://ch.gomtv.com/4002/27523",2,"")
     addDir(u"Star2gether","http://ch.gomtv.com/425/27635",2,"")
     addDir(u"[4R]프로리그 09-10","http://ch.gomtv.com/412/27633",2,"")
-    addDir(u"[2R]프로리그 09-10","http://ch.gomtv.com/412/27713",2,"")
-    addDir(u"[1R]프로리그 09-10","http://ch.gomtv.com/412/27607",2,"")
     addDir(u"특별기획-스타2G","http://ch.gomtv.com/439/27503",2,"")
     addDir(u"곰게임넷","http://ch.gomtv.com/439/24776",2,"")
+    addDir(menu_div,"",2,"")
+    addDir(u"곰게임넷","http://ch.gomtv.com/439",1,"")
+    addDir(u"겜플렉스","http://ch.gomtv.com/4002",1,"")
+    addDir(u"신한은행 프로리그 09-10","http://ch.gomtv.com/412",1,"")
+
+def CAT_MUSIC(main_url):
+    addDir(u"YG TV","http://ch.gomtv.com/707",1,"")
+    addDir(u"DSP Zone","http://ch.gomtv.com/2201",1,"")
+    addDir(u"엠넷미디어","http://ch.gomtv.com/278",1,"")
+    addDir(u"JYP 엔터테인먼트","http://ch.gomtv.com/206",1,"")
+    addDir(u"FLUXUS Music","http://ch.gomtv.com/2002",1,"")
+
+def CAT_ETMNT(main_url):
+    addDir(u"ETN","http://ch.gomtv.com/7071",1,"")
+    addDir(u"Q채널","http://ch.gomtv.com/710",1,"")
+
+def CAT_EDU(main_url):
+    addDir(u"동양문고 어학강좌","http://ch.gomtv.com/9110",1,"")
 
 def CAT_HOT(main_url):
     link=urllib.urlopen( "http://www.gomtv.com/navigation/navigation.gom?navitype=3" )
@@ -62,9 +83,48 @@ def CAT_HOT_SUB(main_url):
     soup = BeautifulSoup( link.read(), strain, fromEncoding="euc-kr" )
     for item in soup.findAll('li'):
 	ref = item.find('a')
-	addDir(ref.contents[0], "http://www.gomtv.com"+ref['href'], 3, "")
+	addDir(ref.contents[0], "http://www.gomtv.com"+ref['href'], 4, "")
 
 #-----------------------------------------------------
+def GOM_CH(main_url):
+    link=urllib.urlopen(main_url)
+    strain = SoupStrainer( "div", { "id" : "ch_menu" } )
+    soup = BeautifulSoup( link.read(), strain, fromEncoding="euc-kr" )
+    #-- channel menu
+    for item in soup.findAll('p'):
+	if item['class'] == 'mbin_tit':
+	    if item.span and item.span.string:
+		addDir("----- %s -----" % item.span.string, '', 1, '')
+	elif item['class'] == 'mbin_list_s':
+	    url = ''
+	    for key,value in item.a.attrs:
+		if key == 'href':
+		    url = value
+		    break
+	    if re.compile('http://ch.gomtv.com/\d+/\d+').match(url):
+		addDir(item.a.span.string, url, 2, '')
+
+def GOM_CH_SUB(main_url):
+    link=urllib.urlopen(main_url)
+    soup = BeautifulSoup( link.read(), fromEncoding="euc-kr" )
+    #-- item list
+    strain1 = SoupStrainer( "table", { "id" : "program_text_list" } )
+    strain2 = SoupStrainer( "dl", { "class" : "text_list" } )
+    list1 = soup.find(strain1).findAll(strain2)
+    for item in list1:
+	refs = item.findAll('a')
+	url = refs[0]['href']
+	thumb = refs[0].find('img')['src']
+	title = refs[1].contents[0].replace('&amp;','&')
+	addDir(title,url,10,thumb)
+    #-- next page
+    strain = SoupStrainer( "table", { "class" : "page" } )
+    import re
+    curpg = soup.find(strain).find("td", {"class" : re.compile("^on")})
+    if curpg and curpg['class'] != "on last":
+	url = curpg.findNextSibling('td').find('a')['href']
+	addDir(u'다음 페이지>', url, 2, '')
+
 def MUSIC_CHART(main_url):
     link=urllib.urlopen(main_url)
     soup = BeautifulSoup( link.read(), fromEncoding="euc-kr" )
@@ -89,27 +149,6 @@ def MUSIC_CHART(main_url):
 	if nextpage:
 	    addDir(u'다음 페이지>', "http://www.gomtv.com"+nextpage['href'], 1, '')
     
-def STAR_CH(main_url):
-    link=urllib.urlopen(main_url)
-    soup = BeautifulSoup( link.read(), fromEncoding="euc-kr" )
-    #-- item list
-    strain1 = SoupStrainer( "table", { "id" : "program_text_list" } )
-    strain2 = SoupStrainer( "dl", { "class" : "text_list" } )
-    list1 = soup.find(strain1).findAll(strain2)
-    for item in list1:
-	refs = item.findAll('a')
-	url = refs[0]['href']
-	thumb = refs[0].find('img')['src']
-	title = refs[1].contents[0].replace('&amp;','&')
-	addDir(title,url,10,thumb)
-    #-- next page
-    strain = SoupStrainer( "table", { "class" : "page" } )
-    import re
-    curpg = soup.find(strain).find("td", {"class" : re.compile("^on")})
-    if curpg and curpg['class'] != "on last":
-	url = curpg.findNextSibling('td').find('a')['href']
-	addDir(u'다음 페이지>', url, 2, '')
-
 def MOST_WATCHED(main_url):
     link=urllib.urlopen(main_url)
     soup = BeautifulSoup( link.read(), fromEncoding="euc-kr" )
@@ -135,7 +174,7 @@ def MOST_WATCHED(main_url):
     addDir(u'다음 페이지>', "http://www.gomtv.com"+nextpage.find('a')['href'], 3, '')
 
 #-----------------------------------                
-def SHOW_VIDEO(main_url):
+def GOM_VIDEO(main_url):
     ids = GetGomId(main_url)
     if ids:
 	(chid,pid,bid),sub_ids = ids
@@ -150,8 +189,6 @@ def GetGomId(main_url):
 	tDoc=urllib.urlopen(main_url).read()
     except:
 	return None
-
-    hq_first = __settings__.getSetting( "HQVideo" )=="true"
 
     #-- chid/pid/bid
     query = re.compile('@brief add(.*?)\*/',re.S).search(tDoc)
@@ -275,13 +312,15 @@ xbmc.log( "Name: "+str(name), xbmc.LOGINFO)
 if mode==None or url==None or len(url)<1:
     CATEGORIES()
 elif mode==1:
-    MUSIC_CHART(url)
+    GOM_CH(url)
 elif mode==2:
-    STAR_CH(url)
+    GOM_CH_SUB(url)
 elif mode==3:
     MOST_WATCHED(url)
+elif mode==4:
+    MUSIC_CHART(url)
 elif mode==10:
-    SHOW_VIDEO(url)
+    GOM_VIDEO(url)
 elif mode==11:
     CAT_MUSIC_CHART(url)
 elif mode==12:
@@ -290,7 +329,14 @@ elif mode==13:
     CAT_HOT(url)
 elif mode==14:
     CAT_HOT_SUB(url)
+elif mode==15:
+    CAT_MUSIC(url)
+elif mode==16:
+    CAT_ETMNT(url)
+elif mode==17:
+    CAT_EDU(url)
 elif mode==100:
     __settings__.openSettings()
+    hq_first = __settings__.getSetting( "HQVideo" )=="true"
 
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
