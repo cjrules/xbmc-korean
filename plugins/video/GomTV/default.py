@@ -48,8 +48,6 @@ def CAT_GAME(main_url):
     addDir(u"스타크래프트2 XP토너먼트","http://ch.gomtv.com/4002/27523",2,"")
     addDir(u"Star2gether","http://ch.gomtv.com/425/27635",2,"")
     addDir(u"[4R]프로리그 09-10","http://ch.gomtv.com/412/27633",2,"")
-    addDir(u"특별기획-스타2G","http://ch.gomtv.com/439/27503",2,"")
-    addDir(u"곰게임넷","http://ch.gomtv.com/439/24776",2,"")
     addDir(menu_div,"",2,"")
     addDir(u"곰게임넷","http://ch.gomtv.com/439",1,"")
     addDir(u"겜플렉스","http://ch.gomtv.com/4002",1,"")
