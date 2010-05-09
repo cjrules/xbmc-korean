@@ -12,7 +12,7 @@ __author__  = "anonymous"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/GomTV"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.3.0"
+__version__ = "0.3.1"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -190,13 +190,12 @@ def GetGomId(main_url):
     except:
 	return None
 
-    #-- chid/pid/bid
-    query = re.compile('@brief add(.*?)\*/',re.S).search(tDoc)
+    #-- chid/pid/bid & default bjvid
+    query = re.compile('obj\.useNoneImg(.*?)if\(isFirst\)',re.S).search(tDoc)
     if query is None:
 	print "%s is not allowed" % main_url
 	return None
-    tSec1 = query.group(1)
-    chid,pid,bjvid,bid = re.compile("'(\d+)'").findall(tSec1)[:4]
+    chid,pid,bjvid,bid = re.compile("'(\d+)'").findall(query.group(1))
     common_ids = (chid,pid,bid)
 
     #-- check playlist table
@@ -221,11 +220,9 @@ def GetGomId(main_url):
     else:
 	#-- bjvid for single
 	match = re.compile('this\.arr(?:High|Low)Bjoinv\s*=\s*\[(\d+)\];').findall(tDoc)
-	if len(match) != 2:
-	    print "%s has unsupported format" % main_url
-	    return None
-	if hq_first: bjvid = match[0]
-	else:        bjvid = match[1]
+	if len(match) == 2:
+	    if hq_first: bjvid = match[0]
+	    else:        bjvid = match[1]
 	sub_ids.append( (bjvid,u"시청") )	# single video
     return (common_ids, sub_ids)
 
