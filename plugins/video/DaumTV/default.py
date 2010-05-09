@@ -18,7 +18,7 @@ import os
 LIB_DIR = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'lib' ) )
 if not LIB_DIR in sys.path:
     sys.path.append (LIB_DIR)
-pic_dir = os.path.join(os.getcwd(),'resources','pic')
+pic_dir = xbmc.translatePath( os.path.join(os.getcwd(),'resources','pic')+os.sep )
 
 # show menu
 def CATEGORIES():
