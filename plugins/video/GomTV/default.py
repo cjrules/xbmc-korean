@@ -12,7 +12,7 @@ __author__  = "anonymous"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/GomTV"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.3.1"
+__version__ = "0.3.2"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -52,6 +52,8 @@ def CAT_GAME(main_url):
     addDir(u"곰게임넷","http://ch.gomtv.com/439",1,"")
     addDir(u"겜플렉스","http://ch.gomtv.com/4002",1,"")
     addDir(u"신한은행 프로리그 09-10","http://ch.gomtv.com/412",1,"")
+    addDir(u"TG삼보-인텔 클래식 시즌3","http://ch.gomtv.com/402",1,"")
+    addDir(u"마이게임TV","http://ch.gomtv.com/4999",1,"")
 
 def CAT_MUSIC(main_url):
     addDir(u"YG TV","http://ch.gomtv.com/707",1,"")
