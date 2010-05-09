@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addoninfo>
+  <id>plugin.video.daum.net</id>
+  <type>plugin</type>
+  <supportedcontent>
+    <content>video</content>
+  </supportedcontent>
+  <title>Daum tvPot Streaming Service</title>
+  <library>default.py</library>
+  <version>1.0.0</version>
+  <platforms>
+    <platform>all</platform>
+  </platforms>
+  <minversion>
+    <xbmc>20000</xbmc>
+  </minversion>
+  <summary>Watch IP-TV from tvpot.daum.net</summary>
+  <description>Korean trailer/clip/broadcast service in tvpot.daum.net</description>
+  <author>xbmc-korea.com</author>
+</addoninfo>
