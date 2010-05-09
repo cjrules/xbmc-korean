@@ -38,11 +38,11 @@ def CATEGORIES():
 
 def CAT_MUSIC_CHART(main_url):
     mchart_url = "http://www.gomtv.com/chart/index.gom?chart=%d"
-    addDir(u"실시간",mchart_url % 1,3,"")
-    addDir(u"주간",mchart_url % 3,3,"")
-    addDir(u"월간",mchart_url % 4,3,"")
-    addDir(u"주간1위모음",mchart_url % 6,3,"")
-    addDir(u"명예의전당",mchart_url % 5,3,"")
+    addDir(u"실시간",mchart_url % 1,4,"")
+    addDir(u"주간",mchart_url % 3,4,"")
+    addDir(u"월간",mchart_url % 4,4,"")
+    addDir(u"주간1위모음",mchart_url % 6,4,"")
+    addDir(u"명예의전당",mchart_url % 5,4,"")
 
 def CAT_GAME(main_url):
     addDir(u"스타크래프트2 XP토너먼트","http://ch.gomtv.com/4002/27523",2,"")
@@ -81,7 +81,7 @@ def CAT_HOT_SUB(main_url):
     soup = BeautifulSoup( link.read(), strain, fromEncoding="euc-kr" )
     for item in soup.findAll('li'):
 	ref = item.find('a')
-	addDir(ref.contents[0], "http://www.gomtv.com"+ref['href'], 4, "")
+	addDir(ref.contents[0], "http://www.gomtv.com"+ref['href'], 3, "")
 
 #-----------------------------------------------------
 def GOM_CH(main_url):
