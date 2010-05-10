@@ -173,6 +173,7 @@ def get_params():
 
 def addLink(name,url,iconimage):
     name=name.encode("utf-8")
+    iconimage=iconimage.encode("utf-8")
     xbmc.log( "addLink(%s,%s)" % (name, url), xbmc.LOGDEBUG )
     liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
     liz.setInfo( type="Video", infoLabels={ "Title": name } )
@@ -181,9 +182,10 @@ def addLink(name,url,iconimage):
 
 def addDir(name,url,mode,iconimage):
     name=name.encode("utf-8")
+    iconimage=iconimage.encode("utf-8")
     u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
     xbmc.log( "addDir(%s)" % u, xbmc.LOGDEBUG )
-    liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=urllib.quote(iconimage))
+    liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
     liz.setInfo( type="Video", infoLabels={ "Title": name } )
     ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
     return ok
