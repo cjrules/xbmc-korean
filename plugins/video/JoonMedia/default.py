@@ -175,9 +175,10 @@ def get_params():
     return param
 
 def addLink(name,url,iconimage):
+    try: xbmc.log( "addLink(%s,%s)" % (name.encode("euc-kr"), url), xbmc.LOGDEBUG )
+    except: pass
     name=name.encode("utf-8")
     iconimage=iconimage.encode("utf-8")
-    xbmc.log( "addLink(%s,%s)" % (name, url), xbmc.LOGDEBUG )
     liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
     liz.setInfo( type="Video", infoLabels={ "Title": name } )
     ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=url,listitem=liz)
