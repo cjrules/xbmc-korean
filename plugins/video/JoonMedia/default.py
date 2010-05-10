@@ -47,8 +47,7 @@ def VIDEO(main_url):
 	title = ref.string
 	url = ref['href']
 	thumb = item.find('img')['src']
-	try: xbmc.log( "TV program: %s" % title.encode('euc-kr'), xbmc.LOGDEBUG )
-	except: pass
+	xbmc.log( "TV program: %s" % str(title), xbmc.LOGDEBUG )
 	addDir(title, url, 3, thumb)
 
 def RECENT(main_url):
@@ -63,8 +62,7 @@ def RECENT(main_url):
 		continue	# skip
 	    title = ref.string
 	    url = ref['href']
-	    try: xbmc.log( "TV program: %s" % title.encode('euc-kr'), xbmc.LOGDEBUG )
-	    except: pass
+	    xbmc.log( "TV program: %s" % str(title), xbmc.LOGDEBUG )
 	    addDir(title, url, 3, '')
 
 def TVSHOW(main_url):
@@ -76,9 +74,8 @@ def TVSHOW(main_url):
 	for ref in episode.findAll('a'):
 	    url = ref['href']
 	    suppl = ''.join(ref.findAll(text=lambda text:isinstance(text, NavigableString))).strip()
-	    title2 = "%s (%s)" % (title,suppl)
-	    try: xbmc.log( "Found page: %s" % title2.encode('euc-kr'), xbmc.LOGDEBUG )
-	    except: pass
+	    title2 = u"%s (%s)" % (title,suppl)
+	    xbmc.log( "Found page: %s" % str(title2), xbmc.LOGDEBUG )
 	    if suppl.find(u"멀티로딩")==0:
 		addDir( title2.replace(u"멀티로딩",u"유큐"), url, 5, GetFLV.img("youku") )
 	    elif suppl.find(u"유큐")==0:
@@ -94,8 +91,7 @@ def TVSHOW(main_url):
 	    elif suppl.find(u"데일리모션")==0:
 		addDir( title2, url, 7, GetFLV.img("dailymotion") )
 	    else:
-		try: xbmc.log( "Unexpected: %s at %s" % (suppl.encode('euc-kr'),main_url), xbmc.LOGDERROR )
-		except: pass
+		xbmc.log( "Unexpected: %s at %s" % (str(suppl),main_url), xbmc.LOGDERROR )
 
 def EPISODE(main_url):
     link = urllib.urlopen(main_url)
@@ -176,29 +172,21 @@ def get_params():
     return param
 
 def addLink(name,url,iconimage):
-    try:
-	name=name.encode("euc-kr")
-	xbmc.log( "addLink(%s,%s)" % (name, url), xbmc.LOGDEBUG )
-	ok=True
-	liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
-	liz.setInfo( type="Video", infoLabels={ "Title": name } )
-	ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=url,listitem=liz)
-	return ok
-    except:
-	return None
+    name=name.encode("utf-8")
+    xbmc.log( "addLink(%s,%s)" % (name, url), xbmc.LOGDEBUG )
+    liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
+    liz.setInfo( type="Video", infoLabels={ "Title": name } )
+    ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=url,listitem=liz)
+    return ok
 
 def addDir(name,url,mode,iconimage):
-    try:
-	name=name.encode("euc-kr")
-	u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
-	xbmc.log( "addDir(%s)" % u, xbmc.LOGDEBUG )
-	ok=True
-	liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
-	liz.setInfo( type="Video", infoLabels={ "Title": name } )
-	ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
-	return ok
-    except:
-	return None
+    name=name.encode("utf-8")
+    u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
+    xbmc.log( "addDir(%s)" % u, xbmc.LOGDEBUG )
+    liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=urllib.quote(iconimage))
+    liz.setInfo( type="Video", infoLabels={ "Title": name } )
+    ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
+    return ok
 
 #-----------------------------------                
 params=get_params()
