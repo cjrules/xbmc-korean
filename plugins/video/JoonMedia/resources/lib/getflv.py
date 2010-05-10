@@ -7,7 +7,8 @@ import urllib2
 import re
 
 class GetFLV:
-    def flv(self,url):
+    @staticmethod
+    def flv(url):
 	if url.find('tudou')>0:
 	    req = urllib2.Request("http://www.flvcd.com/parse.php?kw="+url)
 	    response=urllib2.urlopen(req);link=response.read();response.close()
@@ -89,21 +90,22 @@ class GetFLV:
 	#not supported format
 	return []
 
-    def img(self,url):
-	if url.find('tudou')>0:
+    @staticmethod
+    def img(url):
+	if url.find('tudou')>=0:
 	    return "http://www.video-download-capture.com/wp-content/uploads/2010/01/tudou_logo.jpg"
-	elif url.find('56.com')>0:
+	elif url.find('56.com')>=0:
 	    return "http://mallow.wakcdn.com/avatars/000/060/094/normal.png"
-	elif url.find('youku')>0:
+	elif url.find('youku')>=0:
 	    return "http://static.youku.com/v1.0.0541/index/img/youkulogo.gif"
-	elif url.find('veoh')>0:
+	elif url.find('veoh')>=0:
 	    return "http://ll-appserver.veoh.com/images/veoh.gif"
-	elif url.find('youtube')>0:
+	elif url.find('youtube')>=0:
 	    #return "http://s.ytimg.com/yt/img/logos/youtube_logo_standard_againstwhite-vfl95119.png"
 	    return "http://s.ytimg.com/yt/img/logos/youtube_logo_standard_againstblack-vfl95119.png"
-	elif url.find('4shared')>0:
+	elif url.find('4shared')>=0:
 	    return "http://userlogos.org/files/logos/veinedstorm/4shared.png"
-	elif url.find('dailymotion')>0:
+	elif url.find('dailymotion')>=0:
 	    return "http://www.iconspedia.com/uploads/1687271053.png"
 	else:
 	    return ''
