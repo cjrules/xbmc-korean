@@ -5,7 +5,7 @@
   <supportedcontent>
     <content>video</content>
   </supportedcontent>
-  <title>GomTV Streaming Service</title>
+  <title>GomTV</title>
   <library>default.py</library>
   <version>1.0.0</version>
   <platforms>
@@ -14,7 +14,7 @@
   <minversion>
     <xbmc>20000</xbmc>
   </minversion>
-  <summary>Watch IP-TV from gomtv.com</summary>
-  <description>Korean trailer/clip/broadcast service in gomtv.com</description>
+  <summary>GomTV Streaming Service</summary>
+  <description>Watch Korean movie trailer, video clip, game broadcast in gomtv.com</description>
   <author>xbmc-korea.com</author>
 </addoninfo>

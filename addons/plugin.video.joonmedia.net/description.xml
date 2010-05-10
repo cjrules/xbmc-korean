@@ -5,7 +5,7 @@
   <supportedcontent>
     <content>video</content>
   </supportedcontent>
-  <title>JoonMedia Streaming Service</title>
+  <title>JoonMedia</title>
   <library>default.py</library>
   <version>1.0.0</version>
   <platforms>
@@ -14,7 +14,7 @@
   <minversion>
     <xbmc>20000</xbmc>
   </minversion>
-  <summary>Watch IPTV in joonmedia.net</summary>
-  <description>Korean movie/series streaming service in joonmedia.net</description>
+  <summary>JoonMedia Streaming Service</summary>
+  <description>Watch Korean movie/series in joonmedia.net</description>
   <author>xbmc-korea.com</author>
 </addoninfo>
