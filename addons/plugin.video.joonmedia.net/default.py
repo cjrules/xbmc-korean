@@ -47,7 +47,8 @@ def VIDEO(main_url):
 	title = ref.string
 	url = ref['href']
 	thumb = item.find('img')['src']
-	xbmc.log( "TV program: %s" % str(title), xbmc.LOGDEBUG )
+	try: xbmc.log( "TV program: %s" % title.encode("euc-kr"), xbmc.LOGDEBUG )
+	except: pass
 	addDir(title, url, 3, thumb)
 
 def RECENT(main_url):
@@ -62,7 +63,8 @@ def RECENT(main_url):
 		continue	# skip
 	    title = ref.string
 	    url = ref['href']
-	    xbmc.log( "TV program: %s" % str(title), xbmc.LOGDEBUG )
+	    try: xbmc.log( "TV program: %s" % title.encode("euc-kr"), xbmc.LOGDEBUG )
+	    except: pass
 	    addDir(title, url, 3, '')
 
 def TVSHOW(main_url):
@@ -75,7 +77,8 @@ def TVSHOW(main_url):
 	    url = ref['href']
 	    suppl = ''.join(ref.findAll(text=lambda text:isinstance(text, NavigableString))).strip()
 	    title2 = u"%s (%s)" % (title,suppl)
-	    xbmc.log( "Found page: %s" % str(title2), xbmc.LOGDEBUG )
+	    try: xbmc.log( "Found page: %s" % title2.encode("euc-kr"), xbmc.LOGDEBUG )
+	    except: pass
 	    if suppl.find(u"멀티로딩")==0:
 		addDir( title2.replace(u"멀티로딩",u"유큐"), url, 5, GetFLV.img("youku") )
 	    elif suppl.find(u"유큐")==0:
@@ -91,7 +94,7 @@ def TVSHOW(main_url):
 	    elif suppl.find(u"데일리모션")==0:
 		addDir( title2, url, 7, GetFLV.img("dailymotion") )
 	    else:
-		xbmc.log( "Unexpected: %s at %s" % (str(suppl),main_url), xbmc.LOGDERROR )
+		xbmc.log( "Unexpected: %s at %s" % (suppl.encode("euc-kr"),main_url), xbmc.LOGERROR )
 
 def EPISODE(main_url):
     link = urllib.urlopen(main_url)
