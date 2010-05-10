@@ -11,7 +11,7 @@ __author__  = "edge"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/JoonMedia"
 __credits__ = "XBMC Korean User Group"
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -47,10 +47,7 @@ def VIDEO(main_url):
 	title = ref.string
 	url = ref['href']
 	thumb = item.find('img')['src']
-	try:
-	    xbmc.log( "TV program: %s" % title.encode("utf-8"), xbmc.LOGDEBUG )
-	except:
-	    pass    # skip unwanted encoding error (ex: Japanese character)
+	xbmc.log( "TV program: %s" % str(title), xbmc.LOGDEBUG )
 	addDir(title, url, 3, thumb)
 
 def RECENT(main_url):
@@ -65,10 +62,7 @@ def RECENT(main_url):
 		continue	# skip
 	    title = ref.string
 	    url = ref['href']
-	    try:
-		xbmc.log( "TV program: %s" % title.encode("utf-8"), xbmc.LOGDEBUG )
-	    except:
-		pass    # skip unwanted encoding error (ex: Japanese character)
+	    xbmc.log( "TV program: %s" % str(title), xbmc.LOGDEBUG )
 	    addDir(title, url, 3, '')
 
 def TVSHOW(main_url):
@@ -80,36 +74,34 @@ def TVSHOW(main_url):
 	for ref in episode.findAll('a'):
 	    url = ref['href']
 	    suppl = ''.join(ref.findAll(text=lambda text:isinstance(text, NavigableString))).strip()
-	    title2 = "%s (%s)" % (title,suppl)
-	    try:
-		xbmc.log( "Found page: %s" % title2.encode("utf-8"), xbmc.LOGDEBUG )
-	    except:
-		pass
+	    title2 = u"%s (%s)" % (title,suppl)
+	    xbmc.log( "Found page: %s" % str(title2), xbmc.LOGDEBUG )
 	    if suppl.find(u"멀티로딩")==0:
-		addDir( title2.replace(u"멀티로딩",u"유큐"), url, 5, '' )
+		addDir( title2.replace(u"멀티로딩",u"유큐"), url, 5, GetFLV.img("youku") )
+	    elif suppl.find(u"유큐")==0:
+		pass	    # always paired with 멀티로딩
 	    elif suppl.find(u"토두")==0 or suppl.find(u"56com")==0:
-		addDir( title2, url, 4, '' )
+		addDir( title2, url, 4, GetFLV.img("tudou") )
 	    elif suppl.find(u"베오")==0:
-		addDir( title2+u" [preview]", url, 4, '' )
+		addDir( title2+u" [preview]", url, 4, GetFLV.img("veoh") )
 	    elif suppl.find(u"하이스피드")==0:
 		addDir( title2, url, 5, '' )
 	    elif suppl.find(u"유튜브")==0 or suppl.lower()==u"youtube":
-		addDir( title2, url, 6, '' )
+		addDir( title2, url, 6, GetFLV.img("youtube") )
 	    elif suppl.find(u"데일리모션")==0:
-		addDir( title2, url, 7, '' )
+		addDir( title2, url, 7, GetFLV.img("dailymotion") )
 	    else:
-		print "Unexpected: %s" % suppl.encode('euc-kr')
+		xbmc.log( "Unexpected: %s at %s" % (str(suppl),main_url), xbmc.LOGDERROR )
 
 def EPISODE(main_url):
     link = urllib.urlopen(main_url)
     soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
-    extr = GetFLV()
     i=0
     for item in soup.findAll('embed'):
 	swf = item['src']
-	thumb = extr.img(swf)
+	thumb = GetFLV.img(swf)
 	xbmc.log( "Container[0]: %s" % swf, xbmc.LOGDEBUG )
-	for flv in extr.flv(swf):
+	for flv in GetFLV.flv(swf):
 	    i=i+1;addLink("Part %d" % i, flv, thumb)
 
 def EPISODE_DIRECT(main_url):
@@ -118,15 +110,13 @@ def EPISODE_DIRECT(main_url):
     tDoc = urllib.urlopen(main_url).read().decode('utf-8')
     i=0
     blks = re.compile('src=\S*vcastr_file=(\S*)').findall(tDoc)
-    print "TEST: %d"%len(blks)
     for blk in blks:
 	for vid in blk.split('|'):
-	    i=i+1;addLink("Part %d" % i, vid, '')
+	    i=i+1;addLink("Part %d" % i, vid, GetFLV.img(vid))
 
 def EPISODE_YOUTUBE(main_url):
     link = urllib.urlopen(main_url)
     soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
-    extr = GetFLV()
     i=0
     for item in soup.findAll('embed'):
 	try:
@@ -136,30 +126,29 @@ def EPISODE_YOUTUBE(main_url):
 	if swf:
 	    ptn2 = 'file='
 	    swf = swf[swf.find(ptn2)+len(ptn2):swf.find('&amp;')]
-	    thumb = extr.img(swf)
+	    thumb = GetFLV.img(swf)
 	    xbmc.log( "Container[1]: %s" % swf, xbmc.LOGDEBUG )
-	    for flv in extr.flv(swf):
+	    for flv in GetFLV.flv(swf):
 		i=i+1;addLink("Part %d" % i, flv, thumb)
 	else:
 	    swf = item['src']
 	    if '&' in swf:
 		swf = swf[:swf.find('&')]
-	    thumb = extr.img(swf)
+	    thumb = GetFLV.img(swf)
 	    xbmc.log( "Container[2]: %s" % swf, xbmc.LOGDEBUG )
-	    for flv in extr.flv(swf):
+	    for flv in GetFLV.flv(swf):
 		i=i+1;addLink("Part %d" % i, flv, thumb)
 
 def EPISODE_PARAM(main_url):
     link = urllib.urlopen(main_url)
     strain = SoupStrainer( "param", { "name" : "movie" } )
     soup = BeautifulSoup( link.read(), strain, fromEncoding="utf-8" )
-    extr = GetFLV()
     i=0
     for item in soup.findAll('param'):
 	cntnr=item['value']
 	xbmc.log( "Container[3]: %s" % cntnr, xbmc.LOGDEBUG )
-	thumb = extr.img(cntnr)
-	for flv in extr.flv(cntnr):
+	thumb = GetFLV.img(cntnr)
+	for flv in GetFLV.flv(cntnr):
 	    i=i+1;addLink("Part %d" % i, flv, thumb)
 
 #-----------------------------------                
@@ -183,7 +172,6 @@ def get_params():
     return param
 
 def addLink(name,url,iconimage):
-    ok=True
     name=name.encode("utf-8")
     xbmc.log( "addLink(%s,%s)" % (name, url), xbmc.LOGDEBUG )
     liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
@@ -193,14 +181,13 @@ def addLink(name,url,iconimage):
 
 def addDir(name,url,mode,iconimage):
     name=name.encode("utf-8")
-    xbmc.log( "addDir(%s)" % name, xbmc.LOGDEBUG )
     u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
-    ok=True
-    liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
+    xbmc.log( "addDir(%s)" % u, xbmc.LOGDEBUG )
+    liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=urllib.quote(iconimage))
     liz.setInfo( type="Video", infoLabels={ "Title": name } )
     ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
     return ok
-              
+
 #-----------------------------------                
 params=get_params()
 url=None
@@ -219,7 +206,6 @@ try:
         mode=int(params["mode"])
 except:
         pass
-
 xbmc.log( "Mode: "+str(mode), xbmc.LOGINFO)
 xbmc.log( "URL : "+str(url), xbmc.LOGINFO)
 xbmc.log( "Name: "+str(name), xbmc.LOGINFO)
