@@ -20,7 +20,7 @@ import os
 BASE_RESOURCE_PATH = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'lib' ) )
 sys.path.append (BASE_RESOURCE_PATH)
 
-__settings__ = xbmc.Settings( id=__scriptid__ ) 
+__settings__ = xbmc.Settings( path=os.getcwd() ) 
 __hq_first__ = __settings__.getSetting( "HQVideo" )=="true"
 
 menu_div = u"----------------------------------------------------"
