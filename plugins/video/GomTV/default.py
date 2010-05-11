@@ -12,7 +12,7 @@ __author__  = "anonymous"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/GomTV"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.4.1"
+__version__ = "0.4.2"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -261,7 +261,7 @@ def MOVIE_HOTCLIP(main_url):
 	addDir(title,url,9,thumb)
     #-- next page
     strain = SoupStrainer( "div", { "id" : "page" } )
-    nextpage = soup.find(strain).find('span').nextSibling('a')
+    nextpage = soup.find(strain).find('span').findNextSibling('a')
     if nextpage:
 	addDir(u'다음 페이지>', "http://movie.gomtv.com"+nextpage['href'], 6, '')
     
