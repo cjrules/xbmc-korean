@@ -12,7 +12,7 @@ __author__  = "anonymous"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/GomTV"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.4.0"
+__version__ = "0.4.1"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -60,18 +60,18 @@ def CAT_GAME(main_url):
 def CAT_MUSIC(main_url):
     addDir(u"뮤직비디오 차트","-",11,"")
     addDir(menu_div,"",2,"")
+    addDir(u"Channel S (SM 엔터테인먼트)","http://ch.gomtv.com/7727",1,"")
     addDir(u"YG TV","http://ch.gomtv.com/707",1,"")
+    addDir(u"JYP 엔터테인먼트","http://ch.gomtv.com/206",1,"")
     addDir(u"DSP Zone","http://ch.gomtv.com/2201",1,"")
     addDir(u"엠넷미디어","http://ch.gomtv.com/278",1,"")
-    addDir(u"JYP 엔터테인먼트","http://ch.gomtv.com/206",1,"")
-    addDir(u"FLUXUS Music","http://ch.gomtv.com/2002",1,"")
-    addDir(u"소녀시대","http://ch.gomtv.com/7727",1,"")
-    addDir(u"쥬얼리","http://ch.gomtv.com/220",1,"")
-    addDir(u"티아라","http://ch.gomtv.com/2818",1,"")
-    addDir(u"애프터스쿨","http://ch.gomtv.com/239",1,"")
-    addDir(u"빅마마","http://ch.gomtv.com/2774",1,"")
-    addDir(u"비","http://ch.gomtv.com/277",1,"")
-    addDir(u"윤하","http://ch.gomtv.com/2465",1,"")
+    addDir(u"코어콘텐츠미디어 (티아라)","http://ch.gomtv.com/2818",1,"")
+    addDir(u"플레디스 (애프터스쿨)","http://ch.gomtv.com/239",1,"")
+    addDir(u"스타제국 (쥬얼리)","http://ch.gomtv.com/220",1,"")
+    addDir(u"제이튠 (비)","http://ch.gomtv.com/277",1,"")
+    addDir(u"태일런스미디어 (빅마마)","http://ch.gomtv.com/2774",1,"")
+    addDir(u"lion star (윤하)","http://ch.gomtv.com/2465",1,"")
+    addDir(u"FLUXUS Music (클래지콰이)","http://ch.gomtv.com/2002",1,"")
 
 def CAT_ETMNT(main_url):
     addDir(u"ETN","http://ch.gomtv.com/7071",1,"")
@@ -305,7 +305,7 @@ def GOM_VIDEO(main_url):
 	for clipid,title,thumb in gom.GetHotclipIds():
 	    st_url = "http://tv.gomtv.com/cgi-bin/gox/gox_clip.cgi?dispid=%s&clipid=%s" % (dispid,clipid)
 	    addDir(title, st_url, 9, thumb)
-    elif main_url.startswith('http://tv.gomtv.com'):
+    elif main_url.startswith('http://tv.gomtv.com') or main_url.startswith('http://ch.gomtv.com'):
 	print "TV: %s" % main_url
 	gom.useHQFirst(__hq_first__)
 	gom.ParseChVideoPage(main_url)

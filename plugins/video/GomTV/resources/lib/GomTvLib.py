@@ -93,11 +93,12 @@ class GomTvLib:
 	return mov_urls
 
     def ParseMoviePage(self,main_url):
+	(self.misid, self.dispid, self.vodid) = (0,0,0)
 	try: tDoc=urllib2.urlopen(main_url).read()
-	except: return None
+	except: return
 	query = re.compile("http://movie.gomtv.com/sub/detailAjax.\gom\?misid=(\d+)&dispid=(\d+)&vodid=(\d+)&mtype=5").search(tDoc)
-	if query: (self.misid, self.dispid, self.vodid) = query.group(1,2,3)
-	else:     (self.misid, self.dispid, self.vodid) = (0,0,0)
+	if query:
+	    (self.misid, self.dispid, self.vodid) = query.group(1,2,3)
 
     def GetHotclipIds(self):
 	if self.dispid==0: return []
