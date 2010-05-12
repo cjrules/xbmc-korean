@@ -341,7 +341,7 @@ def GOM_VIDEO(main_url):
 	for title,url in mov_list:
 	    addDir(title, url, 9, '')
 	# hotclip
-	hc_ids = gom.GetHotclipIds():
+	hc_ids = gom.GetHotclipIds()
 	if mov_list and hc_ids:
 	    addDir(menu_div, "", 10, '')    # divider
 	for clipid,title,thumb in hc_ids:
