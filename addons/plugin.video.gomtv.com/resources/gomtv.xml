@@ -73,18 +73,18 @@
       <name>마이게임TV</name>
       <number>4999</number>
     </channel>
-    <favorite>
+    <shortcut>
       <name>스타크래프트2 XP토너먼트</name>
       <number>4002/27523</number>
-    </favorite>
-    <favorite>
+    </shortcut>
+    <shortcut>
       <name>Star2gether</name>
       <number>425/27635</number>
-    </favorite>
-    <favorite>
+    </shortcut>
+    <shortcut>
       <name>[4R]프로리그 09-10</name>
       <number>412/27633</number>
-    </favorite>
+    </shortcut>
   </game>
   <entertainment>
     <channel>
