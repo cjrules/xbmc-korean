@@ -5,10 +5,10 @@
 import urllib,xbmcplugin,xbmcgui
 
 # plugin constants
-__plugin__  = "DaumTV"
-__author__  = "anonymous"
-__url__     = "http://xbmc-korea.com/"
-__svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/DaumTV"
+__plugin__ = "DaumTV"
+__pluginid__ = "plugin.video.daum.net"
+__url__ = "http://xbmc-korea.com/"
+__svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.daum.net"
 __credits__ = "XBMC Korean User Group"
 __version__ = "0.1.1"
 

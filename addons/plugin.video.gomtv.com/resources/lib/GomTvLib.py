@@ -38,6 +38,11 @@ class GomTvLib:
     dispid = 0
     vodid = 0
     mis_id = 0
+    req_ip = "147.46.100.100"	# any IP in Korea
+
+    def GomTvLib(self):
+	import random
+	self.req_ip = "147.46.%d.%d" % (random.randint(0,255), random.randint(1,255))
 
     def useHQFirst(self,value):
 	self.hq_first = value
@@ -67,9 +72,8 @@ class GomTvLib:
 		       'isweb=1', 'isnav=1', 'navurl=', 'source=',
 		       'os=Windows', 'browser=MSIE8.0',
 		       '&property=movie']
-	req_ip = "211.168.50.50"	# any IP in Korea
 
-	txdenc = '|||||'.join(param_templ) % (req_ip, dispid, vodid)
+	txdenc = '|||||'.join(param_templ) % (self.req_ip, dispid, vodid)
 
 	req = urllib2.Request(req_url, txdenc, txheaders)
 	urls = []
@@ -159,10 +163,8 @@ class GomTvLib:
 
 if __name__ == "__main__":
     gom = GomTvLib()
-    """
     gom.misid = '42929'
     gom.dispid = '23850'
     gom.vodid = '0'
     print gom.GetHotclipIds()
-    """
     print gom.GetMovieUrls('11099','34678')

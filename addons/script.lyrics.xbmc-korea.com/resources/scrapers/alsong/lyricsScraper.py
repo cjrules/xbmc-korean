@@ -1,7 +1,6 @@
 ﻿# -*- Mode: python; coding: utf-8; tab-width: 8; indent-tabs-mode: t; -*-
 """
 Scraper for http://lyrics.alsong.co.kr/
-by edge @ xbmc-korea.com
 """
 
 import md5

@@ -6,12 +6,12 @@
 import urllib,xbmcplugin,xbmcgui
 
 # plugin constants
-__plugin__  = "JoonMedia"
-__author__  = "edge"
-__url__     = "http://xbmc-korea.com/"
-__svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/JoonMedia"
+__plugin__ = "JoonMedia"
+__pluginid__ = "plugin.video.joonmedia.net"
+__url__ = "http://xbmc-korea.com/"
+__svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.joonmedia.net"
 __credits__ = "XBMC Korean User Group"
-__version__ = "1.1.1"
+__version__ = "1.1.2"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -81,10 +81,12 @@ def TVSHOW(main_url):
 	    except: pass
 	    if suppl.find(u"멀티로딩")==0:
 		addDir( title2.replace(u"멀티로딩",u"유큐"), url, 5, GetFLV.img("youku") )
-	    elif suppl.find(u"유큐")==0:
+	    elif suppl.find(u"유큐")==0 or suppl.find(u"유쿠")==0:
 		pass	    # always paired with 멀티로딩
-	    elif suppl.find(u"토두")==0 or suppl.find(u"56com")==0:
+	    elif suppl.find(u"토두")==0:
 		addDir( title2, url, 4, GetFLV.img("tudou") )
+	    elif suppl.find(u"56com")==0:
+		addDir( title2, url, 4, GetFLV.img("56.com") )
 	    elif suppl.find(u"베오")==0:
 		addDir( title2+u" [preview]", url, 4, GetFLV.img("veoh") )
 	    elif suppl.find(u"하이스피드")==0:
@@ -94,7 +96,7 @@ def TVSHOW(main_url):
 	    elif suppl.find(u"데일리모션")==0:
 		addDir( title2, url, 7, GetFLV.img("dailymotion") )
 	    else:
-		xbmc.log( "Unexpected: %s at %s" % (suppl.encode("euc-kr"),main_url), xbmc.LOGERROR )
+		xbmc.log( "Unsupported %s at %s" % (suppl.encode("euc-kr"),main_url), xbmc.LOGWARNING )
 
 def EPISODE(main_url):
     link = urllib.urlopen(main_url)
@@ -175,9 +177,10 @@ def get_params():
     return param
 
 def addLink(name,url,iconimage):
+    try: xbmc.log( "addLink(%s,%s)" % (name.encode("euc-kr"), url), xbmc.LOGDEBUG )
+    except: pass
     name=name.encode("utf-8")
     iconimage=iconimage.encode("utf-8")
-    xbmc.log( "addLink(%s,%s)" % (name, url), xbmc.LOGDEBUG )
     liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
     liz.setInfo( type="Video", infoLabels={ "Title": name } )
     ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=url,listitem=liz)

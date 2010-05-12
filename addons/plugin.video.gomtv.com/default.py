@@ -7,36 +7,40 @@ import urllib,xbmcplugin,xbmcgui
 import re
 
 # plugin constants
-__scriptname__ = "GomTV"
-__scriptid__ = "plugin.video.gomtv.com"
-__author__  = "anonymous"
-__url__     = "http://xbmc-korea.com/"
-__svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/GomTV"
+__plugin__ = "GomTV"
+__pluginid__ = "plugin.video.gomtv.com"
+__url__ = "http://xbmc-korea.com/"
+__svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.gomtv.com"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.4.1"
+__version__ = "0.4.3"
 
-xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __scriptname__, __version__, ), xbmc.LOGNOTICE )
+xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
 import os
 BASE_RESOURCE_PATH = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'lib' ) )
 sys.path.append (BASE_RESOURCE_PATH)
 
+__settings__ = xbmc.Settings( id=__pluginid__ ) 
+__hq_first__ = __settings__.getSetting( "HQVideo" )=="true"
+__movie_backdoor__ = __settings__.getSetting( "MovieBackdoor" )=="true"
+
 menu_div = u"----------------------------------------------------"
+
+CHSET_FILE = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'gomtv.xml' ) )
+import xml.dom.minidom as xml
+chset = xml.parse( CHSET_FILE )
 
 from BeautifulSoup import BeautifulSoup, SoupStrainer
 from GomTvLib import GomTvLib
 
-__settings__ = xbmc.Settings( id=__scriptid__ ) 
-__hq_first__ = __settings__.getSetting( "HQVideo" )=="true"
-
 #-----------------------------------------------------
 def CATEGORIES():
     addDir(u"시청순위","-",13,"")
-    addDir(u"영화","-",18,"")
+    addDir(u"영화/드라마","-",18,"")
     addDir(u"뮤직","-",15,"")
     addDir(u"게임","-",12,"")
     addDir(u"연예/오락","-",16,"")
-    addDir(u"교육","-",17,"")
+    addDir(u"뉴스/정보","-",17,"")
 
 def CAT_MUSIC_CHART(main_url):
     mchart_url = "http://www.gomtv.com/chart/index.gom?chart=%d"
@@ -47,38 +51,59 @@ def CAT_MUSIC_CHART(main_url):
     addDir(u"명예의전당",mchart_url % 5,4,"")
 
 def CAT_GAME(main_url):
-    addDir(u"스타크래프트2 XP토너먼트","http://ch.gomtv.com/4002/27523",2,"")
-    addDir(u"Star2gether","http://ch.gomtv.com/425/27635",2,"")
-    addDir(u"[4R]프로리그 09-10","http://ch.gomtv.com/412/27633",2,"")
-    addDir(menu_div,"",2,"")
-    addDir(u"곰게임넷","http://ch.gomtv.com/439",1,"")
-    addDir(u"겜플렉스","http://ch.gomtv.com/4002",1,"")
-    addDir(u"신한은행 프로리그 09-10","http://ch.gomtv.com/412",1,"")
-    addDir(u"TG삼보-인텔 클래식 시즌3","http://ch.gomtv.com/402",1,"")
-    addDir(u"마이게임TV","http://ch.gomtv.com/4999",1,"")
+    thisch = chset and chset.getElementsByTagName('game')[0]
+    favorites = thisch.getElementsByTagName('favorite')
+    for subch in favorites:
+    	name = subch.getElementsByTagName('name')[0].childNodes[0].data
+    	number = subch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,2,"")
+    if favorites:
+        addDir(menu_div,"",12,"")
+    for ch in thisch.getElementsByTagName('channel'):
+    	name = ch.getElementsByTagName('name')[0].childNodes[0].data
+    	number = ch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,1,"")
 
 def CAT_MUSIC(main_url):
     addDir(u"뮤직비디오 차트","-",11,"")
-    addDir(menu_div,"",2,"")
-    addDir(u"Channel S (SM 엔터테인먼트)","http://ch.gomtv.com/7727",1,"")
-    addDir(u"YG TV","http://ch.gomtv.com/707",1,"")
-    addDir(u"JYP 엔터테인먼트","http://ch.gomtv.com/206",1,"")
-    addDir(u"DSP Zone","http://ch.gomtv.com/2201",1,"")
-    addDir(u"엠넷미디어","http://ch.gomtv.com/278",1,"")
-    addDir(u"코어콘텐츠미디어 (티아라)","http://ch.gomtv.com/2818",1,"")
-    addDir(u"플레디스 (애프터스쿨)","http://ch.gomtv.com/239",1,"")
-    addDir(u"스타제국 (쥬얼리)","http://ch.gomtv.com/220",1,"")
-    addDir(u"제이튠 (비)","http://ch.gomtv.com/277",1,"")
-    addDir(u"태일런스미디어 (빅마마)","http://ch.gomtv.com/2774",1,"")
-    addDir(u"lion star (윤하)","http://ch.gomtv.com/2465",1,"")
-    addDir(u"FLUXUS Music (클래지콰이)","http://ch.gomtv.com/2002",1,"")
+    thisch = chset and chset.getElementsByTagName('music')[0]
+    for subch in thisch.getElementsByTagName('favorite'):
+    	name = subch.getElementsByTagName('name')[0].childNodes[0].data
+    	number = subch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,2,"")
+    addDir(menu_div,"",15,"")
+    for ch in thisch.getElementsByTagName('channel'):
+    	name = ch.getElementsByTagName('name')[0].childNodes[0].data
+    	number = ch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,1,"")
 
 def CAT_ETMNT(main_url):
-    addDir(u"ETN","http://ch.gomtv.com/7071",1,"")
-    addDir(u"Q채널","http://ch.gomtv.com/710",1,"")
+    thisch = chset and chset.getElementsByTagName('entertainment')[0]
+    favorites = thisch.getElementsByTagName('favorite')
+    for subch in favorites:
+    	name = subch.getElementsByTagName('name')[0].childNodes[0].data
+    	number = subch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,2,"")
+    if favorites:
+        addDir(menu_div,"",16,"")
+    for ch in thisch.getElementsByTagName('channel'):
+    	name = ch.getElementsByTagName('name')[0].childNodes[0].data
+    	number = ch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,1,"")
 
-def CAT_EDU(main_url):
-    addDir(u"동양문고 어학강좌","http://ch.gomtv.com/9110",1,"")
+def CAT_INFO(main_url):
+    thisch = chset and chset.getElementsByTagName('information')[0]
+    favorites = thisch.getElementsByTagName('favorite')
+    for subch in favorites:
+    	name = subch.getElementsByTagName('name')[0].childNodes[0].data
+    	number = subch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,2,"")
+    if favorites:
+        addDir(menu_div,"",17,"")
+    for ch in thisch.getElementsByTagName('channel'):
+    	name = ch.getElementsByTagName('name')[0].childNodes[0].data
+    	number = ch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,1,"")
 
 def CAT_HOT(main_url):
     link=urllib.urlopen( "http://www.gomtv.com/navigation/navigation.gom?navitype=3" )
@@ -113,10 +138,24 @@ def CAT_MOVIE_HOTCLIP(main_url):
 
 def CAT_MOVIE(main_url):
     addDir(u"무료영화","http://movie.gomtv.com/list.gom?cateid=4",7,"")
+    addDir(u"무료드라마","http://movie.gomtv.com/list.gom?cateid=189",7,"")
     addDir(u"에니메이션","http://movie.gomtv.com/list.gom?cateid=44",7,"")
     addDir(u"극장개봉정보","-",19,"")
     addDir(u"박스오피스","http://movie.gomtv.com/release/boxoffice.gom",8,"")
     addDir(u"핫클립","-",20,"")
+
+    thisch = chset and chset.getElementsByTagName('movie')[0]
+    for subch in thisch.getElementsByTagName('favorite'):
+    	name = subch.getElementsByTagName('name')[0].childNodes[0].data
+    	number = subch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,2,"")
+    channels = thisch.getElementsByTagName('channel')
+    if channels:
+        addDir(menu_div,"",18,"")
+    for ch in channels:
+    	name = ch.getElementsByTagName('name')[0].childNodes[0].data
+    	number = ch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,1,"")
 
 #-----------------------------------------------------
 def GOM_CH(main_url):
@@ -206,7 +245,7 @@ def MOST_WATCHED(main_url):
     addDir(u'다음 페이지>', "http://www.gomtv.com"+nextpage.find('a')['href'], 3, '')
 
 def MOVIE_LIST(main_url):
-    if main_url.endswith("cateid=44"):
+    if main_url.endswith("cateid=44") or main_url.endswith("cateid=189"):
 	child_fid = 7	    # sub table
     else:
 	child_fid = 10	    # movie page
@@ -261,7 +300,7 @@ def MOVIE_HOTCLIP(main_url):
 	addDir(title,url,9,thumb)
     #-- next page
     strain = SoupStrainer( "div", { "id" : "page" } )
-    nextpage = soup.find(strain).find('span').nextSibling('a')
+    nextpage = soup.find(strain).find('span').findNextSibling('a')
     if nextpage:
 	addDir(u'다음 페이지>', "http://movie.gomtv.com"+nextpage['href'], 6, '')
     
@@ -289,20 +328,21 @@ def GOM_VIDEO(main_url):
     if main_url.startswith('http://movie.gomtv.com'):
 	print "VIDEO: %s" % main_url
 	gom.ParseMoviePage(main_url)
-	match = re.compile('http://movie.gomtv.com/(\d+)/(\d+)').match(main_url)
-	if match: (dispid,vodid) = match.group(1,2)
-	else:     (dispid,vodid) = (gom.dispid, gom.vodid)
+        match = re.compile('http://movie.gomtv.com/(\d+)/(\d+)').match(main_url)
+        if __movie_backdoor__ and match:
+            (dispid,vodid) = match.group(1,2)
+	else:
+	    (dispid,vodid) = (gom.dispid, gom.vodid)
 	print "dispid=%s / vodid=%s" % (dispid,vodid)
 	# free movie
 	mov_list = gom.GetMovieUrls(dispid,vodid)
 	for title,url in mov_list:
 	    addDir(title, url, 9, '')
-	# divider
-	if mov_list and gom.dispid:
-	    addDir(menu_div, "", 10, '')
 	# hotclip
-	print "misid=%s / dispid=%s / vodid=%s" % (gom.misid,gom.dispid,gom.vodid)
-	for clipid,title,thumb in gom.GetHotclipIds():
+	hc_ids = gom.GetHotclipIds()
+	if mov_list and hc_ids:
+	    addDir(menu_div, "", 10, '')    # divider
+	for clipid,title,thumb in hc_ids:
 	    st_url = "http://tv.gomtv.com/cgi-bin/gox/gox_clip.cgi?dispid=%s&clipid=%s" % (dispid,clipid)
 	    addDir(title, st_url, 9, thumb)
     elif main_url.startswith('http://tv.gomtv.com') or main_url.startswith('http://ch.gomtv.com'):
@@ -415,7 +455,7 @@ elif mode==15:
 elif mode==16:
     CAT_ETMNT(url)
 elif mode==17:
-    CAT_EDU(url)
+    CAT_INFO(url)
 elif mode==18:
     CAT_MOVIE(url)
 elif mode==19:

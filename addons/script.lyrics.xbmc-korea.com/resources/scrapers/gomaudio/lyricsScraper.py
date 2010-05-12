@@ -1,7 +1,6 @@
 ﻿# -*- Mode: python; coding: utf-8; tab-width: 8; indent-tabs-mode: t; -*-
 """
 Scraper for http://newlyrics.gomtv.com/
-by edge @ xbmc-korea.com
 """
 
 import md5
