@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addoninfo>
-  <id>com.xbmc-korea.subtitle.script</id>
+  <id>script.subtitle.xbmc-korea.com</id>
   <type>script</type>
   <supportedcontent>
     <content>subtitle</content>

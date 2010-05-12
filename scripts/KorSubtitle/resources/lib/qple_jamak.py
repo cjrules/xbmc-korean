@@ -55,3 +55,10 @@ def qple_jamak_from_file(f):
     for i in range(0,len(url_match)):
 	title_list.append( ('qple', string.strip(tit_match[i]), qple_home+url_match[i]) )
     return title_list
+
+if __name__ == "__main__":
+    import os
+    f = open(os.path.join('d:'+os.sep,'work','test','test.avi'), 'rb')
+    for supl,title,url in qple_jamak_from_file(f):
+	print "[%s] %s = %s" % (supl,title,url)
+    f.close

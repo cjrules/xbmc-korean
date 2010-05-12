@@ -2,12 +2,12 @@
 import sys,os,xbmc
 
 __scriptname__ = "KorSubtitle"
-__scriptid__   = "com.xbmc-korea.subtitle.script"
-__author__     = "xbmc-korea.com"
+__scriptid__ = "script.subtitle.xbmc-korea.com"
+__author__ = "xbmc-korea.com"
 __url__	= "http://code.google.com/p/xbmc-korean"
-__svn_url__    = "http://code.google.com/p/xbmc-korean/svn/trunk/scripts/KorSubtitle"
-__credits__    = ""
-__version__    = "1.1.0"
+__svn_url__ = "http://code.google.com/p/xbmc-korean/svn/trunk/scripts/KorSubtitle"
+__credits__ = ""
+__version__ = "1.1.0"
 
 if not xbmc.getCondVisibility('Player.Paused') : xbmc.Player().pause()	    #Pause if not paused
 
@@ -17,6 +17,7 @@ sys.path.append (BASE_RESOURCE_PATH)
 
 __language__ = xbmc.Language( os.getcwd() ).getLocalizedString
 _ = sys.modules[ "__main__" ].__language__
+#__settings__ = xbmc.Settings( id=__scriptid__ )
 __settings__ = xbmc.Settings( path=os.getcwd() )    # old-stype script
 
 from gui import *

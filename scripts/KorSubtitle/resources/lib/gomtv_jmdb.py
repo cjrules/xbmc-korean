@@ -59,3 +59,11 @@ def gomtv_jamak_url(url):
     link = resp.read(); resp.close()
     downid = re.search('''javascript:save[^\(]*\('(\d+)','(\d+)','[^']*'\);''',link).group(1,2)
     return gomtv_home+"/jmdb/save.html?intSeq=%s&capSeq=%s"%downid
+
+if __name__ == "__main__":
+    import os
+    f = open(os.path.join('d:'+os.sep,'work','test','test.avi'), 'rb')
+    for supl,title,url in gomtv_jamak_from_file(f):
+	print "[%s] %s = %s" % (supl,title,url)
+    f.close
+    print "smi: %s" % gomtv_jamak_url(url[0])
