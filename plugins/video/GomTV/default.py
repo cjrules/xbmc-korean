@@ -54,12 +54,12 @@ def CAT_MUSIC_CHART(main_url):
 
 def CAT_GAME(main_url):
     thisch = chset and chset.getElementsByTagName('game')[0]
-    favorites = thisch.getElementsByTagName('favorite')
-    for subch in favorites:
+    shortcuts = thisch.getElementsByTagName('shortcut')
+    for subch in shortcuts:
     	name = subch.getElementsByTagName('name')[0].childNodes[0].data
     	number = subch.getElementsByTagName('number')[0].childNodes[0].data
         addDir(name,"http://ch.gomtv.com/"+number,2,"")
-    if favorites:
+    if shortcuts:
         addDir(menu_div,"",12,"")
     for ch in thisch.getElementsByTagName('channel'):
     	name = ch.getElementsByTagName('name')[0].childNodes[0].data
@@ -69,7 +69,7 @@ def CAT_GAME(main_url):
 def CAT_MUSIC(main_url):
     addDir(u"뮤직비디오 차트","-",11,"")
     thisch = chset and chset.getElementsByTagName('music')[0]
-    for subch in thisch.getElementsByTagName('favorite'):
+    for subch in thisch.getElementsByTagName('shortcut'):
     	name = subch.getElementsByTagName('name')[0].childNodes[0].data
     	number = subch.getElementsByTagName('number')[0].childNodes[0].data
         addDir(name,"http://ch.gomtv.com/"+number,2,"")
@@ -81,12 +81,12 @@ def CAT_MUSIC(main_url):
 
 def CAT_ETMNT(main_url):
     thisch = chset and chset.getElementsByTagName('entertainment')[0]
-    favorites = thisch.getElementsByTagName('favorite')
-    for subch in favorites:
+    shortcuts = thisch.getElementsByTagName('shortcut')
+    for subch in shortcuts:
     	name = subch.getElementsByTagName('name')[0].childNodes[0].data
     	number = subch.getElementsByTagName('number')[0].childNodes[0].data
         addDir(name,"http://ch.gomtv.com/"+number,2,"")
-    if favorites:
+    if shortcuts:
         addDir(menu_div,"",16,"")
     for ch in thisch.getElementsByTagName('channel'):
     	name = ch.getElementsByTagName('name')[0].childNodes[0].data
@@ -95,12 +95,12 @@ def CAT_ETMNT(main_url):
 
 def CAT_INFO(main_url):
     thisch = chset and chset.getElementsByTagName('information')[0]
-    favorites = thisch.getElementsByTagName('favorite')
-    for subch in favorites:
+    shortcuts = thisch.getElementsByTagName('shortcut')
+    for subch in shortcuts:
     	name = subch.getElementsByTagName('name')[0].childNodes[0].data
     	number = subch.getElementsByTagName('number')[0].childNodes[0].data
         addDir(name,"http://ch.gomtv.com/"+number,2,"")
-    if favorites:
+    if shortcuts:
         addDir(menu_div,"",17,"")
     for ch in thisch.getElementsByTagName('channel'):
     	name = ch.getElementsByTagName('name')[0].childNodes[0].data
@@ -147,7 +147,7 @@ def CAT_MOVIE(main_url):
     addDir(u"핫클립","-",20,"")
 
     thisch = chset and chset.getElementsByTagName('movie')[0]
-    for subch in thisch.getElementsByTagName('favorite'):
+    for subch in thisch.getElementsByTagName('shortcut'):
     	name = subch.getElementsByTagName('name')[0].childNodes[0].data
     	number = subch.getElementsByTagName('number')[0].childNodes[0].data
         addDir(name,"http://ch.gomtv.com/"+number,2,"")
