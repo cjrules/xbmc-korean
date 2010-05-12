@@ -141,7 +141,7 @@ def CAT_MOVIE_HOTCLIP(main_url):
 
 def CAT_MOVIE(main_url):
     addDir(u"무료영화","http://movie.gomtv.com/list.gom?cateid=4",7,"")
-    addDir(u"무료드라마","http://movie.gomtv.com/list.gom?cateid=189",7,"")
+    #addDir(u"무료드라마","http://movie.gomtv.com/list.gom?cateid=189",7,"")
     addDir(u"에니메이션","http://movie.gomtv.com/list.gom?cateid=44",7,"")
     addDir(u"극장개봉정보","-",19,"")
     addDir(u"박스오피스","http://movie.gomtv.com/release/boxoffice.gom",8,"")
