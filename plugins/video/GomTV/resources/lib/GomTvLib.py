@@ -63,6 +63,8 @@ class GomTvLib:
 	    url = ref['href']
 	    if url[7:url.find('.',7)].isdigit():
 		return url.replace('&amp;','&')
+	    elif url.startswith('goms://'):
+		print "Unsupported format: "+url
 	return ''
 
     def GetMovieUrls(self,dispid,vodid):
@@ -169,8 +171,14 @@ class GomTvLib:
 
 if __name__ == "__main__":
     gom = GomTvLib()
+    # hotclip parse
     gom.misid = '42929'
     gom.dispid = '23850'
     gom.vodid = '0'
     print gom.GetHotclipIds()
+    # unsupported movie page
     print gom.GetMovieUrls('11099','34678')
+    # unsupported video format
+    for title,url in gom.GetMovieUrls('17917','19822'):
+	print "%s: %s" % (title,url)
+	print gom.GetVideoUrl(url)
