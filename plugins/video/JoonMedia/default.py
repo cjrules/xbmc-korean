@@ -7,7 +7,7 @@ import urllib,xbmcplugin,xbmcgui
 
 # plugin constants
 __plugin__  = "JoonMedia"
-__author__  = "edge"
+__author__  = "xbmc-korea"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/JoonMedia"
 __credits__ = "XBMC Korean User Group"
@@ -124,11 +124,8 @@ def EPISODE_YOUTUBE(main_url):
     soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
     i=0
     for item in soup.findAll('embed'):
-	try:
+	if hasattr(item,'flashvars'):
 	    swf = item['flashvars']
-	except:
-	    swf = None
-	if swf:
 	    ptn2 = 'file='
 	    swf = swf[swf.find(ptn2)+len(ptn2):swf.find('&amp;')]
 	    thumb = GetFLV.img(swf)

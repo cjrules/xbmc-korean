@@ -7,7 +7,10 @@ import urllib2
 from BeautifulSoup import BeautifulSoup, SoupStrainer
 import re
 
-txheaders = {'Cookie' : 'ptic=bfcbf4b805bc63344e200391d95069c7'}    # full Cookie support is not required
+txheaders = {
+    'User-Agent' : 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2)',
+    'Cookie' : 'ptic=bfcbf4b805bc63344e200391d95069c7'
+}    # full Cookie support is not required
 
 gom_errors = {
     "1000" : "영상 재생에 문제가 발생했습니다. 잠시 후 다시 이용해 주세요.",
@@ -48,11 +51,11 @@ class GomTvLib:
 	self.hq_first = value
 
     def GetVideoUrl(self,main_url):
-	req = urllib2.Request(main_url, None, txheaders)
-	try:
-	    resp=urllib2.urlopen(req)
-	except:
-	    return None
+	txhdr = txheaders
+	txhdr['User-Agent'] = 'HttpGetFile'
+	req = urllib2.Request(main_url, None, txhdr)
+	try: resp=urllib2.urlopen(req)
+	except: return None
 	
 	soup = BeautifulSoup( resp.read(), fromEncoding="euc-kr" )
 	list = soup.findAll('ref')
@@ -98,7 +101,8 @@ class GomTvLib:
 
     def ParseMoviePage(self,main_url):
 	(self.misid, self.dispid, self.vodid) = (0,0,0)
-	try: tDoc=urllib2.urlopen(main_url).read()
+	req = urllib2.Request(main_url, None, txheaders)
+	try: tDoc=urllib2.urlopen(req).read()
 	except: return
 	query = re.compile("http://movie.gomtv.com/sub/detailAjax.\gom\?misid=(\d+)&dispid=(\d+)&vodid=(\d+)&mtype=5").search(tDoc)
 	if query:
@@ -107,7 +111,8 @@ class GomTvLib:
     def GetHotclipIds(self):
 	if self.dispid==0: return []
 	hotclip_url = "http://movie.gomtv.com/sub/detailAjax.gom?misid=%s&dispid=%s&vodid=%s&mtype=5" % (self.misid,self.dispid,self.vodid)
-	try: tDoc=urllib2.urlopen(hotclip_url).read()
+	req = urllib2.Request(hotclip_url, None, txheaders)
+	try: tDoc=urllib2.urlopen(req).read()
 	except: return []
 
 	soup = BeautifulSoup( tDoc, fromEncoding="euc-kr" )
@@ -124,7 +129,8 @@ class GomTvLib:
 	return out_list
 
     def ParseChVideoPage(self,main_url):
-	try: tDoc=urllib2.urlopen(main_url).read()
+	req = urllib2.Request(main_url, None, txheaders)
+	try: tDoc=urllib2.urlopen(req).read()
 	except: return None
 
 	#-- chid/pid/bid & default bjvid
