@@ -12,7 +12,7 @@ __pluginid__ = "plugin.video.gomtv.com"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/GomTV"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.4.3"
+__version__ = "0.4.4"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -297,8 +297,8 @@ def MOVIE_HOTCLIP(main_url):
     for item in soup.find(strain).findAll('dl'):
 	refs = item.findAll('a')
 	thumb = refs[0].find('img')['src']
+	title = refs[0]['title']
 	url = "http://tv.gomtv.com/cgi-bin/gox/gox_clip.cgi?dispid=%s&clipid=%s" % re.compile('/(\d+)/\d+/\d+/(\d+)').search( refs[1]['onclick'] ).group(1,2)
-	title = refs[1].find('b').string
 	addDir(title,url,9,thumb)
     #-- next page
     strain = SoupStrainer( "div", { "id" : "page" } )
