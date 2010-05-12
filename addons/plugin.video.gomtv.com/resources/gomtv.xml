@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gomtv>
+  <movie>
+  </movie>
+  <music>
+    <channel>
+      <name>Channel S (SM 엔터테인먼트)</name>
+      <number>7727</number>
+    </channel>
+    <channel>
+      <name>YG TV</name>
+      <number>707</number>
+    </channel>
+    <channel>
+      <name>JYP 엔터테인먼트</name>
+      <number>206</number>
+    </channel>
+    <channel>
+      <name>DSP Zone</name>
+      <number>2201</number>
+    </channel>
+    <channel>
+      <name>엠넷미디어</name>
+      <number>278</number>
+    </channel>
+    <channel>
+      <name>코어콘텐츠미디어 (티아라)</name>
+      <number>2818</number>
+    </channel>
+    <channel>
+      <name>플레디스 (애프터스쿨)</name>
+      <number>239</number>
+    </channel>
+    <channel>
+      <name>스타제국 (쥬얼리)</name>
+      <number>220</number>
+    </channel>
+    <channel>
+      <name>FLUXUS Music (클래지콰이)</name>
+      <number>2002</number>
+    </channel>
+    <channel>
+      <name>태일런스미디어 (빅마마)</name>
+      <number>2774</number>
+    </channel>
+    <channel>
+      <name>lion star (윤하)</name>
+      <number>2465</number>
+    </channel>
+    <channel>
+      <name>제이튠 (비)</name>
+      <number>277</number>
+    </channel>
+  </music>
+  <game>
+    <channel>
+      <name>곰게임넷</name>
+      <number>439</number>
+    </channel>
+    <channel>
+      <name>겜플렉스</name>
+      <number>4002</number>
+    </channel>
+    <channel>
+      <name>신한은행 프로리그 09-10</name>
+      <number>412</number>
+    </channel>
+    <channel>
+      <name>TG삼보-인텔 클래식 시즌3</name>
+      <number>402</number>
+    </channel>
+    <channel>
+      <name>마이게임TV</name>
+      <number>4999</number>
+    </channel>
+    <favorite>
+      <name>스타크래프트2 XP토너먼트</name>
+      <number>4002/27523</number>
+    </favorite>
+    <favorite>
+      <name>Star2gether</name>
+      <number>425/27635</number>
+    </favorite>
+    <favorite>
+      <name>[4R]프로리그 09-10</name>
+      <number>412/27633</number>
+    </favorite>
+  </game>
+  <entertainment>
+    <channel>
+      <name>ETN</name>
+      <number>7071</number>
+    </channel>
+    <channel>
+      <name>Q채널</name>
+      <number>710</number>
+    </channel>
+  </entertainment>
+  <information>
+    <channel>
+      <name>동양문고 어학강좌</name>
+      <number>9110</number>
+    </channel>
+  </information>
+</gomtv>
