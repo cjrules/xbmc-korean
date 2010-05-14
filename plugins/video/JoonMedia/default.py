@@ -11,7 +11,7 @@ __author__  = "xbmc-korea"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/JoonMedia"
 __credits__ = "XBMC Korean User Group"
-__version__ = "1.1.2"
+__version__ = "1.1.3"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -91,7 +91,7 @@ def TVSHOW(main_url):
 		addDir( title2+u" [preview]", url, 4, GetFLV.img("veoh") )
 	    elif suppl.find(u"하이스피드")==0:
 		addDir( title2, url, 5, '' )
-	    elif suppl.find(u"유튜브")==0 or suppl.lower()==u"youtube":
+	    elif suppl.find(u"유튜브")==0 or suppl.find(u"유투브")==0 or suppl.lower()==u"youtube":
 		addDir( title2, url, 6, GetFLV.img("youtube") )
 	    elif suppl.find(u"데일리모션")==0:
 		addDir( title2, url, 7, GetFLV.img("dailymotion") )
@@ -124,7 +124,7 @@ def EPISODE_YOUTUBE(main_url):
     soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
     i=0
     for item in soup.findAll('embed'):
-	if hasattr(item,'flashvars'):
+	if item.has_key('flashvars'):
 	    swf = item['flashvars']
 	    ptn2 = 'file='
 	    swf = swf[swf.find(ptn2)+len(ptn2):swf.find('&amp;')]
