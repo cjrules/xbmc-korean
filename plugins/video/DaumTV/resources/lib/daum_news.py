@@ -22,7 +22,7 @@ class DaumNews:
         items = soup.findAll(strain)
         for item in items:
             ref = item.find('a')
-            vid_url = ref['href']
+            vid_url = ref['href'].replace("&amp;","&")
             title   = ref.contents[0]
             self.menu_list.append( (title,vid_url) )
 
@@ -38,7 +38,7 @@ class DaumNews:
         items = soup.findAll(strain)
         for item in items:
             refs = item.findAll('a')
-            vid_url = base_url + refs[0]['href']
+            vid_url = base_url + refs[0]['href'].replace("&amp;","&")
             thumb   = refs[0].find('img')['src']
             title   = refs[1].contents[0]
             self.video_list.append( (title,vid_url,thumb) )
@@ -47,7 +47,7 @@ class DaumNews:
         curpg = psec.find('b')
         nextpg = curpg.findNextSibling('a')
         if nextpg:
-            pg_url  = base_url + nextpg['href']
+            pg_url  = base_url + nextpg['href'].replace("&amp;","&")
             pg_name = nextpg.contents[0].strip()
             self.nextpage = (pg_name,pg_url)
         #-- prev day
@@ -57,7 +57,7 @@ class DaumNews:
             curday = psec.find('a')
         prevday = curday.findNextSibling('a')
         if prevday:
-            day_url  = base_url + prevday['href']
+            day_url  = base_url + prevday['href'].replace("&amp;","&")
             day_name = prevday.contents[0].strip()
             self.prevday = (day_name,day_url)
 

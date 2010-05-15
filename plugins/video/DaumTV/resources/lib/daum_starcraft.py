@@ -21,7 +21,7 @@ class DaumStarcraft:
         strain = SoupStrainer( "div", { "class" : "schedule" } )
         items = soup.find("div", {"class" : "schedule"}).find("ul", {"class" : "pulldownList hidden"}).findAll('a')
         for item in items:
-            vid_url = base_url + item['href']
+            vid_url = base_url + item['href'].replace("&amp;","&")
             title   = item.contents[0]
             self.menu_list.append( (title,vid_url) )
 
@@ -54,7 +54,7 @@ class DaumStarcraft:
             	refs = set.findAll('a')
             	if len(refs) == 3:
                     stitle = "%s vs %s" % (refs[0].contents[0], refs[1].contents[0])
-                    url = refs[2]['href']
+                    url = refs[2]['href'].replace("&amp;","&")
 		    if url.startswith("http"):
 			vid_url = url
 		    elif url.startswith("/"):
@@ -63,7 +63,7 @@ class DaumStarcraft:
 			vid_url = base_url + url
                 elif len(refs) == 1:
                     stitle = set.find('dd').contents[0]
-                    url = refs[0]['href']
+                    url = refs[0]['href'].replace("&amp;","&")
 		    if url.startswith("http"):
 			vid_url = url
 		    elif url.startswith("/"):
@@ -80,7 +80,7 @@ class DaumStarcraft:
         found = False
         for page in pages:
             if found:
-            	url = page.find('a')['href']
+            	url = page.find('a')['href'].replace("&amp;","&")
             	if url.startswith("/"):
                     url = "http://tvpot.daum.net"+url
             	self.nextpage = url

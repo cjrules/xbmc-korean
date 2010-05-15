@@ -19,7 +19,7 @@ class DaumTrailer:
         items = soup.findAll(strain)
         for item in items:
             refs = item.findAll('a')
-            vid_url = refs[-1]['href']
+            vid_url = refs[-1]['href'].replace("&amp;","&")
             title   = refs[-1].contents[0]
             if len(refs) > 1:
                 thumb = refs[0].find('img')['src']

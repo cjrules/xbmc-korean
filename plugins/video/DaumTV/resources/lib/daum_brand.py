@@ -21,7 +21,7 @@ class DaumBrand:
         items = soup.find(strain).findAll('dl')
         for item in items:
             ddimg = item.find('dd',{'class' : 'image'})
-            vid_url = ddimg.find('a')['href']
+            vid_url = ddimg.find('a')['href'].replace("&amp;","&")
             vid_url = vid_url.replace("&amp;","&").replace(" ","")
             if vid_url[0] == '/':
                 vid_url = "http://tvpot.daum.net"+vid_url
@@ -37,7 +37,7 @@ class DaumBrand:
         found = False
         for page in pages:
             if found:
-            	url = page.find('a')['href']
+            	url = page.find('a')['href'].replace("&amp;","&")
             	if url.startswith("/"):
                     url = "http://tvpot.daum.net"+url
             	self.nextpage = url

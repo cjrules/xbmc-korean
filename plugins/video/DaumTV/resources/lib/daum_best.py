@@ -21,7 +21,7 @@ class DaumBestClip:
         items = soup.find(strain).findAll('dl')
         for item in items:
             ddimg = item.find('dd',{'class' : 'img'})
-            vid_url = ddimg.find('a')['href']
+            vid_url = ddimg.find('a')['href'].replace("&amp;","&")
             if vid_url[0] == '/':
                 vid_url = "http://tvpot.daum.net"+vid_url
             imgpt = ddimg.find('img')
@@ -35,7 +35,7 @@ class DaumBestClip:
         for item in items:
             if (found):
             	temp = item.find('a')
-            	url = temp['href']
+            	url = temp['href'].replace("&amp;","&")
             	if url[0] == '?':
                     url = "http://tvpot.daum.net/best/BestToday.do"+url
                 self.nextpage = (temp['title'], url)
