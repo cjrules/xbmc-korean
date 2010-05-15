@@ -7,7 +7,7 @@ __author__ = "xbmc-korea.com"
 __url__	= "http://code.google.com/p/xbmc-korean"
 __svn_url__ = "http://code.google.com/p/xbmc-korean/svn/trunk/scripts/KorSubtitle"
 __credits__ = ""
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 
 if not xbmc.getCondVisibility('Player.Paused') : xbmc.Player().pause()	    #Pause if not paused
 

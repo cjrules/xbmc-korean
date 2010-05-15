@@ -5,7 +5,7 @@ import string,re
 _ = sys.modules[ "__main__" ].__language__
 __scriptname__ = sys.modules[ "__main__" ].__scriptname__
 
-browser_hdr = 'GomPlayer 2, 1, 23, 5007 (KOR)'
+reqhdr = {'User-Agent': 'GomPlayer 2, 1, 23, 5007 (KOR)'}
 gomtv_home  = "http://gom.gomtv.com"
 
 def gomtv_jamak_from_file(f):
@@ -17,8 +17,7 @@ def gomtv_jamak_from_file(f):
     ###--- Search subtitle in GomTV site
     queryAddr = gomtv_home+"/jmdb/search.html?key=%s"%key
     print "search subtitle at %s"%queryAddr
-    req = urllib2.Request(queryAddr)
-    req.add_header('User-Agent', browser_hdr)
+    req = urllib2.Request(queryAddr, None, reqhdr)
     try: resp = urllib2.urlopen(req)
     except urllib2.URLError, e:
 	print e.reason
@@ -27,13 +26,18 @@ def gomtv_jamak_from_file(f):
 
     match = re.match('''<script>location.href = '([^']*)';</script>''',link)
     if match:
-	if 'noResult' in match.group(1):
+	url = match.group(1)
+	if 'noResult' in url:	    # no result (old style)
 	    print "Unusual result page, "+queryAddr
 	    return []
+	url = gomtv_home+'/jmdb/'+url
+	title = gomtv_check_result(url)
+	if title:
+	    return [ ('gomtv', title, url) ]
 	else:
-	    # single search result
-	    return [ ('gomtv', _(104)%_(200), gomtv_home+'/jmdb/'+match.group(1)) ]
+	    return []	    # no result
 
+    link = link.decode('euc-kr').encode('utf-8')
     # regular search result page
     url_match  = re.compile('''<div><a href="([^"]*)">\[([^\]]*)\]([^<]*)</a>''',re.U).findall(link)
     date_match = re.compile('''<td>(\d{4}.\d{2}.\d{2})</td>''').findall(link)
@@ -48,10 +52,25 @@ def gomtv_jamak_from_file(f):
 	title_list.append( ('gomtv', title, gomtv_home+url_match[i][0]) )
     return title_list
 
+def gomtv_check_result(url):
+    req = urllib2.Request(url, None, reqhdr)
+    try: resp = urllib2.urlopen(req)
+    except urllib2.URLError, e:
+	print e.reason
+	return None
+    link = resp.read(); resp.close()
+    if "<div id='search_failed_smi'>" in link:
+	print "no result found, "+url
+	return ""
+
+    link = link.decode('euc-kr').encode('utf-8')
+    # regular search result page
+    query = re.compile('''<th>제목</th>\s*<td[^>]*>\s*<strong>\[[^\]]*\]\s*([^<]*)</strong>''',re.U|re.S).search(link)
+    return query and query.group(1)
+
 def gomtv_jamak_url(url):
     print "parse subtitle page at %s"%url
-    req = urllib2.Request(url)
-    req.add_header('User-Agent', browser_hdr)
+    req = urllib2.Request(url, None, reqhdr)
     try: resp = urllib2.urlopen(req)
     except urllib2.URLError, e:
 	print e.reason
@@ -67,3 +86,4 @@ if __name__ == "__main__":
 	print "[%s] %s = %s" % (supl,title,url)
     f.close
     print "smi: %s" % gomtv_jamak_url(url[0])
+    print "no smi: %s" % gomtv_check_result("http://gom.gomtv.com/jmdb/searchCaptionInference.html?fn2=&key=09d595ebdf13a7bc7373cee539b86a0f&skey=")

@@ -42,9 +42,10 @@ def qple_jamak_from_file(f):
 	print e.reason
 	return None
     link = resp.read(); resp.close()
+    link = link.decode('euc-kr').encode('utf-8')
 
     # regular search result page
-    url_match  = re.compile(u'''<a href="([^"]*)"[^>]*>\[다운로드 링크\]</a>'''.encode("euc-kr")).findall(link)
+    url_match  = re.compile('''<a href="([^"]*)"[^>]*>\[다운로드 링크\]</a>''',re.U).findall(link)
     tit_match = re.compile('''<td class="txt_[^>]*>([^<]*)</td>''').findall(link)
     if len(url_match) == 0 or len(url_match) != len(tit_match): 
 	print "Unusual result page, "+queryAddr2

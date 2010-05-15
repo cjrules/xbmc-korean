@@ -27,16 +27,16 @@ def gui():
 	dialog.update( 0, _(100)%_(200) )
 	found = gomtv_jamak_from_file(f)
 	if found is None:
-	    dialog = xbmcgui.Dialog()
-	    ignored = dialog.ok(__scriptname__, _(101)%_(200), _(108) )
+	    diagx = xbmcgui.Dialog()
+	    ignored = diagx.ok(__scriptname__, _(101)%_(200), _(108) )
 	else:
 	    subt_list += found
     if __settings__.getSetting( "Qple" )=='true':
 	dialog.update( 50, _(100)%_(201) )
 	found = qple_jamak_from_file(f)
 	if found is None:
-	    dialog = xbmcgui.Dialog()
-	    ignored = dialog.ok(__scriptname__, _(101)%_(201), _(108) )
+	    diagx = xbmcgui.Dialog()
+	    ignored = diagx.ok(__scriptname__, _(101)%_(201), _(108) )
 	else:
 	    subt_list += found
     dialog.close()
@@ -66,8 +66,8 @@ def gui():
 	    if subt_list[selected][0] == 'gomtv':
 		smiAddr = gomtv_jamak_url( subt_list[selected][2] )
 		if not smiAddr:
-		    dialog = xbmcgui.Dialog()
-		    ignored = dialog.ok(__scriptname__, _(101)%_(200), _(108) )
+		    diagx = xbmcgui.Dialog()
+		    ignored = diagx.ok(__scriptname__, _(101)%_(200), _(108) )
 	    else:
 		smiAddr = subt_list[selected][2]
 
