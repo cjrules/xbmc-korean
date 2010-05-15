@@ -6,11 +6,10 @@ import urllib,xbmcplugin,xbmcgui
 
 # plugin constants
 __plugin__  = "DaumTV"
-__author__  = "anonymous"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/DaumTV"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.1.1"
+__version__ = "0.2.0"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -25,7 +24,7 @@ def CATEGORIES():
     addDir(u"영화 예고편", "http://movie.daum.net/ranking/movieclip_ranking/", 10, pic_dir+"daum_trailer.png")
     addDir(u"뉴스", "http://tvnews.media.daum.net/", 20, pic_dir+"daum_media.png")
     addDir(u"베스트 동영상", "http://tvpot.daum.net/best/", 30, pic_dir+"daum_tvpot.png")
-    addDir(u"게임", "http://tvpot.daum.net/game/sl/", 40, pic_dir+"daum_tvpot.png")
+    addDir(u"게임", "http://tvpot.daum.net", 40, pic_dir+"daum_tvpot.png")
                        
 def CAT_TRAILER(base_url):
     addDir(u"일간 베스트",base_url+"bestTrailer.do?datekey=3",11,'')
@@ -46,16 +45,16 @@ def CAT_BEST(base_url):
     addDir(u"10만 플레이", base_url+"BestToday.do?svctab=10m",31,'')
                        
 def CAT_GAME(base_url):
+    addDir(u"스타리그", base_url+"/game/sl/LeagueList.do?league=osl&type=list&lu=game_osl_closegame",42,pic_dir+"oslBanner.png")
+    addDir(u"프로리그", base_url+"/game/sl/LeagueList.do?league=pro&type=list&lu=game_pro_closegame",42,pic_dir+"proleagueBanner.png")
+    addDir(u"겜플렉스 스타2", base_url+"/brand/ProgramView.do?ownerid=O_5rgf7M1do0&playlistid=1101578&lu=b_c_main_programlist_cate_2",43,'')
+
+def CAT_STARCRAFT(main_url):
     from daum_starcraft import DaumStarcraft
     site = DaumStarcraft()
-    addDir(u"---- 스타크래프트 스타리그 ----", '', 40, pic_dir+"oslBanner.png")
-    site.parseTop(base_url+"LeagueList.do?league=osl&type=list&lu=game_osl_closegame")
+    site.parseTop(main_url)
     for title,url in site.menu_list:
-        addDir(title, url, 41, pic_dir+"oslBanner.png")
-    addDir(u"---- 스타크래프트 프로리그 ----", '', 40, pic_dir+"proleagueBanner.png")
-    site.parseTop(base_url+"LeagueList.do?league=pro&type=list&lu=game_pro_closegame")
-    for title,url in site.menu_list:
-        addDir(title,url,41, pic_dir+"proleagueBanner.png")
+        addDir(title, url, 41, '')
 
 #------------------------------------------------------------------
 def BROWSE_TRAILER(main_url):
@@ -97,6 +96,16 @@ def BROWSE_STARCRAFT(main_url):
             addDir("%s %s" % (sname,stitle), url, 1, '')
     if site.nextpage:
         addDir(u"다음 페이지>", site.nextpage, 41, '')
+
+def BROWSE_BRAND(main_url):
+    from daum_brand import DaumBrand
+    site=DaumBrand()
+    site.parse(main_url)
+    for title,url,thumb in site.video_list:
+	title = title.replace('\n'," ")
+        addDir(title, url, 1, thumb)
+    if site.nextpage:            
+        addDir(u"다음 페이지>", site.nextpage[1], 43, '')
 
 def SHOW_VIDEO(main_url):
     from getdaumvid import GetDaumVideo
@@ -192,5 +201,9 @@ elif mode==40:
     CAT_GAME(url)
 elif mode==41:
     BROWSE_STARCRAFT(url)
+elif mode==42:
+    CAT_STARCRAFT(url)
+elif mode==43:
+    BROWSE_BRAND(url)
 
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
