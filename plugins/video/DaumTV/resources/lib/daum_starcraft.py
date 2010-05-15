@@ -42,9 +42,9 @@ class DaumStarcraft:
             cable = hdr.contents[1]
             if "league=pro" in main_url:
                 teamrefs = match.find('span').findAll('a')
-                mtitle = "%s vs %s" % (teamrefs[0].contents[0], teamrefs[1].contents[0])
+                mtitle = "%s vs %s" % (teamrefs[0].string, teamrefs[2].string)
             elif "league=osl" in main_url:
-                mtitle = match.find('p').contents[0].strip()
+                mtitle = match.find('p').string.strip()
             else:
                 mtitle = ''
             # set
@@ -81,8 +81,12 @@ class DaumStarcraft:
         for page in pages:
             if found:
             	url = page.find('a')['href'].replace("&amp;","&")
-            	if url.startswith("/"):
-                    url = "http://tvpot.daum.net"+url
+		if url.startswith("http"):
+		    pass
+		elif url.startswith("/"):
+		    url = "http://tvpot.daum.net"+url
+		else:
+		    url = base_url + url
             	self.nextpage = url
             	break
             if page.find('span', {"class" : "sel"}):

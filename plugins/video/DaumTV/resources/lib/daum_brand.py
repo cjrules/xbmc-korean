@@ -11,11 +11,12 @@ class DaumBrand:
     nextpage = None
     def DaumBrand(self):
         pass
-    def parse(self,url):
-        link = urllib.urlopen(url)
+    def parse(self,main_url):
+        link = urllib.urlopen(main_url)
         soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
         self.video_list = []
         self.nextpage = None
+        base_url = main_url[:main_url.rfind('/')+1]
         #-- item list
         strain = SoupStrainer( "div", { "class" : re.compile("^listBody") } )
         items = soup.find(strain).findAll('dl')
@@ -38,8 +39,12 @@ class DaumBrand:
         for page in pages:
             if found:
             	url = page.find('a')['href'].replace("&amp;","&")
-            	if url.startswith("/"):
-                    url = "http://tvpot.daum.net"+url
+		if url.startswith("http"):
+		    pass
+		elif url.startswith("/"):
+		    url = "http://tvpot.daum.net"+url
+		else:
+		    url = base_url + url
             	self.nextpage = url
             	break
             if page.find('span', {"class" : "sel"}):
