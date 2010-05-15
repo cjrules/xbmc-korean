@@ -23,6 +23,7 @@ sys.path.append (BASE_RESOURCE_PATH)
 __settings__ = xbmc.Settings( id=__pluginid__ ) 
 __hq_first__ = __settings__.getSetting( "HQVideo" )=="true"
 __movie_backdoor__ = __settings__.getSetting( "MovieBackdoor" )=="true"
+__flatten_list__ = __settings__.getSetting( "FlattenList" )=="true"
 
 menu_div = u"----------------------------------------------------"
 
@@ -294,9 +295,9 @@ def MOVIE_HOTCLIP(main_url):
     strain = SoupStrainer( "div", { "id" : "hotClip_list" } )
     for item in soup.find(strain).findAll('dl'):
 	refs = item.findAll('a')
+	title = refs[0]['title']
 	thumb = refs[0].find('img')['src']
-	url = "http://tv.gomtv.com/cgi-bin/gox/gox_clip.cgi?dispid=%s&clipid=%s" % re.compile('/(\d+)/\d+/\d+/(\d+)').search( refs[1]['onclick'] ).group(1,2)
-	title = refs[1].find('b').string
+	url = "http://tv.gomtv.com/cgi-bin/gox/gox_clip.cgi?dispid=%s&clipid=%s" % re.compile('/(\d*)/\d+/\d+/(\d+)').search( refs[1]['onclick'] ).group(1,2)
 	addDir(title,url,9,thumb)
     #-- next page
     strain = SoupStrainer( "div", { "id" : "page" } )
@@ -318,10 +319,10 @@ def MOVIE_BOXOFFICE(main_url):
 	addDir(title,url,10,thumb)
     
 #-----------------------------------                
-def GOM_CLIP(main_url):
-    vid_url = GomTvLib().GetVideoUrl(main_url)
+def GOM_CLIP(title,url,thumb):
+    vid_url = GomTvLib().GetVideoUrl(url)
     xbmc.log( "clip_url=%s"%vid_url, xbmc.LOGDEBUG )
-    addLink(u"시청", vid_url, '')
+    addLink(title, vid_url, thumb)
 
 def GOM_VIDEO(main_url):
     gom = GomTvLib()
@@ -337,21 +338,24 @@ def GOM_VIDEO(main_url):
 	# free movie
 	mov_list = gom.GetMovieUrls(dispid,vodid)
 	for title,url in mov_list:
-	    addDir(title, url, 9, '')
+	    if __flatten_list__: GOM_CLIP(title,url,'')
+	    else: addDir(title, url, 9, '')
 	# hotclip
 	hc_ids = gom.GetHotclipIds()
 	if mov_list and hc_ids:
 	    addDir(menu_div, "", 10, '')    # divider
 	for clipid,title,thumb in hc_ids:
 	    st_url = "http://tv.gomtv.com/cgi-bin/gox/gox_clip.cgi?dispid=%s&clipid=%s" % (dispid,clipid)
-	    addDir(title, st_url, 9, thumb)
+	    if __flatten_list__: GOM_CLIP(title, st_url, thumb)
+	    else: addDir(title, st_url, 9, thumb)
     elif main_url.startswith('http://tv.gomtv.com') or main_url.startswith('http://ch.gomtv.com'):
 	print "TV: %s" % main_url
 	gom.useHQFirst(__hq_first__)
 	gom.ParseChVideoPage(main_url)
 	for bjvid,title in gom.sub_list:
 	    st_url = "http://tv.gomtv.com/cgi-bin/gox/gox_channel.cgi?isweb=0&chid=%s&pid=%s&bid=%s&bjvid=%s" % (gom.chid,gom.pid,gom.bid,bjvid)
-	    addDir(title, st_url, 9, '')
+	    if __flatten_list__: GOM_CLIP(title, st_url, '')
+	    else: addDir(title, st_url, 9, '')
     else:
 	print "ERROR: %s is not considered" % main_url
 
@@ -439,7 +443,7 @@ elif mode==7:
 elif mode==8:
     MOVIE_BOXOFFICE(url)
 elif mode==9:
-    GOM_CLIP(url)
+    GOM_CLIP(u"시청",url,'')
 elif mode==10:
     GOM_VIDEO(url)
 elif mode==11:

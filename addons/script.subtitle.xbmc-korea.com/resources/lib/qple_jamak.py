@@ -42,9 +42,10 @@ def qple_jamak_from_file(f):
 	print e.reason
 	return None
     link = resp.read(); resp.close()
+    link = link.decode('euc-kr').encode('utf-8')
 
     # regular search result page
-    url_match  = re.compile(u'''<a href="([^"]*)"[^>]*>\[다운로드 링크\]</a>'''.encode("euc-kr")).findall(link)
+    url_match  = re.compile('''<a href="([^"]*)"[^>]*>\[다운로드 링크\]</a>''',re.U).findall(link)
     tit_match = re.compile('''<td class="txt_[^>]*>([^<]*)</td>''').findall(link)
     if len(url_match) == 0 or len(url_match) != len(tit_match): 
 	print "Unusual result page, "+queryAddr2
@@ -55,3 +56,10 @@ def qple_jamak_from_file(f):
     for i in range(0,len(url_match)):
 	title_list.append( ('qple', string.strip(tit_match[i]), qple_home+url_match[i]) )
     return title_list
+
+if __name__ == "__main__":
+    import os
+    f = open(os.path.join('d:'+os.sep,'work','test','test.avi'), 'rb')
+    for supl,title,url in qple_jamak_from_file(f):
+	print "[%s] %s = %s" % (supl,title,url)
+    f.close
