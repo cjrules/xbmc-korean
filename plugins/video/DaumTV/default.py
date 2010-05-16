@@ -47,7 +47,7 @@ def CAT_BEST(base_url):
 def CAT_GAME(base_url):
     addDir(u"스타리그", base_url+"/game/sl/LeagueList.do?league=osl&type=list&lu=game_osl_closegame",42,pic_dir+"oslBanner.png")
     addDir(u"프로리그", base_url+"/game/sl/LeagueList.do?league=pro&type=list&lu=game_pro_closegame",42,pic_dir+"proleagueBanner.png")
-    addDir(u"겜플렉스 스타2", base_url+"/brand/ProgramView.do?ownerid=O_5rgf7M1do0&playlistid=1101578&lu=b_c_main_programlist_cate_2",43,'')
+    addDir(u"겜플렉스 스타2", base_url+"/brand/ProgramView.do?ownerid=O_5rgf7M1do0&playlistid=1101578&page=1&viewtype=24",43,'')
 
 def CAT_STARCRAFT(main_url):
     from daum_starcraft import DaumStarcraft

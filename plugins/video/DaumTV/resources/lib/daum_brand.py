@@ -28,7 +28,7 @@ class DaumBrand:
                 vid_url = "http://tvpot.daum.net"+vid_url
             imgpt = ddimg.find('img')
             thumb = imgpt['src']
-            title = imgpt['title']
+            title = imgpt['alt']
             query = re.compile(u"동영상 '(.*?)'의 미리보기 이미지").match(title)
 	    if query:
 		title = query.group(1)
@@ -57,7 +57,7 @@ if __name__ == "__main__":
     #    sys.path.append (LIB_DIR)
 
     site = DaumBrand()
-    site.parse("http://tvpot.daum.net/brand/ProgramView.do?ownerid=O_5rgf7M1do0&playlistid=1101578&lu=b_c_main_programlist_cate_2")
+    site.parse("http://tvpot.daum.net/brand/ProgramView.do?ownerid=O_5rgf7M1do0&playlistid=1101578&page=1&viewtype=24")
     print len(site.video_list)
     print site.video_list[0]
     print site.nextpage
