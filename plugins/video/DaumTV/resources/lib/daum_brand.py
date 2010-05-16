@@ -22,16 +22,17 @@ class DaumBrand:
         items = soup.find(strain).findAll('dl')
         for item in items:
             ddimg = item.find('dd',{'class' : 'image'})
-            vid_url = ddimg.find('a')['href'].replace("&amp;","&")
+            ref = ddimg.find('a')
+            vid_url = ref['href'].replace("&amp;","&")
             vid_url = vid_url.replace("&amp;","&").replace(" ","")
             if vid_url[0] == '/':
                 vid_url = "http://tvpot.daum.net"+vid_url
-            imgpt = ddimg.find('img')
-            thumb = imgpt['src']
-            title = imgpt['alt']
+            title = ref['title']
             query = re.compile(u"동영상 '(.*?)'의 미리보기 이미지").match(title)
 	    if query:
 		title = query.group(1)
+            imgpt = ddimg.find('img')
+            thumb = imgpt['src']
             self.video_list.append( (title,vid_url,thumb) )
         #-- next page
         pages = soup.find("table", {"class" : "pageNav2"}).findAll( ('td','th') )
@@ -57,7 +58,7 @@ if __name__ == "__main__":
     #    sys.path.append (LIB_DIR)
 
     site = DaumBrand()
-    site.parse("http://tvpot.daum.net/brand/ProgramView.do?ownerid=O_5rgf7M1do0&playlistid=1101578&page=1&viewtype=24")
+    site.parse("http://tvpot.daum.net/brand/ProgramView.do?ownerid=O_5rgf7M1do0&playlistid=1101578&page=2&viewtype=24")
     print len(site.video_list)
     print site.video_list[0]
     print site.nextpage
