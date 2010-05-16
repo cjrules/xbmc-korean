@@ -7,10 +7,26 @@ from BeautifulSoup import BeautifulSoup, SoupStrainer
 import re
 
 class DaumBrand:
+    menu_list = []
     video_list = []
     nextpage = None
     def DaumBrand(self):
         pass
+
+    def parseTop(self,url):
+        link = urllib.urlopen(url)
+        soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
+        self.menu_list = []
+        #-- item list
+        strain1 = SoupStrainer( "div", { "class" : "programList" } )
+        strain2 = SoupStrainer( "div", { "class" : "listBody" } )
+        for item in soup.find(strain1).find(strain2).findAll('li'):
+            url = item.a['href'].replace("&amp;","&")
+	    url = "http://tvpot.daum.net"+url
+            title = item.a.string
+            title = title.replace("&lt;","<").replace("&gt;",">").replace("&amp;","&")
+            self.menu_list.append( (title,url) )
+
     def parse(self,main_url):
         link = urllib.urlopen(main_url)
         soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
@@ -27,12 +43,21 @@ class DaumBrand:
             vid_url = vid_url.replace("&amp;","&").replace(" ","")
             if vid_url[0] == '/':
                 vid_url = "http://tvpot.daum.net"+vid_url
-            title = ref['title']
+            imgpt = ddimg.find('img')
+            thumb = imgpt['src']
+
+	    if ref.has_key('title'):
+		title = ref['title']
+	    elif imgpt.has_key('title'):
+		title = imgpt['title']
+	    elif imgpt.has_key('alt'):
+		title = imgpt['alt']
+	    else:
+		title = "Unknown"
             query = re.compile(u"동영상 '(.*?)'의 미리보기 이미지").match(title)
 	    if query:
 		title = query.group(1)
-            imgpt = ddimg.find('img')
-            thumb = imgpt['src']
+            title = title.replace("&lt;","<").replace("&gt;",">").replace("&amp;","&")
             self.video_list.append( (title,vid_url,thumb) )
         #-- next page
         pages = soup.find("table", {"class" : "pageNav2"}).findAll( ('td','th') )

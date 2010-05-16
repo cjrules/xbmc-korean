@@ -18,13 +18,19 @@ LIB_DIR = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'lib' ) )
 if not LIB_DIR in sys.path:
     sys.path.append (LIB_DIR)
 pic_dir = xbmc.translatePath( os.path.join(os.getcwd(),'resources','pic')+os.sep )
+tvpot_icon = pic_dir+"daum_tvpot.png"
+
+CHSET_FILE = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'daumtv.xml' ) )
+import xml.dom.minidom as xml
+chset = xml.parse( CHSET_FILE )
 
 # show menu
 def CATEGORIES():
     addDir(u"영화 예고편", "http://movie.daum.net/ranking/movieclip_ranking/", 10, pic_dir+"daum_trailer.png")
     addDir(u"뉴스", "http://tvnews.media.daum.net/", 20, pic_dir+"daum_media.png")
-    addDir(u"베스트 동영상", "http://tvpot.daum.net/best/", 30, pic_dir+"daum_tvpot.png")
-    addDir(u"게임", "http://tvpot.daum.net", 40, pic_dir+"daum_tvpot.png")
+    addDir(u"베스트 동영상", "http://tvpot.daum.net/best/", 30, tvpot_icon)
+    addDir(u"브랜드", "http://tvpot.daum.net/brand/", 45, tvpot_icon)
+    addDir(u"게임", "http://tvpot.daum.net", 40, tvpot_icon)
                        
 def CAT_TRAILER(base_url):
     addDir(u"일간 베스트",base_url+"bestTrailer.do?datekey=3",11,'')
@@ -55,6 +61,19 @@ def CAT_STARCRAFT(main_url):
     site.parseTop(main_url)
     for title,url in site.menu_list:
         addDir(title, url, 41, '')
+
+def CAT_BRAND_TOP(base_url):
+    for ch in chset.getElementsByTagName('brand'):
+    	name = ch.getElementsByTagName('name')[0].childNodes[0].data
+    	id = ch.getElementsByTagName('id')[0].childNodes[0].data
+        addDir(name,base_url+"Top.do?ownerid="+id,44,"")
+
+def CAT_BRAND(url):
+    from daum_brand import DaumBrand
+    site=DaumBrand()
+    site.parseTop(url)
+    for title,url in site.menu_list:
+        addDir(title,url,43,'')
 
 #------------------------------------------------------------------
 def BROWSE_TRAILER(main_url):
@@ -205,5 +224,9 @@ elif mode==42:
     CAT_STARCRAFT(url)
 elif mode==43:
     BROWSE_BRAND(url)
+elif mode==44:
+    CAT_BRAND(url)
+elif mode==45:
+    CAT_BRAND_TOP(url)
 
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
