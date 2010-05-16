@@ -41,8 +41,8 @@ class DaumStarcraft:
             date = hdr.find('strong').contents[0]
             cable = hdr.contents[1]
             if "league=pro" in main_url:
-                teamrefs = match.find('span').findAll('a')
-                mtitle = "%s vs %s" % (teamrefs[0].string, teamrefs[2].string)
+                teamrefs = match.findAll('span')
+                mtitle = "%s vs %s" % (teamrefs[0].find('a').string, teamrefs[1].find('a').string)
             elif "league=osl" in main_url:
                 mtitle = match.find('p').string.strip()
             else:
