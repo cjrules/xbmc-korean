@@ -105,7 +105,7 @@ def BROWSE_BRAND(main_url):
 	title = title.replace('\n'," ")
         addDir(title, url, 1, thumb)
     if site.nextpage:            
-        addDir(u"다음 페이지>", site.nextpage[1], 43, '')
+        addDir(u"다음 페이지>", site.nextpage, 43, '')
 
 def SHOW_VIDEO(main_url):
     from getdaumvid import GetDaumVideo
