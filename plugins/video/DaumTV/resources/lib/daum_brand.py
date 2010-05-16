@@ -39,10 +39,12 @@ class DaumBrand:
         for item in items:
             ddimg = item.find('dd',{'class' : 'image'})
             ref = ddimg.find('a')
-            vid_url = ref['href'].replace("&amp;","&")
-            vid_url = vid_url.replace("&amp;","&").replace(" ","")
-            if vid_url[0] == '/':
-                vid_url = "http://tvpot.daum.net"+vid_url
+	    if ref is None:
+		continue
+	    vid_url = ref['href'].replace("&amp;","&")
+	    vid_url = vid_url.replace("&amp;","&").replace(" ","")
+	    if vid_url[0] == '/':
+		vid_url = "http://tvpot.daum.net"+vid_url
             imgpt = ddimg.find('img')
             thumb = imgpt['src']
 
@@ -60,21 +62,18 @@ class DaumBrand:
             title = title.replace("&lt;","<").replace("&gt;",">").replace("&amp;","&")
             self.video_list.append( (title,vid_url,thumb) )
         #-- next page
-        pages = soup.find("table", {"class" : "pageNav2"}).findAll( ('td','th') )
-        found = False
-        for page in pages:
-            if found:
-            	url = page.find('a')['href'].replace("&amp;","&")
+        sect = soup.find("table", {"class" : "pageNav2"})
+	if sect:
+	    nextpg = sect.find('span', {"class" : "sel"}).parent.findNextSibling('td')
+	    if nextpg:
+		url = nextpg.a['href'].replace("&amp;","&")
 		if url.startswith("http"):
 		    pass
 		elif url.startswith("/"):
 		    url = "http://tvpot.daum.net"+url
 		else:
 		    url = base_url + url
-            	self.nextpage = url
-            	break
-            if page.find('span', {"class" : "sel"}):
-            	found = True
+		self.nextpage = url
 
 if __name__ == "__main__":
     #import sys,os
@@ -83,7 +82,16 @@ if __name__ == "__main__":
     #    sys.path.append (LIB_DIR)
 
     site = DaumBrand()
+    site.parseTop("http://tvpot.daum.net/brand/ProgramView.do?ownerid=O_5rgf7M1do0&playlistid=1101578&page=1")
+    print len(site.menu_list)
+    print site.menu_list[0]
+
     site.parse("http://tvpot.daum.net/brand/ProgramView.do?ownerid=O_5rgf7M1do0&playlistid=1101578&page=2&viewtype=24")
+    print len(site.video_list)
+    print site.video_list[0]
+    print site.nextpage
+
+    site.parse("http://tvpot.daum.net/brand/ProgramView.do?page=4&ownerid=hZu8dgCZmzQ0&playlistid=78324&viewtype=14")
     print len(site.video_list)
     print site.video_list[0]
     print site.nextpage

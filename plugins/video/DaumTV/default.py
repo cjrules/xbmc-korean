@@ -9,7 +9,7 @@ __plugin__  = "DaumTV"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/DaumTV"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 

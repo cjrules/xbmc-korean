@@ -76,21 +76,18 @@ class DaumStarcraft:
             	set_list.append( (setName, stitle, vid_url) )
             self.video_list.append( (date,cable,mtitle,set_list) )
         #-- next page
-        pages = soup.find("table", {"class" : "pageNav2"}).findAll( ('td','th') )
-        found = False
-        for page in pages:
-            if found:
-            	url = page.find('a')['href'].replace("&amp;","&")
+        sect = soup.find("table", {"class" : "pageNav2"})
+	if sect:
+	    nextpg = sect.find('span', {"class" : "sel"}).parent.findNextSibling('td')
+	    if nextpg:
+		url = nextpg.a['href'].replace("&amp;","&")
 		if url.startswith("http"):
 		    pass
 		elif url.startswith("/"):
 		    url = "http://tvpot.daum.net"+url
 		else:
 		    url = base_url + url
-            	self.nextpage = url
-            	break
-            if page.find('span', {"class" : "sel"}):
-            	found = True
+		self.nextpage = url
 
 if __name__ == "__main__":
     #import sys,os
