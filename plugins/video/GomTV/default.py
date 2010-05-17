@@ -12,7 +12,7 @@ __pluginid__ = "plugin.video.gomtv.com"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/plugins/video/GomTV"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.4.4"
+__version__ = "0.4.5"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -230,7 +230,9 @@ def MOST_WATCHED(main_url):
     for item in soup.findAll('dl', {"id" : "ranking_set"}):
 	#title/url
 	titblk = item.find('h6').find('a')
-	title = titblk.string.replace('&amp;','&')
+	title = titblk.string
+	if title:
+	    title = title.replace('&amp;','&')
 	url = titblk['href']
 	#thumb
 	thumb = ''
