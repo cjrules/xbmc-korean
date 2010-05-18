@@ -1,0 +1,8 @@
+﻿from distutils.core import setup
+import py2exe
+
+setup(
+    #console=['kormeta.py'],
+    windows=['kormeta.py'],
+    zipfile=None
+    )
