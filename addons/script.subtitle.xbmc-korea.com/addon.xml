@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.subtitle.xbmc-korea.com"
+       name="Korean Subtitle"
+       version="1.0.0"
+       provider-name="XBMC-Korea">
+  <requires>
+    <import addon="xbmc.python" version="1.0"/>
+  </requires>
+  <extension point="xbmc.python.subtitles"
+             library="default.py" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Subtitle from Korean sites</summary>
+    <description lang="en">Download a subtitle from GomTV / TokPlayer</description>
+    <platform>all</platform>
+  </extension>
+</addon>
