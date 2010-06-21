@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.xbmc-korea.com"
+		name="XBMC-Korea.com Add-ons"
+		version="1.0.0"
+		provider-name="XBMC-Korea">
+	<extension point="xbmc.addon.repository"
+		name="XBMC-Korea.com Add-on Repository">
+		<info compressed="true">http://xbmc-korean.googlecode.com/svn/addons/addons.xml</info>
+		<checksum>http://xbmc-korean.googlecode.com/svn/addons/addons.xml.md5</checksum>
+		<datadir zip="true">http://xbmc-korean.googlecode.com/svn/addons</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from XBMC-Korea.com</summary>
+		<description>Download and install add-ons from the XBMC-Korea.com addon repository.[CR]  By using the  Repository you will be able to take advantage of our extensive file mirror service to help get you faster downloads from a region close to you.[CR]  All addons on this repository have under gone basic testing, if you find a broken or not working addon please report it to XBMC-Korea.com so we can take any action needed.</description>
+		<disclaimer>XBMC-Korea.com are not responsible for their content</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
