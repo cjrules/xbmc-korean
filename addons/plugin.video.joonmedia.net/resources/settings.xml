@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+  <setting id="YouTubeFmt" type="enum" label="YouTube 화질" values="270p|360p|480p|720p" default="270p"/>
+</settings>

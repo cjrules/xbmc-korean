@@ -2,5 +2,5 @@
 <settings>
     <setting id="HQVideo" type="bool" label="고화질 비디오 우선 재생" default="false"/>
     <setting id="MovieBackdoor" type="bool" label="로그인 무시 영화감상" default="false"/>
-    <setting id="FlattenList" type="bool" label="비디오 주소 미리계산 (검색이 느려짐)" default="true"/>
+    <setting id="FlattenList" type="bool" label="비디오 주소 미리계산 (검색이 느려짐)" default="false"/>
 </settings>

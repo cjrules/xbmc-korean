@@ -19,13 +19,13 @@ class gomClient(object):
     '''
     @staticmethod
     def GetKeyFromFile(file):
-	from resources.lib.audiofile import AudioFile
-	musf = AudioFile()
-	musf.Open(file)
-	buf = musf.ReadAudioStream(100*1024)	# 100KB from audio data
-	musf.Close()
-	# calculate hashkey
-	m = md5.new(); m.update(buf);
+        from resources.lib.audiofile import AudioFile
+        musf = AudioFile()
+        musf.Open(file)
+        buf = musf.ReadAudioStream(100*1024)	# 100KB from audio data
+        musf.Close()
+        # calculate hashkey
+        m = md5.new(); m.update(buf);
         return m.hexdigest()
 
     @staticmethod
@@ -52,7 +52,7 @@ class LyricsFetcher:
     def get_lyrics_from_list(self, link):
         title,key,artist,song = link
         print key, artist, song
-	print GOM_URL %(key, urllib.quote(song.decode("utf-8").encode("euc-kr")), urllib.quote(artist.decode("utf-8").encode("euc-kr")) )
+        print GOM_URL %(key, urllib.quote(song.decode("utf-8").encode("euc-kr")), urllib.quote(artist.decode("utf-8").encode("euc-kr")) )
 
         try:
             response = urllib.urlopen( GOM_URL %(key, urllib.quote(song.decode("utf-8").encode("euc-kr")), urllib.quote(artist.decode("utf-8").encode("euc-kr")) ) )
@@ -61,7 +61,7 @@ class LyricsFetcher:
             print e
 
         if Page[:Page.find('>')+1] != '<lyrics_reply result="0">':
-	    print Page[:Page.find('>')+1]
+            print Page[:Page.find('>')+1]
             return ''
         syncs = re.compile('<sync start="(\d+)">([^<]*)</sync>').findall(Page)
         lyric = []
@@ -80,7 +80,7 @@ if ( __name__ == '__main__' ):
 
     import sys
     if not script_home in sys.path:
-	sys.path.append( script_home )
+        sys.path.append( script_home )
 
     # used to test get_lyrics() 
     artist = "소녀시대"
@@ -93,3 +93,4 @@ if ( __name__ == '__main__' ):
             print song
     else:
         print lyrics
+# vim: softtabstop=4 tabstop=8 shiftwidth=4 expandtab

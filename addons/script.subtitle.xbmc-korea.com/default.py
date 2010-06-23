@@ -1,15 +1,19 @@
-# -*- mode: python; coding: utf-8; tab-width=8; indent-tabs-mode: t; -*-
-import sys,os,xbmc
+# -*- coding: utf-8 -*-
+"""
+  Download subtitle from Korean sites
+"""
+import sys,os
+import xbmc,xbmcaddon
 
 __scriptname__ = "KorSubtitle"
-__scriptid__ = "script.subtitle.xbmc-korea.com"
+__addonID__ = "script.subtitle.xbmc-korea.com"
 __author__ = "xbmc-korea.com"
-__url__	= "http://code.google.com/p/xbmc-korean"
+__url__ = "http://code.google.com/p/xbmc-korean"
 __svn_url__ = "http://code.google.com/p/xbmc-korean/svn/trunk/addons/script.subtitle.xbmc-korea.com"
 __credits__ = ""
 __version__ = "1.2.0"
 
-if not xbmc.getCondVisibility('Player.Paused') : xbmc.Player().pause()	    #Pause if not paused
+if not xbmc.getCondVisibility('Player.Paused') : xbmc.Player().pause()  #Pause if not paused
 
 BASE_RESOURCE_PATH = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'lib' ) )
 
@@ -17,47 +21,48 @@ sys.path.append (BASE_RESOURCE_PATH)
 
 __language__ = xbmc.Language( os.getcwd() ).getLocalizedString
 _ = sys.modules[ "__main__" ].__language__
-__settings__ = xbmc.Settings( id=__scriptid__ )
+__settings__ = xbmcaddon.Addon( __addonID__ )
 
 from gui import *
 
 #############-----------------Is script runing from OSD? -------------------------------###############
 if not xbmc.getCondVisibility('videoplayer.isfullscreen') :
-    __settings__.openSettings()
-    if xbmc.getCondVisibility('Player.Paused'): xbmc.Player().pause() # if Paused, un-pause
+  __settings__.openSettings()
+  if xbmc.getCondVisibility('Player.Paused'): xbmc.Player().pause() # if Paused, un-pause
 else:
-    window = False
-    skin = "main"
-    skin1 = str(xbmc.getSkinDir().lower())
-    skin1 = skin1.replace("-"," ")
-    skin1 = skin1.replace("."," ")
-    skin1 = skin1.replace("_"," ")
-    if ( skin1.find( "eedia" ) > -1 ):
-	 skin = "MiniMeedia"
-    if ( skin1.find( "tream" ) > -1 ):
-	 skin = "MediaStream"
-    if ( skin1.find( "edux" ) > -1 ):
-	 skin = "MediaStream_Redux"
-    if ( skin1.find( "aeon" ) > -1 ):
-	 skin = "Aeon"
-    if ( skin1.find( "alaska" ) > -1 ):
-	 skin = "Alaska"
-    if ( skin1.find( "confluence" ) > -1 ):
-	 skin = "confluence"     
+  window = False
+  skin = "main"
+  skin1 = str(xbmc.getSkinDir().lower())
+  skin1 = skin1.replace("-"," ")
+  skin1 = skin1.replace("."," ")
+  skin1 = skin1.replace("_"," ")
+  if ( skin1.find( "eedia" ) > -1 ):
+   skin = "MiniMeedia"
+  if ( skin1.find( "tream" ) > -1 ):
+   skin = "MediaStream"
+  if ( skin1.find( "edux" ) > -1 ):
+   skin = "MediaStream_Redux"
+  if ( skin1.find( "aeon" ) > -1 ):
+   skin = "Aeon"
+  if ( skin1.find( "alaska" ) > -1 ):
+   skin = "Alaska"
+  if ( skin1.find( "confluence" ) > -1 ):
+   skin = "confluence"     
   
-    try: xbox = xbmc.getInfoLabel( "system.xboxversion" )
-    except: xbox = ""
-    if xbox != "" and len(skin) > 13:
-      skin = skin.ljust(13)
+  try: xbox = xbmc.getInfoLabel( "system.xboxversion" )
+  except: xbox = ""
+  if xbox != "" and len(skin) > 13:
+  skin = skin.ljust(13)
 
-    print "KorSubtitle version [" +  __version__ +"]"
-    print "Skin Folder: [ " + skin1 +" ]"
-    print "KorSubtitle skin XML: [ " + skin +" ]"
+  print "KorSubtitle version [" +  __version__ +"]"
+  print "Skin Folder: [ " + skin1 +" ]"
+  print "KorSubtitle skin XML: [ " + skin +" ]"
    
-    if ( __name__ == "__main__" ):
-	# main body
-	gui()
+  if ( __name__ == "__main__" ):
+    # main body
+    gui()
 
-	if xbmc.getCondVisibility('Player.Paused'): xbmc.Player().pause() # if Paused, un-pause
-	sys.modules.clear()
-    # end of __main__
+    if xbmc.getCondVisibility('Player.Paused'): xbmc.Player().pause() # if Paused, un-pause
+    sys.modules.clear()
+  # end of __main__
+# vim: softtabstop=2 shiftwidth=2 expandtab

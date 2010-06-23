@@ -36,19 +36,19 @@ class alsongClient(object):
     '''
     @staticmethod
     def GetKeyFromFile(file):
-	from resources.lib.audiofile import AudioFile
-	musf = AudioFile()
-	musf.Open(file)
-	ext = file[file.rfind('.'):].lower()
-	if ext == '.ogg':
-	    buf = musf.ReadAudioStream(160*1024,11)	# 160KB excluding header
-	elif ext == '.wma':
-	    buf = musf.ReadAudioStream(160*1024,24)	# 160KB excluding header
-	else:
-	    buf = musf.ReadAudioStream(160*1024)	# 160KB from audio data
-	musf.Close()
-	# calculate hashkey
-	m = md5.new(); m.update(buf);
+        from resources.lib.audiofile import AudioFile
+        musf = AudioFile()
+        musf.Open(file)
+        ext = file[file.rfind('.'):].lower()
+        if ext == '.ogg':
+            buf = musf.ReadAudioStream(160*1024,11)	# 160KB excluding header
+        elif ext == '.wma':
+            buf = musf.ReadAudioStream(160*1024,24)	# 160KB excluding header
+        else:
+            buf = musf.ReadAudioStream(160*1024)	# 160KB from audio data
+        musf.Close()
+        # calculate hashkey
+        m = md5.new(); m.update(buf);
         return m.hexdigest()
 
 
@@ -90,7 +90,7 @@ if ( __name__ == '__main__' ):
 
     import sys
     if not script_home in sys.path:
-	sys.path.append( script_home )
+        sys.path.append( script_home )
 
     # used to test get_lyrics() 
     artist = "소녀시대"
@@ -103,3 +103,4 @@ if ( __name__ == '__main__' ):
             print song
     else:
         print lyrics
+# vim: softtabstop=4 tabstop=8 shiftwidth=4 expandtab

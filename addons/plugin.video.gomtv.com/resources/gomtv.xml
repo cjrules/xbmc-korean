@@ -16,7 +16,7 @@
       <number>206</number>
     </channel>
     <channel>
-      <name>DSP Zone</name>
+      <name>DSP Zone (카라)</name>
       <number>2201</number>
     </channel>
     <channel>
@@ -62,6 +62,10 @@
       <number>4002</number>
     </channel>
     <channel>
+      <name>Star2gether</name>
+      <number>425</number>
+    </channel>
+    <channel>
       <name>신한은행 프로리그 09-10</name>
       <number>412</number>
     </channel>
@@ -76,10 +80,6 @@
     <shortcut>
       <name>스타크래프트2 XP토너먼트</name>
       <number>4002/27523</number>
-    </shortcut>
-    <shortcut>
-      <name>Star2gether</name>
-      <number>425/27635</number>
     </shortcut>
     <shortcut>
       <name>[4R]프로리그 09-10</name>
