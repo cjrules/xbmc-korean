@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.daum.net"
        name="Daum tvPot"
-       version="1.0.0"
+       version="0.2.2"
        provider-name="XBMC-Korea">
   <requires>
     <import addon="xbmc.python" version="1.0"/>
@@ -11,9 +11,10 @@
         <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-
-    <summary>Daum Streaming Service</summary>
-    <description>Watch Korean movie trailer, video clip, game broadcast in tvpot.daum.net</description>
+      <summary lang="en">Daum Streaming Service</summary>
+	  <summary lang="kr">다음 비디오 스트리밍 서비스</summary>
+      <description lang="en">Watch Korean movie trailer, video clip, game broadcast in tvpot.daum.net</description>
+	  <description lang="kr">다음 티비팟(tvpot.daum.net)에서 제공되는 한국영화 예고편, 비디오 클립, 게임 중계, 뉴스등을 볼수 있습니다</description>
     <platform>all</platform>
   </extension>
 </addon>
