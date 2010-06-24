@@ -19,9 +19,9 @@ BASE_RESOURCE_PATH = xbmc.translatePath( os.path.join( os.getcwd(), 'resources',
 
 sys.path.append (BASE_RESOURCE_PATH)
 
-__language__ = xbmc.Language( os.getcwd() ).getLocalizedString
+__settings__ = xbmcaddon.Addon( id=__addonID__ )
+__language__ = __settings__.getLocalizedString
 _ = sys.modules[ "__main__" ].__language__
-__settings__ = xbmcaddon.Addon( __addonID__ )
 
 from gui import *
 
@@ -52,7 +52,7 @@ else:
   try: xbox = xbmc.getInfoLabel( "system.xboxversion" )
   except: xbox = ""
   if xbox != "" and len(skin) > 13:
-  skin = skin.ljust(13)
+    skin = skin.ljust(13)
 
   print "KorSubtitle version [" +  __version__ +"]"
   print "Skin Folder: [ " + skin1 +" ]"
