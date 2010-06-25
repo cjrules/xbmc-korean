@@ -4,6 +4,7 @@
 import sys
 import os
 import xbmc
+import xbmcaddon
 
 # Script constants 
 __newscriptname__ = "LRC Lyrics"
@@ -17,7 +18,10 @@ __svn_revision__ = ""
 
 # Shared resources 
 BASE_RESOURCE_PATH = os.path.join( os.getcwd(), "resources" )
-__language__ = xbmc.Language( os.getcwd() ).getLocalizedString
+#__language__ = xbmc.Language( os.getcwd() ).getLocalizedString
+__addonID__ = "script.lyrics.xbmc-korea.com"
+__settings__ = xbmcaddon.Addon( id=__addonID__ )
+__language__ = __settings__.getLocalizedString
 
 # Main team credits 
 __credits_l1__ = __language__( 910 )#"Head Developer & Coder"

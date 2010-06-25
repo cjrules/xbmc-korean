@@ -82,13 +82,7 @@
 			<RegExp input="$$2" output="daum-tvep-\1-\2.htm" dest="9">
 				<expression>tvProgramId=(\d+)&amp;page=(\d+)</expression>
 			</RegExp>
-			<RegExp conditional="UseSeason0" input="" output="0" dest="10">
-				<expression/>
-			</RegExp>
-			<RegExp conditional="!UseSeason0" input="" output="1" dest="10">
-				<expression/>
-			</RegExp>
-			<RegExp input="$$1" output="&lt;episode&gt;&lt;title&gt;제\1회&lt;/title&gt;&lt;url cache=&quot;$$9&quot;&gt;$$2&amp;ep=\1&lt;/url&gt;&lt;epnum&gt;\1&lt;/epnum&gt;&lt;season&gt;$$10&lt;/season&gt;&lt;aired&gt;\2&lt;/aired&gt;&lt;/episode&gt;" dest="5">
+			<RegExp input="$$1" output="&lt;episode&gt;&lt;title&gt;제\1회&lt;/title&gt;&lt;url cache=&quot;$$9&quot;&gt;$$2&amp;ep=\1&lt;/url&gt;&lt;epnum&gt;\1&lt;/epnum&gt;&lt;season&gt;1&lt;/season&gt;&lt;aired&gt;\2&lt;/aired&gt;&lt;/episode&gt;" dest="5">
 				<expression repeat="yes">&lt;h5 class="fs12 em"&gt;.*?제(\d+)회[^&lt;\d]*([\d\.]*)[^&lt;]*&lt;/span&gt;</expression>
 			</RegExp>
 			<expression noclean="1"></expression>
