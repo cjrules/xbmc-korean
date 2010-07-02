@@ -1,3 +1,9 @@
+1.2.1
+
+Changes
+- adopt a change in languages setting
+- change icon
+
 1.2.0
 
 Changes

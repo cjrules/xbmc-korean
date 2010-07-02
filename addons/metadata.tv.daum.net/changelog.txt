@@ -1,4 +1,10 @@
-1.0.0
+1.0.2
+
+changes
+- use season0 is no more necessary
+- new icon
+
+1.0.1
 
 Changes
 - Initial addon version
