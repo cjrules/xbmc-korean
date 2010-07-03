@@ -12,8 +12,8 @@
     <platform>all</platform>
     <minversion>20000</minversion>
     <summary lang="en">Daum Movie Scraper Library</summary>
-    <summary lang="kr">다음 무비 스크래퍼 라이브러리</summary>
+    <summary lang="ko">다음 무비 스크래퍼 라이브러리</summary>
     <description lang="en">Download movie information from movie.daum.net</description>
-    <description lang="kr">다음에서 영화 정보 다운로드</description>
+    <description lang="ko">다음에서 영화 정보 다운로드</description>
   </extension>
 </addon> 

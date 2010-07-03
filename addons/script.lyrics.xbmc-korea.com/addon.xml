@@ -9,10 +9,10 @@
   <extension point="xbmc.python.lyrics"
              library="default.py" />
   <extension point="xbmc.addon.metadata">
-      <summary lang="en">Lyrics from Korean sites</summary>
-	  <summary lang="kr">한국 음악 가사</summary>
-      <description lang="en">Download a Lyrics from Alsong / GomAudio</description>
-	  <description lang="kr">알송/곰오디오에서 노래 가사를 받아 음악 재생시 보여줍니다. 스킨 설정에서 가사 스크립트를 지정한후, 노래 재생시 메뉴에서 가사 표시를 선택하면 됩니다.</description>
+    <summary lang="en">Lyrics from Korean sites</summary>
+    <summary lang="ko">한국 음악 가사</summary>
+    <description lang="en">Download a Lyrics from Alsong / GomAudio</description>
+    <description lang="ko">알송/곰오디오에서 노래 가사를 받아 음악 재생시 보여줍니다. 스킨 설정에서 가사 스크립트를 지정한후, 노래 재생시 메뉴에서 가사 표시를 선택하면 됩니다.</description>
     <platform>all</platform>
   </extension>
 </addon>

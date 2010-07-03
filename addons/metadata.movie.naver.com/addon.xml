@@ -12,9 +12,9 @@
              library="naver-movie.xml"/>
   <extension point="xbmc.addon.metadata">
     <summary lang="en">NAVER Movie Scraper</summary>
-    <summary lang="kr">네이버 영화 스크래퍼</summary>
+    <summary lang="ko">네이버 영화 스크래퍼</summary>
     <description lang="en">Download movie information from movie.naver.com</description>
-    <description lang="kr">movie.naver.com 에서 영화 정보 다운로드</description>
+    <description lang="ko">movie.naver.com 에서 영화 정보 다운로드</description>
     <platform>all</platform>
   </extension>
 </addon>
