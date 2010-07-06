@@ -13,7 +13,7 @@ __author__  = "xbmc-korea"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.joonmedia.net"
 __credits__ = "XBMC Korean User Group"
-__version__ = "1.1.3"
+__version__ = "1.1.4"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -35,7 +35,7 @@ def CATEGORIES():
   addDir(u"오락","http://joonmedia.net/videos/shows",1,"")
   addDir(u"음악","http://joonmedia.net/videos/music",1,"")
   addDir(u"다시보기","http://joonmedia.net/videos/classics",1,"")
-  addDir(u"영화","http://joonmedia.net/videos/movies",1,"")
+  addDir(u"한국영화","http://joonmedia.net/videos/movies",1,"")
   addDir(u"일본영화","http://joonmedia.net/videos/jpmovies",1,"")
   addDir(u"중국영화","http://joonmedia.net/videos/chmovies",1,"")
   addDir(u"서양영화","http://joonmedia.net/videos/enmovies",1,"")
@@ -129,13 +129,21 @@ def EPISODE_YOUTUBE(main_url):
   i=0
   for item in soup.findAll('embed'):
     if item.has_key('flashvars'):
-      swf = item['flashvars']
+      pkg = item['flashvars']
       ptn2 = 'file='
-      swf = swf[swf.find(ptn2)+len(ptn2):swf.find('&amp;')]
-      thumb = GetFLV.img(swf)
-      xbmc.log( "Container[1]: %s" % swf, xbmc.LOGDEBUG )
-      for flv in GetFLV.flv(swf):
-        i=i+1;addLink("Part %d" % i, flv, thumb)
+      pkg = pkg[pkg.find(ptn2)+len(ptn2):pkg.find('&amp;')]
+      pkg = urllib.unquote_plus(pkg)
+      thumb = GetFLV.img(pkg)
+      xbmc.log( "Container[1]: %s" % pkg, xbmc.LOGDEBUG )
+      if pkg.endswith('xml'):
+        xml = urllib.urlopen(pkg).read()
+        import re
+        swf_list = re.compile('<location>([^<]*)</location>').findall(xml)
+      else:
+        swf_list = [pkg]
+      for swf in swf_list:
+        for flv in GetFLV.flv(swf):
+          i=i+1;addLink("Part %d" % i, flv, thumb)
     else:
       swf = item['src']
       if '&' in swf:
