@@ -12,9 +12,9 @@
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary lang="en">GomTV Streaming Service</summary>
-    <summary lang="ko">°õÆ¼ºñ ºñµð¿À ½ºÆ®¸®¹Ö ¼­ºñ½º</summary>
+    <summary lang="ko">ê³°í‹°ë¹„ ë¹„ë””ì˜¤ ìŠ¤íŠ¸ë¦¬ë° ì„œë¹„ìŠ¤</summary>
     <description lang="en">Watch Korean movie trailer, video clip, game broadcast in gomtv.com</description>
-    <description lang="ko">°õÆ¼ºñ(gomtv.com) ¿¡¼­ Á¦°øµÇ´Â ¿µÈ­ ¿¹°íÆí, ºñµð¿À, °ÔÀÓÁß°è, ¹ÂÁ÷ºñµð¿ÀµîÀ» º¼¼ö ÀÖ½À´Ï´Ù</description>
+    <description lang="ko">ê³°í‹°ë¹„(gomtv.com) ì—ì„œ ì œê³µë˜ëŠ” ì˜í™” ì˜ˆê³ íŽ¸, ë¹„ë””ì˜¤, ê²Œìž„ì¤‘ê³„, ë®¤ì§ë¹„ë””ì˜¤ë“±ì„ ë³¼ìˆ˜ ìžˆìŠµë‹ˆë‹¤</description>
     <platform>all</platform>
   </extension>
 </addon>

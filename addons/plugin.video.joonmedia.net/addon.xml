@@ -12,9 +12,9 @@
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary lang="en">JoonMedia Streaming Service</summary>
-    <summary lang="ko">ÁØ¹Ìµğ¾î ºñµğ¿À ½ºÆ®¸®¹Ö ¼­ºñ½º</summary>
+    <summary lang="ko">ì¤€ë¯¸ë””ì–´ ë¹„ë””ì˜¤ ìŠ¤íŠ¸ë¦¬ë° ì„œë¹„ìŠ¤</summary>
     <description lang="en">Watch Korean movie/series in joonmedia.net</description>
-    <description lang="ko">ÁØ¹Ìµğ¾î(joonmedia.net)¿¡¼­ Á¦°øÇÏ´Â ÇÑ±¹ ¿µÈ­/µå¶ó¸¶µîÀ» º¼ ¼ö ÀÖ½À´Ï´Ù</description>
+    <description lang="ko">ì¤€ë¯¸ë””ì–´(joonmedia.net)ì—ì„œ ì œê³µí•˜ëŠ” í•œêµ­ ì˜í™”/ë“œë¼ë§ˆë“±ì„ ë³¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤</description>
     <platform>all</platform>
   </extension>
 </addon>

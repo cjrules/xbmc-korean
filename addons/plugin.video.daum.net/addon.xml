@@ -12,9 +12,9 @@
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary lang="en">Daum Streaming Service</summary>
-    <summary lang="ko">´ÙÀ½ ºñµð¿À ½ºÆ®¸®¹Ö ¼­ºñ½º</summary>
+    <summary lang="ko">ë‹¤ìŒ ë¹„ë””ì˜¤ ìŠ¤íŠ¸ë¦¬ë° ì„œë¹„ìŠ¤</summary>
     <description lang="en">Watch Korean movie trailer, video clip, game broadcast in tvpot.daum.net</description>
-    <description lang="ko">´ÙÀ½ Æ¼ºñÆÌ(tvpot.daum.net)¿¡¼­ Á¦°øµÇ´Â ÇÑ±¹¿µÈ­ ¿¹°íÆí, ºñµð¿À Å¬¸³, °ÔÀÓ Áß°è, ´º½ºµîÀ» º¼¼ö ÀÖ½À´Ï´Ù</description>
+    <description lang="ko">ë‹¤ìŒ í‹°ë¹„íŒŸ(tvpot.daum.net)ì—ì„œ ì œê³µë˜ëŠ” í•œêµ­ì˜í™” ì˜ˆê³ íŽ¸, ë¹„ë””ì˜¤ í´ë¦½, ê²Œìž„ ì¤‘ê³„, ë‰´ìŠ¤ë“±ì„ ë³¼ìˆ˜ ìžˆìŠµë‹ˆë‹¤</description>
     <platform>all</platform>
   </extension>
 </addon>
