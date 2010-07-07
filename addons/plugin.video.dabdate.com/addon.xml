@@ -12,9 +12,9 @@
   </extension>
   <extension point="xbmc.addon.metadata">
 	<summary lang="en">Dabdate Streaming Service</summary>
-	<summary lang="kr">Dabdate ºñµğ¿À ½ºÆ®¸®¹Ö ¼­ºñ½º</summary>
+	<summary lang="kr">Dabdate ë¹„ë””ì˜¤ ìŠ¤íŠ¸ë¦¬ë° ì„œë¹„ìŠ¤</summary>
     <description lang="en">Watch Korean tv shows in dabdate.com</description>
-	<description lang="kr">Dabdate(Dabdate.com)¿¡¼­ Á¦°øÇÏ´Â ÇÑ±¹ ¿µÈ­/µå¶ó¸¶µîÀ» º¼ ¼ö ÀÖ½À´Ï´Ù. ÇØ´ç »çÀÌÆ®¿¡ È¸¿øÀ¸·Î °¡ÀÔµÇ¾îÀÖ¾î¾ß »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.</description>
+	<description lang="kr">Dabdate(Dabdate.com)ì—ì„œ ì œê³µí•˜ëŠ” í•œêµ­ ì˜í™”/ë“œë¼ë§ˆë“±ì„ ë³¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤. í•´ë‹¹ ì‚¬ì´íŠ¸ì— íšŒì›ìœ¼ë¡œ ê°€ì…ë˜ì–´ìˆì–´ì•¼ ì‚¬ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.</description>
     <platform>all</platform>
   </extension>
 </addon>
