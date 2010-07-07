@@ -22,7 +22,7 @@ if not LIB_DIR in sys.path:
   sys.path.append (LIB_DIR)
 
 COOKIEFILE = xbmc.translatePath( 'special://masterprofile/_dabdate_cookie.lwp' )
-TEMPDIR = xbmc.translatePath('special://masterprofile')
+TEMPDIR = xbmc.translatePath('special://temp')
 
 __settings__ = xbmcaddon.Addon( __addonID__ )
 __id__ = __settings__.getSetting( "id" )
