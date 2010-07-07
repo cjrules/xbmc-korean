@@ -8,7 +8,7 @@
   </requires>
   <extension point="xbmc.metadata.scraper.albums"
              language="ko"
-             library="daum-album.xml"/>
+             library="daum-albums.xml"/>
   <extension point="xbmc.addon.metadata">
     <summary lang="en">Daum Music Scraper</summary>
     <summary lang="ko">다음 음악 앨범 스크래퍼</summary>
