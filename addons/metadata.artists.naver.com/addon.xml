@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="metadata.artists.naver.com"
+       name="Naver"
+       version="1.0.1"
+       provider-name="XBMC-Korea">
+  <requires>
+    <import addon="xbmc.metadata" version="1.0"/>
+  </requires>
+  <extension point="xbmc.metadata.scraper.artists"
+             language="ko"
+             library="naver-artists.xml"/>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">NAVER Music Artist Scraper</summary>
+    <summary lang="ko">네이버 음악가 스크래퍼</summary>
+    <description lang="en">Download music artist information from music.naver.com</description>
+    <description lang="ko">music.naver.com 에서 음악가 정보 다운로드</description>
+  </extension>
+</addon>
