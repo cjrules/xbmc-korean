@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="metadata.movie.daum.net"
-       name="Daum"
+       name="Daum Movie"
        version="1.0.1"
        provider-name="XBMC-Korea">
   <requires>
