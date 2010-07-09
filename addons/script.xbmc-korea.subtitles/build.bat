@@ -1,6 +1,6 @@
 @Echo off
 
-SET ScriptName=script.subtitle.xbmc-korea.com
+SET ScriptName=script.xbmc-korea.subtitles
 
 :: Create Build folder
 Echo ------------------------------

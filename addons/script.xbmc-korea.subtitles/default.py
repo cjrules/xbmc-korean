@@ -6,7 +6,7 @@ import sys,os
 import xbmc,xbmcaddon
 
 __scriptname__ = "KorSubtitle"
-__addonID__ = "script.subtitle.xbmc-korea.com"
+__addonID__ = "script.xbmc-korea.subtitles"
 __author__ = "xbmc-korea.com"
 __url__ = "http://code.google.com/p/xbmc-korean"
 __svn_url__ = "http://code.google.com/p/xbmc-korean/svn/trunk/addons/script.subtitle.xbmc-korea.com"

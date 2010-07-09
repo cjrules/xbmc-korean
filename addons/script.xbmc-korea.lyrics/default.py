@@ -19,7 +19,7 @@ __svn_revision__ = ""
 # Shared resources 
 BASE_RESOURCE_PATH = os.path.join( os.getcwd(), "resources" )
 #__language__ = xbmc.Language( os.getcwd() ).getLocalizedString
-__addonID__ = "script.lyrics.xbmc-korea.com"
+__addonID__ = "script.xbmc-korea.subtitles"
 __settings__ = xbmcaddon.Addon( id=__addonID__ )
 __language__ = __settings__.getLocalizedString
 
