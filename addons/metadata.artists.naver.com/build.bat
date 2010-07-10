@@ -1,6 +1,6 @@
 @Echo off
 
-SET ScriptName=metadata.albums.naver.com
+SET ScriptName=metadata.artists.naver.com
 :: Create Build folder
 Echo ------------------------------
 Echo Creating %ScriptName% Build Folder . . .
