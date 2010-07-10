@@ -2,5 +2,5 @@
 <settings>
   <setting id="id" type="text" label="로그인 아이디" default=""/>
   <setting id="pass" type="text" option="hidden" label="패스워드" default=""/>
-  <setting id="ServerSel" type="enum" label="서버선택" values="일반|저화질|일반(미러)|저화질(미러)|고화질|고화질(미러)" default="저화질"/>
+  <setting id="ServerSel" type="enum" label="서버선택" values="일반|저화질|일반(미러)|저화질(미러)|고화질|고화질(미러)" default="1"/>
 </settings>
