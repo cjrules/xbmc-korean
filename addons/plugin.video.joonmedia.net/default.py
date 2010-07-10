@@ -74,7 +74,8 @@ def RECENT(main_url):
 def TVSHOW(main_url):
   link = urllib.urlopen(main_url)
   soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
-  episodes = soup("div", {"class" : "column"})[-1].findAll('li')
+  colsel = int(__settings__.getSetting("VideoColumn"))+1
+  episodes = soup("div", {"class" : "column"})[colsel].findAll('li')
   for episode in episodes:
     title = ''.join(episode.find('b').findAll(text=lambda text:isinstance(text, NavigableString)))
     for ref in episode.findAll('a'):
