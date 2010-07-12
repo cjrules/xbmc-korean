@@ -11,7 +11,7 @@ class LocalScan:
     def __init__(self): 
         self.EpisodeFound = {};
         self.Season = 1;
-        self.KnownExt = ['.avi', '.mkv', '.mp4', '.mpg', '.wmv']
+        self.KnownExt = ['.avi', '.mkv', '.mp4', '.mpg', '.wmv', '.tp', '.ts']
 
     # search with title
     def ScanVideo(self,topdir): 

@@ -28,11 +28,15 @@ class SeriesFetcher:
 	# search with title
 	def Search(self,title): 
 		resp = urllib.urlopen( self.search_url % urllib.quote_plus(title.encode('utf-8')) );
+		print self.search_url % urllib.quote_plus(title.encode('utf-8'))
 		soup = BeautifulSoup(resp.read(),fromEncoding="utf-8")
 		result = []
 		for item in soup.findAll("span",{"class" : "fl srch"}):
 			id = re.compile("tvProgramId=(\d+)").search(item.find('a')['href']).group(1)
-			title = item.a.b.string
+			if item.a.b is None:
+				title = item.a.string
+			else:
+				title = item.a.b.string
 			result.append( (id,title) )
 		return result
 
@@ -147,7 +151,15 @@ class SeriesFetcher:
 		for item in soup.findAll('li',{'id' : re.compile("^itemId_")}):
 			epnum = item['id'][item['id'].rfind('_')+1:]
 			titles = item.find("span",{"class" : "episode_num"}).string.split('&nbsp;')
-			plot = unicode( self.striptags.sub('',item.p.renderContents()).strip(), 'utf-8' )
+			
+			strain = SoupStrainer("p",{"class" : "txt"})
+			p = item.find(strain)
+			if p.strong:
+				titles[0] = p.strong.string.strip()
+				raw_plot = p.contents[3]
+			else:
+				raw_plot = p.string
+			plot = self.striptags.sub('',raw_plot).strip()
 			self.meta.EpisodeInfo[(self.Season,int(epnum))] = (titles[0], " ".join(titles[1:]), plot)
 			#print "%s:%s:%s" % (epnum,titles[0]," ".join(titles[1:]))
 
