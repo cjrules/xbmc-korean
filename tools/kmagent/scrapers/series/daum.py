@@ -113,7 +113,12 @@ class SeriesFetcher:
 		strain = SoupStrainer("div",{"id" : "photoViewer"})
 		soup = BeautifulSoup(resp.read(),fromEncoding="utf-8")
 		for page in soup.find("div",{"class" : "pagination"}).findAll('a'):
-			url = self.base_url+page['href']
+			url = page['href']
+			if not url.startswith("http"):
+				if url[0] == '/':
+					url = self.base_url+url
+				else:
+					url = self.base_url+'/'+url
 			self.ParseSeriesPhotoPage(url)
 
 	def ParseSeriesPhotoPage(self,url):
@@ -153,8 +158,16 @@ class SeriesFetcher:
 		for item in soup.findAll('li',{'id' : re.compile("^itemId_")}):
 			epnum = item['id'][item['id'].rfind('_')+1:]
 			titles = item.find("span",{"class" : "episode_num"}).string.split('&nbsp;')
-			plot = unicode( self.striptags.sub('',item.find("p",{"class" : "txt"}).renderContents()).strip(), 'utf-8' )
-			self.meta.EpisodeInfo[(self.Season,int(epnum))] = (titles[0], " ".join(titles[1:]), plot)
+			ep_title = titles[0]
+			plot_blk = item.find("p",{"class" : "txt"})
+			tit_stm = plot_blk.find("strong",{"class" : "epTit"})
+			if tit_stm:
+				ep_title = tit_stm.string
+				ep_plot = tit_stm.nextSibling.nextSibling.nextSibling
+				plot = unicode( self.striptags.sub('',str(ep_plot)).strip(), 'utf-8' )
+			else:
+				plot = unicode( self.striptags.sub('',plot_blk.renderContents()).strip(), 'utf-8' )
+			self.meta.EpisodeInfo[(self.Season,int(epnum))] = (ep_title, " ".join(titles[1:]), plot)
 			#print "%s:%s:%s" % (epnum,titles[0]," ".join(titles[1:]))
 
 if __name__ == '__main__':
@@ -169,6 +182,10 @@ if __name__ == '__main__':
 	print "parse series"
 	meta = fetcher.ParseSeriesPage(id)
 	print meta.__str__()
+
+	fetcher.ParseEpisodePageList(52646)
+	print fetcher.meta.GetEpisodeListXML("%d-%d")
+	print fetcher.meta.GetEpisodeDetailXML(1,1)
 
 	import os
 	testdir = os.path.join('d:'+os.sep,'Videos','드라마','지붕 뚫고 하이킥')
