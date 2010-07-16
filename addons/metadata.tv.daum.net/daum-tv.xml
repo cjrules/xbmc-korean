@@ -69,7 +69,10 @@
 			<RegExp input="$$1" output="&lt;votes&gt;\1&lt;/votes&gt;" dest="4+">
 				<expression>&lt;h4&gt;네티즌 평점&lt;/h4&gt;&lt;/a&gt;\s*&lt;span class="fs11 fc3"&gt;\((\d+) 참여\)&lt;/span&gt;</expression>
 			</RegExp>
-			<RegExp input="$$1" output="&lt;url function=&quot;GetEpisodePages&quot; cache=&quot;daum-tvep-$$2-1.htm&quot;&gt;http://movie.daum.net/tv/detail/episode.do?tvProgramId=$$2&lt;/url&gt;" dest="4+">
+			<RegExp conditional="!useAgent" input="$$1" output="&lt;url function=&quot;GetEpisodePages&quot; cache=&quot;daum-tvep-$$2-1.htm&quot;&gt;http://movie.daum.net/tv/detail/episode.do?tvProgramId=$$2&lt;/url&gt;" dest="4+">
+				<expression/>
+			</RegExp>
+			<RegExp conditional="useAgent" input="$$1" output="&lt;episodeguide&gt;http://127.0.0.1:8081/fetch?type=daumtv&amp;id=$$2&lt;/url&gt;" dest="4+">
 				<expression/>
 			</RegExp>
 			<RegExp conditional="EnableFanart" input="$$1" output="&lt;url cache=&quot;daum-photo-$$2.htm&quot; function=&quot;GetDaumFanart&quot;&gt;\1&amp;order=recommend&lt;/url&gt;" dest="4+">
@@ -79,7 +82,7 @@
 		</RegExp>
 	</GetDetails>
 	<GetEpisodeList dest="8">
-		<RegExp input="$$9" output="&lt;episodeguide&gt;\1&lt;/episodeguide&gt;" dest="8">
+		<RegExp conditional="!useAgent" input="$$9" output="&lt;episodeguide&gt;\1&lt;/episodeguide&gt;" dest="8">
 			<!-- page 1 from $$1 -->
 			<RegExp input="$$10" output="\1" dest="9">
 				<RegExp input="$$1" output="\1" dest="11">
@@ -147,16 +150,22 @@
 			</RegExp>
 			<expression noclean="1"/>
 		</RegExp>
+		<RegExp conditional="useAgent" input="$$1" output="\1" dest="8">
+			<expression noclean="1"/>
+		</RegExp>
 	</GetEpisodeList>
 	<GetEpisodeDetails dest="4">
-		<RegExp input="$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
+		<RegExp conditional="!useAgent" input="$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
 			<RegExp input="$$3" output="\1" dest="9">
 				<expression>&amp;ep=(\d+)</expression>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;title&gt;제$$9회&lt;/title&gt;&lt;aired&gt;\1&lt;/aired&gt;&lt;plot&gt;\2&lt;/plot&gt;" dest="5">
 				<expression trim="1,2">&lt;h5 class="fs12 em"&gt;.*?제$$9회([^&lt;]*).*?&lt;/h5&gt;\s*&lt;p class="txt"&gt;\s*(.*?)&lt;/p&gt;</expression>
 			</RegExp>
-			<expression noclean="1"></expression>
+			<expression noclean="1"/>
+		</RegExp>
+		<RegExp conditional="useAgent" input="$$1" output="\1" dest="4">
+			<expression noclean="1"/>
 		</RegExp>
 	</GetEpisodeDetails>
 	<GetEpisodePages dest="4">
