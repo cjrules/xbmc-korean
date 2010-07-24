@@ -9,6 +9,8 @@ import re
 from meta_artist import ArtistMetaData
 
 class ArtistFetcher:
+	type = "artist"
+	site = "Naver"
 	meta = None
 
 	def __init__(self): 

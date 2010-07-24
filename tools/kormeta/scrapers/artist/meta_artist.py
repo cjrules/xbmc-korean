@@ -108,6 +108,14 @@ class ArtistMetaData:
                     f.write( urllib.urlopen(self.m_backdrop_list[i][1]).read() )
                     f.close()
 
+    def GetBackdropListXML(self): 
+	lines = []
+	lines.append( u"<fanart>")
+        for thumb,url in self.m_backdrop_list:
+            lines.append( u'<thumb preview="%s">%s</thumb>' % (thumb,url) )
+	lines.append( u"</fanart>")
+	return ''.join(lines)
+
 if __name__ == '__main__':
     meta = ArtistMetaData()
     meta.m_name = u'빅마마'

@@ -9,6 +9,8 @@ import re
 from meta_album import AlbumMetaData
 
 class AlbumFetcher:
+    type = "album"
+    site = "Daum"
     meta = None
 
     def __init__(self): 

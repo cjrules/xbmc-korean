@@ -9,6 +9,8 @@ import re
 from meta_artist import ArtistMetaData
 
 class ArtistFetcher:
+    type = "artist"
+    site = "Daum"
     meta = None
 
     def __init__(self): 
@@ -76,11 +78,12 @@ class ArtistFetcher:
 	    date = item.find("li",{"class":re.compile("^c4")}).string.strip()
 	    self.meta.m_albums.append( (title,date) )
 
-    def ParsePhotoPage(self,url):
+    def ParsePhotoPage(self,id):
         resp = urllib.urlopen( self.photo_url % id );
 	strain = SoupStrainer("div",{"id" : "wArtiPic"})
 	soup = BeautifulSoup(resp.read(),strain,fromEncoding="utf-8")
 
+        self.meta.m_backdrop_list = []
 	for item in soup.find("table",{"id" : "tPicTop"}).findAll("td"):
 	    img = item.find('img')['src']
             self.meta.m_backdrop_list.append( (img, re.sub('S\d{3}x\d{3}', 'image', img)) )

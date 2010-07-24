@@ -9,6 +9,8 @@ import re
 from meta_movie import MovieMetaData
 
 class MovieFetcher:
+	type = "movie"
+	site = "Naver"
 	meta = None
 
 	def __init__(self): 

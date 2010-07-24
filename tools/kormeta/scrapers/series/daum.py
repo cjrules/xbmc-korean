@@ -9,6 +9,8 @@ import re
 from meta_series import SeriesMetaData
 
 class SeriesFetcher:
+	type = "series"
+	site = "Daum"
 	meta = None
 
 	EpisodeFound = False
