@@ -1,3 +1,8 @@
+0.1.0
+
+Changes
+- possible to play streaming WMV from dabdate
+
 0.0.1
 
 Changes
