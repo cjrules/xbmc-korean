@@ -12,7 +12,7 @@ __addonID__ = "plugin.video.dabdate.com"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.dabdate.com"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.0.1"
+__version__ = "0.1.0"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -22,13 +22,12 @@ if not LIB_DIR in sys.path:
   sys.path.append (LIB_DIR)
 
 COOKIEFILE = xbmc.translatePath( 'special://masterprofile/_dabdate_cookie.lwp' )
-TEMPDIR = xbmc.translatePath('special://temp')
 
 __settings__ = xbmcaddon.Addon( __addonID__ )
 __id__ = __settings__.getSetting( "id" )
 __pass__ = __settings__.getSetting( "pass" )
-__server__ = __settings__.getSetting( "ServerSel" )
-MAX_TEMP = int( __settings__.getSetting( "MaxTemp" ) )
+__server1__ = int(__settings__.getSetting( "server1" )) + 1
+__server2__ = int(__settings__.getSetting( "server2" )) + 1
 
 #-----------------------------------------------------
 def CATEGORIES():
@@ -38,7 +37,15 @@ def BROWSE(url):
     resp = urllib2.urlopen(url)
     items = resp.read().split('<td colspan=7 height=1>')
     for item in items[:-1]:
-        vurl,img = re.compile('''<a href="([^"]*)"><img src='([^']*)' ''').search(item).group(1,2)
+        match = re.compile('<a href="([^"]*&pr=%s)">' % __server1__).search(item)
+        if match:
+            vurl = match.group(1)
+        else:
+            match = re.compile('<a href="([^"]*&pr=%s)">' % __server2__).search(item)
+            if match is None:
+                continue
+            vurl = match.group(1)
+        img = re.compile('''<img src='([^']*)' ''').search(item).group(1)
         title = re.compile('''<a href[^>]*><font class=big[^>]*>([^<]*)</font></a>''').search(item).group(1)
         if re.compile('<b>Free').search(item):
 	    title = "*"+title
@@ -85,60 +92,13 @@ def SHOW_WMV(url):
     #---
     if newurl.startswith(url):
         vurl = re.compile("FileName='([^']*)'").search( resp.read() ).group(1)
-        #-- following code doesn't work lack of cookie support
-        #addLink(u"시청", vurl, '')
-        #-- store and run version
-	import os.path
-	tempname = "_dabdate_temp_%s.wmv" % re.compile('idx=(\d+)').search(url).group(1)
-	TEMPFILE = os.path.join(TEMPDIR, tempname)
-        # save video to local temp file
-	if clear_temp_file(TEMPFILE) or save_wmv(vurl, TEMPFILE):
-            addLink(u"시청", TEMPFILE, '')
+        cookies = []
+        for cookie in cj:
+            cookies.append( "%s=%s" % (cookie.name, cookie.value) )
+        ckStr = ';'.join(cookies)
+        addLink(u"시청", '%s|Cookie="%s"' % (vurl,ckStr), '')
     else:
         print "ERROR: %s is redirected to %s" % (url,newurl)
-
-def clear_temp_file(tempfile):
-    import os,glob
-    temp_list = glob.glob(os.path.join(TEMPDIR, "_dabdate_temp_*.wmv"))
-    for fx in temp_list[:-MAX_TEMP]:
-	if tempfile != fx:
-	    os.remove(fx)
-    return tempfile in temp_list
-
-def save_wmv(url,local):
-    try: resp = urllib2.urlopen(url)
-    except urllib2.URLError, e:
-        print e.reason
-        return False
-    try:
-        f = open(local,'wb')
-    except IOError:
-        print "File can not be written, %s" % local
-        sys.exit(1)
-
-    fileSz = int( resp.info()['Content-Length'] )
-    stepSz = 1024*1024        # 1MB step size
-
-    dialog = xbmcgui.DialogProgress()
-    #ignored = dialog.create(__plugin__, u"저장")
-    sz = 0
-    dialog.update( 0 )
-    while True:
-	if dialog.iscanceled():
-	    return False
-	buf = resp.read(stepSz)
-	if not buf: break
-	sz += len(buf)
-	f.write( buf )
-	dialog.update( 100*sz/fileSz )
-    f.close(); resp.close()
-    dialog.close()
-
-    if sz < fileSz:
-	import os
-	os.remove(local)
-	return False
-    return True
 
 #-----------------------------------                
 def get_params():

@@ -7,7 +7,7 @@ import re
 
 import sys
 __settings__ = sys.modules[ "__main__" ].__settings__
-youtube_fmt = [18, 34, 35, 22]    # 270p/360p/480p/720p
+youtube_fmt = {"270p":18, "360p":34, "480p":35, "720p":22}
 
 class GetFLV:
   @staticmethod
@@ -65,7 +65,7 @@ class GetFLV:
       key = re.search('&t=(.+?)&',link)
       if key:
         url = "http://www.youtube.com/get_video.php?video_id="+id.group(1)+"&t="+key.group(1)
-        fmt = int( __settings__.getSetting('YouTubeFmt') )
+        fmt = __settings__.getSetting('YouTubeFmt')
         return [ url+"&fmt=%d"%youtube_fmt[ fmt ] ]
       return []
     elif url.find('4shared')>0:

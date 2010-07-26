@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <settings>
-  <setting id="YouTubeFmt" type="enum" label="YouTube 화질" values="270p|360p|480p|720p" default="0"/>
-  <setting id="VideoColumn" type="enum" label="자료 컬럼 선택" values="2|3|4" default="0"/>
+  <setting id="YouTubeFmt" type="labelenum" label="YouTube 화질" values="270p|360p|480p|720p" default="270p"/>
+  <setting id="VideoColumn" type="labelenum" label="자료 컬럼 선택" values="2|3|4" default="2"/>
 </settings>
