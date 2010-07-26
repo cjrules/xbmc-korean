@@ -1,50 +1,33 @@
 @Echo off
+setLocal EnableDelayedExpansion
 
-rem ----Usage----
-rem BuildAddons [Addon Name]
+:: List Addons (Directories)
 
-SET AddonName="%1"
-SET AddonName=plugin.video.dabdate.com
+dir /B /AD-H > list.txt
 
 ECHO ------------------------------------------------------------
 ECHO Select addon to package
-ECHO [1] metadata.albums.daum.net
-ECHO [2] metadata.albums.naver.com
-ECHO [3] metadata.artists.daum.net
-ECHO [4] metadata.artists.naver.com
-ECHO [5] metadata.common.movie.daum.net
-ECHO [6] metadata.movie.daum.net
-ECHO [7] metadata.movie.naver.com
-ECHO [8] metadata.tv.daum.net
-ECHO [9] plugin.video.dabdate.com
-ECHO [10] plugin.video.daum.net
-ECHO [11] plugin.video.gomtv.com
-ECHO [12] plugin.video.joonmedia.net
-ECHO [13] repository.xbmc-korea.com
-ECHO [14] script.xbmc-korea.lyrics
-ECHO [15] script.xbmc-korea.subtitles
+for /f "tokens=* delims= " %%a in (list.txt) do (
+set /a N+=1
+set v!N!=%%a
+echo [!N!] %%a
+)
 ECHO ------------------------------------------------------------
   set /P ADDON_ANSWER=Which ADDON? [1-15]:
-  if /I %ADDON_ANSWER% EQU 1 SET AddonName=metadata.albums.daum.net
-  if /I %ADDON_ANSWER% EQU 2 SET AddonName=metadata.albums.naver.com
-  if /I %ADDON_ANSWER% EQU 3 SET AddonName=metadata.artists.daum.net
-  if /I %ADDON_ANSWER% EQU 4 SET AddonName=metadata.artists.naver.com
-  if /I %ADDON_ANSWER% EQU 5 SET AddonName=metadata.common.movie.daum.net
-  if /I %ADDON_ANSWER% EQU 6 SET AddonName=metadata.movie.daum.net
-  if /I %ADDON_ANSWER% EQU 7 SET AddonName=metadata.movie.naver.com
-  if /I %ADDON_ANSWER% EQU 8 SET AddonName=metadata.tv.daum.net
-  if /I %ADDON_ANSWER% EQU 9 SET AddonName=plugin.video.dabdate.com
-  if /I %ADDON_ANSWER% EQU 10 SET AddonName=plugin.video.daum.net
-  if /I %ADDON_ANSWER% EQU 11 SET AddonName=plugin.video.gomtv.com
-  if /I %ADDON_ANSWER% EQU 12 SET AddonName=plugin.video.joonmedia.net
-  if /I %ADDON_ANSWER% EQU 13 SET AddonName=repository.xbmc-korea.com
-  if /I %ADDON_ANSWER% EQU 14 SET AddonName=script.xbmc-korea.lyrics
-  if /I %ADDON_ANSWER% EQU 15 SET AddonName=script.xbmc-korea.subtitles
+
+set counter=0
+for /F "delims=" %%j in (list.txt) do (
+  set /A counter+=1
+  if !counter! equ %ADDON_ANSWER% (SET AddonName=%%j & goto :CONTINUE)
+)
+:CONTINUE
+set AddonName=%AddonName: =%
+echo %AddonName% is packaging...
+del /q list.txt
 
 :: Create Build folder
 Echo ------------------------------
 Echo Creating %AddonName% Build Folder . . .
-IF EXIST BUILD_TEMP rmdir BUILD_TEMP /S /Q
 md BUILD_TEMP
 Echo.
 
@@ -54,35 +37,24 @@ Echo Creating exclude.txt file . . .
 Echo.
 Echo .svn>"BUILD_TEMP\exclude.txt"
 Echo Thumbs.db>>"BUILD_TEMP\exclude.txt"
-Echo Desktop.ini>>"BUILD_TEMP\exclude.txt"
 Echo.
 
-Echo ------------------------------
-Echo Copying required files to \BUILD_TEMP\%AddonName%%\ folder . . .
-xcopy %AddonName% "BUILD_TEMP\%AddonName%\" /E /Q /I /Y /EXCLUDE:BUILD_TEMP\exclude.txt
-Echo.
+xml sel -t -v "/addon/@version" %AddonName%\addon.xml > BUILD_TEMP\rev.txt
+set /p rev= <BUILD_TEMP\rev.txt
 
-IF EXIST BUILD_TEMP\exclude.txt del BUILD_TEMP\exclude.txt  > NUL
+7z a BUILD_TEMP\%AddonName%-%rev%.zip .\%AddonName%\ -xr@BUILD_TEMP\exclude.txt
+copy %AddonName%\changelog.txt BUILD_TEMP\changelog-%rev%.txt
+copy %AddonName%\icon.png BUILD_TEMP\icon.png
 
-Echo Build Complete - Scroll Up to check for errors.
-Echo Final build is located in the BUILD folder.
-Echo copy: \%AddonName%\ folder in the \BUILD\ folder.
-
-xml.exe sel -t -v "/addon/@version" BUILD_TEMP\%AddonName%\addon.xml > rev.txt
-set /p rev= <rev.txt
-del rev.txt
-
-7z.exe a BUILD_TEMP\%AddonName%-%rev%.zip .\BUILD_TEMP\%AddonName%\
-copy BUILD_TEMP\%AddonName%\changelog.txt BUILD_TEMP\changelog-%rev%.txt
-copy BUILD_TEMP\%AddonName%\icon.png BUILD_TEMP\icon.png
-
-rmdir /s /q BUILD_TEMP\%AddonName%
+:: Change the relative path to the addon repository
 
 del /q ..\..\..\xbmc-korea-addons\addons\dharma\%AddonName%\*.*
 xcopy BUILD_TEMP "..\..\..\xbmc-korea-addons\addons\dharma\%AddonName%" /E /Q /I /Y
 rmdir /s /q BUILD_TEMP
 
-xml.exe ed -u "/addons/addon[@id='%AddonName%']/@version" -v %rev% "..\..\..\xbmc-korea-addons\addons\dharma\addons.xml" >> temp.xml
-mv -f temp.xml D:\xbmc-korean\xbmc-korea-addons\addons\dharma\addons.xml
-del D:\xbmc-korean\xbmc-korea-addons\addons\dharma\addons.xml.md5
-md5 -n D:\xbmc-korean\xbmc-korea-addons\addons\dharma\addons.xml > D:\xbmc-korean\xbmc-korea-addons\addons\dharma\addons.xml.md5
+xml ed -u "/addons/addon[@id='%AddonName%']/@version" -v %rev% "..\..\..\xbmc-korea-addons\addons\dharma\addons.xml" > temp.xml
+move /Y temp.xml ..\..\..\xbmc-korea-addons\addons\dharma\addons.xml
+md5 -n ..\..\..\xbmc-korea-addons\addons\dharma\addons.xml > ..\..\..\xbmc-korea-addons\addons\dharma\addons.xml.md5
+
+Echo Build Complete - Scroll Up to check for errors.
+pause
