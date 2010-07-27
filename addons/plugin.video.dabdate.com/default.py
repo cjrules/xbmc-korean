@@ -12,7 +12,7 @@ __addonID__ = "plugin.video.dabdate.com"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.dabdate.com"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -75,7 +75,7 @@ def SHOW_WMV(url):
         resp = urllib2.urlopen( form.click() )
         newurl = resp.geturl()
         cj.save(COOKIEFILE)
-        print "LOGIN to %s" % newurl
+        xbmc.log( "LOGIN to %s" % newurl, xbmc.LOGDEBUG )
     #---
     if newurl.find('msg.php') >= 0:
         from ClientForm import ParseResponse
@@ -88,7 +88,7 @@ def SHOW_WMV(url):
         resp = urllib2.urlopen(req)
         newurl = resp.geturl()
         cj.save(COOKIEFILE)
-        print "PAY to %s" % newurl
+        xbmc.log( "PAY to %s" % newurl, xbmc.LOGDEBUG )
     #---
     if newurl.startswith(url):
         vurl = re.compile("FileName='([^']*)'").search( resp.read() ).group(1)
@@ -96,9 +96,9 @@ def SHOW_WMV(url):
         for cookie in cj:
             cookies.append( "%s=%s" % (cookie.name, cookie.value) )
         ckStr = ';'.join(cookies)
-        addLink(u"시청", '%s|Cookie="%s"' % (vurl,ckStr), '')
+        xbmc.Player().play( '%s|Cookie="%s"' % (vurl,ckStr) )
     else:
-        print "ERROR: %s is redirected to %s" % (url,newurl)
+        xbmc.log( "ERROR: %s is redirected to %s" % (url,newurl), xbmc.LOGERROR )
 
 #-----------------------------------                
 def get_params():
@@ -155,8 +155,8 @@ opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
 urllib2.install_opener(opener)
 if os.path.isfile(COOKIEFILE):
     cj.load(COOKIEFILE)
-    print "Cookie is loaded"
-print "Cookie is set, " + COOKIEFILE
+    xbmc.log( "Cookie is loaded", xbmc.LOGINFO )
+xbmc.log( "Cookie is set, " + COOKIEFILE, xbmc.LOGINFO )
 
 try:
     url=urllib.unquote_plus(params["url"])
@@ -182,4 +182,5 @@ elif mode==10:
 elif mode==11:
     SHOW_WMV(url)
 
-xbmcplugin.endOfDirectory(int(sys.argv[1]))
+if mode != 11:
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))

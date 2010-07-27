@@ -13,7 +13,7 @@ __author__  = "xbmc-korea"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.joonmedia.net"
 __credits__ = "XBMC Korean User Group"
-__version__ = "1.1.4"
+__version__ = "1.2.0"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -106,28 +106,28 @@ def TVSHOW(main_url):
 def EPISODE(main_url):
   link = urllib.urlopen(main_url)
   soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
-  i=0
+  vid_list = []
   for item in soup.findAll('embed'):
     swf = item['src']
     thumb = GetFLV.img(swf)
     xbmc.log( "Container[0]: %s" % swf, xbmc.LOGDEBUG )
-    for flv in GetFLV.flv(swf):
-      i=i+1;addLink("Part %d" % i, flv, thumb)
+    vid_list.extend( GetFLV.flv(swf) )
+  PLAY_LIST(vid_list, thumb)
 
 def EPISODE_DIRECT(main_url):
   # BeautifulSoup can not handle a statement not protected by quote
   import re
   tDoc = urllib.urlopen(main_url).read().decode('utf-8')
-  i=0
-  blks = re.compile('src=\S*vcastr_file=(\S*)').findall(tDoc)
-  for blk in blks:
-    for vid in blk.split('|'):
-      i=i+1;addLink("Part %d" % i, vid, GetFLV.img(vid))
+  vid_list = []
+  for blk in re.compile('src=\S*vcastr_file=(\S*)').findall(tDoc):
+    vid_list.extend( blk.split('|') )
+  vid_list.extend( re.compile('</script>\s*<a\s*href="(.*?)"').findall(tDoc) )
+  PLAY_LIST(vid_list, '')
 
 def EPISODE_YOUTUBE(main_url):
   link = urllib.urlopen(main_url)
   soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
-  i=0
+  vid_list = []
   for item in soup.findAll('embed'):
     if item.has_key('flashvars'):
       pkg = item['flashvars']
@@ -143,28 +143,39 @@ def EPISODE_YOUTUBE(main_url):
       else:
         swf_list = [pkg]
       for swf in swf_list:
-        for flv in GetFLV.flv(swf):
-          i=i+1;addLink("Part %d" % i, flv, thumb)
+        vid_list.extend( GetFLV.flv(swf) )
     else:
       swf = item['src']
       if '&' in swf:
         swf = swf[:swf.find('&')]
       thumb = GetFLV.img(swf)
       xbmc.log( "Container[2]: %s" % swf, xbmc.LOGDEBUG )
-      for flv in GetFLV.flv(swf):
-        i=i+1;addLink("Part %d" % i, flv, thumb)
+      vid_list.extend( GetFLV.flv(swf) )
+  PLAY_LIST(vid_list, thumb)
 
 def EPISODE_PARAM(main_url):
   link = urllib.urlopen(main_url)
   strain = SoupStrainer( "param", { "name" : "movie" } )
   soup = BeautifulSoup( link.read(), strain, fromEncoding="utf-8" )
-  i=0
+  vid_list = []
   for item in soup.findAll('param'):
     cntnr=item['value']
     xbmc.log( "Container[3]: %s" % cntnr, xbmc.LOGDEBUG )
     thumb = GetFLV.img(cntnr)
-    for flv in GetFLV.flv(cntnr):
-      i=i+1;addLink("Part %d" % i, flv, thumb)
+    vid_list.extend( GetFLV.flv(cntnr) )
+  PLAY_LIST(vid_list, thumb)
+
+def PLAY_LIST(vid_list, thumb):
+  xbmc.log( "PLAY_LIST %d" % len(vid_list), xbmc.LOGDEBUG )
+  playlist = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
+  playlist.clear()
+  i=0
+  for vid in vid_list:
+    i=i+1; title="Part %d"%i
+    item = xbmcgui.ListItem(title, iconImage="DefaultVideo.png", thumbnailImage=thumb)
+    item.setInfo( type="Video", infoLabels={ "Title": title } )
+    playlist.add(vid, item)
+  xbmc.Player().play(playlist)
 
 #-----------------------------------                
 def get_params():
@@ -238,5 +249,6 @@ elif mode==6:
 elif mode==7:
   EPISODE_PARAM(url)
 
-xbmcplugin.endOfDirectory(int(sys.argv[1]))
+if mode==None or mode < 4:
+  xbmcplugin.endOfDirectory(int(sys.argv[1]))
 # vim: softtabstop=2 shiftwidth=2 expandtab

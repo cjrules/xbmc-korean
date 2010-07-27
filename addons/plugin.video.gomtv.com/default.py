@@ -12,7 +12,7 @@ __addonID__ = "plugin.video.gomtv.com"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.gomtv.com"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.4.6"
+__version__ = "0.5.0"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -26,6 +26,7 @@ __movie_backdoor__ = __settings__.getSetting( "MovieBackdoor" )=="true"
 __flatten_list__ = __settings__.getSetting( "FlattenList" )=="true"
 
 menu_div = u"----------------------------------------------------"
+played = False
 
 import xml.dom.minidom as xml
 user_chcfg = xbmc.translatePath( 'special://masterprofile/gomtv.xml' )
@@ -324,10 +325,11 @@ def MOVIE_BOXOFFICE(main_url):
     addDir(title,url,10,thumb)
   
 #-----------------------------------        
-def GOM_CLIP(title,url,thumb):
+def PLAY_VIDEO(url):
   vid_url = GomTvLib().GetVideoUrl(url)
   xbmc.log( "clip_url=%s"%vid_url, xbmc.LOGDEBUG )
-  addLink(title, vid_url, thumb)
+  played = True
+  xbmc.Player().play(vid_url)
 
 def GOM_VIDEO(main_url):
   gom = GomTvLib()
@@ -343,24 +345,21 @@ def GOM_VIDEO(main_url):
     # free movie
     mov_list = gom.GetMovieUrls(dispid,vodid)
     for title,url in mov_list:
-      if __flatten_list__: GOM_CLIP(title,url,'')
-      else: addDir(title, url, 9, '')
+      addDir(title, url, 9, '')
     # hotclip
     hc_ids = gom.GetHotclipIds()
     if mov_list and hc_ids:
       addDir(menu_div, "", 10, '')  # divider
     for clipid,title,thumb in hc_ids:
       st_url = "http://tv.gomtv.com/cgi-bin/gox/gox_clip.cgi?dispid=%s&clipid=%s" % (dispid,clipid)
-      if __flatten_list__: GOM_CLIP(title, st_url, thumb)
-      else: addDir(title, st_url, 9, thumb)
+      addDir(title, st_url, 9, thumb)
   elif main_url.startswith('http://tv.gomtv.com') or main_url.startswith('http://ch.gomtv.com'):
     print "TV: %s" % main_url
     gom.useHQFirst(__hq_first__)
     gom.ParseChVideoPage(main_url)
     for bjvid,title in gom.sub_list:
       st_url = "http://tv.gomtv.com/cgi-bin/gox/gox_channel.cgi?isweb=0&chid=%s&pid=%s&bid=%s&bjvid=%s" % (gom.chid,gom.pid,gom.bid,bjvid)
-      if __flatten_list__ or len(gom.sub_list)==1: GOM_CLIP(title, st_url, '')
-      else: addDir(title, st_url, 9, '')
+      addDir(title, st_url, 9, '')
   else:
     print "ERROR: %s is not considered" % main_url
 
@@ -442,7 +441,7 @@ elif mode==7:
 elif mode==8:
   MOVIE_BOXOFFICE(url)
 elif mode==9:
-  GOM_CLIP(u"시청",url,'')
+  PLAY_VIDEO(url)
 elif mode==10:
   GOM_VIDEO(url)
 elif mode==11:
@@ -466,5 +465,6 @@ elif mode==19:
 elif mode==20:
   CAT_MOVIE_HOTCLIP(url)
 
-xbmcplugin.endOfDirectory(int(sys.argv[1]))
+if mode != 9:
+  xbmcplugin.endOfDirectory(int(sys.argv[1]))
 # vim: softtabstop=2 shiftwidth=2 expandtab

@@ -10,7 +10,7 @@ __addonID__ = "plugin.video.daum.net"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.daum.net"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.2"
+__version__ = "0.3.0"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -133,7 +133,7 @@ def BROWSE_BRAND(main_url):
 def SHOW_VIDEO(main_url):
   from getdaumvid import GetDaumVideo
   vid_url = GetDaumVideo.parse(main_url)[0]
-  addLink(u"시청", vid_url, '')
+  xbmc.Player().play(vid_url)
 
 #--------------------------------------------------------------------                
 def get_params():
@@ -224,5 +224,6 @@ elif mode==44:
 elif mode==45:
   CAT_BRAND_TOP(url)
 
-xbmcplugin.endOfDirectory(int(sys.argv[1]))
+if mode != 1:
+  xbmcplugin.endOfDirectory(int(sys.argv[1]))
 # vim: softtabstop=2 shiftwidth=2 expandtab

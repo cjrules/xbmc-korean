@@ -65,6 +65,7 @@ class GetFLV:
       key = re.search('&t=(.+?)&',link)
       if key:
         url = "http://www.youtube.com/get_video.php?video_id="+id.group(1)+"&t="+key.group(1)
+        url = url + "&asv=3"
         fmt = __settings__.getSetting('YouTubeFmt')
         return [ url+"&fmt=%d"%youtube_fmt[ fmt ] ]
       return []
