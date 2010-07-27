@@ -1,3 +1,8 @@
+1.2.0
+
+Changes
+- Direct play upon selection
+
 1.1.4
 
 Changes
