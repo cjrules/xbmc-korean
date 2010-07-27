@@ -1,6 +1,11 @@
 1.0.1
 
 Changes
+- Add Korean Translation
+
+1.0.1
+
+Changes
 - Move addons repo to new google code
 
 1.0.0

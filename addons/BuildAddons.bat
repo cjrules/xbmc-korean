@@ -1,10 +1,10 @@
 @Echo off
 setLocal EnableDelayedExpansion
 
+:: Change the relative path to the addon repository
 SET ADDONREPO_PATH=..\..\..\xbmc-korea-addons\addons\dharma
-Echo %ADDONREPO_PATH%
-:: List Addons (Directories)
 
+:: List Addons (Directories)
 ECHO ------------------------------------------------------------
 ECHO Select addon to package
 for /f "tokens=* delims= " %%a in ('dir /B /AD-H') do (
@@ -24,6 +24,7 @@ set AddonName=%AddonName: =%
 echo %AddonName% is packaging...
 
 :: Create Build folder
+IF EXIST BUILD_TEMP rmdir BUILD_TEMP /S /Q 
 md BUILD_TEMP
 
 :: Create exclude file
@@ -37,10 +38,7 @@ set /p rev= <BUILD_TEMP\rev.txt
 copy %AddonName%\changelog.txt BUILD_TEMP\changelog-%rev%.txt
 copy %AddonName%\icon.png BUILD_TEMP\icon.png
 
-:: Change the relative path to the addon repository
-
-del /q BUILD_TEMP\rev.txt BUILD_TEMP\exclude.txt
-del /q %ADDONREPO_PATH%\%AddonName%\*.*
+del /q BUILD_TEMP\rev.txt BUILD_TEMP\exclude.txt %ADDONREPO_PATH%\%AddonName%\*.*
 xcopy BUILD_TEMP "%ADDONREPO_PATH%\%AddonName%" /E /Q /I /Y
 
 xml ed -u "/addons/addon[@id='%AddonName%']/@version" -v %rev% "%ADDONREPO_PATH%\addons.xml" > BUILD_TEMP\temp.xml
