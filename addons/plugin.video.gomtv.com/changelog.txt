@@ -1,3 +1,8 @@
+0.5.1
+
+Changes
+- BeautifulSoup Library from common addon
+
 0.5.0
 
 Changes
