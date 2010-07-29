@@ -10,7 +10,7 @@ __addonID__ = "plugin.video.daum.net"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.daum.net"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.3.0"
+__version__ = "0.3.1"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 

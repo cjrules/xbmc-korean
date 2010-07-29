@@ -12,7 +12,7 @@ __addonID__ = "plugin.video.gomtv.com"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.gomtv.com"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.5.0"
+__version__ = "0.5.1"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -23,9 +23,9 @@ sys.path.append (BASE_RESOURCE_PATH)
 __settings__ = xbmcaddon.Addon( __addonID__ )
 __hq_first__ = __settings__.getSetting( "HQVideo" )=="true"
 __movie_backdoor__ = __settings__.getSetting( "MovieBackdoor" )=="true"
+__flatten_list__ = __settings__.getSetting( "FlattenList" )=="true"
 
 menu_div = u"----------------------------------------------------"
-played = False
 
 import xml.dom.minidom as xml
 user_chcfg = xbmc.translatePath( 'special://masterprofile/gomtv.xml' )
@@ -327,7 +327,6 @@ def MOVIE_BOXOFFICE(main_url):
 def PLAY_VIDEO(url):
   vid_url = GomTvLib().GetVideoUrl(url)
   xbmc.log( "clip_url=%s"%vid_url, xbmc.LOGDEBUG )
-  played = True
   xbmc.Player().play(vid_url)
 
 def GOM_VIDEO(main_url):

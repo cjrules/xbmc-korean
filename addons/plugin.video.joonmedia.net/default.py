@@ -13,7 +13,7 @@ __author__  = "xbmc-korea"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.joonmedia.net"
 __credits__ = "XBMC Korean User Group"
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
