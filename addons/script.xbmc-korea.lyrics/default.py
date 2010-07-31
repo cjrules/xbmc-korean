@@ -13,13 +13,12 @@ __author__ = "XBMC Lyrics Team"
 __url__ = "http://code.google.com/p/xbmc-scripting/"
 __svn_url__ = "http://xbmc-scripting.googlecode.com/svn/trunk/"
 __credits__ = "XBMC TEAM, freenode/#xbmc-scripting"
-__version__ = "1.2.3"
+__version__ = "1.3.0"
 __svn_revision__ = ""
 
 # Shared resources 
 BASE_RESOURCE_PATH = os.path.join( os.getcwd(), "resources" )
-#__language__ = xbmc.Language( os.getcwd() ).getLocalizedString
-__addonID__ = "script.xbmc-korea.subtitles"
+__addonID__ = "script.xbmc-korea.lyrics"
 __settings__ = xbmcaddon.Addon( id=__addonID__ )
 __language__ = __settings__.getLocalizedString
 
@@ -42,13 +41,8 @@ __add_credits_r3__ = __language__( 2 )#"Translators name"
 
 # Start the main gui or settings gui 
 if ( __name__ == "__main__" ):
-    if ( xbmc.Player().isPlayingAudio() ):
-        import resources.lib.gui as gui
-        window = "main"
-    else:
-        import resources.lib.settings as gui
-        window = "settings"
-    ui = gui.GUI( "script-%s-%s.xml" % ( __scriptname__.replace( " ", "_" ), window, ), os.getcwd(), "Default" )
+    import resources.lib.gui as gui
+    ui = gui.GUI( "script-%s-main.xml" % __scriptname__.replace( " ", "_" ), os.getcwd(), "Default" )
     ui.doModal()
     del ui
     sys.modules.clear()

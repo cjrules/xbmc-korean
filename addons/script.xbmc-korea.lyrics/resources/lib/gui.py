@@ -28,9 +28,11 @@ except:
 current_win_id = xbmcgui.getCurrentWindowId()
 
 _ = sys.modules[ "__main__" ].__language__
+__settings__ = sys.modules[ "__main__" ].__settings__
 __scriptname__ = sys.modules[ "__main__" ].__scriptname__
 __version__ = sys.modules[ "__main__" ].__version__
 __svn_revision__ = sys.modules[ "__main__" ].__svn_revision__
+__scrapername__ = [ "lyrdb", "ttplayer", "alsong", "gomaudio" ]
 
 
 class GUI( xbmcgui.WindowXMLDialog ):
@@ -42,14 +44,10 @@ class GUI( xbmcgui.WindowXMLDialog ):
 
     def setup_all( self ):
         self.setup_variables()
-        self.get_settings()
         self.get_scraper()
         self.getMyPlayer()
         self.show_viz_window()
 
-    def get_settings( self ):
-        self.settings = Settings().get_settings()
-        
     def refresh(self):
         self.lock.acquire()
         xbmcgui.lock()
@@ -81,7 +79,7 @@ class GUI( xbmcgui.WindowXMLDialog ):
             self.lock.release()
 
     def get_scraper( self ):
-        exec "import resources.scrapers.%s.lyricsScraper as lyricsScraper" % ( self.settings[ "scraper" ], )
+        exec "import resources.scrapers.%s.lyricsScraper as lyricsScraper" % ( __scrapername__[ int(__settings__.getSetting( "scraper" )) ], )
         #import resources.scrapers.ttplayer.lyricsScraper as lyricsScraper
         self.LyricsScraper = lyricsScraper.LyricsFetcher()
         self.scraper_title = lyricsScraper.__title__
@@ -100,7 +98,7 @@ class GUI( xbmcgui.WindowXMLDialog ):
         self.XBMC_REVISION = get_xbmc_revision()
 
     def show_viz_window( self, startup=True ):
-        if ( self.settings[ "show_viz" ] ):
+        if ( __settings__.getSetting( "show_viz" )=="true" ):
             xbmc.executebuiltin( "XBMC.ActivateWindow(2006)" )
         else:
             if ( current_dlg_id != 9999 or not startup ):
@@ -161,10 +159,10 @@ class GUI( xbmcgui.WindowXMLDialog ):
             xbmc.sleep( 60 )
             #if ( xbmc.getInfoLabel( "MusicPlayer.Lyrics" ) ):
             #    return unicode( xbmc.getInfoLabel( "MusicPlayer.Lyrics" ), "utf-8" ), True
-            if ( self.settings[ "use_extension" ] ):
-                self.song_path = make_legal_filepath( unicode( os.path.join( self.settings[ "lyrics_path" ], artist.replace( "\\", "_" ).replace( "/", "_" ), song.replace( "\\", "_" ).replace( "/", "_" ) + ".lrc" ), "utf-8" ), self.settings[ "compatible" ] )
+            if ( __settings__.getSetting( "use_extension" )=="true" ):
+                self.song_path = make_legal_filepath( unicode( os.path.join( __settings__.getSetting( "lyrics_path" ), artist.replace( "\\", "_" ).replace( "/", "_" ), song.replace( "\\", "_" ).replace( "/", "_" ) + ".lrc" ), "utf-8" ), __settings__.getSetting( "compatible" )=="true" )
             else:
-                self.song_path = make_legal_filepath( unicode( os.path.join( self.settings[ "lyrics_path" ], artist.replace( "\\", "_" ).replace( "/", "_" ) + " - " + song.replace( "\\", "_" ).replace( "/", "_" ) + ".lrc" ), "utf-8" ), self.settings[ "compatible" ] )
+                self.song_path = make_legal_filepath( unicode( os.path.join( __settings__.getSetting( "lyrics_path" ), artist.replace( "\\", "_" ).replace( "/", "_" ) + " - " + song.replace( "\\", "_" ).replace( "/", "_" ) + ".lrc" ), "utf-8" ), __settings__.getSetting( "compatible" )=="true" )
             lyrics_file = open( self.song_path, "r" )
             lyrics = lyrics_file.read()
             lyrics_file.close()
@@ -183,7 +181,7 @@ class GUI( xbmcgui.WindowXMLDialog ):
             dirname = os.path.dirname(path)
             basename = os.path.basename(path)
             filename = basename.rsplit( ".", 1 )[ 0 ]
-            self.song_path = make_legal_filepath( unicode( os.path.join( dirname, filename + ".lrc" ), "utf-8" ), self.settings[ "compatible" ] )
+            self.song_path = make_legal_filepath( unicode( os.path.join( dirname, filename + ".lrc" ), "utf-8" ), __settings__.getSetting( "compatible" )=="true" )
             lyrics_file = open( self.song_path, "r" )
             lyrics = lyrics_file.read()
             lyrics_file.close()
@@ -217,9 +215,10 @@ class GUI( xbmcgui.WindowXMLDialog ):
                 lyrics1 += line + '\n'
             self.getControl( 110 ).selectItem( 0 )
             self.getControl( 100 ).setText( lyrics1 )
-            if ( self.settings[ "save_lyrics" ] and save ): success = self.save_lyrics_to_file( lyrics )
-        self.show_control( 100 + ( self.settings[ "smooth_scrolling" ] * 10 ) )
-        if (self.allowtimer and self.settings[ "smooth_scrolling" ] and self.getControl( 110 ).size() > 1):
+            if ( __settings__.getSetting( "save_lyrics" )=="true" and save ): success = self.save_lyrics_to_file( lyrics )
+        if __settings__.getSetting( "smooth_scrolling" )=="true": self.show_control( 110 )
+        else: self.show_control( 100 )
+        if (self.allowtimer and __settings__.getSetting( "smooth_scrolling" )=="true" and self.getControl( 110 ).size() > 1):
             self.refresh()
 
     def parser_lyrics( self, lyrics):
@@ -256,27 +255,6 @@ class GUI( xbmcgui.WindowXMLDialog ):
         self.getControl( 100 ).reset()
         self.getControl( 110 ).reset()
         self.getControl( 120 ).reset()
-        
-    def change_settings( self ):
-        import resources.lib.settings as settings
-        settings = settings.GUI( "script-%s-settings.xml" % ( __scriptname__.replace( " ", "_" ), ), os.getcwd(), "Default" )
-        settings.doModal()
-        ok = False
-        if ( settings.changed ):
-            self.get_settings()
-            if ( settings.restart ):
-                ok = xbmcgui.Dialog().yesno( __scriptname__, _( 240 ), "", _( 241 ) % ( __scriptname__, ), _( 271 ), _( 270 ) )
-            if ( not ok ):
-                self.show_control( ( 100 + ( self.settings[ "smooth_scrolling" ] * 10 ), 120, )[ self.controlId == 120 ] )
-                self.show_viz_window( startup=False )
-                if ( settings.refresh ):
-                    self.myPlayerChanged( 2, True )
-            else: self.exit_script( True )
-        del settings
-
-    def _show_credits( self ):
-        """ shows a credit window """
-        show_credits()
 
     def get_exception( self ):
         """ user modified exceptions """
@@ -312,10 +290,6 @@ class GUI( xbmcgui.WindowXMLDialog ):
         actionId = action.getId()
         if ( actionId in ACTION_EXIT_SCRIPT ):
             self.exit_script()
-        elif ( actionId in ACTION_SETTINGS_MENU ):
-            self.change_settings()
-        #elif ( action.getButtonCode() in SHOW_CREDITS ):
-        #    self._show_credits()
         elif ( self.allow_exception and actionId in ACTION_GET_EXCEPTION ):
             self.get_exception()
 
@@ -325,17 +299,17 @@ class GUI( xbmcgui.WindowXMLDialog ):
             song = filename
             basename = os.path.basename( filename )
             # Artist - Song.ext
-            if ( self.settings[ "filename_format" ] == 0 ):
+            if ( int(__settings__.getSetting( "filename_format" )) == 0 ):
                 artist = basename.split( "-", 1 )[ 0 ].strip()
                 song = os.path.splitext( basename.split( "-", 1 )[ 1 ].strip() )[ 0 ]
             # Artist/Album/Song.ext or Artist/Album/Track Song.ext
-            elif ( self.settings[ "filename_format" ] in ( 1, 2, ) ):
+            elif ( int(__settings__.getSetting( "filename_format" )) in ( 1, 2, ) ):
                 artist = os.path.basename( os.path.split( os.path.split( filename )[ 0 ] )[ 0 ] )
                 # Artist/Album/Song.ext
-                if ( self.settings[ "filename_format" ] == 1 ):
+                if ( int(__settings__.getSetting( "filename_format" )) == 1 ):
                     song = os.path.splitext( basename )[ 0 ]
                 # Artist/Album/Track Song.ext
-                elif ( self.settings[ "filename_format" ] == 2 ):
+                elif ( int(__settings__.getSetting( "filename_format" )) == 2 ):
                     song = os.path.splitext( basename )[ 0 ].split( " ", 1 )[ 1 ]
         except:
             # invalid format selected
@@ -357,7 +331,7 @@ class GUI( xbmcgui.WindowXMLDialog ):
 
                 artist = xbmc.getInfoLabel( "MusicPlayer.Artist" )
                 #print "Artist" + artist                
-                if ( song and ( not artist or self.settings[ "use_filename" ] ) ):
+                if ( song and ( not artist or __settings__.getSetting( "use_filename" )=="true" ) ):
                     artist, song = self.get_artist_from_filename( xbmc.Player().getPlayingFile() )
                 if ( song and ( self.song != song or self.artist != artist or force_update ) ):
                     self.artist = artist
@@ -371,7 +345,7 @@ class GUI( xbmcgui.WindowXMLDialog ):
                     self.get_lyrics( artist, song )
                     break
                 xbmc.sleep( 50 )
-            if (self.allowtimer and self.settings[ "smooth_scrolling" ] and self.getControl( 110 ).size() > 1):
+            if (self.allowtimer and __settings__.getSetting( "smooth_scrolling" )=="true" and self.getControl( 110 ).size() > 1):
                 self.lock.acquire()
                 try:
                     self.timer.cancel()
