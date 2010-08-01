@@ -13,7 +13,7 @@ __author__  = "xbmc-korea"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.joonmedia.net"
 __credits__ = "XBMC Korean User Group"
-__version__ = "1.2.1"
+__version__ = "1.2.2"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -48,7 +48,10 @@ def VIDEO(main_url):
   strain = SoupStrainer( "div", { "class" : "column" } )
   for item in soup.findAll(strain):
     ref = item.find('a')
-    title = ref.string
+    tlist = []
+    for s in ref.contents:
+      if s.string: tlist.append( s.string )
+    title = " / ".join( tlist )
     url = ref['href']
     thumb = item.find('img')['src']
     try: xbmc.log( "TV program: %s" % title.encode("euc-kr"), xbmc.LOGDEBUG )
@@ -65,7 +68,10 @@ def RECENT(main_url):
     for ref in item.findAll('a'):
       if str(ref.contents[0]).startswith('<strong>'):
         continue    # skip
-      title = ref.string
+      tlist = []
+      for s in ref.contents:
+        if s.string: tlist.append( s.string )
+      title = " / ".join( tlist )
       url = ref['href']
       try: xbmc.log( "TV program: %s" % title.encode("euc-kr"), xbmc.LOGDEBUG )
       except: pass
