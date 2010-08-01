@@ -1,3 +1,9 @@
+1.2.2
+
+Changes
+- support multi-lines in title
+
+
 1.2.1
 
 Changes
