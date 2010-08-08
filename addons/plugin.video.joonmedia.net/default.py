@@ -13,7 +13,7 @@ __author__  = "xbmc-korea"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.joonmedia.net"
 __credits__ = "XBMC Korean User Group"
-__version__ = "1.2.2"
+__version__ = "1.2.3"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -83,7 +83,9 @@ def TVSHOW(main_url):
   colsel = int(__settings__.getSetting("VideoColumn"))
   episodes = soup("div", {"class" : "column"})[colsel-1].findAll('li')
   for episode in episodes:
-    title = ''.join(episode.find('b').findAll(text=lambda text:isinstance(text, NavigableString)))
+    bstr = episode.find('b')
+    if bstr is None: continue
+    title = ''.join(bstr.findAll(text=lambda text:isinstance(text, NavigableString)))
     for ref in episode.findAll('a'):
       url = ref['href']
       suppl = ''.join(ref.findAll(text=lambda text:isinstance(text, NavigableString))).strip()
