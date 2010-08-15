@@ -12,7 +12,7 @@ __addonID__ = "plugin.video.gomtv.com"
 __url__ = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.gomtv.com"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.5.1"
+__version__ = "0.6.0"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -45,6 +45,7 @@ def CATEGORIES():
   addDir(u"게임","-",12,"")
   addDir(u"연예/오락","-",16,"")
   addDir(u"뉴스/정보","-",17,"")
+  addDir(u"생중계","http://live.gomtv.com",21,"")
 
 def CAT_MUSIC_CHART(main_url):
   mchart_url = "http://www.gomtv.com/chart/index.gom?chart=%d"
@@ -160,6 +161,12 @@ def CAT_MOVIE(main_url):
     name = ch.getElementsByTagName('name')[0].childNodes[0].data
     number = ch.getElementsByTagName('number')[0].childNodes[0].data
     addDir(name,"http://ch.gomtv.com/"+number,1,"")
+
+def CAT_LIVE(main_url):
+  doc=urllib.urlopen( main_url ).read()
+  for ch,title in re.compile(r'<a href="/(\d+)">(.*?)</a>').findall(doc):
+    title = re.sub(r'<img class="vs".*?/>'," vs ",title)
+    addDir(title.decode("euc-kr"),"http://live.gomtv.com/"+ch,22,"")
 
 #-----------------------------------------------------
 def GOM_CH(main_url):
@@ -325,21 +332,24 @@ def MOVIE_BOXOFFICE(main_url):
   
 #-----------------------------------        
 def PLAY_VIDEO(url):
-  vid_url = GomTvLib().GetVideoUrl(url)
-  xbmc.log( "clip_url=%s"%vid_url, xbmc.LOGDEBUG )
-  xbmc.Player().play(vid_url)
+  try:
+    vid_url = GomTvLib().GetVideoUrl(url)
+    xbmc.log( "clip_url=%s"%vid_url, xbmc.LOGDEBUG )
+    xbmc.Player().play(vid_url)
+  except:
+    pass
 
 def GOM_VIDEO(main_url):
   gom = GomTvLib()
   if main_url.startswith('http://movie.gomtv.com'):
-    print "VIDEO: %s" % main_url
+    xbmc.log( "GOM_VIDEO: %s" % main_url, xbmc.LOGDEBUG )
     gom.ParseMoviePage(main_url)
     match = re.compile('http://movie.gomtv.com/(\d+)/(\d+)').match(main_url)
     if __movie_backdoor__ and match:
       (dispid,vodid) = match.group(1,2)
     else:
       (dispid,vodid) = (gom.dispid, gom.vodid)
-    print "dispid=%s / vodid=%s" % (dispid,vodid)
+    xbmc.log( "dispid=%s / vodid=%s" % (dispid,vodid), xbmc.LOGDEBUG )
     # free movie
     mov_list = gom.GetMovieUrls(dispid,vodid)
     for title,url in mov_list:
@@ -352,14 +362,24 @@ def GOM_VIDEO(main_url):
       st_url = "http://tv.gomtv.com/cgi-bin/gox/gox_clip.cgi?dispid=%s&clipid=%s" % (dispid,clipid)
       addDir(title, st_url, 9, thumb)
   elif main_url.startswith('http://tv.gomtv.com') or main_url.startswith('http://ch.gomtv.com'):
-    print "TV: %s" % main_url
+    xbmc.log( "GOM_TV: %s" % main_url, xbmc.LOGDEBUG )
     gom.useHQFirst(__hq_first__)
     gom.ParseChVideoPage(main_url)
     for bjvid,title in gom.sub_list:
       st_url = "http://tv.gomtv.com/cgi-bin/gox/gox_channel.cgi?isweb=0&chid=%s&pid=%s&bid=%s&bjvid=%s" % (gom.chid,gom.pid,gom.bid,bjvid)
       addDir(title, st_url, 9, '')
   else:
-    print "ERROR: %s is not considered" % main_url
+    xbmc.log( "%s is not considered" % main_url, xbmc.LOGERROR )
+
+def GOM_LIVE(main_url):
+  gom = GomTvLib()
+  gom.ParseLivePage(main_url)
+  st_url = "http://tv.gomtv.com/cgi-bin/gox/gox_live.cgi?isweb=0&liveid=%s&chnum=%s" % (gom.liveid,gom.live_level)
+  xbmc.log( "GOM_LIVE: package = "+st_url, xbmc.LOGDEBUG )
+  vid_url = gom.GetLiveUrl(st_url)
+  vid_url = vid_url.encode("euc-kr")
+  xbmc.log( "GOM_LIVE: video = "+vid_url, xbmc.LOGDEBUG )
+  xbmc.Player().play(vid_url)
 
 #-----------------------------------        
 def get_params():
@@ -462,7 +482,11 @@ elif mode==19:
   CAT_PREMIER_LIST(url)
 elif mode==20:
   CAT_MOVIE_HOTCLIP(url)
+elif mode==21:
+  CAT_LIVE(url)
+elif mode==22:
+  GOM_LIVE(url)
 
-if mode != 9:
+if mode != 9 and mode != 22:
   xbmcplugin.endOfDirectory(int(sys.argv[1]))
 # vim: softtabstop=2 shiftwidth=2 expandtab

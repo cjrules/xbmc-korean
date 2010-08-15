@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.naver.com"
+       name="NAVER Video"
+       version="0.0.1"
+       provider-name="XBMC-Korea">
+  <requires>
+    <import addon="xbmc.python" version="1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.0.8"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">NAVER Streaming Service</summary>
+    <summary lang="ko">네이버 비디오 스트리밍 서비스</summary>
+    <description lang="en">Watch Korean movie trailer, video clip, game broadcast in naver.com</description>
+    <description lang="ko">네이버 에서 제공되는 영화 예고편, 뮤직비디오, 스포츠 중계 등을 볼수 있습니다</description>
+    <platform>all</platform>
+  </extension>
+</addon>

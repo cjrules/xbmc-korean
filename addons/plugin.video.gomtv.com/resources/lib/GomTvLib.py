@@ -9,7 +9,7 @@ import re
 
 txheaders = {
   'User-Agent' : 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2)',
-  'Cookie' : 'ptic=bfcbf4b805bc63344e200391d95069c7'
+  'Cookie' : 'ptic=bfcbf4b805bc63344e200391d95069c7; GomVersion=5027; HQPlusVersion=0006'
 }    # full Cookie support is not required
 
 gom_errors = {
@@ -41,6 +41,8 @@ class GomTvLib:
   dispid = 0
   vodid = 0
   mis_id = 0
+  liveid = 0
+  live_level = 0
   req_ip = "147.46.100.100"        # any IP in Korea
 
   def GomTvLib(self):
@@ -168,6 +170,33 @@ class GomTvLib:
         if self.hq_first: bjvid = match[0]
         else:             bjvid = match[1]
       self.sub_list.append( (bjvid,"PLAY") )    # single video
+
+  def GetLiveUrl(self,main_url):
+    txhdr = txheaders
+    txhdr['User-Agent'] = 'HttpGetFile'
+    req = urllib2.Request(main_url, None, txhdr)
+    try: resp=urllib2.urlopen(req)
+    except: return None
+      
+    soup = BeautifulSoup( resp.read(), fromEncoding="euc-kr" )
+    list = soup.findAll('ref')
+    for ref in list:
+      url = ref['href']
+      if url.startswith('gomp2p://'):
+        url2 = url[ url.rfind("&quot;http")+6 : url.rfind("&quot;") ]
+        return url2.replace("&amp;","&")
+    return ''
+
+  def ParseLivePage(self,main_url):
+    req = urllib2.Request(main_url, None, txheaders)
+    try: tDoc=urllib2.urlopen(req).read()
+    except: return None
+
+    query = re.compile('var typeObj(.*?)}\s*}',re.S).search(tDoc)
+    if query is None:
+      print "%s is not compatible" % main_url
+      return None
+    grpid,self.liveid,self.live_level = re.compile("'(\d+)'").findall(query.group(1))
 
 if __name__ == "__main__":
   gom = GomTvLib()

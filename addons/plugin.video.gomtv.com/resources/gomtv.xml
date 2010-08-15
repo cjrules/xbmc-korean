@@ -66,6 +66,10 @@
       <number>425</number>
     </channel>
     <channel>
+      <name>온게임넷 스타리그</name>
+      <number>428</number>
+    </channel>
+    <channel>
       <name>신한은행 프로리그 09-10</name>
       <number>412</number>
     </channel>
@@ -78,12 +82,8 @@
       <number>4999</number>
     </channel>
     <shortcut>
-      <name>스타크래프트2 XP토너먼트</name>
-      <number>4002/27523</number>
-    </shortcut>
-    <shortcut>
-      <name>[4R]프로리그 09-10</name>
-      <number>412/27633</number>
+      <name>[Final]프로리그 09-10</name>
+      <number>412/27948</number>
     </shortcut>
   </game>
   <entertainment>

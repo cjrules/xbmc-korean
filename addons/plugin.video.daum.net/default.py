@@ -2,7 +2,8 @@
 """
   Movie clip from Daum
 """
-import urllib,xbmcplugin,xbmcgui
+import urllib
+import xbmcplugin,xbmcgui
 
 # plugin constants
 __plugin__  = "DaumTV"
@@ -10,7 +11,7 @@ __addonID__ = "plugin.video.daum.net"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.daum.net"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.3.1"
+__version__ = "0.3.2"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -35,6 +36,8 @@ def CATEGORIES():
   addDir(u"베스트 동영상", "http://tvpot.daum.net/best/", 30, tvpot_icon)
   addDir(u"브랜드", "http://tvpot.daum.net/brand/", 45, tvpot_icon)
   addDir(u"게임", "http://tvpot.daum.net", 40, tvpot_icon)
+  #addDir(u"생중계", "http://tvpot.daum.net/video/player/LiveList.do", 50, tvpot_icon)
+  addDir(u"EPL 생중계", "http://sports.media.daum.net/live/epl", 51, "http://www.premierleague.com/javaImages/19/70/0,,12306~3305497,00.jpg")
 
 def CAT_TRAILER(base_url):
   addDir(u"일간 베스트",base_url+"bestTrailer.do?datekey=3",11,'')
@@ -85,7 +88,7 @@ def BROWSE_TRAILER(main_url):
   site=DaumTrailer()
   site.parse(main_url)
   for title,url,thumb in site.video_list:
-    addDir(title, url, 1, thumb)
+    addDir(title, url, 1000, thumb)
 
 def BROWSE_NEWS(main_url):
   from daum_news import DaumNews
@@ -93,7 +96,7 @@ def BROWSE_NEWS(main_url):
   site.parse(main_url)
   for title,url,thumb in site.video_list:
     title = title.replace('&#39;',"'")
-    addDir(title, url, 1, thumb)
+    addDir(title, url, 1000, thumb)
   if site.nextpage:
     addDir(u"다음 페이지>", site.nextpage[1], 21, '')
   if site.prevday:
@@ -105,7 +108,7 @@ def BROWSE_BEST(main_url):
   site.parse(main_url)
   for title,url,thumb in site.video_list:
     title = title.replace('\n'," ")
-    addDir(title, url, 1, thumb)
+    addDir(title, url, 1000, thumb)
   if site.nextpage:            
     addDir(u"다음 페이지>", site.nextpage[1], 31, '')
 
@@ -116,7 +119,7 @@ def BROWSE_STARCRAFT(main_url):
   for date,cable,mtitle,set_list in site.video_list:
     addDir("---- %s(%s) %s ----" % (date,cable,mtitle), '', 41, '')
     for sname,stitle,url in set_list:
-      addDir("%s %s" % (sname,stitle), url, 1, '')
+      addDir("%s %s" % (sname,stitle), url, 1000, '')
   if site.nextpage:
     addDir(u"다음 페이지>", site.nextpage, 41, '')
 
@@ -126,14 +129,40 @@ def BROWSE_BRAND(main_url):
   site.parse(main_url)
   for title,url,thumb in site.video_list:
     title = title.replace('\n'," ")
-    addDir(title, url, 1, thumb)
+    addDir(title, url, 1000, thumb)
   if site.nextpage:            
     addDir(u"다음 페이지>", site.nextpage, 43, '')
 
-def SHOW_VIDEO(main_url):
+#--------------------------------------------------------------------                
+def BROWSE_LIVE(main_url):
+  # http://tvpot.daum.net/video/player/LiveList.do
+  doc = urllib.urlopen(main_url).read()
+  # http://tvpot.daum.net/video/player/json/CastLinkUrlJSON.do?daumid=live2.man
+  # http://tvpot.daum.net/video/street/ViewPgm.do?q=stn&prgmid=1159074
+
+def BROWSE_LIVE_EPL(main_url):
+  doc = urllib.urlopen(main_url).read()
+  ptn='''<div\s+class="team">[^<]*</div>\s*
+         <a\s+href="([^"]*)"><img\s+src="([^"]*)"[^>]*/></a>\s*
+         <div\s+class="title"><a\s+href[^>]*>([^<]*)</a></div>\s*
+         <div\s+class="date">([^<]*)</div>'''
+  import re
+  for url,thumb,title,dt in re.compile(ptn,re.X).findall(doc):
+    url = url.replace("view.html","mov.html").replace("&amp;","&")
+    tstr = "%s / %s" % (title, dt)
+    addDir(tstr.decode('utf-8'), url, 1001, thumb)
+
+def PLAY_CLIP(main_url):
   from getdaumvid import GetDaumVideo
   vid_url = GetDaumVideo.parse(main_url)[0]
   xbmc.Player().play(vid_url)
+
+def PLAY_STREAM(main_url):
+  doc = urllib.urlopen(main_url).read()
+  import re
+  query = re.compile(r'''(mms://[^"']*)''').search(doc)
+  if query:
+    xbmc.Player().play( query.group(1) )
 
 #--------------------------------------------------------------------                
 def get_params():
@@ -193,8 +222,6 @@ xbmc.log( "Name: "+str(name), xbmc.LOGINFO )
 
 if mode==None or url==None or len(url)<1:
   CATEGORIES()
-elif mode==1:
-  SHOW_VIDEO(url)
 # movie trailer
 elif mode==10:
   CAT_TRAILER(url)
@@ -223,7 +250,17 @@ elif mode==44:
   CAT_BRAND(url)
 elif mode==45:
   CAT_BRAND_TOP(url)
+# live
+elif mode==50:
+  BROWSE_LIVE(url)
+elif mode==51:
+  BROWSE_LIVE_EPL(url)
+# play
+elif mode==1000:
+  PLAY_CLIP(url)
+elif mode==1001:
+  PLAY_STREAM(url)
 
-if mode != 1:
+if mode < 1000:
   xbmcplugin.endOfDirectory(int(sys.argv[1]))
 # vim: softtabstop=2 shiftwidth=2 expandtab
