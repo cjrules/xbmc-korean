@@ -1,3 +1,9 @@
+0.3.2
+
+Changes
+- add experimental live video service
+
+
 0.3.1
 
 Changes
