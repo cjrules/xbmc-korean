@@ -12,7 +12,7 @@ set /a N+=1
 echo [!N!] %%a
 )
 ECHO ------------------------------------------------------------
-  set /P ADDON_ANSWER=Which ADDON? [1-15]:
+  set /P ADDON_ANSWER=Which ADDON? [1-16]:
 
 set counter=0
 for /F "delims=" %%j in ('dir /B /AD-H') do (
