@@ -8,7 +8,7 @@ import Tkinter, tkFileDialog
 
 def main():
     addons_repo = (r"D:\xbmc-korean\xbmc-korea-addons\addons\dharma" )
-    #addon_packager(addons_repo)
+    addon_packager(addons_repo)
     generate_addons_xml(addons_repo)
     generate_md5_file(addons_repo)
 
