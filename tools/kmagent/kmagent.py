@@ -10,6 +10,7 @@ sys.path.append(curdir)
 sys.path.append(curdir+sep+'lib')
 
 fetcher = None
+portnum = 8081
 
 class MyHandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -22,33 +23,47 @@ class MyHandler(BaseHTTPRequestHandler):
             #if type == 'daumtv':
             id = param['id'][0]
             print "id: "+id
-            self.send_response(200)
-            self.send_header('Content-type', 'text/xml')
-            self.end_headers()
 
             if fetcher is None or fetcher.type != "series":
                 from scrapers.series.daum import SeriesFetcher
                 fetcher = SeriesFetcher()
+	    self.send_response(200)
+	    self.send_header('Content-Type', 'text/xml; charset=utf-8')
+	    self.end_headers()
+	    self.wfile.write('<episodeguide><url>http://127.0.0.1:%d%s</url></episodeguide>' % (self.server.server_port, self.path.replace('fetch','retrieve')))
             if fetcher.meta is None or fetcher.meta.s_id != id:
                 fetcher.ParseEpisodePageList(id)
                 fetcher.meta.s_id = id
-            if fetcher.EpisodeFound:
-                xml = "<episodeguide>%s</episodeguide>" % fetcher.meta.GetEpisodeListXML(
-                  "http://127.0.0.1:8081/detail?type=daumtv&id="+ id + "&season=%d&episode=%d" )
-            else:
-                lines = []
-                lines.append("<episodeguide>")
-                for i in range(1,25):
-                    lines.append("<episode>")
-                    #lines.append("<title>제%d회</title>" % i)
-                    lines.append("<url>http://127.0.0.1:8081/detail?type=daumtv&id=%s&season=1&episode=%d</url>" % (id,i))
-                    lines.append("<season>1</season>")
-                    lines.append("<epnum>%d</epnum>" % i)
-                    lines.append("</episode>")
-                lines.append("</episodeguide>")
-                xml = ''.join(lines)
-
-            self.wfile.write(xml)
+            return
+        if up.path == "/retrieve":
+            #type = param['type'][0]
+            #if type == 'daumtv':
+            if fetcher is None or fetcher.type != "series" or fetcher.meta is None:
+                self.send_error(404,'File Not Found: %s' % self.path)
+                return
+            if fetcher.meta.s_id != param['id'][0]:
+                self.send_error(404,'File Not Found: %s' % self.path)
+                return
+	    self.send_response(200)
+	    self.send_header('Content-Type', 'text/xml; charset=utf-8')
+	    if fetcher.EpisodeFound:
+		xml = "<episodeguide>%s</episodeguide>" % fetcher.meta.GetEpisodeListXML(
+		  "http://127.0.0.1:"+str(self.server.server_port)+"/detail?type=daumtv&id="+fetcher.meta.s_id+"&season=%d&episode=%d" )
+	    else:
+		lines = []
+		lines.append("<episodeguide>")
+		for i in range(1,25):
+		    lines.append("<episode>")
+		    #lines.append("<title>제%d회</title>" % i)
+		    lines.append("<url>http://127.0.0.1:%d/detail?type=daumtv&id=%s&season=1&episode=%d</url>" % (self.server.server_port,fetcher.meta.s_id,i))
+		    lines.append("<season>1</season>")
+		    lines.append("<epnum>%d</epnum>" % i)
+		    lines.append("</episode>")
+		lines.append("</episodeguide>")
+		xml = ''.join(lines)
+	    self.send_header('Content-Length', len(xml))
+	    self.end_headers()
+	    self.wfile.write(xml)
             return
         if up.path == "/detail":
             #type = param['type'][0]
@@ -102,7 +117,7 @@ class MyHandler(BaseHTTPRequestHandler):
      
 def main():
     try:
-        server = HTTPServer(('', 8081), MyHandler)
+        server = HTTPServer(('', portnum), MyHandler)
         print 'started kmagent web server...'
         server.serve_forever()
     except KeyboardInterrupt:
@@ -112,3 +127,4 @@ def main():
 if __name__ == '__main__':
     main()
 
+# vim: ts=8 sw=4
