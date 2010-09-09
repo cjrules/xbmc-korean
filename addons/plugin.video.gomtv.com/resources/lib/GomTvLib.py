@@ -65,8 +65,16 @@ class GomTvLib:
       url = ref['href']
       if url[7:url.find('.',7)].isdigit():
         return url.replace('&amp;','&')
+      elif url.startswith('gomp2p://'):
+        pos1 = url.find('URLLIST=')+8
+        pos2 = url.find('%2c&amp;HASHLIST=')
+        import urllib
+        return urllib.unquote( url[pos1:pos2] )
       elif url.startswith('goms://'):
         print "Unsupported format: "+url
+    print "No video streaming comes from IP address?"
+    for ref in list:
+      print ref['href'].encode('euc-kr')
     return ''
 
   def GetMovieUrls(self,dispid,vodid):

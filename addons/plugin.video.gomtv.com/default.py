@@ -337,7 +337,7 @@ def PLAY_VIDEO(url):
     xbmc.log( "clip_url=%s"%vid_url, xbmc.LOGDEBUG )
     xbmc.Player().play(vid_url)
   except:
-    pass
+    xbmc.log( "error while parsing GomTV XML, "+url, xbmc.LOGERROR )
 
 def GOM_VIDEO(main_url):
   gom = GomTvLib()

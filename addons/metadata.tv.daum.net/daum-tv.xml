@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<scraper framework="1.1" date="2010-07-24" language="ko">
+<scraper framework="1.1" date="2010-09-08" language="ko">
 	<NfoUrl dest="3">
 		<RegExp input="$$1" output="&lt;url&gt;http://movie.daum.net/tv/detail/main.do?tvProgramId=\1&lt;/url&gt;" dest="3">
 			<expression>movie\.daum\.net[^\?]*\?tvProgramId=(\d+)</expression>
@@ -72,7 +72,7 @@
 			<RegExp conditional="!useAgent" input="$$1" output="&lt;url function=&quot;GetEpisodePages&quot; cache=&quot;daum-tvep-$$2-1.htm&quot;&gt;http://movie.daum.net/tv/detail/episode.do?tvProgramId=$$2&lt;/url&gt;" dest="4+">
 				<expression/>
 			</RegExp>
-			<RegExp conditional="useAgent" input="$$1" output="&lt;episodeguide&gt;http://127.0.0.1:8081/fetch?type=daumtv&amp;id=$$2&lt;/url&gt;" dest="4+">
+			<RegExp conditional="useAgent" input="$$1" output="&lt;url function=&quot;PassPage&quot;&gt;http://127.0.0.1:8081/fetch?type=daumtv&amp;id=$$2&lt;/url&gt;" dest="4+">
 				<expression/>
 			</RegExp>
 			<RegExp conditional="EnableFanart" input="$$1" output="&lt;url cache=&quot;daum-photo-$$2.htm&quot; function=&quot;GetDaumFanart&quot;&gt;\1&amp;order=recommend&lt;/url&gt;" dest="4+">
@@ -207,4 +207,9 @@
 			<expression noclean="1"/>
 		</RegExp>
 	</GetDaumFanart>
+	<PassPage dest="3">
+		<RegExp input="$$1" output="&lt;details&gt;\1&lt;/details&gt;" dest="3">
+			<expression noclean="1"/>
+		</RegExp>
+	</PassPage>
 </scraper>
