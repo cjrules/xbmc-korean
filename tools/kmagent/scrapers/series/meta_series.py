@@ -155,14 +155,14 @@ class SeriesMetaData:
 					f.close()
 
 	def GetEpisodeListXML(self,server):
-		temp = u"<url>%s</url>" % server
 		lines = []
-		for key,val in self.EpisodeInfo.iteritems():
+		for key,val in sorted(self.EpisodeInfo.items(), key=lambda x: x[0][1], reverse=True):
 		    lines.append(u"<episode>")
 		    #lines.append(u"<title>%s</title>" % val[0])
 		    lines.append(u"<season>%d</season>" % key[0])
 		    lines.append(u"<epnum>%d</epnum>" % key[1])
-		    lines.append(temp % key)
+		    lines.append(u"<url>%s&ep=%d</url>" % (val[3],key[1]))
+		    #lines.append(u"<url>%s</url>" % server % key)
 		    lines.append(u"</episode>")
 		return ''.join(lines).encode('utf-8')
 

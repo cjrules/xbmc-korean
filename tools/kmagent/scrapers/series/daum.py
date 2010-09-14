@@ -145,7 +145,7 @@ class SeriesFetcher:
 		if soup.find("p", {"class" : "sorry"}):
 			return			# not supported
 		self.EpisodeFound = True
-		self.GetEpisodeInfoByContent(soup)
+		self.GetEpisodeInfoByContent(soup,url)
 
 		curpg = soup.find('span', {"class" : "current"})
 		for pg in curpg.findNextSiblings('a'):
@@ -154,9 +154,9 @@ class SeriesFetcher:
 				self.ParseEpisodePageListByUrl(url)
 			else:
 				resp = urllib.urlopen(url)
-				self.GetEpisodeInfoByContent( BeautifulSoup(resp.read(),fromEncoding="utf-8") )
+				self.GetEpisodeInfoByContent( BeautifulSoup(resp.read(),fromEncoding="utf-8"), url )
 
-	def GetEpisodeInfoByContent(self,soup):
+	def GetEpisodeInfoByContent(self,soup,url):
 		for item in soup.findAll('li',{'id' : re.compile("^itemId_")}):
 			epnum = item['id'][item['id'].rfind('_')+1:]
 			titles = item.find("span",{"class" : "episode_num"}).string.split('&nbsp;')
@@ -169,7 +169,7 @@ class SeriesFetcher:
 				plot = unicode( self.striptags.sub('',str(ep_plot)).strip(), 'utf-8' )
 			else:
 				plot = unicode( self.striptags.sub('',plot_blk.renderContents()).strip(), 'utf-8' )
-			self.meta.EpisodeInfo[(self.Season,int(epnum))] = (ep_title, " ".join(titles[1:]), plot)
+			self.meta.EpisodeInfo[(self.Season,int(epnum))] = (ep_title, " ".join(titles[1:]), plot, url)
 			#print "%s:%s:%s" % (epnum,titles[0]," ".join(titles[1:]))
 
 if __name__ == '__main__':

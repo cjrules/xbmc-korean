@@ -55,7 +55,8 @@ class MyHandler(BaseHTTPRequestHandler):
 		for i in range(1,25):
 		    lines.append("<episode>")
 		    #lines.append("<title>제%d회</title>" % i)
-		    lines.append("<url>http://127.0.0.1:%d/detail?type=daumtv&id=%s&season=1&episode=%d</url>" % (self.server.server_port,fetcher.meta.s_id,i))
+		    lines.append("<url>http://127.0.0.1:%d/dummyep?type=daumtv&ep=%d</url>" % (self.server.server_port,i))
+		    #lines.append("<url>http://127.0.0.1:%d/detail?type=daumtv&id=%s&season=1&episode=%d</url>" % (self.server.server_port,fetcher.meta.s_id,i))
 		    lines.append("<season>1</season>")
 		    lines.append("<epnum>%d</epnum>" % i)
 		    lines.append("</episode>")
@@ -86,6 +87,13 @@ class MyHandler(BaseHTTPRequestHandler):
             else:
                 xml = "<details><title>제%d회</title></details>" % episode
             self.wfile.write(xml)
+            return
+        if up.path == "/dummyep":
+            self.send_response(200)
+            self.send_header('Content-type', 'text/xml')
+            self.end_headers()
+            # mimic Daum page
+            self.wfile.write( '''<h5 class="fs12 em">제%s회&nbsp;</h5><p class="txt"></p>''' % param['ep'][0] )
             return
         if up.path == "/fanart":
             #type = param['type'][0]
@@ -118,7 +126,7 @@ class MyHandler(BaseHTTPRequestHandler):
 def main():
     try:
         server = HTTPServer(('', portnum), MyHandler)
-        print 'started kmagent web server...'
+        print 'start kmagent web server...'
         server.serve_forever()
     except KeyboardInterrupt:
         print '^C received, shutting down server'
