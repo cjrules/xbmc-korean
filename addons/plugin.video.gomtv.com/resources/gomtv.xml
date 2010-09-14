@@ -54,6 +54,10 @@
   </music>
   <game>
     <channel>
+      <name>스타크래프트II Open</name>
+      <number>427</number>
+    </channel>
+    <channel>
       <name>곰게임넷</name>
       <number>439</number>
     </channel>
@@ -82,8 +86,8 @@
       <number>4999</number>
     </channel>
     <shortcut>
-      <name>[Final]프로리그 09-10</name>
-      <number>412/27948</number>
+      <name>스타크래프트II OPEN Season1</name>
+      <number>427/28024</number>
     </shortcut>
   </game>
   <entertainment>

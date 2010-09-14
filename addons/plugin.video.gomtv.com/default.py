@@ -23,7 +23,6 @@ sys.path.append (BASE_RESOURCE_PATH)
 __settings__ = xbmcaddon.Addon( __addonID__ )
 __hq_first__ = __settings__.getSetting( "HQVideo" )=="true"
 __movie_backdoor__ = __settings__.getSetting( "MovieBackdoor" )=="true"
-__flatten_list__ = __settings__.getSetting( "FlattenList" )=="true"
 
 menu_div = u"----------------------------------------------------"
 
