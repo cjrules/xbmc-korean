@@ -10,7 +10,7 @@ sys.path.append(curdir)
 sys.path.append(curdir+sep+'lib')
 
 fetcher = None
-_ver = "$GlobalRev: 112 $"
+_ver = "$GlobalRev$"
 _portnum = 8081
 
 class MyHandler(BaseHTTPRequestHandler):
