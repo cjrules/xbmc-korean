@@ -154,15 +154,17 @@ class SeriesMetaData:
 					f.write( urllib.urlopen(self.s_backdrop_list[i][1]).read() )
 					f.close()
 
-	def GetEpisodeListXML(self,server):
+	def GetEpisodeListXML(self,sstr):
 		lines = []
 		for key,val in sorted(self.EpisodeInfo.items(), key=lambda x: x[0][1], reverse=True):
 		    lines.append(u"<episode>")
 		    #lines.append(u"<title>%s</title>" % val[0])
 		    lines.append(u"<season>%d</season>" % key[0])
 		    lines.append(u"<epnum>%d</epnum>" % key[1])
-		    lines.append(u"<url>%s&ep=%d</url>" % (val[3],key[1]))
-		    #lines.append(u"<url>%s</url>" % server % key)
+		    if val[3]:
+				lines.append(u"<url>%s&ep=%d</url>" % (val[3],key[1]))
+		    else:
+				lines.append(u"<url>%s</url>" % sstr % key)
 		    lines.append(u"</episode>")
 		return ''.join(lines).encode('utf-8')
 

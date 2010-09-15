@@ -10,7 +10,8 @@ sys.path.append(curdir)
 sys.path.append(curdir+sep+'lib')
 
 fetcher = None
-portnum = 8081
+_ver = "$GlobalRev: 112 $"
+_portnum = 8081
 
 class MyHandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -34,6 +35,7 @@ class MyHandler(BaseHTTPRequestHandler):
             if fetcher.meta is None or fetcher.meta.s_id != id:
                 fetcher.ParseEpisodePageList(id)
                 fetcher.meta.s_id = id
+            print "done"
             return
         if up.path == "/retrieve":
             #type = param['type'][0]
@@ -65,6 +67,7 @@ class MyHandler(BaseHTTPRequestHandler):
 	    self.send_header('Content-Length', len(xml))
 	    self.end_headers()
 	    self.wfile.write(xml)
+            print "done"
             return
         if up.path == "/detail":
             #type = param['type'][0]
@@ -87,6 +90,7 @@ class MyHandler(BaseHTTPRequestHandler):
             else:
                 xml = "<details><title>제%d회</title></details>" % episode
             self.wfile.write(xml)
+            print "done"
             return
         if up.path == "/dummyep":
             self.send_response(200)
@@ -94,6 +98,7 @@ class MyHandler(BaseHTTPRequestHandler):
             self.end_headers()
             # mimic Daum page
             self.wfile.write( '''<h5 class="fs12 em">제%s회&nbsp;</h5><p class="txt"></p>''' % param['ep'][0] )
+            print "done"
             return
         if up.path == "/fanart":
             #type = param['type'][0]
@@ -120,13 +125,14 @@ class MyHandler(BaseHTTPRequestHandler):
                 fetcher.ParsePhotoPage(fetcher.meta.m_id)
                 xml = "<details>%s</details>" % fetcher.meta.GetBackdropListXML()
                 self.wfile.write(xml)
+            print "done"
             return
         return
      
 def main():
     try:
-        server = HTTPServer(('', portnum), MyHandler)
-        print 'start kmagent web server...'
+        server = HTTPServer(('', _portnum), MyHandler)
+        print 'start kmagent web server, r%s...' % _ver[ _ver.find(':')+2 : _ver.rfind(' ') ]
         server.serve_forever()
     except KeyboardInterrupt:
         print '^C received, shutting down server'

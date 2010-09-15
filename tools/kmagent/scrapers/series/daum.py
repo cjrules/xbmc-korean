@@ -15,6 +15,7 @@ class SeriesFetcher:
 
 	EpisodeFound = False
 	Season = 1;
+	last_epnum = 0;
 
 	def __init__(self): 
 		self.base_url	= "http://movie.daum.net"
@@ -49,6 +50,11 @@ class SeriesFetcher:
 		strain = SoupStrainer("div",{"id" : "tvInfoDetail"})
 		header = soup.find(strain).find("p",{"class":"header"})
 		self.meta.s_title = header.strong.string		# class=title_kor
+		Season = 1
+		#query = re.compile(u"^(.*)\s+시즌 (\d+)$").find(self.meta.s_title)
+		#if query:
+		#	self.meta.s_title = query.group(1)
+		#	Season = int(query.group(2))
 		self.meta.s_year = header.em.string[1:-1]
 		aka = header.find("em",{"class":"title_AKA"})
 		temp = aka.find("span",{"class":"eng"})
@@ -133,10 +139,12 @@ class SeriesFetcher:
 
 	#------------------------------------------
 	def ParseEpisodePageList(self,id):
+		self.EpisodeFound = False
+		self.EpisodeInfo = {}
+		self.last_epnum = 0
 		self.ParseEpisodePageListByUrl( self.episode_url % id )
 
 	def ParseEpisodePageListByUrl(self,url):
-		self.EpisodeFound = False
 		#print url
 		resp = urllib.urlopen(url);
 		if not resp: return			# uncommon
@@ -158,9 +166,17 @@ class SeriesFetcher:
 
 	def GetEpisodeInfoByContent(self,soup,url):
 		for item in soup.findAll('li',{'id' : re.compile("^itemId_")}):
-			epnum = item['id'][item['id'].rfind('_')+1:]
+			epnum = int( item['id'][item['id'].rfind('_')+1:] )
+			if int(epnum) == 0:
+				epnum = self.last_epnum-1
+				url = ""
 			titles = item.find("span",{"class" : "episode_num"}).string.split('&nbsp;')
-			ep_title = titles[0]
+			if url:
+				ep_title = titles[0]
+				ep_date = " ".join(titles[1:])
+			else:
+				ep_title = u"제%d회" % epnum
+				ep_date = " ".join(titles)
 			plot_blk = item.find("p",{"class" : "txt"})
 			tit_stm = plot_blk.find("strong",{"class" : "epTit"})
 			if tit_stm:
@@ -169,8 +185,9 @@ class SeriesFetcher:
 				plot = unicode( self.striptags.sub('',str(ep_plot)).strip(), 'utf-8' )
 			else:
 				plot = unicode( self.striptags.sub('',plot_blk.renderContents()).strip(), 'utf-8' )
-			self.meta.EpisodeInfo[(self.Season,int(epnum))] = (ep_title, " ".join(titles[1:]), plot, url)
-			#print "%s:%s:%s" % (epnum,titles[0]," ".join(titles[1:]))
+			self.meta.EpisodeInfo[(self.Season,epnum)] = (ep_title, ep_date, plot, url)
+			#print "%d:%s:%s" % (epnum,titles[0]," ".join(titles[1:]))
+			self.last_epnum = epnum
 
 if __name__ == '__main__':
 	fetcher = SeriesFetcher()
