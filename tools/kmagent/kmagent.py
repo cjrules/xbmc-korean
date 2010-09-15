@@ -10,7 +10,7 @@ sys.path.append(curdir)
 sys.path.append(curdir+sep+'lib')
 
 fetcher = None
-_ver = "$GlobalRev$"
+_ver = "$GlobalRev: 313 $"
 _portnum = 8081
 
 class MyHandler(BaseHTTPRequestHandler):
@@ -50,8 +50,9 @@ class MyHandler(BaseHTTPRequestHandler):
 	    self.send_header('Content-Type', 'text/xml; charset=utf-8')
 	    if fetcher.EpisodeFound:
 		xml = "<episodeguide>%s</episodeguide>" % fetcher.meta.GetEpisodeListXML(
-		  "http://127.0.0.1:"+str(self.server.server_port)+"/detail?type=daumtv&id="+fetcher.meta.s_id+"&season=%d&episode=%d" )
+		  "http://127.0.0.1:"+str(self.server.server_port)+"/detail2?type=daumtv&id="+fetcher.meta.s_id+"&season=%d&ep=%d" )
 	    else:
+		# dummy info for non-existing episode
 		lines = []
 		lines.append("<episodeguide>")
 		for i in range(1,25):
@@ -83,7 +84,7 @@ class MyHandler(BaseHTTPRequestHandler):
             print "season: %d, episode: %d" % (season,episode)
 
             self.send_response(200)
-            self.send_header('Content-type', 'text/xml')
+            self.send_header('Content-type', 'text/xml; charset=utf-8')
             self.end_headers()
             if fetcher.EpisodeFound:
                 xml = fetcher.meta.GetEpisodeDetailXML( season, episode )
@@ -92,9 +93,35 @@ class MyHandler(BaseHTTPRequestHandler):
             self.wfile.write(xml)
             print "done"
             return
+        if up.path == "/detail2":
+            #type = param['type'][0]
+            #if type == 'daumtv':
+            if fetcher is None or fetcher.type != "series":
+                self.send_error(404,'File Not Found: %s' % self.path)
+                return
+            if fetcher.meta.s_id != param['id'][0]:
+                self.send_error(404,'File Not Found: %s' % self.path)
+                return
+            season = int( param['season'][0] )
+            episode = int( param['ep'][0] )
+            print "season: %d, episode: %d" % (season,episode)
+
+            self.send_response(200)
+            self.send_header('Content-type', 'text/html; charset=utf-8')
+            self.end_headers()
+            if fetcher.EpisodeFound:
+		vals = fetcher.meta.EpisodeInfo[ (season,episode) ]
+                xml = u'''<h5 class="fs12 em">제%d회&nbsp;%s</h5><p class="txt"><strong class="epTit">%s</strong>%s</p>'''\
+			% (episode,vals[1],vals[0],vals[2])
+                xml = xml.encode('utf-8')
+            else:
+                xml = '''<h5 class="fs12 em">제%d회&nbsp;</h5><p class="txt"></p>''' % episode
+            self.wfile.write(xml)
+            print "done"
+            return
         if up.path == "/dummyep":
             self.send_response(200)
-            self.send_header('Content-type', 'text/xml')
+            self.send_header('Content-type', 'text/html; charset=utf-8')
             self.end_headers()
             # mimic Daum page
             self.wfile.write( '''<h5 class="fs12 em">제%s회&nbsp;</h5><p class="txt"></p>''' % param['ep'][0] )
@@ -108,7 +135,7 @@ class MyHandler(BaseHTTPRequestHandler):
             #    name = name.decode(param['coding'][0])
             print "name: "+name
             self.send_response(200)
-            self.send_header('Content-type', 'text/xml')
+            self.send_header('Content-type', 'text/xml; charset=utf-8')
             self.end_headers()
 
             if fetcher is None or fetcher.type != "artist":

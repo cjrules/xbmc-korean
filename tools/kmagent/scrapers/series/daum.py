@@ -143,6 +143,9 @@ class SeriesFetcher:
 		self.EpisodeInfo = {}
 		self.last_epnum = 0
 		self.ParseEpisodePageListByUrl( self.episode_url % id )
+		for i in range(self.last_epnum-1):
+			epnum = self.last_epnum-1-i
+			self.meta.EpisodeInfo[(self.Season,epnum)] = ("제%d회"%epnum, "", "", "")
 
 	def ParseEpisodePageListByUrl(self,url):
 		#print url
@@ -170,6 +173,7 @@ class SeriesFetcher:
 			if int(epnum) == 0:
 				epnum = self.last_epnum-1
 				url = ""
+			if epnum <= 0: break
 			titles = item.find("span",{"class" : "episode_num"}).string.split('&nbsp;')
 			if url:
 				ep_title = titles[0]

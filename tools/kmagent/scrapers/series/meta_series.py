@@ -162,6 +162,7 @@ class SeriesMetaData:
 		    lines.append(u"<season>%d</season>" % key[0])
 		    lines.append(u"<epnum>%d</epnum>" % key[1])
 		    if val[3]:
+				# let scraper process episode detail information
 				lines.append(u"<url>%s&ep=%d</url>" % (val[3],key[1]))
 		    else:
 				lines.append(u"<url>%s</url>" % sstr % key)
