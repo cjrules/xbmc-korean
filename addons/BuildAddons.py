@@ -44,6 +44,7 @@ def addons_path_check():
 
 def addons_xml_updater(addons_repo):
     generate_addons_xml(addons_repo)
+    md5_addon_package(addons_repo)
     generate_md5_file(addons_repo)
     
 def addons_updater(addons_repo, addons_path):
@@ -174,6 +175,17 @@ def generate_addons_xml(addons_repo):
     addons_xml = ElementTree.ElementTree(addons_root)
     addons_xml.write(os.path.join(addons_repo,'addons.xml'), encoding="UTF-8")
     print ("\nSucessfuly generate addons.xml from current repository addons")
+
+def md5_addon_package(addons_repo):
+    addons = addon_match(addons_repo)
+    for addon in addons:
+        try:
+            addon_zfilename = glob.glob(os.path.join( addons_repo, addon, '*.zip' ))
+            addon_zfile = open(addon_zfilename[0]).read(1024)
+            addon_md5 = md5.new(addon_zfile).hexdigest()
+            open(addon_zfilename[0] + '.md5', "w" ).write(addon_md5)
+        except:
+            print ("Problems Found. skipping md5 file for ", addon)
 
 def generate_md5_file(addons_repo):
     try:

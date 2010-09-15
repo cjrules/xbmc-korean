@@ -1,4 +1,10 @@
-1.0.1
+1.0.3
+
+Changes
+- Hashes enable
+
+
+1.0.2
 
 Changes
 - Add Korean Translation
