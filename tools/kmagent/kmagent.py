@@ -10,7 +10,7 @@ sys.path.append(curdir)
 sys.path.append(curdir+sep+'lib')
 
 fetcher = None
-_ver = "$GlobalRev: 313 $"
+_ver = "$GlobalRev: 317 $"
 _portnum = 8081
 
 class MyHandler(BaseHTTPRequestHandler):
@@ -28,46 +28,35 @@ class MyHandler(BaseHTTPRequestHandler):
             if fetcher is None or fetcher.type != "series":
                 from scrapers.series.daum import SeriesFetcher
                 fetcher = SeriesFetcher()
-	    self.send_response(200)
-	    self.send_header('Content-Type', 'text/xml; charset=utf-8')
-	    self.end_headers()
-	    self.wfile.write('<episodeguide><url>http://127.0.0.1:%d%s</url></episodeguide>' % (self.server.server_port, self.path.replace('fetch','retrieve')))
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/xml; charset=utf-8')
+            self.end_headers()
+            # parsing the first page
             if fetcher.meta is None or fetcher.meta.s_id != id:
+                fetcher.EpisodeFound = False
+                fetcher.max_epnum = 0
+                fetcher.ParseEpisodePageByUrl(fetcher.episode_url % id)
+            lines = []
+            max_epnum = 25
+            lines.append(u"<episodeguide>")
+            if fetcher.EpisodeFound:
+                max_epnum = fetcher.max_epnum
+            for i in range(max_epnum):
+                epnum = max_epnum-i
+                lines.append(u"<episode>")
+                lines.append(u"<season>%d</season>" % fetcher.Season)
+                lines.append(u"<epnum>%d</epnum>" % epnum)
+                lines.append(u"<url>http://127.0.0.1:%d/detail?type=daumtv&id=%s&season=%d&episode=%d</url>" % 
+                                (self.server.server_port, id, fetcher.Season, epnum) )
+                lines.append(u"</episode>")
+            lines.append(u"</episodeguide>")
+            xml = ''.join(lines).encode('utf-8')
+            self.wfile.write(xml)
+            # full scrapping afterward
+            if fetcher.EpisodeFound and fetcher.meta.s_id != id:
+                print "scrapping episode pages"
                 fetcher.ParseEpisodePageList(id)
-                fetcher.meta.s_id = id
-            print "done"
-            return
-        if up.path == "/retrieve":
-            #type = param['type'][0]
-            #if type == 'daumtv':
-            if fetcher is None or fetcher.type != "series" or fetcher.meta is None:
-                self.send_error(404,'File Not Found: %s' % self.path)
-                return
-            if fetcher.meta.s_id != param['id'][0]:
-                self.send_error(404,'File Not Found: %s' % self.path)
-                return
-	    self.send_response(200)
-	    self.send_header('Content-Type', 'text/xml; charset=utf-8')
-	    if fetcher.EpisodeFound:
-		xml = "<episodeguide>%s</episodeguide>" % fetcher.meta.GetEpisodeListXML(
-		  "http://127.0.0.1:"+str(self.server.server_port)+"/detail2?type=daumtv&id="+fetcher.meta.s_id+"&season=%d&ep=%d" )
-	    else:
-		# dummy info for non-existing episode
-		lines = []
-		lines.append("<episodeguide>")
-		for i in range(1,25):
-		    lines.append("<episode>")
-		    #lines.append("<title>제%d회</title>" % i)
-		    lines.append("<url>http://127.0.0.1:%d/dummyep?type=daumtv&ep=%d</url>" % (self.server.server_port,i))
-		    #lines.append("<url>http://127.0.0.1:%d/detail?type=daumtv&id=%s&season=1&episode=%d</url>" % (self.server.server_port,fetcher.meta.s_id,i))
-		    lines.append("<season>1</season>")
-		    lines.append("<epnum>%d</epnum>" % i)
-		    lines.append("</episode>")
-		lines.append("</episodeguide>")
-		xml = ''.join(lines)
-	    self.send_header('Content-Length', len(xml))
-	    self.end_headers()
-	    self.wfile.write(xml)
+            fetcher.meta.s_id = id
             print "done"
             return
         if up.path == "/detail":
@@ -84,47 +73,13 @@ class MyHandler(BaseHTTPRequestHandler):
             print "season: %d, episode: %d" % (season,episode)
 
             self.send_response(200)
-            self.send_header('Content-type', 'text/xml; charset=utf-8')
+            self.send_header('Content-Type', 'text/xml; charset=utf-8')
             self.end_headers()
             if fetcher.EpisodeFound:
                 xml = fetcher.meta.GetEpisodeDetailXML( season, episode )
             else:
                 xml = "<details><title>제%d회</title></details>" % episode
             self.wfile.write(xml)
-            print "done"
-            return
-        if up.path == "/detail2":
-            #type = param['type'][0]
-            #if type == 'daumtv':
-            if fetcher is None or fetcher.type != "series":
-                self.send_error(404,'File Not Found: %s' % self.path)
-                return
-            if fetcher.meta.s_id != param['id'][0]:
-                self.send_error(404,'File Not Found: %s' % self.path)
-                return
-            season = int( param['season'][0] )
-            episode = int( param['ep'][0] )
-            print "season: %d, episode: %d" % (season,episode)
-
-            self.send_response(200)
-            self.send_header('Content-type', 'text/html; charset=utf-8')
-            self.end_headers()
-            if fetcher.EpisodeFound:
-		vals = fetcher.meta.EpisodeInfo[ (season,episode) ]
-                xml = u'''<h5 class="fs12 em">제%d회&nbsp;%s</h5><p class="txt"><strong class="epTit">%s</strong>%s</p>'''\
-			% (episode,vals[1],vals[0],vals[2])
-                xml = xml.encode('utf-8')
-            else:
-                xml = '''<h5 class="fs12 em">제%d회&nbsp;</h5><p class="txt"></p>''' % episode
-            self.wfile.write(xml)
-            print "done"
-            return
-        if up.path == "/dummyep":
-            self.send_response(200)
-            self.send_header('Content-type', 'text/html; charset=utf-8')
-            self.end_headers()
-            # mimic Daum page
-            self.wfile.write( '''<h5 class="fs12 em">제%s회&nbsp;</h5><p class="txt"></p>''' % param['ep'][0] )
             print "done"
             return
         if up.path == "/fanart":
@@ -135,7 +90,7 @@ class MyHandler(BaseHTTPRequestHandler):
             #    name = name.decode(param['coding'][0])
             print "name: "+name
             self.send_response(200)
-            self.send_header('Content-type', 'text/xml; charset=utf-8')
+            self.send_header('Content-Type', 'text/xml; charset=utf-8')
             self.end_headers()
 
             if fetcher is None or fetcher.type != "artist":
@@ -168,4 +123,4 @@ def main():
 if __name__ == '__main__':
     main()
 
-# vim: ts=8 sw=4
+# vim: ts=4 sw=4 expandtab
