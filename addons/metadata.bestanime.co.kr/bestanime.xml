@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<scraper framework="1.1" date="2010-09-16" language="ko">
+	<CreateSearchUrl dest="3" SearchStringEncoding="EUC-KR">
+		<RegExp input="$$1" output="&lt;url&gt;http://bestanime.co.kr/newAniData/list.php?searchKey=title&amp;searchStr=\1&lt;/url&gt;" dest="3">
+			<expression></expression>
+		</RegExp>
+	</CreateSearchUrl>
+	<GetSearchResults dest="1">
+		<RegExp input="$$4" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;EUC-KR&quot; standalone=&quot;yes&quot;?&gt;&lt;results&gt;\1&lt;/results&gt;" dest="1">
+			<RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\2&lt;/title&gt;&lt;year&gt;\3&lt;/year&gt;&lt;url&gt;http://bestanime.co.kr/newAniData/aniInfo.php?idx=\1&lt;/url&gt;&lt;id&gt;\1&lt;/id&gt;&lt;/entity&gt;" dest="4">
+				<expression repeat="yes">&lt;td[^&gt;]*&gt;&lt;a href="/newAniData/aniInfo.php\?idx=(\d+)[^&gt;]*&gt;(.*?)&lt;/a&gt;&lt;/td&gt;&lt;td[^&gt;]*&gt;&lt;a href="/newAniData/list.php\?&amp;viewType=year[^&gt;]*&gt;(\d{4})&lt;/a&gt;</expression>
+			</RegExp>
+			<expression noclean="1"></expression>
+		</RegExp>
+	</GetSearchResults>
+	<GetDetails dest="7">
+		<RegExp input="$$4" output="&lt;details&gt;\1&lt;/details&gt;" dest="7">
+			<RegExp input="" output="24" dest="10">
+				<expression/>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;title&gt;\1&lt;/title&gt;&lt;year&gt;\2&lt;/year&gt;" dest="4+">
+				<expression trim="1">&lt;td[^&gt;]*&gt;&lt;img[^&gt;]*&gt;\s*제목&lt;/td&gt;(.*?)\(\s*(\d{4})\s*년\s*\)&lt;/font[^&gt;]*&gt;</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;originaltitle&gt;\1&lt;/originaltitle&gt;" dest="4+">
+				<expression trim="1">&lt;td[^&gt;]*&gt;&lt;img[^&gt;]*&gt;\s*원제&lt;/td&gt;\s*&lt;td[^&gt;]*&gt;(.*?)&lt;/td&gt;</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;director&gt;\1&lt;/director&gt;" dest="4+">
+				<expression trim="1">&lt;td[^&gt;]*&gt;&lt;img[^&gt;]*&gt;\s*감독&lt;/td&gt;\s*&lt;td[^&gt;]*&gt;(.*?)&lt;/td&gt;</expression>
+			</RegExp>
+			<RegExp input="$$5" output="&lt;studio&gt;\1&lt;/studio&gt;" dest="4+">
+				<RegExp input="$$1" output="\1" dest="5">
+					<expression noclean="1">&lt;td[^&gt;]*&gt;&lt;img[^&gt;]*&gt;\s*제작&lt;/td&gt;\s*&lt;td[^&gt;]*&gt;(.*?)&lt;/td&gt;</expression>
+				</RegExp>
+				<expression repeat="yes" trim="1">([^|]+)</expression>
+			</RegExp>
+			<RegExp input="$$5" output="&lt;plot&gt;\1&lt;/plot&gt;" dest="4+">
+				<RegExp input="$$1" output="\1" dest="5">
+					<expression>&lt;div id="_article"&gt;(.*?)&lt;/div&gt;</expression>
+				</RegExp>
+				<expression>(\S.*\S)</expression>	<!-- trim doesn't remove [\t\n] -->
+			</RegExp>
+			<RegExp conditional="useSynopsis" input="$$1" output="&lt;url function=&quot;GetAnimeSynopsis&quot;&gt;http://bestanime.co.kr\1&lt;/url&gt;" dest="4+">
+				<expression>&lt;a href="([^"]*)"&gt;줄거리&lt;/a&gt;</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;genre&gt;애니메이션&lt;/genre&gt;" dest="4+">
+				<expression/>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;thumb&gt;\1&lt;/thumb&gt;" dest="4+">
+				<expression>&lt;img src="([^"]*)"[^&gt;]*width="160" weight="240"&gt;</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;fanart&gt;&lt;thumb&gt;\1&lt;/thumb&gt;&lt;/fanart&gt;" dest="4+">
+				<expression>&lt;img src="([^"]*)"[^&gt;]*width="160" weight="240"&gt;</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;url function=&quot;GetAnimeCast&quot;&gt;http://bestanime.co.kr\1&lt;/url&gt;" dest="4+">
+				<expression>&lt;a href="([^"]*)"&gt;등장인물&lt;/a&gt;</expression>
+			</RegExp>
+			<RegExp input="$$1" output="\1" dest="10">
+				<expression trim="1">&lt;td[^&gt;]*&gt;&lt;img[^&gt;]*&gt;\s*총화수&lt;/td&gt;\s*&lt;td&gt;\s*\d+\s*분\s*X\s*(\d+)\s*화\s*&lt;/td&gt;</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;episodeguide&gt;&lt;url&gt;http://127.0.0.1:8081/nulleplist?type=anime&amp;epnum=$$10&lt;/url&gt;&lt;/episodeguide&gt;" dest="4+">
+				<expression/>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetDetails>
+	<GetEpisodeList dest="8">
+		<RegExp input="$$1" output="\1" dest="8">
+			<expression noclean="1"/>
+		</RegExp>
+	</GetEpisodeList>
+	<GetEpisodeDetails dest="4">
+		<RegExp input="$$1" output="\1" dest="4">
+			<expression noclean="1"/>
+		</RegExp>
+	</GetEpisodeDetails>
+	<GetAnimeSynopsis dest="4">
+		<RegExp input="$$6" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
+			<RegExp input="$$5" output="&lt;plot&gt;\1&lt;/plot&gt;" dest="6">
+				<RegExp input="$$1" output="\1" dest="5">
+					<expression>&lt;div id="_article"&gt;&lt;img[^&gt;]*&gt;.*?설명\s*:(.*?)&lt;/div&gt;</expression>
+				</RegExp>
+				<expression>(\S.*\S)</expression>	<!-- trim doesn't remove [\t\n] -->
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetAnimeSynopsis>
+	<GetAnimeCast dest="4">
+		<RegExp input="$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
+			<RegExp input="$$1" output="&lt;actor&gt;&lt;name&gt;\2&lt;/name&gt;&lt;thumb&gt;\1&lt;/thumb&gt;&lt;/actor&gt;" dest="5">
+				<expression repeat="yes" trim="1,2">&lt;td class=view_cha01&gt;\s*&lt;img src="([^"]*)"[^&gt;]*&gt;.*?&lt;a name="\d+"&gt;([^&lt;]*)&lt;/a&gt;</expression>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetAnimeCast>
+</scraper>
