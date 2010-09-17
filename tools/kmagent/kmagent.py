@@ -10,7 +10,7 @@ sys.path.append(curdir)
 sys.path.append(curdir+sep+'lib')
 
 fetcher = None
-_ver = "$GlobalRev: 317 $"
+_ver = "$GlobalRev: 319 $"
 _portnum = 8081
 
 class MyHandler(BaseHTTPRequestHandler):
@@ -107,6 +107,38 @@ class MyHandler(BaseHTTPRequestHandler):
                 fetcher.ParsePhotoPage(fetcher.meta.m_id)
                 xml = "<details>%s</details>" % fetcher.meta.GetBackdropListXML()
                 self.wfile.write(xml)
+            print "done"
+            return
+        if up.path == "/nulleplist":
+            #type = param['type'][0]
+            #if type == 'anime':
+            epnum = int( param['epnum'][0] )
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/xml; charset=utf-8')
+            self.end_headers()
+
+            lines = []
+            lines.append("<episodeguide>")
+            for i in range(1,epnum+1):
+                lines.append("<episode>")
+                #lines.append("<title>제%d화</title>" % i)
+                lines.append("<season>1</season>")
+                lines.append("<epnum>%d</epnum>" % i)
+                lines.append("<url>http://127.0.0.1:%d/nullep?ep=%d</url>" % (self.server.server_port,i))
+                lines.append("</episode>")
+            lines.append("</episodeguide>")
+            xml = ''.join(lines)
+            self.wfile.write(xml)
+            print "done"
+            return
+        if up.path == "/nullep":
+            #type = param['type'][0]
+            #if type == 'anime':
+            ep = int( param['ep'][0] )
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/xml; charset=utf-8')
+            self.end_headers()
+            self.wfile.write( "<details><title>제%d화</title></details>" % ep )
             print "done"
             return
         return
