@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="anime.xsl"?>
+
+<anime-list>
+  <anime bestanimeid="2173" tvdbid="79839" defaulttvdbseason="1">
+    <name>아리아 1기</name>
+  </anime>
+  <anime bestanimeid="2366" tvdbid="79839" defaulttvdbseason="2">
+    <name>아리아 2기</name>
+  </anime>
+  <anime bestanimeid="2800" tvdbid="79839" defaulttvdbseason="3">
+    <name>아리아 3기</name>
+  </anime>
+  <anime bestanimeid="2695" tvdbid="79839" defaulttvdbseason="0">
+    <name>아리아 OVA</name>
+  </anime>
+  <anime bestanimeid="2942" tvdbid="82788" defaulttvdbseason="1">
+    <name>나츠메 우인장</name>
+  </anime>
+  <anime bestanimeid="3060" tvdbid="82788" defaulttvdbseason="2">
+    <name>속 나츠메 우인장</name>
+  </anime>
+  <anime bestanimeid="2881" tvdbid="79525" defaulttvdbseason="2">
+    <name>코드기어스 반역의 를르슈 R2</name>
+  </anime>
+  <anime bestanimeid="2989" tvdbid="83996" defaulttvdbseason="1">
+    <name>흑집사</name>
+  </anime>
+  <anime bestanimeid="3383" tvdbid="83996" defaulttvdbseason="2">
+    <name>흑집사 2</name>
+  </anime>
+</anime-list>
