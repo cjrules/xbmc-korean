@@ -2,6 +2,36 @@
 <?xml-stylesheet type="text/xsl" href="anime.xsl"?>
 
 <anime-list>
+  <anime bestanimeid="3209" tvdbid="80042" defaulttvdbseason="2">
+    <name>Darker than BLACK -유성의 제미니-</name>
+  </anime>
+  <anime bestanimeid="2813" tvdbid="78812" defaulttvdbseason="2">
+    <name>건슬링어걸 -일 테아트리노-</name>
+  </anime>
+  <anime bestanimeid="2942" tvdbid="82788" defaulttvdbseason="1">
+    <name>나츠메 우인장</name>
+  </anime>
+  <anime bestanimeid="3060" tvdbid="82788" defaulttvdbseason="2">
+    <name>속 나츠메 우인장</name>
+  </anime>
+  <anime bestanimeid="3186" tvdbid="82688" defaulttvdbseason="2">
+    <name>노기자카 하루카의 비밀 2기</name>
+  </anime>
+  <anime bestanimeid="3165" tvdbid="81178" defaulttvdbseason="2">
+    <name>늑대와 향신료 2기</name>
+  </anime>
+  <anime bestanimeid="3058" tvdbid="81744" defaulttvdbseason="2">
+    <name>드루아가의 탑 2기</name>
+  </anime>
+  <anime bestanimeid="3392" tvdbid="82807" defaulttvdbseason="2">
+    <name>세키레이 2기</name>
+  </anime>
+  <anime bestanimeid="3139" tvdbid="79414" defaulttvdbseason="2">
+    <name>스즈미야 하루히의 우울 2기</name>
+  </anime>
+  <anime bestanimeid="2661" tvdbid="79682" defaulttvdbseason="2">
+    <name>쓰르라미 울 적에 해답편</name>
+  </anime>
   <anime bestanimeid="2173" tvdbid="79839" defaulttvdbseason="1">
     <name>아리아 1기</name>
   </anime>
@@ -14,14 +44,20 @@
   <anime bestanimeid="2695" tvdbid="79839" defaulttvdbseason="0">
     <name>아리아 OVA</name>
   </anime>
-  <anime bestanimeid="2942" tvdbid="82788" defaulttvdbseason="1">
-    <name>나츠메 우인장</name>
+  <anime bestanimeid="2624" tvdbid="80979" defaulttvdbseason="2">
+    <name>채운국 이야기 2기</name>
   </anime>
-  <anime bestanimeid="3060" tvdbid="82788" defaulttvdbseason="2">
-    <name>속 나츠메 우인장</name>
+  <anime bestanimeid="3333" tvdbid="87501" defaulttvdbseason="2">
+    <name>케이온 2기</name>
   </anime>
   <anime bestanimeid="2881" tvdbid="79525" defaulttvdbseason="2">
     <name>코드기어스 반역의 를르슈 R2</name>
+  </anime>
+  <anime bestanimeid="3108" tvdbid="80554" defaulttvdbseason="2">
+    <name>하야테처럼 2기</name>
+  </anime>
+  <anime bestanimeid="2862" tvdbid="79283" defaulttvdbseason="2">
+    <name>홀릭 2기</name>
   </anime>
   <anime bestanimeid="2989" tvdbid="83996" defaulttvdbseason="1">
     <name>흑집사</name>
