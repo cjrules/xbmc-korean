@@ -23,6 +23,18 @@
   <anime bestanimeid="3058" tvdbid="81744" defaulttvdbseason="2">
     <name>드루아가의 탑 2기</name>
   </anime>
+  <anime bestanimeid="1499" tvdbid="79035" defaulttvdbseason="2">
+    <name>마호로매틱 - 더 아름다운 것</name>
+  </anime>
+  <anime bestanimeid="805" tvdbid="72025" defaulttvdbseason="2">
+    <name>성계의 전기</name>
+  </anime>
+  <anime bestanimeid="1260" tvdbid="72025" defaulttvdbseason="3">
+    <name>성계의 전기 II</name>
+  </anime>
+  <anime bestanimeid="2154" tvdbid="72025" defaulttvdbseason="4">
+    <name>성계의 전기 III</name>
+  </anime>
   <anime bestanimeid="3392" tvdbid="82807" defaulttvdbseason="2">
     <name>세키레이 2기</name>
   </anime>
@@ -31,6 +43,9 @@
   </anime>
   <anime bestanimeid="2661" tvdbid="79682" defaulttvdbseason="2">
     <name>쓰르라미 울 적에 해답편</name>
+  </anime>
+  <anime bestanimeid="3077" tvdbid="79682" defaulttvdbseason="3">
+    <name>쓰르라미 울 적에 례</name>
   </anime>
   <anime bestanimeid="2173" tvdbid="79839" defaulttvdbseason="1">
     <name>아리아 1기</name>
@@ -44,6 +59,21 @@
   <anime bestanimeid="2695" tvdbid="79839" defaulttvdbseason="0">
     <name>아리아 OVA</name>
   </anime>
+  <anime bestanimeid="2803" tvdbid="80327" defaulttvdbseason="2">
+    <name>속 안녕 절망선생</name>
+  </anime>
+  <anime bestanimeid="3159" tvdbid="80327" defaulttvdbseason="3">
+    <name>참 안녕 절망선생</name>
+  </anime>
+  <anime bestanimeid="2175" tvdbid="104991" defaulttvdbseason="1">
+    <name>지옥소녀</name>
+  </anime>
+  <anime bestanimeid="2624" tvdbid="104991" defaulttvdbseason="2">
+    <name>지옥소녀 2기</name>
+  </anime>
+  <anime bestanimeid="3003" tvdbid="104991" defaulttvdbseason="3">
+    <name>지옥소녀 3기</name>
+  </anime>
   <anime bestanimeid="2624" tvdbid="80979" defaulttvdbseason="2">
     <name>채운국 이야기 2기</name>
   </anime>
@@ -52,6 +82,12 @@
   </anime>
   <anime bestanimeid="2881" tvdbid="79525" defaulttvdbseason="2">
     <name>코드기어스 반역의 를르슈 R2</name>
+  </anime>
+  <anime bestanimeid="1677" tvdbid="78914" defaulttvdbseason="2">
+    <name>풀 메탈 패닉 후못후</name>
+  </anime>
+  <anime bestanimeid="2120" tvdbid="78914" defaulttvdbseason="3">
+    <name>풀 메탈 패닉 TSR</name>
   </anime>
   <anime bestanimeid="3108" tvdbid="80554" defaulttvdbseason="2">
     <name>하야테처럼 2기</name>
