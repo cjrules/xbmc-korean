@@ -13,15 +13,9 @@
 			<expression noclean="1"></expression>
 		</RegExp>
 	</GetSearchResults>
-	<GetDetails clearbuffers="no" dest="7">
+	<GetDetails dest="7">
 		<RegExp input="$$4" output="&lt;details&gt;\1&lt;/details&gt;" dest="7">
-			<RegExp input="$$2" output="\1" dest="18">
-				<expression>\?idx=(\d+)</expression>
-			</RegExp>
-			<RegExp input="$$18" output="&lt;id&gt;\1&lt;/id&gt;" dest="4">
-				<expression/>
-			</RegExp>
-			<RegExp input="$$1" output="&lt;title&gt;\1&lt;/title&gt;&lt;year&gt;\2&lt;/year&gt;" dest="4+">
+			<RegExp input="$$1" output="&lt;title&gt;\1&lt;/title&gt;&lt;year&gt;\2&lt;/year&gt;" dest="4">
 				<expression trim="1">&lt;td[^&gt;]*&gt;&lt;img[^&gt;]*&gt;\s*제목&lt;/td&gt;(.*?)\(\s*(\d{4})\s*년\s*\)&lt;/font[^&gt;]*&gt;</expression>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;originaltitle&gt;\1&lt;/originaltitle&gt;" dest="4+">
@@ -57,13 +51,16 @@
 				<expression>&lt;a href="([^"]*)"&gt;등장인물&lt;/a&gt;</expression>
 			</RegExp>
 			<!-- Poster -->
+			<RegExp input="$$3" output="&lt;url cache=&quot;bestanime-$$2.htm&quot; function=&quot;GetBestanimeId&quot;&gt;\1&lt;/url&gt;" dest="4+">
+				<expression/>
+			</RegExp>
 			<RegExp input="$$1" output="&lt;url function=&quot;GetTvdbIdByUrl&quot;&gt;http://www.thetvdb.com/api/GetSeries.php?seriesname=\1&amp;language=ko&lt;/url&gt;" dest="4+">
 				<expression trim="1" encode="1">&lt;td[^&gt;]*&gt;&lt;img[^&gt;]*&gt;\s*영제&lt;/td&gt;\s*&lt;td[^&gt;]*&gt;(.*?)&lt;/td&gt;</expression>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;url cache=&quot;anime-list.xml&quot; function=&quot;GetTvdbIdFromTbl&quot;&gt;http://xbmc-korean.googlecode.com/svn/trunk/addons/metadata.bestanime.co.kr/resources/anime-list.xml&lt;/url&gt;" dest="4+">
 				<expression/>
 			</RegExp>
-			<RegExp input="$$1" output="&lt;url cache=&quot;bestanime-$$18.htm&quot; function=&quot;GetTvdbDetails&quot;&gt;$$2&lt;/url&gt;" dest="4+">
+			<RegExp input="$$3" output="&lt;url cache=&quot;bestanime-$$2.htm&quot; function=&quot;GetTvdbDetails&quot;&gt;\1&lt;/url&gt;" dest="4+">
 				<expression/>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;thumb&gt;\1&lt;/thumb&gt;" dest="4+">
@@ -134,7 +131,7 @@
 			<expression noclean="1"/>
 		</RegExp>
 	</GetEpisodeDetails>
-	<GetAnimeSynopsis clearbuffers="no" dest="4">
+	<GetAnimeSynopsis dest="4">
 		<RegExp input="$$6" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
 			<RegExp input="$$5" output="&lt;plot&gt;\1&lt;/plot&gt;" dest="6">
 				<RegExp input="$$1" output="\1" dest="5">
@@ -145,7 +142,7 @@
 			<expression noclean="1"/>
 		</RegExp>
 	</GetAnimeSynopsis>
-	<GetAnimeCast clearbuffers="no" dest="4">
+	<GetAnimeCast dest="4">
 		<RegExp input="$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
 			<RegExp input="$$1" output="&lt;actor&gt;&lt;name&gt;\2&lt;/name&gt;&lt;thumb&gt;\1&lt;/thumb&gt;&lt;/actor&gt;" dest="5">
 				<expression repeat="yes" trim="1,2">&lt;td class=view_cha01&gt;\s*&lt;img src="([^"]*)"[^&gt;]*&gt;.*?&lt;a name="\d+"&gt;([^&lt;]*)&lt;/a&gt;</expression>
@@ -153,6 +150,17 @@
 			<expression noclean="1"/>
 		</RegExp>
 	</GetAnimeCast>
+	<GetBestanimeId clearbuffers="no" dest="4">
+		<RegExp input="$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
+			<RegExp input="$$1" output="\1" dest="18">
+				<expression>&lt;a href="/newAniData/aniInfo.php\?idx=(\d+)"&gt;</expression>
+			</RegExp>
+			<RegExp input="$$18" output="&lt;id&gt;\1&lt;/id&gt;" dest="5">
+				<expression/>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetBestanimeId>
 	<GetTvdbIdByUrl clearbuffers="no" dest="4">
 		<RegExp input="$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
 			<RegExp input="$$1" output="\1" dest="19">
@@ -168,15 +176,12 @@
 		</RegExp>
 	</GetTvdbIdByUrl>
 	<GetTvdbIdFromTbl clearbuffers="no" dest="4">
-		<RegExp input="$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
+		<RegExp input="$$5" output="&lt;details&gt;&lt;/details&gt;" dest="4">
 			<RegExp input="$$1" output="\1" dest="19">
 				<expression>&lt;anime\s+bestanimeid="$$18"\s+tvdbid="(\d+)"</expression>
 			</RegExp>
 			<RegExp input="$$1" output="\1" dest="20">
 				<expression>&lt;anime\s+bestanimeid="$$18"\s+tvdbid="$$19"\s+defaulttvdbseason="(\d+)"&gt;</expression>
-			</RegExp>
-			<RegExp input="$$1" output="&lt;id&gt;$$18&lt;/id&gt;" dest="5">
-				<expression/>
 			</RegExp>
 			<expression noclean="1"/>
 		</RegExp>
