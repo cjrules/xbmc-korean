@@ -1,3 +1,8 @@
+1.1.0
+
+Changes
+- Finally handle episode pages more than 5
+
 1.0.5
 
 Changes
