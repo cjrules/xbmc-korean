@@ -90,8 +90,22 @@
 	</GetDetails>
 	<GetEpisodeList dest="8">
 		<RegExp conditional="!useAgent" input="$$9" output="&lt;episodeguide&gt;\1&lt;/episodeguide&gt;" dest="8">
-			<RegExp input="$$1" output="&lt;url cache=&quot;daum-tvep-\2-1.htm&quot; function=&quot;GetEpisodePages&quot;&gt;http://movie.daum.net/tv/detail/episode.do?tvProgramId=\2&lt;/url&gt;" dest="9">
-				<expression>&lt;strong class="title_kor"\s*&gt;&lt;a href="([^"]*=)(\d+)"</expression>
+			<RegExp input="$$1" output="\1" dest="10">
+				<expression>&lt;strong class="title_kor"\s*&gt;&lt;a href="[^"]*=(\d+)"</expression>
+			</RegExp>
+			<!-- default for non-existing episode -->
+			<RegExp input="$$12" output="\1" dest="9">
+                                <RegExp input="$$10" output="24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1" dest="11">
+                                        <expression/>
+                                </RegExp>
+                                <RegExp input="$$11" output="&lt;episode&gt;&lt;url cache=&quot;daum-tvep-$$2-1.htm&quot;&gt;http://movie.daum.net/tv/detail/episode.do?tvProgramId=$$2&amp;page=$$10&amp;ep=\1&lt;/url&gt;&lt;epnum&gt;\1&lt;/epnum&gt;&lt;season&gt;1&lt;/season&gt;&lt;/episode&gt;" dest="12">
+                                        <expression repeat="yes">(\d+)</expression>
+                                </RegExp>
+				<expression noclean="1"/>
+			</RegExp>
+			<!-- correct episode page -->
+			<RegExp input="$$1" output="&lt;url cache=&quot;daum-tvep-$$10-1.htm&quot; function=&quot;GetEpisodePages&quot;&gt;http://movie.daum.net/tv/detail/episode.do?tvProgramId=\2&lt;/url&gt;" dest="9">
+				<expression>&lt;li id="itemId_\d+"</expression>
 			</RegExp>
 			<expression noclean="1"/>
 		</RegExp>
@@ -103,6 +117,9 @@
 		<RegExp conditional="!useAgent" input="$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
 			<RegExp input="$$3" output="\1" dest="9">
 				<expression>&amp;ep(?:isode)?=(\d+)</expression>
+			</RegExp>
+			<RegExp input="$$9" output="&lt;title&gt;제\1회&lt;/title&gt;" dest="5">
+				<expression/>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;title&gt;제$$9회&lt;/title&gt;&lt;aired&gt;\1&lt;/aired&gt;&lt;plot&gt;\2&lt;/plot&gt;" dest="5">
 				<expression trim="1,2">&lt;h5 class="fs12 em"&gt;.*?제$$9회&amp;nbsp;([^&lt;]*).*?&lt;/h5&gt;.*?&lt;p class="txt"&gt;\s*(.*?)&lt;/p&gt;</expression>
