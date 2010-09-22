@@ -14,6 +14,5 @@
     <summary lang="ko">베스트애니메 스크래퍼</summary>
     <description lang="en">Download Anime information from bestanime.co.kr</description>
     <description lang="ko">bestanime.co.kr에서 애니 정보 다운로드. 팬아트와 각회정보는 TheTVDB에서 가져옴.</description>
-
   </extension>
 </addon>
