@@ -1,3 +1,8 @@
+1.1.2
+
+Changes
+- No more &nbsp; in episode aired date
+
 1.1.1
 
 Changes
