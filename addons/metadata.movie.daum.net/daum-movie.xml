@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<scraper framework="1.1" date="2010-04-07" language="ko">
+<scraper framework="1.1" date="2010-09-25" language="ko">
 	<NfoUrl dest="3">
 		<RegExp input="$$1" output="&lt;url&gt;http://movie.daum.net/moviedetail/moviedetailMain.do?movieId=\1&lt;/url&gt;" dest="3">
 			<expression>movie\.daum\.net[^\?]*\?movieId=(\d*)</expression>
@@ -27,16 +27,16 @@
 				<expression/>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;title&gt;\1&lt;/title&gt;&lt;year&gt;\2&lt;/year&gt;" dest="8+">
-				<expression trim="1">"title_kor"\s*&gt;([^&lt;]+)&lt;/strong&gt;[^\(]*\(&lt;a [^&gt;]*&gt;(\d+)&lt;/a&gt;\).*?"title_AKA"\s*&gt;\s*&lt;span class="eng"&gt;\s*&lt;/span</expression>
+				<expression trim="1">"title_kor"[^&gt;]*&gt;([^&lt;]+)&lt;/strong&gt;[^\(]*\(&lt;a [^&gt;]*&gt;(\d+)&lt;/a&gt;\).*?"title_AKA"\s*&gt;\s*&lt;span class="eng"&gt;\s*&lt;/span</expression>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;title&gt;\1 (\3)&lt;/title&gt;&lt;year&gt;\2&lt;/year&gt;" dest="8+">
-				<expression trim="1,3">"title_kor"\s*&gt;([^&lt;]+)&lt;/strong&gt;[^\(]*\(&lt;a [^&gt;]*&gt;(\d+)&lt;/a&gt;\).*?"title_AKA"\s*&gt;\s*&lt;span class="eng"&gt;\s*(\S[^&lt;]*)&lt;/span</expression>
+				<expression trim="1,3">"title_kor"[^&gt;]*&gt;([^&lt;]+)&lt;/strong&gt;[^\(]*\(&lt;a [^&gt;]*&gt;(\d+)&lt;/a&gt;\).*?"title_AKA"\s*&gt;\s*&lt;span class="eng"&gt;\s*(\S[^&lt;]*)&lt;/span</expression>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;title&gt;\1 (\3)&lt;/title&gt;&lt;year&gt;\2&lt;/year&gt;" dest="8+">
-				<expression trim="1,3">"title_kor"\s*&gt;([^&lt;]+)&lt;/strong&gt;[^\(]*\(&lt;a [^&gt;]*&gt;(\d+)&lt;/a&gt;\).*?"title_AKA"\s*&gt;\s*(\S[^&lt;]*)&lt;span class="eng"&gt;\s*&lt;/span</expression>
+				<expression trim="1,3">"title_kor"[^&gt;]*&gt;([^&lt;]+)&lt;/strong&gt;[^\(]*\(&lt;a [^&gt;]*&gt;(\d+)&lt;/a&gt;\).*?"title_AKA"\s*&gt;\s*(\S[^&lt;]*)&lt;span class="eng"&gt;\s*&lt;/span</expression>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;title&gt;\1 (\3,\4)&lt;/title&gt;&lt;year&gt;\2&lt;/year&gt;" dest="8+">
-				<expression trim="1,3,4">"title_kor"\s*&gt;([^&lt;]+)&lt;/strong&gt;[^\(]*\(&lt;a [^&gt;]*&gt;(\d+)&lt;/a&gt;\).*?"title_AKA"\s*&gt;\s*(\S[^&lt;]*)&lt;span class="eng"&gt;\s*(\S[^&lt;]*)&lt;/span</expression>
+				<expression trim="1,3,4">"title_kor"[^&gt;]*&gt;([^&lt;]+)&lt;/strong&gt;[^\(]*\(&lt;a [^&gt;]*&gt;(\d+)&lt;/a&gt;\).*?"title_AKA"\s*&gt;\s*(\S[^&lt;]*)&lt;span class="eng"&gt;\s*(\S[^&lt;]*)&lt;/span</expression>
 			</RegExp>
 			<RegExp input="$$7" output="&lt;director&gt;\1&lt;/director&gt;" dest="8+">
 				<RegExp input="$$1" output="\1" dest="7">
