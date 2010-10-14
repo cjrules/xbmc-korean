@@ -46,7 +46,7 @@ def BROWSE(url):
                 continue
             vurl = match.group(1)
         img = re.compile('''<img src='([^']*)' ''').search(item).group(1)
-        title = re.compile('''<a href[^>]*><font class=big[^>]*>([^<]*)</font></a>''').search(item).group(1)
+        title = re.compile('''<a href[^>]*><font class=big[^>]*>(.*?)</font></a>''').search(item).group(1)
         if re.compile('<b>Free').search(item):
 	    title = "*"+title
         addDir(title.decode('euc-kr'),"http://www.dabdate.com/"+vurl,11,img)
