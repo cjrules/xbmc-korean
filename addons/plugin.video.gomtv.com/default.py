@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-  GomTV - Music Video
+    GomTV - Music Video
 """
 
-import urllib,re
+import urllib
 import xbmcaddon,xbmcplugin,xbmcgui
 
 # plugin constants
-__plugin__ = "GomTV"
+__plugin__ = "GomTV Mobile"
 __addonID__ = "plugin.video.gomtv.com"
 __url__ = "http://xbmc-korea.com/"
-__svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.gomtv.com"
+__svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.m.gomtv.com"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.6.0"
+__version__ = "0.7.0"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -20,409 +20,290 @@ import os
 BASE_RESOURCE_PATH = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'lib' ) )
 sys.path.append (BASE_RESOURCE_PATH)
 
-__settings__ = xbmcaddon.Addon( __addonID__ )
-__hq_first__ = __settings__.getSetting( "HQVideo" )=="true"
-__movie_backdoor__ = __settings__.getSetting( "MovieBackdoor" )=="true"
+__settings__ = xbmcaddon.Addon(id=__addonID__)
+getLS = __settings__.getLocalizedString
 
 menu_div = u"----------------------------------------------------"
+title_nextpage = u"%s>" % getLS(30100)
+title_prevpage = u"<%s" % getLS(30101)
 
 import xml.dom.minidom as xml
 user_chcfg = xbmc.translatePath( 'special://masterprofile/gomtv.xml' )
 if os.path.isfile(user_chcfg):
-  chset = xml.parse( user_chcfg )
+    chset = xml.parse( user_chcfg )
 else:
-  chset = xml.parse( os.path.join( os.getcwd(), 'resources', 'gomtv.xml' ) )
+    chset = xml.parse( os.path.join( os.getcwd(), 'resources', 'gomtv.xml' ) )
 
-from BeautifulSoup import BeautifulSoup, SoupStrainer
-from GomTvLib import GomTvLib
+from gomtv_scraper import gomtv_scraper
 
 #-----------------------------------------------------
+# Channel
 def CATEGORIES():
-  addDir(u"시청순위","-",13,"")
-  addDir(u"영화/드라마","-",18,"")
-  addDir(u"뮤직","-",15,"")
-  addDir(u"게임","-",12,"")
-  addDir(u"연예/오락","-",16,"")
-  addDir(u"뉴스/정보","-",17,"")
-  addDir(u"생중계","http://live.gomtv.com",21,"")
+    addDir(u"시청순위","-",13,"")
+    addDir(u"영화/드라마","-",106,"")
+    addDir(u"뮤직","-",15,"")
+    addDir(u"게임","-",12,"")
+    addDir(u"연예/오락","-",16,"")
+    addDir(u"뉴스/정보","-",17,"")
+    #addDir(u"생중계","http://live.gomtv.com",200,"")
 
 def CAT_MUSIC_CHART(main_url):
-  mchart_url = "http://www.gomtv.com/chart/index.gom?chart=%d"
-  addDir(u"실시간",mchart_url % 1,4,"")
-  addDir(u"주간",mchart_url % 3,4,"")
-  addDir(u"월간",mchart_url % 4,4,"")
-  addDir(u"주간1위모음",mchart_url % 6,4,"")
-  addDir(u"명예의전당",mchart_url % 5,4,"")
+    mchart_url = "http://www.gomtv.com/chart/index.gom?chart=%d"
+    addDir(u"실시간",mchart_url % 1,4,"")
+    addDir(u"주간",mchart_url % 3,4,"")
+    addDir(u"월간",mchart_url % 4,4,"")
+    addDir(u"주간1위모음",mchart_url % 6,4,"")
+    addDir(u"명예의전당",mchart_url % 5,4,"")
 
 def CAT_GAME(main_url):
-  thisch = chset.getElementsByTagName('game')[0]
-  shortcuts = thisch.getElementsByTagName('shortcut')
-  for subch in shortcuts:
-    name = subch.getElementsByTagName('name')[0].childNodes[0].data
-    number = subch.getElementsByTagName('number')[0].childNodes[0].data
-    addDir(name,"http://ch.gomtv.com/"+number,2,"")
-  if shortcuts:
-    addDir(menu_div,"",12,"")
-  for ch in thisch.getElementsByTagName('channel'):
-    name = ch.getElementsByTagName('name')[0].childNodes[0].data
-    number = ch.getElementsByTagName('number')[0].childNodes[0].data
-    addDir(name,"http://ch.gomtv.com/"+number,1,"")
+    thisch = chset.getElementsByTagName('game')[0]
+    shortcuts = thisch.getElementsByTagName('shortcut')
+    for subch in shortcuts:
+        name = subch.getElementsByTagName('name')[0].childNodes[0].data
+        number = subch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,2,"")
+    if shortcuts:
+        addDir(menu_div,"",12,"")
+    for ch in thisch.getElementsByTagName('channel'):
+        name = ch.getElementsByTagName('name')[0].childNodes[0].data
+        number = ch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,1,"")
 
 def CAT_MUSIC(main_url):
-  addDir(u"뮤직비디오 차트","-",11,"")
-  thisch = chset.getElementsByTagName('music')[0]
-  for subch in thisch.getElementsByTagName('shortcut'):
-    name = subch.getElementsByTagName('name')[0].childNodes[0].data
-    number = subch.getElementsByTagName('number')[0].childNodes[0].data
-    addDir(name,"http://ch.gomtv.com/"+number,2,"")
-  addDir(menu_div,"",15,"")
-  for ch in thisch.getElementsByTagName('channel'):
-    name = ch.getElementsByTagName('name')[0].childNodes[0].data
-    number = ch.getElementsByTagName('number')[0].childNodes[0].data
-    addDir(name,"http://ch.gomtv.com/"+number,1,"")
+    addDir(u"뮤직비디오 차트","-",11,"")
+    thisch = chset.getElementsByTagName('music')[0]
+    for subch in thisch.getElementsByTagName('shortcut'):
+        name = subch.getElementsByTagName('name')[0].childNodes[0].data
+        number = subch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,2,"")
+    addDir(menu_div,"",15,"")
+    for ch in thisch.getElementsByTagName('channel'):
+        name = ch.getElementsByTagName('name')[0].childNodes[0].data
+        number = ch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,1,"")
 
 def CAT_ETMNT(main_url):
-  thisch = chset.getElementsByTagName('entertainment')[0]
-  shortcuts = thisch.getElementsByTagName('shortcut')
-  for subch in shortcuts:
-    name = subch.getElementsByTagName('name')[0].childNodes[0].data
-    number = subch.getElementsByTagName('number')[0].childNodes[0].data
-    addDir(name,"http://ch.gomtv.com/"+number,2,"")
-  if shortcuts:
-    addDir(menu_div,"",16,"")
-  for ch in thisch.getElementsByTagName('channel'):
-    name = ch.getElementsByTagName('name')[0].childNodes[0].data
-    number = ch.getElementsByTagName('number')[0].childNodes[0].data
-    addDir(name,"http://ch.gomtv.com/"+number,1,"")
+    thisch = chset.getElementsByTagName('entertainment')[0]
+    shortcuts = thisch.getElementsByTagName('shortcut')
+    for subch in shortcuts:
+        name = subch.getElementsByTagName('name')[0].childNodes[0].data
+        number = subch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,2,"")
+    if shortcuts:
+        addDir(menu_div,"",16,"")
+    for ch in thisch.getElementsByTagName('channel'):
+        name = ch.getElementsByTagName('name')[0].childNodes[0].data
+        number = ch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,1,"")
 
 def CAT_INFO(main_url):
-  thisch = chset.getElementsByTagName('information')[0]
-  shortcuts = thisch.getElementsByTagName('shortcut')
-  for subch in shortcuts:
-    name = subch.getElementsByTagName('name')[0].childNodes[0].data
-    number = subch.getElementsByTagName('number')[0].childNodes[0].data
-    addDir(name,"http://ch.gomtv.com/"+number,2,"")
-  if shortcuts:
-    addDir(menu_div,"",17,"")
-  for ch in thisch.getElementsByTagName('channel'):
-    name = ch.getElementsByTagName('name')[0].childNodes[0].data
-    number = ch.getElementsByTagName('number')[0].childNodes[0].data
-    addDir(name,"http://ch.gomtv.com/"+number,1,"")
+    thisch = chset.getElementsByTagName('information')[0]
+    shortcuts = thisch.getElementsByTagName('shortcut')
+    for subch in shortcuts:
+        name = subch.getElementsByTagName('name')[0].childNodes[0].data
+        number = subch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,2,"")
+    if shortcuts:
+        addDir(menu_div,"",17,"")
+    for ch in thisch.getElementsByTagName('channel'):
+        name = ch.getElementsByTagName('name')[0].childNodes[0].data
+        number = ch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://ch.gomtv.com/"+number,1,"")
 
-def CAT_HOT(main_url):
-  link=urllib.urlopen( "http://www.gomtv.com/navigation/navigation.gom?navitype=3" )
-  strain = SoupStrainer('ul', {"class" : "lnb_list"})
-  soup = BeautifulSoup( link.read(), strain, fromEncoding="euc-kr" )
-  for item in soup.findAll('li', {"class" : "mbin_list_1"}):
-    ref = item.find('a')
-    addDir(ref.contents[0], "http://www.gomtv.com"+ref['href'], 14, "")
+def GOM_CH(url):
+    for item in gomtv_scraper().parseChPage(url):
+        addDir(item['name'], item['url'], 2, item['thumb'])
+
+def GOM_CH_SUB(url):
+    scraper = gomtv_scraper()
+    for item in scraper.parseSubChPage(url):
+        addDir(item['name'], item['url'], 10, item['thumb'])
+    if scraper.nextpage:
+        addDir(title_nextpage, scraper.nextpage, 2, '')
+
+def GOM_PROGRAM(url):
+    print "PROGRAM %s" % url
+    if __settings__.getSetting('fromMobile') == 'false':
+        hq = __settings__.getSetting('HQVideo') == 'true'
+        scraper = gomtv_scraper(hq)
+        from gomtv_downloader import gomtv_downloader
+        downloader = gomtv_downloader()
+    else:
+        from gomm_scraper import gomm_scraper
+        scraper = gomm_scraper()
+        from gomm_downloader import gomm_downloader
+        downloader = gomm_downloader()
+    for vidinfo in scraper.parseProgramPage(url):
+        vidurl = downloader.getPlayUrl( vidinfo )
+        addLink(vidinfo['title'], vidurl+"|Referer="+downloader.referer, '')
+
+#-----------------------------------                
+# Music & Most Watched Chart
+def MUSIC_CHART(url):
+    scraper = gomtv_scraper()
+    for item in scraper.parseMusicChartPage(url):
+        addDir(item['name'], item['url'], 10, item['thumb'])
+    if scraper.nextpage:
+        addDir(title_nextpage, scraper.nextpage, 2, '')
+    
+def CAT_HOT(url):
+    for item in gomtv_scraper().parseHotListPage( "http://www.gomtv.com/navigation/navigation.gom?navitype=3" ):
+        addDir(item['name'], item['url'], 14, item['thumb'])
 
 def CAT_HOT_SUB(main_url):
-  link=urllib.urlopen( main_url )
-  strain = SoupStrainer('ul', {"id" : "tab_menu"})
-  soup = BeautifulSoup( link.read(), strain, fromEncoding="euc-kr" )
-  for item in soup.findAll('li'):
-    ref = item.find('a')
-    addDir(ref.contents[0], "http://www.gomtv.com"+ref['href'], 3, "")
+    for item in gomtv_scraper().parseHotSubListPage(url):
+        addDir(item['name'], item['url'], 3, item['thumb'])
 
+def MOST_WATCHED(main_url):
+    scraper = gomtv_scraper()
+    for item in scraper.parseMostWatchedPage(url):
+        addDir(item['name'], item['url'], 10, item['thumb'])
+    if scraper.nextpage:
+        addDir(title_nextpage, scraper.nextpage, 2, '')
+
+#-----------------------------------                
+# Movie Chart
 def CAT_PREMIER_LIST(main_url):
-  mvlist_url = "http://movie.gomtv.com/list.gom?cateid=%d"
-  addDir(u"현재 상영작",mvlist_url % 65,5,"")
-  addDir(u"개봉 예정작",mvlist_url % 66,5,"")
-  addDir(u"개봉 미정작",mvlist_url % 67,5,"")
+    mvlist_url = "http://movie.gomtv.com/list.gom?cateid=%d"
+    addDir(u"현재 상영작",mvlist_url % 65,107,'')
+    addDir(u"개봉 예정작",mvlist_url % 66,107,'')
+    addDir(u"개봉 미정작",mvlist_url % 67,107,'')
 
 def CAT_MOVIE_HOTCLIP(main_url):
-  hot_url = "http://movie.gomtv.com/release/hotclip.gom"
-  addDir(u"전체보기",hot_url,6,"")
-  addDir(u"본예고",hot_url+"?flag=3000",6,"")
-  addDir(u"티저예고",hot_url+"?flag=3500",6,"")
-  addDir(u"메이킹",hot_url+"?flag=3100",6,"")
-  addDir(u"M/V",hot_url+"?flag=3200",6,"")
-  addDir(u"인터뷰",hot_url+"?flag=3600",6,"")
+    hot_url = "http://movie.gomtv.com/release/hotclip.gom"
+    addDir(u"전체보기",hot_url,101,'')
+    addDir(u"본예고",hot_url+"?flag=3000",101,'')
+    addDir(u"티저예고",hot_url+"?flag=3500",101,'')
+    addDir(u"메이킹",hot_url+"?flag=3100",101,'')
+    addDir(u"M/V",hot_url+"?flag=3200",101,'')
+    addDir(u"인터뷰",hot_url+"?flag=3600",101,'')
 
 def CAT_MOVIE(main_url):
-  addDir(u"무료영화","http://movie.gomtv.com/list.gom?cateid=4",7,"")
-  #addDir(u"무료드라마","http://movie.gomtv.com/list.gom?cateid=189",7,"")
-  addDir(u"에니메이션","http://movie.gomtv.com/list.gom?cateid=44",7,"")
-  addDir(u"극장개봉정보","-",19,"")
-  addDir(u"박스오피스","http://movie.gomtv.com/release/boxoffice.gom",8,"")
-  addDir(u"핫클립","-",20,"")
+    addDir(u"무료영화","http://movie.gomtv.com/list.gom?cateid=4",102,'')
+    #addDir(u"무료드라마","http://movie.gomtv.com/list.gom?cateid=189",102,'')
+    addDir(u"에니메이션","http://movie.gomtv.com/list.gom?cateid=44",102,'')
+    addDir(u"극장개봉정보","-",104,'')
+    addDir(u"박스오피스","http://movie.gomtv.com/release/boxoffice.gom",103,'')
+    addDir(u"핫클립","-",105,'')
 
-  thisch = chset and chset.getElementsByTagName('movie')[0]
-  for subch in thisch.getElementsByTagName('shortcut'):
-    name = subch.getElementsByTagName('name')[0].childNodes[0].data
-    number = subch.getElementsByTagName('number')[0].childNodes[0].data
-    addDir(name,"http://ch.gomtv.com/"+number,2,"")
-  channels = thisch.getElementsByTagName('channel')
-  if channels:
-    addDir(menu_div,"",18,"")
-  for ch in channels:
-    name = ch.getElementsByTagName('name')[0].childNodes[0].data
-    number = ch.getElementsByTagName('number')[0].childNodes[0].data
-    addDir(name,"http://ch.gomtv.com/"+number,1,"")
+    thisch = chset and chset.getElementsByTagName('movie')[0]
+    for subch in thisch.getElementsByTagName('shortcut'):
+        name = subch.getElementsByTagName('name')[0].childNodes[0].data
+        number = subch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name,"http://movie.gomtv.com/"+number,2,"")
+    channels = thisch.getElementsByTagName('id')
+    if channels:
+        addDir(menu_div,'',18,'')
+    for ch in channels:
+        name = ch.getElementsByTagName('name')[0].childNodes[0].data
+        number = ch.getElementsByTagName('number')[0].childNodes[0].data
+        addDir(name, "http://movie.gomtv.com/"+number, 110, '')
 
-def CAT_LIVE(main_url):
-  doc=urllib.urlopen( main_url ).read()
-  for ch,title in re.compile(r'<a href="/(\d+)">(.*?)</a>').findall(doc):
-    title = re.sub(r'<img class="vs".*?/>'," vs ",title)
-    addDir(title.decode("euc-kr"),"http://live.gomtv.com/"+ch,22,"")
+def MOVIE_LIST(url):
+    if url.endswith("cateid=44") or url.endswith("cateid=189"):
+        child_fid = 102  # sub table
+    else:
+        child_fid = 110  # movie page
 
-#-----------------------------------------------------
-def GOM_CH(main_url):
-  link=urllib.urlopen(main_url)
-  strain = SoupStrainer( "div", { "id" : "ch_menu" } )
-  soup = BeautifulSoup( link.read(), strain, fromEncoding="euc-kr" )
-  #-- channel menu
-  for item in soup.findAll('p'):
-    if item['class'] == 'mbin_tit':
-      if item.span and item.span.string:
-        addDir("----- %s -----" % item.span.string, '', 1, '')
-    elif item['class'] == 'mbin_list_s':
-      url = ''
-      for key,value in item.a.attrs:
-        if key == 'href':
-          url = value
-          break
-      if re.compile('http://ch.gomtv.com/\d+/\d+').match(url):
-        addDir(item.a.span.string, url, 2, '')
-
-def GOM_CH_SUB(main_url):
-  link=urllib.urlopen(main_url)
-  soup = BeautifulSoup( link.read(), fromEncoding="euc-kr" )
-  #-- item list
-  strain1 = SoupStrainer( "table", { "id" : "program_text_list" } )
-  strain2 = SoupStrainer( "dl", { "class" : "text_list" } )
-  list1 = soup.find(strain1).findAll(strain2)
-  for item in list1:
-    refs = item.findAll('a')
-    url = refs[0]['href']
-    thumb = refs[0].find('img')['src']
-    title = refs[1].contents[0].replace('&amp;','&')
-    addDir(title,url,10,thumb)
-  #-- next page
-  strain = SoupStrainer( "table", { "class" : "page" } )
-  curpg = soup.find(strain).find("td", {"class" : re.compile("^on")})
-  if curpg and curpg['class'] != "on last":
-    url = curpg.findNextSibling('td').find('a')['href']
-    addDir(u'다음 페이지>', url, 2, '')
-
-def MUSIC_CHART(main_url):
-  link=urllib.urlopen(main_url)
-  soup = BeautifulSoup( link.read(), fromEncoding="euc-kr" )
-  #-- item list
-  strain = SoupStrainer( "table", { "id" : "neo_wchart_list" } )
-  list = soup.find(strain).findAll('a')
-  while len(list) > 2:
-    ref = list.pop(0)
-    url = ref['href']
-    thumb = ref.find('img')['src']
-    ref = list.pop(0)
-    while ref.find('img'):
-      ref = list.pop(0)
-    title = ref.contents[0].replace('&amp;','&')
-    list.pop(0)
-    addDir(title,url,10,thumb)
-  #-- next page
-  strain = SoupStrainer( "div", { "class" : "neo_wchart_index" } )
-  thispage = soup.find(strain).find('a', {"class" : "cho_on"})
-  if thispage:
-    nextpage = thispage.findNextSibling('a')
-    if nextpage:
-      addDir(u'다음 페이지>', "http://www.gomtv.com"+nextpage['href'], 1, '')
+    from gomtv_movie_scraper import gommovie_scraper 
+    scraper = gommovie_scraper()
+    for item in scraper.parseMovieChartPage(url):
+        addDir(item['name'], item['url'], child_fid, item['thumb'])
+    if scraper.nextpage:
+        addDir(title_nextpage, scraper.nextpage, 102, '')
   
-def MOST_WATCHED(main_url):
-  link=urllib.urlopen(main_url)
-  soup = BeautifulSoup( link.read(), fromEncoding="euc-kr" )
-  #-- item list
-  for item in soup.findAll('dl', {"id" : "ranking_set"}):
-    #title/url
-    titblk = item.find('h6').find('a')
-    title = titblk.string
-    if title:
-      title = title.replace('&amp;','&')
-    url = titblk['href']
-    #thumb
-    thumb = ''
-    img = item.find('a',{"href" : url}).find('img')
-    if img: thumb = img['src']
-    addDir(title,url,10,thumb)
-  #-- next page
-  strain1 = SoupStrainer( "table", { "class" : "down_page" } )
-  strain2 = SoupStrainer( "td", { "class" : "on" } )
-  nextpage = soup.find(strain1).find(strain2).findNextSibling('td')
-  if nextpage is None: return
-  for attr,value in nextpage.attrs:
-    if attr == 'class' and value.endswith("nv"):
-      return
-  addDir(u'다음 페이지>', "http://www.gomtv.com"+nextpage.find('a')['href'], 3, '')
-
-def MOVIE_LIST(main_url):
-  if main_url.endswith("cateid=44") or main_url.endswith("cateid=189"):
-    child_fid = 7   # sub table
-  else:
-    child_fid = 10  # movie page
-  resp=urllib.urlopen(main_url)
-  strain = SoupStrainer( "div", { "id" : "sub_center" } )
-  soup = BeautifulSoup( resp.read(), strain, fromEncoding="euc-kr" )
-  #-- item list
-  strain = SoupStrainer( "div", { "id" : "program_poster" } )
-  for item in soup.find(strain).findAll("div", {"class" : "poster"}):
-    refs = item.findAll('a')
-    thumb = refs[0].find('img')['src']
-    url = refs[1]['href']
-    if url.startswith('/'):
-      url="http://movie.gomtv.com"+url
-    title = refs[1].string
-    addDir(title,url,child_fid,thumb)
-  #-- next page
-  strain = SoupStrainer( "div", { "id" : "page" } )
-  nextpage = soup.find(strain).find('span').findNextSibling('a')
-  if nextpage:
-    addDir(u'다음 페이지>', "http://movie.gomtv.com"+nextpage['href'], 7, '')
-  
-def PREMIER_LIST(main_url):
-  resp=urllib.urlopen(main_url)
-  strain = SoupStrainer( "div", { "id" : "sub_center2" } )
-  soup = BeautifulSoup( resp.read(), strain, fromEncoding="euc-kr" )
-  #-- item list
-  strain = SoupStrainer( "div", { "id" : "theater_poster" } )
-  for item in soup.find(strain).findAll("div", {"class" : "poster"}):
-    refs = item.findAll('a')
-    thumb = refs[0].find('img')['src']
-    url = refs[1]['href']
-    title = refs[1].string
-    addDir(title,url,10,thumb)
-  #-- next page
-  strain = SoupStrainer( "div", { "id" : "page" } )
-  nextpage = soup.find(strain).find('span').findNextSibling('a')
-  if nextpage:
-    addDir(u'다음 페이지>', "http://movie.gomtv.com"+nextpage['href'], 5, '')
+def PREMIER_LIST(url):
+    from gomtv_movie_scraper import gommovie_scraper 
+    scraper = gommovie_scraper()
+    for item in scraper.parsePremierPage(url):
+        addDir(item['name'], item['url'], 110, item['thumb'])
+    if scraper.nextpage:
+        addDir(title_nextpage, scraper.nextpage, 107, '')
   
 def MOVIE_HOTCLIP(main_url):
-  link=urllib.urlopen(main_url)
-  strain = SoupStrainer( "div", { "id" : "sub_center2" } )
-  soup = BeautifulSoup( link.read(), strain, fromEncoding="euc-kr" )
-  #-- item list
-  strain = SoupStrainer( "div", { "id" : "hotClip_list" } )
-  for item in soup.find(strain).findAll('dl'):
-    refs = item.findAll('a')
-    title = refs[0]['title']
-    thumb = refs[0].find('img')['src']
-    url = "http://tv.gomtv.com/cgi-bin/gox/gox_clip.cgi?dispid=%s&clipid=%s" % re.compile('/(\d*)/\d+/\d+/(\d+)').search( refs[1]['onclick'] ).group(1,2)
-    addDir(title,url,9,thumb)
-  #-- next page
-  strain = SoupStrainer( "div", { "id" : "page" } )
-  nextpage = soup.find(strain).find('span').findNextSibling('a')
-  if nextpage:
-    addDir(u'다음 페이지>', "http://movie.gomtv.com"+nextpage['href'], 6, '')
-  
+    from gomtv_movie_scraper import gommovie_scraper 
+    scraper = gommovie_scraper()
+    for item in scraper.parseHotClipPage(url):
+        addDir(item['name'], item['url'], 110, item['thumb'])
+    if scraper.nextpage:
+        addDir(title_nextpage, scraper.nextpage, 101, '')
+
 def MOVIE_BOXOFFICE(main_url):
-  link=urllib.urlopen(main_url)
-  strain = SoupStrainer( "div", { "id" : "boxOffice_poster" } )
-  soup = BeautifulSoup( link.read(), strain, fromEncoding="euc-kr" )
-  #-- item list
-  strain = SoupStrainer( "div", { "class" : "poster" } )
-  for item in soup.findAll(strain):
-    refs = item.findAll('a')
-    thumb = refs[0].find('img')['src']
-    url = refs[0]['href']
-    title = refs[1].string
-    addDir(title,url,10,thumb)
-  
-#-----------------------------------        
-def PLAY_VIDEO(url):
-  try:
-    vid_url = GomTvLib().GetVideoUrl(url)
-    xbmc.log( "clip_url=%s"%vid_url, xbmc.LOGDEBUG )
-    xbmc.Player().play(vid_url)
-  except:
-    xbmc.log( "error while parsing GomTV XML, "+url, xbmc.LOGERROR )
+    from gomtv_movie_scraper import gommovie_scraper 
+    scraper = gommovie_scraper()
+    for item in scraper.parseBoxOfficePage(url):
+        addDir(item['name'], item['url'], 110, item['thumb'])
+    if scraper.nextpage:
+        addDir(title_nextpage, scraper.nextpage, 103, '')
 
-def GOM_VIDEO(main_url):
-  gom = GomTvLib()
-  if main_url.startswith('http://movie.gomtv.com'):
-    xbmc.log( "GOM_VIDEO: %s" % main_url, xbmc.LOGDEBUG )
-    gom.ParseMoviePage(main_url)
-    match = re.compile('http://movie.gomtv.com/(\d+)/(\d+)').match(main_url)
-    if __movie_backdoor__ and match:
-      (dispid,vodid) = match.group(1,2)
-    else:
-      (dispid,vodid) = (gom.dispid, gom.vodid)
-    xbmc.log( "dispid=%s / vodid=%s" % (dispid,vodid), xbmc.LOGDEBUG )
+def GOM_MOVIE(main_url):
+    print "MOVIE %s" % main_url
     # free movie
-    mov_list = gom.GetMovieUrls(dispid,vodid)
+    if __settings__.getSetting('MovieBackdoor')=='true':
+        import re
+        match = re.compile('http://movie.gomtv.com/(\d+)/(\d+)').match(main_url)
+        vinfo = {'dispid':match.group(1), 'vodid':match.group(2)}
+    else:
+        from gomtv_movie_scraper import gommovie_scraper
+        scraper = gommovie_scraper()
+        vinfo = scraper.parseMoviePage(main_url)
+    from gommovie_downloader import gommovie_downloader
+    downloader = gommovie_downloader()
+    mov_list = downloader.getMovieUrls(vinfo)
     for title,url in mov_list:
-      addDir(title, url, 9, '')
+        addLink(title, url, '')
     # hotclip
-    hc_ids = gom.GetHotclipIds()
-    if mov_list and hc_ids:
-      addDir(menu_div, "", 10, '')  # divider
-    for clipid,title,thumb in hc_ids:
-      st_url = "http://tv.gomtv.com/cgi-bin/gox/gox_clip.cgi?dispid=%s&clipid=%s" % (dispid,clipid)
-      addDir(title, st_url, 9, thumb)
-  elif main_url.startswith('http://tv.gomtv.com') or main_url.startswith('http://ch.gomtv.com'):
-    xbmc.log( "GOM_TV: %s" % main_url, xbmc.LOGDEBUG )
-    gom.useHQFirst(__hq_first__)
-    gom.ParseChVideoPage(main_url)
-    for bjvid,title in gom.sub_list:
-      st_url = "http://tv.gomtv.com/cgi-bin/gox/gox_channel.cgi?isweb=0&chid=%s&pid=%s&bid=%s&bjvid=%s" % (gom.chid,gom.pid,gom.bid,bjvid)
-      addDir(title, st_url, 9, '')
-  else:
-    xbmc.log( "%s is not considered" % main_url, xbmc.LOGERROR )
+    if vinfo.has_key('misid'):
+        hotclip_url = "http://movie.gomtv.com/sub/detailAjax.gom?misid=%s&dispid=%s&vodid=%s&mtype=5" % \
+                                (vinfo['misid'], vinfo['dispid'], vinfo['vodid'])
+        hc_ids = scraper.parseMovieHotClipPage( hotclip_url )
+        if mov_list and hc_ids:
+            addDir(menu_div, '', 110, '')  # divider
+        for info in hc_ids:
+            url = "http://tv.gomtv.com/cgi-bin/gox/gox_clip.cgi?dispid=%s&clipid=%s" % (vinfo['dispid'],info['clipid'])
+            addLink(info['name'], url, info['thumb'])
 
-def GOM_LIVE(main_url):
-  gom = GomTvLib()
-  gom.ParseLivePage(main_url)
-  st_url = "http://tv.gomtv.com/cgi-bin/gox/gox_live.cgi?isweb=0&liveid=%s&chnum=%s" % (gom.liveid,gom.live_level)
-  xbmc.log( "GOM_LIVE: package = "+st_url, xbmc.LOGDEBUG )
-  vid_url = gom.GetLiveUrl(st_url)
-  vid_url = vid_url.encode("euc-kr")
-  xbmc.log( "GOM_LIVE: video = "+vid_url, xbmc.LOGDEBUG )
-  xbmc.Player().play(vid_url)
-
-#-----------------------------------        
+#-----------------------------------                
 def get_params():
-  param=[]
-  paramstring=sys.argv[2]
-  xbmc.log( "get_params() %s" % paramstring, xbmc.LOGDEBUG )
-  if len(paramstring)>=2:
-    params=sys.argv[2]
-    cleanedparams=params.replace('?','')
-    if (params[len(params)-1]=='/'):
-      params=params[0:len(params)-2]
-    pairsofparams=cleanedparams.split('&')
-    param={}
-    for i in range(len(pairsofparams)):
-      splitparams={}
-      splitparams=pairsofparams[i].split('=')
-      if (len(splitparams))==2:
-        param[splitparams[0]]=splitparams[1]
-            
-  return param
+    param=[]
+    paramstring=sys.argv[2]
+    xbmc.log( "get_params() %s" % paramstring, xbmc.LOGDEBUG )
+    if len(paramstring)>=2:
+        params=sys.argv[2]
+        cleanedparams=params.replace('?','')
+        if (params[len(params)-1]=='/'):
+            params=params[0:len(params)-2]
+        pairsofparams=cleanedparams.split('&')
+        param={}
+        for i in range(len(pairsofparams)):
+            splitparams={}
+            splitparams=pairsofparams[i].split('=')
+            if (len(splitparams))==2:
+                param[splitparams[0]]=splitparams[1]
+                        
+    return param
 
 def addLink(name,url,iconimage):
-  ok=True
-  name=name.encode("utf-8")
-  try:
-    xbmc.log( "addLink(%s,%s)" % (name, url), xbmc.LOGDEBUG )
-  except:
-    pass
-  liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
-  liz.setInfo( type="Video", infoLabels={ "Title": name } )
-  ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=url,listitem=liz)
-  return ok
+    ok=True
+    name=name.encode("utf-8")
+    try: xbmc.log( "addLink(%s,%s)" % (name, url), xbmc.LOGDEBUG )
+    except: pass
+    liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
+    liz.setInfo( type="Video", infoLabels={ "Title": name } )
+    ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=url,listitem=liz)
+    return ok
 
 def addDir(name,url,mode,iconimage):
-  name=name.encode("utf-8")
-  u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
-  ok=True
-  liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
-  liz.setInfo( type="Video", infoLabels={ "Title": name } )
-  ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
-  xbmc.log( "addDir(%s)" % u, xbmc.LOGDEBUG )
-  return ok
-        
-#-----------------------------------        
+    name=name.encode("utf-8")
+    u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
+    ok=True
+    liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
+    liz.setInfo( type="Video", infoLabels={ "Title": name } )
+    ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
+    xbmc.log( "addDir(%s)" % u, xbmc.LOGDEBUG )
+    return ok
+                
+#-----------------------------------                
 params=get_params()
 url=None
 name=None
@@ -440,52 +321,49 @@ xbmc.log( "URL : "+str(url), xbmc.LOGINFO)
 xbmc.log( "Name: "+str(name), xbmc.LOGINFO)
 
 if mode==None or url==None or len(url)<1:
-  CATEGORIES()
+    CATEGORIES()
+# Channel
 elif mode==1:
-  GOM_CH(url)
+    GOM_CH(url)
 elif mode==2:
-  GOM_CH_SUB(url)
+    GOM_CH_SUB(url)
 elif mode==3:
-  MOST_WATCHED(url)
+    MOST_WATCHED(url)
 elif mode==4:
-  MUSIC_CHART(url)
-elif mode==5:
-  PREMIER_LIST(url)
-elif mode==6:
-  MOVIE_HOTCLIP(url)
-elif mode==7:
-  MOVIE_LIST(url)
-elif mode==8:
-  MOVIE_BOXOFFICE(url)
-elif mode==9:
-  PLAY_VIDEO(url)
+    MUSIC_CHART(url)
 elif mode==10:
-  GOM_VIDEO(url)
+    GOM_PROGRAM(url)
 elif mode==11:
-  CAT_MUSIC_CHART(url)
+    CAT_MUSIC_CHART(url)
 elif mode==12:
-  CAT_GAME(url)
+    CAT_GAME(url)
 elif mode==13:
-  CAT_HOT(url)
+    CAT_HOT(url)
 elif mode==14:
-  CAT_HOT_SUB(url)
+    CAT_HOT_SUB(url)
 elif mode==15:
-  CAT_MUSIC(url)
+    CAT_MUSIC(url)
 elif mode==16:
-  CAT_ETMNT(url)
+    CAT_ETMNT(url)
 elif mode==17:
-  CAT_INFO(url)
-elif mode==18:
-  CAT_MOVIE(url)
-elif mode==19:
-  CAT_PREMIER_LIST(url)
-elif mode==20:
-  CAT_MOVIE_HOTCLIP(url)
-elif mode==21:
-  CAT_LIVE(url)
-elif mode==22:
-  GOM_LIVE(url)
+    CAT_INFO(url)
+# Movie
+elif mode==101:
+    MOVIE_HOTCLIP(url)
+elif mode==102:
+    MOVIE_LIST(url)
+elif mode==103:
+    MOVIE_BOXOFFICE(url)
+elif mode==104:
+    CAT_PREMIER_LIST(url)
+elif mode==105:
+    CAT_MOVIE_HOTCLIP(url)
+elif mode==106:
+    CAT_MOVIE(url)
+elif mode==107:
+    PREMIER_LIST(url)
+elif mode==110:
+    GOM_MOVIE(url)
 
-if mode != 9 and mode != 22:
-  xbmcplugin.endOfDirectory(int(sys.argv[1]))
-# vim: softtabstop=2 shiftwidth=2 expandtab
+xbmcplugin.endOfDirectory(int(sys.argv[1]))
+# vim: softtabstop=4 shiftwidth=4 expandtab

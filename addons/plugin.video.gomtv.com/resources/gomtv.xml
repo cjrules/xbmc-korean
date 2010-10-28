@@ -86,8 +86,12 @@
       <number>4999</number>
     </channel>
     <shortcut>
-      <name>스타크래프트II OPEN Season1</name>
+      <name>스타크래프트II OPEN Season 1</name>
       <number>427/28024</number>
+    </shortcut>
+    <shortcut>
+      <name>스타크래프트II OPEN Season 2</name>
+      <number>427/28099</number>
     </shortcut>
   </game>
   <entertainment>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <string id="30000">GomTV</string>
+    
+    <!--Categories-->
+    <string id="30001">General</string>
+    <string id="30002">Advanced</string>
+    
+    <!--Settings-->
+    <string id="30020">Video from Mobile site</string>
+    <string id="30021">Prefer HQ Video</string>
+    <string id="30022">Skip Login to Play Movie</string>
+
+    <!--NavItems-->
+    <string id="30100">Next</string>
+    <string id="30101">Previous</string>
+    
+</strings>

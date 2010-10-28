@@ -1,3 +1,9 @@
+0.7.0
+
+Changes
+- change internal structure
+- mobile mode is added to watch Star2 game league
+
 0.6.0
 
 Changes
