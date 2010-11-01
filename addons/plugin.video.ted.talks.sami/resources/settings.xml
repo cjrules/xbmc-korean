@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <!--Login-->
+    <category label="30075">
+        <setting id="username" type="text" label="30070" default="" />
+        <setting id="password" type="text" option="hidden" label="30071" default="" />
+    </category>
+    <!--Download-->
+    <category label="30076">
+        <setting id="downloadMode" type="bool" default="true" label="30074" />
+        <setting id="downloadPath" type="folder" source="files" enable="eq(-1,false)" option="writeable" label="30073" />
+    </category>    
+    <!--Download-->
+    <category label="30077">
+        <setting id="subtitleEnable" type="bool" default="false" label="30078" />
+        <setting id="subtitleLang" type="labelenum" enable="eq(-1,true)" label="30079" values="Afrikaans|Albanian|Arabic|Armenian|Bulgarian|Catalan|Chinese (Simplified)|Chinese (Traditional)|Croatian|Czech|Danish|Dutch|English|Estonian|Finnish|French (France)|German|Greek|Hebrew|Hindi|Hungarian|Indonesian|Italian|Japanese|Korean|Lithuanian|Macedonian|Norwegian|Persian (Farsi)|Polish|Portugese (Brazil)|Portugese (Portugal)|Romanian|Russian|Serbian|Slovak|Spanish|Swedish|Tamil|Thani|Turkish|Ukrainian|Vietnamese" default="English" />
+        <setting id="genEngSubtitle" type="bool" enable="eq(-2,true)" default="false" label="30080" />
+    </category>    
+</settings>

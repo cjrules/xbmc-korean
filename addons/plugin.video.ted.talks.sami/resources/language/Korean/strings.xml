@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <string id="30000">TED 강연</string>
+    
+    <!--Categories-->
+    <string id="30001">새로운 강연</string>
+    <string id="30002">연사</string>
+    <string id="30003">주제</string>
+    <string id="30004">검색</string>
+    <string id="30005">즐겨찾기</string>
+    
+    <!--NavItems-->
+    <string id="30020"> 다음</string>
+    <string id="30021"> 이전</string>
+    
+    <!--Search-->
+    <string id="30034">TED.com에서 강연 검색</string>
+    <!--Favorites-->
+    <string id="30035">자주보는 강연</string>
+    
+    <!--Errors-->
+    <string id="30050">로그온 오류</string>
+    <string id="30051">사용자를 인증할 수 없습니다</string>
+    
+    <!--Settings-->
+    <string id="30075">로그인 정보</string>
+    <string id="30070">사용자</string>
+    <string id="30071">암호</string>
+    <string id="30076">내려받기</string>
+    <string id="30073">내려받기 폴더</string>
+    <string id="30074">항상 내려받기 위치 묻기</string>
+    <string id="30077">자막</string>
+    <string id="30078">사용</string>
+    <string id="30079">언어</string>
+    <string id="30080">영어자막 선택가능</string>
+    
+    <!--Context Menu-->
+    <!--<string id="13347">Queue item</string>from system-->
+    <string id="30090">TED.com 즐겨찾기에 추가</string>
+    <string id="30091">즐겨찾기에 추가 성공</string>
+    <string id="30092">즐겨찾기에 추가 실패</string>
+    <string id="30093">TED.com 즐겨찾기에서 삭제</string>
+    <string id="30094">즐겨찾기에서 삭제 성공</string>
+    <string id="30095">즐겨찾기에서 삭제 실패</string>
+    <string id="30096">비디오 내려받기</string>
+</strings>
