@@ -15,7 +15,7 @@ class GetFLV:
     if url.find('tudou')>0:
       req = urllib2.Request("http://www.flvcd.com/parse.php?kw="+url)
       response=urllib2.urlopen(req);link=response.read();response.close()
-      match=re.search('<a href\s*=\s*"(.+?)" target="_blank" ', link)
+      match=re.search('<a href\s*=\s*"(http://\d.+?)" target="_blank"', link)
       if match:
         flv=match.group(1).replace('&amp;','&')
         flv=flv.replace('?1','?8')        #trick to enable on-the-fly streaming
@@ -28,7 +28,7 @@ class GetFLV:
         response=urllib2.urlopen(req);url=response.geturl();response.close()
       req = urllib2.Request("http://www.flvcd.com/parse.php?kw="+url)
       response=urllib2.urlopen(req);link=response.read();response.close()
-      match=re.search('<a href\s*=\s*"(.+?)" target="_blank" ', link)
+      match=re.search('<a href\s*=\s*"(http://\d.+?)" target="_blank"', link)
       if match:
         #obtain redirected url
         req = urllib2.Request(match.group(1))
@@ -38,7 +38,7 @@ class GetFLV:
     elif url.find('youku')>0:
       req = urllib2.Request("http://www.flvcd.com/parse.php?kw="+url)
       response=urllib2.urlopen(req);link=response.read();response.close()
-      return re.compile('<a href\s*=\s*"(.+?)" target="_blank" ').findall(link)
+      return re.compile('<a href\s*=\s*"(http://\d.+?)" target="_blank"').findall(link)
     elif url.find('veoh')>0:
       #match=re.search(r'http://www.veoh.com/videos/(.+)',url)
       match=re.search('permalinkId=(\w+)&',url)
