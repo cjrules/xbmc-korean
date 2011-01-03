@@ -115,8 +115,8 @@
 	</GetPlot>
 	<GetNAVERPoster dest="4">
 		<RegExp input="$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
-			<RegExp input="$$1" output="&lt;url function=&quot;GetNAVERPosterPage&quot;&gt;http://movie.naver.com/\1&lt;/url&gt;" dest="5+">
-				<expression repeat="yes">&lt;a href="([^"]*&amp;amp;page=\d+)"\s*&gt;</expression>
+			<RegExp input="$$1" output="&lt;url function=&quot;GetNAVERPosterPage&quot;&gt;http://movie.naver.com\1&lt;/url&gt;" dest="5+">
+				<expression repeat="yes">&lt;a href="([^"]*&amp;page=\d+)"\s*&gt;</expression>
 			</RegExp>
 			<expression noclean="1"/>
 		</RegExp>
@@ -132,10 +132,10 @@
 	<GetNAVERFanart clearbuffers="no" dest="4">
 		<RegExp input="$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
 			<RegExp input="$$6" output="&lt;url function=&quot;GetNAVERFanartPage2&quot;&gt;http://movie.naver.com\1&lt;/url&gt;" dest="5">
-				<expression repeat="yes">&lt;a href="([^"]*&amp;amp;page=\d+)"\s*&gt;\d+&lt;/a&gt;</expression>
+				<expression repeat="yes">&lt;a href="([^"]*&amp;page=\d+)"\s*&gt;\d+&lt;/a&gt;</expression>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;url cache=&quot;naver-photo-\2.htm&quot; function=&quot;GetNAVERFanartPage&quot;&gt;http://movie.naver.com\1\2&lt;/url&gt;" dest="5+">
-				<expression>&lt;a href="(/movie/bi/mi/photo.nhn\?code=)(\d+)&amp;amp;page=1"\s*&gt;</expression>
+				<expression>&lt;a href="(/movie/bi/mi/photo.nhn\?code=)(\d+)&amp;page=1"\s*&gt;</expression>
 			</RegExp>
 			<expression noclean="1"/>
 		</RegExp>
