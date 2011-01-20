@@ -1,7 +1,6 @@
 import os
 import re
 import sys
-import md5
 import glob
 import zipfile
 import shutil
@@ -58,7 +57,7 @@ def addons_path_check():
 def addons_xml_updater(addons_repo):
     generate_addons_xml(addons_repo)
     md5_addon_package(addons_repo)
-    generate_md5_file(addons_repo)
+    md5_addons_xml(addons_repo)
 
 # Get addon list from the addon source path and update them all
 def addons_updater(addons_repo, addons_path):
@@ -203,31 +202,29 @@ def md5_addon_package(addons_repo):
     for addon in addons:
         try:
             addon_zfilename = glob.glob(os.path.join( addons_repo, addon, '*.zip' ))
-            addon_zfile = open(addon_zfilename[0],'rb')
-            addon_md5 = md5_for_file(addon_zfile)
-            open(addon_zfilename[0] + '.md5', "w" ).write(addon_md5)
+            md5_file(addon_zfilename[0])
         except:
             print ("Problems Found. skipping md5 file for ", addon)
 
-def md5_for_file(f, block_size=1024):
-    md5 = hashlib.md5()
-    while True:
-        data = f.read(block_size)
-        if not data:
-            break
-        md5.update(data)
-    return md5.hexdigest()
-
 # Generate md5 file for addons.xml
-def generate_md5_file(addons_repo):
+def md5_addons_xml(addons_repo):
     try:
-        # create a new md5 hash
-        m = md5.new(open(os.path.join(addons_repo, "addons.xml")).read()).hexdigest()
-        # save file
-        open(os.path.join(addons_repo, 'addons.xml.md5'), "w" ).write(m)
+        addons_xml = os.path.join(addons_repo, "addons.xml")
+        md5_file(addons_xml)
         print ("Sucessfuly generate addons.xml.md5 for addons.xml")
     except:
         print ("An error occurred creating addons.xml.md5 file!\n")
+
+# Generate filename.md5
+def md5_file(fname):
+    md5 = hashlib.md5()
+    f = open(fname,'rb')
+    while True:
+        data = f.read(1024)
+        if not data:
+            break
+        md5.update(data)
+    open(fname + '.md5', "w" ).write(md5.hexdigest())
 
 # nice looking xml for human. took it from elementtree author's blog
 def indent(elem, level=0):
