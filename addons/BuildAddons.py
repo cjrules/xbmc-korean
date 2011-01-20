@@ -7,6 +7,8 @@ import zipfile
 import shutil
 from xml.etree import ElementTree
 import Tkinter, tkFileDialog
+import hashlib
+
 
 #--------------------------------------------------------------------------------------------------
 # Please set the paths for repository and source addon
@@ -201,12 +203,21 @@ def md5_addon_package(addons_repo):
     for addon in addons:
         try:
             addon_zfilename = glob.glob(os.path.join( addons_repo, addon, '*.zip' ))
-            addon_zfile = open(addon_zfilename[0]).read(1024)
-            addon_md5 = md5.new(addon_zfile).hexdigest()
+            addon_zfile = open(addon_zfilename[0],'rb')
+            addon_md5 = md5_for_file(addon_zfile)
             open(addon_zfilename[0] + '.md5', "w" ).write(addon_md5)
         except:
             print ("Problems Found. skipping md5 file for ", addon)
-            
+
+def md5_for_file(f, block_size=1024):
+    md5 = hashlib.md5()
+    while True:
+        data = f.read(block_size)
+        if not data:
+            break
+        md5.update(data)
+    return md5.hexdigest()
+
 # Generate md5 file for addons.xml
 def generate_md5_file(addons_repo):
     try:
