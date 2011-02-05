@@ -19,7 +19,6 @@ class MovieFetcher:
 		self.main_url	 = self.base_url+"/movie/bi/mi/basic.nhn?code=%s"
 		self.details_url = self.base_url+"/movie/bi/mi/detail.nhn?code=%s"
 		self.photo_url   = self.base_url+"/movie/bi/mi/photo.nhn?code=%s"
-		self.striptags   = re.compile("<[^>]*>")
 		self.meta = MovieMetaData()
 
 	# search with title
@@ -30,7 +29,7 @@ class MovieFetcher:
 		for item in soup.find("ul", {"class" : re.compile("^search_list_1")}).findAll('li'):
 			ref = item.find('a')
 			id = re.compile("code=(\d+)").search( ref['href'] ).group(1)
-			title = self.striptags.sub('',ref.renderContents())
+			title = ''.join(ref.findAll(text=True))
 			title = unicode(title,'utf-8')
 			result.append( (id,title) )
 		return result

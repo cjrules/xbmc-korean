@@ -24,7 +24,6 @@ class SeriesFetcher:
 		self.photo_url   = self.base_url+"/tv/detail/photo/list.do?tvProgramId=%s&order=recommend"
 		self.episode_base_url = self.base_url+"/tv/detail/episode.do"
 		self.episode_url = self.episode_base_url+"?tvProgramId=%s"
-		self.striptags = re.compile('<.*?>',re.U)
 		self.meta = SeriesMetaData()
 
 	# search with title
@@ -58,14 +57,17 @@ class SeriesFetcher:
 			self.meta.s_aka = aka.contents and aka.contents[0]
 
 		self.meta.s_genres = []
+		self.meta.s_genres.append( soup.find("p",{"class":"cateNavi fs11"}).findAll("a")[1].string.strip() )
+
 		sect = soup.find("dl",{"class":"cu mainInfo"}).find("span",{"class" : "baseinfo"})
-		pts = self.striptags.sub('',sect.renderContents()).split('|')
+		pts = ''.join(sect.findAll(text=True)).split('|')
 		self.meta.s_network = pts[0].strip()
+		self.meta.s_aired = pts[2][:pts[2].find('~')].strip()
 
 		self.meta.s_rating = float( soup.find("span",{"class":"star_big pink"}).em.string )
 		self.meta.s_poster = re.compile('C\d{3}x\d{3}').sub('image', soup.find('p', {"class" : "poster"}).a.img['src'])
-		self.meta.s_plot = self.striptags.sub('', soup.find("div",{"id":"synopsis"}).find("div",{"class":"txt"}).renderContents()).strip()
-		self.meta.s_plot = unicode(self.meta.s_plot.replace("&#39;","'"),'utf-8')
+		self.meta.s_plot = ''.join(soup.find("div",{"id":"synopsis"}).find("div",{"class":"txt"}).findAll(text=True)).strip()
+		self.meta.s_plot = self.meta.s_plot.replace("&#39;","'").replace("\r","")
 
 		self.meta.s_id = id
 		self.meta.s_directors = []
@@ -129,6 +131,8 @@ class SeriesFetcher:
 		soup = BeautifulSoup(resp.read(),strain,fromEncoding="utf-8")
 		for item in soup.find("table",{"id" : "tPicTop"}).findAll("td"):
 			img = item.find('img')['src']
+			if img.endswith("blank.gif"):
+				continue
 			self.meta.s_backdrop_list.append( (img, re.sub('S\d{3}x\d{3}', 'image', img)) )
 
 	#------------------------------------------
@@ -166,10 +170,10 @@ class SeriesFetcher:
 			if tit_stm:
 				ep_title = tit_stm.string
 				ep_plot = tit_stm.nextSibling.nextSibling.nextSibling
-				plot = unicode( self.striptags.sub('',str(ep_plot)).strip(), 'utf-8' )
+				plot = ''.join(ep_plot.findAll(text=True)).strip()
 			else:
-				plot = unicode( self.striptags.sub('',plot_blk.renderContents()).strip(), 'utf-8' )
-			self.meta.EpisodeInfo[(self.Season,int(epnum))] = (ep_title, " ".join(titles[1:]), plot)
+				plot = ''.join(plot_blk.findAll(text=True)).strip()
+			self.meta.EpisodeInfo[(self.Season,int(epnum))] = (ep_title, " ".join(titles[1:]), plot.replace("\r",""))
 			#print "%s:%s:%s" % (epnum,titles[0]," ".join(titles[1:]))
 
 if __name__ == '__main__':

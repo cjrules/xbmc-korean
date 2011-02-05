@@ -20,7 +20,6 @@ class MovieFetcher:
         self.story_url   = self.base_url+"/moviedetail/moviedetailStory.do?movieId=%s"
         self.cast_url    = self.base_url+"/moviedetail/moviedetailCastCrew.do?movieId=%s"
         self.photo_url   = self.base_url+"/moviedetail/moviedetailPhotoList.do?movieId=%s&order=recommend"
-        self.striptags   = re.compile("<[^>]*>")
         self.meta = MovieMetaData()
 
     # search with title
@@ -30,7 +29,7 @@ class MovieFetcher:
         result = []
 	for item in soup.findAll("span",{"class" : "fl srch"}):
 	    id = re.compile("movieId=(\d+)").search(item.find('a')['href']).group(1)
-	    title = item.a.b.string
+	    title = ''.join(item.a.findAll(text=True))
             result.append( (id,title) )
         return result
 
@@ -94,9 +93,8 @@ class MovieFetcher:
         resp = urllib.urlopen( self.story_url % id );
 	strain = SoupStrainer("div",{"id" : "synopsis"})
 	soup = BeautifulSoup(resp.read(),strain,fromEncoding="utf-8")
-	plot = soup.find('div',{"class" : "txt"}).renderContents()
-	plot = unicode(plot,'utf-8')
-        self.meta.m_plot = self.striptags.sub('',plot).strip().replace('\r','')
+	plot = ''.join(soup.find('div',{"class" : "txt"}).findAll(text=True))
+        self.meta.m_plot = plot.strip().replace('\r','')
 
     def ParseCastPage(self,id):
         resp = urllib.urlopen( self.cast_url % id );

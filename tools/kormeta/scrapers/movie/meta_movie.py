@@ -76,7 +76,7 @@ class MovieMetaData:
 		lines.append(u"  <SortTitle>%s</SortTitle>" % self.m_title)
 		lines.append(u"  <ProductionYear>%s</ProductionYear>" % self.m_year)
 		lines.append(u"  <MPAARating>%s</MPAARating>" % self.m_cert)
-		lines.append(u"  <RunningTime>%d</RunningTime>" % self.m_runtime)
+		lines.append(u"  <RunningTime>%s</RunningTime>" % self.m_runtime)
 		lines.append(u"  <Persons>")
 		# Actors
 		for name,role in self.m_actors:
@@ -103,7 +103,7 @@ class MovieMetaData:
 		lines.append(u"</Title>")
 
 		f = open(filename,'w')
-		f.write( '\n'.join(lines) )
+		f.write( '\n'.join(lines).encode('utf-8') )
 		f.close()
 
 	def SavePoster(self, filepath): 

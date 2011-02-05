@@ -5,6 +5,9 @@ import os,sys
 import Tkinter,tkFileDialog
 from Tkconstants import *
 
+#from scrapers.movie.naver import MovieFetcher
+from scrapers.movie.daum import MovieFetcher
+
 class MovieCommand:
 	def __init__(self,parent):
 		self.dir_opt = options = {}
@@ -33,6 +36,7 @@ class MovieCommand:
 		if path is '':
 			return
 		if sys.platform is 'darwin':
+			import unicodedata
 			path = unicodedata.normalize('NFC', path)
 		self.dir_opt['initialdir'] = path		# remember previous dir
 		self.pathVar.set( path )
@@ -43,8 +47,7 @@ class MovieCommand:
 		self.tb.insert(END, "Movie path: %s\n" % self.videoPath)
 		self.tb.insert(END, "Movie name: %s\n" % self.videoTitle)
 
-		from scrapers.movie.naver import MovieFetcher as MovieFetcher
-		self.tb.insert(END, "Start searching NAVER...\n")
+		self.tb.insert(END, "Start searching %s...\n" % MovieFetcher.site)
 		movies = MovieFetcher().Search( self.videoTitle )
 		self.tb.insert(END, "%d movies found...\n" % len(movies), 'i')
 		if movies:
@@ -71,7 +74,6 @@ class MovieCommand:
 		if self.id is None:
 			return
 		self.tb.insert(END, "Start fetching metadata...\n")
-		from scrapers.movie.naver import MovieFetcher
 		self.meta = MovieFetcher().ParsePage(self.id)
 		self.tb.insert(END, "Metadata for %s is ready...\n" % self.id, 'i')
 		self.tb.see(END)	# automatic scroll down

@@ -19,9 +19,7 @@ class ArtistFetcher:
         self.details_url = self.base_url+"/artist/intro.do?artistDetailId=%s"
         self.album_url   = self.base_url+"/artist/album.do?artistDetailId=%s&orderCondition=0&albumType=R"
         self.photo_url   = self.base_url+"/artist/photo.do?artistDetailId=%s"
-        self.striptags   = re.compile("<[^>]*>")
         self.meta = ArtistMetaData()
-        self.striptags = re.compile("<.*?>")
 
     # search with title
     def Search(self,title): 
@@ -30,7 +28,7 @@ class ArtistFetcher:
         result = []
 	for item in soup.findAll("div",{"class" : "collCont"}):
 	    id = re.compile("artistDetailId=(\d+)").search(item.find('a')['href']).group(1)
-	    title = unicode(self.striptags.sub('',item.a.renderContents()), 'utf-8')
+	    title = ''.join(item.a.findAll(text=True))
             result.append( (id,title) )
         return result
 

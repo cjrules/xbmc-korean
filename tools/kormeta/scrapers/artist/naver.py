@@ -19,9 +19,7 @@ class ArtistFetcher:
 		self.main_url   = self.base_url+"/artist.nhn?artistId=%s"
 		self.album_url  = self.base_url+"/artist.nhn?m=album&artistId=%s"
 		self.photo_url  = self.base_url+"/artist.nhn?m=photo&artistId=%s"
-		self.striptags  = re.compile("<[^>]*>")
 		self.meta = ArtistMetaData()
-		self.striptags = re.compile("<.*?>")
 
 	# search with title
 	def Search(self,title): 
@@ -30,7 +28,7 @@ class ArtistFetcher:
 		result = []
 		for item in soup.findAll("a", {"class" : "c u b2"}):
 			id = re.compile("'(\d+)'").search(item['href']).group(1)
-			title = unicode(self.striptags.sub('',item.renderContents()), 'utf-8')
+			title = ''.join(item.findAll(text=True))
 			result.append( (id,title) )
 		return result
 
@@ -76,7 +74,7 @@ class ArtistFetcher:
 		if chk:
 			self.meta.m_genres = chk.parent.nextSibling.nextSibling.next.string.strip().split(',')
 
-		self.meta.m_biography = self.striptags.sub('',soup.find("div", id="artistBio").renderContents().strip())
+		self.meta.m_biography = ''.join(soup.find("div", id="artistBio").findAll(text=True)).strip()
 		self.meta.m_biography = self.meta.m_biography.replace("&amp;","&")
 		self.meta.m_biography = self.meta.m_biography.replace("&#039;","'").replace("&#8211;","-")
 		self.meta.m_biography = unicode(self.meta.m_biography,'utf-8')

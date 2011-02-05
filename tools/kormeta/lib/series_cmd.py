@@ -85,7 +85,7 @@ class SeriesCommand:
 		self.tb.see(END)	# automatic scroll down
 
 	def genfile(self):
-		if self.id is None or self.meta.s_title is None:
+		if self.id is None or self.meta is None or self.meta.s_title is None:
 			return
 		if self.out_xml.get():
 			outfile = os.path.join(self.videoPath, 'series.xml')
@@ -112,7 +112,7 @@ class SeriesCommand:
 			self.tb.insert(END, "Episode metadata is ready...\n", 'i')
 			for epnum,epfile in self.epfiles:
 				outpath = os.path.splitext(epfile)
-				if self.out_xml.get() and self.meta.EpisodeList[ (self.fetcher.Season,epnum) ]:
+				if self.out_xml.get() and self.meta.EpisodeInfo[ (self.fetcher.Season,epnum) ]:
 					outfile = outpath[0]+'.xml'
 					self.meta.SaveEpisodeXML(self.fetcher.Season, epnum, outfile)
 					self.tb.insert(END, "XML file, %s, is generated\n" % outfile)

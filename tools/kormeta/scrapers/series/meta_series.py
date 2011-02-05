@@ -85,12 +85,12 @@ class SeriesMetaData:
 		lines.append(u"</Series>")
 
 		f = open(filename,'w')
-		f.write( '\n'.join(lines) )
+		f.write( '\n'.join(lines).encode('utf-8') )
 		f.close()
 
 	# for <episode>.nfo
 	def SaveEpisodeNFO(self, season, episode, filename): 
-		if self.EpisodeInfo.has_key( (season,episode) ):
+		if (season,episode) in self.EpisodeInfo:
 			temp = self.EpisodeInfo[(season,episode)]
 			result = True
 		else:
@@ -113,7 +113,7 @@ class SeriesMetaData:
 
 	# for <episode>.xml
 	def SaveEpisodeXML(self, season, episode, filename): 
-		if not self.EpisodeInfo.has_key( (season,episode) ):
+		if not (season,episode) in self.EpisodeInfo:
 			return
 		temp = self.EpisodeInfo[(season,episode)]
 		lines = []
@@ -127,7 +127,7 @@ class SeriesMetaData:
 		lines.append(u"</Item>")
 
 		f = open(filename,'w')
-		f.write( '\n'.join(lines) )
+		f.write( '\n'.join(lines).encode('utf-8') )
 		f.close()
 
 	def SavePoster(self, filepath): 
@@ -144,10 +144,10 @@ class SeriesMetaData:
 			f.write( urllib.urlopen(self.s_backdrop_list[ sel_list[0] ][1]).read() )
 			f.close()
 		# save photo pages
-		if len(sel_list) > 1:
+		if len(sel_list) > 1 and len(self.s_backdrop_list) > 1:
 			count = 0
 			for i in sel_list:
-				if self.s_backdrop_list[i]:
+				if i < len(self.s_backdrop_list):
 					count += 1
 					#  download
 					f = open( os.path.join(path,'backdrop%d.jpg' % count), "wb")

@@ -17,9 +17,7 @@ class AlbumFetcher:
         self.base_url    = "http://music.daum.net"
         self.search_url  = self.base_url+"/search/album.do?query=%s"
         self.details_url = self.base_url+"/album/album.do?albumId=%s"
-        self.striptags   = re.compile("<[^>]*>")
         self.meta = AlbumMetaData()
-        self.striptags = re.compile("<.*?>")
 
     # search with title
     def Search(self,title,artist):
@@ -28,9 +26,9 @@ class AlbumFetcher:
         result = []
 	for item in soup.findAll("div",{"class" : "collCont"}):
 	    id = re.compile("albumId=(\d+)").search(item.a['href']).group(1)
-	    title = unicode(self.striptags.sub('',item.a.renderContents()), 'utf-8')
+	    title = unicode(''.join(item.a.findAll(text=True)), 'utf-8')
 	    title = title.replace("&#233;",u"é")
-	    artist = unicode(self.striptags.sub('',item.find("dd",{"class":"con"}).a.renderContents()), 'utf-8')
+	    artist = unicode(''.join(item.find("dd",{"class":"con"}).a.findAll(text=True)), 'utf-8')
             result.append( (id,title,artist) )
         return result
 
@@ -60,7 +58,7 @@ class AlbumFetcher:
 
 	strain = SoupStrainer("div",{"id" : "wAbmInfoT"})
 	sect = soup.find(strain)
-	self.meta.m_review = self.striptags.sub('', sect.find('p',id="albumDesc").renderContents()).strip()
+	self.meta.m_review = ''.join(sect.find('p',id="albumDesc").findAll(text=True)).strip()
 	self.meta.m_review = unicode(self.meta.m_review, 'utf-8')
 
 	# can not extract

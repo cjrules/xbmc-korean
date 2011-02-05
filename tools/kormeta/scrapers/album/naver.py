@@ -17,9 +17,7 @@ class AlbumFetcher:
         self.base_url   = "http://music.naver.com"
         self.search_url = self.base_url+"/search.nhn?where=album&query=%s"
         self.main_url   = self.base_url+"/album.nhn?tubeid=%s"
-        self.striptags  = re.compile("<[^>]*>")
         self.meta = AlbumMetaData()
-        self.striptags = re.compile("<.*?>")
 
     # search with title
     def Search(self,title,artist):
@@ -29,7 +27,7 @@ class AlbumFetcher:
         result = []
 	for item in soup.findAll("a",{"class" : "c u"}):
 	    id = re.compile("'(\d+)'").search(item['href']).group(1)
-	    title = unicode(self.striptags.sub('',item.renderContents()), 'utf-8')
+	    title = unicode(''.join(item.findAll(text=True)), 'utf-8')
 	    artist = item.findNextSibling('a').span.string
             result.append( (id,title,artist) )
         return result
@@ -50,7 +48,7 @@ class AlbumFetcher:
 
 	self.meta.m_rating = float( sect.find("span",{"class":"text_point"}).string )
 
-	self.meta.m_review = self.striptags.sub('',soup.find("div", id="albumDesc").renderContents().strip())
+	self.meta.m_review = ''.join(soup.find("div", id="albumDesc").findAll(text=True)).strip()
 	self.meta.m_review = self.meta.m_review.replace("&amp;","&")
 	self.meta.m_review = self.meta.m_review.replace("&#039;","'").replace("&#8211;","-")
 	self.meta.m_review = unicode(self.meta.m_review, 'utf-8')
