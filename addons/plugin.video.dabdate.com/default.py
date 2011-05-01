@@ -12,7 +12,7 @@ __addonID__ = "plugin.video.dabdate.com"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.dabdate.com"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.0"
+__version__ = "0.2.2"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
@@ -22,6 +22,7 @@ if not LIB_DIR in sys.path:
   sys.path.append (LIB_DIR)
 
 COOKIEFILE = xbmc.translatePath( 'special://temp/dabdate_cookie.lwp' )
+AGENT_HDR  = 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0)'
 
 __settings__ = xbmcaddon.Addon( __addonID__ )
 __id__ = __settings__.getSetting( "id" )
@@ -34,8 +35,10 @@ def CATEGORIES():
     BROWSE('http://www.dabdate.com')
 
 def BROWSE(url):
-    resp = urllib2.urlopen(url)
-    items = resp.read().split('<td colspan=7 height=1>')
+    req = urllib2.Request(url)
+    req.add_header('User-Agent', AGENT_HDR)
+    psrc = urllib2.urlopen(req).read()
+    items = psrc.split('<td colspan=7 height=1>')
     for item in items[:-1]:
         match = re.compile('<a href="([^"]*&pr=%s)">' % __server1__).search(item)
         if match:
@@ -50,15 +53,13 @@ def BROWSE(url):
         if re.compile('<b>Free').search(item):
 	    title = "*"+title
         addDir(title.decode('euc-kr'),"http://www.dabdate.com/"+vurl,11,img)
-    query = re.compile("<a href='([^']*)' class=navi>\[Next\]</a>").search(items[-1])
+    query = re.compile("<a href='([^']*)' class=navi>\[Next\]</a>").search(psrc)
     if query:
         addDir(u"다음 페이지>","http://www.dabdate.com/"+query.group(1),10,'')
 
 def SHOW_WMV(url):
-    agent_hdr = 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0)'
-
     req = urllib2.Request(url)
-    req.add_header('User-Agent', agent_hdr)
+    req.add_header('User-Agent', AGENT_HDR)
     resp = urllib2.urlopen(req)
     newurl = resp.geturl()
     #---
@@ -72,7 +73,10 @@ def SHOW_WMV(url):
         form['id'] = __id__
         form['pass'] = __pass__
   
-        resp = urllib2.urlopen( form.click() )
+        req = form.click()  # login
+        req.add_header('User-Agent', AGENT_HDR)
+        req.add_header('Referer', newurl)
+        resp = urllib2.urlopen( req )
         newurl = resp.geturl()
         cj.save(COOKIEFILE)
         xbmc.log( "LOGIN to %s" % newurl, xbmc.LOGDEBUG )
@@ -83,7 +87,7 @@ def SHOW_WMV(url):
         resp.close()
         form = forms[0]
         req = form.click()  # click default
-        req.add_header('User-Agent', agent_hdr)
+        req.add_header('User-Agent', AGENT_HDR)
         req.add_header('Referer', newurl)
         resp = urllib2.urlopen(req)
         newurl = resp.geturl()
