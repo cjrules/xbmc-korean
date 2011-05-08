@@ -6,9 +6,9 @@ import urllib2
 import re
 
 BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-YK64_CHARS   = "abcdeWXYZMNOPQRSTUVEFGHIJKLmnopqrstuvwxyzfghijkABCDl0123456789-_$"
+BSFL64_CHARS = "abcdeWXYZMNOPQRSTUVEFGHIJKLmnopqrstuvwxyzfghijkABCDl0123456789-_$"
 BASE64_LIST = [BASE64_CHARS[i] for i in range(len(BASE64_CHARS))]
-YK64_LIST   = [YK64_CHARS[i] for i in range(len(YK64_CHARS))]
+BSFL64_LIST = [BSFL64_CHARS[i] for i in range(len(BSFL64_CHARS))]
 
 class GetDaumVideo:
     @staticmethod
@@ -47,7 +47,7 @@ class GetDaumVideo:
     @staticmethod
     def yk64_decode(s):
         ss = [s[i] for i in range(len(s))]
-        bs = ''.join([BASE64_LIST[ YK64_LIST.index(c) ] for c in ss])
+        bs = ''.join([BASE64_LIST[ BSFL64_LIST.index(c) ] for c in ss])
         import base64
         return base64.b64decode(bs)
 
