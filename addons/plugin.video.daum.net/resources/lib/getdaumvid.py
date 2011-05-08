@@ -5,6 +5,11 @@
 import urllib2
 import re
 
+BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+YK64_CHARS   = "abcdeWXYZMNOPQRSTUVEFGHIJKLmnopqrstuvwxyzfghijkABCDl0123456789-_$"
+BASE64_LIST = [BASE64_CHARS[i] for i in range(len(BASE64_CHARS))]
+YK64_LIST   = [YK64_CHARS[i] for i in range(len(YK64_CHARS))]
+
 class GetDaumVideo:
     @staticmethod
     def parse(url):
@@ -29,12 +34,22 @@ class GetDaumVideo:
         req = urllib2.Request("http://flvs.daum.net/viewer/MovieLocation.do?vid="+vid)
         req.add_header('Referer', referer)
         page = urllib2.urlopen(req);response=page.read();page.close()
-        query_match = re.search('''<MovieLocation regdate="\d+" url="([^"]*)" storage="[^"]*"\s*/>''', response)
-        if query_match:
-            url = re.sub('&amp;','&',query_match.group(1))
-            return GetDaumVideo.DaumGetFLV(referer, url)
-        xbmc.log( "Fail to find FLV reference with %s" % vid, xbmc.LOGERROR )
-        return None
+        query_match = re.search('''<MovieLocation [^>]*url="([^"]*)"[^>]*/>''', response)
+        if query_match is None:
+            xbmc.log( "Fail to find FLV reference with %s" % vid, xbmc.LOGERROR )
+            return None
+        url = query_match.group(1)
+        if not url.startswith("http"):
+            url = GetDaumVideo.yk64_decode(url)
+        url = re.sub('&amp;','&',url)
+        return GetDaumVideo.DaumGetFLV(referer, url)
+
+    @staticmethod
+    def yk64_decode(s):
+        ss = [s[i] for i in range(len(s))]
+        bs = ''.join([BASE64_LIST[ YK64_LIST.index(c) ] for c in ss])
+        import base64
+        return base64.b64decode(bs)
 
     @staticmethod
     def DaumGetFLV(referer, url):
@@ -42,7 +57,7 @@ class GetDaumVideo:
         req = urllib2.Request(url)
         req.add_header('Referer', referer)
         page = urllib2.urlopen(req);response=page.read();page.close()
-        query_match = re.search('''<MovieLocation movieURL="(.+?)"\s*/>''', response)
+        query_match = re.search('''<MovieLocation\s*movieURL="([^"]*)"\s*/>''', response)
         if query_match:
             return query_match.group(1)
         xbmc.log( "Fail to find FLV location from %s" % url, xbmc.LOGERROR )
@@ -57,3 +72,5 @@ if __name__ == "__main__":
     print GetDaumVideo.parse('http://tvpot.daum.net/clip/ClipView.do?clipid=23545528&focus=1&range=0&diff=0&ref=best&featureddate=20100508&weightposition=1&lu=b_today_01')
     print '------ Starcraft ---------------------'
     print GetDaumVideo.parse('http://tvpot.daum.net/clip/ClipView.do?clipid=23167202&lu=game_gamelist_play')
+
+# vim:ts=4:sts=4:sw=4:et

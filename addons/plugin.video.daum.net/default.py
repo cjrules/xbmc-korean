@@ -52,10 +52,11 @@ def CAT_NEWS(url):
     addDir(title,url,21,'')
 
 def CAT_BEST(base_url):
-  addDir(u"일간 베스트", base_url+"BestToday.do?svctab=best&range=0",31,'')
-  addDir(u"주간 베스트", base_url+"BestToday.do?svctab=best&range=1",31,'')
-  addDir(u"월간 베스트", base_url+"BestToday.do?svctab=best&range=2",31,'')
-  addDir(u"10만 플레이", base_url+"BestToday.do?svctab=10m",31,'')
+  addDir(u"전체/ 기간:전체/ 플레이:전체/ 인기순 ", base_url+"TotalBest.do?cateid=&dateterm=all&playterm=all&sort=play",31,'')
+  addDir(u"전체/ 기간:전체/ 플레이:전체/ 최신순 ", base_url+"TotalBest.do?cateid=&dateterm=all&playterm=all&sort=wtime",31,'')
+  addDir(u"전체/ 기간:1주/ 플레이:전체/ 인기순 ", base_url+"TotalBest.do?cateid=&dateterm=week&playterm=all&sort=play",31,'')
+  addDir(u"전체/ 기간:전체/ 플레이:50만/ 인기순 ", base_url+"TotalBest.do?cateid=&dateterm=all&playterm=50M&sort=play",31,'')
+  addDir(u"연예/ 인기순 ", base_url+"TotalBest.do?cateid=22&sort=play",31,'')
 
 def CAT_GAME(base_url):
   addDir(u"스타리그", base_url+"/game/sl/LeagueList.do?league=osl&type=list&lu=game_osl_closegame",42,pic_dir+"oslBanner.png")
@@ -110,7 +111,7 @@ def BROWSE_BEST(main_url):
     title = title.replace('\n'," ")
     addDir(title, url, 1000, thumb)
   if site.nextpage:            
-    addDir(u"다음 페이지>", site.nextpage[1], 31, '')
+    addDir(u"다음 페이지>", site.nextpage, 31, '')
 
 def BROWSE_STARCRAFT(main_url):
   from daum_starcraft import DaumStarcraft
