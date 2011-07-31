@@ -12,23 +12,20 @@ __addonID__ = "plugin.video.dabdate.com"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.dabdate.com"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.2"
+__version__ = "0.2.3"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
-
-import os
-LIB_DIR = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'lib' ) )
-if not LIB_DIR in sys.path:
-  sys.path.append (LIB_DIR)
 
 COOKIEFILE = xbmc.translatePath( 'special://temp/dabdate_cookie.lwp' )
 AGENT_HDR  = 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0)'
 
+servercode = ['1','2','5','EU','AU']
+
 __settings__ = xbmcaddon.Addon( __addonID__ )
-__id__ = __settings__.getSetting( "id" )
+__id__   = __settings__.getSetting( "id" )
 __pass__ = __settings__.getSetting( "pass" )
-__server1__ = int(__settings__.getSetting( "server1" )) + 1
-__server2__ = int(__settings__.getSetting( "server2" )) + 1
+__server1__ = servercode[ int(__settings__.getSetting( "server1" )) ]
+__server2__ = servercode[ int(__settings__.getSetting( "server2" )) ]
 
 #-----------------------------------------------------
 def CATEGORIES():
@@ -51,7 +48,7 @@ def BROWSE(url):
         img = re.compile('''<img src='([^']*)' ''').search(item).group(1)
         title = re.compile('''<a href[^>]*><font class=big[^>]*>(.*?)</font></a>''').search(item).group(1)
         if re.compile('<b>Free').search(item):
-	    title = "*"+title
+            title = "*"+title
         addDir(title.decode('euc-kr'),"http://www.dabdate.com/"+vurl,11,img)
     query = re.compile("<a href='([^']*)' class=navi>\[Next\]</a>").search(psrc)
     if query:
@@ -64,16 +61,13 @@ def SHOW_WMV(url):
     newurl = resp.geturl()
     #---
     if newurl.find('login.php') >= 0:
-        # form
-        from ClientForm import ParseResponse
-        forms = ParseResponse(resp)
-        resp.close()
-
-        form = forms[0]
-        form['id'] = __id__
-        form['pass'] = __pass__
-  
-        req = form.click()  # login
+        values = {
+            'mode':'login',
+            'url' :url,
+            'id'  :__id__,
+            'pass':__pass__
+        }
+        req = urllib2.Request( 'http://www.dabdate.com/login.php', urllib.urlencode(values) )
         req.add_header('User-Agent', AGENT_HDR)
         req.add_header('Referer', newurl)
         resp = urllib2.urlopen( req )
@@ -82,11 +76,13 @@ def SHOW_WMV(url):
         xbmc.log( "LOGIN to %s" % newurl, xbmc.LOGDEBUG )
     #---
     if newurl.find('msg.php') >= 0:
-        from ClientForm import ParseResponse
-        forms = ParseResponse(resp)
-        resp.close()
-        form = forms[0]
-        req = form.click()  # click default
+        values = {
+            'mode':'auto',
+            'mno' :'',
+            'url' :url,
+            'auto':'0'
+        }
+        req = urllib2.Request( 'http://www.dabdate.com/msg.php', urllib.urlencode(values) )
         req.add_header('User-Agent', AGENT_HDR)
         req.add_header('Referer', newurl)
         resp = urllib2.urlopen(req)
@@ -110,27 +106,26 @@ def get_params():
     paramstring=sys.argv[2]
     xbmc.log( "get_params() %s" % paramstring, xbmc.LOGDEBUG )
     if len(paramstring)>=2:
-	params=sys.argv[2]
-	cleanedparams=params.replace('?','')
-	if (params[len(params)-1]=='/'):
-	    params=params[0:len(params)-2]
-	pairsofparams=cleanedparams.split('&')
-	param={}
-	for i in range(len(pairsofparams)):
-	    splitparams={}
-	    splitparams=pairsofparams[i].split('=')
-	    if (len(splitparams))==2:
-		param[splitparams[0]]=splitparams[1]
-	                
+        params=sys.argv[2]
+        cleanedparams=params.replace('?','')
+        if (params[len(params)-1]=='/'):
+            params=params[0:len(params)-2]
+        pairsofparams=cleanedparams.split('&')
+        param={}
+        for i in range(len(pairsofparams)):
+            splitparams={}
+            splitparams=pairsofparams[i].split('=')
+            if (len(splitparams))==2:
+                param[splitparams[0]]=splitparams[1]
     return param
 
 def addLink(name,url,iconimage):
     ok=True
     name=name.encode("utf-8")
     try:
-	xbmc.log( "addLink(%s,%s)" % (name, url), xbmc.LOGDEBUG )
+        xbmc.log( "addLink(%s,%s)" % (name, url), xbmc.LOGDEBUG )
     except:
-	pass
+        pass
     liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
     liz.setInfo( type="Video", infoLabels={ "Title": name } )
     ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=url,listitem=liz)
@@ -153,6 +148,7 @@ name=None
 mode=None
 
 # set cookie
+import os
 import cookielib
 cj = cookielib.LWPCookieJar()
 opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
@@ -188,3 +184,4 @@ elif mode==11:
 
 if mode != 11:
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
+# vim:ts=8:sts=4:sw=4:et

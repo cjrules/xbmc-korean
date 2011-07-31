@@ -1,3 +1,9 @@
+0.2.3
+
+Changes
+- Reflect site changes (server list)
+- ClientForm module is no more used
+
 0.2.0
 
 Changes
