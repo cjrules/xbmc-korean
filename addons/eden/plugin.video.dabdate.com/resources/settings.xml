@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings>
+  <setting id="id" type="text" label="로그인 아이디" default=""/>
+  <setting id="pass" type="text" option="hidden" label="패스워드" default=""/>
+  <setting id="server1" type="enum" label="서버1 선택" values="중화질(미국)|저화질(미국)|고화질(미국)|중화질(유럽)|중화질(호주)" default="2"/>
+  <setting id="server2" type="enum" label="서버2 선택" values="중화질(미국)|저화질(미국)|고화질(미국)|중화질(유럽)|중화질(호주)" default="0"/>
+</settings>

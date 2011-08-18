@@ -1,0 +1,20 @@
+0.2.3
+
+Changes
+- Reflect site changes (server list)
+- ClientForm module is no more used
+
+0.2.0
+
+Changes
+- Direct play upon selection
+
+0.1.0
+
+Changes
+- possible to play streaming WMV from dabdate
+
+0.0.1
+
+Changes
+- Initial addon version
