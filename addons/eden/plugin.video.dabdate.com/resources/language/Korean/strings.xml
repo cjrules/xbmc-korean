@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<strings>
+  <string id="30000">로그인 아이디</string>
+  <string id="30001">패스워드</string>
+  <string id="30100">우선서버 선택</string>
+  <string id="30101">기본서버 선택</string>
+  <string id="31000">중화질(미국)</string>
+  <string id="31001">저화질(미국)</string>
+  <string id="31002">고화질(미국)</string>
+  <string id="31003">중화질(유럽)</string>
+  <string id="31004">중화질(호주)</string>
+  <string id="31005">중화질(미서WA)</string>
+  <string id="31006">중화질(미서CA)</string>
+  <string id="31007">중화질(미중부)</string>
+  <string id="31008">중화질(미동부)</string>
+  <string id="31009">모바일(미국)</string>
+  <string id="31010">모바일(호주)</string>
+</strings>

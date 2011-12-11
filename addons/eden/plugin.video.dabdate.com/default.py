@@ -12,20 +12,35 @@ __addonID__ = "plugin.video.dabdate.com"
 __url__     = "http://xbmc-korea.com/"
 __svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.dabdate.com"
 __credits__ = "XBMC Korean User Group"
-__version__ = "0.2.3"
+__version__ = "0.2.4"
 
 xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
 
 COOKIEFILE = xbmc.translatePath( 'special://temp/dabdate_cookie.lwp' )
 AGENT_HDR  = 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0)'
 
-servercode = ['1','2','5','EU','AU']
+_A_ = xbmcaddon.Addon( __addonID__ )
+_L_ = _A_.getLocalizedString
+_S_ = _A_.getSetting
 
-__settings__ = xbmcaddon.Addon( __addonID__ )
-__id__   = __settings__.getSetting( "id" )
-__pass__ = __settings__.getSetting( "pass" )
-__server1__ = servercode[ int(__settings__.getSetting( "server1" )) ]
-__server2__ = servercode[ int(__settings__.getSetting( "server2" )) ]
+servercode = {
+    _L_(31000) :'1',
+    _L_(31001) :'2',
+    _L_(31002) :'5',
+    _L_(31003) :'EU',
+    _L_(31004) :'AU',
+    _L_(31005) :'10',
+    _L_(31006) :'11',
+    _L_(31007) :'13',
+    _L_(31008) :'12',
+    _L_(31009) :'m',
+    _L_(31010) :'mAU',
+}
+
+__id__   = _S_( "id" )
+__pass__ = _S_( "pass" )
+__server1__ = servercode[ _S_( "server1" ).decode('utf-8') ]
+__server2__ = servercode[ _S_( "server2" ).decode('utf-8') ]
 
 #-----------------------------------------------------
 def CATEGORIES():
