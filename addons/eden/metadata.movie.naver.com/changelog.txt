@@ -1,3 +1,9 @@
+﻿1.1.0
+
+Changes
+- follow Naver page changes
+- TMDB fanart not work yet
+
 1.0.5
 
 Changes
