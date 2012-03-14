@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="euc-kr"?><scraper framework="1.1" date="2012-03-11">
+<?xml version="1.0" encoding="euc-kr"?><scraper framework="1.1" date="2012-03-15" name="Naver Movie" content="movies" thumb="icon.png">
 	<NfoUrl dest="3">
-		<RegExp input="$$1" output="&lt;url&gt;http://movie.naver.com/moviedetail/moviedetailMain.do?movieId=\1&lt;/url&gt;" dest="3">
+		<RegExp input="$$1" output="&lt;url&gt;http://movie.naver.com/movie/bi/mi/detail.nhn?code=\1&lt;/url&gt;" dest="3">
 			<expression>movie\.naver\.com[^\?]*\?code=(\d*)</expression>
 		</RegExp>
 	</NfoUrl>
@@ -102,8 +102,11 @@
 			</RegExp>
 			<!--TMBFanart should be prior to GetNAVERFanart-->
 			<RegExp conditional="EnableTMDBFanart" input="$$7" output="&lt;url function=&quot;GetTMDBFanartById&quot;&gt;http://www.google.com/search?q=site:imdb.com\1&lt;/url&gt;" dest="8+">
-				<RegExp input="$$1" output="\1+\2" dest="7">
+				<RegExp input="$$1" output="\1 \2" dest="6">
 					<expression>&lt;h2 class="title_eng"&gt;\s*(.*?)\,\s*(\d*)\s*&lt;/h2&gt;\s*&lt;h2 class="title_kor"&gt;(.*?)\s*&lt;/h2&gt;</expression>
+				</RegExp>
+				<RegExp input="$$6" output="+\1" dest="7">
+					<expression repeat="yes">([^ ,]+)</expression>
 				</RegExp>
 				<expression />
 			</RegExp>
@@ -137,7 +140,7 @@
 			<expression noclean="1" />
 		</RegExp>
 	</GetNAVERPosterPage>
-	<GetNAVERFanart dest="4">
+	<GetNAVERFanart clearbuffers="no" dest="4">
 		<RegExp input="$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
 			<RegExp input="$$1" output="&lt;url function=&quot;GetNAVERFanartPage&quot;&gt;http://movie.naver.com\1&lt;/url&gt;" dest="5">
 				<expression repeat="yes">&lt;a href="([^"]*&amp;page=\d+)"&gt;[^다음]</expression>
@@ -154,4 +157,29 @@
 			<expression noclean="1" />
 		</RegExp>
 	</GetNAVERFanartPage>
+	<GetTMDBFanartById dest="4">
+		<RegExp input="$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
+			<RegExp input="$$1" output="&lt;url function=&quot;GetTMDBFanart&quot; cache=&quot;tmdb-images-tt\1.xml&quot;&gt;http://api.themoviedb.org/2.1/Movie.getImages/en/xml/57983e31fb435df4df77afb854740ea9/tt\1&lt;/url&gt;" dest="5">
+				<expression>/tt([0-9]+)</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;url function=&quot;GetTMDBFanart&quot; cache=&quot;tmdb-images-\1.xml&quot;&gt;http://api.themoviedb.org/2.1/Movie.getImages/en/xml/57983e31fb435df4df77afb854740ea9/\1&lt;/url&gt;" dest="5">
+				<expression>&lt;id&gt;([0-9]*)&lt;/id&gt;</expression>
+			</RegExp>
+			<expression noclean="1" />
+		</RegExp>
+	</GetTMDBFanartById>
+	<GetTMDBFanart clearbuffers="no" dest="5">
+		<RegExp input="$$2" output="&lt;details&gt;\1&lt;/details&gt;" dest="5">
+			<RegExp input="$$1" output="&lt;thumb&gt;\1&lt;/thumb&gt;" dest="3">
+				<expression repeat="yes" noclean="1">&lt;backdrop[^&gt;]*&gt;(.*?)&lt;/backdrop&gt;</expression>
+			</RegExp>
+			<RegExp input="$$3" output="&lt;thumb preview=&quot;\2&quot;&gt;\1\3&lt;/thumb&gt;" dest="4">
+				<expression repeat="yes" noclean="1,3">&lt;thumb&gt;(.*?)url="([^"]*)" size="poster"(.*?)&lt;/thumb&gt;</expression>
+			</RegExp>
+			<RegExp input="$$4" output="&lt;thumb\1&gt;\2&lt;/thumb&gt;" dest="11">
+				<expression repeat="yes" noclean="1">&lt;thumb([^&gt;]*)&gt;.*?url="([^"]*)" size="original".*?&lt;/thumb&gt;</expression>
+			</RegExp>
+			<expression noclean="1" />
+		</RegExp>
+	</GetTMDBFanart>
 </scraper>
