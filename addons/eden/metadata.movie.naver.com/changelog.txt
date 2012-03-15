@@ -1,4 +1,9 @@
-﻿1.1.2
+﻿1.1.3
+
+Changes
+- cosmetic
+
+1.1.2
 
 Changes
 - remove year from search string for better search result
