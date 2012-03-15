@@ -1,4 +1,14 @@
-﻿1.1.0
+﻿1.1.2
+
+Changes
+- remove year from search string for better search result
+
+1.1.1
+
+Changes
+- fix TMDB fanart
+
+1.1.0
 
 Changes
 - follow Naver page changes
