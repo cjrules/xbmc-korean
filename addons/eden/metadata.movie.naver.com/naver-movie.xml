@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="euc-kr"?><scraper framework="1.1" date="2012-03-15" name="Naver Movie" content="movies" thumb="icon.png">
+<?xml version="1.0" encoding="euc-kr"?><scraper framework="1.1" date="2012-03-23">
 	<NfoUrl dest="3">
 		<RegExp input="$$1" output="&lt;url&gt;http://movie.naver.com/movie/bi/mi/detail.nhn?code=\1&lt;/url&gt;" dest="3">
 			<expression>movie\.naver\.com[^\?]*\?code=(\d*)</expression>
@@ -82,6 +82,9 @@
 			</RegExp>
 			<RegExp input="$$1" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="8+">
 				<expression repeat="yes">&lt;a href="/movie/sdb/browsing/bmovie\.nhn\?genre=[^&gt;]*&gt;(.*?)&lt;/a&gt;</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;country&gt;\1&lt;/country&gt;" dest="8+">
+				<expression repeat="yes">&lt;a href="/movie/sdb/browsing/bmovie\.nhn\?nation=[^&gt;]*&gt;(.*?)&lt;/a&gt;</expression>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;runtime&gt;\1&lt;/runtime&gt;" dest="8+">
 				<expression>&lt;/em&gt; (\d+)분</expression>
