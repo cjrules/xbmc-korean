@@ -31,18 +31,20 @@ class GetDaumVideo:
     @staticmethod
     def DaumGetFlvByVid(referer, vid):
         print "daum vid=%s" % vid
-        req = urllib2.Request("http://flvs.daum.net/viewer/MovieLocation.do?vid="+vid)
+        # req = urllib2.Request("http://flvs.daum.net/viewer/MovieLocation.do?vid="+vid)
+        req = urllib2.Request("http://videofarm.daum.net/controller/api/open/v1_2/MovieLocation.apixml?trashData=sadjkfasdjkfafjahjfdhajfadjhdasjklfajkldfahjkfadhjkladsflhjkfad&vid="+vid+"&playLoc=tvpot&preset=main")
         req.add_header('Referer', referer)
         page = urllib2.urlopen(req);response=page.read();page.close()
-        query_match = re.search('''<MovieLocation [^>]*url="([^"]*)"[^>]*/>''', response)
-        if query_match is None:
-            xbmc.log( "Fail to find FLV reference with %s" % vid, xbmc.LOGERROR )
-            return None
-        url = query_match.group(1)
-        if not url.startswith("http"):
-            url = GetDaumVideo.yk64_decode(url)
-        url = re.sub('&amp;','&',url)
-        return GetDaumVideo.DaumGetFLV(referer, url)
+        bs = BeautifulSoup.BeautifulSoup(response)
+        urlnode = bs.find("url")
+        if urlnode:
+            url = re.sub('&amp;','&',urlnode.contents[0])
+            query_match = re.search('''out_type=xml''', url)
+            if query_match:
+                return GetDaumVideo.DaumGetFLV(referer, url)
+            return url
+        xbmc.log( "Fail to find FLV reference with %s" % vid, xbmc.LOGERROR )
+        return None
 
     @staticmethod
     def yk64_decode(s):
