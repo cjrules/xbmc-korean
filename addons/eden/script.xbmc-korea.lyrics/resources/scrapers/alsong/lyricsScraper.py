@@ -5,7 +5,6 @@ Scraper for http://lyrics.alsong.co.kr/
 
 import hashlib
 import urllib2
-import xbmc
 import xml.dom.minidom as xml
 
 __title__ = "alsong.co.kr"
@@ -56,10 +55,8 @@ class LyricsFetcher:
     def __init__( self ):
         self.base_url = "http://lyrics.alsong.co.kr/"
 
-    def get_lyrics(self, artist, song):
-        musicFullPath = xbmc.Player().getPlayingFile()
-        print musicFullPath
-        key = alsongClient.GetKeyFromFile( unicode(musicFullPath,'utf-8') )
+    def get_lyrics(self, artist, song, songfile):
+        key = alsongClient.GetKeyFromFile( songfile )
         if not key:
             return ''
 

@@ -13,7 +13,7 @@ reqhdr = {'User-Agent': 'GomPlayer 2, 1, 23, 5007 (KOR)'}
 gomtv_home  = "http://gom.gomtv.com"
 
 def gomtv_jamak_from_file(f):
-  f.seek(0)
+  f.seek(0,0)
   buff = f.read(1024*1024)    # size=1M
   # calculate MD5 key from file
   m = hashlib.md5(); m.update(buff); key = m.hexdigest()

@@ -5,6 +5,7 @@ read audio stream from audio file
 
 import os
 import struct
+import xbmcvfs
 
 class AudioFile(object):
     f = None
@@ -16,11 +17,7 @@ class AudioFile(object):
 
     def Open(self,file):
         self.audioStart = 0
-	if file.startswith('smb://'):
-	    import xbmcvfs
-	    self.f = xbmcvfs.File(file)
-	else:
-	    self.f = open(file,'rb')
+	self.f = xbmcvfs.File(file)
 	ext = os.path.splitext(file)[1].lower()
 	if   ext == '.mp3':  self.AnalyzeMp3()
 	elif ext == '.ogg':  self.AnalyzeOgg()
@@ -46,7 +43,8 @@ class AudioFile(object):
         # Searching ID3v2 tag
         while True:
             buf = self.f.read(3)
-            if len(buf) < 3 or self.f.tell() > 50000:
+            # no tell() in xbmcvfs yet, but seek() can return position
+            if len(buf) < 3 or self.f.seek(0,1) > 50000:
                 # ID tag is not found
                 self.f.seek(0,0)
                 self.audioStart = 0
@@ -62,20 +60,20 @@ class AudioFile(object):
         # Searching MPEG SOF
         while True:
             buf = self.f.read(1)
-            if len(buf) < 1 or self.f.tell() > 1000000:
+            if len(buf) < 1 or self.f.seek(0,1) > 1000000:
                 raise FormatError
             if buf == '\xff':
                 rbit = struct.unpack('B',self.f.read(1))[0] >> 5
                 if rbit == 7:   # 11 1's in total
                     self.f.seek(-2,1)
-                    self.audioStart = self.f.tell()
+                    self.audioStart = self.f.seek(0,1)
                     return
 
     def AnalyzeOgg(self):
         # Parse page (OggS)
         while True:
             buf = self.f.read(27)    # header 
-            if len(buf) < 27 or self.f.tell() > 50000:
+            if len(buf) < 27 or self.f.seek(0,1) > 50000:
                 # parse error
                 raise FormatError
             if buf[0:4] != 'OggS':
@@ -90,7 +88,7 @@ class AudioFile(object):
             	#print "segLen(%s): %d" % (buf[1:7],seglen)
                 if buf == "\x05vorbis":
                     self.f.seek(-7,1)   # rollback
-                    self.audioStart = self.f.tell()
+                    self.audioStart = self.f.seek(0,1)
 		    return
             	self.f.seek(seglen-7,1)	# skip to next segment
 
@@ -98,13 +96,13 @@ class AudioFile(object):
         # Searching GUID
         while True:
             buf = self.f.read(16)
-            if len(buf) < 16 or self.f.tell() > 50000:
+            if len(buf) < 16 or self.f.seek(0,1) > 50000:
                 raise FormatError
             guid = buf.encode("hex");
             if guid == "3626b2758e66cf11a6d900aa0062ce6c":
             	# ASF_Data_Object
                 self.f.seek(-16,1)     # rollback
-		self.audioStart = self.f.tell()
+		self.audioStart = self.f.seek(0,1)
                 return
             else:
                 objlen = struct.unpack('<Q', self.f.read(8))[0]
@@ -116,14 +114,14 @@ class AudioFile(object):
         # Searching GUID
         while True:
             buf = self.f.read(4)
-            if len(buf) < 16 or self.f.tell() > 50000:
+            if len(buf) < 16 or self.f.seek(0,1) > 50000:
                 # not found
                 raise FormatError
             metalen = buf[1] | (buf[2]<<8) | (buf[3]<<16);
             self.f.seek(metalen,1)   # skip this metadata block
             if buf[0] & 0x80:
             	# it was the last metadata block
-		self.audioStart = self.f.tell()
+		self.audioStart = self.f.seek(0,1)
                 return
 
 if ( __name__ == '__main__' ):

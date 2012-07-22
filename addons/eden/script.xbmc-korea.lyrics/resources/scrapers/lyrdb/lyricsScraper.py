@@ -18,7 +18,7 @@ class LyricsFetcher:
     def __init__( self ):
         self.base_url = "http://www.lyrdb.com/karaoke/"
 
-    def get_lyrics(self, artist, song):
+    def get_lyrics(self, artist, song, songfile=None):
         url = 'http://www.lyrdb.com/karaoke/?q=%s+%s&action=search' %(artist.replace(' ','+').lower(), song.replace(' ','+').lower())
         f = urllib.urlopen(url)
         Page = f.read()

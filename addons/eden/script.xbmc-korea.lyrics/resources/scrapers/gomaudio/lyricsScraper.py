@@ -3,9 +3,8 @@
 Scraper for http://newlyrics.gomtv.com/
 """
 
-import md5
+import hashlib
 import urllib
-import xbmc
 import re
 
 __title__ = "gomtv.com"
@@ -25,7 +24,7 @@ class gomClient(object):
         buf = musf.ReadAudioStream(100*1024)	# 100KB from audio data
         musf.Close()
         # calculate hashkey
-        m = md5.new(); m.update(buf);
+        m = hashlib.md5(); m.update(buf);
         return m.hexdigest()
 
     @staticmethod
@@ -38,10 +37,8 @@ class LyricsFetcher:
     def __init__( self ):
         self.base_url = "http://newlyrics.gomtv.com/"
 
-    def get_lyrics(self, artist, song):
-        musicFullPath = xbmc.Player().getPlayingFile()
-        print musicFullPath
-        key = gomClient.GetKeyFromFile( unicode(musicFullPath,'utf-8') )
+    def get_lyrics(self, artist, song, songfile):
+        key = gomClient.GetKeyFromFile( songfile )
         if not key:
             return ''
 

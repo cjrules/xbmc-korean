@@ -12,11 +12,11 @@ __scriptname__ = sys.modules[ "__main__" ].__scriptname__
 def qple_jamak_from_file(f):
   qple_home = 'http://www.tokplayer.com'
 
-  f.seek(100*1024)
+  f.seek(100*1024,0)
   buff1 = f.read(100*1024)    # 100KB starting at 100KB
-  f.seek(0)
+  f.seek(0,0)
   buff2 = f.read(50*1024)     # 50KB starting at 0
-  f.seek(100*1024)
+  f.seek(100*1024,0)
   buff2 += f.read(50*1024)    # 50KB starting at 100KB
 
   # calculate MD5 key from file

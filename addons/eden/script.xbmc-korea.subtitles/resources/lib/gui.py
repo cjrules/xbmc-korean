@@ -2,7 +2,7 @@
 """
   UI for subtitle download
 """
-import sys,os,xbmc
+import sys,os,xbmc,xbmcvfs
 
 _ = sys.modules[ "__main__" ].__language__
 __scriptname__ = sys.modules[ "__main__" ].__scriptname__
@@ -17,11 +17,7 @@ def gui():
   smiFullPath = movieFullPath[:movieFullPath.rfind('.')]+'.smi'
 
   try:
-    if movieFullPath.startswith("smb://"):
-      import xbmcvfs
-      f=xbmcvfs.File(movieFullPath)
-    else:
-      f=open(movieFullPath,'rb')
+    f=xbmcvfs.File(movieFullPath)
   except IOError:
     xbmc.log("can not open movie file, %s" % movieFullPath, xbmc.LOGERROR)
     xbmcgui.Dialog().ok("can not open movie file", movieFullPath)
@@ -78,6 +74,7 @@ def gui():
 
       if smiUrl:
         smiPath = download_subtitle(smiUrl, smiFullPath)
+        xbmc.log("subtitle is downloaded to "+smiFullPath, xbmc.LOGNOTICE)
         # enable the downloaded subtitle
         if smiPath:
           xbmc.Player().setSubtitles(smiPath)

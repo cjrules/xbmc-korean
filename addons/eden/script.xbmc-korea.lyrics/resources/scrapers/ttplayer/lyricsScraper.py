@@ -109,7 +109,7 @@ class LyricsFetcher:
     def __init__( self ):
         self.base_url = "http://lrcct2.ttplayer.com/"
 
-    def get_lyrics(self, artist, song):
+    def get_lyrics(self, artist, song, songfile=None):
         # replace ampersands and the like
         for exp in LYRIC_ARTIST_REPLACE:
                 p = re.compile(exp[0])

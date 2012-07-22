@@ -15,11 +15,12 @@ DEBUG_MODE = 0
 _ = sys.modules[ "__main__" ].__language__
 __scriptname__ = sys.modules[ "__main__" ].__scriptname__
 __version__ = sys.modules[ "__main__" ].__version__
-__svn_revision__ = sys.modules[ "__main__" ].__svn_revision__
+__settings__ = sys.modules[ "__main__" ].__settings__
 
 # comapatble versions
 SETTINGS_VERSIONS = ( "1.7", )
 # base paths
+BASE_DATA_PATH = sys.modules[ "__main__" ].__profile__
 BASE_RESOURCE_PATH = sys.modules[ "__main__" ].BASE_RESOURCE_PATH
 # special button codes
 SELECT_ITEM = ( 11, 256, 61453, )
@@ -111,3 +112,24 @@ def make_legal_filepath( path, compatible=False, extension=True ):
         return filepath.encode( "utf-8" )
     else:
         return filepath
+
+def get_settings():
+    settings = {}
+    settings[ "scraper" ] = int(__settings__.getSetting( "scraper" ))
+    settings[ "save_lyrics" ] = __settings__.getSetting( "save_lyrics" ) == "true"
+    settings[ "lyrics_path" ] = __settings__.getSetting( "lyrics_path" )
+    if ( settings[ "lyrics_path" ] == "" ):
+        settings[ "lyrics_path" ] = os.path.join( BASE_DATA_PATH, "lyrics" )
+        __settings__.setSetting(id="lyrics_path", value=settings[ "lyrics_path" ])
+    settings[ "compatible" ] = __settings__.getSetting( "compatible" ) == "true"
+    settings[ "use_extension" ] = __settings__.getSetting( "use_extension" ) == "true"
+    settings[ "smooth_scrolling" ] = __settings__.getSetting( "smooth_scrolling" ) == "true"
+    settings[ "show_viz" ] = __settings__.getSetting( "show_viz" ) == "true"
+    settings[ "use_filename" ] = __settings__.getSetting( "use_filename" ) == "true"
+    settings[ "filename_format" ] = int(__settings__.getSetting( "filename_format" ))
+    settings[ "music_path" ] = __settings__.getSetting( "music_path" )
+    if ( settings[ "music_path" ] == "" ):
+        settings[ "music_path" ] = os.path.join( BASE_DATA_PATH, "music" )
+        __settings__.setSetting(id="music_path", value=settings[ "music_path" ])
+    settings[ "shuffle" ] = __settings__.getSetting( "shuffle" ) == "true"
+    return settings

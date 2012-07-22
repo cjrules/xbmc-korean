@@ -20,7 +20,9 @@ __svn_revision__ = ""
 __addonID__ = "script.xbmc-korea.lyrics"
 __settings__ = xbmcaddon.Addon( id=__addonID__ )
 __language__ = __settings__.getLocalizedString
-BASE_RESOURCE_PATH = os.path.join( __settings__.getAddonInfo('path'), "resources" )
+__cwd__      = xbmc.translatePath( __settings__.getAddonInfo('path') )
+__profile__  = xbmc.translatePath( __settings__.getAddonInfo('profile') )
+BASE_RESOURCE_PATH = os.path.join( __cwd__, "resources" )
 
 # Main team credits 
 __credits_l1__ = __language__( 910 )#"Head Developer & Coder"
@@ -42,7 +44,7 @@ __add_credits_r3__ = __language__( 2 )#"Translators name"
 # Start the main gui or settings gui 
 if ( __name__ == "__main__" ):
     import resources.lib.gui as gui
-    ui = gui.GUI( "script-%s-main.xml" % __scriptname__.replace( " ", "_" ), __settings__.getAddonInfo('path'), "Default" )
+    ui = gui.GUI( "script-%s-main.xml" % __scriptname__.replace( " ", "_" ), __cwd__, "Default" )
     ui.doModal()
     del ui
     sys.modules.clear()
