@@ -17,7 +17,7 @@ _A_ = xbmcaddon.Addon( __addonid__ )
 _L_ = _A_.getLocalizedString
 _S_ = _A_.getSetting
 
-modecode = {
+qualcode = {
     _L_(31000) :'1',
     _L_(31001) :'2',
     _L_(31002) :'3',
@@ -40,13 +40,13 @@ localcode = {
 
 __id__   = _S_( "id" )
 __pass__ = _S_( "pass" )
-__mode__ = modecode[ _S_( "mode" ).decode('utf-8') ]
+__qual__ = qualcode[ _S_( "quality" ).decode('utf-8') ]
 __local__ = localcode[ _S_( "local" ).decode('utf-8') ]
 
-if __mode__=='m':
+if __qual__=='m':
     root_url = "http://m.dabdate.com/"
     if __local__[:3]=="au":
-        __mode__ = 'mAU'
+        __qual__ = 'mAU'
 else:
     root_url = "http://dabdate.com/"
 
@@ -87,18 +87,18 @@ def _BROWSE(url):
             img = ""
 
         vurl = None
-        if root_url.startswith("http://dabdate.com") and __mode__=='1':
-            match = re.compile("<a href='([^']*&pr={0:s}&local={1:s})'>".format(__mode__, __local__)).search(item)
+        if root_url.startswith("http://dabdate.com") and __qual__=='1':
+            match = re.compile("<a href='([^']*&pr={0:s}&local={1:s})'>".format(__qual__, __local__)).search(item)
             if match:
                 vurl = root_url + match.group(1)
         if vurl is None:
-            match = re.compile('<a href="([^"]*&pr={0:s})">'.format(__mode__)).search(item)
+            match = re.compile('<a href="([^"]*&pr={0:s})">'.format(__qual__)).search(item)
             if match:
                 vurl = root_url + match.group(1)
             else:
-                xbmc.log("Video, {0:s}, doesn't exist on {1:s} server".format(title, __mode__), xbmc.LOGWARNING)
+                xbmc.log("Video, {0:s}, doesn't exist on {1:s} server".format(title, __qual__), xbmc.LOGWARNING)
                 dialog = xbmcgui.Dialog()
-                dialog.ok(u"Error", u"{1:s} 에서 {0:s}을 찾을 수 없습니다".format(title, __mode__))
+                dialog.ok(u"Error", u"{1:s} 에서 {0:s}을 찾을 수 없습니다".format(title, __qual__))
         addDir(title.decode('euc-kr'),vurl,11,img)
 
     query = re.compile("<a href='([^']*)' class=navi>\[Prev\]</a>").search(psrc)
