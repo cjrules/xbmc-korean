@@ -2,6 +2,6 @@
 <settings>
   <setting id="id" label="30000" type="text" default="" />
   <setting id="pass" label="30001" type="text" option="hidden" default="" />
-  <setting id="server1" label="30100" type="labelenum" lvalues="31000|31001|31002|31003|31004|31005|31006|31007|31008|31009|31010" default="31002" />
-  <setting id="server2" label="30100" type="labelenum" lvalues="31000|31001|31002|31003|31004|31005|31006|31007|31008|31009|31010" default="31000" />
+  <setting id="server" label="30100" type="labelenum" lvalues="31000|31001|31002|31003|31004" default="31000" />
+  <setting id="local" label="30101" type="labelenum" lvalues="31010|31011|31012|31013|31014|31015|31016|31017|31018|31019|31020|31021" default="31015" />
 </settings>

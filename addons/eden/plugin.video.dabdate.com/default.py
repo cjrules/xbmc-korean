@@ -1,81 +1,125 @@
 # -*- coding: utf-8 -*-
 """
-  Dabdate
+  Dabdate - Korea Drama/TV Shows Streaming Service
 """
-
-import urllib,urllib2,re
-import xbmcplugin,xbmcgui,xbmcaddon
+import urllib, urllib2, re
+import xbmcplugin, xbmcgui, xbmcaddon
 
 # plugin constants
 __plugin__ = "Dabdate"
-__addonID__ = "plugin.video.dabdate.com"
-__url__     = "http://xbmc-korea.com/"
-__svn_url__ = "http://xbmc-korean.googlecode.com/svn/trunk/addons/plugin.video.dabdate.com"
-__credits__ = "XBMC Korean User Group"
-__version__ = "0.2.4"
+__addonid__ = "plugin.video.dabdate.com"
 
-xbmc.log( "[PLUGIN] '%s: version %s' initialized!" % ( __plugin__, __version__, ), xbmc.LOGNOTICE )
+CookieFile = xbmc.translatePath( 'special://temp/dabdate_cookie.lwp' )
+BrowserAgent = 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0)'
+PlayerAgent  = 'Windows-Media-Player/12.0.7601.17514'
 
-COOKIEFILE = xbmc.translatePath( 'special://temp/dabdate_cookie.lwp' )
-AGENT_HDR  = 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0)'
-
-_A_ = xbmcaddon.Addon( __addonID__ )
+_A_ = xbmcaddon.Addon( __addonid__ )
 _L_ = _A_.getLocalizedString
 _S_ = _A_.getSetting
 
 servercode = {
     _L_(31000) :'1',
     _L_(31001) :'2',
-    _L_(31002) :'5',
-    _L_(31003) :'EU',
-    _L_(31004) :'AU',
-    _L_(31005) :'10',
-    _L_(31006) :'11',
-    _L_(31007) :'13',
-    _L_(31008) :'12',
-    _L_(31009) :'m',
-    _L_(31010) :'mAU',
+    _L_(31002) :'3',
+    _L_(31003) :'m',
+    _L_(31004) :'mAU',
+}
+localcode = {
+    _L_(31010) :'au1',
+    _L_(31011) :'au2',
+    _L_(31012) :'au3',
+    _L_(31013) :'eu',
+    _L_(31014) :'sa',
+    _L_(31015) :'la1',
+    _L_(31016) :'la2',
+    _L_(31017) :'la3',
+    _L_(31018) :'la4',
+    _L_(31019) :'ny1',
+    _L_(31020) :'ny2',
+    _L_(31021) :'ny3',
 }
 
 __id__   = _S_( "id" )
 __pass__ = _S_( "pass" )
-__server1__ = servercode[ _S_( "server1" ).decode('utf-8') ]
-__server2__ = servercode[ _S_( "server2" ).decode('utf-8') ]
+__server__ = servercode[ _S_( "server" ).decode('utf-8') ]
+__local__ = localcode[ _S_( "local" ).decode('utf-8') ]
+
+if __server__[0]=='m':
+    root_url = "http://m.dabdate.com/"
+else:
+    root_url = "http://dabdate.com/"
 
 #-----------------------------------------------------
 def CATEGORIES():
-    BROWSE('http://www.dabdate.com')
+    _BROWSE(root_url)
+    addDir(u"*로보카 폴리", root_url+"?lang=5", 12, '')
+    addDir(u"*그때를 아십니까", root_url+"?lang=7", 12, '')
+    addDir(u"*특선 다큐멘터리", root_url+"?lang=6", 12, '')
+    endDir()
 
 def BROWSE(url):
+    _BROWSE(url)
+    endDir(True)
+
+def BROWSE2(url):
+    _BROWSE(url)
+    endDir()
+
+def _BROWSE(url):
     req = urllib2.Request(url)
-    req.add_header('User-Agent', AGENT_HDR)
+    req.add_header('User-Agent', BrowserAgent)
     psrc = urllib2.urlopen(req).read()
-    items = psrc.split('<td colspan=7 height=1>')
+    items = re.split("<td colspan=\d+ height=\d+>", psrc)
     for item in items[:-1]:
-        match = re.compile('<a href="([^"]*&pr=%s)">' % __server1__).search(item)
+    	try:
+            title = re.compile('''<a href[^>]*pr=[1|m]"><font [^>]*>(.*?)</font></a>''').search(item).group(1)
+            title = re.compile("</?b>").sub("",title)
+            if re.compile('<b>Free').search(item):
+                title = "*"+title
+        except:
+            continue
+
+        match = re.compile('''<img src='([^']*)' ''').search(item)
         if match:
-            vurl = match.group(1)
+            img = match.group(1)
         else:
-            match = re.compile('<a href="([^"]*&pr=%s)">' % __server2__).search(item)
-            if match is None:
-                continue
-            vurl = match.group(1)
-        img = re.compile('''<img src='([^']*)' ''').search(item).group(1)
-        title = re.compile('''<a href[^>]*><font class=big[^>]*>(.*?)</font></a>''').search(item).group(1)
-        if re.compile('<b>Free').search(item):
-            title = "*"+title
-        addDir(title.decode('euc-kr'),"http://www.dabdate.com/"+vurl,11,img)
+            img = ""
+
+        vurl = None
+        if root_url.startswith("http://dabdate.com") and __server__=='1':
+            match = re.compile("<a href='([^']*&pr={0:s}&local={1:s})'>".format(__server__, __local__)).search(item)
+            if match:
+                vurl = root_url + match.group(1)
+        if vurl is None:
+            match = re.compile('<a href="([^"]*&pr={0:s})">'.format(__server__)).search(item)
+            if match:
+                vurl = root_url + match.group(1)
+            else:
+                xbmc.log("Video, {0:s}, doesn't exist on {1:s} server".format(title, __server__), xbmc.LOGWARNING)
+                dialog = xbmcgui.Dialog()
+                dialog.ok(u"Error", u"{1:s} 서버에서 {0:s}을 찾을 수 없습니다".format(title, __server__))
+        addDir(title.decode('euc-kr'),vurl,11,img)
+
+    query = re.compile("<a href='([^']*)' class=navi>\[Prev\]</a>").search(psrc)
+    if query:
+        addDir(u"<-이전 페이지",root_url+query.group(1),10,'')
     query = re.compile("<a href='([^']*)' class=navi>\[Next\]</a>").search(psrc)
     if query:
-        addDir(u"다음 페이지>","http://www.dabdate.com/"+query.group(1),10,'')
+        addDir(u"다음 페이지->",root_url+query.group(1),10,'')
 
-def SHOW_WMV(url):
+def PLAY_VIDEO(url, title):
     req = urllib2.Request(url)
-    req.add_header('User-Agent', AGENT_HDR)
+    req.add_header('User-Agent', BrowserAgent)
     resp = urllib2.urlopen(req)
     newurl = resp.geturl()
     #---
-    if newurl.find('login.php') >= 0:
+    if newurl.find('order.php') >= 0:
+        resp.close()
+        # POST
+    	if __id__ == "" or __pass__ == "":
+    	    dialog = xbmcgui.Dialog()
+    	    dialog.ok(u"로그인 필요", u"유료컨텐츠를 보기 위해서는 로그인 정보가 필요합니다.")
+    	    return
         values = {
             'mode':'login',
             'url' :url,
@@ -83,14 +127,16 @@ def SHOW_WMV(url):
             'pass':__pass__
         }
         req = urllib2.Request( 'http://www.dabdate.com/login.php', urllib.urlencode(values) )
-        req.add_header('User-Agent', AGENT_HDR)
+        req.add_header('User-Agent', BrowserAgent)
         req.add_header('Referer', newurl)
         resp = urllib2.urlopen( req )
         newurl = resp.geturl()
-        cj.save(COOKIEFILE)
+        cj.save(CookieFile)
         xbmc.log( "LOGIN to %s" % newurl, xbmc.LOGDEBUG )
     #---
     if newurl.find('msg.php') >= 0:
+        resp.close()
+        # POST
         values = {
             'mode':'auto',
             'mno' :'',
@@ -98,20 +144,31 @@ def SHOW_WMV(url):
             'auto':'0'
         }
         req = urllib2.Request( 'http://www.dabdate.com/msg.php', urllib.urlencode(values) )
-        req.add_header('User-Agent', AGENT_HDR)
+        req.add_header('User-Agent', BrowserAgent)
         req.add_header('Referer', newurl)
         resp = urllib2.urlopen(req)
         newurl = resp.geturl()
-        cj.save(COOKIEFILE)
+        cj.save(CookieFile)
         xbmc.log( "PAY to %s" % newurl, xbmc.LOGDEBUG )
     #---
+    newurl = resp.geturl()
+    doc = resp.read()
+    resp.close()
     if newurl.startswith(url):
-        vurl = re.compile("FileName='([^']*)'").search( resp.read() ).group(1)
+    	if newurl.startswith("http://m.dabdate.com"):
+            vurl = re.compile(r"location\.href\s*=\s*'([^']*)'").search( doc ).group(1)
+        else:
+            vurl = re.compile("FileName='([^']*)'").search( doc ).group(1)
+            if not vurl.startswith("http://"):
+                vurl = "http://dabdate.com/"+vurl
         cookies = []
         for cookie in cj:
             cookies.append( "%s=%s" % (cookie.name, cookie.value) )
         ckStr = ';'.join(cookies)
-        xbmc.Player().play( '%s|Cookie="%s"' % (vurl,ckStr) )
+        playUrl = '{0:s}|User-Agent={1:s}&Cookie="{2:s}"'.format(vurl, PlayerAgent, ckStr)
+        li = xbmcgui.ListItem(title, iconImage="DefaultVideo.png")
+        li.setInfo( 'video', { "Title": title } )
+        xbmc.Player().play( playUrl, li )
     else:
         xbmc.log( "ERROR: %s is redirected to %s" % (url,newurl), xbmc.LOGERROR )
 
@@ -155,6 +212,9 @@ def addDir(name,url,mode,iconimage):
     ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
     xbmc.log( "addDir(%s)" % u, xbmc.LOGDEBUG )
     return ok
+
+def endDir(update=False):
+    xbmcplugin.endOfDirectory(int(sys.argv[1]), updateListing=update)
               
 #-----------------------------------                
 params=get_params()
@@ -168,10 +228,10 @@ import cookielib
 cj = cookielib.LWPCookieJar()
 opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
 urllib2.install_opener(opener)
-if os.path.isfile(COOKIEFILE):
-    cj.load(COOKIEFILE)
+if os.path.isfile(CookieFile):
+    cj.load(CookieFile)
     xbmc.log( "Cookie is loaded", xbmc.LOGINFO )
-xbmc.log( "Cookie is set, " + COOKIEFILE, xbmc.LOGINFO )
+xbmc.log( "Cookie is set, " + CookieFile, xbmc.LOGINFO )
 
 try:
     url=urllib.unquote_plus(params["url"])
@@ -190,13 +250,13 @@ xbmc.log( "Mode: "+str(mode), xbmc.LOGINFO)
 xbmc.log( "URL : "+str(url), xbmc.LOGINFO)
 xbmc.log( "Name: "+str(name), xbmc.LOGINFO)
 
-if mode==None or url==None or len(url)<1:
+if mode==None or mode==1:
     CATEGORIES()
 elif mode==10:
     BROWSE(url)
 elif mode==11:
-    SHOW_WMV(url)
+    PLAY_VIDEO(url, name)
+elif mode==12:
+    BROWSE2(url)
 
-if mode != 11:
-    xbmcplugin.endOfDirectory(int(sys.argv[1]))
 # vim:ts=8:sts=4:sw=4:et

@@ -2,17 +2,23 @@
 <strings>
   <string id="30000">로그인 아이디</string>
   <string id="30001">패스워드</string>
-  <string id="30100">우선서버 선택</string>
-  <string id="30101">기본서버 선택</string>
-  <string id="31000">중화질(미국)</string>
-  <string id="31001">저화질(미국)</string>
-  <string id="31002">고화질(미국)</string>
-  <string id="31003">중화질(유럽)</string>
-  <string id="31004">중화질(호주)</string>
-  <string id="31005">중화질(미서WA)</string>
-  <string id="31006">중화질(미서CA)</string>
-  <string id="31007">중화질(미중부)</string>
-  <string id="31008">중화질(미동부)</string>
-  <string id="31009">모바일(미국)</string>
-  <string id="31010">모바일(호주)</string>
+  <string id="30100">서버</string>
+  <string id="30101">중화질용 지역</string>
+  <string id="31000">중화질</string>
+  <string id="31001">저화질</string>
+  <string id="31002">고화질</string>
+  <string id="31003">모바일</string>
+  <string id="31004">모바일(호주)</string>
+  <string id="31010">호주,아시아1</string>
+  <string id="31011">호주,아시아2</string>
+  <string id="31012">호주,아시아3</string>
+  <string id="31013">유럽,중동,인도</string>
+  <string id="31014">중남미</string>
+  <string id="31015">LA1</string>
+  <string id="31016">LA2</string>
+  <string id="31017">LA3</string>
+  <string id="31018">LA4</string>
+  <string id="31019">뉴욕1</string>
+  <string id="31020">뉴욕2</string>
+  <string id="31021">뉴욕3</string>
 </strings>

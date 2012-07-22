@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+  <setting id="showThumb" type="bool" label="Show Thumbnail" default="false" />
+</settings>
