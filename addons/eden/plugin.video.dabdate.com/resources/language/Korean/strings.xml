@@ -2,13 +2,12 @@
 <strings>
   <string id="30000">로그인 아이디</string>
   <string id="30001">패스워드</string>
-  <string id="30100">서버</string>
+  <string id="30100">화질</string>
   <string id="30101">중화질용 지역</string>
   <string id="31000">중화질</string>
   <string id="31001">저화질</string>
   <string id="31002">고화질</string>
   <string id="31003">모바일</string>
-  <string id="31004">모바일(호주)</string>
   <string id="31010">호주,아시아1</string>
   <string id="31011">호주,아시아2</string>
   <string id="31012">호주,아시아3</string>
