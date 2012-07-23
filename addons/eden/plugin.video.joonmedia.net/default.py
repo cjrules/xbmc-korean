@@ -4,20 +4,23 @@
 """
 import urllib,re
 import xbmcaddon,xbmcplugin,xbmcgui
+import os.path
 
 # plugin constants
 __plugin__  = "JoonMedia"
 __addonid__ = "plugin.video.joonmedia.net"
 __addon__ = xbmcaddon.Addon( __addonid__ )
+__cwd__ = __addon__.getAddonInfo('path')
 
-import os.path
-LIB_DIR = xbmc.translatePath( os.path.join( __addon__.getAddonInfo('path'), 'resources', 'lib' ) )
+LIB_DIR = xbmc.translatePath( os.path.join( __cwd__, 'resources', 'lib' ) )
 if not LIB_DIR in sys.path:
   sys.path.append (LIB_DIR)
+ICON_DIR = xbmc.translatePath( os.path.join( __cwd__, 'resources', 'icon' ) )
 
 from BeautifulSoup import BeautifulSoup, SoupStrainer, NavigableString
 
 root_url = "http://www.mjoon.com"
+show_thumb = __addon__.getSetting('showThumb').lower() == 'true'
 
 #-----------------------------------------------------
 def rootList():
@@ -45,10 +48,14 @@ def progList(main_url):
     url = ref['href']
     if not url.startswith('http://'):
       url = root_url + url
-    thumb = item.find('img')['src']
-    if not thumb.startswith('http://'):
-      thumb = root_url + thumb
     xbmc.log( "TV program: %s" % title.encode('utf-8'), xbmc.LOGDEBUG )
+
+    if show_thumb:
+      thumb = item.find('img')['src']
+      if not thumb.startswith('http://'):
+        thumb = root_url + thumb
+    else:
+      thumb = ""
     addDir(title, url, 3, thumb)
   endDir()
 
@@ -94,17 +101,17 @@ def episodeList(main_url):
       xbmc.log( "Found page: %s" % title2.encode('utf-8'), xbmc.LOGDEBUG )
 
       if url.find('tudou') > 0:
-        addDir(title2, url, 4, "")
+        addRedir(title2, url, 4, "", os.path.join(ICON_DIR,"tudou.png"))
       elif url.find('youku') > 0:
-        addDir(title2, url, 4, "")
+        addRedir(title2, url, 4, "", os.path.join(ICON_DIR,"youku.png"))
       elif url.find('sohu') > 0:
-        addDir(title2, url, 5, "")
+        addRedir(title2, url, 5, "", os.path.join(ICON_DIR,"sohu.png"))
       elif url.find('youtube') > 0:
-        addDir(title2, url, 6, "", title)
+        addRedir(title2, url, 6, title, os.path.join(ICON_DIR,"youtube.png"))
       elif url.find('dmotion') > 0:
-        addDir(title2, url, 7, "", title)
-      elif url.find('source') > 0:    # 56.com?
-        addDir(title2, url, 4, "")
+        addRedir(title2, url, 7, title, os.path.join(ICON_DIR,"dailymotion.png"))
+      elif url.find('source') > 0:
+        addRedir(title2, url, 8, "")
       else:
         xbmc.Dialog().ok("Unsupported format", url)
   endDir()
@@ -114,12 +121,7 @@ def get_player_link(url):
   html = urllib.urlopen(url).read()
   return re.compile('<a class="player_link" href="([^"]*)" target="_blank">').findall(html)
 
-def playFLVCD(main_url):
-  match = get_player_link(main_url)
-  if len(match) == 0:
-    return
-  url = match[0]
-
+def _playFLVCD(url):
   from extract_withflvcd import extract_withFLVCD
   vid_list = extract_withFLVCD(urllib.quote_plus(url))
   if len(vid_list) == 0:
@@ -134,12 +136,7 @@ def playFLVCD(main_url):
     pl.add(vid['url'], li)
   xbmc.Player().play(pl)
 
-def playSohu(main_url):
-  match = get_player_link(main_url)
-  if len(match) == 0:
-    return
-  url = match[0]
-
+def _playSohu(url):
   import extract_sohu
   vid_list = extract_sohu.extract_video_from_url(urllib.quote_plus(url))
   pl = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
@@ -150,12 +147,7 @@ def playSohu(main_url):
     pl.add(vid['url'], li)
   xbmc.Player().play(pl)
 
-def playYoutube(main_url, title):
-  match = get_player_link(main_url)
-  if len(match) == 0:
-    return
-  url = match[0]
-
+def _playYoutube(url, title):
   fmttbl = {"270p":18, "360p":34, "480p":35, "720p":22, "1080p":37}
   import extract_youtube
 
@@ -176,12 +168,7 @@ def playYoutube(main_url, title):
     dialog = xbmcgui.Dialog()
     dialog.ok("Warning", "You'd be better try again with other Youtube quality")
 
-def playDmotion(main_url, title):
-  match = get_player_link(main_url)
-  if len(match) == 0:
-    return
-  url = match[0]
-
+def _playDmotion(url, title):
   import extract_dailymotion
   vid = extract_dailymotion.extract_id(url)
   vid_urls = extract_dailymotion.extract_video(vid)
@@ -198,6 +185,54 @@ def playDmotion(main_url, title):
     pl.add(url, li)
     xbmc.log("Video: "+url, xbmc.LOGDEBUG)
   xbmc.Player().play(pl)
+
+#-----------------------------------                
+def playFLVCD(url):
+  match = get_player_link(url)
+  if len(match) == 0:
+    return
+  _playFLVCD(match[0])
+
+def playSohu(url):
+  match = get_player_link(url)
+  if len(match) == 0:
+    return
+  _playSohu(match[0])
+
+def playYoutube(url, title):
+  match = get_player_link(url)
+  if len(match) == 0:
+    return
+  _playYoutube(match[0], title)
+
+def playDmotion(main_url, title):
+  match = get_player_link(main_url)
+  if len(match) == 0:
+    return
+  _playDmotion(match[0], title)
+
+def playWrapper(main_url, title):
+  match = get_player_link(main_url)
+  if len(match) == 0:
+    return
+  url = match[0]
+
+  if url.find('tudou.com') > 0:
+    _playFLVCD(url)
+  elif url.find('youku.com') > 0:
+    _playFLVCD(url)
+  elif url.find('56.com') > 0:
+    _playFLVCD(url)
+  elif url.find('letv.com') > 0:
+    _playFLVCD(url)
+  elif url.find('sohu.com') > 0:
+    _playSohu(url)
+  elif url.find('youtube.com') > 0:
+    _playYoutube(url, title)
+  elif url.find('dailymotion.com') > 0:
+    _playDmotion(url, title)
+  else:
+    xbmc.Dialog().ok("Unsupported format", url)
 
 #-----------------------------------                
 def get_params():
@@ -224,14 +259,25 @@ def addLink(name,url,iconimage):
   ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=url,listitem=liz)
   return ok
 
-def addDir(name,url,mode,iconimage,title=""):
+def addDir(name,url,mode,iconimage):
+  name=name.encode('utf-8')
+  u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
+  u+="&mode="+str(mode)
+  u+="&name="+urllib.quote_plus(name)
+  u+="&title="
+  liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
+  liz.setInfo( type="Video", infoLabels={ "Title": name } )
+  ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
+  return ok
+
+def addRedir(name,url,mode,title="",iconimage="DefaultVideo.png",thumbimage=""):
   name=name.encode('utf-8')
   title=title.encode('utf-8')
   u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
   u+="&mode="+str(mode)
   u+="&name="+urllib.quote_plus(name)
   u+="&title="+urllib.quote_plus(title)
-  liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
+  liz=xbmcgui.ListItem(name, iconImage=iconimage, thumbnailImage=thumbimage)
   liz.setInfo( type="Video", infoLabels={ "Title": name } )
   ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
   return ok
@@ -274,5 +320,7 @@ elif mode==6:
   playYoutube(url, title)
 elif mode==7:
   playDmotion(url, title)
+elif mode==8:
+  playWrapper(url, title)
 
 # vim: softtabstop=2 shiftwidth=2 expandtab

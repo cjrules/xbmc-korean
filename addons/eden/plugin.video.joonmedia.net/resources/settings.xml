@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <settings>
   <category label="기본">
+    <setting id="showThumb" type="bool" label="Show Thumbnail" default="false" />
     <setting id="youtubeQuality" type="labelenum" label="Youtube Quality" values="270p|360p|480p|720p" default="270p" />
     <setting id="dailymotionQuality" type="labelenum" label="Dailymotion Quality" values="sd|hd" default="sd" />
   </category>

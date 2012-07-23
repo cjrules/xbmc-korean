@@ -3,7 +3,7 @@
   Download subtitle continuously
 """
 import sys,os
-import xbmc,xbmcgui
+import xbmc,xbmcgui,xbmcvfs
 import urllib2
 
 _ = sys.modules[ "__main__" ].__language__
@@ -47,12 +47,7 @@ def download_subtitle(queryAddr, smiPath):
     return None
 
   ###----- Try to store in the original path
-  try:
-    import xbmcvfs
-    ok = xbmcvfs.copy(smiTempPath, smiPath)
-  except ImportError:
-    import shutil
-    ok = shutil.copyfile(smiTempPath, smiPath)
+  ok = xbmcvfs.copy(smiTempPath, smiPath)
   if not ok:
     xbmc.log("Not writable movie directory", xbmc.LOGWARNING)
     xbmcgui.Dialog().ok(__scriptname__, _(110), _(107), smiTempPath )

@@ -17,9 +17,6 @@ def gui():
   smiFullPath = movieFullPath[:movieFullPath.rfind('.')]+'.smi'
 
   try:
-    import xbmcvfs
-    f=xbmcvfs.File(movieFullPath)
-  except NameError:
     f=open(movieFullPath,"rb")
   except IOError:
     xbmc.log("can not open movie file, %s" % movieFullPath, xbmc.LOGERROR)
