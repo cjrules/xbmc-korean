@@ -1,0 +1,27 @@
+0.4.0
+
+Changes
+- support encoded URL in XML container
+- update Best clip page
+
+0.3.2
+
+Changes
+- add experimental live video service
+
+
+0.3.1
+
+Changes
+- BeautifulSoup Library from common addon
+
+
+0.3.0
+
+Changes
+- Direct play upon selection
+
+0.2.2
+
+Changes
+- Initial addon version
