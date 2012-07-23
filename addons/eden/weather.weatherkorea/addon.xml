@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="weather.weatherkorea" name="Weather Korea" version="1.0.0" provider-name="XBMC-Korea">
+	<requires>
+		<import addon="xbmc.python" version="2.0"/>
+	</requires>
+	<extension point="xbmc.python.weather" library="default.py"/>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Weather forecast from www.kma.go.kr</summary>
+		<summary lang="ko">한국 기상청 기상 정보</summary>
+		<description lang="en">Weather forecast provided by Korea Meteorological Administration (kma.go.kr)</description>
+		<description lang="ko">한국 기상청의 현재날씨 및 주간 날씨 정보</description>
+		<platform>all</platform>
+	</extension>
+</addon>
