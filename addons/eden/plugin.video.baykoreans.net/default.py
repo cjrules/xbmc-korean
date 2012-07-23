@@ -208,15 +208,19 @@ def playSohu(main_url):
     xbmc.log("Video: "+vid['url'], xbmc.LOGDEBUG)
   xbmc.Player().play(pl)
 
-def playTudouId(iid,title):
+def playTudouId(iid):
   import extract_tudou
   try:
-    vid_url = extract_tudou.extract_video(iid)
-    vid_url = vid_url.replace("?1", "?8") # trick to make streaming
+    icode = extract_tudou.revert_icode(iid)
+    url = "http://www.tudou.com/programs/view/{0:s}/".format(icode)
+    xbmc.log("Tudou link: "+url, xbmc.LOGDEBUG)
+    vid_list = extract_withFLVCD(url)
+    vid_url = vid_list[0]['url'].replace("?1", "?8") # trick to make streaming
+    title = vid_list[0]['title']
   except:
-    xbmc.log("Fail to extract Tudou %d" % iid, xbmc.LOGWARNING)
+    xbmc.log("Fail to extract Tudou %s" % iid, xbmc.LOGWARNING)
     dialog = xbmcgui.Dialog()
-    dialog.ok("Error", "Fail to extract video link")
+    dialog.ok("Fail to extract video link", iid)
     return
 
   xbmc.log("Tudou: "+vid_url, xbmc.LOGDEBUG)
@@ -334,7 +338,7 @@ elif mode == 10:
 elif mode == 11:
   playSohu(url)
 elif mode == 12:
-  playTudouId(url,title)
+  playTudouId(url)
 elif mode == 13:
   playYoutube(url,title)
 elif mode == 14:
