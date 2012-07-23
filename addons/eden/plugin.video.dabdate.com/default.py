@@ -91,14 +91,20 @@ def _BROWSE(url):
             match = re.compile("<a href='([^']*&pr={0:s}&local={1:s})'>".format(__qual__, __local__)).search(item)
             if match:
                 vurl = root_url + match.group(1)
-        if vurl is None:
+        else:
             match = re.compile('<a href="([^"]*&pr={0:s})">'.format(__qual__)).search(item)
             if match:
                 vurl = root_url + match.group(1)
-            else:
-                xbmc.log("Video, {0:s}, doesn't exist on {1:s} server".format(title, __qual__), xbmc.LOGWARNING)
-                dialog = xbmcgui.Dialog()
-                dialog.ok(u"Error", u"{1:s} 에서 {0:s}을 찾을 수 없습니다".format(title, __qual__))
+        # fallback
+        if vurl is None:
+            #match = re.compile("<a href='([^']*&pr=1&local={0:s})'>".format(__local__)).search(item)
+            match = re.compile('<a href="([^"]*&pr=1)">').search(item)
+            if match:
+                vurl = root_url + match.group(1)
+        if vurl is None:
+            xbmc.log("Video, {0:s}, doesn't exist on {1:s} server".format(title, __qual__), xbmc.LOGERROR)
+            #dialog = xbmcgui.Dialog()
+            #dialog.ok(u"Error", u"{1:s} 에서 {0:s}을 찾을 수 없습니다".format(title, __qual__))
         addDir(title.decode('euc-kr'),vurl,11,img)
 
     query = re.compile("<a href='([^']*)' class=navi>\[Prev\]</a>").search(psrc)
