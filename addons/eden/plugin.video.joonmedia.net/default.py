@@ -74,6 +74,8 @@ def recentList(main_url):
         if s.string: tlist.append( s.string )
       title = " / ".join( tlist )
       url = ref['href']
+      if not url.startswith('http://'):
+        url = root_url + url
       xbmc.log( "TV program: %s" % title.encode('utf-8'), xbmc.LOGDEBUG )
       addDir(title, url, 3, '')
   endDir()
