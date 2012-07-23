@@ -18,7 +18,6 @@ import re
 import thread
 import xbmc
 import xbmcgui
-import xbmcvfs
 from threading import Timer
 from resources.lib.utilities import *
 
@@ -161,7 +160,11 @@ class GUI( xbmcgui.WindowXMLDialog ):
                 self.song_path = make_legal_filepath( unicode( os.path.join( self.settings[ "lyrics_path" ], artist.replace( "\\", "_" ).replace( "/", "_" ), song.replace( "\\", "_" ).replace( "/", "_" ) + ".lrc" ), "utf-8" ), __settings__.getSetting( "compatible" )=="true" )
             else:
                 self.song_path = make_legal_filepath( unicode( os.path.join( self.settings[ "lyrics_path" ], artist.replace( "\\", "_" ).replace( "/", "_" ) + " - " + song.replace( "\\", "_" ).replace( "/", "_" ) + ".lrc" ), "utf-8" ), __settings__.getSetting( "compatible" )=="true" )
-            lyrics_file = xbmcvfs.File( self.song_path )
+	    try:
+		import xbmcvfs
+		lyrics_file = xbmcvfs.File( self.song_path )
+	    except:
+		lyrics_file = open( self.song_path, "r" )
             lyrics = lyrics_file.read()
             lyrics_file.close()
             return lyrics, False
@@ -180,7 +183,11 @@ class GUI( xbmcgui.WindowXMLDialog ):
             basename = os.path.basename(path)
             filename = basename.rsplit( ".", 1 )[ 0 ]
             self.song_path = make_legal_filepath( unicode( os.path.join( dirname, filename + ".lrc" ), "utf-8" ), self.settings[ "compatible" ] )
-            lyrics_file = xbmcvfs.File( self.song_path )
+	    try:
+		import xbmcvfs
+		lyrics_file = xbmcvfs.File( self.song_path )
+	    except:
+		lyrics_file = open( self.song_path, "r" )
             lyrics = lyrics_file.read()
             lyrics_file.close()
             return lyrics, False
@@ -192,7 +199,11 @@ class GUI( xbmcgui.WindowXMLDialog ):
         try:
             if ( not os.path.isdir( os.path.dirname( self.song_path ) ) ):
                 os.makedirs( os.path.dirname( self.song_path ) )
-            lyrics_file = xbmcvfs.File( self.song_path, "w" )
+	    try:
+		import xbmcvfs
+		lyrics_file = xbmcvfs.File( self.song_path, "w" )
+	    except:
+		lyrics_file = open( self.song_path, "w" )
             lyrics_file.write( lyrics )
             lyrics_file.close()
             return True

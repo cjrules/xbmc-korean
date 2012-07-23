@@ -2,7 +2,7 @@
 """
   UI for subtitle download
 """
-import sys,os,xbmc,xbmcvfs
+import sys,os,xbmc
 
 _ = sys.modules[ "__main__" ].__language__
 __scriptname__ = sys.modules[ "__main__" ].__scriptname__
@@ -17,7 +17,10 @@ def gui():
   smiFullPath = movieFullPath[:movieFullPath.rfind('.')]+'.smi'
 
   try:
+    import xbmcvfs
     f=xbmcvfs.File(movieFullPath)
+  except NameError:
+    f=open(movieFullPath,"rb")
   except IOError:
     xbmc.log("can not open movie file, %s" % movieFullPath, xbmc.LOGERROR)
     xbmcgui.Dialog().ok("can not open movie file", movieFullPath)
