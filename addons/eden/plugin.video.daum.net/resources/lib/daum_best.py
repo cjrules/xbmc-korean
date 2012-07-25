@@ -7,14 +7,17 @@ from BeautifulSoup import BeautifulSoup, SoupStrainer
 import re
 
 class DaumBestClip:
+    root_url = "http://tvpot.daum.net"
     video_list = []
+    prevpage = None
     nextpage = None
     def DaumBestClip(self):
         pass
     def parse(self,url):
-        link = urllib.urlopen(url)
-        soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
+        html = urllib.urlopen(url).read()
+        soup = BeautifulSoup( html, fromEncoding="utf-8" )
         self.video_list = []
+        self.prevpage = None
         self.nextpage = None
         #-- item list
         items = soup.findAll("dl",{"class":"bestclip"})
@@ -22,7 +25,7 @@ class DaumBestClip:
             ddimg = item.find("dd",{"class":"image"})
             vid_url = ddimg.find('a')['href']
             if vid_url[0] == '/':
-                vid_url = "http://tvpot.daum.net"+vid_url
+                vid_url = self.root_url + vid_url
             imgpt = ddimg.find('img')
             thumb = imgpt['src']
             title = imgpt['alt']
@@ -31,6 +34,8 @@ class DaumBestClip:
 	query = re.search('page=(\d+)',url)
 	if query:
             pgnum = int(query.group(1))
+            if pgnum > 1:
+                self.prevpage = url.replace("page=%d"%pgnum, "page=%d"%(pgnum-1))
             self.nextpage = url.replace("page=%d"%pgnum, "page=%d"%(pgnum+1))
         else:
             self.nextpage = url+"&page=2"

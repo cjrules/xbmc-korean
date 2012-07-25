@@ -16,8 +16,8 @@ class GetDaumVideo:
         response = urllib2.urlopen(url)
         link=response.read()
         response.close()
-        if url.startswith("http://movie") or url.startswith("http://tvnews"):     # trailer or news
-            match=re.compile('''UI.[^\(]*SWF\("http://flvs.daum.net/flvPlayer.swf\?vid=(.+?)["\&]''').findall(link)
+        if url.startswith("http://movie"):  # trailer
+            match=re.compile('''VideoView\.html\?vid=(.+?)["\&]''').findall(link)
         else:
             # daumEmbed_jingle2 had 3 arguments, but daumEmbed_standard had 4
             match=re.compile('''daumEmbed_.+?\('.+?','(.+?)','.+?'[,\)]''').findall(link)
@@ -31,20 +31,20 @@ class GetDaumVideo:
     @staticmethod
     def DaumGetFlvByVid(referer, vid):
         print "daum vid=%s" % vid
-        # req = urllib2.Request("http://flvs.daum.net/viewer/MovieLocation.do?vid="+vid)
-        req = urllib2.Request("http://videofarm.daum.net/controller/api/open/v1_2/MovieLocation.apixml?trashData=sadjkfasdjkfafjahjfdhajfadjhdasjklfajkldfahjkfadhjkladsflhjkfad&vid="+vid+"&playLoc=tvpot&preset=main")
-        req.add_header('Referer', referer)
-        page = urllib2.urlopen(req);response=page.read();page.close()
-        bs = BeautifulSoup.BeautifulSoup(response)
-        urlnode = bs.find("url")
-        if urlnode:
-            url = re.sub('&amp;','&',urlnode.contents[0])
-            query_match = re.search('''out_type=xml''', url)
-            if query_match:
-                return GetDaumVideo.DaumGetFLV(referer, url)
-            return url
-        xbmc.log( "Fail to find FLV reference with %s" % vid, xbmc.LOGERROR )
-        return None
+        req = urllib2.Request("http://flvs.daum.net/viewer/MovieLocation.do?vid="+vid)
+        if referer:
+            req.add_header('Referer', referer)
+        response = urllib2.urlopen(req);xml=response.read();response.close()
+        query_match = re.search('''<MovieLocation [^>]*url="([^"]*)"[^>]*/>''', xml)
+        if query_match is None:
+            print "Fail to find FLV reference with %s" % vid
+            print xml
+            return None
+        url = query_match.group(1)
+        if not url.startswith("http"):
+            url = GetDaumVideo.yk64_decode(url)
+        url = re.sub('&amp;','&',url)
+        return GetDaumVideo.DaumGetFLV(referer, url)
 
     @staticmethod
     def yk64_decode(s):
@@ -55,21 +55,21 @@ class GetDaumVideo:
 
     @staticmethod
     def DaumGetFLV(referer, url):
-        #xbmc.log( "daum loc=%s" % url, xbmc.LOGINFO )
+        print "daum loc=%s" % url
         req = urllib2.Request(url)
-        req.add_header('Referer', referer)
-        page = urllib2.urlopen(req);response=page.read();page.close()
-        query_match = re.search('''<MovieLocation\s*movieURL="([^"]*)"\s*/>''', response)
+        if referer:
+            req.add_header('Referer', referer)
+        response = urllib2.urlopen(req);xml=response.read();response.close()
+        query_match = re.search('''<MovieLocation\s*[^>]*movieURL="([^"]*)"\s*/>''', xml)
         if query_match:
             return query_match.group(1)
-        xbmc.log( "Fail to find FLV location from %s" % url, xbmc.LOGERROR )
+        print "Fail to find FLV location from %s" % url
+        print xml
         return None
 
 if __name__ == "__main__":
     print '------ Trailer ---------------------'
     print GetDaumVideo.parse('http://movie.daum.net/moviedetail/moviedetailVideoView.do?movieId=50201&videoId=27664')
-    print '------ News ---------------------'
-    print GetDaumVideo.parse('http://tvnews.media.daum.net/cp/YTN/view.html?cateid=100000&cpid=24&newsid=20100508145507903&p=ytni')
     print '------ Best ---------------------'
     print GetDaumVideo.parse('http://tvpot.daum.net/clip/ClipView.do?clipid=23545528&focus=1&range=0&diff=0&ref=best&featureddate=20100508&weightposition=1&lu=b_today_01')
     print '------ Starcraft ---------------------'

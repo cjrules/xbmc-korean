@@ -7,11 +7,29 @@ from BeautifulSoup import BeautifulSoup, SoupStrainer
 import re
 
 class DaumBrand:
+  root_url = "http://tvpot.daum.net"
   menu_list = []
   video_list = []
+  prevpage = None
   nextpage = None
   def DaumBrand(self):
     pass
+
+  @staticmethod
+  def getList(url):
+    html = urllib.urlopen(url).read()
+    soup = BeautifulSoup( html, fromEncoding="utf-8" )
+    brand_list = []
+    #-- item list
+    strain = SoupStrainer( "div", { "class" : re.compile("^cate_") } )
+    for section in soup.findAll(strain):
+      title = u"[COLOR FFFF0000]{0:s}[/COLOR]".format(section.find('h4').string)
+      brand_list.append( (title,None) )
+      for item in section.findAll('a'):
+        brand_id = re.compile('ownerid=(.*)').search(item['href']).group(1)
+        title = urllib.unquote(item.string)
+        brand_list.append( (title,brand_id) )
+    return brand_list
 
   def parseTop(self,url):
     link = urllib.urlopen(url)
@@ -22,7 +40,7 @@ class DaumBrand:
     strain2 = SoupStrainer( "div", { "class" : "listBody" } )
     for item in soup.find(strain1).find(strain2).findAll('li'):
       url = item.a['href'].replace("&amp;","&")
-      url = "http://tvpot.daum.net"+url
+      url = self.root_url + url
       title = item.a.string
       title = title.replace("&lt;","<").replace("&gt;",">").replace("&amp;","&")
       self.menu_list.append( (title,url) )
@@ -31,6 +49,7 @@ class DaumBrand:
     link = urllib.urlopen(main_url)
     soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
     self.video_list = []
+    self.prevpage = None
     self.nextpage = None
     base_url = main_url[:main_url.rfind('/')+1]
     #-- item list
@@ -41,10 +60,7 @@ class DaumBrand:
       ref = ddimg.find('a')
       if ref is None:
         continue
-      vid_url = ref['href'].replace("&amp;","&")
-      vid_url = vid_url.replace("&amp;","&").replace(" ","")
-      if vid_url[0] == '/':
-        vid_url = "http://tvpot.daum.net"+vid_url
+      vid_url = self.translate_url(ref['href'].replace(' ',''), base_url)
       imgpt = ddimg.find('img')
       thumb = imgpt['src']
 
@@ -61,19 +77,26 @@ class DaumBrand:
         title = query.group(1)
       title = title.replace("&lt;","<").replace("&gt;",">").replace("&amp;","&")
       self.video_list.append( (title,vid_url,thumb) )
-    #-- next page
+    #-- page navigation
     sect = soup.find("table", {"class" : "pageNav2"})
     if sect:
-      nextpg = sect.find('span', {"class" : "sel"}).parent.findNextSibling('td')
+      curpg = sect.find('span', {"class" : "sel"}).parent
+      prevpg = curpg.findPreviousSibling('td')
+      if prevpg:
+        self.prevpage = self.translate_url(prevpg.a['href'], base_url)
+      nextpg = curpg.findNextSibling('td')
       if nextpg:
-        url = nextpg.a['href'].replace("&amp;","&")
-        if url.startswith("http"):
-          pass
-        elif url.startswith("/"):
-          url = "http://tvpot.daum.net"+url
-        else:
-          url = base_url + url
-        self.nextpage = url
+        self.nextpage = self.translate_url(nextpg.a['href'], base_url)
+
+  def translate_url(self,url,base_url):
+      url = url.replace('&amp;','&')
+      if url.startswith("http"):
+        pass
+      elif url.startswith("/"):
+        url = self.root_url + url
+      else:
+        url = base_url + url
+      return url
 
 if __name__ == "__main__":
   site = DaumBrand()

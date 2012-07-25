@@ -25,8 +25,8 @@ def rootList():
   ## not parsing homepage for faster speed
   addDir("방영 드라마",root_url+"/drama",1,"")
   addDir("종영 드라마",root_url+"/drama_fin",1,"")
-  addDir("예능|오락",root_url+"/entertain",1,"")
-  addDir("시사|교양",root_url+"/current",1,"")
+  addDir("예능 | 오락",root_url+"/entertain",1,"")
+  addDir("시사 | 교양",root_url+"/current",1,"")
   addDir("영화",root_url+"/movie",4,"")
   #addDir("영화 예고편",root_url+"/trailer",6,"")
   addDir("애니 극장판",root_url+"/animation",4,"")
@@ -147,6 +147,8 @@ def videoList(main_url, main_title):
         addDir(title, xink, 14, "", title=main_title)
       elif url.find('/xink/') > 0:
         addDir(title, xink, 10, "")
+      elif url.find('/preview/') > 0: # url list
+        addDir(title, xink, 15, "", title=main_title)
       else:
         xbmc.log("Unsupported URL, "+url, xbmc.LOGWARNING)
     elif url.find('/?link=') > 0:
@@ -263,6 +265,20 @@ def playDmotion(main_url, title):
     xbmc.log("Video: "+url, xbmc.LOGDEBUG)
   xbmc.Player().play(pl)
 
+def playList(main_url, title):
+  urls = main_url.split('|')
+
+  pl = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
+  pl.clear()
+  for i in range(len(urls)):
+    url = urls[i]
+    title2 = "{0:s} - {1:d}".format(title, i+1)
+    li = xbmcgui.ListItem(title2, iconImage="DefaultVideo.png")
+    li.setInfo('video', {"Title": title2})
+    pl.add(url+"|User-Agent="+UserAgent, li)
+    xbmc.log("Video: "+url, xbmc.LOGDEBUG)
+  xbmc.Player().play(pl)
+
 #-----------------------------------                
 def addDir(name,url,mode,thumb,title=""):
   li = xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=thumb)
@@ -343,5 +359,7 @@ elif mode == 13:
   playYoutube(url,title)
 elif mode == 14:
   playDmotion(url,title)
+elif mode == 15:
+  playList(url,title)
 
 # vim:sts=2:sw=2:et

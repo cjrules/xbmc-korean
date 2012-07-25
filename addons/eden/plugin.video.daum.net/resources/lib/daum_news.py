@@ -2,64 +2,57 @@
 """
   Media News
 """
-import urllib
-from BeautifulSoup import BeautifulSoup, SoupStrainer
+import urllib,re
+import simplejson
 
 class DaumNews:
+    root_url = "http://media.daum.net"
+    countPerPage = 40
     menu_list = []
     video_list = []
     nextpage = None
-    prevday = None
+    prevpage = None
     def DaumNews(self):
         pass
 
-    def parseTop(self,url):
-        link = urllib.urlopen(url)
-        soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
+    def parseTop(self,main_url):
+        html = urllib.urlopen(main_url).read()
+        jstr = re.search('var originList = new Object\(({.*})\);', html).group(1)
+        obj = simplejson.loads(jstr)
         self.menu_list = []
         #-- item list
-        strain = SoupStrainer( "li", { "class" : "M" } )
-        items = soup.findAll(strain)
-        for item in items:
-            ref = item.find('a')
-            vid_url = ref['href']
-            title   = ref.contents[0]
-            self.menu_list.append( (title,vid_url) )
+	qstr = "page=1&countPerPage={0:d}&regdate=".format(self.countPerPage)
+        for tv in obj['tvProgramList']:
+	    title = "[COLOR FFFF0000]" + tv['title'] + "[/COLOR]"
+	    url = self.root_url + "/api/service/tv" + tv['engIdPath'] + ".jsonp?" + qstr
+	    self.menu_list.append( (title, url) )
+	    for subtv in tv['subTv']:
+		title = subtv['title']
+		url = self.root_url + "/api/service/tv" + subtv['engIdPath'] + ".jsonp?" + qstr
+		self.menu_list.append( (title, url) )
 
-    def parse(self,url):
-        link = urllib.urlopen(url)
-        soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
-        self.video_list = []
-        self.nextpage = None
-        self.prevday = None
-        base_url = url[:url.rfind('/')+1]
+    def parse(self,main_url):
+        jstr = urllib.urlopen(main_url).read()
+        obj = simplejson.loads(jstr)
         #-- item list
-        strain = SoupStrainer( "dl", { "class" : "TV_RL" } )
-        items = soup.findAll(strain)
-        for item in items:
-            refs = item.findAll('a')
-            vid_url = base_url + refs[0]['href']
-            thumb   = refs[0].find('img')['src']
-            title   = refs[1].contents[0]
+	self.video_list = []
+        for item in obj['tv']['newsList']['data']:
+            vid_url = item['videoUrl']
+            thumb   = item['imageUrl']
+            title   = item['title']
             self.video_list.append( (title,vid_url,thumb) )
-        #-- next page
-        psec = soup.find("div", {"class" : "paging"})
-        curpg = psec.find('b')
-        nextpg = curpg.findNextSibling('a')
-        if nextpg:
-            pg_url  = base_url + nextpg['href']
-            pg_name = nextpg.contents[0].strip()
-            self.nextpage = (pg_name,pg_url)
-        #-- prev day
-        psec = soup.find("p", {"class" : "pagingDay"})
-        curday = psec.find('a', {"class" : "on"})
-        if curday is None:
-            curday = psec.find('a')
-        prevday = curday.findNextSibling('a')
-        if prevday:
-            day_url  = base_url + prevday['href']
-            day_name = prevday.contents[0].strip()
-            self.prevday = (day_name,day_url)
+        #-- page navigation
+        psec = obj['tv']['newsList']['pageNavigation']
+        if psec['currentPageNo'] > 1:
+	    url = re.sub('page=(\d+)', 'page=%d'%(psec['currentPageNo']-1), main_url)
+	    self.prevpage = url
+	else:
+	    self.prevpage = None
+        if psec['currentPageNo'] < psec['totalPageCount']:
+	    url = re.sub('page=(\d+)', 'page=%d'%(psec['currentPageNo']+1), main_url)
+	    self.nextpage = url
+	else:
+	    self.nextpage = None
 
 if __name__ == "__main__":
     #import sys,os
@@ -68,14 +61,14 @@ if __name__ == "__main__":
     #    sys.path.append (LIB_DIR)
 
     site = DaumNews()
-    site.parseTop("http://tvnews.media.daum.net/")
+    site.parseTop("http://media.daum.net/tv/")
     print "--- Top -----------------------------"
     print site.menu_list[0]
     print len(site.menu_list)
 
-    site.parse("http://tvnews.media.daum.net/cp/YTN/")
+    site.parse("http://media.daum.net/api/service/tv/mbc.jsonp?page=1&countPerPage=8&regdate=")
     print "--- News -----------------------------"
     print site.video_list[0]
     print len(site.video_list)
+    print site.prevpage
     print site.nextpage
-    print site.prevday

@@ -6,29 +6,32 @@ import urllib
 from BeautifulSoup import BeautifulSoup, SoupStrainer
 
 class DaumStarcraft:
+    root_url = "http://tvpot.daum.net"
     menu_list = []
     video_list = []
+    prevpage = None
     nextpage = None
     def DaumStarcraft(self):
         pass
 
     def parseTop(self,url):
-        link = urllib.urlopen(url)
-        soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
+        html = urllib.urlopen(url).read()
+        soup = BeautifulSoup( html, fromEncoding="utf-8" )
         self.menu_list = []
         base_url = url[:url.rfind('/')+1]
         #-- item list
         strain = SoupStrainer( "div", { "class" : "schedule" } )
         items = soup.find("div", {"class" : "schedule"}).find("ul", {"class" : "pulldownList hidden"}).findAll('a')
         for item in items:
-            vid_url = base_url + item['href']
+	    vid_url = self.translate_url(item['href'], base_url)
             title   = item.contents[0]
             self.menu_list.append( (title,vid_url) )
 
     def parse(self,main_url):
-        link = urllib.urlopen(main_url)
-        soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
+        html = urllib.urlopen(main_url).read()
+        soup = BeautifulSoup( html, fromEncoding="utf-8" )
         self.video_list = []
+        self.prevpage = None
         self.nextpage = None
         base_url = main_url[:main_url.rfind('/')+1]
         #-- item list
@@ -54,39 +57,35 @@ class DaumStarcraft:
             	refs = set.findAll('a')
             	if len(refs) == 3:
                     stitle = "%s vs %s" % (refs[0].contents[0], refs[1].contents[0])
-                    url = refs[2]['href']
-		    if url.startswith("http"):
-			vid_url = url
-		    elif url.startswith("/"):
-			vid_url = "http://tvpot.daum.net"+url
-		    else:
-			vid_url = base_url + url
+		    vid_url = self.translate_url(refs[2]['href'], base_url)
                 elif len(refs) == 1:
                     stitle = set.find('dd').contents[0]
-                    url = refs[0]['href']
-		    if url.startswith("http"):
-			vid_url = url
-		    elif url.startswith("/"):
-			vid_url = "http://tvpot.daum.net"+url
-		    else:
-			vid_url = base_url + url
+		    vid_url = self.translate_url(refs[0]['href'], base_url)
                 else:
                     stitle = ''
                     vid_url = ''
             	set_list.append( (setName, stitle, vid_url) )
             self.video_list.append( (date,cable,mtitle,set_list) )
-        #-- next page
-        pages = soup.find("table", {"class" : "pageNav2"}).findAll( ('td','th') )
-        found = False
-        for page in pages:
-            if found:
-            	url = page.find('a')['href']
-            	if url.startswith("/"):
-                    url = "http://tvpot.daum.net"+url
-            	self.nextpage = url
-            	break
-            if page.find('span', {"class" : "sel"}):
-            	found = True
+	#-- page navigation
+	sect = soup.find("table", {"class" : "pageNav2"})
+	if sect:
+	    curpg = sect.find('span', {"class" : "sel"}).parent
+	    prevpg = curpg.findPreviousSibling('td')
+	    if prevpg:
+		self.prevpage = self.translate_url(prevpg.a['href'], base_url)
+	    nextpg = curpg.findNextSibling('td')
+	    if nextpg:
+		self.nextpage = self.translate_url(nextpg.a['href'], base_url)
+
+    def translate_url(self,url,base_url):
+	url = url.replace('&amp;','&')
+	if url.startswith("http"):
+	  pass
+	elif url.startswith("/"):
+	  url = self.root_url + url
+	else:
+	  url = base_url + url
+        return url
 
 if __name__ == "__main__":
     #import sys,os
