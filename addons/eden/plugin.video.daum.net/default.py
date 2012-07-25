@@ -9,6 +9,7 @@ import xbmcaddon,xbmcplugin,xbmcgui
 __addonid__ = "plugin.video.daum.net"
 __addon__   = xbmcaddon.Addon(__addonid__)
 __cwd__     = __addon__.getAddonInfo('path')
+_L = __addon__.getLocalizedString
 
 xbmc.log( "[PLUGIN] '%s: initialized!" % __addon__.getAddonInfo('name'), xbmc.LOGNOTICE )
 
@@ -18,6 +19,9 @@ if not LIB_DIR in sys.path:
   sys.path.append (LIB_DIR)
 pic_dir = xbmc.translatePath( os.path.join(__cwd__,'resources','pic')+os.sep )
 tvpot_icon = pic_dir+"daum_tvpot.png"
+
+prevPage = u"<{0:s}".format(_L(30000))
+nextPage = u"{0:s}>".format(_L(30001))
 
 # show menu
 def CATEGORIES():
@@ -99,9 +103,9 @@ def BROWSE_NEWS(main_url,contPage):
     title = title.replace('&#39;',"'")
     addDir(title, url, 1001, thumb)
   if site.prevpage:
-    addDir(u"<이전 페이지", site.prevpage, 22, '')
+    addDir(prevPage, site.prevpage, 22, '')
   if site.nextpage:
-    addDir(u"다음 페이지>", site.nextpage, 22, '')
+    addDir(nextPage, site.nextpage, 22, '')
   endDir(contPage)
 
 def BROWSE_BEST(main_url, contPage):
@@ -112,9 +116,9 @@ def BROWSE_BEST(main_url, contPage):
     title = title.replace('\n'," ")
     addDir(title, url, 1000, thumb)
   if site.prevpage:
-    addDir(u"<이전 페이지", site.prevpage, 32, '')
+    addDir(prevPage, site.prevpage, 32, '')
   if site.nextpage:
-    addDir(u"다음 페이지>", site.nextpage, 32, '')
+    addDir(nextPage, site.nextpage, 32, '')
   endDir(contPage)
 
 def BROWSE_BRAND(main_url,contPage):
@@ -125,9 +129,9 @@ def BROWSE_BRAND(main_url,contPage):
     title = title.replace('\n'," ")
     addDir(title, url, 1000, thumb)
   if site.prevpage:
-    addDir(u"<이전 페이지", site.prevpage, 43, '')
+    addDir(prevPage, site.prevpage, 43, '')
   if site.nextpage:
-    addDir(u"다음 페이지>", site.nextpage, 43, '')
+    addDir(nextPage, site.nextpage, 43, '')
   endDir(contPage)
 
 def BROWSE_STARCRAFT(main_url, contPage):
@@ -139,9 +143,9 @@ def BROWSE_STARCRAFT(main_url, contPage):
     for sname,stitle,url in set_list:
       addDir("%s %s" % (sname,stitle), url, 1000, '')
   if site.prevpage:
-    addDir(u"<이전 페이지", site.prevpage, 53, '')
+    addDir(prevPage, site.prevpage, 53, '')
   if site.nextpage:
-    addDir(u"다음 페이지>", site.nextpage, 53, '')
+    addDir(nextPage, site.nextpage, 53, '')
   endDir(contPage)
 
 #--------------------------------------------------------------------

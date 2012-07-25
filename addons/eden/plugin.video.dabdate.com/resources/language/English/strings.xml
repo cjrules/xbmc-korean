@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<strings>
+  <string id="30000">Login name</string>
+  <string id="30001">Password</string>
+  <string id="30100">Quality</string>
+  <string id="30101">Local server (for medium quality)</string>
+  <string id="31000">Medium</string>
+  <string id="31001">Low</string>
+  <string id="31002">High</string>
+  <string id="31003">Mobile</string>
+  <string id="31010">Australia/Asia 1</string>
+  <string id="31011">Australia/Asia 2</string>
+  <string id="31012">Australia/Asia 3</string>
+  <string id="31013">Europe/Middle Asia/India</string>
+  <string id="31014">South America</string>
+  <string id="31015">LA 1</string>
+  <string id="31016">LA 2</string>
+  <string id="31017">LA 3</string>
+  <string id="31018">LA 4</string>
+  <string id="31019">NY 1</string>
+  <string id="31020">NY 2</string>
+  <string id="31021">NY 3</string>
+</strings>
