@@ -51,12 +51,7 @@ def parseProg(main_url):
     	if vname == "systype" or vname[:2] == "id" or vname == "contentsid" or vname == "seriesid":
     	    vid_info[vname] = vval
 
-    # video link
-    vid_info['link'] = []
-
-    btndiv = re.compile('<dd class="btn">(.*?)</dd>', re.S).findall(html)
-    match = re.compile(r"""setPlayVideo\('(.*?)'\);">(.*?)</a>""").findall(btndiv[-1])
-
+    # video base
     down_url = root_url+"/ajax/getPlayUrl.gom"
     req = urllib2.Request(down_url)
     req.add_header("User-Agent", BrowserAgent)
@@ -66,9 +61,13 @@ def parseProg(main_url):
     markup = simplejson.loads(jsonstr)
     vid_info['video_base'] = markup['param']
 
+    # video link
+    vid_info['link'] = []
+    btndiv = re.compile('<dd class="btn">(.*?)</dd>', re.S).findall(html)
+    match = re.compile(r"""setPlayVideo\('(.*?)'\);">(.*?)</a>""").findall(btndiv[-1])
     for item in match:
         url = vid_info['video_base'] + item[0]
-        vid_info['link'].append( {'title':item[1], 'url':url} )
+        vid_info['link'].append( {'title':item[1].decode('utf-8'), 'url':url} )
 
     return vid_info
 

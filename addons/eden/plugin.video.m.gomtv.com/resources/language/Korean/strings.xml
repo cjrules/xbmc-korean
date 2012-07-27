@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
     <string id="30000">곰티비</string>
+    <string id="30001">디렉토리로 재생목록 표시</string>
     
     <!--Message-->
     <string id="30010">오류</string>

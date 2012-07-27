@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
     <string id="30000">GomTV</string>
+    <string id="30001">Show Play List as Directory</string>
 
     <!--Message-->
     <string id="30010">Error</string>
