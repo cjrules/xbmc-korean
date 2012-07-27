@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <string id="30000">GomTV</string>
+
+    <!--Message-->
+    <string id="30010">Error</string>
+    <string id="30011">Login is not supported</string>
+    
+    <!--NavItems-->
+    <string id="30100">More</string>
+    
+</strings>

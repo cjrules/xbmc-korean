@@ -15,7 +15,7 @@ __cwd__ = __addon__.getAddonInfo('path')
 LIB_DIR = xbmc.translatePath( os.path.join( __cwd__, 'resources', 'lib' ) )
 if not LIB_DIR in sys.path:
   sys.path.append (LIB_DIR)
-ICON_DIR = xbmc.translatePath( os.path.join( __cwd__, 'resources', 'icon' ) )
+IMAGE_DIR = xbmc.translatePath( os.path.join( __cwd__, 'resources', 'images' ) )
 
 from BeautifulSoup import BeautifulSoup, SoupStrainer, NavigableString
 
@@ -52,8 +52,11 @@ def progList(main_url):
 
     if show_thumb:
       thumb = item.find('img')['src']
-      if not thumb.startswith('http://'):
-        thumb = root_url + thumb
+      if thumb.endswith("/utils/icons/"):
+        thumb = ""    # fix site bug
+      else:
+        if not thumb.startswith('http://'):
+          thumb = root_url + thumb
     else:
       thumb = ""
     addDir(title, url, 3, thumb)
@@ -103,15 +106,15 @@ def episodeList(main_url):
       xbmc.log( "Found page: %s" % title2.encode('utf-8'), xbmc.LOGDEBUG )
 
       if url.find('tudou') > 0:
-        addRedir(title2, url, 4, "", os.path.join(ICON_DIR,"tudou.png"))
+        addRedir(title2, url, 9, "", os.path.join(IMAGE_DIR,"tudou.png"))
       elif url.find('youku') > 0:
-        addRedir(title2, url, 4, "", os.path.join(ICON_DIR,"youku.png"))
+        addRedir(title2, url, 4, "", os.path.join(IMAGE_DIR,"youku.png"))
       elif url.find('sohu') > 0:
-        addRedir(title2, url, 5, "", os.path.join(ICON_DIR,"sohu.png"))
+        addRedir(title2, url, 5, "", os.path.join(IMAGE_DIR,"sohu.png"))
       elif url.find('youtube') > 0:
-        addRedir(title2, url, 6, title, os.path.join(ICON_DIR,"youtube.png"))
+        addRedir(title2, url, 6, title, os.path.join(IMAGE_DIR,"youtube.png"))
       elif url.find('dmotion') > 0:
-        addRedir(title2, url, 7, title, os.path.join(ICON_DIR,"dailymotion.png"))
+        addRedir(title2, url, 7, title, os.path.join(IMAGE_DIR,"dailymotion.png"))
       elif url.find('source') > 0:
         addRedir(title2, url, 8, "")
       else:
@@ -138,9 +141,30 @@ def _playFLVCD(url):
     pl.add(vid['url'], li)
   xbmc.Player().play(pl)
 
+def _playTudou(url):
+  from extract_withflvcd import extract_withFLVCD
+  vid_list = extract_withFLVCD(urllib.quote_plus(url))
+  if len(vid_list) == 0:
+    xbmcgui.Dialog().ok("Fail to extract video", url)
+    return
+
+  pl = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
+  pl.clear()
+  for vid in vid_list:
+    vid_url = vid['url'].replace('&amp;','&')
+    vid_url = vid_url.replace("?1","?8") # trick to make streaming easier
+    li = xbmcgui.ListItem(vid['title'], iconImage="DefaultVideo.png")
+    li.setInfo( 'video', { "Title": vid['title'] } )
+    pl.add(vid_url, li)
+  xbmc.Player().play(pl)
+
 def _playSohu(url):
   import extract_sohu
   vid_list = extract_sohu.extract_video_from_url(urllib.quote_plus(url))
+  if len(vid_list) == 0:
+    xbmcgui.Dialog().ok("Fail to extract video", url)
+    return
+
   pl = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
   pl.clear()
   for vid in vid_list:
@@ -195,6 +219,12 @@ def playFLVCD(url):
     return
   _playFLVCD(match[0])
 
+def playTudou(url):
+  match = get_player_link(url)
+  if len(match) == 0:
+    return
+  _playTudou(match[0])
+
 def playSohu(url):
   match = get_player_link(url)
   if len(match) == 0:
@@ -220,7 +250,7 @@ def playWrapper(main_url, title):
   url = match[0]
 
   if url.find('tudou.com') > 0:
-    _playFLVCD(url)
+    _playTudou(url)
   elif url.find('youku.com') > 0:
     _playFLVCD(url)
   elif url.find('56.com') > 0:
@@ -324,5 +354,7 @@ elif mode==7:
   playDmotion(url, title)
 elif mode==8:
   playWrapper(url, title)
+elif mode==9:
+  playTudou(url)
 
 # vim: softtabstop=2 shiftwidth=2 expandtab

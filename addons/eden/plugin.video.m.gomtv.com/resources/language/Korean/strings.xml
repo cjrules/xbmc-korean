@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <string id="30000">곰티비</string>
+    
+    <!--Message-->
+    <string id="30010">오류</string>
+    <string id="30011">아직 로그인이 지원되지 않습니다.</string>
+
+    <!--NavItems-->
+    <string id="30100">더 보기</string>
+    
+</strings>
