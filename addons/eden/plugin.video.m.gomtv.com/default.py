@@ -16,6 +16,7 @@ LIB_DIR = xbmc.translatePath( os.path.join( __addon__.getAddonInfo('path'), 'res
 sys.path.append (LIB_DIR)
 
 plistDir = __addon__.getSetting('plistDir').lower() == 'true'
+tMore = u"[COLOR FF0000FF]%s[/COLOR]" % _L(30100)
 
 import gomm, gomtv
 
@@ -40,8 +41,6 @@ def _programList(main_url):
 def programList(main_url):
     llen = _programList(main_url+"&limit=25")
     if llen == 25:
-        # double number of items per page
-        tMore = u"[COLOR FF0000FF]%s[/COLOR]" % _L(30100)
         addDir(tMore, main_url+"&limit=50", 3, "")
     endDir()
 
@@ -50,22 +49,19 @@ def programListMore(main_url):
     pos = main_url.rfind('=')+1
     limit = int(main_url[pos:])
     if llen == limit:
-        # double number of items per page
-        tMore = u"[COLOR FF0000FF]%s[/COLOR]" % _L(30100)
-        addDir(tMore, main_url[:pos]+str(limit*2), 3, "")
+        addDir(tMore, main_url[:pos]+str(limit*2), 3, "")   # double
     endDir(True)
 
-def videoList(main_url):
+def videoList(main_url,main_title):
     info = gomm.parseProg(main_url)
     if info is None:
     	xbmcgui.Dialog().ok(_L(30010), _L(30011))
     	return
     if len(info['link']):
     	if len(info['link']) == 1:
-            title = info['link'][0]['title']
             url = info['link'][0]['url'] + "|Referer="+main_url
-            li = xbmcgui.ListItem(title, iconImage="DefaultVideo.png")
-            li.setInfo('video', {"Title": title})
+            li = xbmcgui.ListItem(main_title, iconImage="DefaultVideo.png")
+            li.setInfo('video', {"Title": main_title})
             xbmc.Player().play(url, li)
         elif plistDir:
             for item in info['link']:
@@ -87,11 +83,10 @@ def videoList(main_url):
             xbmcgui.Dialog().ok(_L(30010), _L(30011))
     	    return
     	if len(info2['playlist']) == 1:
-            title = info2['playlist'][0]['title']
             url = info['video_base'] + gomm.getRequestQuery(info['contentsid'],info['seriesid'],info2['playlist'][0]['nodeid'])
             url += "|Referer="+main_url
-            li = xbmcgui.ListItem(title, iconImage="DefaultVideo.png")
-            li.setInfo('video', {"Title": title})
+            li = xbmcgui.ListItem(main_title, iconImage="DefaultVideo.png")
+            li.setInfo('video', {"Title": main_title})
             xbmc.Player().play(url, li)
         elif plistDir:
             for item in info2['playlist']:
@@ -176,6 +171,6 @@ elif mode==2:
 elif mode==3:
     programListMore(url)
 elif mode==4:
-    videoList(url)
+    videoList(url,name)
 
 # vim:sts=4:et
