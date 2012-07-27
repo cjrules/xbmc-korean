@@ -33,15 +33,24 @@ def _programList(main_url):
     info = gomm.parseList(main_url)
     for item in info['list']:
         addDir(item['title'], item['url'], 4, item['thumb'])
-    #if info.haskey('more'):
-    #    addDir(_L(30100), info['more'], 3, "")
+    return len(info['list'])
 
 def programList(main_url):
-    _programList(main_url)
+    llen = _programList(main_url+"&limit=25")
+    if llen == 25:
+        # double number of items per page
+        tMore = u"[COLOR FF0000FF]%s[/COLOR]" % _L(30100)
+        addDir(tMore, main_url+"&limit=50", 3, "")
     endDir()
 
 def programListMore(main_url):
-    _programList(main_url)
+    llen = _programList(main_url)
+    pos = main_url.rfind('=')+1
+    limit = int(main_url[pos:])
+    if llen == limit:
+        # double number of items per page
+        tMore = u"[COLOR FF0000FF]%s[/COLOR]" % _L(30100)
+        addDir(tMore, main_url[:pos]+str(limit*2), 3, "")
     endDir(True)
 
 def videoList(main_url):
