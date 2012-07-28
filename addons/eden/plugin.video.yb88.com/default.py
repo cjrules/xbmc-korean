@@ -55,9 +55,10 @@ def _episodeList(main_url):
   info = yb88tv.parseProg(main_url)
   for item in info['playlist']:
     addDir(u"[B]%s[/B]" % item['title'], item['url'], 5, "")
-  addDir(u"[COLOR FFFF0000]에피소드[/COLOR]", "-", 0, "")
-  for item in info['episodes']:
-    addDir(item['title'], item['url'], 4, "")
+  if len(info['episodes']) > 0:
+    addDir(u"[COLOR FFFF0000]%s[/COLOR]" % _L(30103), "-", 0, "")
+    for item in info['episodes']:
+      addDir(item['title'], item['url'], 4, "")
 
 def episodeList(main_url):
   _episodeList(main_url)

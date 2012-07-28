@@ -36,7 +36,10 @@ def parseProg(main_url):
     result = {}
     # playlist
     link = []
-    for aa in soup.find("dd",{"class":re.compile("^Content-view-mlink")}).findAll("a"):
+    sec = soup.find("dd",{"class":re.compile("^Content-view-mlink")})
+    if sec is None:
+        sec = soup.find("div",{"class":"Content-view-mlink"})
+    for aa in sec.findAll("a"):
     	if aa['href'].find('/play/') > 0:
             link.append({'title':aa.string,'url':aa['href'].replace('&amp;','&')})
     result['playlist'] = link
