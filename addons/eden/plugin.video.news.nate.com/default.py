@@ -15,6 +15,7 @@ LIB_DIR = xbmc.translatePath( os.path.join( __addon__.getAddonInfo('path'), 'res
 sys.path.append (LIB_DIR)
 
 import nate_sports
+selAltMovie = __addon__.getSetting("selAltMovie").lower() == "true"
 
 root_url = "http://sports.news.nate.com"
 
@@ -51,11 +52,11 @@ def programList(main_url):
 
 def videoList(main_url,main_title):
     try:
-        vod_sq,vod_key = nate_sports.parseProg(main_url)
-    except:
         vod_sq,vod_key = nate_sports.parseProg2(main_url)
-    print vod_sq + " " + vod_key
-    vid_url,img_url = nate_sports.getVideoUrl(vod_sq,vod_key)
+    except:
+        vod_sq,vod_key = nate_sports.parseProg(main_url)
+    xbmc.log(vod_sq + " " + vod_key, xbmc.LOGDEBUG)
+    vid_url,img_url = nate_sports.getVideoUrl(vod_sq,vod_key,selAltMovie)
     url = vid_url + "|Referer="+main_url
     li = xbmcgui.ListItem(main_title, iconImage=img_url)
     li.setInfo('video', {"Title": main_title})

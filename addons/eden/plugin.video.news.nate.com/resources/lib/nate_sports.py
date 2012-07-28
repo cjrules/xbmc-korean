@@ -65,12 +65,15 @@ def parseProg2(main_url):
     vod_sq,vod_key = re.compile(r"video_player\('(\d+)','(\w+)',").search(html).group(1,2)
     return (vod_sq, vod_key)
 
-def getVideoUrl(vod_sq, vod_key):
+def getVideoUrl(vod_sq, vod_key, selAltMovie=False):
     url = "http://v.nate.com/movie_url.php?mov_id=%s&v_key=%s&type=xml" % (vod_sq, vod_key)
     xml = urllib2.urlopen(url).read()
     #dom = xml.dom.minidom.parseString(xml)   # encoding error?
     soup = BeautifulStoneSoup(xml, fromEncoding='euc-kr')
-    vid_url = urllib.unquote(soup.movie.mov_url.string)
+    if selAltMovie:
+        vid_url = urllib.unquote(soup.movie.mov_url_alt.string)
+    else:
+        vid_url = urllib.unquote(soup.movie.mov_url.string)
     img_url = soup.movie.master_thumbnail.url.string
     return (vid_url, img_url)
 
@@ -98,9 +101,9 @@ if __name__ == "__main__":
     #html = urllib2.urlopen(url).read()
     #open("b.html", "w").write(html)
 
-    aid = info[0]['list']['aid']
-    vod_sq,vod_key = parseProg(root_url+"/view/"+aid)
+    aid = info[0]['list'][0]['aid']
+    vod_sq,vod_key = parseProg2(root_url+"/view/"+aid)
     #vod_sq,vod_key = parseProg(root_url+"/spo/vodPopup?aid=20120724n21082&epo=1&clst_id=368440")
-    print getVideoUrl(vod_sq,vod_key)
+    print getVideoUrl(vod_sq,vod_key,True)
 
 # vim:sts=4:et
