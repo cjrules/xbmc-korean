@@ -5,19 +5,13 @@
 import xbmcaddon, xbmcplugin, xbmcgui
 import urllib, urllib2, re
 from BeautifulSoup import BeautifulSoup, SoupStrainer
-import os.path
 
-__plugin__  = "BayKoreans"
 __addonid__ = "plugin.video.baykoreans.net"
 __addon__ = xbmcaddon.Addon(__addonid__)
 
 UserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)"
 root_url = "http://baykoreans.net"
 show_thumb = __addon__.getSetting('showThumb').lower() == 'true'
-
-LIB_DIR = xbmc.translatePath(os.path.join(__addon__.getAddonInfo('path'), 'resources', 'lib'))
-if not LIB_DIR in sys.path:
-  sys.path.append (LIB_DIR)
 
 from extract_withflvcd import extract_withFLVCD
 
@@ -210,15 +204,13 @@ def playSohu(main_url):
     xbmc.log("Video: "+vid['url'], xbmc.LOGDEBUG)
   xbmc.Player().play(pl)
 
-def playTudouId(iid):
+def playTudouId(iid,title):
   import extract_tudou
   try:
-    icode = extract_tudou.revert_icode(iid)
-    url = "http://www.tudou.com/programs/view/{0:s}/".format(icode)
-    xbmc.log("Tudou link: "+url, xbmc.LOGDEBUG)
-    vid_list = extract_withFLVCD(url)
-    vid_url = vid_list[0]['url'].replace("?1", "?8") # trick to make streaming
-    title = vid_list[0]['title']
+    #icode = extract_tudou.revert_icode(iid)
+    #vid_list = extract_tudou.extract_video(icode)
+    vid_list = extract_tudou.extract_video_from_iid(iid)
+    vid_url = vid_list[0]['url']
   except:
     xbmc.log("Fail to extract Tudou %s" % iid, xbmc.LOGWARNING)
     dialog = xbmcgui.Dialog()
@@ -354,7 +346,7 @@ elif mode == 10:
 elif mode == 11:
   playSohu(url)
 elif mode == 12:
-  playTudouId(url)
+  playTudouId(url,title)
 elif mode == 13:
   playYoutube(url,title)
 elif mode == 14:

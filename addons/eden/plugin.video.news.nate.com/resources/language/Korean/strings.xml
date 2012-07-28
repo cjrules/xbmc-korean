@@ -2,4 +2,6 @@
 <strings>
     <string id="30000">네이트 스포츠 동영상</string>
     <string id="30001">다른 동영상 주소 사용</string>
+    <string id="30100">이전 페이지</string>
+    <string id="30101">다음 페이지</string>
 </strings>

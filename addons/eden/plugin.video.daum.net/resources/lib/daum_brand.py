@@ -18,7 +18,7 @@ class DaumBrand:
   @staticmethod
   def getList(url):
     html = urllib.urlopen(url).read()
-    soup = BeautifulSoup( html, fromEncoding="utf-8" )
+    soup = BeautifulSoup( html, fromEncoding="utf-8", convertEntities=BeautifulSoup.HTML_ENTITIES )
     brand_list = []
     #-- item list
     strain = SoupStrainer( "div", { "class" : re.compile("^cate_") } )
@@ -27,22 +27,21 @@ class DaumBrand:
       brand_list.append( (title,None) )
       for item in section.findAll('a'):
         brand_id = re.compile('ownerid=(.*)').search(item['href']).group(1)
-        title = urllib.unquote(item.string)
+        title = item.string
         brand_list.append( (title,brand_id) )
     return brand_list
 
   def parseTop(self,url):
     link = urllib.urlopen(url)
-    soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
+    soup = BeautifulSoup( link.read(), fromEncoding="utf-8", convertEntities=BeautifulSoup.HTML_ENTITIES )
     self.menu_list = []
+    base_url = main_url[:main_url.rfind('/')+1]
     #-- item list
     strain1 = SoupStrainer( "div", { "class" : "programList" } )
     strain2 = SoupStrainer( "div", { "class" : "listBody" } )
     for item in soup.find(strain1).find(strain2).findAll('li'):
-      url = item.a['href'].replace("&amp;","&")
-      url = self.root_url + url
+      url = translate_url(item.a['href'], base_url)
       title = item.a.string
-      title = title.replace("&lt;","<").replace("&gt;",">").replace("&amp;","&")
       self.menu_list.append( (title,url) )
 
   def parse(self,main_url):
@@ -75,7 +74,6 @@ class DaumBrand:
       query = re.compile(u"동영상 '(.*?)'의 미리보기 이미지").match(title)
       if query:
         title = query.group(1)
-      title = title.replace("&lt;","<").replace("&gt;",">").replace("&amp;","&")
       self.video_list.append( (title,vid_url,thumb) )
     #-- page navigation
     sect = soup.find("table", {"class" : "pageNav2"})

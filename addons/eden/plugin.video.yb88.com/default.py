@@ -1,125 +1,73 @@
 # -*- coding: utf-8 -*-
 """
-  JoonMedia - Korea Drama/TV Shows Streaming Service
+  yb88 - 영변88 TV
 """
 import urllib,re
 import xbmcaddon,xbmcplugin,xbmcgui
 import os.path
 
 # plugin constants
-__addonid__ = "plugin.video.joonmedia.net"
+__addonid__ = "plugin.video.yb88.com"
 __addon__ = xbmcaddon.Addon( __addonid__ )
+_L = __addon__.getLocalizedString
 
-__addon2__ = xbmcaddon.Addon( "script.module.getvideo" )
-IMAGE_DIR = xbmc.translatePath( os.path.join( __addon2__.getAddonInfo('path'), 'images' ) )
+import os.path
+LIB_DIR = xbmc.translatePath( os.path.join( __addon__.getAddonInfo('path'), 'resources', 'lib' ) )
+sys.path.append (LIB_DIR)
 
-from BeautifulSoup import BeautifulSoup
+root_url = "http://tv.yb88.com"
+import yb88tv
 
-root_url = "http://www.mjoon.com"
-show_thumb = __addon__.getSetting('showThumb').lower() == 'true'
+tPrevPage = u"[B]<%s[/B]" % _L(30100)
+tNextPage = u"[B]%s>[/B]" % _L(30101)
 
 #-----------------------------------------------------
 def rootList():
   ## not parsing homepage for faster speed
-  addDir(u"최근 업데이트",root_url,2,"")
-  addDir(u"드라마",root_url+"/vids/list/drama",1,"")
-  addDir(u"종영드라마",root_url+"/vids/list/cdrama",1,"")
-  addDir(u"예능",root_url+"/vids/list/show",1,"")
-  addDir(u"시사교양",root_url+"/vids/list/edu",1,"")
-  addDir(u"한국영화",root_url+"/vids/list/krmovie",1,"")
-  addDir(u"일본영화",root_url+"/vids/list/jpmovie",1,"")
-  addDir(u"중국영화",root_url+"/vids/list/chmovie",1,"")
+  #addDir(u"텔레비젼",root_url+"/tv",1,"")
+  addDir(u"드라마",root_url+"/tv/Drama",1,"")
+  addDir(u"시사교양",root_url+"/tv/Preview-Hobbies",1,"")
+  addDir(u"연예오락",root_url+"/tv/Entertainment",1,"")
+  addDir(u"스포츠",root_url+"/tv/Sports",1,"")
+  addDir(u"다큐멘터리",root_url+"/tv/documentary",1,"")
+  addDir(u"영화",root_url+"/movie",1,"")
+  addDir(u"뮤직비디오",root_url+"/music-video",1,"")
   endDir()
+
+def _progList(main_url):
+  info = yb88tv.parseList(main_url)
+  for item in info['link']:
+    addDir(item['title'], item['url'], 3, item['thumb'])
+  if 'prevpage' in info:
+    addDir(tPrevPage, info['prevpage'], 2, "")
+  if 'nextpage' in info:
+    addDir(tNextPage, info['nextpage'], 2, "")
 
 def progList(main_url):
-  html = urllib.urlopen(main_url).read()
-  soup = BeautifulSoup( html, fromEncoding="utf-8" )
-  for item in soup.findAll("div", { "class" : "column" } ):
-    ref = item.find('a')
-    tlist = []
-    for s in ref.contents:
-      if s.string: tlist.append( s.string )
-    title = " / ".join( tlist )
-    url = ref['href']
-    if not url.startswith('http://'):
-      url = root_url + url
-    xbmc.log( "TV program: %s" % title.encode('utf-8'), xbmc.LOGDEBUG )
-
-    if show_thumb:
-      thumb = item.find('img')['src']
-      if thumb.endswith("/utils/icons/"):
-        thumb = ""    # fix site bug
-      else:
-        if not thumb.startswith('http://'):
-          thumb = root_url + thumb
-    else:
-      thumb = ""
-    addDir(title, url, 3, thumb)
+  _progList(main_url)
   endDir()
 
-def recentList(main_url):
-  html = urllib.urlopen(main_url).read()
-  soup = BeautifulSoup( html, fromEncoding="utf-8" )
-  for item in soup.findAll( "div", { "class" : "column" } ):
-    category = item.find('h2').contents[0]
-    addDir(u"[COLOR FFFF0000]%s[/COLOR]" % category, '', 6, '')
-    for ref in item.findAll('a'):
-      if str(ref.contents[0]).startswith('<strong>'):
-        continue    # skip
-      tlist = []
-      for s in ref.contents:
-        if s.string: tlist.append( s.string )
-      title = " / ".join( tlist )
-      url = ref['href']
-      if not url.startswith('http://'):
-        url = root_url + url
-      xbmc.log( "TV program: %s" % title.encode('utf-8'), xbmc.LOGDEBUG )
-      addDir(title, url, 3, '')
-  endDir()
+def progListNext(main_url):
+  _progList(main_url)
+  endDir(True)
+
+def _episodeList(main_url):
+  info = yb88tv.parseProg(main_url)
+  for item in info['playlist']:
+    addDir(u"[B]%s[/B]" % item['title'], item['url'], 5, "")
+  addDir(u"[COLOR FFFF0000]에피소드[/COLOR]", "-", 0, "")
+  for item in info['episodes']:
+    addDir(item['title'], item['url'], 4, "")
 
 def episodeList(main_url):
-  link = urllib.urlopen(main_url)
-  soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
-  colsel = int(__addon__.getSetting("VideoColumn"))
-  episodes = soup("div", {"class" : "column"})[colsel-1].findAll('li')
-  for episode in episodes:
-    title = u""
-    for node in episode.contents:
-      if node.string:
-      	title += node.string
-      if getattr(node, 'name', None) == 'br':
-      	break
-    title = title.strip()
-
-    for ref in episode.findAll('a'):
-      url = ref['href']
-      if not url.startswith('http://'):
-      	url = root_url + url
-      suppl = ''.join(ref.findAll(text=True)).strip()
-      title2 = u"{0:s} ({1:s})".format(title,suppl)
-      xbmc.log( "Found page: %s" % title2.encode('utf-8'), xbmc.LOGDEBUG )
-
-      if url.find('tudou') > 0:
-        addRedir(title2, url, 9, "", os.path.join(IMAGE_DIR,"tudou.png"))
-      elif url.find('youku') > 0:
-        addRedir(title2, url, 4, "", os.path.join(IMAGE_DIR,"youku.png"))
-      elif url.find('sohu') > 0:
-        addRedir(title2, url, 5, "", os.path.join(IMAGE_DIR,"sohu.png"))
-      elif url.find('youtube') > 0:
-        addRedir(title2, url, 6, title, os.path.join(IMAGE_DIR,"youtube.png"))
-      elif url.find('dmotion') > 0:
-        addRedir(title2, url, 7, title, os.path.join(IMAGE_DIR,"dailymotion.png"))
-      elif url.find('source') > 0:
-        addRedir(title2, url, 8, "")
-      else:
-        xbmc.Dialog().ok("Unsupported format", url)
+  _episodeList(main_url)
   endDir()
 
-#-----------------------------------                
-def get_player_link(url):
-  html = urllib.urlopen(url).read()
-  return re.compile('<a class="player_link" href="([^"]*)" target="_blank">').findall(html)
+def episodeListNext(main_url):
+  _episodeList(main_url)
+  endDir(True)
 
+#-----------------------------------                
 def _playFLVCD(url):
   from extract_withflvcd import extract_withFLVCD
   vid_list = extract_withFLVCD(urllib.quote_plus(url))
@@ -145,11 +93,9 @@ def _playTudou(url):
   pl = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
   pl.clear()
   for vid in vid_list:
-    vid_url = vid['url'].replace('&amp;','&')
-    vid_url = vid_url.replace("?1","?8") # trick to make streaming easier
     li = xbmcgui.ListItem(vid['title'], iconImage="DefaultVideo.png")
     li.setInfo( 'video', { "Title": vid['title'] } )
-    pl.add(vid_url, li)
+    pl.add(vid['url'], li)
   xbmc.Player().play(pl)
 
 def _playSohu(url):
@@ -186,7 +132,7 @@ def _playYoutube(url, title):
     xbmc.Player().play(url, li)
   elif len(vid_urls):
     dialog = xbmcgui.Dialog()
-    dialog.ok("Warning", "You'd be better try again with other Youtube quality")
+    dialog.ok("Warning", _L(30102))
 
 def _playDmotion(url, title):
   import extract_dailymotion
@@ -206,42 +152,8 @@ def _playDmotion(url, title):
     xbmc.log("Video: "+url, xbmc.LOGDEBUG)
   xbmc.Player().play(pl)
 
-#-----------------------------------                
-def playFLVCD(url):
-  match = get_player_link(url)
-  if len(match) == 0:
-    return
-  _playFLVCD(match[0])
-
-def playTudou(url):
-  match = get_player_link(url)
-  if len(match) == 0:
-    return
-  _playTudou(match[0])
-
-def playSohu(url):
-  match = get_player_link(url)
-  if len(match) == 0:
-    return
-  _playSohu(match[0])
-
-def playYoutube(url, title):
-  match = get_player_link(url)
-  if len(match) == 0:
-    return
-  _playYoutube(match[0], title)
-
-def playDmotion(main_url, title):
-  match = get_player_link(main_url)
-  if len(match) == 0:
-    return
-  _playDmotion(match[0], title)
-
 def playWrapper(main_url, title):
-  match = get_player_link(main_url)
-  if len(match) == 0:
-    return
-  url = match[0]
+  url = yb88tv.parseVideoPlay(main_url)
 
   if url.find('tudou.com') > 0:
     _playTudou(url)
@@ -335,20 +247,12 @@ if mode==None:
 elif mode==1:
   progList(url)
 elif mode==2:
-  recentList(url)
+  progListNext(url)
 elif mode==3:
   episodeList(url)
 elif mode==4:
-  playFLVCD(url)
+  episodeListNext(url)
 elif mode==5:
-  playSohu(url)
-elif mode==6:
-  playYoutube(url, title)
-elif mode==7:
-  playDmotion(url, title)
-elif mode==8:
-  playWrapper(url, title)
-elif mode==9:
-  playTudou(url)
+  playWrapper(url, name)
 
 # vim: softtabstop=2 shiftwidth=2 expandtab

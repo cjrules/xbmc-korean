@@ -17,19 +17,18 @@ import os
 LIB_DIR = xbmc.translatePath( os.path.join(__cwd__, 'resources', 'lib') )
 if not LIB_DIR in sys.path:
   sys.path.append (LIB_DIR)
-pic_dir = xbmc.translatePath( os.path.join(__cwd__,'resources','pic')+os.sep )
-tvpot_icon = pic_dir+"daum_tvpot.png"
+IMAGE_DIR = xbmc.translatePath( os.path.join(__cwd__,'resources','images')+os.sep )
 
-prevPage = u"<{0:s}".format(_L(30000))
-nextPage = u"{0:s}>".format(_L(30001))
+tPrevPage = u"<{0:s}".format(_L(30000))
+tNextPage = u"{0:s}>".format(_L(30001))
 
 # show menu
 def CATEGORIES():
-  addDir(u"영화 예고편", "http://movie.daum.net/ranking/movieclip_ranking/", 10, pic_dir+"daum_trailer.png")
-  addDir(u"뉴스", "http://media.daum.net/tv/", 20, pic_dir+"daum_media.png")
-  addDir(u"베스트 동영상", "http://tvpot.daum.net/best/", 30, tvpot_icon)
-  addDir(u"브랜드", "http://tvpot.daum.net/brand/", 40, tvpot_icon)
-  addDir(u"게임", "http://tvpot.daum.net", 50, tvpot_icon)
+  addDir(u"영화 예고편", "http://movie.daum.net/ranking/movieclip_ranking/", 10, IMAGE_DIR+"daum_trailer.png")
+  addDir(u"뉴스", "http://media.daum.net/tv/", 20, IMAGE_DIR+"daum_media.png")
+  addDir(u"베스트 동영상", "http://tvpot.daum.net/best/", 30, IMAGE_DIR+"daum_tvpot.png")
+  addDir(u"브랜드", "http://tvpot.daum.net/brand/", 40, IMAGE_DIR+"daum_tvpot.png")
+  addDir(u"게임", "http://tvpot.daum.net", 50, IMAGE_DIR+"daum_tvpot.png")
   endDir()
 
 def CAT_TRAILER(base_url):
@@ -73,8 +72,8 @@ def CAT_BRAND(url):
   endDir()
 
 def CAT_GAME(base_url):
-  addDir(u"스타리그", base_url+"/game/sl/LeagueList.do?league=osl&type=list&lu=game_osl_closegame",51,pic_dir+"oslBanner.png")
-  addDir(u"프로리그", base_url+"/game/sl/LeagueList.do?league=pro&type=list&lu=game_pro_closegame",51,pic_dir+"proleagueBanner.png")
+  addDir(u"스타리그", base_url+"/game/sl/LeagueList.do?league=osl&type=list&lu=game_osl_closegame",51,IMAGE_DIR+"oslBanner.png")
+  addDir(u"프로리그", base_url+"/game/sl/LeagueList.do?league=pro&type=list&lu=game_pro_closegame",51,IMAGE_DIR+"proleagueBanner.png")
   addDir(u"MSL", base_url+"/game/sl/LeagueList.do?league=msl&type=list&lu=game_msl_closegame",51,"")
   endDir()
 
@@ -103,9 +102,9 @@ def BROWSE_NEWS(main_url,contPage):
     title = title.replace('&#39;',"'")
     addDir(title, url, 1001, thumb)
   if site.prevpage:
-    addDir(prevPage, site.prevpage, 22, '')
+    addDir(tPrevPage, site.prevpage, 22, '')
   if site.nextpage:
-    addDir(nextPage, site.nextpage, 22, '')
+    addDir(tNextPage, site.nextpage, 22, '')
   endDir(contPage)
 
 def BROWSE_BEST(main_url, contPage):
@@ -116,9 +115,9 @@ def BROWSE_BEST(main_url, contPage):
     title = title.replace('\n'," ")
     addDir(title, url, 1000, thumb)
   if site.prevpage:
-    addDir(prevPage, site.prevpage, 32, '')
+    addDir(tPrevPage, site.prevpage, 32, '')
   if site.nextpage:
-    addDir(nextPage, site.nextpage, 32, '')
+    addDir(tNextPage, site.nextpage, 32, '')
   endDir(contPage)
 
 def BROWSE_BRAND(main_url,contPage):
@@ -129,9 +128,9 @@ def BROWSE_BRAND(main_url,contPage):
     title = title.replace('\n'," ")
     addDir(title, url, 1000, thumb)
   if site.prevpage:
-    addDir(prevPage, site.prevpage, 43, '')
+    addDir(tPrevPage, site.prevpage, 43, '')
   if site.nextpage:
-    addDir(nextPage, site.nextpage, 43, '')
+    addDir(tNextPage, site.nextpage, 43, '')
   endDir(contPage)
 
 def BROWSE_STARCRAFT(main_url, contPage):
@@ -143,9 +142,9 @@ def BROWSE_STARCRAFT(main_url, contPage):
     for sname,stitle,url in set_list:
       addDir("%s %s" % (sname,stitle), url, 1000, '')
   if site.prevpage:
-    addDir(prevPage, site.prevpage, 53, '')
+    addDir(tPrevPage, site.prevpage, 53, '')
   if site.nextpage:
-    addDir(nextPage, site.nextpage, 53, '')
+    addDir(tNextPage, site.nextpage, 53, '')
   endDir(contPage)
 
 #--------------------------------------------------------------------

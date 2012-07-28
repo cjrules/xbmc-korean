@@ -17,6 +17,9 @@ sys.path.append (LIB_DIR)
 import nate_sports
 selAltMovie = __addon__.getSetting("selAltMovie").lower() == "true"
 
+tPrevPage = u"[B]<%s[/B]" % _L(30100)
+tNextPage = u"[B]%s>[/B]" % _L(30101)
+
 root_url = "http://sports.news.nate.com"
 
 def categoryList():
@@ -40,15 +43,27 @@ def teamList(main_url):
         addDir(team['name'], team['url'], 4, "")
     endDir()
 
-def programList(main_url):
-    for sec in nate_sports.parseESports(main_url):
+def _programList(main_url):
+    info = nate_sports.parseESports(main_url)
+    for sec in info['group']:
     	if 'title' in sec:
             title = u"[COLOR FF0000FF]"+sec['title']+"[/COLOR]"
             addDir(title, "-", 0, "")
         for item in sec['list']:
             url = root_url + "/view/" + item['aid']
-            addDir(item['title'], url, 5, "")
+            addDir(item['title'], url, 6, "")
+    if "prevpage" in info:
+        addDir(tPrevPage, info['prevpage'], 5, "")
+    if "nextpage" in info:
+        addDir(tNextPage, info['nextpage'], 5, "")
+
+def programList(main_url):
+    _programList(main_url)
     endDir()
+
+def programListNext(main_url):
+    _programList(main_url)
+    endDir(True)
 
 def videoList(main_url,main_title):
     try:
@@ -131,6 +146,8 @@ elif mode==3:
 elif mode==4:
     programList(url)
 elif mode==5:
+    programListNext(url)
+elif mode==6:
     videoList(url,name)
 
 # vim:sts=4:et

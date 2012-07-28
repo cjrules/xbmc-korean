@@ -37,7 +37,9 @@ def parseESports(main_url):
     req.add_header('User-Agent', BrowserAgent)
     html = urllib2.urlopen(req).read()
     soup = BeautifulSoup(html, fromEncoding='euc-kr')
-    vod_info = []
+    vod_info = {}
+    # group of links
+    vodll = []
     for sec in soup.findAll("div", {"class":re.compile("^vodPlayList")}):
     	vodgrp = {"list":[]}
     	if sec.h5:
@@ -48,7 +50,16 @@ def parseESports(main_url):
             aid = re.compile("aid=(\w*)").search(aa['href']).group(1).encode('ascii')
             thumb = item.find('img')['src']
             vodgrp['list'].append({"title":title,"aid":aid,"thumb":thumb})
-    	vod_info.append(vodgrp)
+    	vodll.append(vodgrp)
+    vod_info['group'] = vodll
+    # page navigation
+    curpg = soup.find("div", {"id":"paging"}).find("strong")
+    prevpg = curpg.findPreviousSibling("a")
+    if prevpg:
+    	vod_info['prevpage'] = prevpg['href'].replace('&amp;','&')
+    nextpg = curpg.findNextSibling("a")
+    if nextpg:
+    	vod_info['nextpage'] = nextpg['href'].replace('&amp;','&')
     return vod_info
 
 def parseProg(main_url):
