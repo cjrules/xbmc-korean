@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.news.nate.com"
+       name="Nate Sports News"
+       version="0.1.0"
+       provider-name="XBMC-Korea">
+  <requires>
+    <import addon="xbmc.python" version="1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.0.8"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Nate Sports News</summary>
+    <summary lang="ko">네이트 스포츠 뉴스</summary>
+    <description lang="en">Watch eSports video provided by Nate</description>
+    <description lang="ko">네이트에서 제공하는 게임 동영상</description>
+    <platform>all</platform>
+  </extension>
+</addon>
