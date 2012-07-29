@@ -20,8 +20,8 @@ if not LIB_DIR in sys.path:
 image_dir = xbmc.translatePath( os.path.join(__cwd__,'resources','images')+os.sep )
 tvpot_icon = image_dir+"daum_tvpot.png"
 
-prevPage = u"<{0:s}".format(_L(30000))
-nextPage = u"{0:s}>".format(_L(30001))
+prevPage = u"[B]<{0:s}[/B]".format(_L(30000))
+nextPage = u"[B]{0:s}>[/B]".format(_L(30001))
 
 # show menu
 def CATEGORIES():

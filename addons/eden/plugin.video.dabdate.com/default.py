@@ -50,12 +50,15 @@ if __qual__=='m':
 else:
     root_url = "http://dabdate.com/"
 
+tPrevPage = u"[B]<%s[/B]" % _L_(30200)
+tNextPage = u"[B]%s>[/B]" % _L_(30201)
+
 #-----------------------------------------------------
 def CATEGORIES():
     _BROWSE(root_url)
-    addDir(u"*로보카 폴리", root_url+"?lang=5", 12, '')
-    addDir(u"*그때를 아십니까", root_url+"?lang=7", 12, '')
-    addDir(u"*특선 다큐멘터리", root_url+"?lang=6", 12, '')
+    addDir(u"[COLOR FF0000FF]로보카 폴리[/COLOR]", root_url+"?lang=5", 12, '')
+    addDir(u"[COLOR FF0000FF]그때를 아십니까[/COLOR]", root_url+"?lang=7", 12, '')
+    addDir(u"[COLOR FF0000FF]특선 다큐멘터리[/COLOR]", root_url+"?lang=6", 12, '')
     endDir()
 
 def BROWSE(url):
@@ -109,10 +112,10 @@ def _BROWSE(url):
 
     query = re.compile("<a href='([^']*)' class=navi>\[Prev\]</a>").search(psrc)
     if query:
-        addDir(u"<-이전 페이지",root_url+query.group(1),10,'')
+        addDir(tPrevPage,root_url+query.group(1),10,'')
     query = re.compile("<a href='([^']*)' class=navi>\[Next\]</a>").search(psrc)
     if query:
-        addDir(u"다음 페이지->",root_url+query.group(1),10,'')
+        addDir(tNextPage,root_url+query.group(1),10,'')
 
 def PLAY_VIDEO(url, title):
     req = urllib2.Request(url)
@@ -125,7 +128,7 @@ def PLAY_VIDEO(url, title):
         # POST
     	if __id__ == "" or __pass__ == "":
     	    dialog = xbmcgui.Dialog()
-    	    dialog.ok(u"로그인 필요", u"유료컨텐츠를 보기 위해서는 로그인 정보가 필요합니다.")
+    	    dialog.ok(_L_(30202), _L(30203))
     	    return
         values = {
             'mode':'login',

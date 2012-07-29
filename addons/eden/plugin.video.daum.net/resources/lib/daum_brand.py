@@ -58,8 +58,8 @@ class DaumBrand:
     for grp in sec.findAll("ul"):
       gout = { 'list':[] }
       # group name
-      item = grp.findPreviousSibling('h3')
-      if item:
+      item = grp.findPreviousSibling()
+      if item and item.name == 'h3':
       	gout['name'] = item.string
       # program list
       for item in grp.findAll("li"):

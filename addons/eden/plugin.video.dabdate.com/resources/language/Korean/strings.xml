@@ -4,6 +4,10 @@
   <string id="30001">패스워드</string>
   <string id="30100">화질</string>
   <string id="30101">중화질용 지역</string>
+  <string id="30200">이전 페이지</string>
+  <string id="30201">다음 페이지</string>
+  <string id="30202">로그인 필요</string>
+  <string id="30203">유료컨텐츠를 보기 위해서는 로그인 정보가 필요합니다.</string>
   <string id="31000">중화질</string>
   <string id="31001">저화질</string>
   <string id="31002">고화질</string>
