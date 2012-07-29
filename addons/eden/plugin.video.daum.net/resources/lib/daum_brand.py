@@ -3,7 +3,7 @@
   Best video clip
 """
 import urllib
-from BeautifulSoup import BeautifulSoup, SoupStrainer
+from BeautifulSoup import BeautifulSoup
 import re
 
 class DaumBrand:
@@ -21,28 +21,52 @@ class DaumBrand:
     soup = BeautifulSoup( html, fromEncoding="utf-8", convertEntities=BeautifulSoup.HTML_ENTITIES )
     brand_list = []
     #-- item list
-    strain = SoupStrainer( "div", { "class" : re.compile("^cate_") } )
-    for section in soup.findAll(strain):
-      title = u"[COLOR FFFF0000]{0:s}[/COLOR]".format(section.find('h4').string)
-      brand_list.append( (title,None) )
+    sec = soup.find("div",{"class":"brandMap"}).find("div",{"class":"mapContents"})
+    for grp in soup.findAll("h4"):
+      gout = { 'list':[] }
+      gout['title'] = grp.string
+      for item in grp.findNextSibling('ul').findAll('a'):
+        brand_id = re.compile('ownerid=(.*)').search(item['href']).group(1)
+        title = item.string
+        gout['list'].append( (title,brand_id) )
+      brand_list.append( gout )
+    return brand_list
+
+  @staticmethod
+  def getList2(url):
+    html = urllib.urlopen(url).read()
+    soup = BeautifulSoup( html, fromEncoding="utf-8", convertEntities=BeautifulSoup.HTML_ENTITIES )
+    brand_list = []
+    #-- item list
+    for section in soup.findAll("div", {"class":re.compile("^cate_")}):
+      gout = {'list':[]}
+      gout['title'] = section.find('h4').string
       for item in section.findAll('a'):
         brand_id = re.compile('ownerid=(.*)').search(item['href']).group(1)
         title = item.string
-        brand_list.append( (title,brand_id) )
+        gout['list'].append( (title,brand_id) )
+      brand_list.append( gout )
     return brand_list
 
   def parseTop(self,url):
     link = urllib.urlopen(url)
     soup = BeautifulSoup( link.read(), fromEncoding="utf-8", convertEntities=BeautifulSoup.HTML_ENTITIES )
-    self.menu_list = []
-    base_url = main_url[:main_url.rfind('/')+1]
+    base_url = url[:url.rfind('/')+1]
     #-- item list
-    strain1 = SoupStrainer( "div", { "class" : "programList" } )
-    strain2 = SoupStrainer( "div", { "class" : "listBody" } )
-    for item in soup.find(strain1).find(strain2).findAll('li'):
-      url = translate_url(item.a['href'], base_url)
-      title = item.a.string
-      self.menu_list.append( (title,url) )
+    sec = soup.find("div",{"class":"programList"}).find("div",{"class":"listBody"})
+    self.menu_list = []
+    for grp in sec.findAll("ul"):
+      gout = { 'list':[] }
+      # group name
+      item = grp.findPreviousSibling('h3')
+      if item:
+      	gout['name'] = item.string
+      # program list
+      for item in grp.findAll("li"):
+        url = self.translate_url(item.a['href'], base_url)
+        title = item.a.string
+        gout['list'].append( (title,url) )
+      self.menu_list.append( gout )
 
   def parse(self,main_url):
     link = urllib.urlopen(main_url)
@@ -52,9 +76,8 @@ class DaumBrand:
     self.nextpage = None
     base_url = main_url[:main_url.rfind('/')+1]
     #-- item list
-    strain = SoupStrainer( "div", { "class" : re.compile("^listBody") } )
-    items = soup.find(strain).findAll('dl')
-    for item in items:
+    sec = soup.find("div", {"class":re.compile("^listBody")})
+    for item in sec.findAll('dl'):
       ddimg = item.find('dd',{'class' : 'image'})
       ref = ddimg.find('a')
       if ref is None:

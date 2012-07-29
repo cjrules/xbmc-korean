@@ -1,3 +1,9 @@
+0.6.1
+
+Changes
+- support revised Daum pages
+- extract Brand names from web page
+
 0.4.0
 
 Changes
