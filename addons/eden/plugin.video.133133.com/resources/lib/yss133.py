@@ -81,9 +81,6 @@ def parseProg(main_url):
                 elif url.find('youku.com') >= 0:
                     vid = youku_idptn.search(url).group(1)
                     vsrc.append( "http://v.youku.com/v_show/id_"+vid )
-                elif url.find('youku.com') >= 0:
-                    vid = youku_idptn.search(url).group(1)
-                    vsrc.append( "http://v.youku.com/v_show/id_"+vid )
                 elif url.find('yinyuetai.com') >= 0:
                     vid = re.search('videoId=(\d+)', url).group(1)
                     vsrc.append( "http://www.yinyuetai.com/video/"+vid )
