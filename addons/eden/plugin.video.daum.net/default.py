@@ -155,17 +155,17 @@ def BROWSE_STARCRAFT(main_url, contPage):
 
 #--------------------------------------------------------------------
 def PLAY_SWFURL(main_url, title):
-  from getdaumvid import GetDaumVideo
+  from getdaumvid import DaumGetFlvByVid2
   vid = re.compile('vid=([^&]*)').search(main_url).group(1)
-  vid_url = GetDaumVideo.DaumGetFlvByVid(None, vid)
+  vid_url = DaumGetFlvByVid2(None, vid)
 
   li = xbmcgui.ListItem(title, iconImage="DefaultVideo.png")
   li.setInfo('video', {"Title": title})
   xbmc.Player().play(vid_url, li)
 
 def PLAY_CLIP(main_url, title):
-  from getdaumvid import GetDaumVideo
-  urls = GetDaumVideo.parse(main_url)
+  import getdaumvid
+  urls = getdaumvid.parse(main_url)
   if len(urls):
     li = xbmcgui.ListItem(title, iconImage="DefaultVideo.png")
     li.setInfo('video', {"Title": title})
