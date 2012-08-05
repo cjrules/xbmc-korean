@@ -13,7 +13,7 @@ def extract_video(vid):
   html = resp.read()
   resp.close()
 
-  sequence = re.compile('"sequence",  "(.+?)"').findall(html)
+  sequence = re.compile('"sequence":"(.+?)"').findall(html)
   newseqeunce = urllib.unquote(sequence[0]).decode('utf8').replace('\\/', '/')
 
   vid_info = {}
