@@ -15,7 +15,7 @@ IMAGE_DIR = xbmc.translatePath( os.path.join( __addon2__.getAddonInfo('path'), '
 
 from BeautifulSoup import BeautifulSoup
 
-root_url = "http://www.mjoon.com"
+root_url = "http://www.mjoon.tv"
 show_thumb = __addon__.getSetting('showThumb').lower() == 'true'
 
 #-----------------------------------------------------
