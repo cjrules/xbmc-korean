@@ -28,7 +28,7 @@ def parseTeamList(main_url):
     html = urllib2.urlopen(req).read()
     soup = BeautifulSoup(html, fromEncoding='euc-kr')
     team_info = []
-    for aa in soup.find("ul", {"class":re.compile("^esp_teamTab_sc")}).findAll("a"):
+    for aa in soup.find("ul", {"class":"esp_teamList"}).findAll("a")[1:]:
         team_info.append( {"name":aa.string, "url":aa['href'].replace('&amp;','&')} )
     return team_info
 
@@ -40,7 +40,7 @@ def parseESports(main_url):
     vod_info = {}
     # group of links
     vodll = []
-    for sec in soup.findAll("div", {"class":re.compile("^vodPlayList")}):
+    for sec in soup.findAll("div", {"class":"vodPlayList"}):
     	vodgrp = {"list":[]}
     	if sec.h5:
             vodgrp['title'] = " ".join(sec.h5.findAll(text=True))
@@ -53,13 +53,12 @@ def parseESports(main_url):
     	vodll.append(vodgrp)
     vod_info['group'] = vodll
     # page navigation
-    curpg = soup.find("div", {"id":"paging"}).find("strong")
-    prevpg = curpg.findPreviousSibling("a")
-    if prevpg:
-    	vod_info['prevpage'] = prevpg['href'].replace('&amp;','&')
-    nextpg = curpg.findNextSibling("a")
-    if nextpg:
-    	vod_info['nextpage'] = nextpg['href'].replace('&amp;','&')
+    navsec = re.compile('function moveTo(?:Prev|Next)\(\)\s*{.*?if \("(\d*)" == ""\).*?};',re.S).findall(html)
+    print navsec
+    if len(navsec[0]) == 8:
+        vod_info['prevpage'] = re.sub("ymd=\d*&isf=[01]","ymd="+navsec[0]+"&isf=1",main_url)
+    if len(navsec[1]) == 8:
+        vod_info['nextpage'] = re.sub("ymd=\d*&isf=[01]","ymd="+navsec[1]+"&isf=0",main_url)
     return vod_info
 
 def parseProg(main_url):

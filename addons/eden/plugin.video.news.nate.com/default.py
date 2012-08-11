@@ -4,6 +4,7 @@
 """
 import urllib
 import xbmcaddon,xbmcplugin,xbmcgui
+from datetime import date
 
 # plugin constants
 __addonid__ = "plugin.video.sports.nate.com"
@@ -31,11 +32,16 @@ def categoryList():
     endDir()
 
 def sortedESportsList(main_url):
-    for srt in nate_sports.parseSortList(main_url):
-    	if srt['url'].find("vt=team") > 0:
-            addDir(srt['name'], srt['url'], 3, "")
-        else:
-            addDir(srt['name'], srt['url'], 4, "")
+    base_url = main_url+"&ymd=%s&isf=1" % date.today().strftime("%Y%m%d")
+    addDir(u"전체",       base_url+"&team=0", 4, "")
+    addDir(u"KT Rolster", base_url+"&team=1", 4, "")
+    addDir(u"삼성전자",   base_url+"&team=2", 4, "")
+    addDir(u"SKT T1",     base_url+"&team=3", 4, "")
+    addDir(u"CJ 엔투스",  base_url+"&team=4", 4, "")
+    addDir(u"STX 소울",   base_url+"&team=5", 4, "")
+    addDir(u"공군 ACE",   base_url+"&team=6", 4, "")
+    addDir(u"웅진 Stars", base_url+"&team=7", 4, "")
+    addDir(u"제8게임단",  base_url+"&team=8", 4, "")
     endDir()
 
 def teamList(main_url):
