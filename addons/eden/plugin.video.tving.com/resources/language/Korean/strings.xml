@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <string id="30000">티빙</string>
+    
+    <!--Message-->
+    <string id="30010">비디오 없음</string>
+    <string id="30011">정보를 찾을 수 없음</string>
+
+    <!--NavItems-->
+    <string id="30100">이전 페이지</string>
+    <string id="30101">다음 페이지</string>
+    
+</strings>
