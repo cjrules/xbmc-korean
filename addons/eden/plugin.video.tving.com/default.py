@@ -41,7 +41,7 @@ def doChList(cate_cd):
     resp.close()
     json = simplejson.loads(jstr)
 
-    cate_tpl = u"[COLOR FF0000FF]%s[/COLOR]"
+    cate_tpl = u"[COLOR FFFF0000]%s[/COLOR]"
     addDir(u"[B]전체[/B]", cate_cd+"|", 3, "")
     for item in json['RESULT_DATA']:
     	#url = '|'.join([item['CATE_CD'], item['CH_CD']])
