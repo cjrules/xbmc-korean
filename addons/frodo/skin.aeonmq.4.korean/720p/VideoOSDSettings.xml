@@ -1,0 +1,87 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window id="123">
+  <defaultcontrol>5</defaultcontrol>
+    <include>Animation_DialogPopup</include>
+  <controls>
+  <control type="group">
+    <posy>100</posy>
+    <animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(SliderDialog)">conditional</animation>
+  <control type="image">
+    <description>Panel</description>
+    <posx>200</posx>
+    <posy>40</posy>
+    <width>881</width>
+    <height>481</height>
+    <texture>osd_settings_back.png</texture>
+  </control>
+  <control type="label">
+    <posx>215</posx>
+    <posy>72</posy>
+    <width>852</width>
+    <height>30</height>
+    <label>31415</label>
+		<font>Font_SettingsSectionTitle</font>
+		<textcolor>FFbec0c2</textcolor>
+    <align>center</align>
+    <aligny>center</aligny>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="image">
+    <description>separator</description>
+    <posx>200</posx>
+    <posy>115</posy>
+    <width>851</width>
+    <height>2</height>
+    <texture>common_divider.png</texture>
+  </control>
+  <control type="grouplist" id="5">
+    <description>control area</description>
+    <posx>213.5</posx>
+    <posy>140</posy>
+    <width>854.5</width>
+    <height>335</height>
+    <texture>-</texture>
+    <itemgap>0</itemgap>
+    <onleft>5</onleft>
+    <onright>5</onright>
+    <onup>5</onup>
+    <ondown>5</ondown>
+  </control>
+  <control type="button" id="7">
+    <include>Objects_OSDSettingsButton</include>
+    <textoffsetx>50</textoffsetx>
+  </control>
+  <control type="radiobutton" id="8">
+    <include>Objects_OSDSettingsButton</include>
+    <radioposx>737</radioposx>
+    <textoffsetx>50</textoffsetx>
+  </control>
+  <control type="spincontrolex" id="9">
+    <include>Objects_OSDSettingsButton</include>
+    <spinposx>30</spinposx>
+    <textoffsety>9</textoffsety>
+    <textoffsetx>50</textoffsetx>
+  </control>
+  <control type="sliderex" id="10">
+    <include>Objects_OSDSettingsButton</include>
+  </control>
+  <control type="image">
+    <description>front glass</description>
+    <posx>222</posx>
+    <posy>0</posy>
+    <width>869</width>
+    <height>550</height>
+    <texture>dialogs_setcontent_front.png</texture>
+  </control>
+  <control type="image">
+    <description>front glass</description>
+    <posx>190</posx>
+    <posy>0</posy>
+    <width>869</width>
+    <height>550</height>
+    <texture flipx="true">dialogs_setcontent_front.png</texture>
+  </control>
+  </control>
+  </controls>
+</window>

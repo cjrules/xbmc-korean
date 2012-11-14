@@ -1,0 +1,144 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window type="dialog" id="29">
+	<defaultcontrol always="true">52</defaultcontrol>
+	<allowoverlay>no</allowoverlay>
+	<coordinates>
+		<system>1</system>
+		<posx>0</posx>
+		<posy>0</posy>
+	</coordinates>
+	<controls>
+  <control type="image">
+    <include>FullScreenDimensions</include>
+    <texture>common_grey.png</texture>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="image">
+    <include>FullScreenDimensions</include>
+    <texture background="true">hive_back.png</texture>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>270</posy>
+    <width>1280</width>
+    <height>450</height>
+    <texture background="true">$VAR[value_floor]</texture>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="image">
+    <posx>144</posx>
+    <posy>568</posy>
+    <width>993</width>
+    <height>153</height>
+    <texture background="true">$VAR[value_spot]</texture>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="group"><!-- default group -->
+    <include>Animation_OpenCloseZoom</include>
+  <control type="list" id="52">
+    <posx>244</posx>
+    <posy>330</posy>
+    <width>792</width>
+    <height>363</height>
+    <focusposition>1</focusposition>
+    <orientation>horizontal</orientation>
+    <onleft>90</onleft>
+    <onright>90</onright>
+    <onup>52</onup>
+    <ondown>98</ondown>
+    <animation effect="slide" start="132,0" end="132,0" time="0" condition="stringcompare(container(52).numitems,2)">Conditional</animation>
+    <include>Animation_OpenCloseZoom</include>
+    <itemlayout height="264" width="264">
+  <control type="image">
+		<posx>18</posx>
+		<posy>18</posy>
+		<width>234</width>
+		<height>234</height>
+		<texture diffuse="thumb_cdcover_mask.png">DefaultUser.png</texture>
+		<aspectratio scalediffuse="false">scale</aspectratio>
+    <info>ListItem.Icon</info>
+  </control>
+  <control type="image">
+    <description>Glass overlay</description>
+		<posx>18</posx>
+		<posy>18</posy>
+		<width>234</width>
+		<height>234</height>
+		<bordertexture border="-18">thumb_cd_shadow_light.png</bordertexture>
+		<texture>thumb_cd_glass_noedge.png</texture>
+  </control>
+  <control type="image">
+		<posx>18</posx>
+		<posy>254</posy>
+		<width>234</width>
+		<height>234</height>
+		<colordiffuse>d0FFFFFF</colordiffuse>
+		<texture flipy="true" diffuse="thumb_cdcover_mask_reflect.png">DefaultUser.png</texture>
+		<aspectratio scalediffuse="false">scale</aspectratio>
+    <info>ListItem.Icon</info>
+  </control>
+  </itemlayout>
+  <focusedlayout height="264" width="264">
+  <control type="image">
+		<posx>18</posx>
+		<posy>18</posy>
+		<width>234</width>
+		<height>234</height>
+		<texture diffuse="thumb_cdcover_mask.png">DefaultUser.png</texture>
+		<aspectratio scalediffuse="false">scale</aspectratio>
+    <info>ListItem.Icon</info>
+    <animation center="132,132" effect="zoom" start="100" end="110" time="600" tween="cubic" easing="out">Focus</animation>
+  </control>
+  <control type="image">
+    <description>Glass overlay</description>
+		<posx>18</posx>
+		<posy>18</posy>
+		<width>234</width>
+		<height>234</height>
+		<bordertexture border="-18">thumb_cd_shadow_light.png</bordertexture>
+		<texture>thumb_cd_glass_noedge.png</texture>
+    <animation center="132,132" effect="zoom" start="100" end="110" time="600" tween="cubic" easing="out">Focus</animation>
+  </control>
+  <control type="image">
+		<posx>18</posx>
+		<posy>254</posy>
+		<width>234</width>
+		<height>234</height>
+		<colordiffuse>d0FFFFFF</colordiffuse>
+		<texture flipy="true" diffuse="thumb_cdcover_mask_reflect.png">DefaultUser.png</texture>
+		<aspectratio scalediffuse="false">scale</aspectratio>
+    <info>ListItem.Icon</info>
+    <animation center="132,132" effect="zoom" start="100" end="110" time="600" tween="cubic" easing="out">Focus</animation>
+  </control>
+  </focusedlayout>
+  </control>
+  <control type="label">
+    <posx>0</posx>
+    <posy>630</posy>
+    <width>1280</width>
+    <height>16</height>
+    <font>Font_SettingsOptions</font>
+    <align>center</align>
+    <textcolor>$VAR[value_colorfloortext]</textcolor>
+    <info>ListItem.Label2</info>
+    <include>Animation_CommonFade</include>
+    <visible>Control.IsVisible(52) + !Window.IsVisible(111)</visible>
+  </control>
+  <control type="label">
+    <posx>0</posx>
+    <posy>660</posy>
+    <width>1280</width>
+    <height>16</height>
+    <font>Font_WelcomeTitle</font>
+    <align>center</align>
+    <textcolor>$VAR[value_colorfloortext]</textcolor>
+    <scroll>true</scroll>
+    <info>ListItem.Label</info>
+    <include>Animation_CommonFade</include>
+    <visible>Control.IsVisible(52) + !Window.IsVisible(111)</visible>
+  </control>
+  </control>
+	</controls>
+</window>

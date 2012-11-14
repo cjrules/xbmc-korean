@@ -1,0 +1,24 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window id="133">
+	<controls>
+  <control type="group">
+    <posx>1280</posx>
+    <posy>0</posy>
+    <include>Dialogs_Group</include>
+    <include>Dialogs_HardDrive</include>
+    <include>Animation_DialogTopPopup</include>
+    <animation effect="slide" end="0,-100" time="300" easing="inout" tween="cubic" condition="Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(slideshow)">Conditional</animation>
+    <visible>![Skin.HasSetting(custommode) | Skin.HasSetting(colorselectormode) | Skin.HasSetting(styleselectormode) | Skin.HasSetting(themeselectormode) | Skin.HasSetting(furnitureselectormode)]</visible>
+  <control type="progress" id="404">
+    <include>Dialogs_Progress</include>
+  </control>
+  <control type="label" id="401">
+    <include>Dialogs_Label1</include>
+  </control>
+  <control type="label" id="405">
+    <include>Dialogs_Label2</include>
+  </control>
+  </control>
+	</controls>
+</window>

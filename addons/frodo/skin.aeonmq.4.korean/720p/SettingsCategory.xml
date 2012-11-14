@@ -1,0 +1,126 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window id="12">
+  <defaultcontrol>3</defaultcontrol>
+  <allowoverlay>no</allowoverlay>
+    <onload condition="!Skin.HasSetting(welcomedone)">Skin.SetString(colortexture,digital)</onload>
+    <onload condition="!Skin.HasSetting(welcomedone)">Skin.SetString(colorheader,orange)</onload>
+  <controls>
+  <control type="image">
+    <include>AnimatedBG</include>
+    <texture background="true">$VAR[value_mainmenubg_settings]</texture>
+  </control>
+    <include>LiveBG</include>
+  <control type="group">
+    <include>Animation_OpenCloseWindow</include>
+  <control type="image">
+    <posx>23</posx>
+    <posy>23</posy>
+    <width>1233</width>
+    <height>673</height>
+    <texture background="true">settings_panelback.png</texture>
+  </control>
+  <control type="label">
+    <include>SettingsSectionTitle</include>
+    <label>31202</label>
+  </control>
+  
+  <!-- content titles-->
+  <control type="label">
+    <include>SettingsContentTitle</include>
+    <label>31351</label>
+    <visible>Window.IsActive(appearancesettings)</visible>
+  </control>
+  <control type="label">
+    <description>sectiontitle</description>
+    <label>31353</label>
+    <include>SettingsContentTitle</include>
+    <visible>Window.IsActive(videossettings)</visible>
+  </control>
+  <control type="label">
+    <label>31355</label>
+    <include>SettingsContentTitle</include>
+    <visible>Window.IsActive(musicsettings)</visible>
+  </control>
+  <control type="label">
+    <include>SettingsContentTitle</include>
+    <label>31357</label>
+    <visible>Window.IsActive(tvsettings) + System.HasPVR</visible>
+  </control>
+  <control type="label">
+    <include>SettingsContentTitle</include>
+    <label>31365</label>
+    <visible>Window.IsActive(picturessettings)</visible>
+  </control>
+    <control type="label">
+    <label>31367</label>
+    <include>SettingsContentTitle</include>
+    <visible>Window.IsActive(weathersettings)</visible>
+  </control>
+  <control type="label">
+    <include>SettingsContentTitle</include>
+    <label>31359</label>
+    <visible>Window.IsActive(systemsettings)</visible>
+  </control>
+  <control type="label">
+    <include>SettingsContentTitle</include>
+    <label>31361</label>
+    <visible>Window.IsActive(servicesettings)</visible>
+  </control>
+  <control type="grouplist" id="3">
+    <include>ButtonGroupXBMCDimensions</include>
+    <orientation>vertical</orientation>
+    <itemgap>0</itemgap>
+    <onleft condition="Window.Previous(4)">ActivateWindow(4)</onleft>
+    <onleft condition="Window.Previous(25)">ActivateWindow(25)</onleft>
+    <onright>5</onright>
+    <onup>3</onup>
+    <ondown>3</ondown>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="grouplist" id="5">
+    <include>DefaultControlDimensions</include>
+    <onup>5</onup>
+    <ondown>5</ondown>
+    <onleft>3</onleft>
+    <onright>3</onright>
+  </control>
+  <control type="button" id="10"><!-- Default category button-->
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>215</width>
+    <height>40</height>
+    <texturefocus>settings_button_focus.png</texturefocus>
+    <texturenofocus>-</texturenofocus>
+    <font>Font_SettingsMenuButton</font>
+    <textcolor>FFf5f5f5</textcolor>
+    <focusedcolor>FF101010</focusedcolor>
+    <selectedcolor>FFFFFFFF</selectedcolor>
+    <colordiffuse>$VAR[value_texturecolors]</colordiffuse>
+    <textoffsety>7</textoffsety>
+    <textoffsetx>20</textoffsetx>
+    <aligny>top</aligny>
+    <pulseonselect>no</pulseonselect>
+    <include>Animations_SettingsButtonFade</include>
+    <onclick>SetFocus(800)</onclick>
+  </control>
+	<control type="image">
+    <description>front pane for Settings panel</description>
+    <posx>42</posx>
+    <posy>28</posy>
+    <width>1196</width>
+    <height>651</height>
+    <texture background="true">settings_panelfront.png</texture>
+	</control>
+  </control>
+  <control type="button" id="7">
+  </control>
+  <control type="radiobutton" id="8">
+    <include>Animations_SettingsButtonFade</include>
+  </control>
+  <control type="spincontrolex" id="9">
+    <onright>SetFocus(1)</onright>
+  </control>
+  <include>BGBlack</include>
+	</controls>
+</window>

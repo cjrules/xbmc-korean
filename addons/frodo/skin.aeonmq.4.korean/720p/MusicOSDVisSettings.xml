@@ -1,0 +1,61 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window id="121">
+	<defaultcontrol>2</defaultcontrol>
+    <include>Animation_DialogPopup</include>
+	<controls>
+  <control type="image">
+    <description>Panel</description>
+    <posx>200</posx>
+    <posy>40</posy>
+    <width>881</width>
+    <height>481</height>
+    <texture>osd_settings_back.png</texture>
+  </control>
+  <control type="label">
+    <posx>215</posx>
+    <posy>75</posy>
+    <width>852</width>
+    <height>30</height>
+    <label>31728</label>
+    <font>Font_SettingsMainLabelSmall</font>
+    <textcolor>FFbec0c2</textcolor>
+    <align>center</align>
+    <aligny>center</aligny>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="label" id="3">
+    <description>No Settings Label</description>
+    <posx>215</posx>
+    <posy>120</posy>
+    <width>852</width>
+    <height>30</height>
+    <align>center</align>
+    <aligny>center</aligny>
+    <label>13390</label>
+    <font>Font_OSDOptions</font>
+  </control>
+  <control type="grouplist" id="5">
+    <description>control area</description>
+    <posx>250</posx>
+    <posy>75</posy>
+    <width>781</width>
+    <height>440</height>
+    <texture>-</texture>
+    <itemgap>0</itemgap>
+    <onleft>5</onleft>
+    <onright>5</onright>
+    <onup>5</onup>
+    <ondown>5</ondown>
+  </control>
+  <control type="button" id="7">
+    <include>Objects_OSDSettingsButton</include>
+  </control>
+  <control type="radiobutton" id="8">
+    <include>Objects_OSDSettingsButton</include>
+  </control>
+  <control type="spincontrolex" id="9">
+    <include>Objects_OSDSettingsButton</include>
+  </control>
+	</controls>
+</window>

@@ -1,0 +1,641 @@
+﻿<!-- Aeon MQ 4 -->
+
+  <window id="627">
+    <defaultcontrol always="true">900</defaultcontrol>
+    <allowoverlay>no</allowoverlay>
+    <onload>AlarmClock(playmedia,PlayMedia(special://skin/media/extras/tour/aeonmqmusic.mp3),0:01,true)</onload>
+    <onload>AlarmClock(welcomedone,Skin.SetBool(welcomedone),2:56,true)</onload>
+    <onload>AlarmClock(welcomeplayer,PlayerControl(stop),2:56,true)</onload>
+    <onload>AlarmClock(welcome,ReplaceWindow(Home),2:57,true)</onload>
+    <onunload>CancelAlarm(welcome,true)</onunload>
+    <onunload>CancelAlarm(welcomedone,true)</onunload>
+    
+    <onload>Skin.SetString(home_style,future)</onload>
+    <onload>Skin.SetString(colortexture,digital)</onload>
+    <onload>Skin.SetString(colorheader,orange)</onload>
+    <onload>Skin.SetString(mfmovies_listmode,on)</onload>
+    <onload>Skin.SetString(mfmovies_list,latest)</onload>
+    <onload>Skin.SetString(mfmusicvideos_listmode,on)</onload>
+    <onload>Skin.SetString(mfmusicvideos_list,latest)</onload>
+    <onload>Skin.SetString(mftvshows_listmode,on)</onload>
+    <onload>Skin.SetString(mftvshows_list,latest)</onload>
+    <onload>Skin.SetString(mfmusic_listmode,on)</onload>
+    <onload>Skin.SetString(mfmusic_list,latest)</onload>
+    <onload>Skin.SetString(mfmymenu_listmode,on)</onload>
+    <onload>Skin.SetString(mfmainmenu1_listmode,on)</onload>
+    <onload>Skin.SetString(mfmainmenu2_listmode,on)</onload>
+    <onload>Skin.SetString(mfmainmenu3_listmode,on)</onload>
+    <onload>Skin.SetString(mfmainmenu4_listmode,on)</onload>
+    <onload>Skin.SetString(mfmainmenu5_listmode,on)</onload>
+    <onload>Skin.SetString(mfsubmenu_v1_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_v2_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_v3_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_v4_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_v5_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_v6_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_v7_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_v8_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_v9_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_v10_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_a1_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_a2_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_a3_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_a4_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_a5_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_a6_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_a7_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_a8_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_a9_list,latest)</onload>
+    <onload>Skin.SetString(mfsubmenu_a10_list,latest)</onload>
+    <onload>Skin.SetString(case_default,digital)</onload>
+    <onload>Skin.SetString(case_bluray,sky)</onload>
+    <onload>Skin.SetString(case_3dbd,orange)</onload>
+    <onload>Skin.SetString(case_webtv,red)</onload>
+    <onload>Skin.SetString(case_hdtv,violet)</onload>
+    <onload>Skin.SetString(case_dvd,grey)</onload>
+    <onload>Skin.SetString(codec_default,default)</onload>
+    <onload>Skin.SetString(codec_bluray,bluray)</onload>
+    <onload>Skin.SetString(codec_3dbd,3dbd)</onload>
+    <onload>Skin.SetString(codec_webtv,webtv)</onload>
+    <onload>Skin.SetString(codec_hdtv,hdtv)</onload>
+    <onload>Skin.SetString(codec_dvd,dvd)</onload>
+    <onload>Skin.SetString(theme_bg,future)</onload>
+		<onload>Skin.SetString(menu_music,pos1)</onload>
+		<onload>Skin.SetString(menu_concerts,pos2)</onload>
+		<onload>Skin.SetString(menu_movies,pos3)</onload>
+		<onload>Skin.SetString(menu_tvshows,pos4)</onload>
+		<onload>Skin.SetString(menu_livetv,pos5)</onload>
+		<onload>Skin.SetString(menu_games,pos6)</onload>
+		<onload>Skin.SetString(menu_pictures,pos7)</onload>
+		<onload>Skin.SetString(menu_weather,pos8)</onload>
+		<onload>Skin.SetString(menu_mymenu,pos9)</onload>
+		<onload>Skin.SetString(menu_mainmenu1,pos10)</onload>
+		<onload>Skin.SetString(menu_mainmenu2,pos11)</onload>
+		<onload>Skin.SetString(menu_mainmenu3,pos12)</onload>
+		<onload>Skin.SetString(menu_mainmenu4,pos13)</onload>
+		<onload>Skin.SetString(menu_mainmenu5,pos14)</onload>
+		<onload>Skin.SetString(panel_seconds,3)</onload>
+		<onload>Skin.SetString(tips_seconds,3)</onload>
+		<onload>Skin.SetString(games_video,auto)</onload>
+		<onload>Skin.SetString(games_info_multiplex,auto)</onload><!-- Multiplex Games - 50 -->
+		<onload>Skin.SetString(movies_info_multiplex,auto)</onload><!-- Multiplex Video - 52 -->
+		<onload>Skin.SetString(movies_layout_multiplex,fanart)</onload>
+		<onload>Skin.SetString(musicvideos_info_multiplex,auto)</onload>
+		<onload>Skin.SetString(musicvideos_layout_multiplex,fanart)</onload>
+		<onload>Skin.SetString(tvshows_info_multiplex,auto)</onload>
+		<onload>Skin.SetString(tvshows_layout_multiplex,fanart)</onload>
+		<onload>Skin.SetString(seasons_info_multiplex,auto)</onload>
+		<onload>Skin.SetString(seasons_layout_multiplex,fanart)</onload>
+		<onload>Skin.SetString(movies_info_wall,auto)</onload><!-- Wall Video - 53 -->
+		<onload>Skin.SetString(musicvideos_info_wall,auto)</onload>
+		<onload>Skin.SetString(tvshows_info_wall,auto)</onload>
+		<onload>Skin.SetString(seasons_info_wall,auto)</onload>
+		<onload>Skin.SetString(episodes_info_wall,auto)</onload>
+		<onload>Skin.SetString(programs_info_wall,auto)</onload>
+		<onload>Skin.SetString(files_info_wall,auto)</onload>
+		<onload>Skin.SetString(movies_info_showcase,auto)</onload><!-- Showcase Video - 57 -->
+		<onload>Skin.SetString(movies_layout_showcase,fanart)</onload>
+		<onload>Skin.SetString(musicvideos_info_showcase,auto)</onload>
+		<onload>Skin.SetString(musicvideos_layout_showcase,fanart)</onload>
+		<onload>Skin.SetString(tvshows_info_showcase,auto)</onload>
+		<onload>Skin.SetString(tvshows_layout_showcase,fanart)</onload>
+		<onload>Skin.SetString(seasons_info_showcase,auto)</onload>
+		<onload>Skin.SetString(seasons_layout_showcase,fanart)</onload>
+		<onload>Skin.SetString(episodes_info_showcase,auto)</onload>
+		<onload>Skin.SetString(episodes_layout_showcase,fanart)</onload>
+		<onload>Skin.SetString(programs_info_showcase,auto)</onload>
+		<onload>Skin.SetString(programs_layout_showcase,fanart)</onload>
+		<onload>Skin.SetString(movies_info_shelf,auto)</onload><!-- Shelf Video - 59 -->
+		<onload>Skin.SetString(movies_layout_shelf,fanart)</onload>
+		<onload>Skin.SetString(musicvideos_info_shelf,auto)</onload>
+		<onload>Skin.SetString(musicvideos_layout_shelf,fanart)</onload>
+		<onload>Skin.SetString(tvshows_info_shelf,auto)</onload>
+		<onload>Skin.SetString(tvshows_layout_shelf,fanart)</onload>
+		<onload>Skin.SetString(seasons_info_shelf,auto)</onload>
+		<onload>Skin.SetString(seasons_layout_shelf,fanart)</onload>
+		<onload>Skin.SetString(programs_info_shelf,auto)</onload>
+		<onload>Skin.SetString(programs_layout_shelf,fanart)</onload>
+		<onload>Skin.SetString(tvshows_info_multiplexlandscape,auto)</onload><!-- Multiplex Landscape - 552 -->
+		<onload>Skin.SetString(seasons_info_multiplexlandscape,auto)</onload>
+		<onload>Skin.SetString(episodes_info_multiplexlandscape,auto)</onload>
+		<onload>Skin.SetString(movies_info_multiplexlandscape,auto)</onload>
+		<onload>Skin.SetString(musicvideos_info_multiplexlandscape,auto)</onload>
+		<onload>Skin.SetString(movies_info_showart,auto)</onload><!-- ShowArt - 555 -->
+		<onload>Skin.SetString(musicvideos_info_showart,auto)</onload>
+		<onload>Skin.SetString(tvshows_info_showart,auto)</onload>
+		<onload>Skin.SetString(seasons_info_showart,auto)</onload>
+		<onload>Skin.SetString(tvshows_info_bannerinfo,auto)</onload><!-- BannerInfo - 576 -->
+		<onload>Skin.SetString(movies_info_bannerinfo,auto)</onload>
+		<onload>Skin.SetString(musicvideos_info_bannerinfo,auto)</onload>
+		<onload>Skin.SetString(tvshows_info_landscapex,auto)</onload><!-- LandscapeX - 580 -->
+		<onload>Skin.SetString(seasons_info_landscapex,auto)</onload>
+		<onload>Skin.SetString(episodes_info_landscapex,auto)</onload>
+		<onload>Skin.SetString(movies_info_landscapex,auto)</onload>
+		<onload>Skin.SetString(musicvideos_info_landscapex,auto)</onload>
+		<onload>Skin.SetString(songs_info_multiplex,auto)</onload><!-- Multiplex Audio - 52 -->
+		<onload>Skin.SetString(albums_info_multiplex,auto)</onload>
+		<onload>Skin.SetString(artists_info_multiplex,auto)</onload>
+		<onload>Skin.SetString(files_info_multiplex,auto)</onload>
+		<onload>Skin.SetString(songs_info_showcase,auto)</onload><!-- Showcase Audio - 57 -->
+		<onload>Skin.SetString(albums_info_showcase,auto)</onload>
+		<onload>Skin.SetString(artists_info_showcase,auto)</onload>
+		<onload>Skin.SetString(files_info_showcase,auto)</onload>
+		<onload>Skin.SetString(songs_info_wall,auto)</onload><!-- Wall Audio - 53 -->
+		<onload>Skin.SetString(albums_info_wall,auto)</onload>
+		<onload>Skin.SetString(artists_info_wall,auto)</onload>
+		
+		<onload>Skin.SetString(weather_mode,7days)</onload>
+		<onload>SetProperty(WeatherOverride,7day)</onload>
+    <onload>Skin.SetBool(WeatherWidget7Day)</onload>
+    <onload>Skin.Reset(WeatherWidget36Hour)</onload>
+    <onload>Skin.Reset(WeatherWidgetWeekend)</onload>
+    <onload>Skin.SetString(weather_mode,7days)</onload>
+		<onload>Skin.SetBool(videomediacase)</onload>
+		<onload>Skin.SetBool(audiomediacase)</onload>
+		<onload>Skin.SetBool(vis_fanartbg)</onload>
+		<onload>Skin.SetBool(weathernorthamerica)</onload>
+    <onload>Skin.Reset(weathersouthamerica)</onload>
+    <onload>Skin.SetBool(nowplayingwidget)</onload>
+    <onload>Skin.SetBool(lowermainmenu)</onload>
+  <controls>
+  <control type="group">
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="200" />
+    <effect type="fade" start="100" end="0" time="1200" delay="231000" />
+    </animation>
+    <animation type="WindowClose" reversible="false">
+    <effect type="fade" start="0" end="0" time="50" />
+    </animation>
+  <control type="image">
+    <include>FullScreenDimensions</include>
+    <texture>common_grey.png</texture>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="image">
+    <include>FullScreenDimensions</include>
+    <texture background="true">hive_back.png</texture>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="group">
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="350" />
+    </animation>
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>1280</width>
+    <height>115</height>
+    <texture>common_black.png</texture>
+    <colordiffuse>d5FFFFFF</colordiffuse>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>115</posy>
+    <width>1280</width>
+    <height>1</height>
+    <texture>common_gradient_line.png</texture>
+  </control>
+  <control type="label">
+  	<posx>0</posx>
+	 	<width>1280</width>
+    <posy>30</posy>
+		<height>40</height>
+		<label>31443</label>
+	 	<font>Font_WelcomeTitle</font>
+		<align>center</align>
+		<aligny>center</aligny>
+	  <textcolor>FFC0C0C0</textcolor>
+  </control>
+  <control type="label">
+  	<posx>0</posx>
+	 	<width>1280</width>
+    <posy>65</posy>
+		<height>40</height>
+		<label>31444</label>
+    <textcolor>90bec0c2</textcolor>
+		<font>Font_MultiplexPlot</font>
+		<align>center</align>
+		<aligny>center</aligny>
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1000" delay="350" />
+    <effect type="fade" start="100" end="0" time="1000" delay="10000" />
+    </animation>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>100</posy>
+    <widht>1280</widht>
+    <height>620</height>
+    <texture>showcase_floor.png</texture>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>669</posy>
+    <width>1280</width>
+    <height>1</height>
+    <texture>common_gradient_line.png</texture>
+  </control>
+  </control>
+  
+  <control type="group"><!-- Tour 1 -->
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="350" />
+    <effect type="slide" start="-600,0" end="0,0" time="1200" tween="cubic" easing="out" delay="300" />
+    <effect type="slide" start="0,0" end="-600,0" time="1200" tween="cubic" easing="in" delay="20000" />
+    </animation>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>215</posy>
+    <texture diffuse="thumb_list_episodeicon_mask.png" background="true">extras/tour/screen1.jpg</texture>
+    <bordertexture border="-50">thumb_list_episodeicon_frame.png</bordertexture>
+  </control>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>515</posy>
+    <texture flipy="true" diffuse="thumb_list_episodeicon_flipmask.png" background="true">extras/tour/screen1.jpg</texture>
+  </control>
+  </control>
+  <control type="group">
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="350" />
+    <effect type="fade" start="100" end="0" time="1200" delay="20000" />
+    <effect type="slide" start="1280,0" end="0,0" time="1200" tween="cubic" easing="out" delay="300" />
+    <effect type="slide" start="0,0" end="1280,0" time="1200" tween="cubic" easing="out" delay="22000" />
+    </animation>
+  <control type="label">
+    <include>WelcomeLabelDimensions</include>
+    <label>31225</label>
+  </control>
+  <control type="textbox">
+    <include>WelcomeTextDimensions</include>
+    <label>31445</label>
+  </control>
+  </control>
+  
+  <control type="group"><!-- Tour 2 -->
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="300" />
+    <effect type="slide" start="-600,0" end="0,0" time="1200" tween="cubic" easing="out" delay="22000" />
+    <effect type="slide" start="0,0" end="-600,0" time="1200" tween="cubic" easing="in" delay="42000" />
+    </animation>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>215</posy>
+    <texture diffuse="thumb_list_episodeicon_mask.png" background="true">extras/tour/screen2.jpg</texture>
+    <bordertexture border="-50">thumb_list_episodeicon_frame.png</bordertexture>
+  </control>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>515</posy>
+    <texture flipy="true" diffuse="thumb_list_episodeicon_flipmask.png" background="true">extras/tour/screen2.jpg</texture>
+  </control>
+  </control>
+  <control type="group">
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="22000" />
+    <effect type="fade" start="100" end="0" time="1200" delay="42000" />
+    </animation>
+  <control type="label">
+    <include>WelcomeLabelDimensions</include>
+    <label>31228</label>
+  </control>
+  <control type="textbox">
+    <include>WelcomeTextDimensions</include>
+    <label>31446</label>
+  </control>
+  </control>
+  
+  <control type="group"><!-- Tour 3 -->
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="300" />
+    <effect type="slide" start="-600,0" end="0,0" time="1200" tween="cubic" easing="out" delay="44000" />
+    <effect type="slide" start="0,0" end="-600,0" time="1200" tween="cubic" easing="in" delay="64000" />
+    </animation>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>215</posy>
+    <texture diffuse="thumb_list_episodeicon_mask.png" background="true">extras/tour/screen3.jpg</texture>
+    <bordertexture border="-50">thumb_list_episodeicon_frame.png</bordertexture>
+  </control>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>515</posy>
+    <texture flipy="true" diffuse="thumb_list_episodeicon_flipmask.png" background="true">extras/tour/screen3.jpg</texture>
+  </control>
+  </control>
+  <control type="group">
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="44000" />
+    <effect type="fade" start="100" end="0" time="1200" delay="64000" />
+    </animation>
+  <control type="label">
+    <include>WelcomeLabelDimensions</include>
+    <label>31229</label>
+  </control>
+  <control type="textbox">
+    <include>WelcomeTextDimensions</include>
+    <label>31447</label>
+  </control>
+  </control>
+  
+  <control type="group"><!-- Tour 4 -->
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="300" />
+    <effect type="slide" start="-600,0" end="0,0" time="1200" tween="cubic" easing="out" delay="66000" />
+    <effect type="slide" start="0,0" end="-600,0" time="1200" tween="cubic" easing="in" delay="86000" />
+    </animation>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>215</posy>
+    <texture diffuse="thumb_list_episodeicon_mask.png" background="true">extras/tour/screen4.jpg</texture>
+    <bordertexture border="-50">thumb_list_episodeicon_frame.png</bordertexture>
+  </control>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>515</posy>
+    <texture flipy="true" diffuse="thumb_list_episodeicon_flipmask.png" background="true">extras/tour/screen4.jpg</texture>
+  </control>
+  </control>
+  <control type="group">
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="66000" />
+    <effect type="fade" start="100" end="0" time="1200" delay="86000" />
+    </animation>
+  <control type="label">
+    <include>WelcomeLabelDimensions</include>
+    <label>31448</label>
+  </control>
+  <control type="textbox">
+    <include>WelcomeTextDimensions</include>
+    <label>31449</label>
+  </control>
+  </control>
+
+  <control type="group"><!-- Tour 5 -->
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="300" />
+    <effect type="slide" start="-600,0" end="0,0" time="1200" tween="cubic" easing="out" delay="88000" />
+    <effect type="slide" start="0,0" end="-600,0" time="1200" tween="cubic" easing="in" delay="108000" />
+    </animation>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>215</posy>
+    <texture diffuse="thumb_list_episodeicon_mask.png" background="true">extras/tour/screen5.jpg</texture>
+    <bordertexture border="-50">thumb_list_episodeicon_frame.png</bordertexture>
+  </control>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>515</posy>
+    <texture flipy="true" diffuse="thumb_list_episodeicon_flipmask.png" background="true">extras/tour/screen5.jpg</texture>
+  </control>
+  </control>
+  <control type="group">
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="88000" />
+    <effect type="fade" start="100" end="0" time="1200" delay="108000" />
+    </animation>
+  <control type="label">
+    <include>WelcomeLabelDimensions</include>
+    <label>31450</label>
+  </control>
+  <control type="textbox">
+    <include>WelcomeTextDimensions</include>
+    <label>31451</label>
+  </control>
+  </control>
+  
+  <control type="group"><!-- Tour 6 -->
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="300" />
+    <effect type="slide" start="-600,0" end="0,0" time="1200" tween="cubic" easing="out" delay="110000" />
+    <effect type="slide" start="0,0" end="-600,0" time="1200" tween="cubic" easing="in" delay="130000" />
+    </animation>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>215</posy>
+    <texture diffuse="thumb_list_episodeicon_mask.png" background="true">extras/tour/screen6.jpg</texture>
+    <bordertexture border="-50">thumb_list_episodeicon_frame.png</bordertexture>
+  </control>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>515</posy>
+    <texture flipy="true" diffuse="thumb_list_episodeicon_flipmask.png" background="true">extras/tour/screen6.jpg</texture>
+  </control>
+  </control>
+  <control type="group">
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="110000" />
+    <effect type="fade" start="100" end="0" time="1200" delay="130000" />
+    </animation>
+  <control type="label">
+    <include>WelcomeLabelDimensions</include>
+    <label>31452</label>
+  </control>
+  <control type="textbox">
+    <include>WelcomeTextDimensions</include>
+    <label>31453</label>
+  </control>
+  </control>
+  
+  <control type="group"><!-- Tour 7 -->
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="300" />
+    <effect type="slide" start="-600,0" end="0,0" time="1200" tween="cubic" easing="out" delay="132000" />
+    <effect type="slide" start="0,0" end="-600,0" time="1200" tween="cubic" easing="in" delay="152000" />
+    </animation>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>215</posy>
+    <texture diffuse="thumb_list_episodeicon_mask.png" background="true">extras/tour/screen7.jpg</texture>
+    <bordertexture border="-50">thumb_list_episodeicon_frame.png</bordertexture>
+  </control>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>515</posy>
+    <texture flipy="true" diffuse="thumb_list_episodeicon_flipmask.png" background="true">extras/tour/screen7.jpg</texture>
+  </control>
+  </control>
+  <control type="group">
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="132000" />
+    <effect type="fade" start="100" end="0" time="1200" delay="152000" />
+    </animation>
+  <control type="label">
+    <include>WelcomeLabelDimensions</include>
+    <label>31454</label>
+  </control>
+  <control type="textbox">
+    <include>WelcomeTextDimensions</include>
+    <label>31455</label>
+  </control>
+  </control>
+  
+  <control type="group"><!-- Tour 8 -->
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="300" />
+    <effect type="slide" start="-600,0" end="0,0" time="1200" tween="cubic" easing="out" delay="154000" />
+    <effect type="slide" start="0,0" end="-600,0" time="1200" tween="cubic" easing="in" delay="174000" />
+    </animation>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>215</posy>
+    <texture diffuse="thumb_list_episodeicon_mask.png" background="true">extras/tour/screen8.jpg</texture>
+    <bordertexture border="-50">thumb_list_episodeicon_frame.png</bordertexture>
+  </control>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>515</posy>
+    <texture flipy="true" diffuse="thumb_list_episodeicon_flipmask.png" background="true">extras/tour/screen8.jpg</texture>
+  </control>
+  </control>
+  <control type="group">
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="154000" />
+    <effect type="fade" start="100" end="0" time="1200" delay="174000" />
+    </animation>
+  <control type="label">
+    <include>WelcomeLabelDimensions</include>
+    <label>$LOCALIZE[31651]/$LOCALIZE[31609]</label>
+  </control>
+  <control type="textbox">
+    <include>WelcomeTextDimensions</include>
+    <label>31652</label>
+  </control>
+  </control>
+  
+  <control type="group"><!-- Tour 9 -->
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="300" />
+    <effect type="slide" start="-600,0" end="0,0" time="1200" tween="cubic" easing="out" delay="176000" />
+    <effect type="slide" start="0,0" end="-600,0" time="1200" tween="cubic" easing="in" delay="196000" />
+    </animation>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>215</posy>
+    <texture diffuse="thumb_list_episodeicon_mask.png" background="true">extras/tour/screen9.jpg</texture>
+    <bordertexture border="-50">thumb_list_episodeicon_frame.png</bordertexture>
+  </control>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>515</posy>
+    <texture flipy="true" diffuse="thumb_list_episodeicon_flipmask.png" background="true">extras/tour/screen9.jpg</texture>
+  </control>
+  </control>
+  <control type="group">
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="176000" />
+    <effect type="fade" start="100" end="0" time="1200" delay="196000" />
+    </animation>
+  <control type="label">
+    <include>WelcomeLabelDimensions</include>
+    <label>31402</label>
+  </control>
+  <control type="textbox">
+    <include>WelcomeTextDimensions</include>
+    <label>31655</label>
+  </control>
+  </control>
+  
+    <control type="group"><!-- Tour 10 -->
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="300" />
+    <effect type="slide" start="-600,0" end="0,0" time="1200" tween="cubic" easing="out" delay="198000" />
+    <effect type="slide" start="0,0" end="-600,0" time="1200" tween="cubic" easing="in" delay="218000" />
+    </animation>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>215</posy>
+    <texture diffuse="thumb_list_episodeicon_mask.png" background="true">extras/tour/screen10.jpg</texture>
+    <bordertexture border="-50">thumb_list_episodeicon_frame.png</bordertexture>
+  </control>
+  <control type="image">
+    <include>WelcomeImageDimensions</include>
+    <posy>515</posy>
+    <texture flipy="true" diffuse="thumb_list_episodeicon_flipmask.png" background="true">extras/tour/screen10.jpg</texture>
+  </control>
+  </control>
+  <control type="group">
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="198000" />
+    <effect type="fade" start="100" end="0" time="1200" delay="218000" />
+    </animation>
+  <control type="label">
+    <include>WelcomeLabelDimensions</include>
+    <label>31653</label>
+  </control>
+  <control type="textbox">
+    <include>WelcomeTextDimensions</include>
+    <label>31654</label>
+  </control>
+  </control>
+ 
+  <control type="group"><!-- Tour 11 -->
+    <animation type="WindowOpen" reversible="false">
+    <effect type="fade" start="0" end="100" time="1200" delay="220000" />
+    <effect type="fade" start="100" end="0" time="1200" delay="230000" />
+    </animation>
+  <control type="label">
+  	<posx>0</posx>
+	 	<width>1280</width>
+    <posy>200</posy>
+		<height>40</height>
+		<font>Font_WeatherTitle</font>
+    <align>center</align>
+    <aligny>center</aligny>
+    <textcolor>95FFFFFF</textcolor>
+    <label>31656</label>
+  </control>
+  <control type="textbox">
+  	<posx>0</posx>
+	 	<width>1280</width>
+    <posy>250</posy>
+		<height>280</height>
+    <textcolor>90bec0c2</textcolor>
+		<font>Font_MultiplexPlot</font>
+		<align>center</align>
+		<aligny>top</aligny>
+    <label>31657</label>
+  </control>
+  </control>
+  
+ <control type="group" id="900">
+ <control type="image">
+    <posx>0</posx>
+    <posy>670</posy>
+    <width>1280</width>
+    <height>50</height>
+    <texture>common_black.png</texture>
+    <colordiffuse>d5FFFFFF</colordiffuse>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>669</posy>
+    <width>1280</width>
+    <height>1</height>
+    <texture>common_gradient_line.png</texture>
+  </control>
+  <control type="button" id="901">
+    <posx>390</posx>
+    <posy>670</posy>
+    <width>500</width>
+    <height>50</height>
+    <align>center</align>
+    <aligny>center</aligny>
+    <onup>300</onup>
+    <onleft>902</onleft>
+    <onright>902</onright>
+		<texturefocus>common_gradient_focus.png</texturefocus>
+		<texturenofocus>-</texturenofocus>
+    <label>31658</label>
+    <textcolor>50bec0c2</textcolor>
+    <focusedcolor>FFC0C0C0</focusedcolor>
+    <pulseonselect>true</pulseonselect>
+    <onclick>Skin.SetBool(welcomedone)</onclick>
+    <onclick>PlayerControl(Stop)</onclick>
+    <onclick>ReplaceWindow(Home)</onclick>
+    <animation effect="fade" end="80" condition="true">Conditional</animation>
+  </control>
+  </control>
+  </control>
+	</controls>
+</window>

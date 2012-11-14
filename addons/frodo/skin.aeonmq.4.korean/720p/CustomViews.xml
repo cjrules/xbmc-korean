@@ -1,0 +1,603 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window id="622">
+    <defaultcontrol>-</defaultcontrol>
+    <allowoverlay>no</allowoverlay>
+    <onload condition="Window.Previous(25) | Window.Previous(28)">SetFocus(6100)</onload>
+    <onload condition="Window.Previous(500) | Window.Previous(501) | Window.Previous(502)">SetFocus(6200)</onload>
+  <controls>
+  <control type="image">
+    <include>AnimatedBG</include>
+    <texture background="true">special://skin/backgrounds/default.jpg</texture>
+  </control>
+    <include>LiveBG</include>
+  <control type="group">
+    <include>Animation_OpenCloseWindow</include>
+    <control type="image"><!-- Top Menu Buttons -->
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>1280</width>
+    <height>50</height>
+    <texture>common_grey.png</texture>
+  </control>
+  <control type="image">
+    <posx>15</posx>
+    <posy>7</posy>
+    <width>60</width>
+    <height>35</height>
+    <align>left</align>
+    <aligny>top</aligny>
+    <texture>logo_viewtype.png</texture>
+    <aspectratio>keep</aspectratio>
+  </control>
+  <control type="label"><!-- multi label/rss/collectoin/now playing -->
+    <posx>85</posx>
+    <posy>5</posy>
+    <width>600</width>
+    <font>Font_RSS</font>
+    <align>left</align>
+    <textcolor>FFe5e5e5</textcolor>
+    <label>$LOCALIZE[31068] | $VAR[value_multilabelviews]</label>
+  </control>
+  <control type="label">
+    <posx>85</posx>
+    <posy>25</posy>
+    <width>600</width>
+    <font>Font_RSS</font>
+    <align>left</align>
+    <textcolor>FFe5e5e5</textcolor>
+    <label>$VAR[value_multilabel2views]</label>
+  </control>
+  <control type="image">
+    <description>Weather Icon</description>
+    <posx>1185</posx>
+    <posy>-30</posy>
+    <width>107</width>
+    <height>107</height>
+    <align>left</align>
+    <aligny>center</aligny>
+    <texture>$INFO[Window(Weather).Property(Current.ConditionIcon)]</texture>
+    <aspectratio>keep</aspectratio>
+  </control>
+  <control type="label">
+    <posx>1140</posx>
+    <posy>5</posy>
+    <height>10</height>
+    <width>250</width>
+    <font>Font_RSS</font>
+    <align>right</align>
+    <textcolor>FFFFFAF0</textcolor>
+    <label>$INFO[System.Date]</label>
+  </control>
+  <control type="label">
+    <posx>1140</posx>
+    <posy>5</posy>
+    <height>10</height>
+    <width>250</width>
+    <font>Font_RSS</font>
+    <align>left</align>
+    <textcolor>FFFFFAF0</textcolor>
+    <label> | </label>
+  </control>
+  <control type="label">
+    <posx>1150</posx>
+    <posy>5</posy>
+    <height>10</height>
+    <width>250</width>
+    <font>Font_RSS</font>
+    <align>left</align>
+    <textcolor>FFFFFAF0</textcolor>
+    <label>$INFO[System.Time]</label>
+  </control>
+  <control type="label">
+    <posx>1140</posx>
+    <posy>25</posy>
+    <height>10</height>
+    <width>250</width>
+    <font>Font_RSS</font>
+    <align>right</align>
+    <textcolor>FFFFFAF0</textcolor>
+    <label>$INFO[Window(Weather).Property(Current.Condition)]</label>
+    <scroll>true</scroll>
+    <scrollout>false</scrollout>
+    <scrollspeed>50</scrollspeed>
+    <pauseatend>3000</pauseatend>
+  </control>
+  <control type="label">
+    <posx>1140</posx>
+    <posy>25</posy>
+    <height>10</height>
+    <width>250</width>
+    <font>Font_RSS</font>
+    <align>left</align>
+    <textcolor>FFFFFAF0</textcolor>
+    <label> | </label>
+  </control>
+  <control type="label">
+    <posx>1150</posx>
+    <posy>25</posy>
+    <height>10</height>
+    <width>250</width>
+    <font>Font_RSS</font>
+    <align>left</align>
+    <textcolor>FFFF8C00</textcolor>
+    <label>$INFO[Weather.Temperature]</label>
+  </control>
+  <control type="image">
+    <description>Panel</description>
+    <posx>0</posx>
+    <posy>-20</posy>
+    <height>70</height>
+    <width>1280</width>
+    <colordiffuse>70ffffff</colordiffuse>
+    <texture background="true">osd_black_bg.png</texture>
+  </control>
+  <control type="image">
+    <description>Panel</description>
+    <posx>0</posx>
+    <posy>670</posy>
+    <height>50</height>
+    <width>1280</width>
+    <texture>common_grey.png</texture>
+    <colordiffuse>FF909090</colordiffuse>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>45</posy>
+    <width>1280</width>
+    <height>625</height>
+    <texture>common_grey.png</texture>
+    <colordiffuse>FF909090</colordiffuse>
+  </control>
+  <control type="image" id="210">
+    <include>InvisibleButton</include>
+    <visible>![Container(6100).OnNext | Container(6200).OnNext]</visible>
+    <animation effect="fade" start="0" end="100" time="150" condition="true">Visible</animation>
+  </control>
+  <control type="image" id="211">
+    <include>InvisibleButton</include>
+    <visible>![Container(6100).OnPrevious | Container(6200).OnPrevious]</visible>
+    <animation effect="fade" start="0" end="100" time="150" condition="true">Visible</animation>
+  </control>
+  <control type="image">
+  	<posx>185</posx>
+		<posy>80</posy>
+		<width>910</width>
+		<height>498</height>
+    <texture>common_black.png</texture>
+    <colordiffuse>80FFFFFF</colordiffuse>
+  </control>
+  <control type="image">
+  	<posx>233</posx>
+		<posy>100</posy>
+		<width>813</width>
+		<height>458</height>
+		<animation effect="slide" start="1280,0" end="0,0" time="500" tween="cubic" easing="out" reversible="false" condition="Control.IsVisible(210)">Conditional</animation>
+		<animation effect="slide" start="-1280,0" end="0,0" time="500" tween="cubic" easing="out" reversible="false" condition="Control.IsVisible(211)">Conditional</animation>
+    <texture background="true" fallback="special://skin/backgrounds/shutdown.jpg">$VAR[value_viewpicture]</texture>
+  </control>
+  <control type="image">
+  	<posx>233</posx>
+		<posy>100</posy>
+		<width>813</width>
+		<height>458</height>
+		<animation effect="slide" start="0,0" end="-1280,0" time="500" tween="cubic" easing="out" reversible="false" condition="Control.IsVisible(210)">Conditional</animation>
+    <texture background="true" fallback="special://skin/backgrounds/shutdown.jpg">$VAR[value_viewpicture]</texture>
+  </control>
+  <control type="image">
+  	<posx>233</posx>
+		<posy>100</posy>
+		<width>813</width>
+		<height>458</height>
+		<animation effect="slide" start="0,0" end="1280,0" time="500" tween="cubic" easing="out" reversible="false" condition="Control.IsVisible(211)">Conditional</animation>
+    <texture background="true" fallback="special://skin/backgrounds/shutdown.jpg">$VAR[value_viewpicture]</texture>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>46</posy>
+    <width>200</width>
+    <height>624</height>
+    <texture flipx="true">settings_panel_frame.png</texture>
+    <colordiffuse>FF909090</colordiffuse>
+  </control>
+  <control type="image">
+    <posx>1080</posx>
+    <posy>46</posy>
+    <width>200</width>
+    <height>624</height>
+    <texture>settings_panel_frame.png</texture>
+    <colordiffuse>FF909090</colordiffuse>
+  </control>
+  <control type="image">
+    <posx>80</posx>
+    <posy>235</posy>
+    <width>50</width>
+    <height>200</height>
+    <texture flipx="true">arrow_settings_left.png</texture>
+  </control>
+  <control type="image">
+    <posx>1150</posx>
+    <posy>235</posy>
+    <width>50</width>
+    <height>200</height>
+    <texture>arrow_settings_left.png</texture>
+  </control>
+  <control type="image">
+  	<posx>0</posx>
+		<posy>46</posy>
+		<width>1280</width>
+		<height>623</height>
+    <texture>views_frame_top.png</texture>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>46</posy>
+    <width>1280</width>
+    <height>2</height>
+    <texture>panel_horizontal_separator.png</texture>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>668</posy>
+    <width>1280</width>
+    <height>2</height>
+    <texture>panel_horizontal_separator.png</texture>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>577.5</posy>
+    <width>1280</width>
+    <height>98</height>
+    <texture>topmenu_bar.png</texture>
+    <include>Animation_CommonFade</include>
+  </control>
+  
+  <!-- View Type Video -->
+  <control type="group">
+    <visible>SubString(skin.string(viewtypesmaster),video)</visible>
+  <control type="wraplist" id="6100">
+    <posx>0</posx>
+    <posy>605</posy>
+    <height>40</height>
+    <width>1280</width>
+    <viewtype>list</viewtype>
+    <orientation>horizontal</orientation>
+    <focusposition>2</focusposition>
+    <scrolltime>300</scrolltime>
+    <movement>2</movement>
+  <itemlayout width="260" height="40">
+  <control type="label">
+		<posx>130</posx>
+		<width>289</width>
+		<height>54</height>
+		<posy>6</posy>
+		<font>Font_SettingsMenuButton</font>
+		<textcolor>FFf5f5f5</textcolor>
+		<align>center</align>
+		<aligny>top</aligny>
+    <info>ListItem.Label</info>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>36</posy>
+    <width>260</width>
+    <height>4</height>
+    <texture>colorselector_iconfocus.png</texture>
+    <colordiffuse>FFFF0000</colordiffuse>
+    <visible>IsEmpty(ListItem.Property(condition))</visible>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>36</posy>
+    <width>260</width>
+    <height>4</height>
+    <texture>colorselector_iconfocus.png</texture>
+    <colordiffuse>FF00BFFF</colordiffuse>
+    <visible>!IsEmpty(ListItem.Property(condition))</visible>
+  </control>
+  </itemlayout>
+  <focusedlayout width="260" height="40">
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>260</width>
+    <height>40</height>
+    <texture>topmenu_button_nofocus.png</texture>
+		<pulseonselect>no</pulseonselect>
+		<texturefocus>-</texturefocus>
+		<texturenofocus>-</texturenofocus>
+		<animation effect="fade" end="80" condition="true">Conditional</animation>
+    <visible>Control.HasFocus(6100)</visible>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>36</posy>
+    <width>260</width>
+    <height>4</height>
+    <texture>colorselector_iconfocus.png</texture>
+    <colordiffuse>FFFF0000</colordiffuse>
+    <visible>IsEmpty(ListItem.Property(condition))</visible>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>36</posy>
+    <width>260</width>
+    <height>4</height>
+    <texture>colorselector_iconfocus.png</texture>
+    <colordiffuse>FF00BFFF</colordiffuse>
+    <visible>!IsEmpty(ListItem.Property(condition))</visible>
+  </control>
+  <control type="label">
+		<posx>130</posx>
+		<width>289</width>
+		<height>54</height>
+		<posy>6</posy>
+		<font>Font_SettingsMenuButton</font>
+		<textcolor>FF101010</textcolor>
+		<align>center</align>
+		<aligny>top</aligny>
+    <info>ListItem.Label</info>
+  </control>
+  </focusedlayout>
+  <content>
+  <item id="1">
+    <label>31807</label>
+    <property name="condition">$INFO[skin.string(view_video_listlow),enable)]</property>
+    <icon>extras/screens/views_video_listlow.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_listlow),enable)">Skin.SetString(view_video_listlow,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_listlow),enable)">Skin.Reset(view_video_listlow,enable)</onclick>
+  </item>
+  <item id="2">
+    <label>31823</label>
+    <property name="condition">$INFO[skin.string(view_video_listlarge),enable)]</property>
+    <icon>extras/screens/views_video_listlarge.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_listlarge),enable)">Skin.SetString(view_video_listlarge,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_listlarge),enable)">Skin.Reset(view_video_listlarge,enable)</onclick>
+  </item>
+  <item id="3">
+    <label>31802</label>
+    <property name="condition">$INFO[skin.string(view_video_showcase),enable)]</property>
+    <icon>extras/screens/views_video_showcase.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_showcase),enable)">Skin.SetString(view_video_showcase,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_showcase),enable)">Skin.Reset(view_video_showcase,enable)</onclick>
+  </item>
+  <item id="4">
+    <label>31803</label>
+    <property name="condition">$INFO[skin.string(view_video_multiplex),enable)]</property>
+    <icon>extras/screens/views_video_multiplex.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_multiplex),enable)">Skin.SetString(view_video_multiplex,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_multiplex),enable)">Skin.Reset(view_video_multiplex,enable)</onclick>
+  </item>
+  <item id="5">
+    <label>31805</label>
+    <property name="condition">$INFO[skin.string(view_video_wall),enable)]</property>
+    <icon>extras/screens/views_video_wall.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_wall),enable)">Skin.SetString(view_video_wall,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_wall),enable)">Skin.Reset(view_video_wall,enable)</onclick>
+    <visible>!SubString(skin.string(viewtypes),episodes)</visible>
+  </item>
+  <item id="6">
+    <label>31806</label>
+    <property name="condition">$INFO[skin.string(view_video_3dwall),enable)]</property>
+    <icon>extras/screens/views_video_3dwall.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_3dwall),enable)">Skin.SetString(view_video_3dwall,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_3dwall),enable)">Skin.Reset(view_video_3dwall,enable)</onclick>
+  </item>
+  <item id="7">
+    <label>31810</label>
+    <property name="condition">$INFO[skin.string(view_video_coverflow),enable)]</property>
+    <icon>extras/screens/views_video_coverflow.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_coverflow),enable)">Skin.SetString(view_video_coverflow,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_coverflow),enable)">Skin.Reset(view_video_coverflow,enable)</onclick>
+    <visible>!SubString(skin.string(viewtypes),episodes)</visible>
+  </item>
+  <item id="8">
+    <label>31809</label>
+    <property name="condition">$INFO[skin.string(view_video_shelf),enable)]</property>
+    <icon>extras/screens/views_video_shelf.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_shelf),enable)">Skin.SetString(view_video_shelf,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_shelf),enable)">Skin.Reset(view_video_shelf,enable)</onclick>
+    <visible>!SubString(skin.string(viewtypes),episodes)</visible>
+  </item>
+  <item id="9">
+    <label>31818</label>
+    <property name="condition">$INFO[skin.string(view_video_panel),enable)]</property>
+    <icon>extras/screens/views_video_panel.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_panel),enable)">Skin.SetString(view_video_panel,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_panel),enable)">Skin.Reset(view_video_panel,enable)</onclick>
+  </item>
+  <item id="10">
+    <label>31820</label>
+    <property name="condition">$INFO[skin.string(view_video_panellogo),enable)]</property>
+    <icon>extras/screens/views_video_panellogo.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_panellogo),enable)">Skin.SetString(view_video_panellogo,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_panellogo),enable)">Skin.Reset(view_video_panellogo,enable)</onclick>
+    <visible>!SubString(skin.string(viewtypes),episodes)</visible>
+  </item>
+  <item id="11">
+    <label>31821</label>
+    <property name="condition">$INFO[skin.string(view_video_showart),enable)]</property>
+    <icon>extras/screens/views_video_showart.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_showart),enable)">Skin.SetString(view_video_showart,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_showart),enable)">Skin.Reset(view_video_showart,enable)</onclick>
+    <visible>!SubString(skin.string(viewtypes),episodes)</visible>
+  </item>
+  <item id="12">
+    <label>31811</label>
+    <property name="condition">$INFO[skin.string(view_video_banner),enable)]</property>
+    <icon>extras/screens/views_video_banner.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_banner),enable)">Skin.SetString(view_video_banner,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_banner),enable)">Skin.Reset(view_video_banner,enable)</onclick>
+    <visible>SubString(skin.string(viewtypes),movies) | SubString(skin.string(viewtypes),tvshows) | SubString(skin.string(viewtypes),seasons) | SubString(skin.string(viewtypes),episodes)</visible>
+  </item>
+  <item id="13">
+    <label>31813</label>
+    <property name="condition">$INFO[skin.string(view_video_wide),enable)]</property>
+    <icon>extras/screens/views_video_wide.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_wide),enable)">Skin.SetString(view_video_wide,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_wide),enable)">Skin.Reset(view_video_wide,enable)</onclick>
+    <visible>SubString(skin.string(viewtypes),tvshows) | SubString(skin.string(viewtypes),seasons) | SubString(skin.string(viewtypes),episodes)</visible>
+  </item>
+  <item id="14">
+    <label>31814</label>
+    <property name="condition">$INFO[skin.string(view_video_landscape),enable)]</property>
+    <icon>extras/screens/views_video_landscape.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_landscape),enable)">Skin.SetString(view_video_landscape,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_landscape),enable)">Skin.Reset(view_video_landscape,enable)</onclick>
+    <visible>SubString(skin.string(viewtypes),movies) | SubString(skin.string(viewtypes),tvshows) | SubString(skin.string(viewtypes),seasons) | SubString(skin.string(viewtypes),episodes)</visible> 
+  </item>
+  <item id="15">
+    <label>31804</label>
+    <property name="condition">$INFO[skin.string(view_video_landscapex),enable)]</property>
+    <icon>extras/screens/views_video_landscapex.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_landscapex),enable)">Skin.SetString(view_video_landscapex,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_landscapex),enable)">Skin.Reset(view_video_landscapex,enable)</onclick>
+    <visible>SubString(skin.string(viewtypes),tvshows) | SubString(skin.string(viewtypes),seasons) | SubString(skin.string(viewtypes),episodes)</visible>
+  </item>
+  <item id="16">
+    <label>31808</label>
+    <property name="condition">$INFO[skin.string(view_video_poster),enable)]</property>
+    <icon>extras/screens/views_video_poster.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_video_poster),enable)">Skin.SetString(view_video_poster,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_video_poster),enable)">Skin.Reset(view_video_poster,enable)</onclick>
+  </item>
+  </content>
+  </control>
+  </control>
+  
+  <!-- View Type Audio -->
+  <control type="group">
+    <visible>SubString(skin.string(viewtypesmaster),audio)</visible>
+  <control type="wraplist" id="6200">
+    <posx>0</posx>
+    <posy>605</posy>
+    <height>40</height>
+    <width>1280</width>
+    <viewtype>list</viewtype>
+    <orientation>horizontal</orientation>
+    <focusposition>2</focusposition>
+    <scrolltime>300</scrolltime>
+    <movement>2</movement>
+  <itemlayout width="260" height="40">
+  <control type="label">
+		<posx>130</posx>
+		<width>289</width>
+		<height>54</height>
+		<posy>6</posy>
+		<font>Font_SettingsMenuButton</font>
+		<textcolor>FFf5f5f5</textcolor>
+		<align>center</align>
+		<aligny>top</aligny>
+    <info>ListItem.Label</info>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>36</posy>
+    <width>260</width>
+    <height>4</height>
+    <texture>colorselector_iconfocus.png</texture>
+    <colordiffuse>FFFF0000</colordiffuse>
+    <visible>IsEmpty(ListItem.Property(condition))</visible>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>36</posy>
+    <width>260</width>
+    <height>4</height>
+    <texture>colorselector_iconfocus.png</texture>
+    <colordiffuse>FF00BFFF</colordiffuse>
+    <visible>!IsEmpty(ListItem.Property(condition))</visible>
+  </control>
+  </itemlayout>
+  <focusedlayout width="260" height="40">
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>260</width>
+    <height>40</height>
+    <texture>topmenu_button_nofocus.png</texture>
+		<pulseonselect>no</pulseonselect>
+		<texturefocus>-</texturefocus>
+		<texturenofocus>-</texturenofocus>
+		<animation effect="fade" end="80" condition="true">Conditional</animation>
+    <visible>Control.HasFocus(6200)</visible>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>36</posy>
+    <width>260</width>
+    <height>4</height>
+    <texture>colorselector_iconfocus.png</texture>
+    <colordiffuse>FFFF0000</colordiffuse>
+    <visible>IsEmpty(ListItem.Property(condition))</visible>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>36</posy>
+    <width>260</width>
+    <height>4</height>
+    <texture>colorselector_iconfocus.png</texture>
+    <colordiffuse>FF00BFFF</colordiffuse>
+    <visible>!IsEmpty(ListItem.Property(condition))</visible>
+  </control>
+  <control type="label">
+		<posx>130</posx>
+		<width>289</width>
+		<height>54</height>
+		<posy>6</posy>
+		<font>Font_SettingsMenuButton</font>
+		<textcolor>FF101010</textcolor>
+		<align>center</align>
+		<aligny>top</aligny>
+    <info>ListItem.Label</info>
+  </control>
+  </focusedlayout>
+  <content>
+  <item id="1">
+    <label>31807</label>
+    <property name="condition">$INFO[skin.string(view_audio_listlow),enable)]</property>
+    <icon>extras/screens/views_audio_listlow.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_audio_listlow),enable)">Skin.SetString(view_audio_listlow,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_audio_listlow),enable)">Skin.Reset(view_audio_listlow,enable)</onclick>
+  </item>
+  <item id="2">
+    <label>31802</label>
+    <property name="condition">$INFO[skin.string(view_audio_showcase),enable)]</property>
+    <icon>extras/screens/views_audio_showcase.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_audio_showcase),enable)">Skin.SetString(view_audio_showcase,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_audio_showcase),enable)">Skin.Reset(view_audio_showcase,enable)</onclick>
+  </item>
+  <item id="3">
+    <label>31803</label>
+    <property name="condition">$INFO[skin.string(view_audio_multiplex),enable)]</property>
+    <icon>extras/screens/views_audio_multiplex.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_audio_multiplex),enable)">Skin.SetString(view_audio_multiplex,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_audio_multiplex),enable)">Skin.Reset(view_audio_multiplex,enable)</onclick>
+  </item>
+  <item id="4">
+    <label>31805</label>
+    <property name="condition">$INFO[skin.string(view_audio_wall),enable)]</property>
+    <icon>extras/screens/views_audio_wall.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_audio_wall),enable)">Skin.SetString(view_audio_wall,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_audio_wall),enable)">Skin.Reset(view_audio_wall,enable)</onclick>
+  </item>
+  <item id="5">
+    <label>31806</label>
+    <property name="condition">$INFO[skin.string(view_audio_3dwall),enable)]</property>
+    <icon>extras/screens/views_audio_3dwall.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_audio_3dwall),enable)">Skin.SetString(view_audio_3dwall,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_audio_3dwall),enable)">Skin.Reset(view_audio_3dwall,enable)</onclick>
+  </item>
+  <item id="6">
+    <label>31810</label>
+    <property name="condition">$INFO[skin.string(view_audio_coverflow),enable)]</property>
+    <icon>extras/screens/views_audio_coverflow.jpg</icon>
+    <onclick condition="!SubString(skin.string(view_audio_coverflow),enable)">Skin.SetString(view_audio_coverflow,enable)</onclick>
+    <onclick condition="SubString(skin.string(view_audio_coverflow),enable)">Skin.Reset(view_audio_coverflow,enable)</onclick>
+  </item>
+  </content>
+  </control>
+  </control>
+  </control>
+	</controls>
+</window>

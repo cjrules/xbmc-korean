@@ -1,0 +1,191 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window id="1">
+	<defaultcontrol>50</defaultcontrol>
+	<allowoverlay>no</allowoverlay>
+	<views>50,53,57,59,510,550,571</views>
+  <controls>
+  <control type="multiimage"><!-- Fanart -->
+    <include>FullScreenDimensions</include>
+		<timeperimage>6000</timeperimage>
+		<randomize>true</randomize>
+		<fadetime>FanartCrossFadeTime</fadetime>
+		<animation effect="zoom" start="110" end="130" center="auto" time="10000" tween="cubic" easing="inout" pulse="true" condition="Skin.HasSetting(animationprograms_panscan)">Conditional</animation>
+		<animation effect="slide" start="-10,-10" end="10,10" time="5000" tween="cubic" easing="inout" pulse="true" condition="Skin.HasSetting(animationprograms_panscan)">Conditional</animation>
+		<animation effect="slide" start="1280,0" end="0,0" time="500" tween="cubic" easing="out" reversible="false" condition="Skin.HasSetting(animationprograms_slide) + Control.IsVisible(110)">Conditional</animation>
+		<animation effect="slide" start="-1280,0" end="0,0" time="500" tween="cubic" easing="out" reversible="false" condition="Skin.HasSetting(animationprograms_slide) + Control.IsVisible(111)">Conditional</animation>
+    <imagepath background="true" fallback="special://skin/backgrounds/default.jpg">$INFO[ListItem.Property(Fanart_Image)]</imagepath>
+  </control>
+  <control type="multiimage"><!-- Fanart -->
+    <include>FullScreenDimensions</include>
+		<timeperimage>6000</timeperimage>
+		<randomize>true</randomize>
+		<fadetime>FanartCrossFadeTime</fadetime>
+		<animation effect="slide" start="0,0" end="-1280,0" time="500" tween="cubic" easing="out" reversible="false" condition="Control.IsVisible(110)">Conditional</animation>
+    <imagepath background="true" fallback="special://skin/backgrounds/default.jpg">$INFO[ListItem.Property(Fanart_Image)]</imagepath>
+    <visible>Skin.HasSetting(animationprograms_slide)</visible>
+  </control>
+  <control type="multiimage"><!-- Fanart -->
+    <include>FullScreenDimensions</include>
+		<timeperimage>6000</timeperimage>
+		<randomize>true</randomize>
+		<fadetime>FanartCrossFadeTime</fadetime>
+		<animation effect="slide" start="0,0" end="1280,0" time="500" tween="cubic" easing="out" reversible="false" condition="Control.IsVisible(111)">Conditional</animation>
+    <imagepath background="true" fallback="special://skin/backgrounds/default.jpg">$INFO[ListItem.Property(Fanart_Image)]</imagepath>
+    <visible>Skin.HasSetting(animationprograms_slide)</visible>
+  </control>
+    <control type="image" id="110"><!-- to slide fanart -->
+    <include>InvisibleButton</include>
+    <visible>!Container.OnNext</visible>
+    <animation effect="fade" start="0" end="100" time="150" condition="true">Visible</animation>
+  </control>
+  <control type="image" id="111"><!-- to slide fanart -->
+    <include>InvisibleButton</include>
+    <visible>!Container.OnPrevious</visible>
+    <animation effect="fade" start="0" end="100" time="150" condition="true">Visible</animation>
+  </control>
+    <include>LiveBG</include>
+    <include>Furniture_Floor</include>
+  
+ <!-- Focus Control -->
+  <control type="group">
+	  <include>Animation_OpenCloseZoom</include>
+  <control type="image" id="109"><!-- to panel info -->
+    <include>InvisibleButton</include>
+    <animation effect="fade" start="0" end="100" time="150" delay="1000" condition="SubString(skin.string(panel_seconds),1)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="2000" condition="SubString(skin.string(panel_seconds),2)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="3000" condition="SubString(skin.string(panel_seconds),3)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="4000" condition="SubString(skin.string(panel_seconds),4)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="5000" condition="SubString(skin.string(panel_seconds),5)">Visible</animation>
+    <visible>![Control.IsVisible(53) + [SubString(skin.string(programs_info_wall),off) | SubString(skin.string(programs_info_wall),trigger)] | 
+    Control.IsVisible(57) + [SubString(skin.string(programs_info_showcase),off) | SubString(skin.string(programs_info_showcase),trigger)] | 
+    Control.IsVisible(59) + [SubString(skin.string(programs_info_shelf),off) | SubString(skin.string(programs_info_shelf),trigger)] | 
+    Container.OnNext | Container.OnPrevious | ControlGroup(9000).HasFocus | Control.HasFocus(9920)]</visible>
+  </control>
+  <control type="image" id="110"><!-- to slide fanart -->
+    <include>InvisibleButton</include>
+    <visible>!Container.OnNext</visible>
+    <animation effect="fade" start="0" end="100" time="150" condition="true">Visible</animation>
+  </control>
+  <control type="image" id="111"><!-- to slide fanart -->
+    <include>InvisibleButton</include>
+    <visible>!Container.OnPrevious</visible>
+    <animation effect="fade" start="0" end="100" time="150" condition="true">Visible</animation>
+  </control>
+  <control type="button" id="9900"><!-- to menu/kiosk condition -->
+    <include>InvisibleButton</include>
+    <onfocus condition="![Skin.HasSetting(kiosk) | Skin.HasSetting(kiosksmart) + !SubString(skin.string(codestep),step3)]">SetFocus(9300)</onfocus>
+    <onfocus condition="Skin.HasSetting(kiosksmart) + !SubString(skin.string(codestep),step3)">SetFocus(9100)</onfocus>
+    <onfocus condition="Skin.HasSetting(kiosk) + IsEmpty(ListItem.Trailer)">SetFocus(50)</onfocus>
+    <onfocus condition="Skin.HasSetting(kiosk) + !IsEmpty(ListItem.Trailer)">SetFocus(90000)</onfocus>
+  </control>
+  <control type="button" id="9910"><!-- panel focus -->
+    <include>InvisibleButton</include>
+    <onleft>SetFocus(50)</onleft>
+    <onright>SetFocus(50)</onright>
+    <onup>SetFocus(9900)</onup>
+    <ondown>SetFocus(50)</ondown>
+  </control>
+  <control type="button" id="9920"><!-- hidden colection/view fanart -->
+    <include>InvisibleButton</include>
+    <onleft>SetFocus(50)</onleft>
+    <onright>SetFocus(50)</onright>
+    <onup>SetFocus(50)</onup>
+    <ondown>SetFocus(50)</ondown>
+  </control>
+  </control>
+  
+  <!-- ViewTypes -->
+  <control type="group">
+	  <include>Animation_OpenCloseZoom</include>
+    <include>ViewList</include><!-- 50 -->
+    <include>ViewWall</include><!-- 53 -->
+    <include>ViewShowCaseVideo</include><!-- 57 -->
+    <include>ViewShelf</include><!-- 59 -->
+    <include>ViewPoster</include><!-- 510 -->
+    <include>ViewListLarge</include><!-- 550 -->
+    <include>ViewPanel</include><!-- 571 -->
+    
+  <control type="group"><!-- Time -->
+    <include>Animation_OpenCloseSlideDown</include>
+    <visible>Skin.HasSetting(programstime) + !ControlGroup(9000).HasFocus</visible>
+  <control type="image">
+    <posx>860</posx>
+    <posy>0</posy>
+    <width>420</width>
+    <height>27</height>
+    <aspectratio>stretch</aspectratio>
+    <texture flipx="true" flipy="true">home_common_panel.png</texture>
+    <colordiffuse>$VAR[value_texturecolors]</colordiffuse>
+    <animation effect="fade" end="85" condition="true">Conditional</animation>
+  </control>
+  <control type="image">
+    <posx>1250</posx>
+    <posy>2</posy>
+    <width>21</width>
+    <height>21</height>
+    <aspectratio>keep</aspectratio>
+    <texture>$INFO[Window(Weather).Property(Current.ConditionIcon)]</texture>
+  </control>
+  <control type="label">
+    <posx>1240</posx>
+    <posy>2</posy>
+    <width>350</width>
+    <font>Font_RSS</font>
+    <align>right</align>
+    <label>[UPPERCASE]$INFO[System.Date][COLOR=80ffffff] | [/COLOR][COLOR=$VAR[value_headercolors]]$INFO[System.Time][/COLOR][/UPPERCASE][COLOR=80ffffff] | [/COLOR][UPPERCASE]$INFO[Window(Weather).Property(Current.Condition)][COLOR=80ffffff] | [/COLOR][COLOR=$VAR[value_headercolors]]$INFO[Weather.Temperature][/COLOR][/UPPERCASE]</label>
+    <scroll>true</scroll>
+    <scrollout>false</scrollout>
+  </control>
+  </control>
+  
+  <control type="group"><!-- RSS -->
+    <include>Animation_OpenCloseSlideDown</include>
+    <visible>Skin.HasSetting(programsrss) + ![Player.HasMedia + Skin.HasSetting(nowplayingwidget) | ControlGroup(9000).HasFocus]</visible>
+    <posx>0</posx>
+    <posy>0</posy>
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>420</width>
+    <height>27</height>
+    <aspectratio>stretch</aspectratio>
+    <texture flipy="true">home_common_panel.png</texture>
+    <colordiffuse>$VAR[value_texturecolors]</colordiffuse>
+    <animation effect="fade" end="85" condition="true">Conditional</animation>
+  </control>
+  <control type="rss" id="1">
+    <posx>12</posx>
+    <posy>2</posy>
+    <width>390</width>
+    <height>18</height>
+    <font>Font_RSS</font>
+    <urlset>1</urlset>
+		<textcolor>dcFFFFFF</textcolor>
+		<headlinecolor>bcFFFFFF</headlinecolor>
+		<highlightcolor>a9736AFF</highlightcolor>
+		<titlecolor>$VAR[value_headercolors]</titlecolor>
+  </control>
+  <control type="image">
+    <posx>272</posx>
+    <posy>0</posy>
+    <width>150</width>
+    <height>27</height>
+    <aspectratio>stretch</aspectratio>
+    <texture flipx="true">rssbar_darkfade.png</texture>
+    <colordiffuse>$VAR[value_texturecolors]</colordiffuse>
+    <animation effect="fade" end="95" condition="true">Conditional</animation>
+  </control>
+  </control>
+  
+  <!-- Furniture -->
+    <include condition="Skin.HasSetting(nowplayingwidget)">NowPlayingWidget</include>
+    <include condition="!Skin.HasSetting(noscrollletters)">ScrollOffsetLabel</include>
+    <include>FloorText</include>
+    <include>TopMenu_BGBlack</include>
+    <include>TopMenu_Programs</include>
+	</control>
+  <include>BGBlack</include>
+  <include>BGGradient</include>
+	</controls>
+</window>

@@ -1,0 +1,466 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window id="142">
+	<defaultcontrol>23</defaultcontrol>
+	<controls>
+  <control type="image">
+    <include>FullScreenDimensions</include>
+    <texture>common_black.png</texture>
+    <colordiffuse>c3FFFFFF</colordiffuse>
+    <include>Animation_CommonFade</include>
+  </control>
+	<control type="group">
+  <animation type="WindowOpen" condition="true">
+    <effect type="slide" time="400" start="0,-250" end="0,0" easing="inout" tween="cubic"/>
+  </animation>
+  <animation type="WindowClose" condition="true">
+    <effect type="slide" time="400" start="0,0" end="0,-250" easing="inout" tween="cubic"/>
+  </animation>
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <height>250</height>
+    <width>1280</width>
+    <texture flipy="true">osd_black_bg.png</texture>
+  </control>
+  <control type="label"><!-- Title -->
+    <posx>30</posx>
+    <posy>5</posy>
+    <height>40</height>
+    <width>1100</width>
+    <font>Font_MenuVirtualClassic</font>
+    <label>$VAR[value_videoosdtitle]</label>
+    <textcolor>FFececec</textcolor>
+    <scroll>true</scroll>
+    <scrollout>false</scrollout>
+  </control>
+  <control type="label">
+    <posx>30</posx>
+    <posy>55</posy>
+    <width>1100</width>
+    <height>25</height>
+    <font>Font_Time</font>
+    <label>$VAR[value_videoosdtag]</label>
+    <textcolor>70FFFFFF</textcolor>
+		<scroll>true</scroll>
+    <scrollout>false</scrollout>
+  </control>
+  <control type="image"><!-- Star -->
+    <posx>1185</posx>
+    <posy>10</posy>
+    <height>60</height>
+    <width>60</width>
+    <align>center</align>
+    <aligny>center</aligny>
+    <texture>star_big.png</texture>
+    <colordiffuse>FF7DDDDDD</colordiffuse>
+    <visible>!VideoPlayer.Content(LiveTV)</visible>
+  </control>
+  <control type="label">
+    <posx>1185</posx>
+    <posy>13</posy>
+    <height>60</height>
+    <width>60</width>
+    <align>center</align>
+    <aligny>center</aligny>
+    <font>Font_WeatherLabel</font>
+    <label>[B]$INFO[VideoPlayer.Rating][/B]</label>
+    <textcolor>FF101010</textcolor>
+    <visible>!VideoPlayer.Content(LiveTV)</visible>
+  </control>
+  </control>
+  
+  <control type="group">
+  <animation type="WindowOpen" condition="true">
+    <effect type="slide" time="400" start="0,800" end="0,-70" easing="out" tween="cubic"/>
+  </animation>
+  <animation type="WindowClose" condition="true">
+    <effect type="slide" time="400" start="0,-70" end="0,800" easing="in" tween="cubic"/>
+  </animation>
+    <animation effect="slide" start="0,0" end="0,-25" time="300" tween="cubic" easing="out" condition="Player.Forwarding | Player.Rewinding">Conditional</animation>
+    <animation effect="slide" start="0,0" end="0,-80" time="550" tween="cubic" easing="inout" condition="Window.IsActive(videoosd)">Conditional</animation>
+  <control type="image">
+    <posx>0</posx>
+    <posy>450</posy>
+    <height>420</height>
+    <width>1280</width>
+    <colordiffuse>FF000000</colordiffuse>
+    <texture>shadow_mask.png</texture>
+  </control>
+	<control type="image">
+    <posx>0</posx>
+    <posy>443</posy>
+    <height>286</height>
+    <width>1280</width>
+    <texture background="true">now_player_fullscreen.png</texture>
+    <colordiffuse>$VAR[value_texturecolors]</colordiffuse>
+  </control>
+  <control type="image">
+    <posx>200</posx>
+    <posy>450</posy>
+    <width>24</width>
+    <height>270</height>
+    <texture>common_grey.png</texture>
+    <colordiffuse>75000000</colordiffuse>
+  </control>
+  <control type="image">
+    <posx>226</posx>
+    <posy>450</posy>
+    <width>220</width>
+    <height>20</height>
+    <texture flipy="true">home_common_panel.png</texture>
+    <colordiffuse>75000000</colordiffuse>
+  </control>
+  <control type="label">
+    <posx>240</posx>
+    <posy>449</posy>
+    <width>300</width>
+    <height>25</height>
+    <align>left</align>
+    <font>Font_Time</font>
+    <textcolor>48FFFFFF</textcolor>
+    <label>31530</label>
+  </control>
+  <control type="image"><!-- Cover -->
+    <posx>10</posx>
+    <posy>450</posy>
+    <width>200</width>
+    <height>270</height>
+    <texture background="true">$VAR[value_thumbfullscreen]</texture>
+    <aspectratio align="right">keep</aspectratio>
+  </control>
+  <control type="textbox"><!-- Plot -->
+    <posx>240</posx>
+    <posy>480</posy>
+    <height>180</height>
+    <width>415</width>
+    <align>justify</align>
+    <align>justify</align>
+    <font>Font_MultiplexPlotSmall</font>
+    <label>$INFO[VideoPlayer.Plot]</label>
+    <textcolor>FFececec</textcolor>
+    <autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+    <visible>![IsEmpty(Control.GetLabel(1000)) + IsEmpty(Control.GetLabel(1001)) + IsEmpty(Control.GetLabel(1002)) + IsEmpty(Control.GetLabel(1003))]</visible>
+  </control>
+  <control type="textbox"><!-- Plot -->
+    <posx>240</posx>
+    <posy>480</posy>
+    <height>180</height>
+    <width>595</width>
+    <align>justify</align>
+    <align>justify</align>
+    <font>Font_MultiplexPlotSmall</font>
+    <label>$INFO[VideoPlayer.Plot]</label>
+    <textcolor>FFececec</textcolor>
+    <autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+    <visible>IsEmpty(Control.GetLabel(1000)) + IsEmpty(Control.GetLabel(1001)) + IsEmpty(Control.GetLabel(1002)) + IsEmpty(Control.GetLabel(1003))</visible>
+  </control>
+  <control type="group">
+    <visible>!VideoPlayer.Content(LiveTV)</visible>
+    <animation effect="slide" start="0,0" end="180,0" time="400" tween="cubic" easing="inout" condition="IsEmpty(Control.GetLabel(1000)) + IsEmpty(Control.GetLabel(1001)) + IsEmpty(Control.GetLabel(1002)) + IsEmpty(Control.GetLabel(1003))">Conditional</animation>
+  <control type="image">
+    <posx>670</posx>
+    <posy>450</posy>
+    <width>2</width>
+    <height>215</height>
+    <texture>panel_vertical_separator.png</texture>
+    <colordiffuse>75000000</colordiffuse>
+  </control>
+  <control type="image">
+    <posx>674</posx>
+    <posy>450</posy>
+    <width>220</width>
+    <height>20</height>
+    <texture flipy="true">home_common_panel.png</texture>
+    <colordiffuse>75000000</colordiffuse>
+  </control>
+  <control type="label">
+    <posx>685</posx>
+    <posy>449</posy>
+    <width>300</width>
+    <height>25</height>
+    <align>left</align>
+    <font>Font_Time</font>
+    <textcolor>48FFFFFF</textcolor>
+    <label>31703</label>
+  </control>
+  <control type="textbox"><!-- Cast -->
+    <posx>685</posx>
+    <posy>480</posy>
+    <height>180</height>
+    <width>390</width>
+    <align>justify</align>
+    <align>justify</align>
+    <font>Font_MultiplexPlotSmall</font>
+    <label>$INFO[VideoPlayer.CastAndRole]</label>
+    <textcolor>FFececec</textcolor>
+    <autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+  </control>
+  </control>
+  <control type="image" id="1000"><!-- Logo -->
+    <posx>1080</posx>
+    <posy>320</posy>
+    <width>180</width>
+    <height>340</height>
+    <aspectratio>keep</aspectratio>
+    <texture background="true">$VAR[value_logovideofs]</texture>
+  </control>
+  <control type="image" id="1001"><!-- Logo -->
+    <posx>1080</posx>
+    <posy>320</posy>
+    <width>180</width>
+    <height>340</height>
+    <aspectratio>keep</aspectratio>
+    <texture background="true">$VAR[value_logovideofs2]</texture>
+  </control>
+  <control type="image" id="1002"><!-- ClearArt -->
+    <posx>1080</posx>
+    <posy>380</posy>
+    <width>180</width>
+    <height>340</height>
+    <aspectratio aligny="bottom">keep</aspectratio>
+    <texture background="true">$VAR[value_clearartvideofs]</texture>
+  </control>
+  <control type="image" id="1003"><!-- ClearArt -->
+    <posx>1080</posx>
+    <posy>380</posy>
+    <width>180</width>
+    <height>340</height>
+    <aspectratio aligny="bottom">keep</aspectratio>
+    <texture background="true">$VAR[value_clearartvideofs2]</texture>
+  </control>
+  <control type="image"><!-- Flags -->
+    <posx>240</posx>
+    <posy>670</posy>
+    <width>90</width>
+    <height>50</height>
+    <aspectratio>keep</aspectratio>
+    <colordiffuse>FFe1e1e1</colordiffuse>
+    <texture>$VAR[Furniture_VideoRatingFS]</texture>
+  </control>
+  <control type="image">
+    <posx>362</posx>
+    <posy>670</posy>
+    <width>90</width>
+    <height>50</height>
+    <aspectratio>keep</aspectratio>
+    <colordiffuse>FFe1e1e1</colordiffuse>
+    <texture>$VAR[Furniture_VideoCodecInfo]</texture>
+  </control>
+  <control type="image">
+    <posx>484</posx>
+    <posy>670</posy>
+    <width>90</width>
+    <height>50</height>
+    <aspectratio>keep</aspectratio>
+    <colordiffuse>FFe1e1e1</colordiffuse>
+    <texture>$INFO[VideoPlayer.Studio,flags/studios/,.png]</texture>
+  </control>
+   <control type="image">
+    <posx>616</posx>
+    <posy>670</posy>
+    <width>70</width>
+    <height>50</height>
+    <aspectratio>stretch</aspectratio>
+    <colordiffuse>FFe1e1e1</colordiffuse>
+    <texture>$INFO[Videoplayer.VideoAspect,flags/aspectratio/,.png]</texture>
+  </control>
+  <control type="image">
+    <posx>728</posx>
+    <posy>670</posy>
+    <width>90</width>
+    <height>50</height>
+    <aspectratio>keep</aspectratio>
+    <colordiffuse>FFe1e1e1</colordiffuse>
+    <texture>$INFO[VideoPlayer.VideoResolution,flags/resolution/,.png]</texture>
+  </control>
+  <control type="image">
+    <posx>850</posx>
+    <posy>670</posy>
+    <width>90</width>
+    <height>50</height>
+    <aspectratio>keep</aspectratio>
+    <colordiffuse>FFe1e1e1</colordiffuse>
+    <texture>$INFO[VideoPlayer.AudioCodec,flags/audio/,.png]</texture>
+  </control>
+  <control type="image">
+    <posx>972</posx>
+    <posy>675</posy>
+    <width>90</width>
+    <height>40</height>
+    <aspectratio>keep</aspectratio>
+    <colordiffuse>FFe1e1e1</colordiffuse>
+    <texture>$INFO[VideoPlayer.AudioChannels,flags/audio/,ch.png]</texture>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>630</posy>
+    <height>90</height>
+    <width>1280</width>
+    <texture>multiplex_seasongradient.png</texture>
+  </control>
+  </control>
+  
+  <control type="group">
+  <animation type="WindowOpen" condition="true">
+    <effect type="slide" time="400" start="0,800" end="0,0" easing="out" tween="cubic"/>
+  </animation>
+  <animation type="WindowClose" condition="true">
+    <effect type="slide" time="400" start="0,0" end="0,800" easing="in" tween="cubic"/>
+  </animation>
+  <control type="image">
+    <posx>0</posx>
+    <posy>450</posy>
+    <height>270</height>
+    <width>1280</width>
+    <texture background="true">osd_black_bg.png</texture>
+  </control>
+  <control type="group">
+    <animation effect="slide" start="0,0" end="0,-25" time="300" tween="cubic" easing="out" condition="Player.Forwarding">Conditional</animation>
+  <control type="progress" id="23">
+    <description>Progressbar small</description>
+    <posx>30</posx>
+    <posy>660</posy>
+    <width>232</width>
+    <height>55</height>
+    <info>Player.Progress</info>
+    <animation effect="fade" end="20" condition="true">Conditional</animation>
+  </control>
+  <control type="label">
+    <posx>50</posx>
+    <posy>670</posy>
+    <width>200</width>
+    <height>25</height>
+    <font>Font_ProgressLabel</font>
+    <textcolor>FFececec</textcolor>
+    <label>$INFO[VideoPlayer.Time] / $INFO[VideoPlayer.Duration]</label>
+  </control>
+  </control>
+  <control type="group">
+    <animation effect="slide" start="0,0" end="0,-25" time="300" tween="cubic" easing="out" condition="Player.Rewinding">Conditional</animation>
+  <control type="label">
+    <posx>1100</posx>
+    <posy>664</posy>
+    <width>300</width>
+    <height>25</height>
+    <align>right</align>
+    <font>Font_Time</font>
+    <textcolor>48FFFFFF</textcolor>
+    <label>31310</label>
+  </control>
+  <control type="label">
+    <posx>1100</posx>
+    <posy>680</posy>
+    <width>300</width>
+    <height>25</height>
+    <align>right</align>
+    <font>Font_ProgressLabel</font>
+    <textcolor>FFececec</textcolor>
+    <label>$INFO[System.Time]</label>
+  </control>
+  <control type="image">
+    <posx>1114</posx>
+    <posy>665</posy>
+    <height>46</height>
+    <width>1</width>
+    <texture>common_linevert.png</texture>
+  </control>
+  <control type="label">
+    <posx>1250</posx>
+    <posy>664</posy>
+    <width>120</width>
+    <height>25</height>
+    <align>right</align>
+    <font>Font_Time</font>
+    <textcolor>48FFFFFF</textcolor>
+    <label>31311</label>
+    <scroll>true</scroll>
+  </control>
+  <control type="label">
+    <posx>1250</posx>
+    <posy>680</posy>
+    <width>300</width>
+    <height>25</height>
+    <align>right</align>
+    <font>Font_ProgressLabel</font>
+    <textcolor>FFececec</textcolor>
+    <label>$INFO[Player.FinishTime]</label>
+  </control>
+  </control>
+  </control>
+  
+  <!-- Seek Widget -->
+  <control type="group">
+    <posx>-500</posx>
+    <posy>693</posy>
+    <width>499</width>
+    <height>28</height>
+    <animation effect="slide" end="200,0" time="200" condition="Player.Forwarding2x">Conditional</animation>
+    <animation effect="slide" end="275,0" time="200" condition="Player.Forwarding4x">Conditional</animation>
+    <animation effect="slide" end="350,0" time="200" condition="Player.Forwarding8x">Conditional</animation>
+    <animation effect="slide" end="425,0" time="200" condition="Player.Forwarding16x">Conditional</animation>
+    <animation effect="slide" end="499,0" time="200" condition="Player.Forwarding32x">Conditional</animation>
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>499</width>
+    <height>28</height>
+    <texture flipy="true">osd_button_reverse.png</texture>
+  </control>
+  <control type="label">
+    <include>Objects_OSDSeekForward</include>
+    <label>$VAR[value_seekforward]</label>
+  </control>
+  </control>
+  <control type="group">
+    <posx>1280</posx>
+    <posy>693</posy>
+    <width>499</width>
+    <height>28</height>
+    <animation effect="slide" end="-200,0" time="200" condition="Player.Rewinding2x">Conditional</animation>
+    <animation effect="slide" end="-275,0" time="200" condition="Player.Rewinding4x">Conditional</animation>
+    <animation effect="slide" end="-350,0" time="200" condition="Player.Rewinding8x">Conditional</animation>
+    <animation effect="slide" end="-425,0" time="200" condition="Player.Rewinding16x">Conditional</animation>
+    <animation effect="slide" end="-499,0" time="200" condition="Player.Rewinding32x">Conditional</animation>
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>499</width>
+    <height>28</height>
+    <texture flipy="true" flipx="true">osd_button_reverse.png</texture>
+  </control>
+  <control type="label">
+    <include>Objects_OSDSeekReverse</include>
+    <label>$VAR[value_seekreverse]</label>
+  </control>
+  </control>
+  
+  <control type="label">
+    <posx>-320</posx>
+    <posy>200</posy>
+    <width>1920</width>
+    <align>center</align>
+    <aligny>center</aligny>
+    <font>Sml_Text_Big</font>
+    <label>31737</label>
+    <textcolor>33ffffff</textcolor>
+    <visible>Player.Paused + !Skin.HasSetting(nopausedlabel)</visible>
+	  <animation type="Visible">
+    <effect type="slide" start="0,-600" end="0,0" time="600" tween="cubic" easing="out" />
+    <effect type="fade" start="0" end="100" time="600" />
+  </animation>
+  <animation type="WindowOpen">
+    <effect type="slide" start="0,-600" end="0,0" time="600" tween="cubic" easing="out" />
+    <effect type="fade" start="0" end="100" time="600" />
+  </animation>
+  <animation type="WindowClose">
+    <effect type="slide" start="0,0" end="-600,0" time="600" tween="cubic" easing="out" />
+    <effect type="fade" start="100" end="0" time="600" />
+  </animation>
+  <animation type="Hidden">
+    <effect type="slide" start="0,0" end="-600,0" time="600" tween="cubic" easing="out" />
+    <effect type="fade" start="100" end="0" time="600" />
+  </animation>
+  </control>
+  </controls>
+  </window>

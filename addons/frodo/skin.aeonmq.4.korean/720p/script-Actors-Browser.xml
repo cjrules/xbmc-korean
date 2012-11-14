@@ -1,0 +1,359 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window id="3002">
+	<defaultcontrol always="true">450</defaultcontrol>
+	<allowoverlay>no</allowoverlay>
+	<coordinates>
+		<system>1</system>
+		<posx>0</posx>
+		<posy>0</posy>
+	</coordinates>
+	<controls>
+	
+	<control type="group"><!-- default group -->
+    <animation effect="slide" start="0,0" end="700,0" time="400" tween="quadratic" easing="out" condition="Window.IsVisible(FileBrowser)">conditional</animation>
+    <include>Animation_OpenCloseZoom</include>
+  <control type="image">
+    <include>FullScreenDimensions</include>
+    <texture>common_black.png</texture>
+    <animation effect="fade" start="0" end="20" time="200">Visible</animation>
+    <animation effect="fade" start="20" end="0" time="400">Hidden</animation>
+  </control>
+  <control type="image">
+    <include>FullScreenDimensions</include>
+    <texture background="true">hive_back.png</texture>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>335</posy>
+    <width>1280</width>
+    <height>405</height>
+    <texture background="true">$VAR[value_listfloor]</texture>
+    <include>Animation_CommonFade</include>
+    <include>Animation_HideShowcase</include>
+  </control>
+  <control type="image">
+    <width>587</width>
+    <height>137</height>
+    <posx>693</posx>
+    <posy>603</posy>
+    <texture background="true">$VAR[value_listspot]</texture>
+    <animation effect="slide" time="1000" start="800,0" end="0,0" tween="cubic" easing="out">Visible</animation>
+    <animation effect="slide" start="0,0" end="17,0" time="0" condition="Skin.HasSetting(videomediacase)">Conditional</animation>
+    <include>Animation_HideShowcase</include>
+  </control>
+  <control type="group">
+    <posy>-10</posy>
+  <control type="group">
+    <width>406</width>
+    <height>556</height>
+    <animation effect="slide" start="-410,0" end="0,0" time="400" delay="500" tween="cubic" easing="out">WindowOpen</animation>
+  <control type="image">
+    <posx>809</posx>
+    <posy>103</posy>
+    <width>406</width>
+    <height>556</height>
+    <texture background="true">list_filebrowser_sidecar.png</texture>
+  </control>
+  <control type="image">
+    <posx>848</posx>
+    <posy>123</posy>
+    <width>330</width>
+    <height>330</height>
+    <fadetime>FanartCrossFadeTime</fadetime>
+    <texture fallback="DefaultPicture.png" background="true">$INFO[Container(450).ListItem.Icon]</texture>
+    <aspectratio aligny="bottom">keep</aspectratio>
+  </control>
+  <control type="image">
+    <posx>848</posx>
+    <posy>453</posy>
+    <width>330</width>
+    <height>330</height>
+    <fadetime>FanartCrossFadeTime</fadetime>
+    <texture flipy="true" fallback="DefaultPicture.png" diffuse="thumb_poster_mask_reflect1.png" background="true">$INFO[Container(450).ListItem.Icon]</texture>
+    <aspectratio aligny="top">keep</aspectratio>
+  </control>
+  </control>
+  <control type="image">
+    <posx>60</posx>
+    <posy>73</posy>
+    <width>759</width>
+    <height>647</height>
+    <texture background="true">panel_list_back_noreflect.png</texture>
+  </control>
+  <control type="image">
+    <posx>61</posx>
+    <posy>605</posy>
+    <width>759</width>
+    <height>88</height>
+    <texture>list_filebrowser_buttons.png</texture>
+  </control>
+  <control type="label" id="411"><!-- header label -->
+    <posx>105</posx>
+    <posy>94</posy>
+    <width>771</width>
+    <font>Font_FSInfoArtist</font>
+    <textcolor>60FFFFFF</textcolor>
+  </control>
+  <control type="label" id="412">
+    <visible>false</visible>
+  </control>
+  <control type="list" id="450">
+    <enable>!StringCompare(Window.Property(dialogprogress),1)</enable>
+    <viewtype label="31801">list</viewtype>
+    <posx>60</posx>
+    <posy>138</posy>
+    <width>771</width>
+    <height>440</height>
+    <pagecontrol>61</pagecontrol>
+    <scrolltime>0</scrolltime>
+    <onleft>413</onleft>
+    <onright>413</onright>
+    <onup>451</onup>
+    <ondown>451</ondown>
+    <animation effect="fade" start="100" end="50" time="200" condition="!Control.HasFocus(450)">Conditional</animation>
+  <itemlayout height="40">
+  <control type="image">
+    <posx>12</posx>
+    <posy>41</posy>
+    <height>1</height>
+    <width>739</width>
+    <texture>common_line.png</texture>
+  </control>
+  <control type="label">
+		<posx>45</posx>
+		<posy>0</posy>
+		<height>39</height>
+		<width>670</width>
+		<font>Font_MultiplexInfoLabel</font>
+		<aligny>center</aligny>
+		<textcolor>dcffffff</textcolor>
+		<selectedcolor>9b3cd2fd</selectedcolor>
+    <info>ListItem.Label</info>
+  </control>
+  </itemlayout>
+  <focusedlayout height="40">
+  <control type="image">
+    <posx>12</posx>
+    <posy>41</posy>
+    <height>1</height>
+    <width>739</width>
+    <texture>common_line.png</texture>
+  </control>
+  <control type="image">
+    <posx>8</posx>
+    <posy>1</posy>
+    <width>743</width>
+    <height>41</height>
+    <colordiffuse>$VAR[value_texturecolors]</colordiffuse>
+    <texture>settings_button_focus.png</texture>
+  </control>
+  <control type="label">
+		<posx>45</posx>
+		<posy>0</posy>
+		<height>39</height>
+		<width>670</width>
+		<font>Font_MultiplexInfoLabel</font>
+		<aligny>center</aligny>
+		<textcolor>FF101010</textcolor>
+		<selectedcolor>FFe5e5e5</selectedcolor>
+    <info>ListItem.Label</info>
+  </control>
+  </focusedlayout>
+  </control>
+  
+  <control type="panel" id="451">
+    <enable>!StringCompare(Window.Property(dialogprogress),1)</enable>
+    <posx>20</posx>
+    <posy>120</posy>
+    <width>640</width>
+    <height>321</height>
+    <onleft>9000</onleft>
+    <onright>60</onright>
+    <onup>451</onup>
+    <ondown>451</ondown>
+    <pagecontrol>60</pagecontrol>
+    <scrolltime>200</scrolltime>
+  <itemlayout height="40" width="640">
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>640</width>
+    <height>41</height>
+    <texture border="5">actors-MenuItemNF.png</texture>
+  </control>
+  <control type="image">
+    <posx>10</posx>
+    <posy>2</posy>
+    <width>38</width>
+    <height>38</height>
+    <texture>$INFO[ListItem.Icon]</texture>
+  </control>
+  <control type="label">
+    <posx>55</posx>
+    <posy>0</posy>
+    <width>580</width>
+    <height>40</height>
+    <font>font13</font>
+    <align>left</align>
+    <aligny>center</aligny>
+    <selectedcolor>FFEB9E17</selectedcolor>
+    <info>ListItem.Label</info>
+  </control>
+  </itemlayout>
+  <focusedlayout height="40" width="640">
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>640</width>
+    <height>41</height>
+    <visible>!Control.HasFocus(451)</visible>
+    <texture border="5">actors-MenuItemNF.png</texture>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>640</width>
+    <height>41</height>
+    <visible>Control.HasFocus(451)</visible>
+    <texture border="5">actors-MenuItemFO.png</texture>
+  </control>
+  <control type="image">
+    <posx>10</posx>
+    <posy>2</posy>
+    <width>38</width>
+    <height>38</height>
+    <texture>$INFO[ListItem.Icon]</texture>
+  </control>
+  <control type="label">
+    <posx>55</posx>
+    <posy>0</posy>
+    <width>580</width>
+    <height>40</height>
+    <font>font13</font>
+    <align>left</align>
+    <aligny>center</aligny>
+    <selectedcolor>FFEB9E17</selectedcolor>
+    <info>ListItem.Label</info>
+  </control>
+  </focusedlayout>
+  </control>
+  
+  <control type="label">
+		<posx>105</posx>
+		<posy>634</posy>
+		<width>180</width>
+		<height>41</height>
+		<font>Font_ListObjects</font>
+		<align>left</align>
+		<aligny>center</aligny>
+		<textcolor>$VAR[value_headercolors]</textcolor>
+		<visible>Control.IsVisible(50)</visible>
+    <label>$INFO[Container(450).NumItems] $LOCALIZE[31436]</label>
+  </control>
+  
+  <control type="group" id="9000">
+    <enable>!StringCompare(Window.Property(dialogprogress),1)</enable>
+  <control type="button" id="413">
+    <posx>68</posx>
+    <posy>608</posy>
+    <width>133</width>
+    <height>77</height>
+    <texturefocus>list_filebrowser_button1.png</texturefocus>
+    <texturenofocus>-</texturenofocus>
+    <font>Font_FileBrowserButton</font>
+    <label>186</label>
+    <textoffsetx>10</textoffsetx>
+    <align>center</align>
+    <textcolor>FFb3b3b3</textcolor>
+    <focusedcolor>FFFFFFFF</focusedcolor>
+    <selectedcolor>FF262728</selectedcolor>
+    <disabledcolor>FF5a5a5a</disabledcolor>
+    <onleft>450</onleft>
+    <onright>414</onright>
+    <onup>450</onup>
+    <ondown>450</ondown>
+  </control>
+  <control type="button" id="414">
+    <posx>201</posx>
+    <posy>608</posy>
+    <width>134</width>
+    <height>77</height>
+    <texturefocus>list_filebrowser_button2.png</texturefocus>
+    <texturenofocus>-</texturenofocus>
+    <font>Font_FileBrowserButton</font>
+    <label>222</label>
+    <textoffsetx>10</textoffsetx>
+    <align>center</align>
+    <textcolor>FFb3b3b3</textcolor>
+    <focusedcolor>FFFFFFFF</focusedcolor>
+    <selectedcolor>FF262728</selectedcolor>
+    <disabledcolor>FF5a5a5a</disabledcolor>
+    <onleft>413</onleft>
+    <onright>415</onright>
+    <onup>450</onup>
+    <ondown>450</ondown>
+  </control>
+  <control type="button" id="415">
+    <posx>335</posx>
+    <posy>608</posy>
+    <width>134</width>
+    <height>77</height>
+    <texturefocus>list_filebrowser_button2.png</texturefocus>
+    <texturenofocus>-</texturenofocus>
+    <font>Font_FileBrowserButton</font>
+    <label>119</label>
+    <textoffsetx>10</textoffsetx>
+    <align>center</align>
+    <textcolor>FFb3b3b3</textcolor>
+    <focusedcolor>FFFFFFFF</focusedcolor>
+    <selectedcolor>FF262728</selectedcolor>
+    <disabledcolor>FF5a5a5a</disabledcolor>
+    <onleft>414</onleft>
+    <onright>416</onright>
+    <onup>450</onup>
+    <ondown>450</ondown>
+  </control>
+  <control type="radiobutton" id="416">
+    <posx>468</posx>
+    <posy>608</posy>
+    <width>134</width>
+    <height>77</height>
+    <texturefocus>list_filebrowser_button2.png</texturefocus>
+    <texturenofocus>-</texturenofocus>
+    <font>Font_FileBrowserButton</font>
+    <label>749</label>
+    <textwidth>123</textwidth>
+    <textoffsetx>10</textoffsetx>
+    <align>center</align>
+    <textcolor>FFb3b3b3</textcolor>
+    <focusedcolor>FFFFFFFF</focusedcolor>
+    <selectedcolor>FF262728</selectedcolor>
+    <disabledcolor>FF5a5a5a</disabledcolor>
+    <onleft>415</onleft>
+    <onright>413</onright>
+    <onup>450</onup>
+    <ondown>450</ondown>
+  </control>
+  </control>
+    <control type="image">
+    <description>front glass</description>
+    <posx>-34.5</posx>
+    <posy>30</posy>
+    <width>869</width>
+    <height>700</height>
+    <texture>dialogs_setcontent_front.png</texture>
+  </control>
+  <control type="image">
+    <description>front glass</description>
+    <posx>44.5</posx>
+    <posy>30</posy>
+    <width>869</width>
+    <height>700</height>
+    <texture flipx="true">dialogs_setcontent_front.png</texture>
+  </control>
+  </control>
+  </control>
+	</controls>
+</window>

@@ -1,0 +1,414 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window id="620" type="dialog">
+  <defaultcontrol always="true">9100</defaultcontrol>
+  <onunload condition="Window.IsVisible(25)">SetFocus(50)</onunload>
+  <controls>
+  <control type="group">
+    <include>Animation_OpenCloseWindow</include>
+  <control type="button" id="4089">
+    <include>InvisibleButton</include>
+    <onfocus>SetFocus(1091)</onfocus>
+    <onfocus>Skin.SetString(tips_seconds,1)</onfocus>
+  </control>
+  <control type="button" id="4090">
+    <include>InvisibleButton</include>
+    <onfocus>SetFocus(1091)</onfocus>
+    <onfocus>Skin.SetString(tips_seconds,2)</onfocus>
+  </control>
+  <control type="button" id="4091">
+    <include>InvisibleButton</include>
+    <onfocus>SetFocus(1091)</onfocus>
+    <onfocus>Skin.SetString(tips_seconds,3)</onfocus>
+  </control>
+  <control type="button" id="4092">
+    <include>InvisibleButton</include>
+    <onfocus>SetFocus(1091)</onfocus>
+    <onfocus>Skin.SetString(tips_seconds,4)</onfocus>
+  </control>
+  <control type="button" id="4093">
+    <include>InvisibleButton</include>
+    <onfocus>SetFocus(1091)</onfocus>
+    <onfocus>Skin.SetString(tips_seconds,5)</onfocus>
+  </control>
+  <control type="image">
+    <posx>23</posx>
+    <posy>23</posy>
+    <width>1233</width>
+    <height>673</height>
+    <texture background="true">settings_panelback.png</texture>
+  </control>
+  <control type="image">
+    <posx>234</posx>
+    <posy>41</posy>
+    <width>1035</width>
+    <height>637</height>
+    <texture background="true">settings_frame_bottom.png</texture>
+    <visible>Container(9100).HasFocus(21) | ControlGroup(888).HasFocus</visible>
+	</control>
+  <control type="image">
+    <include>VirtualBGDimensions</include>
+    <texture background="true">$VAR[value_customoptions]</texture>
+    <visible>Container(9100).HasFocus(21) | ControlGroup(888).HasFocus</visible>
+	</control>
+  <control type="image">
+    <include>VirtualBGDimensions</include>
+    <texture>common_black.png</texture>
+    <colordiffuse>c3FFFFFF</colordiffuse>
+    <visible>Container(9100).HasFocus(6)</visible>
+  </control>
+  <control type="label">
+    <include>SettingsSectionTitle</include>
+    <label>31202</label>
+  </control>
+  <control type="label">
+    <include>SettingsContentTitle</include>
+    <label>$VAR[value_osdcustomtitle]</label>
+  </control>
+  
+  <control type="list" id="9100">
+    <posx>42.5</posx>
+    <posy>120</posy>
+    <height>600</height>
+    <width>249</width>
+    <onup>9100</onup>
+    <ondown>9100</ondown>
+    <onleft>Dialog.Close(620)</onleft>
+    <onright condition="Container(9100).HasFocus(1) | Container(9100).HasFocus(5) | Container(9100).HasFocus(14) | Container(9100).HasFocus(20)">SetFocus(9001)</onright>
+    <onright condition="Container(9100).HasFocus(11)">SetFocus(31)</onright>
+    <onright condition="Container(9100).HasFocus(12)">SetFocus(402)</onright>
+    <onright condition="Container(9100).HasFocus(21)">SetFocus(403)</onright>
+    <viewtype>list</viewtype>
+    <orientation>vertical</orientation>
+    <focusposition>1</focusposition>
+    <scrolltime>450</scrolltime>
+    <movement>2</movement>
+  <itemlayout width="216" height="54">
+  <control type="label">
+    <include>SettingsButtonLabel</include>
+    <label>$INFO[ListItem.Label]</label>
+    <textcolor>FFf5f5f5</textcolor>
+  </control>
+  <control type="label">
+    <include>SettingsButtonSubtitle</include>
+    <label>$INFO[ListItem.Label2]</label>
+    <textcolor>FFf5f5f5</textcolor>
+  </control>
+  </itemlayout>
+  <focusedlayout width="216" height="54">
+  <control type="image">
+    <include>SettingsButtonImage</include>
+    <animation effect="fade" start="100" end="50" time="0" condition="!Control.Hasfocus(9100)">conditional</animation>
+  </control>
+  <control type="label">
+    <include>SettingsButtonLabel</include>
+    <label>$INFO[ListItem.Label]</label>
+    <textcolor>FF101010</textcolor>
+  </control>
+  <control type="label">
+    <include>SettingsButtonSubtitle</include>
+    <label>$INFO[ListItem.Label2]</label>
+    <textcolor>FF101010</textcolor>
+  </control>
+  </focusedlayout>
+  <content>
+  
+  <!-- ##################### Video FullScreen/OSD ##################### -->
+  <item id="1"><!-- Configure -->
+    <label>31261</label>
+    <label2>31262</label2>
+    <icon>-</icon>
+    <onclick>SetFocus(9001)</onclick>
+    <visible>Window.IsVisible(2901)</visible>
+  </item>
+  
+  <!-- ##################### Music FullScreen/OSD ##################### -->
+  <item id="5"><!-- Configure -->
+    <label>31261</label>
+    <label2>31262</label2>
+    <icon>-</icon>
+    <onclick>SetFocus(9001)</onclick>
+    <visible>Window.IsVisible(2006)</visible>
+  </item>
+  
+  <!-- ##################### Home/MainMenu ##################### -->
+  <item id="14"><!-- Extra Pack -->
+    <label>31402</label>
+    <label2>31403</label2>
+    <icon>-</icon>
+    <onclick>SetFocus(9001)</onclick>
+    <visible>Window.IsVisible(0) + !Skin.HasSetting(custommode)</visible>
+  </item>
+  
+  <!-- ##################### Home/Custom Mode ##################### -->
+  <item id="20"><!-- Configure -->
+    <label>31261</label>
+    <label2>31262</label2>
+    <icon>-</icon>
+    <onclick>SetFocus(9001)</onclick>
+    <visible>Skin.HasSetting(custommode)</visible>
+  </item>
+  
+  <!-- ##################### Collection ##################### -->
+  <item id="21"><!-- Case -->
+    <label>31297</label>
+    <label2>31298</label2>
+    <property name="MainLabel">31278</property>
+    <property name="SubLabel">31279</property>
+    <icon>-</icon>
+    <onclick>SetFocus(403)</onclick>
+    <visible>Window.IsVisible(25)</visible>
+  </item>
+  </content>
+  </control>
+	<control type="image">
+    <description>front pane for Settings panel</description>
+    <posx>42</posx>
+    <posy>28</posy>
+    <width>1196</width>
+    <height>651</height>
+    <texture background="true">settings_panelfront.png</texture>
+	</control>
+	
+  <!-- Case Selector Group -->
+  <control type="group">
+    <visible>Container(9100).HasFocus(21)</visible>
+    <include>VirtualScreenDimensions</include>
+    <include>CaseSelectorGroup</include>
+  </control>
+  
+  <!-- Settings List -->
+  <control type="grouplist" id="9001">
+    <visible>!ControlGroup(888).HasFocus</visible>
+    <animation effect="fade" reversible="true" time="150">VisibleChange</animation>
+    <include>DefaultControlDimensions</include>
+    <pagecontrol>81</pagecontrol>
+    <onleft>9100</onleft>
+    <onright>60</onright>
+    <onup>9001</onup>
+    <ondown>9001</ondown>
+    <pagecontrol>60</pagecontrol>
+    
+  <!-- ##################### Home/ExtraPack ##################### -->
+  <control type="button" id="1024">
+    <label>31888</label>
+    <onclick>RunScript(special://skin/media/extras/aeonmq4_extrapack/default.py, mode=default)</onclick>
+    <visible>Window.IsVisible(0) + !Skin.HasSetting(custommode) + Container(9100).HasFocus(14)</visible>
+  </control>
+  <control type="button" id="1025">
+    <label>31923</label>
+    <onclick>RunScript(special://skin/media/extras/aeonmq4_extrapack/default.py, mode=forcerefresh)</onclick>
+    <visible>Window.IsVisible(0) + !Skin.HasSetting(custommode) + Container(9100).HasFocus(14)</visible>
+  </control>
+
+  <!-- ##################### Customisation Mode ##################### -->
+  <control type="radiobutton" id="1090">
+    <label>31424</label>
+    <onclick>Skin.ToggleSetting(nohometips)</onclick>
+    <selected>!Skin.HasSetting(nohometips)</selected>
+    <visible>Skin.HasSetting(custommode)</visible>
+  </control>
+   <control type="button" id="1091">
+    <label>$VAR[value_tipsseconds]</label>
+    <onclick condition="SubString(skin.string(tips_seconds),1)">SetFocus(4090)</onclick>
+    <onclick condition="SubString(skin.string(tips_seconds),2)">SetFocus(4091)</onclick>
+    <onclick condition="SubString(skin.string(tips_seconds),3)">SetFocus(4092)</onclick>
+    <onclick condition="SubString(skin.string(tips_seconds),4)">SetFocus(4093)</onclick>
+    <onclick condition="SubString(skin.string(tips_seconds),5)">SetFocus(4089)</onclick>
+    <enable>!Skin.HasSetting(nohometips)</enable>
+    <visible>Skin.HasSetting(custommode)</visible>
+  </control>
+  <control type="button" id="1097">
+    <label>31426</label>
+		<onclick>Skin.SetString(menu_music,pos1)</onclick>
+		<onclick>Skin.SetString(menu_concerts,pos2)</onclick>
+		<onclick>Skin.SetString(menu_movies,pos3)</onclick>
+		<onclick>Skin.SetString(menu_tvshows,pos4)</onclick>
+		<onclick>Skin.SetString(menu_livetv,pos5)</onclick>
+		<onclick>Skin.SetString(menu_games,pos6)</onclick>
+		<onclick>Skin.SetString(menu_pictures,pos7)</onclick>
+		<onclick>Skin.SetString(menu_weather,pos8)</onclick>
+		<onclick>Skin.SetString(menu_mymenu,pos9)</onclick>
+		<onclick>Skin.SetString(menu_mainmenu1,pos10)</onclick>
+		<onclick>Skin.SetString(menu_mainmenu2,pos11)</onclick>
+		<onclick>Skin.SetString(menu_mainmenu3,pos12)</onclick>
+		<onclick>Skin.SetString(menu_mainmenu4,pos13)</onclick>
+		<onclick>Skin.SetString(menu_mainmenu5,pos14)</onclick>
+		<onclick>Skin.Reset(clear1,)</onclick>
+		<onclick>Skin.Reset(clear2,)</onclick>
+		<onclick>Skin.Reset(clear3,)</onclick>
+		<onclick>Skin.Reset(clear4,)</onclick>
+		<onclick>Skin.Reset(clear5,)</onclick>
+		<onclick>Skin.Reset(clear6,)</onclick>
+		<onclick>Skin.Reset(clear7,)</onclick>
+		<onclick>Skin.Reset(clear8,)</onclick>
+		<onclick>Skin.Reset(clear9,)</onclick>
+		<onclick>Skin.Reset(clear10,)</onclick>
+		<onclick>Skin.Reset(clear11,)</onclick>
+		<onclick>Skin.Reset(clear12,)</onclick>
+		<onclick>Skin.Reset(clear13,)</onclick>
+		<onclick>Skin.Reset(clear14,)</onclick>
+		<onclick>Dialog.Close(620)</onclick>
+		<onclick>SetFocus(300)</onclick>
+		<visible>Skin.HasSetting(custommode)</visible>
+  </control>
+  <control type="button" id="1098">
+    <label>31427</label>
+		<onclick>Skin.SetString(menu_music,pos0)</onclick>
+		<onclick>Skin.SetString(menu_concerts,pos0)</onclick>
+		<onclick>Skin.SetString(menu_movies,pos0)</onclick>
+		<onclick>Skin.SetString(menu_tvshows,pos0)</onclick>
+		<onclick>Skin.SetString(menu_livetv,pos0)</onclick>
+		<onclick>Skin.SetString(menu_games,pos0)</onclick>
+		<onclick>Skin.SetString(menu_pictures,pos0)</onclick>
+		<onclick>Skin.SetString(menu_weather,pos0)</onclick>
+		<onclick>Skin.SetString(menu_mymenu,pos0)</onclick>
+		<onclick>Skin.SetString(menu_mainmenu1,pos0)</onclick>
+		<onclick>Skin.SetString(menu_mainmenu2,pos0)</onclick>
+		<onclick>Skin.SetString(menu_mainmenu3,pos0)</onclick>
+		<onclick>Skin.SetString(menu_mainmenu4,pos0)</onclick>
+		<onclick>Skin.SetString(menu_mainmenu5,pos0)</onclick>
+		<onclick>Skin.SetString(clear1,true)</onclick>
+		<onclick>Skin.SetString(clear2,true)</onclick>
+		<onclick>Skin.SetString(clear3,true)</onclick>
+		<onclick>Skin.SetString(clear4,true)</onclick>
+		<onclick>Skin.SetString(clear5,true)</onclick>
+		<onclick>Skin.SetString(clear6,true)</onclick>
+		<onclick>Skin.SetString(clear7,true)</onclick>
+		<onclick>Skin.SetString(clear8,true)</onclick>
+		<onclick>Skin.SetString(clear9,true)</onclick>
+		<onclick>Skin.SetString(clear10,true)</onclick>
+		<onclick>Skin.SetString(clear11,true)</onclick>
+		<onclick>Skin.SetString(clear12,true)</onclick>
+		<onclick>Skin.SetString(clear13,true)</onclick>
+		<onclick>Skin.SetString(clear14,true)</onclick>
+		<onclick>Dialog.Close(620)</onclick>
+		<onclick>SetFocus(300)</onclick>
+		<visible>Skin.HasSetting(custommode)</visible>
+  </control>
+  </control>
+  <control type="scrollbar" id="81">
+    <include>ScrollBar_Vertical</include>
+    <posx>1195</posx>
+    <posy>108</posy>
+    <height>530</height>
+    <onup>61</onup>
+    <ondown>61</ondown>
+    <onleft>21</onleft>
+    <onright>21</onright>
+    <visible>ControlGroup(21).HasFocus | Control.HasFocus(81)</visible>
+	</control>
+  <control type="group">
+    <visible>Container(9100).HasFocus(14)</visible>
+  <control type="image">
+    <posx>259</posx>
+    <posy>404</posy>
+    <width>977</width>
+    <height>273</height>
+    <texture background="true">settings_panelback_overlay.png</texture>
+    <animation effect="fade" end="60" condition="true">Conditional</animation>
+  </control>
+    <control type="image">
+    <posx>540</posx>
+    <posy>438</posy>
+    <width>25</width>
+    <height>40</height>
+    <texture>arrow_settings_left.png</texture>
+  </control>
+  <control type="image">
+    <posx>280</posx>
+    <posy>409</posy>
+    <height>262</height>
+    <width>273</width>
+    <texture diffuse="thumb_cdmask_diffuse.png">thumb_nowplaying_back.png</texture>
+    <aspectratio scalediffuse="false">stretch</aspectratio>
+  </control>
+  <control type="image">
+    <posx>288</posx>
+    <posy>418</posy>
+    <height>245</height>
+    <width>255</width>
+    <fadetime>FanartCrossfadeTime</fadetime>
+    <texture diffuse="thumb_cdmask_diffuse.png" background="true">special://skin/icon.png</texture>
+    <aspectratio scalediffuse="false">scale</aspectratio>
+  </control>
+  <control type="textbox">
+    <description>Description</description>
+    <posx>575</posx>
+    <posy>444</posy>
+    <width>595</width>
+    <height>200</height>
+    <label>31254</label>
+    <align>justify</align>
+    <textcolor>FFFFFFFF</textcolor>
+    <font>Font_MultiplexPlotTips</font>
+    <autoscroll delay="8000" time="4000" repeat="2000">true</autoscroll>
+  </control>
+  </control>
+  
+  <!-- Labels Section -->
+  <control type="group">
+    <posx>6</posx>
+    <posy>0</posy>
+  <control type="label">
+  	<posx>350</posx>
+		<posy>550</posy>
+  	<height>50</height>
+		<width>800</width>
+		<textcolor>d0f5f5f5</textcolor>
+		<font>Font_SettingsMainLabelBig</font>
+    <label>$VAR[value_virtuallabel]</label>
+  </control>
+  <control type="label">
+  	<posx>350</posx>
+		<posy>598</posy>
+    <height>50</height>
+		<width>800</width>
+		<textcolor>d0f5f5f5</textcolor>
+		<font>Font_SettingsMainLabelSmall</font>
+    <label>$VAR[value_virtualsublabel]</label>
+  </control>
+  <control type="label">
+  	<posx>350</posx>
+		<posy>618</posy>
+    <height>50</height>
+		<width>800</width>
+		<textcolor>d0f5f5f5</textcolor>
+		<font>Font_SettingsMainLabelSmall</font>
+    <label>$VAR[value_virtualsublabel2]</label>
+  </control>
+  </control>
+  <control type="image">
+    <description>front pane for Settings panel</description>
+    <posx>42</posx>
+    <posy>28</posy>
+    <width>1196</width>
+    <height>651</height>
+    <texture background="true">settings_panelfront.png</texture>
+	</control>
+	<control type="image">
+    <description>top pane for Settings panel</description>
+    <posx>330</posx>
+    <posy>43</posy>
+    <width>845</width>
+    <height>634</height>
+    <texture background="true">settings_frame_top.png</texture>
+    <include>Animation_CommonFade</include>
+    <visible>Control.HasFocus(9100) + [Container(9100).HasFocus(11) | Container(9100).HasFocus(12) | Container(9100).HasFocus(21)]</visible>
+	</control>
+
+  <!-- Scroll Bar -->
+  <control type="scrollbar" id="60">
+    <include>ScrollBar_Vertical</include>
+    <posx>1195</posx>
+    <posy>130</posy>
+    <height>245</height>
+    <onup>60</onup>
+    <ondown>60</ondown>
+    <onleft>9001</onleft>
+    <onright>9001</onright>
+    <visible>Control.HasFocus(9001) | Control.HasFocus(60)</visible>
+  </control>
+  </control>
+  </controls>
+</window>

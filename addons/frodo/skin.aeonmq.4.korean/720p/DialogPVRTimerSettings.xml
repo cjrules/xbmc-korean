@@ -1,0 +1,157 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window id="603">
+	<defaultcontrol>29</defaultcontrol>
+	<coordinates>
+		<system>1</system>
+		<posx>190</posx>
+		<posy>70</posy>
+	</coordinates>
+    <include>Animation_DialogPopup</include>
+	<controls>
+  <control type="image">
+    <description>background image</description>
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>900</width>
+    <height>590</height>
+    <texture background="true">osd_settings_back.png</texture>
+  </control>
+  <control type="label" id="2"><!-- Heading label -->
+    <posx>40</posx>
+    <posy>32</posy>
+    <width>820</width>
+    <height>40</height>
+    <align>center</align>
+    <aligny>center</aligny>
+    <label>20333</label>
+		<font>Font_SettingsSectionTitle</font>
+		<textcolor>FFbec0c2</textcolor>
+  </control>
+  <control type="image">
+    <posx>15</posx>
+    <posy>82</posy>
+    <width>870</width>
+    <height>2</height>
+    <texture>panel_horizontal_separator.png</texture>
+  </control>
+  <control type="grouplist" id="5">
+    <description>control area</description>
+    <posx>13</posx>
+    <posy>85</posy>
+    <width>872</width>
+    <height>480</height>
+    <itemgap>1</itemgap>
+    <pagecontrol>60</pagecontrol>
+    <onleft>5</onleft>
+    <onright>5</onright>
+    <onup>28</onup>
+    <ondown>28</ondown>
+  </control>
+  <control type="sliderex" id="10">
+    <aligny>center</aligny>
+    <font>Font_OSDOptions</font>
+    <textcolor>FFf5f5f5</textcolor>
+    <focusedcolor>d0000000</focusedcolor>
+    <texturenofocus>settings_button_nofocus.png</texturenofocus>
+    <texturefocus>settings_button_focus.png</texturefocus>
+    <height>30</height>
+  </control>
+  <control type="button" id="7">
+    <height>30</height>
+    <aligny>center</aligny>
+    <font>Font_OSDOptions</font>
+    <textcolor>FFf5f5f5</textcolor>
+    <focusedcolor>d0000000</focusedcolor>
+    <textoffsetx>50</textoffsetx>
+    <radiowidth>89</radiowidth>
+    <radioposx>329</radioposx>
+    <texturenofocus>settings_button_nofocus.png</texturenofocus>
+    <texturefocus>settings_button_focus.png</texturefocus>
+  </control>
+  <control type="radiobutton" id="8">
+    <height>30</height>
+    <aligny>center</aligny>
+    <font>Font_OSDOptions</font>
+    <textcolor>FFf5f5f5</textcolor>
+    <focusedcolor>d0000000</focusedcolor>
+    <textoffsetx>50</textoffsetx>
+    <radiowidth>89</radiowidth>
+    <radioposx>770</radioposx>
+    <radioheight>50</radioheight>
+    <texturenofocus>settings_button_nofocus.png</texturenofocus>
+    <texturefocus>settings_button_focus.png</texturefocus>
+  </control>
+  <control type="spincontrolex" id="9">
+    <height>30</height>
+    <aligny>center</aligny>
+    <font>Font_OSDOptions</font>
+    <textcolor>FFf5f5f5</textcolor>
+    <focusedcolor>d0000000</focusedcolor>
+    <spinposx>26</spinposx>
+    <spinwidth>31</spinwidth>
+    <spinheight>50</spinheight>
+    <texturenofocus>settings_button_nofocus.png</texturenofocus>
+    <texturefocus>settings_button_focus.png</texturefocus>
+    <reverse>yes</reverse>
+  </control>
+  <control type="edit" id="12">
+    <texturenofocus>settings_button_nofocus.png</texturenofocus>
+    <texturefocus>settings_button_focus.png</texturefocus>
+    <height>30</height>
+  </control>
+  <control type="image">
+    <posx>15</posx>
+    <posy>487</posy>
+    <width>890</width>
+    <height>49</height>
+    <texture>settings_radiobuttonoff.png</texture>
+  </control>
+  <control type="group" id="9000">
+    <posx>-55</posx>
+    <posy>536</posy>
+  <control type="button" id="28">
+    <description>Ok button</description>
+    <posx>200</posx>
+    <align>center</align>
+    <aligny>center</aligny>
+    <height>35</height>
+    <include>SettingsAddonSectionButton</include>
+    <label>186</label>
+    <onleft>29</onleft>
+    <onright>29</onright>
+    <onup>5</onup>
+    <ondown>5</ondown>
+  </control>
+  <control type="button" id="29">
+    <description>Cancel Button</description>
+    <posx>600</posx>
+    <align>center</align>
+    <aligny>center</aligny>
+    <height>35</height>
+    <include>SettingsAddonSectionButton</include>
+    <label>222</label>
+    <onleft>28</onleft>
+    <onright>28</onright>
+    <onup>5</onup>
+    <ondown>5</ondown>
+  </control>
+	</control>
+  <control type="image">
+    <description>front glass</description>
+    <posx>-10</posx>
+    <posy>-20</posy>
+    <width>869</width>
+    <height>643</height>
+    <texture flipx="true">dialogs_setcontent_front.png</texture>
+  </control>
+  <control type="image">
+    <description>front glass</description>
+    <posx>40.5</posx>
+    <posy>-20</posy>
+    <width>869</width>
+    <height>643</height>
+    <texture>dialogs_setcontent_front.png</texture>
+  </control>
+  </controls>
+  </window>

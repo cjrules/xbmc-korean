@@ -1,0 +1,38 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window id="28">
+    <defaultcontrol>50</defaultcontrol>
+    <allowoverlay>yes</allowoverlay>
+	<views>50,53,57</views>
+	<controls>
+
+
+  <!-- ViewTypes -->
+  <control type="group">
+	  <include>Animation_OpenCloseZoom</include>
+  <control type="image" id="109"><!-- to panel info -->
+    <include>InvisibleButton</include>
+    <visible>[[Window.IsActive(videolibrary) | Window.IsActive(videofiles)] + ![Skin.HasSetting(panelinfooff) | Skin.HasSetting(panelinfotrigger)] + [!Container.OnNext + !Container.OnPrevious]] + !IsEmpty(ListItem.Thumb)</visible>
+    <animation effect="fade" start="0" end="100" time="150" delay="3000" condition="!Skin.HasSetting(twoseconds) + !Skin.HasSetting(fourseconds) + !Skin.HasSetting(onesecond) + !Skin.HasSetting(fiveseconds)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="2000" condition="Skin.HasSetting(twoseconds)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="4000" condition="Skin.HasSetting(fourseconds)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="1000" condition="Skin.HasSetting(onesecond)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="5000" condition="Skin.HasSetting(fiveseconds)">Visible</animation>
+  </control>
+    
+		<include>ViewList</include><!-- 50 -->
+		<include condition="Skin.HasSetting(wallvideo)">ViewWall</include><!-- 53 -->
+		<include condition="Skin.HasSetting(showcasevideo)">ViewShowCaseVideo</include><!-- 57 -->
+
+	<!-- Furniture -->
+    <include condition="!Skin.HasSetting(nomediaflags)">Video_MediaFlags</include>
+    <include condition="Skin.HasSetting(nowplayingwidget)">NowPlayingWidget</include>
+    <include condition="!Skin.HasSetting(noscrollletters)">ScrollOffsetLabel</include>
+    <include>FloorText</include>
+    <include>TopMenu_BGBlack</include>
+    <include>TopMenu_Video</include>
+	</control>
+  <include>BGBlack</include>
+  <include>BGGradient</include>
+	</controls>
+</window>

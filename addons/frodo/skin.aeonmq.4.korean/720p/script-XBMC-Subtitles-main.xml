@@ -1,0 +1,347 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window>
+    <onunload>Skin.Reset(novideofurnituretemp)</onunload>
+	<zorder>1</zorder>
+	<coordinates>
+		<system>1</system>
+		<posx>0</posx>
+		<posy>0</posy>
+	</coordinates>
+	<controls>
+  <control type="group">
+    <visible>![Player.Forwarding | Player.Rewinding] + [!IsEmpty(VideoPlayer.Title) | !IsEmpty(VideoPlayer.TVShowTitle)]</visible>
+    <include>Animation_DialogPopup</include>
+  <control type="image">
+    <include>FullScreenDimensions</include>
+    <texture>common_black.png</texture>
+    <colordiffuse>c3FFFFFF</colordiffuse>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="group">
+    <posy>100</posy>
+  <control type="image">
+    <description>Panel</description>
+    <posx>200</posx>
+    <posy>40</posy>
+    <width>881</width>
+    <height>481</height>
+    <texture>osd_settings_back.png</texture>
+  </control>
+  <control type="label" id="20">
+    <posx>215</posx>
+    <posy>72</posy>
+    <width>852</width>
+    <height>30</height>
+    <label>31300</label>
+		<font>Font_SettingsSectionTitle</font>
+		<textcolor>FFbec0c2</textcolor>
+    <align>center</align>
+    <aligny>center</aligny>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="image">
+    <description>separator</description>
+    <posx>200</posx>
+    <posy>115</posy>
+    <width>851</width>
+    <height>2</height>
+    <texture>common_divider.png</texture>
+  </control>
+  <control type="group">
+  <posx>215</posx>
+  <posy>80</posy>
+  <!-- ** Required ** Do not change <id> or <type> -->
+  <control type="image" id="110">
+    <description>logo icon</description>
+    <posx>61</posx>
+    <posy>42</posy>
+    <width>734</width>
+    <height>40</height>
+    <aspectratio>keep</aspectratio>
+    <align>center</align>
+    <aligny>top</aligny>
+    <texture>-</texture>
+    </control>
+    <control type="image" id="111">
+    <description>logo icon</description>
+  </control>
+  <control type="image" id="112">
+    <description>logo icon</description>
+  </control>
+  <control type="label" id="100">
+    <description>textarea</description>
+    <posx>61</posx>
+    <posy>75</posy>
+    <width>734</width>
+    <height>40</height>
+    <font>Font_OSDOptions</font>
+    <align>center</align>
+    <aligny>center</aligny>
+    <wrapmultiline>false</wrapmultiline>
+  </control>
+  <control type="image">
+    <posx>-20</posx>
+    <posy>110</posy>
+    <width>841</width>
+    <height>2</height>
+    <texture>common_divider.png</texture>
+  </control>
+  </control>
+  <!-- ** Required ** Do not change <id> or <type> -->
+  <control type="list" id="120">
+  <visible allowhiddenfocus="true">Control.HasFocus(120) | Control.HasFocus(121)</visible>
+  <animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+    <posx>213.5</posx>
+    <posy>220</posy>
+    <width>854.5</width>
+    <height>260</height>
+    <onleft>150</onleft>
+    <onright>121</onright>
+    <onup>120</onup>
+    <ondown>120</ondown>
+    <viewtype label="535">list</viewtype>
+    <pagecontrol>121</pagecontrol>
+    <scrolltime>200</scrolltime>
+    <itemlayout height="28">
+  <control type="image">
+    <posx>-20</posx>
+    <posy>28</posy>
+    <width>841</width>
+    <height>2</height>
+    <texture>common_divider.png</texture>
+  </control>
+  <control type="image">
+    <posx>40</posx>
+    <posy>8</posy>
+    <width>20</width>
+    <height>14</height>
+    <texture>flags/countries/$INFO[ListItem.Thumb]</texture>
+  </control>
+  <control type="label">
+    <posx>70</posx>
+    <posy>0</posy>
+    <width>120</width>
+    <height>30</height>
+    <font>Font_OSDOptions</font>
+    <textcolor>FFe5e5e5</textcolor>
+    <aligny>center</aligny>
+    <align>left</align>
+    <info>ListItem.Label</info>
+  </control>
+  <control type="image">
+    <posx>170</posx>
+    <posy>8</posy>
+    <width>30</width>
+    <height>12</height>
+    <texture>subtitle_sync.png</texture>
+    <visible>ListItem.property(sync)</visible>
+  </control>
+  <control type="label">
+    <posx>220</posx>
+    <posy>0</posy>
+    <width>515</width>
+    <height>30</height>
+    <font>Font_OSDOptions</font>
+    <textcolor>FFe5e5e5</textcolor>
+    <aligny>center</aligny>
+    <align>left</align>
+    <info>ListItem.Label2</info>
+  </control>
+  <control type="image">
+    <posx>742</posx>
+    <posy>11</posy>
+    <width>90</width>
+    <height>9</height>
+    <texture>subtitle_rating_star_$INFO[ListItem.ActualIcon].png</texture>
+  </control>
+  </itemlayout>
+  <focusedlayout height="28">
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>854.5</width>
+    <height>28</height>
+    <texture>settings_button_focus.png</texture>
+    <visible>Control.HasFocus(120)</visible>
+  </control>
+  <control type="image">
+    <posx>40</posx>
+    <posy>8</posy>
+    <width>20</width>
+    <height>14</height>
+    <texture>flags/countries/$INFO[ListItem.Thumb]</texture>
+  </control>
+  <control type="label">
+    <posx>70</posx>
+    <posy>0</posy>
+    <width>120</width>
+    <height>30</height>
+    <font>Font_OSDOptions</font>
+    <textcolor>FF101010</textcolor>
+    <aligny>center</aligny>
+    <align>left</align>
+    <info>ListItem.Label</info>
+  </control>
+  <control type="image">
+    <posx>170</posx>
+    <posy>8</posy>
+    <width>30</width>
+    <height>12</height>
+    <texture>subtitle_sync.png</texture>
+    <visible>ListItem.property(sync)</visible>
+  </control>
+  <control type="label">
+    <posx>220</posx>
+    <posy>0</posy>
+    <width>515</width>
+    <height>30</height>
+    <font>Font_OSDOptions</font>
+    <textcolor>FF101010</textcolor>
+    <aligny>center</aligny>
+    <align>left</align>
+    <info>ListItem.Label2</info>
+  </control>
+  <control type="image">
+    <posx>742</posx>
+    <posy>11</posy>
+    <width>90</width>
+    <height>9</height>
+    <colordiffuse>FF101010</colordiffuse>
+    <texture>subtitle_rating_star_$INFO[ListItem.ActualIcon].png</texture>
+  </control>
+  </focusedlayout>
+  </control>
+  <control type="group" id="250">
+    <posx>20</posx>
+    <posy>660</posy>
+  </control>
+  <control type="label">
+    <description>Service label</description>
+    <posx>215</posx>
+    <posy>200</posy>
+    <width>852</width>
+    <height>30</height>
+    <label>$LOCALIZE[SCRIPT760]</label>
+    <align>center</align>
+    <aligny>top</aligny>
+    <textcolor>FFDAA520</textcolor>
+    <wrapmultiline>true</wrapmultiline>
+    <visible>Control.HasFocus(150)</visible>
+    <animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+  </control>
+  <control type="list" id="150">
+    <visible allowhiddenfocus="true">Control.HasFocus(150)</visible>
+    <animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+    <posx>213.5</posx>
+    <posy>240</posy>
+    <width>854.5</width>
+    <height>300</height>
+    <onleft>120</onleft>
+    <onright>120</onright>
+    <onup>150</onup>
+    <ondown>150</ondown>
+    <viewtype label="535">list</viewtype>
+    <scrolltime>200</scrolltime>
+  <itemlayout width="400" height="28">
+  <control type="image">
+    <posx>-20</posx>
+    <posy>28</posy>
+    <width>841</width>
+    <height>2</height>
+    <texture>common_divider.png</texture>
+  </control>
+  <control type="label">
+    <posx>40</posx>
+    <posy>0</posy>
+    <width>230</width>
+    <height>28</height>
+    <aligny>center</aligny>
+    <font>Font_OSDOptions</font>
+    <textcolor>FFf5f5f5</textcolor>
+    <focusedcolor>d0000000</focusedcolor>
+    <align>left</align>
+    <info>ListItem.Label</info>
+    <visible>!ListItem.property(man)</visible>
+  </control>
+  <control type="label">
+    <posx>40</posx>
+    <posy>0</posy>
+    <width>230</width>
+    <height>28</height>
+    <aligny>center</aligny>
+    <font>Font_OSDOptions</font>
+    <textcolor>60FFFFFF</textcolor>
+    <align>left</align>
+    <info>ListItem.Label</info>
+    <visible>ListItem.property(man)</visible>
+  </control>
+  </itemlayout>
+  <focusedlayout width="400" height="28">
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>854.5</width>
+    <height>28</height>
+    <texture>settings_button_focus.png</texture>
+    <visible>Control.HasFocus(150)</visible>
+  </control>
+  <control type="label">
+    <posx>40</posx>
+    <posy>0</posy>
+    <width>230</width>
+    <height>28</height>
+    <aligny>center</aligny>
+    <font>Font_OSDOptions</font>
+    <textcolor>d0000000</textcolor>
+    <align>left</align>
+    <info>ListItem.Label</info>
+    <visible>!ListItem.property(man)</visible>
+  </control>
+  <control type="label">
+    <posx>40</posx>
+    <posy>0</posy>
+    <width>230</width>
+    <height>28</height>
+    <aligny>center</aligny>
+    <font>Font_OSDOptions</font>
+    <textcolor>d0000000</textcolor>
+    <align>left</align>
+    <info>ListItem.Label</info>
+    <visible>ListItem.property(man)</visible>
+  </control>
+  </focusedlayout>
+  </control>
+  <control type="scrollbar" id="121">
+    <width>25</width>
+    <include>ScrollBar_Vertical</include>
+    <posx>1035</posx>
+    <posy>225</posy>
+    <height>250</height>
+    <onleft>120</onleft>
+    <onright>121</onright>
+    <ondown>121</ondown>
+    <onup>121</onup>
+    <animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+    <visible allowhiddenfocus="true">Control.HasFocus(121)</visible>
+  </control>
+    <control type="image">
+    <description>front glass</description>
+    <posx>222</posx>
+    <posy>0</posy>
+    <width>869</width>
+    <height>550</height>
+    <texture>dialogs_setcontent_front.png</texture>
+  </control>
+  <control type="image">
+    <description>front glass</description>
+    <posx>190</posx>
+    <posy>0</posy>
+    <width>869</width>
+    <height>550</height>
+    <texture flipx="true">dialogs_setcontent_front.png</texture>
+  </control>
+  </control>
+  </control>
+	</controls>
+</window>

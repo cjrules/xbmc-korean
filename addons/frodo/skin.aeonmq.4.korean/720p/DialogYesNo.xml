@@ -1,0 +1,83 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window id="100">
+	<defaultcontrol>10</defaultcontrol>
+	<controls>
+  <control type="group">
+  	<include>Animation_DialogTopPopup</include>
+    <posx>1280</posx>
+    <posy>0</posy>
+    <include>Dialogs_Group</include>
+    <include>Dialogs_Exclamation</include>
+  <control type="label" id="1">
+    <label>$LOCALIZE[13406]</label>
+    <include>Dialogs_Label1</include>
+  </control>
+  <control type="label" id="2">
+    <include>Dialogs_Label2</include>
+  </control>
+  <control type="label" id="3">
+    <include>Dialogs_Label3</include>
+  </control>
+  <control type="label" id="4">
+    <include>Dialogs_Label3</include>
+  </control>
+  <control type="button" id="10">
+    <description>No button</description>
+    <posx>240</posx>
+    <posy>40</posy>
+    <height>20</height>
+    <width>98</width>
+    <align>left</align>
+    <textcolor>FFe5e5e5</textcolor>
+    <font>Font_RSS</font>
+    <label>106</label>
+    <textoffsetx>0</textoffsetx>
+    <textwidth>200</textwidth>
+    <texturefocus>-</texturefocus>
+    <texturenofocus>-</texturenofocus>
+    <onleft>11</onleft>
+    <onright>11</onright>
+    <onup>11</onup>
+    <ondown>11</ondown>
+    <include>Animation_CommonFade</include>
+    <animation effect="slide" start="0,0" end="0,0" time="0" condition="!IsEmpty(Control.GetLabel(3)) + IsEmpty(Control.GetLabel(4))">Conditional</animation>
+    <visible allowhiddenfocus="true">Control.HasFocus(10)</visible>
+  </control>
+  <control type="button" id="11">
+    <description>Yes button</description>
+    <posx>240</posx>
+    <posy>40</posy>
+    <height>20</height>
+    <width>98</width>
+    <align>left</align>
+    <textcolor>FFe5e5e5</textcolor>
+    <font>Font_RSS</font>
+    <label>107</label>
+    <textoffsetx>0</textoffsetx>
+    <textwidth>200</textwidth>
+    <texturefocus>-</texturefocus>
+    <texturenofocus>-</texturenofocus>
+    <onleft>10</onleft>
+    <onright>10</onright>
+    <onup>10</onup>
+    <ondown>10</ondown>
+    <include>Animation_CommonFade</include>
+    <animation effect="slide" start="0,0" end="0,0" time="0" condition="!IsEmpty(Control.GetLabel(3)) + IsEmpty(Control.GetLabel(4))">Conditional</animation>
+    <visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
+  </control>
+  <control type="label">
+    <posx>225</posx>
+    <posy>40</posy>
+    <height>20</height>
+    <width>50</width>
+    <align>left</align>
+    <aligny>center</aligny>
+    <label>Z</label>
+    <textcolor>FFe5e5e5</textcolor>
+    <font>Font_KeyboardShapes</font>
+    <animation effect="fade" start="20" end="80" time="700" condition="true" pulse="true">Conditional</animation>
+  </control>
+  </control>
+	</controls>
+</window>

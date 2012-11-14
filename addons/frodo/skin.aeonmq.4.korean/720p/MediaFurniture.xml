@@ -1,0 +1,1371 @@
+﻿<!-- Aeon MQ 4 -->
+
+<includes>
+	<include name="Furniture_FloorMediaFlagsVars">
+		<posy>658</posy>
+		<width>90</width>
+		<height>60</height>
+		<align>center</align>
+		<aligny>center</aligny>
+		<colordiffuse>$VAR[value_colorflags]</colordiffuse>
+	</include>
+	<include name="Furniture_ListMediaFlagsVars">
+		<posy>630</posy>
+		<width>90</width>
+		<height>59</height>
+    <colordiffuse>$VAR[value_colorflags]</colordiffuse>
+		<animation effect="slide" end="0,20" condition="Control.IsVisible(571) | Control.IsVisible(572) | Control.IsVisible(574)">Conditional</animation>
+	</include>
+	<include name="Furniture_LowListMovieFlagVars">
+		<posy>0</posy>
+		<width>81</width>
+		<height>53</height>
+		<aspectratio>keep</aspectratio>
+		<fadetime>300</fadetime>
+	</include>
+	<include name="Furniture_MovieInfoFlagSound">
+		<posx>125</posx>
+		<posy>590</posy>
+		<width>110</width>
+		<height>60</height>
+		<colordiffuse>FFDDDDDD</colordiffuse>
+	</include>
+	<include name="Furniture_VideoStudiosBuiltIn">
+    <texture>$INFO[ListItem.studio,flags/studios/,.png]</texture>
+  </include>
+  <include name="Furniture_VideoStudios">
+    <texture>$INFO[Skin.String(CustomStudiosIcon)]/$INFO[ListItem.studio,,.png]</texture>
+  </include>
+  
+  <include name="Furniture_Floor">
+  <control type="image">
+    <include>FullScreenDimensions</include>
+    <texture>common_black.png</texture>
+    <include>Animation_CommonFade</include>
+    <animation effect="fade" end="85" condition="true">Conditional</animation>
+    <visible>[Window.IsActive(503) | Control.IsVisible(575) | Control.IsVisible(576) | Control.IsVisible(577) | Control.IsVisible(578) | Control.IsVisible(579) | Control.IsVisible(580)] + !Skin.HasSetting(nobackbannerthin)</visible>
+  </control>
+  <control type="group">
+    <visible>Control.IsVisible(51)</visible>
+    <control type="image">
+    <include>FullScreenDimensions</include>
+    <texture background="true">hive_back.png</texture>
+    <colordiffuse>80FFFFFF</colordiffuse>
+  </control>
+  <control type="image">
+    <include>FullScreenDimensions</include>
+    <texture>common_black.png</texture>
+    <colordiffuse>c3FFFFFF</colordiffuse>
+  </control>
+  </control>
+  <control type="group">
+    <visible>Control.IsVisible(571) | Control.IsVisible(572) | Control.IsVisible(574)</visible>
+  <control type="image">
+    <include>FullScreenDimensions</include>
+    <texture>common_black.png</texture>
+    <animation effect="fade" end="50" condition="true">Conditional</animation>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="image">
+    <description>background image</description>
+    <posx>0</posx>
+    <posy>80</posy>
+    <width>1280</width>
+    <height>640</height>
+    <texture>common_black.png</texture>
+    <colordiffuse>c3FFFFFF</colordiffuse>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="image">
+    <description>background image</description>
+    <posx>0</posx>
+    <posy>610</posy>
+    <width>1280</width>
+    <height>110</height>
+    <texture>common_black.png</texture>
+    <animation effect="fade" end="50" condition="true">Conditional</animation>
+    <include>Animation_CommonFade</include>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>609</posy>
+    <width>1280</width>
+    <height>2</height>
+    <texture>panel_horizontal_separator.png</texture>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>79</posy>
+    <width>1280</width>
+    <height>2</height>
+    <texture>panel_horizontal_separator.png</texture>
+  </control>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>335</posy>
+    <width>1280</width>
+    <height>405</height>
+    <texture background="true">$VAR[value_floor]</texture>
+    <include>Animation_CommonFade</include>
+    <include>Animation_HideShowcase</include>
+    <animation effect="slide" start="0,0" end="0,53" time="200" easing="inout" tween="circle" condition="Control.IsVisible(53) + Skin.HasSetting(smallmoviewall) + !Skin.HasSetting(transparentwall)">Conditional</animation>
+    <visible>Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | Control.IsVisible(59) | Control.IsVisible(500) | Control.IsVisible(501) | Control.IsVisible(502) | Control.IsVisible(550) | Control.IsVisible(552) | Control.IsVisible(555) | Control.IsVisible(576) | Control.IsVisible(577) | Control.IsVisible(578) | Control.IsVisible(579) | Control.IsVisible(580)</visible>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>290</posy>
+    <width>1280</width>
+    <height>430</height>
+    <texture background="true">$VAR[value_floor]</texture>
+    <include>Animation_CommonFade</include>
+    <include>Animation_HideShowcase</include>
+    <visible>Control.IsVisible(58)</visible>
+  </control>
+  <control type="image">
+    <posx>144</posx>
+    <posy>603</posy>
+    <width>993</width>
+    <height>137</height>
+    <texture background="true">$VAR[value_spot]</texture>
+    <include>Animation_CommonFade</include>
+    <include>Animation_HideShowcase</include>
+    <animation effect="slide" start="0,0" end="0,53" time="200" easing="inout" tween="circle" condition="Control.IsVisible(53) + Skin.HasSetting(smallmoviewall) + !Skin.HasSetting(transparentwall)">Conditional</animation>
+    <visible>Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | Control.IsVisible(59) | Control.IsVisible(550) | Control.IsVisible(552) | Control.IsVisible(576) | Control.IsVisible(577) | Control.IsVisible(578) | Control.IsVisible(579) | Control.IsVisible(580)</visible>
+  </control>
+  <control type="image">
+    <posx>144</posx>
+    <posy>573</posy>
+    <width>993</width>
+    <height>165</height>
+    <texture background="true">$VAR[value_spot]</texture>
+    <include>Animation_CommonFade</include>
+    <include>Animation_HideShowcase</include>
+    <visible>Control.IsVisible(58)</visible>
+  </control>
+  <control type="image"><!-- lowlist-->
+    <posx>140</posx>
+    <posy>503</posy>
+    <width>993</width>
+    <height>325</height>
+    <texture background="true">showcase_spot.png</texture>
+    <include>Animation_CommonFade</include>
+    <include>Animation_HighListSlide</include>
+    <animation effect="fade" start="100" end="60" time="50" condition="!Skin.HasSetting(listpanelthin)">Conditional</animation>
+    <animation effect="fade" start="100" end="10" time="50" condition="Skin.HasSetting(listpanelthin)">Conditional</animation>
+    <visible>Control.IsVisible(551)</visible>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>464</width>
+    <height>720</height>
+    <texture background="true">showcase_vignette.png</texture>
+    <visible>[Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(55) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(59) | Control.IsVisible(510) | Control.IsVisible(551) | Control.IsVisible(552) | Control.IsVisible(576) | Control.IsVisible(577) | Control.IsVisible(578) | Control.IsVisible(579) | Control.IsVisible(580)] + !Control.HasFocus(9920)</visible>
+  <animation type="Visible">
+    <effect type="fade" start="0" end="100" time="400" easing="inout" tween="cubic" />
+    <effect type="slide" start="-464,0" end="0,0" time="400" easing="inout" tween="cubic" />
+  </animation>
+  <animation type="Hidden">
+    <effect type="fade" start="100" end="0" time="400" easing="inout" tween="cubic" />
+    <effect type="slide" start="0,0" end="-464,0" time="400" easing="inout" tween="cubic" />
+  </animation>
+  <animation type="WindowOpen">
+    <effect type="fade" start="0" end="100" time="400" easing="inout" tween="cubic" />
+    <effect type="slide" start="-464,0" end="0,0" time="400" easing="inout" tween="cubic" />
+  </animation>
+  <animation type="WindowClose">
+    <effect type="fade" start="100" end="0" time="400" easing="inout" tween="cubic" />
+    <effect type="slide" start="0,0" end="-464,0" time="400" easing="inout" tween="cubic" />
+  </animation>
+  </control>
+  <control type="image">
+    <posx>816</posx>
+    <posy>0</posy>
+    <width>464</width>
+    <height>720</height>
+    <texture flipx="true" background="true">showcase_vignette.png</texture>
+    <visible>[Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(55) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(59) | Control.IsVisible(510) | Control.IsVisible(551) | Control.IsVisible(552) | Control.IsVisible(576) | Control.IsVisible(577) | Control.IsVisible(578) | Control.IsVisible(579) | Control.IsVisible(580)] + !Control.HasFocus(9920)</visible>
+  <animation type="Visible">
+    <effect type="fade" start="0" end="100" time="400" easing="inout" tween="cubic" />
+    <effect type="slide" start="464,0" end="0,0" time="400" easing="inout" tween="cubic" />
+  </animation>
+  <animation type="Hidden">
+    <effect type="fade" start="100" end="0" time="400" easing="inout" tween="cubic" />
+    <effect type="slide" start="0,0" end="464,0" time="400" easing="inout" tween="cubic" />
+  </animation>
+  <animation type="WindowOpen">
+    <effect type="fade" start="0" end="100" time="400" easing="inout" tween="cubic" />
+    <effect type="slide" start="464,0" end="0,0" time="400" easing="inout" tween="cubic" />
+  </animation>
+  <animation type="WindowClose">
+    <effect type="fade" start="100" end="0" time="400" easing="inout" tween="cubic" />
+    <effect type="slide" start="0,0" end="464,0" time="400" easing="inout" tween="cubic" />
+  </animation>
+  </control>
+  </include>
+  
+  <include name="Video_MediaFlags">
+  <control type="image">
+    <posx>0</posx>
+    <posy>569</posy>
+    <width>298</width>
+    <height>151</height>
+    <texture>showcase_flagshade.png</texture>
+    <include>Animation_HideShowcase</include>
+    <visible>Skin.HasSetting(nodarkfloor)</visible>
+  </control>
+  <control type="image">
+    <posx>982</posx>
+    <posy>569</posy>
+    <width>298</width>
+    <height>151</height>
+    <texture flipx="true">showcase_flagshade.png</texture>
+    <include>Animation_HideShowcase</include>
+    <visible>Skin.HasSetting(nodarkfloor)</visible>
+  </control>
+  <control type="group">
+    <visible>![Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(59) | Control.IsVisible(550) | Control.IsVisible(551) | Control.IsVisible(570) | Skin.HasSetting(nomediaflags) | Skin.HasSetting(automediaflags) + !Control.IsVisible(108)]</visible>
+    <animation effect="fade" start="0" end="100" time="400" delay="3000" condition="Skin.HasSetting(automediaflags)">WindowOpen</animation>
+    <animation effect="fade" end="0" time="200">WindowClose</animation>
+    <animation effect="fade" start="0" end="100" time="300" delay="1500" condition="Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56)">WindowOpen</animation>
+    <include>Animation_InfoFlagsSlide</include>
+    <include>Animation_HideShowcase</include>
+  <control type="image">
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>10</posx>
+    <texture>$VAR[Furniture_VideoRating]</texture>
+	</control>
+  <control type="image">
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>100</posx>
+    <include condition="!Skin.HasSetting(nostudiosbuiltin)">Furniture_VideoStudiosBuiltIn</include>
+    <include condition="Skin.HasSetting(nostudiosbuiltin)">Furniture_VideoStudios</include>
+  </control>
+  <control type="image">
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>190</posx>
+    <texture>$VAR[Furniture_VideoCodec]</texture>
+    <visible>!IsEmpty(ListItem.Thumb)</visible>
+  </control>
+  <control type="image">
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>990</posx>
+    <texture>$INFO[ListItem.VideoResolution,flags/resolution/,.png]</texture>
+  </control>
+  <control type="image">
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>1080</posx>
+    <texture>$INFO[ListItem.VideoAspect,flags/aspectratio/,.png]</texture>
+    <visible>Skin.HasSetting(noaudiolanguageflag)</visible>
+  </control>
+  <control type="label">
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>1080</posx>
+    <align>center</align>
+    <aligny>center</aligny>
+    <font>Sml_Text_small</font>
+    <textcolor>$VAR[value_colorfloortext]</textcolor>
+    <label>$VAR[Furniture_AudioLanguage]</label>
+    <visible>!Skin.HasSetting(noaudiolanguageflag)</visible>
+  </control>
+  <control type="image">
+    <posx>1080</posx>
+		<posy>658</posy>
+		<width>90</width>
+		<height>60</height>
+		<align>center</align>
+		<aligny>center</aligny>
+    <texture background="true">$INFO[ListItem.Path,,logo.png]</texture>
+    <aspectratio>keep</aspectratio>
+    <animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+    <visible>[Container.Content(tvshows) | Container.Content(seasons)] + ![Control.IsVisible(555) | Control.IsVisible(574)]</visible>
+  </control>
+  <control type="image">
+    <posx>1080</posx>
+		<posy>658</posy>
+		<width>90</width>
+		<height>60</height>
+		<align>center</align>
+		<aligny>center</aligny>
+    <texture background="true">$VAR[value_logoandclearart]</texture>
+    <aspectratio>keep</aspectratio>
+    <animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+    <visible>[Container.Content(tvshows) | Container.Content(seasons)] + [Control.IsVisible(555) | Control.IsVisible(574)]</visible>
+	</control>
+  <control type="image">
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>1170</posx>
+    <texture>$INFO[ListItem.AudioChannels,flags/audio/,ch.png]</texture>
+  </control>
+  <control type="image">
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>1170</posx>
+    <texture>$INFO[ListItem.AudioCodec,flags/audio/,.png]</texture>
+  </control>
+  </control>
+  <control type="group">
+    <visible>[Control.IsVisible(50) | Control.IsVisible(550) | Control.IsVisible(570)] + !Skin.HasSetting(nomediaflags)</visible>
+    <animation effect="slide" end="-680,-10" condition="Control.IsVisible(550)">Conditional</animation>
+    <animation effect="slide" end="0,20" condition="Control.IsVisible(570)">Conditional</animation>
+    <include>Animation_HideShowcase</include>
+	<control type="image">
+    <include>Furniture_ListMediaFlagsVars</include>
+    <include condition="!Skin.HasSetting(nostudiosbuiltin)">Furniture_VideoStudiosBuiltIn</include>
+    <include condition="Skin.HasSetting(nostudiosbuiltin)">Furniture_VideoStudios</include>
+    <visible>![Control.IsVisible(50) | Control.IsVisible(570)]</visible>
+	</control>
+  <control type="image">
+    <include>Furniture_ListMediaFlagsVars</include>
+    <posx>755</posx>
+    <texture>$VAR[Furniture_VideoRating]</texture>
+    <visible>!Control.IsVisible(50)</visible>
+  </control>
+  <control type="image">
+    <include>Furniture_ListMediaFlagsVars</include>
+    <posx>845</posx>
+    <texture>$VAR[Furniture_VideoRating]</texture>
+    <visible>Control.IsVisible(50) + [Container.Content(TVShows) | Container.Content(Seasons)]</visible>
+  </control>
+  <control type="image">
+    <include>Furniture_ListMediaFlagsVars</include>
+    <posx>845</posx>
+    <texture>$VAR[Furniture_VideoCodec]</texture>
+  </control>
+  <control type="image">
+    <include>Furniture_ListMediaFlagsVars</include>
+    <posx>940</posx>
+    <include condition="!Skin.HasSetting(nostudiosbuiltin)">Furniture_VideoStudiosBuiltIn</include>
+    <include condition="Skin.HasSetting(nostudiosbuiltin)">Furniture_VideoStudios</include>
+    <visible>Control.IsVisible(50) + [Container.Content(TVShows) | Container.Content(Seasons)]</visible>
+  </control>
+  <control type="image">
+    <include>Furniture_ListMediaFlagsVars</include>
+    <posx>940</posx>
+    <texture>$INFO[ListItem.VideoResolution,flags/resolution/,.png]</texture>
+  </control>
+  <control type="image">
+    <include>Furniture_ListMediaFlagsVars</include>
+    <posx>1035</posx>
+    <texture>$INFO[ListItem.VideoAspect,flags/aspectratio/,.png]</texture>
+    <visible>Skin.HasSetting(noaudiolanguageflag)</visible>
+  </control>
+  <control type="label">
+    <include>Furniture_ListMediaFlagsVars</include>
+    <posx>1035</posx>
+    <align>center</align>
+    <aligny>center</aligny>
+    <font>Sml_Text_small</font>
+    <textcolor>$VAR[value_colorfloortext]</textcolor>
+    <label>$VAR[Furniture_AudioLanguage]</label>
+    <visible>!Skin.HasSetting(noaudiolanguageflag)</visible>
+  </control>
+  <control type="image">
+    <include>Furniture_ListMediaFlagsVars</include>
+    <posx>1125</posx>
+    <texture>$INFO[ListItem.AudioChannels,flags/audio/,ch.png]</texture>
+  </control>
+  <control type="image">
+    <include>Furniture_ListMediaFlagsVars</include>
+    <posx>1125</posx>
+    <texture>$INFO[ListItem.AudioCodec,flags/audio/,.png]</texture>
+  </control>
+  </control>
+  </include>
+	
+	<include name="LowList_MediaFlags">
+	<control type="group">
+    <visible>Control.IsVisible(551)</visible>
+  <control type="group">
+    <posx>120</posx>
+    <posy>660</posy>
+    <animation effect="slide" start="0,0" end="-22,0" time="400" easing="inout" tween="cubic" condition="Control.HasFocus(65)">Conditional</animation>
+    <animation effect="slide" start="0,0" end="0,12" time="400" easing="inout" tween="cubic" condition="Skin.HasSetting(nolowlistmediacase)">Conditional</animation>
+    <animation effect="fade" time="400" start="0" end="100">Visible</animation>
+    <animation effect="fade" time="400" start="100" end="0">Hidden</animation>
+    <include>Animation_HideShowcase</include>
+  <control type="image">
+    <include>Furniture_LowListMovieFlagVars</include>
+    <texture>$VAR[Furniture_VideoRating]</texture>
+  </control>
+  <control type="image">
+    <include>Furniture_LowListMovieFlagVars</include>
+    <posx>90</posx>
+    <info>ListItem.StarRating</info>
+    <colordiffuse>$VAR[value_texturecolors]</colordiffuse>
+    <visible>Container.Content(movies) | Container.Content(musicvideos)</visible>
+  </control>
+  </control>
+  <control type="group">
+    <posx>900</posx>
+    <posy>660</posy>
+    <width>360</width>
+    <height>59</height>
+    <visible>![Control.HasFocus(55110) | Control.IsVisible(55111) | Control.IsVisible(55112)]</visible>
+    <animation effect="fade" start="0" end="100" time="200" delay="100">Visible</animation>
+    <animation effect="fade" start="100" end="0" time="100">Hidden</animation>
+    <include>Animation_HideShowcase</include>
+  <control type="image">
+    <include>Furniture_LowListMovieFlagVars</include>
+    <posx>-85</posx>
+    <include condition="!Skin.HasSetting(nostudiosbuiltin)">Furniture_VideoStudiosBuiltIn</include>
+    <include condition="Skin.HasSetting(nostudiosbuiltin)">Furniture_VideoStudios</include>
+    <animation effect="slide" start="0,0" end="-330,8" time="0" condition="Container.Content(tvshows) + Skin.HasSetting(lowlistlayoutbanner) + !Skin.HasSetting(highlist)">Conditional</animation>
+    <animation effect="slide" start="0,0" end="-265,8" time="0" condition="Container.Content(tvshows) + Skin.HasSetting(lowlistlayoutbanner) + Skin.HasSetting(highlist)">Conditional</animation>
+    <animation effect="slide" start="0,0" end="330,-5" time="0" condition="Container.Content(tvshows) | Container.Content(seasons)">Conditional</animation>
+  </control>
+  <control type="image">
+    <include>Furniture_LowListMovieFlagVars</include>
+		<posx>-130</posx>
+    <info>ListItem.StarRating</info>
+    <colordiffuse>dcbdbdbd</colordiffuse>
+    <visible>Container.Content(tvshows) + Skin.HasSetting(lowlistlayoutbanner) + Skin.HasSetting(highlist)</visible>
+  </control>
+  <control type="image">
+    <include>Furniture_LowListMovieFlagVars</include>
+    <posx>-300</posx>
+    <texture>$VAR[Furniture_VideoRating]</texture>
+    <visible>Container.Content(tvshows) + Skin.HasSetting(lowlistlayoutbanner) + Skin.HasSetting(highlist)</visible>
+  </control>
+  <control type="group">
+    <posx>15</posx>
+  <control type="image">
+    <include>Furniture_LowListMovieFlagVars</include>
+    <texture>$INFO[ListItem.VideoAspect,flags/aspectratio/,.png]</texture>
+  </control>
+  </control>
+  <control type="image">
+    <include>Furniture_LowListMovieFlagVars</include>
+    <posx>112</posx>
+    <texture>$VAR[Furniture_VideoCodec]</texture>
+  </control>
+  <control type="image" id="83">
+    <include>Furniture_LowListMovieFlagVars</include>
+    <posx>198</posx>
+    <texture>$INFO[ListItem.VideoResolution,flags/resolution/,.png]</texture>
+  </control>
+  <control type="image">
+    <include>Furniture_LowListMovieFlagVars</include>
+    <posx>280</posx>
+    <texture>$INFO[ListItem.AudioChannels,flags/audio/,ch.png]</texture>
+  </control>
+  <control type="image">
+    <include>Furniture_LowListMovieFlagVars</include>
+    <posx>280</posx>
+    <texture>$INFO[ListItem.AudioCodec,flags/audio/,.png]</texture>
+  </control>
+  </control>
+  <control type="group">
+    <posx>900</posx>
+    <posy>660</posy>
+    <width>360</width>
+    <height>59</height>
+    <visible>[Control.HasFocus(55110) | Control.IsVisible(55111) | Control.IsVisible(55112)]</visible>
+    <animation effect="fade" start="0" end="100" time="200" delay="100">Visible</animation>
+    <animation effect="fade" start="100" end="0" time="100">Hidden</animation>
+  <control type="image">
+    <include>Furniture_LowListMovieFlagVars</include>
+    <posx>-7</posx>
+    <texture>$INFO[ListItem.VideoAspect,flags/aspectratio/,.png]</texture>
+  </control>
+  <control type="image">
+    <include>Furniture_LowListMovieFlagVars</include>
+    <posx>90</posx>
+    <texture>$VAR[Furniture_VideoCodec]</texture>
+  </control>
+  <control type="image" id="83">
+    <include>Furniture_LowListMovieFlagVars</include>
+    <posx>180</posx>
+    <texture>$INFO[ListItem.VideoResolution,flags/resolution/,.png]</texture>
+  </control>
+  <control type="image">
+    <include>Furniture_LowListMovieFlagVars</include>
+    <posx>270</posx>
+    <texture>$INFO[ListItem.AudioChannels,flags/audio/,ch.png]</texture>
+  </control>
+  <control type="image">
+    <include>Furniture_LowListMovieFlagVars</include>
+    <posx>270</posx>
+    <texture>$INFO[ListItem.AudioCodec,flags/audio/,.png]</texture>
+  </control>
+   <control type="image">
+    <posx>1080</posx>
+    <posy>430</posy>
+    <width>160</width>
+    <height>62</height>
+    <align>right</align>
+    <aligny>center</aligny>
+    <texture background="true">$INFO[ListItem.Path,,logo.png]</texture>
+    <fadetime>300</fadetime>
+    <aspectratio>keep</aspectratio>
+    <animation effect="slide" start="0,0" end="0,-161" time="200" tween="cubic" easing="inout" condition="[Control.HasFocus(55110) | Control.IsVisible(55111) | Control.IsVisible(55112)] + !Skin.HasSetting(highlist)">Conditional</animation>
+    <animation effect="slide" start="0,0" end="0,-50" time="200" tween="cubic" easing="inout" condition="[Control.HasFocus(55110) | Control.IsVisible(55111) | Control.IsVisible(55112)] + Skin.HasSetting(highlist)">Conditional</animation>
+    <include>Animation_HighListSlide</include>
+    <include>Animation_HideShowcase</include>
+  </control>
+  </control>
+  </control>
+  </include>
+  
+  <include name="MusicMediaFlags">
+  <control type="group">
+    <visible>![Skin.HasSetting(nomediaflags) | Skin.HasSetting(automediaflags) + !Control.IsVisible(108)]</visible>
+    <animation effect="fade" start="0" end="100" time="400" delay="3000" condition="Skin.HasSetting(automediaflags)">WindowOpen</animation>
+    <animation effect="fade" end="0" time="200">WindowClose</animation>
+    <include>Animation_InfoFlagsSlide</include>
+    <include>Animation_HideShowcase</include>
+  <control type="image"><!-- Rating -->
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>10</posx>
+    <texture>flags/music/rating/rating0.png</texture>
+    <colordiffuse>$VAR[value_colorflags]</colordiffuse>
+    <visible>!IsEmpty(ListItem.Thumb) + [Container.Content(Files) | Container.Content(Albums) | Container.Content(Songs)] + [Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(57) | Control.IsVisible(58)]</visible>
+  </control>
+  <control type="image">
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>10</posx>
+    <texture>$VAR[value_musicrating]</texture>
+    <colordiffuse>$VAR[value_colorflags]</colordiffuse>
+    <visible>[Container.Content(Files) | Container.Content(Albums) | Container.Content(Songs)] + [Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(57) | Control.IsVisible(58)]</visible>
+  </control>
+  <control type="image"><!-- Genre -->
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>100</posx>
+    <texture>flags/music/genre/genre.png</texture>
+    <colordiffuse>$VAR[value_colorflags]</colordiffuse>
+    <animation effect="slide" start="0,0" end="780,-15" time="0" condition="Control.IsVisible(50)">Conditional</animation>
+    <visible>!IsEmpty(ListItem.Genre) + [Container.Content(Files) | Container.Content(Albums) | Container.Content(Songs)] + [Control.IsVisible(50) | Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(551)]</visible>
+  </control>
+  <control type="label">
+    <align>left</align>
+    <width>150</width>
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>140</posx>
+    <label>$INFO[ListItem.Genre]</label>
+    <textcolor>$VAR[value_colorfloortext]</textcolor>
+    <scroll>true</scroll>
+    <scrollout>false</scrollout>
+    <animation effect="slide" start="0,0" end="785,-15" time="0" condition="Control.IsVisible(50)">Conditional</animation>
+    <visible>[Container.Content(Files) | Container.Content(Albums) | Container.Content(Songs)] + [Control.IsVisible(50) | Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(551)]</visible>
+  </control>
+  <control type="image"><!--logo-->
+    <posx>980</posx>
+		<posy>655</posy>
+		<width>90</width>
+		<height>60</height>
+		<align>center</align>
+		<aligny>center</aligny>
+    <texture background="true">$INFO[Skin.String(CustomMusicLogoPath)]$INFO[ListItem.Artist,,\logo.png]</texture>
+    <aspectratio>keep</aspectratio>
+    <animation effect="slide" start="0,0" end="0,-5" time="0" condition="Control.IsVisible(551)">Conditional</animation>
+    <visible>Skin.HasSetting(musiclogo) + ![Control.IsVisible(50) | Control.IsVisible(52) | Control.IsVisible(551)] + [Window.IsVisible(MusicFiles) | Container.Content(Artists) | Container.Content(Albums) | Container.Content(Songs)]</visible>
+  </control>
+  <control type="image"><!-- Year -->
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>1080</posx>
+    <texture>flags/music/border.png</texture>
+    <colordiffuse>$VAR[value_colorflags]</colordiffuse>
+    <animation effect="slide" start="0,0" end="-110,-30" time="0" condition="Control.IsVisible(50)">Conditional</animation>
+    <visible>!IsEmpty(ListItem.Year) + [Container.Content(Files) | Container.Content(Albums) | Container.Content(Songs)] + [Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(57) | Control.IsVisible(58)]</visible>
+  </control>
+  <control type="label">
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>1080</posx>
+    <align>center</align>
+    <label>$INFO[ListItem.Year]</label>
+    <textcolor>$VAR[value_colorfloortext]</textcolor>
+    <animation effect="slide" start="0,0" end="-110,-30" time="0" condition="Control.IsVisible(50)">Conditional</animation>
+    <visible>!IsEmpty(ListItem.Year) + [Container.Content(Files) | Container.Content(Albums) | Container.Content(Songs)] + [Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(57) | Control.IsVisible(58)]</visible>
+  </control>
+  <control type="image"><!-- Record -->
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>1170</posx>
+    <texture>$INFO[ListItem.Property(Album_Label),flags/music/recordlabel/,.png]</texture>
+    <colordiffuse>$VAR[value_colorflags]</colordiffuse>
+    <animation effect="slide" start="0,0" end="-80,-15" time="0" condition="Control.IsVisible(50)">Conditional</animation>
+    <visible>[Container.Content(Files) | Container.Content(Albums)] + [Control.IsVisible(50) | Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(57) | Control.IsVisible(58)]</visible>
+  </control>
+  <control type="image"><!-- Codec -->
+    <include>Furniture_FloorMediaFlagsVars</include>
+    <posx>1170</posx>
+		<texture>$VAR[Furniture_MusicCodec]</texture>
+    <colordiffuse>$VAR[value_colorflags]</colordiffuse>
+		<animation effect="slide" start="0,0" end="-80,-15" time="0" condition="Control.IsVisible(50)">Conditional</animation>
+		<animation effect="slide" start="0,0" end="-1160,0" time="0" condition="Control.IsVisible(551)">Conditional</animation>
+		<visible>[Container.Content(Files) | Container.Content(Songs)] + [Control.IsVisible(50) | Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(551)]</visible>
+  </control>
+  </control>
+	</include>
+  
+  <include name="FloorText">
+    <control type="group">
+    <visible>![Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(59) | Control.IsVisible(550) | Control.IsVisible(551) | Control.IsVisible(570) | Control.HasFocus(60) | Control.HasFocus(62) | Control.HasFocus(66) | [Window.IsActive(musiclibrary) | Window.IsActive(musicfiles)] + Control.IsVisible(52)]</visible>
+    <include>Animation_HideShowcase</include>
+  <control type="label">
+    <posx>315</posx>
+    <posy>693</posy>
+    <width>650</width>
+    <align>center</align>
+    <aligny>center</aligny>
+    <label>$LOCALIZE[31586] - $LOCALIZE[31587]</label>
+    <scroll>true</scroll>
+    <scrollout>false</scrollout>
+    <pauseatend>3000</pauseatend>
+    <visible>[[Control.IsVisible(52) + StringCompare(Container(52).numitems,0)] | [Control.IsVisible(57) + StringCompare(Container(57).numitems,0)]]</visible>
+  </control>
+  <control type="label">
+    <posx>315</posx>
+    <posy>693</posy>
+    <width>650</width>
+    <align>center</align>
+    <aligny>center</aligny>
+    <label>$VAR[value_floortext]</label>
+    <font>Font_FloorTextMainLabel</font>
+    <textcolor>$VAR[value_colorfloortext]</textcolor>
+    <scroll>true</scroll>
+    <scrollout>false</scrollout>
+    <pauseatend>3000</pauseatend>
+    <visible>!Skin.HasSetting(nomediaflags)</visible>
+  </control>
+  <control type="label">
+    <posx>230</posx>
+    <posy>693</posy>
+    <width>820</width>
+    <align>center</align>
+    <aligny>center</aligny>
+    <label>$VAR[value_floortext]</label>
+    <font>Font_FloorTextMainLabel</font>
+    <textcolor>$VAR[value_colorfloortext]</textcolor>
+    <scroll>true</scroll>
+    <scrollout>false</scrollout>
+    <pauseatend>3000</pauseatend>
+    <visible>Skin.HasSetting(nomediaflags)</visible>
+  </control>
+  <control type="fadelabel">
+    <posx>340</posx>
+    <posy>667</posy>
+    <width>600</width>
+    <align>center</align>
+    <aligny>center</aligny>
+    <label>$VAR[value_extrainfo1]</label>
+    <label>$VAR[value_extrainfo2]</label>
+    <label>$VAR[value_extrainfo3]</label>
+    <label>$VAR[value_extrainfo4]</label>
+    <font>Font_FloorTextDetailLabel</font>
+    <textcolor>$VAR[value_colorfloortext]</textcolor>
+    <scroll>true</scroll>
+    <scrollout>false</scrollout>
+    <pauseatend>3000</pauseatend>
+    <visible>!StringCompare(Container.FolderPath,videodb://1/7/)</visible>
+  </control>
+  </control>
+  </include>
+  
+  <!-- ######################################################################### Furniture Music ######################################################################### -->
+	<include name="Furniture_Music">
+	<defaultcontrol always="true">50</defaultcontrol>
+    <allowoverlay>yes</allowoverlay>
+    <views>50,52,53,54,57,58,551</views>
+  <controls>
+  <control type="image"><!-- Multi Fanart -->
+    <include>FullScreenDimensions</include>
+		<timeperimage>6000</timeperimage>
+		<randomize>true</randomize>
+		<fadetime>FanartCrossFadeTime</fadetime>
+		<animation effect="zoom" start="110" end="130" center="auto" time="10000" tween="cubic" easing="inout" pulse="true" condition="Skin.HasSetting(animation_panscan)">Conditional</animation>
+		<animation effect="slide" start="-10,-10" end="10,10" time="5000" tween="cubic" easing="inout" pulse="true" condition="Skin.HasSetting(animation_panscan)">Conditional</animation>
+		<animation effect="slide" start="1280,0" end="0,0" time="500" tween="cubic" easing="out" reversible="false" condition="Skin.HasSetting(animation_slide) + Control.IsVisible(110)">Conditional</animation>
+		<animation effect="slide" start="-1280,0" end="0,0" time="500" tween="cubic" easing="out" reversible="false" condition="Skin.HasSetting(animation_slide) + Control.IsVisible(111)">Conditional</animation>
+		<texture background="true" fallback="special://skin/backgrounds/default.jpg">$VAR[value_audiofanart]</texture>
+  </control>
+  <control type="image"><!-- Multi Fanart -->
+    <include>FullScreenDimensions</include>
+		<timeperimage>6000</timeperimage>
+		<randomize>true</randomize>
+		<fadetime>FanartCrossFadeTime</fadetime>
+		<animation effect="slide" start="0,0" end="-1280,0" time="500" tween="cubic" easing="out" reversible="false" condition="Control.IsVisible(110)">Conditional</animation>
+    <texture background="true" fallback="special://skin/backgrounds/default.jpg">$VAR[value_audiofanart]</texture>
+    <visible>Skin.HasSetting(animation_slide)</visible>
+  </control>
+  <control type="image"><!-- Multi Fanart -->
+    <include>FullScreenDimensions</include>
+		<timeperimage>6000</timeperimage>
+		<randomize>true</randomize>
+		<fadetime>FanartCrossFadeTime</fadetime>
+		<animation effect="slide" start="0,0" end="1280,0" time="500" tween="cubic" easing="out" reversible="false" condition="Control.IsVisible(111)">Conditional</animation>
+    <texture background="true" fallback="special://skin/backgrounds/default.jpg">$VAR[value_audiofanart]</texture>
+    <visible>Skin.HasSetting(animation_slide)</visible>
+  </control>
+  <control type="image"><!-- Single Fanart -->
+    <include>FullScreenDimensions</include>
+		<fadetime>FanartCrossFadeTime</fadetime>
+		<animation effect="zoom" start="110" end="130" center="auto" time="10000" tween="cubic" easing="inout" pulse="true" condition="Skin.HasSetting(animation_panscan)">Conditional</animation>
+		<animation effect="slide" start="-10,-10" end="10,10" time="5000" tween="cubic" easing="inout" pulse="true" condition="Skin.HasSetting(animation_panscan)">Conditional</animation>
+		<animation effect="slide" start="1280,0" end="0,0" time="500" tween="cubic" easing="out" reversible="false" condition="Skin.HasSetting(animation_slide) + Control.IsVisible(110)">Conditional</animation>
+		<animation effect="slide" start="-1280,0" end="0,0" time="500" tween="cubic" easing="out" reversible="false" condition="Skin.HasSetting(animation_slide) + Control.IsVisible(111)">Conditional</animation>
+    <texture background="true">$VAR[value_defaultaudiofanart]</texture>
+  </control>
+  <control type="image"><!-- Single Fanart -->
+    <include>FullScreenDimensions</include>
+		<fadetime>FanartCrossFadeTime</fadetime>
+		<animation effect="slide" start="0,0" end="-1280,0" time="500" tween="cubic" easing="out" reversible="false" condition="Control.IsVisible(110)">Conditional</animation>
+    <texture background="true">$VAR[value_defaultaudiofanart]</texture>
+    <visible>Skin.HasSetting(animation_slide)</visible>
+  </control>
+  <control type="image"><!-- Single Fanart -->
+    <include>FullScreenDimensions</include>
+		<fadetime>FanartCrossFadeTime</fadetime>
+		<animation effect="slide" start="0,0" end="1280,0" time="500" tween="cubic" easing="out" reversible="false" condition="Control.IsVisible(111)">Conditional</animation>
+    <texture background="true">$VAR[value_defaultaudiofanart]</texture>
+    <visible>Skin.HasSetting(animation_slide)</visible>
+  </control>
+  <control type="multiimage" id="5032"><!-- Extra Fanart Music -->
+    <include>FullScreenDimensions</include>
+		<timeperimage>6000</timeperimage>
+		<randomize>true</randomize>
+		<fadetime>FanartCrossFadeTime</fadetime>
+		<animation effect="zoom" start="110" end="130" center="auto" time="10000" tween="cubic" easing="inout" pulse="true" condition="Skin.HasSetting(animation_panscan)">Conditional</animation>
+		<animation effect="slide" start="-10,-10" end="10,10" time="5000" tween="cubic" easing="inout" pulse="true" condition="Skin.HasSetting(animation_panscan)">Conditional</animation>
+		<animation effect="slide" start="1280,0" end="0,0" time="500" tween="cubic" easing="out" reversible="false" condition="Skin.HasSetting(animation_slide) + Control.IsVisible(110)">Conditional</animation>
+		<animation effect="slide" start="-1280,0" end="0,0" time="500" tween="cubic" easing="out" reversible="false" condition="Skin.HasSetting(animation_slide) + Control.IsVisible(111)">Conditional</animation>
+    <imagepath background="true">$INFO[Skin.String(CustomMusicLogoPath)]$INFO[ListItem.Artist,,/extrafanart/]</imagepath>
+    <visible>Skin.HasSetting(extrafanartaudio)</visible>
+  </control>
+  <control type="multiimage"><!-- Extra Fanart Music -->
+    <include>FullScreenDimensions</include>
+		<timeperimage>6000</timeperimage>
+		<randomize>true</randomize>
+		<fadetime>FanartCrossFadeTime</fadetime>
+    <animation effect="slide" start="0,0" end="-1280,0" time="500" tween="cubic" easing="out" reversible="false" condition="Control.IsVisible(110)">Conditional</animation>
+    <imagepath background="true">$INFO[Skin.String(CustomMusicLogoPath)]$INFO[ListItem.Artist,,/extrafanart/]</imagepath>
+    <visible>Skin.HasSetting(animation_slide) + Skin.HasSetting(extrafanartaudio)</visible>
+  </control>
+  <control type="multiimage"><!-- Extra Fanart Music -->
+    <include>FullScreenDimensions</include>
+		<timeperimage>6000</timeperimage>
+		<randomize>true</randomize>
+		<fadetime>FanartCrossFadeTime</fadetime>
+    <animation effect="slide" start="0,0" end="1280,0" time="500" tween="cubic" easing="out" reversible="false" condition="Control.IsVisible(111)">Conditional</animation>
+    <imagepath background="true">$INFO[Skin.String(CustomMusicLogoPath)]$INFO[ListItem.Artist,,/extrafanart/]</imagepath>
+    <visible>Skin.HasSetting(animation_slide) + Skin.HasSetting(extrafanartaudio)</visible>
+  </control>
+  <include>LiveBG</include>
+  <control type="group"><!-- default group -->
+	  <include>Animation_OpenCloseZoom</include>
+	  
+	<control type="image" id="108">
+    <include>InvisibleButton</include>
+    <animation effect="fade" start="0" end="100" time="150" delay="1000" condition="SubString(skin.string(panel_seconds),1)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="2000" condition="SubString(skin.string(panel_seconds),2)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="3000" condition="SubString(skin.string(panel_seconds),3)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="4000" condition="SubString(skin.string(panel_seconds),4)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="5000" condition="SubString(skin.string(panel_seconds),5)">Visible</animation>
+    <visible>![Container.OnNext | Container.OnPrevious | IsEmpty(ListItem.Thumb)]</visible>
+  </control>
+  <control type="image" id="109"><!-- to panel info -->
+    <include>InvisibleButton</include>
+    <animation effect="fade" start="0" end="100" time="150" delay="1000" condition="SubString(skin.string(panel_seconds),1)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="2000" condition="SubString(skin.string(panel_seconds),2)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="3000" condition="SubString(skin.string(panel_seconds),3)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="4000" condition="SubString(skin.string(panel_seconds),4)">Visible</animation>
+    <animation effect="fade" start="0" end="100" time="150" delay="5000" condition="SubString(skin.string(panel_seconds),5)">Visible</animation>
+    <visible>![Control.IsVisible(57) + Container.Content(songs) + [SubString(skin.string(songs_info_showcase),off) | SubString(skin.string(songs_info_showcase),trigger)] | 
+    Control.IsVisible(57) + Container.Content(albums) + [SubString(skin.string(albums_info_showcase),off) | SubString(skin.string(albums_info_showcase),trigger)] | 
+    Control.IsVisible(57) + Container.Content(artists) + [SubString(skin.string(artists_info_showcase),off) | SubString(skin.string(artists_info_showcase),trigger)] | 
+    Control.IsVisible(57) + Container.Content(files) + [SubString(skin.string(files_info_showcase),off) | SubString(skin.string(files_info_showcase),trigger)] | 
+    Control.IsVisible(52) + Container.Content(songs) + [SubString(skin.string(songs_info_multiplex),off) | SubString(skin.string(songs_info_multiplex),trigger)] | 
+    Control.IsVisible(52) + Container.Content(albums) + [SubString(skin.string(albums_info_multiplex),off) | SubString(skin.string(albums_info_multiplex),trigger)] | 
+    Control.IsVisible(52) + Container.Content(artists) + [SubString(skin.string(artists_info_multiplex),off) | SubString(skin.string(artists_info_multiplex),trigger)] | 
+    Control.IsVisible(52) + Container.Content(files) + [SubString(skin.string(files_info_multiplex),off) | SubString(skin.string(files_info_multiplex),trigger)] | 
+    Control.IsVisible(53) + Container.Content(songs) + [SubString(skin.string(songs_info_wall),off) | SubString(skin.string(songs_info_wall),trigger)] | 
+    Control.IsVisible(53) + Container.Content(albums) + [SubString(skin.string(albums_info_wall),off) | SubString(skin.string(albums_info_wall),trigger)] | 
+    Control.IsVisible(53) + Container.Content(artists) + [SubString(skin.string(artists_info_wall),off) | SubString(skin.string(artists_info_wall),trigger)] | 
+    Control.IsVisible(53) + Container.Content(files) + [SubString(skin.string(files_info_wall),off) | SubString(skin.string(files_info_wall),trigger)] | 
+    Container.OnNext | Container.OnPrevious | ControlGroup(9000).HasFocus | Control.HasFocus(9920)]</visible>
+  </control>
+  <control type="image" id="110"><!-- to slide fanart -->
+    <include>InvisibleButton</include>
+    <visible>!Container.OnNext</visible>
+    <animation effect="fade" start="0" end="100" time="150" condition="true">Visible</animation>
+  </control>
+  <control type="image" id="111"><!-- to slide fanart -->
+    <include>InvisibleButton</include>
+    <visible>!Container.OnPrevious</visible>
+    <animation effect="fade" start="0" end="100" time="150" condition="true">Visible</animation>
+  </control>
+  <control type="button" id="9900"><!-- to menu/kiosk condition -->
+    <include>InvisibleButton</include>
+    <onfocus condition="![Skin.HasSetting(kiosk) | Skin.HasSetting(kiosksmart) + !SubString(skin.string(codestep),step3)]">SetFocus(9300)</onfocus>
+    <onfocus condition="Skin.HasSetting(kiosksmart) + !SubString(skin.string(codestep),step3)">SetFocus(9100)</onfocus>
+    <onfocus condition="Skin.HasSetting(kiosk)">SetFocus(50)</onfocus>
+  </control>
+  <control type="button" id="9910"><!-- panel focus -->
+    <include>InvisibleButton</include>
+    <onleft>SetFocus(50)</onleft>
+    <onright>SetFocus(50)</onright>
+    <onup>SetFocus(9900)</onup>
+    <ondown>SetFocus(50)</ondown>
+  </control>
+  <control type="button" id="9920"><!-- hidden colection/view fanart -->
+    <include>InvisibleButton</include>
+    <onleft>SetFocus(50)</onleft>
+    <onright>SetFocus(50)</onright>
+    <onup>SetFocus(50)</onup>
+    <ondown>SetFocus(50)</ondown>
+  </control>
+    <include>Furniture_Floor</include>
+  
+  <!-- ViewTypes -->
+		<include>ViewList</include><!-- 50 -->
+		<include condition="SubString(skin.string(view_audio_multiplex),enable)">ViewMultiplexAudio</include><!-- 52 -->
+		<include condition="SubString(skin.string(view_audio_wall),enable)">ViewWall</include><!-- 53 -->
+		<include condition="SubString(skin.string(view_audio_3dwall),enable)">View3DWallAudio</include><!-- 54 -->
+		<include condition="SubString(skin.string(view_audio_showcase),enable)">ViewShowcaseAudio</include><!-- 57 -->
+		<include condition="SubString(skin.string(view_audio_coverflow),enable)">ViewCoverFlowAudio</include><!-- 58 -->
+		<include condition="SubString(skin.string(view_audio_listlow),enable)">ViewListLow</include><!-- 551 -->
+		
+	<control type="group"><!-- Time -->
+    <include>Animation_OpenCloseSlideDown</include>
+    <visible>Skin.HasSetting(audiotime) + !ControlGroup(9000).HasFocus</visible>
+  <control type="image">
+    <posx>860</posx>
+    <posy>0</posy>
+    <width>420</width>
+    <height>27</height>
+    <aspectratio>stretch</aspectratio>
+    <texture flipx="true" flipy="true">home_common_panel.png</texture>
+    <colordiffuse>$VAR[value_texturecolors]</colordiffuse>
+    <animation effect="fade" end="85" condition="true">Conditional</animation>
+  </control>
+  <control type="image">
+    <posx>1250</posx>
+    <posy>2</posy>
+    <width>21</width>
+    <height>21</height>
+    <aspectratio>keep</aspectratio>
+    <texture>$INFO[Window(Weather).Property(Current.ConditionIcon)]</texture>
+  </control>
+  <control type="label">
+    <posx>1240</posx>
+    <posy>2</posy>
+    <width>350</width>
+    <font>Font_RSS</font>
+    <align>right</align>
+    <label>[UPPERCASE]$INFO[System.Date][COLOR=80ffffff] | [/COLOR][COLOR=$VAR[value_headercolors]]$INFO[System.Time][/COLOR][/UPPERCASE][COLOR=80ffffff] | [/COLOR][UPPERCASE]$INFO[Window(Weather).Property(Current.Condition)][COLOR=80ffffff] | [/COLOR][COLOR=$VAR[value_headercolors]]$INFO[Weather.Temperature][/COLOR][/UPPERCASE]</label>
+    <scroll>true</scroll>
+    <scrollout>false</scrollout>
+  </control>
+  </control>
+		
+	<control type="group"><!-- RSS -->
+    <include>Animation_OpenCloseSlideDown</include>
+    <visible>Skin.HasSetting(audiorss) + ![Player.HasMedia + Skin.HasSetting(nowplayingwidget) | ControlGroup(9000).HasFocus]</visible>
+    <posx>0</posx>
+    <posy>0</posy>
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>420</width>
+    <height>27</height>
+    <aspectratio>stretch</aspectratio>
+    <texture flipy="true">home_common_panel.png</texture>
+    <colordiffuse>$VAR[value_texturecolors]</colordiffuse>
+    <animation effect="fade" end="85" condition="true">Conditional</animation>
+  </control>
+  <control type="rss" id="1">
+    <posx>12</posx>
+    <posy>2</posy>
+    <width>390</width>
+    <height>18</height>
+    <font>Font_RSS</font>
+    <urlset>1</urlset>
+		<textcolor>dcFFFFFF</textcolor>
+		<headlinecolor>bcFFFFFF</headlinecolor>
+		<highlightcolor>a9736AFF</highlightcolor>
+		<titlecolor>$VAR[value_headercolors]</titlecolor>
+  </control>
+  <control type="image">
+    <posx>272</posx>
+    <posy>0</posy>
+    <width>150</width>
+    <height>27</height>
+    <aspectratio>stretch</aspectratio>
+    <texture flipx="true">rssbar_darkfade.png</texture>
+    <colordiffuse>$VAR[value_texturecolors]</colordiffuse>
+    <animation effect="fade" end="95" condition="true">Conditional</animation>
+  </control>
+  </control>
+
+	<!-- Furniture -->
+		<include condition="!Skin.HasSetting(nomediaflags)">MusicMediaFlags</include>
+		<include condition="Skin.HasSetting(nowplayingwidget)">NowPlayingWidget</include>
+		<include condition="!Skin.HasSetting(noscrollletters)">ScrollOffsetLabel</include>
+		<include>FloorText</include>
+		<include>TopMenu_BGBlack</include>
+		<include>TopMenu_Audio</include>
+	</control>
+    <include>BGGradient</include>
+    <include>BGBlack</include>
+  </controls>
+  </include>
+	
+	<!-- ######################################################################### Variable Video Codec Collection ######################################################################### -->
+	<variable name="Furniture_VideoCodec-7">
+		<value condition="![substring(ListItem(-7).Filenameandpath,bluray) | substring(ListItem(-7).Filenameandpath,blu-ray) | substring(ListItem(-7).Filenameandpath,bdrip) | substring(ListItem(-7).Filenameandpath,hdtv) | substring(ListItem(-7).Filenameandpath,web) | substring(ListItem(-7).Filenameandpath,dvd) | substring(ListItem(-7).Filenameandpath,3dbd) | substring(ListItem(-7).Filenameandpath,.iso,Right) | substring(ListItem(-7).Filenameandpath,.ifo,Right) | substring(ListItem(-7).Filenameandpath,web)]">$VAR[value_codecdefault-7]</value>
+		<value condition="substring(ListItem(-7).Filenameandpath,bluray) | substring(ListItem(-7).Filenameandpath,blu-ray) | substring(ListItem(-7).Filenameandpath,bdrip)">$VAR[value_codecbluray-7]</value>
+		<value condition="substring(ListItem(-7).Filenameandpath,web)">$VAR[value_codecwebtv-7]</value>
+		<value condition="substring(ListItem(-7).Filenameandpath,hdtv)">$VAR[value_codechdtv-7]</value>
+		<value condition="substring(ListItem(-7).Filenameandpath,dvd) | substring(ListItem(-7).Filenameandpath,.ifo,Right) | substring(ListItem(-7).Filenameandpath,.iso,Right) + ![substring(ListItem(-7).Filenameandpath,bluray) | substring(ListItem(-7).Filenameandpath,3dbd)]">$VAR[value_codecdvd-7]</value>
+		<value condition="substring(ListItem(-7).Filenameandpath,3dbd)">$VAR[value_codec3dbd-7]</value>
+	</variable>
+	<variable name="Furniture_VideoCodec-6">
+		<value condition="![substring(ListItem(-6).Filenameandpath,bluray) | substring(ListItem(-6).Filenameandpath,blu-ray) | substring(ListItem(-6).Filenameandpath,bdrip) | substring(ListItem(-6).Filenameandpath,hdtv) | substring(ListItem(-6).Filenameandpath,web) | substring(ListItem(-6).Filenameandpath,dvd) | substring(ListItem(-6).Filenameandpath,3dbd) | substring(ListItem(-6).Filenameandpath,.iso,Right) | substring(ListItem(-6).Filenameandpath,.ifo,Right) | substring(ListItem(-6).Filenameandpath,web)]">$VAR[value_codecdefault-6]</value>
+		<value condition="substring(ListItem(-6).Filenameandpath,bluray) | substring(ListItem(-6).Filenameandpath,blu-ray) | substring(ListItem(-6).Filenameandpath,bdrip)">$VAR[value_codecbluray-6]</value>
+		<value condition="substring(ListItem(-6).Filenameandpath,web)">$VAR[value_codecwebtv-6]</value>
+		<value condition="substring(ListItem(-6).Filenameandpath,hdtv)">$VAR[value_codechdtv-6]</value>
+		<value condition="substring(ListItem(-6).Filenameandpath,dvd) | substring(ListItem(-6).Filenameandpath,.ifo,Right) | substring(ListItem(-6).Filenameandpath,.iso,Right) + ![substring(ListItem(-6).Filenameandpath,bluray) | substring(ListItem(-6).Filenameandpath,3dbd)]">$VAR[value_codecdvd-6]</value>
+		<value condition="substring(ListItem(-6).Filenameandpath,3dbd)">$VAR[value_codec3dbd-6]</value>
+	</variable>
+	<variable name="Furniture_VideoCodec-5">
+		<value condition="![substring(ListItem(-5).Filenameandpath,bluray) | substring(ListItem(-5).Filenameandpath,blu-ray) | substring(ListItem(-5).Filenameandpath,bdrip) | substring(ListItem(-5).Filenameandpath,hdtv) | substring(ListItem(-5).Filenameandpath,web) | substring(ListItem(-5).Filenameandpath,dvd) | substring(ListItem(-5).Filenameandpath,3dbd) | substring(ListItem(-5).Filenameandpath,.iso,Right) | substring(ListItem(-5).Filenameandpath,.ifo,Right) | substring(ListItem(-5).Filenameandpath,web)]">$VAR[value_codecdefault-5]</value>
+		<value condition="substring(ListItem(-5).Filenameandpath,bluray) | substring(ListItem(-5).Filenameandpath,blu-ray) | substring(ListItem(-5).Filenameandpath,bdrip)">$VAR[value_codecbluray-5]</value>
+		<value condition="substring(ListItem(-5).Filenameandpath,web)">$VAR[value_codecwebtv-5]</value>
+		<value condition="substring(ListItem(-5).Filenameandpath,hdtv)">$VAR[value_codechdtv-5]</value>
+		<value condition="substring(ListItem(-5).Filenameandpath,dvd) | substring(ListItem(-5).Filenameandpath,.ifo,Right) | substring(ListItem(-5).Filenameandpath,.iso,Right) + ![substring(ListItem(-5).Filenameandpath,bluray) | substring(ListItem(-5).Filenameandpath,3dbd)]">$VAR[value_codecdvd-5]</value>
+		<value condition="substring(ListItem(-5).Filenameandpath,3dbd)">$VAR[value_codec3dbd-5]</value>
+	</variable>
+	<variable name="Furniture_VideoCodec-4">
+		<value condition="![substring(ListItem(-4).Filenameandpath,bluray) | substring(ListItem(-4).Filenameandpath,blu-ray) | substring(ListItem(-4).Filenameandpath,bdrip) | substring(ListItem(-4).Filenameandpath,hdtv) | substring(ListItem(-4).Filenameandpath,web) | substring(ListItem(-4).Filenameandpath,dvd) | substring(ListItem(-4).Filenameandpath,3dbd) | substring(ListItem(-4).Filenameandpath,.iso,Right) | substring(ListItem(-4).Filenameandpath,.ifo,Right) | substring(ListItem(-4).Filenameandpath,web)]">$VAR[value_codecdefault-4]</value>
+		<value condition="substring(ListItem(-4).Filenameandpath,bluray) | substring(ListItem(-4).Filenameandpath,blu-ray) | substring(ListItem(-4).Filenameandpath,bdrip)">$VAR[value_codecbluray-4]</value>
+		<value condition="substring(ListItem(-4).Filenameandpath,web)">$VAR[value_codecwebtv-4]</value>
+		<value condition="substring(ListItem(-4).Filenameandpath,hdtv)">$VAR[value_codechdtv-4]</value>
+		<value condition="substring(ListItem(-4).Filenameandpath,dvd) | substring(ListItem(-4).Filenameandpath,.ifo,Right) | substring(ListItem(-4).Filenameandpath,.iso,Right) + ![substring(ListItem(-4).Filenameandpath,bluray) | substring(ListItem(-4).Filenameandpath,3dbd)]">$VAR[value_codecdvd-4]</value>
+		<value condition="substring(ListItem(-4).Filenameandpath,3dbd)">$VAR[value_codec3dbd-4]</value>
+	</variable>
+	<variable name="Furniture_VideoCodec-3">
+		<value condition="![substring(ListItem(-3).Filenameandpath,bluray) | substring(ListItem(-3).Filenameandpath,blu-ray) | substring(ListItem(-3).Filenameandpath,bdrip) | substring(ListItem(-3).Filenameandpath,hdtv) | substring(ListItem(-3).Filenameandpath,web) | substring(ListItem(-3).Filenameandpath,dvd) | substring(ListItem(-3).Filenameandpath,3dbd) | substring(ListItem(-3).Filenameandpath,.iso,Right) | substring(ListItem(-3).Filenameandpath,.ifo,Right) | substring(ListItem(-3).Filenameandpath,web)]">$VAR[value_codecdefault-3]</value>
+		<value condition="substring(ListItem(-3).Filenameandpath,bluray) | substring(ListItem(-3).Filenameandpath,blu-ray) | substring(ListItem(-3).Filenameandpath,bdrip)">$VAR[value_codecbluray-3]</value>
+		<value condition="substring(ListItem(-3).Filenameandpath,web)">$VAR[value_codecwebtv-3]</value>
+		<value condition="substring(ListItem(-3).Filenameandpath,hdtv)">$VAR[value_codechdtv-3]</value>
+		<value condition="substring(ListItem(-3).Filenameandpath,dvd) | substring(ListItem(-3).Filenameandpath,.ifo,Right) | substring(ListItem(-3).Filenameandpath,.iso,Right) + ![substring(ListItem(-3).Filenameandpath,bluray) | substring(ListItem(-3).Filenameandpath,3dbd)]">$VAR[value_codecdvd-3]</value>
+		<value condition="substring(ListItem(-3).Filenameandpath,3dbd)">$VAR[value_codec3dbd-3]</value>
+	</variable>
+	<variable name="Furniture_VideoCodec-2">
+		<value condition="![substring(ListItem(-2).Filenameandpath,bluray) | substring(ListItem(-2).Filenameandpath,blu-ray) | substring(ListItem(-2).Filenameandpath,bdrip) | substring(ListItem(-2).Filenameandpath,hdtv) | substring(ListItem(-2).Filenameandpath,web) | substring(ListItem(-2).Filenameandpath,dvd) | substring(ListItem(-2).Filenameandpath,3dbd) | substring(ListItem(-2).Filenameandpath,.iso,Right) | substring(ListItem(-2).Filenameandpath,.ifo,Right) | substring(ListItem(-2).Filenameandpath,web)]">$VAR[value_codecdefault-2]</value>
+		<value condition="substring(ListItem(-2).Filenameandpath,bluray) | substring(ListItem(-2).Filenameandpath,blu-ray) | substring(ListItem(-2).Filenameandpath,bdrip)">$VAR[value_codecbluray-2]</value>
+		<value condition="substring(ListItem(-2).Filenameandpath,web)">$VAR[value_codecwebtv-2]</value>
+		<value condition="substring(ListItem(-2).Filenameandpath,hdtv)">$VAR[value_codechdtv-2]</value>
+		<value condition="substring(ListItem(-2).Filenameandpath,dvd) | substring(ListItem(-2).Filenameandpath,.ifo,Right) | substring(ListItem(-2).Filenameandpath,.iso,Right) + ![substring(ListItem(-2).Filenameandpath,bluray) | substring(ListItem(-2).Filenameandpath,3dbd)]">$VAR[value_codecdvd-2]</value>
+		<value condition="substring(ListItem(-2).Filenameandpath,3dbd)">$VAR[value_codec3dbd-2]</value>
+	</variable>
+	<variable name="Furniture_VideoCodec-1">
+		<value condition="![substring(ListItem(-1).Filenameandpath,bluray) | substring(ListItem(-1).Filenameandpath,blu-ray) | substring(ListItem(-1).Filenameandpath,bdrip) | substring(ListItem(-1).Filenameandpath,hdtv) | substring(ListItem(-1).Filenameandpath,web) | substring(ListItem(-1).Filenameandpath,dvd) | substring(ListItem(-1).Filenameandpath,3dbd) | substring(ListItem(-1).Filenameandpath,.iso,Right) | substring(ListItem(-1).Filenameandpath,.ifo,Right) | substring(ListItem(-1).Filenameandpath,web)]">$VAR[value_codecdefault-1]</value>
+		<value condition="substring(ListItem(-1).Filenameandpath,bluray) | substring(ListItem(-1).Filenameandpath,blu-ray) | substring(ListItem(-1).Filenameandpath,bdrip)">$VAR[value_codecbluray-1]</value>
+		<value condition="substring(ListItem(-1).Filenameandpath,web)">$VAR[value_codecwebtv-1]</value>
+		<value condition="substring(ListItem(-1).Filenameandpath,hdtv)">$VAR[value_codechdtv-1]</value>
+		<value condition="substring(ListItem(-1).Filenameandpath,dvd) | substring(ListItem(-1).Filenameandpath,.ifo,Right) | substring(ListItem(-1).Filenameandpath,.iso,Right) + ![substring(ListItem(-1).Filenameandpath,bluray) | substring(ListItem(-1).Filenameandpath,3dbd)]">$VAR[value_codecdvd-1]</value>
+		<value condition="substring(ListItem(-1).Filenameandpath,3dbd)">$VAR[value_codec3dbd-1]</value>
+	</variable>
+	<variable name="Furniture_VideoCodec0">
+		<value condition="![substring(ListItem(0).Filenameandpath,bluray) | substring(ListItem(0).Filenameandpath,blu-ray) | substring(ListItem(0).Filenameandpath,bdrip) | substring(ListItem(0).Filenameandpath,hdtv) | substring(ListItem(0).Filenameandpath,web) | substring(ListItem(0).Filenameandpath,dvd) | substring(ListItem(0).Filenameandpath,3dbd) | substring(ListItem(0).Filenameandpath,.iso,Right) | substring(ListItem(0).Filenameandpath,.ifo,Right) | substring(ListItem(0).Filenameandpath,web)]">$VAR[value_codecdefault0]</value>
+		<value condition="substring(ListItem(0).Filenameandpath,bluray) | substring(ListItem(0).Filenameandpath,blu-ray) | substring(ListItem(0).Filenameandpath,bdrip)">$VAR[value_codecbluray0]</value>
+		<value condition="substring(ListItem(0).Filenameandpath,web)">$VAR[value_codecwebtv0]</value>
+		<value condition="substring(ListItem(0).Filenameandpath,hdtv)">$VAR[value_codechdtv0]</value>
+		<value condition="substring(ListItem(0).Filenameandpath,dvd) | substring(ListItem(0).Filenameandpath,.ifo,Right) | substring(ListItem(0).Filenameandpath,.iso,Right) + ![substring(ListItem(0).Filenameandpath,bluray) | substring(ListItem(0).Filenameandpath,3dbd)]">$VAR[value_codecdvd]</value>
+		<value condition="substring(ListItem(0).Filenameandpath,3dbd)">$VAR[value_codec3dbd0]</value>
+	</variable>
+	<variable name="Furniture_VideoCodec1">
+		<value condition="![substring(ListItem(1).Filenameandpath,bluray) | substring(ListItem(1).Filenameandpath,blu-ray) | substring(ListItem(1).Filenameandpath,bdrip) | substring(ListItem(1).Filenameandpath,hdtv) | substring(ListItem(1).Filenameandpath,web) | substring(ListItem(1).Filenameandpath,dvd) | substring(ListItem(1).Filenameandpath,3dbd) | substring(ListItem(1).Filenameandpath,.iso,Right) | substring(ListItem(1).Filenameandpath,.ifo,Right) | substring(ListItem(1).Filenameandpath,web)]">$VAR[value_codecdefault1]</value>
+		<value condition="substring(ListItem(1).Filenameandpath,bluray) | substring(ListItem(1).Filenameandpath,blu-ray) | substring(ListItem(1).Filenameandpath,bdrip)">$VAR[value_codecbluray1]</value>
+		<value condition="substring(ListItem(1).Filenameandpath,web)">$VAR[value_codecwebtv1]</value>
+		<value condition="substring(ListItem(1).Filenameandpath,hdtv)">$VAR[value_codechdtv1]</value>
+		<value condition="substring(ListItem(1).Filenameandpath,dvd) | substring(ListItem(1).Filenameandpath,.ifo,Right) | substring(ListItem(1).Filenameandpath,.iso,Right) + ![substring(ListItem(1).Filenameandpath,bluray) | substring(ListItem(1).Filenameandpath,3dbd)]">$VAR[value_codecdvd1]</value>
+		<value condition="substring(ListItem(1).Filenameandpath,3dbd)">$VAR[value_codec3dbd1]</value>
+	</variable>
+	<variable name="Furniture_VideoCodec2">
+		<value condition="![substring(ListItem(2).Filenameandpath,bluray) | substring(ListItem(2).Filenameandpath,blu-ray) | substring(ListItem(2).Filenameandpath,bdrip) | substring(ListItem(2).Filenameandpath,hdtv) | substring(ListItem(2).Filenameandpath,web) | substring(ListItem(2).Filenameandpath,dvd) | substring(ListItem(2).Filenameandpath,3dbd) | substring(ListItem(2).Filenameandpath,.iso,Right) | substring(ListItem(2).Filenameandpath,.ifo,Right) | substring(ListItem(2).Filenameandpath,web)]">$VAR[value_codecdefault2]</value>
+		<value condition="substring(ListItem(2).Filenameandpath,bluray) | substring(ListItem(2).Filenameandpath,blu-ray) | substring(ListItem(2).Filenameandpath,bdrip)">$VAR[value_codecbluray2]</value>
+		<value condition="substring(ListItem(2).Filenameandpath,web)">$VAR[value_codecwebtv2]</value>
+		<value condition="substring(ListItem(2).Filenameandpath,hdtv)">$VAR[value_codechdtv2]</value>
+		<value condition="substring(ListItem(2).Filenameandpath,dvd) | substring(ListItem(2).Filenameandpath,.ifo,Right) | substring(ListItem(2).Filenameandpath,.iso,Right) + ![substring(ListItem(2).Filenameandpath,bluray) | substring(ListItem(2).Filenameandpath,3dbd)]">$VAR[value_codecdvd2]</value>
+		<value condition="substring(ListItem(2).Filenameandpath,3dbd)">$VAR[value_codec3dbd2]</value>
+	</variable>
+	<variable name="Furniture_VideoCodec3">
+		<value condition="![substring(ListItem(3).Filenameandpath,bluray) | substring(ListItem(3).Filenameandpath,blu-ray) | substring(ListItem(3).Filenameandpath,bdrip) | substring(ListItem(3).Filenameandpath,hdtv) | substring(ListItem(3).Filenameandpath,web) | substring(ListItem(3).Filenameandpath,dvd) | substring(ListItem(3).Filenameandpath,3dbd) | substring(ListItem(3).Filenameandpath,.iso,Right) | substring(ListItem(3).Filenameandpath,.ifo,Right) | substring(ListItem(3).Filenameandpath,web)]">$VAR[value_codecdefault3]</value>
+		<value condition="substring(ListItem(3).Filenameandpath,bluray) | substring(ListItem(3).Filenameandpath,blu-ray) | substring(ListItem(3).Filenameandpath,bdrip)">$VAR[value_codecbluray3]</value>
+		<value condition="substring(ListItem(3).Filenameandpath,web)">$VAR[value_codecwebtv3]</value>
+		<value condition="substring(ListItem(3).Filenameandpath,hdtv)">$VAR[value_codechdtv3]</value>
+		<value condition="substring(ListItem(3).Filenameandpath,dvd) | substring(ListItem(3).Filenameandpath,.ifo,Right) | substring(ListItem(3).Filenameandpath,.iso,Right) + ![substring(ListItem(3).Filenameandpath,bluray) | substring(ListItem(3).Filenameandpath,3dbd)]">$VAR[value_codecdvd3]</value>
+		<value condition="substring(ListItem(3).Filenameandpath,3dbd)">$VAR[value_codec3dbd3]</value>
+	</variable>
+	<variable name="Furniture_VideoCodec4">
+		<value condition="![substring(ListItem(4).Filenameandpath,bluray) | substring(ListItem(4).Filenameandpath,blu-ray) | substring(ListItem(4).Filenameandpath,bdrip) | substring(ListItem(4).Filenameandpath,hdtv) | substring(ListItem(4).Filenameandpath,web) | substring(ListItem(4).Filenameandpath,dvd) | substring(ListItem(4).Filenameandpath,3dbd) | substring(ListItem(4).Filenameandpath,.iso,Right) | substring(ListItem(4).Filenameandpath,.ifo,Right) | substring(ListItem(4).Filenameandpath,web)]">$VAR[value_codecdefault4]</value>
+		<value condition="substring(ListItem(4).Filenameandpath,bluray) | substring(ListItem(4).Filenameandpath,blu-ray) | substring(ListItem(4).Filenameandpath,bdrip)">$VAR[value_codecbluray4]</value>
+		<value condition="substring(ListItem(4).Filenameandpath,web)">$VAR[value_codecwebtv4]</value>
+		<value condition="substring(ListItem(4).Filenameandpath,hdtv)">$VAR[value_codechdtv4]</value>
+		<value condition="substring(ListItem(4).Filenameandpath,dvd) | substring(ListItem(4).Filenameandpath,.ifo,Right) | substring(ListItem(4).Filenameandpath,.iso,Right) + ![substring(ListItem(4).Filenameandpath,bluray) | substring(ListItem(4).Filenameandpath,3dbd)]">$VAR[value_codecdvd4]</value>
+		<value condition="substring(ListItem(4).Filenameandpath,3dbd)">$VAR[value_codec3dbd4]</value>
+	</variable>
+	<variable name="Furniture_VideoCodec5">
+		<value condition="![substring(ListItem(5).Filenameandpath,bluray) | substring(ListItem(5).Filenameandpath,blu-ray) | substring(ListItem(5).Filenameandpath,bdrip) | substring(ListItem(5).Filenameandpath,hdtv) | substring(ListItem(5).Filenameandpath,web) | substring(ListItem(5).Filenameandpath,dvd) | substring(ListItem(5).Filenameandpath,3dbd) | substring(ListItem(5).Filenameandpath,.iso,Right) | substring(ListItem(5).Filenameandpath,.ifo,Right) | substring(ListItem(5).Filenameandpath,web)]">$VAR[value_codecdefault5]</value>
+		<value condition="substring(ListItem(5).Filenameandpath,bluray) | substring(ListItem(5).Filenameandpath,blu-ray) | substring(ListItem(5).Filenameandpath,bdrip)">$VAR[value_codecbluray5]</value>
+		<value condition="substring(ListItem(5).Filenameandpath,web)">$VAR[value_codecwebtv5]</value>
+		<value condition="substring(ListItem(5).Filenameandpath,hdtv)">$VAR[value_codechdtv5]</value>
+		<value condition="substring(ListItem(5).Filenameandpath,dvd) | substring(ListItem(5).Filenameandpath,.ifo,Right) | substring(ListItem(5).Filenameandpath,.iso,Right) + ![substring(ListItem(5).Filenameandpath,bluray) | substring(ListItem(5).Filenameandpath,3dbd)]">$VAR[value_codecdvd5]</value>
+		<value condition="substring(ListItem(5).Filenameandpath,3dbd)">$VAR[value_codec3dbd5]</value>
+	</variable>
+	<variable name="Furniture_VideoCodec6">
+		<value condition="![substring(ListItem(6).Filenameandpath,bluray) | substring(ListItem(6).Filenameandpath,blu-ray) | substring(ListItem(6).Filenameandpath,bdrip) | substring(ListItem(6).Filenameandpath,hdtv) | substring(ListItem(6).Filenameandpath,web) | substring(ListItem(6).Filenameandpath,dvd) | substring(ListItem(6).Filenameandpath,3dbd) | substring(ListItem(6).Filenameandpath,.iso,Right) | substring(ListItem(6).Filenameandpath,.ifo,Right) | substring(ListItem(6).Filenameandpath,web)]">$VAR[value_codecdefault6]</value>
+		<value condition="substring(ListItem(6).Filenameandpath,bluray) | substring(ListItem(6).Filenameandpath,blu-ray) | substring(ListItem(6).Filenameandpath,bdrip)">$VAR[value_codecbluray6]</value>
+		<value condition="substring(ListItem(6).Filenameandpath,web)">$VAR[value_codecwebtv6]</value>
+		<value condition="substring(ListItem(6).Filenameandpath,hdtv)">$VAR[value_codechdtv6]</value>
+		<value condition="substring(ListItem(6).Filenameandpath,dvd) | substring(ListItem(6).Filenameandpath,.ifo,Right) | substring(ListItem(6).Filenameandpath,.iso,Right) + ![substring(ListItem(6).Filenameandpath,bluray) | substring(ListItem(6).Filenameandpath,3dbd)]">$VAR[value_codecdvd6]</value>
+		<value condition="substring(ListItem(6).Filenameandpath,3dbd)">$VAR[value_codec3dbd6]</value>
+	</variable>
+	<variable name="Furniture_VideoCodec7">
+		<value condition="![substring(ListItem(7).Filenameandpath,bluray) | substring(ListItem(7).Filenameandpath,blu-ray) | substring(ListItem(7).Filenameandpath,bdrip) | substring(ListItem(7).Filenameandpath,hdtv) | substring(ListItem(7).Filenameandpath,web) | substring(ListItem(7).Filenameandpath,dvd) | substring(ListItem(7).Filenameandpath,3dbd) | substring(ListItem(7).Filenameandpath,.iso,Right) | substring(ListItem(7).Filenameandpath,.ifo,Right) | substring(ListItem(7).Filenameandpath,web)]">$VAR[value_codecdefault7]</value>
+		<value condition="substring(ListItem(7).Filenameandpath,bluray) | substring(ListItem(7).Filenameandpath,blu-ray) | substring(ListItem(7).Filenameandpath,bdrip)">$VAR[value_codecbluray7]</value>
+		<value condition="substring(ListItem(7).Filenameandpath,web)">$VAR[value_codecwebtv7]</value>
+		<value condition="substring(ListItem(7).Filenameandpath,hdtv)">$VAR[value_codechdtv7]</value>
+		<value condition="substring(ListItem(7).Filenameandpath,dvd) | substring(ListItem(7).Filenameandpath,.ifo,Right) | substring(ListItem(7).Filenameandpath,.iso,Right) + ![substring(ListItem(7).Filenameandpath,bluray) | substring(ListItem(7).Filenameandpath,3dbd)]">$VAR[value_codecdvd7]</value>
+		<value condition="substring(ListItem(7).Filenameandpath,3dbd)">$VAR[value_codec3dbd7]</value>
+	</variable>
+	
+	<!-- ######################################################################### Variable Boxes Collection ######################################################################### -->
+	<variable name="Furniture_VideoCase-7">
+		<value condition="substring(ListItem(-7).Filenameandpath,bluray) | substring(ListItem(-7).Filenameandpath,blu-ray) | substring(ListItem(-7).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(-7).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(-7).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(-7).Filenameandpath,dvd) | substring(ListItem(-7).Filenameandpath,.ifo,Right) | substring(ListItem(-7).Filenameandpath,.iso,Right) + ![substring(ListItem(-7).Filenameandpath,bluray) | substring(ListItem(-7).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(-7).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(-7).Filenameandpath,bluray) | substring(ListItem(-7).Filenameandpath,blu-ray) | substring(ListItem(-7).Filenameandpath,bdrip) | substring(ListItem(-7).Filenameandpath,hddvd) | substring(ListItem(-7).Filenameandpath,dvd) | substring(ListItem(-7).Filenameandpath,.ifo,Right) | substring(ListItem(-7).Filenameandpath,.iso,Right) | substring(ListItem(-7).Filenameandpath,3dbd) | substring(ListItem(-7).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+	<variable name="Furniture_VideoCase-6">
+		<value condition="substring(ListItem(-6).Filenameandpath,bluray) | substring(ListItem(-6).Filenameandpath,blu-ray) | substring(ListItem(-6).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(-6).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(-6).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(-6).Filenameandpath,dvd) | substring(ListItem(-6).Filenameandpath,.ifo,Right) | substring(ListItem(-6).Filenameandpath,.iso,Right) + ![substring(ListItem(-6).Filenameandpath,bluray) | substring(ListItem(-6).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(-6).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(-6).Filenameandpath,bluray) | substring(ListItem(-6).Filenameandpath,blu-ray) | substring(ListItem(-6).Filenameandpath,bdrip) | substring(ListItem(-6).Filenameandpath,hddvd) | substring(ListItem(-6).Filenameandpath,dvd) | substring(ListItem(-6).Filenameandpath,.ifo,Right) | substring(ListItem(-6).Filenameandpath,.iso,Right) | substring(ListItem(-6).Filenameandpath,3dbd) | substring(ListItem(-6).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+	<variable name="Furniture_VideoCase-5">
+		<value condition="substring(ListItem(-5).Filenameandpath,bluray) | substring(ListItem(-5).Filenameandpath,blu-ray) | substring(ListItem(-5).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(-5).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(-5).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(-5).Filenameandpath,dvd) | substring(ListItem(-5).Filenameandpath,.ifo,Right) | substring(ListItem(-5).Filenameandpath,.iso,Right) + ![substring(ListItem(-5).Filenameandpath,bluray) | substring(ListItem(-5).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(-5).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(-5).Filenameandpath,bluray) | substring(ListItem(-5).Filenameandpath,blu-ray) | substring(ListItem(-5).Filenameandpath,bdrip) | substring(ListItem(-5).Filenameandpath,hddvd) | substring(ListItem(-5).Filenameandpath,dvd) | substring(ListItem(-5).Filenameandpath,.ifo,Right) | substring(ListItem(-5).Filenameandpath,.iso,Right) | substring(ListItem(-5).Filenameandpath,3dbd) | substring(ListItem(-5).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+  <variable name="Furniture_VideoCase-4">
+		<value condition="substring(ListItem(-4).Filenameandpath,bluray) | substring(ListItem(-4).Filenameandpath,blu-ray) | substring(ListItem(-4).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(-4).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(-4).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(-4).Filenameandpath,dvd) | substring(ListItem(-4).Filenameandpath,.ifo,Right) | substring(ListItem(-4).Filenameandpath,.iso,Right) + ![substring(ListItem(-4).Filenameandpath,bluray) | substring(ListItem(-4).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(-4).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(-4).Filenameandpath,bluray) | substring(ListItem(-4).Filenameandpath,blu-ray) | substring(ListItem(-4).Filenameandpath,bdrip) | substring(ListItem(-4).Filenameandpath,hddvd) | substring(ListItem(-4).Filenameandpath,dvd) | substring(ListItem(-4).Filenameandpath,.ifo,Right) | substring(ListItem(-4).Filenameandpath,.iso,Right) | substring(ListItem(-4).Filenameandpath,3dbd) | substring(ListItem(-4).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+	<variable name="Furniture_VideoCase-3">
+		<value condition="substring(ListItem(-3).Filenameandpath,bluray) | substring(ListItem(-3).Filenameandpath,blu-ray) | substring(ListItem(-3).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(-3).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(-3).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(-3).Filenameandpath,dvd) | substring(ListItem(-3).Filenameandpath,.ifo,Right) | substring(ListItem(-3).Filenameandpath,.iso,Right) + ![substring(ListItem(-3).Filenameandpath,bluray) | substring(ListItem(-3).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(-3).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(-3).Filenameandpath,bluray) | substring(ListItem(-3).Filenameandpath,blu-ray) | substring(ListItem(-3).Filenameandpath,bdrip) | substring(ListItem(-3).Filenameandpath,hddvd) | substring(ListItem(-3).Filenameandpath,dvd) | substring(ListItem(-3).Filenameandpath,.ifo,Right) | substring(ListItem(-3).Filenameandpath,.iso,Right) | substring(ListItem(-3).Filenameandpath,3dbd) | substring(ListItem(-3).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+	<variable name="Furniture_VideoCase-2">
+		<value condition="substring(ListItem(-2).Filenameandpath,bluray) | substring(ListItem(-2).Filenameandpath,blu-ray) | substring(ListItem(-2).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(-2).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(-2).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(-2).Filenameandpath,dvd) | substring(ListItem(-2).Filenameandpath,.ifo,Right) | substring(ListItem(-2).Filenameandpath,.iso,Right) + ![substring(ListItem(-2).Filenameandpath,bluray) | substring(ListItem(-2).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(-2).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(-2).Filenameandpath,bluray) | substring(ListItem(-2).Filenameandpath,blu-ray) | substring(ListItem(-2).Filenameandpath,bdrip) | substring(ListItem(-2).Filenameandpath,hddvd) | substring(ListItem(-2).Filenameandpath,dvd) | substring(ListItem(-2).Filenameandpath,.ifo,Right) | substring(ListItem(-2).Filenameandpath,.iso,Right) | substring(ListItem(-2).Filenameandpath,3dbd) | substring(ListItem(-2).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+	<variable name="Furniture_VideoCase-1">
+		<value condition="substring(ListItem(-1).Filenameandpath,bluray) | substring(ListItem(-1).Filenameandpath,blu-ray) | substring(ListItem(-1).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(-1).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(-1).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(-1).Filenameandpath,dvd) | substring(ListItem(-1).Filenameandpath,.ifo,Right) | substring(ListItem(-1).Filenameandpath,.iso,Right) + ![substring(ListItem(-1).Filenameandpath,bluray) | substring(ListItem(-1).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(-1).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(-1).Filenameandpath,bluray) | substring(ListItem(-1).Filenameandpath,blu-ray) | substring(ListItem(-1).Filenameandpath,bdrip) | substring(ListItem(-1).Filenameandpath,hddvd) | substring(ListItem(-1).Filenameandpath,dvd) | substring(ListItem(-1).Filenameandpath,.ifo,Right) | substring(ListItem(-1).Filenameandpath,.iso,Right) | substring(ListItem(-1).Filenameandpath,3dbd) | substring(ListItem(-1).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+	<variable name="Furniture_VideoCase0">
+		<value condition="substring(ListItem(0).Filenameandpath,bluray) | substring(ListItem(0).Filenameandpath,blu-ray) | substring(ListItem(0).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(0).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(0).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(0).Filenameandpath,dvd) | substring(ListItem(0).Filenameandpath,.ifo,Right) | substring(ListItem(0).Filenameandpath,.iso,Right) + ![substring(ListItem(0).Filenameandpath,bluray) | substring(ListItem(0).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(0).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(0).Filenameandpath,bluray) | substring(ListItem(0).Filenameandpath,blu-ray) | substring(ListItem(0).Filenameandpath,bdrip) | substring(ListItem(0).Filenameandpath,hddvd) | substring(ListItem(0).Filenameandpath,dvd) | substring(ListItem(0).Filenameandpath,.ifo,Right) | substring(ListItem(0).Filenameandpath,.iso,Right) | substring(ListItem(0).Filenameandpath,3dbd) | substring(ListItem(0).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+	<variable name="Furniture_VideoCase1">
+		<value condition="substring(ListItem(1).Filenameandpath,bluray) | substring(ListItem(1).Filenameandpath,blu-ray) | substring(ListItem(1).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(1).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(1).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(1).Filenameandpath,dvd) | substring(ListItem(1).Filenameandpath,.ifo,Right) | substring(ListItem(1).Filenameandpath,.iso,Right) + ![substring(ListItem(1).Filenameandpath,bluray) | substring(ListItem(1).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(1).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(1).Filenameandpath,bluray) | substring(ListItem(1).Filenameandpath,blu-ray) | substring(ListItem(1).Filenameandpath,bdrip) | substring(ListItem(1).Filenameandpath,hddvd) | substring(ListItem(1).Filenameandpath,dvd) | substring(ListItem(1).Filenameandpath,.ifo,Right) | substring(ListItem(1).Filenameandpath,.iso,Right) | substring(ListItem(1).Filenameandpath,3dbd) | substring(ListItem(1).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+	<variable name="Furniture_VideoCase2">
+		<value condition="substring(ListItem(2).Filenameandpath,bluray) | substring(ListItem(2).Filenameandpath,blu-ray) | substring(ListItem(2).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(2).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(2).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(2).Filenameandpath,dvd) | substring(ListItem(2).Filenameandpath,.ifo,Right) | substring(ListItem(2).Filenameandpath,.iso,Right) + ![substring(ListItem(2).Filenameandpath,bluray) | substring(ListItem(2).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(2).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(2).Filenameandpath,bluray) | substring(ListItem(2).Filenameandpath,blu-ray) | substring(ListItem(2).Filenameandpath,bdrip) | substring(ListItem(2).Filenameandpath,hddvd) | substring(ListItem(2).Filenameandpath,dvd) | substring(ListItem(2).Filenameandpath,.ifo,Right) | substring(ListItem(2).Filenameandpath,.iso,Right) | substring(ListItem(2).Filenameandpath,3dbd) | substring(ListItem(2).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+	<variable name="Furniture_VideoCase3">
+		<value condition="substring(ListItem(3).Filenameandpath,bluray) | substring(ListItem(3).Filenameandpath,blu-ray) | substring(ListItem(3).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(3).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(3).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(3).Filenameandpath,dvd) | substring(ListItem(3).Filenameandpath,.ifo,Right) | substring(ListItem(3).Filenameandpath,.iso,Right) + ![substring(ListItem(3).Filenameandpath,bluray) | substring(ListItem(3).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(3).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(3).Filenameandpath,bluray) | substring(ListItem(3).Filenameandpath,blu-ray) | substring(ListItem(3).Filenameandpath,bdrip) | substring(ListItem(3).Filenameandpath,hddvd) | substring(ListItem(3).Filenameandpath,dvd) | substring(ListItem(3).Filenameandpath,.ifo,Right) | substring(ListItem(3).Filenameandpath,.iso,Right) | substring(ListItem(3).Filenameandpath,3dbd) | substring(ListItem(3).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+	<variable name="Furniture_VideoCase4">
+		<value condition="substring(ListItem(4).Filenameandpath,bluray) | substring(ListItem(4).Filenameandpath,blu-ray) | substring(ListItem(4).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(4).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(4).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(4).Filenameandpath,dvd) | substring(ListItem(4).Filenameandpath,.ifo,Right) | substring(ListItem(4).Filenameandpath,.iso,Right) + ![substring(ListItem(4).Filenameandpath,bluray) | substring(ListItem(4).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(4).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(4).Filenameandpath,bluray) | substring(ListItem(4).Filenameandpath,blu-ray) | substring(ListItem(4).Filenameandpath,bdrip) | substring(ListItem(4).Filenameandpath,hddvd) | substring(ListItem(4).Filenameandpath,dvd) | substring(ListItem(4).Filenameandpath,.ifo,Right) | substring(ListItem(4).Filenameandpath,.iso,Right) | substring(ListItem(4).Filenameandpath,3dbd) | substring(ListItem(4).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+	<variable name="Furniture_VideoCase5">
+		<value condition="substring(ListItem(5).Filenameandpath,bluray) | substring(ListItem(5).Filenameandpath,blu-ray) | substring(ListItem(5).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(5).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(5).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(5).Filenameandpath,dvd) | substring(ListItem(5).Filenameandpath,.ifo,Right) | substring(ListItem(5).Filenameandpath,.iso,Right) + ![substring(ListItem(5).Filenameandpath,bluray) | substring(ListItem(5).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(5).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(5).Filenameandpath,bluray) | substring(ListItem(5).Filenameandpath,blu-ray) | substring(ListItem(5).Filenameandpath,bdrip) | substring(ListItem(5).Filenameandpath,hddvd) | substring(ListItem(5).Filenameandpath,dvd) | substring(ListItem(5).Filenameandpath,.ifo,Right) | substring(ListItem(5).Filenameandpath,.iso,Right) | substring(ListItem(5).Filenameandpath,3dbd) | substring(ListItem(5).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+	<variable name="Furniture_VideoCase6">
+		<value condition="substring(ListItem(6).Filenameandpath,bluray) | substring(ListItem(6).Filenameandpath,blu-ray) | substring(ListItem(6).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(6).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(6).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(6).Filenameandpath,dvd) | substring(ListItem(6).Filenameandpath,.ifo,Right) | substring(ListItem(6).Filenameandpath,.iso,Right) + ![substring(ListItem(6).Filenameandpath,bluray) | substring(ListItem(6).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(6).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(6).Filenameandpath,bluray) | substring(ListItem(6).Filenameandpath,blu-ray) | substring(ListItem(6).Filenameandpath,bdrip) | substring(ListItem(6).Filenameandpath,hddvd) | substring(ListItem(6).Filenameandpath,dvd) | substring(ListItem(6).Filenameandpath,.ifo,Right) | substring(ListItem(6).Filenameandpath,.iso,Right) | substring(ListItem(6).Filenameandpath,3dbd) | substring(ListItem(6).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+	<variable name="Furniture_VideoCase7">
+		<value condition="substring(ListItem(7).Filenameandpath,bluray) | substring(ListItem(7).Filenameandpath,blu-ray) | substring(ListItem(7).Filenameandpath,bdrip)">$VAR[value_colorbluraycase]</value>
+		<value condition="substring(ListItem(7).Filenameandpath,web)">$VAR[value_colorwebtvcase]</value>
+		<value condition="substring(ListItem(7).Filenameandpath,hdtv)">$VAR[value_colorhdtvcase]</value>
+		<value condition="substring(ListItem(7).Filenameandpath,dvd) | substring(ListItem(7).Filenameandpath,.ifo,Right) | substring(ListItem(7).Filenameandpath,.iso,Right) + ![substring(ListItem(7).Filenameandpath,bluray) | substring(ListItem(7).Filenameandpath,3dbd)]">$VAR[value_colordvdcase]</value>
+		<value condition="substring(ListItem(7).Filenameandpath,3dbd)">$VAR[value_color3dbdcase]</value>
+		<value condition="![substring(ListItem(7).Filenameandpath,bluray) | substring(ListItem(7).Filenameandpath,blu-ray) | substring(ListItem(7).Filenameandpath,bdrip) | substring(ListItem(7).Filenameandpath,hddvd) | substring(ListItem(7).Filenameandpath,dvd) | substring(ListItem(7).Filenameandpath,.ifo,Right) | substring(ListItem(7).Filenameandpath,.iso,Right) | substring(ListItem(7).Filenameandpath,3dbd) | substring(ListItem(7).Filenameandpath,web)]">$VAR[value_colordefaultcase]</value>
+	</variable>
+
+  <!-- ######################################################################### Variable Video Codec ######################################################################### -->
+  <variable name="Furniture_VideoCodec">
+	  <value condition="![substring(ListItem.Filenameandpath,bluray) | substring(ListItem.Filenameandpath,blu-ray) | substring(ListItem.Filenameandpath,bdrip) | substring(ListItem.Filenameandpath,hdtv) | substring(ListItem.Filenameandpath,web) | substring(ListItem.Filenameandpath,dvd) | substring(ListItem.Filenameandpath,3dbd) | substring(ListItem.Filenameandpath,.iso,Right) | substring(ListItem.Filenameandpath,.ifo,Right) | substring(ListItem.Filenameandpath,web)]">$INFO[ListItem.VideoCodec,flags/videocodec/,.png]</value>
+		<value condition="substring(ListItem.Filenameandpath,bluray) | substring(ListItem.Filenameandpath,blu-ray) | substring(ListItem.Filenameandpath,bdrip)">flags/source/bluray.png</value>
+		<value condition="substring(ListItem.Filenameandpath,web)">flags/source/webtv.png</value>
+		<value condition="substring(ListItem.Filenameandpath,hdtv)">flags/source/hdtv.png</value>
+		<value condition="substring(ListItem.Filenameandpath,dvd) | substring(ListItem.Filenameandpath,.ifo,Right) | substring(ListItem.Filenameandpath,.iso,Right) + ![substring(ListItem.Filenameandpath,bluray) | substring(ListItem.Filenameandpath,3dbd)]">flags/source/dvd.png</value>
+		<value condition="substring(ListItem.Filenameandpath,3dbd)">flags/source/3dbd.png</value>
+	</variable>
+	
+	<!-- ######################################################################### Variable Video Codec Full Screen ######################################################################### -->
+  <variable name="Furniture_VideoCodecInfo">
+ 	  <value condition="![substring(Player.Filenameandpath,bluray) | substring(Player.Filenameandpath,blu-ray) | substring(Player.Filenameandpath,bdrip) | substring(Player.Filenameandpath,hdtv) | substring(Player.Filenameandpath,web) | substring(Player.Filenameandpath,dvd) | substring(Player.Filenameandpath,3dbd) | substring(Player.Filenameandpath,.iso,Right) | substring(Player.Filenameandpath,.ifo,Right) | substring(Player.Filenameandpath,web)]">$INFO[VideoPlayer.VideoCodec,flags/videocodec/,.png]</value>
+		<value condition="substring(Player.Filenameandpath,bluray) | substring(Player.Filenameandpath,blu-ray) | substring(Player.Filenameandpath,bdrip)">$VAR[value_codecbluray]</value>
+		<value condition="substring(Player.Filenameandpath,web)">flags/source/webtv.png</value>
+		<value condition="substring(Player.Filenameandpath,hdtv)">flags/source/hdtv.png</value>
+		<value condition="substring(Player.Filenameandpath,dvd) | substring(Player.Filenameandpath,.ifo,Right) | substring(Player.Filenameandpath,.iso,Right) + ![substring(Player.Filenameandpath,bluray) | substring(Player.Filenameandpath,3dbd)]">flags/source/dvd.png</value>
+		<value condition="substring(Player.Filenameandpath,3dbd)">flags/source/3dbd.png</value>
+	</variable>
+	
+	<!-- ######################################################################### Variable Audio Language ######################################################################### -->
+  <variable name="Furniture_AudioLanguage">
+		<value condition="substring(ListItem.AudioLanguage,cho)">cho</value><!--Chinese-->
+		<value condition="substring(ListItem.AudioLanguage,ces)">ces</value><!--Czech-->
+		<value condition="substring(ListItem.AudioLanguage,dan)">dan</value><!--Danish-->
+		<value condition="substring(ListItem.AudioLanguage,nld)">nld</value><!--Dutch-->
+		<value condition="substring(ListItem.AudioLanguage,eng)">eng</value><!--English-->
+		<value condition="substring(ListItem.AudioLanguage,deu)">deu</value><!--German-->
+		<value condition="substring(ListItem.AudioLanguage,hun)">hun</value><!--Hungarian-->
+		<value condition="substring(ListItem.AudioLanguage,ita)">ita</value><!--Italian-->
+		<value condition="substring(ListItem.AudioLanguage,kor)">kor</value><!--Korean-->
+		<value condition="substring(ListItem.AudioLanguage,pol)">pol</value><!--Polish-->
+		<value condition="substring(ListItem.AudioLanguage,por)">por</value><!--Portuguese-->
+		<value condition="substring(ListItem.AudioLanguage,ron)">ron</value><!--Romanian-->
+		<value condition="substring(ListItem.AudioLanguage,rus)">rus</value><!--Russian-->
+		<value condition="substring(ListItem.AudioLanguage,spa)">spa</value><!--Spanish-->
+		<value condition="substring(ListItem.AudioLanguage,srp)">srp</value><!--Serbian-->
+		<value condition="substring(ListItem.AudioLanguage,swe)">swe</value><!--Swedish-->
+		<value condition="substring(ListItem.AudioLanguage,tha)">tha</value><!--Thai-->
+		<value condition="substring(ListItem.AudioLanguage,fre)">fre</value><!--French-->
+		<value condition="substring(ListItem.AudioLanguage,ger)">ger</value><!--German-->
+		<value condition="substring(ListItem.AudioLanguage,jpn)">jpn</value><!--Japanese-->
+	</variable>
+
+  <!-- ######################################################################### Variable Rating Flags ######################################################################### -->
+  <variable name="Furniture_VideoRating">
+    <value condition="substring(ListItem.Mpaa,Rated NR) | substring(ListItem.Mpaa,Rated: NR)">flags/rating/MPAA_NR_Certificate_US.png</value>
+		<value condition="substring(ListItem.Mpaa,Rated G) | substring(ListItem.Mpaa,Rated: G)">flags/rating/MPAA_G_Certificate_US.png</value>
+		<value condition="[substring(ListItem.Mpaa,Rated PG) | substring(ListItem.Mpaa,Rated: PG)] + !substring(ListItem.Mpaa,Rated PG-13) + !substring(ListItem.Mpaa,Rated: PG-13)">flags/rating/MPAA_PG_Certificate_US.png</value>
+		<value condition="substring(ListItem.Mpaa,Rated PG-13) | substring(ListItem.Mpaa,Rated: PG-13)">flags/rating/MPAA_PG-13_Certificate_US.png</value>
+		<value condition="substring(ListItem.Mpaa,Rated R) | substring(ListItem.Mpaa,Rated: R)">flags/rating/MPAA_R_Certificate_US.png</value>
+		<value condition="substring(ListItem.Mpaa,Rated NC-17) | substring(ListItem.Mpaa,Rated: NC-17)">flags/rating/MPAA_NC-17_Certificate_US.png</value>
+		<value condition="StringCompare(ListItem.Mpaa,UK:U)">flags/rating/BBFC_U_Certificate_UK.png</value>
+		<!--<value condition="StringCompare(ListItem.Mpaa,UK:UC)">flags/rating/BBFC_UC_Certificate_UK.png</value>-->
+		<value condition="StringCompare(ListItem.Mpaa,UK:PG)">flags/rating/BBFC_PG_Certificate_UK.png</value>
+		<value condition="StringCompare(ListItem.Mpaa,UK:12)">flags/rating/BBFC_12_Certificate_UK.png</value>
+		<value condition="StringCompare(ListItem.Mpaa,UK:12A)">flags/rating/BBFC_12A_Certificate_UK.png</value>
+		<value condition="StringCompare(ListItem.Mpaa,UK:15)">flags/rating/BBFC_15_Certificate_UK.png</value>
+		<value condition="StringCompare(ListItem.Mpaa,UK:18)">flags/rating/BBFC_18_Certificate_UK.png</value>
+		<!--<value condition="StringCompare(ListItem.Mpaa,UK:R18)">flags/rating/BBFC_R18_Certificate_UK.png</value>-->
+		<value condition="substring(ListItem.mpaa,Brazil:Livre) | substring(ListItem.mpaa,Livre)">flags/rating/MPAA_Brazil_Livre.png</value>
+		<value condition="substring(ListItem.mpaa,Brazil:10) | substring(ListItem.mpaa,10 anos)">flags/rating/MPAA_Brazil_10.png</value>
+		<value condition="substring(ListItem.mpaa,Brazil:12) | substring(ListItem.mpaa,12 anos)">flags/rating/MPAA_Brazil_12.png</value>
+		<value condition="substring(ListItem.mpaa,Brazil:14) | substring(ListItem.mpaa,14 anos)">flags/rating/MPAA_Brazil_14.png</value>
+		<value condition="substring(ListItem.mpaa,Brazil:16) | substring(ListItem.mpaa,16 anos)">flags/rating/MPAA_Brazil_16.png</value>
+		<value condition="substring(ListItem.mpaa,Brazil:18) | substring(ListItem.mpaa,18 anos)">flags/rating/MPAA_Brazil_18.png</value>
+		<value condition="substring(ListItem.Mpaa,TV-G)">flags/rating/TV-G_Certificate_US.png</value>
+		<value condition="substring(ListItem.Mpaa,TV-PG)">flags/rating/TV-PG_Certificate_US.png</value>
+		<value condition="substring(ListItem.Mpaa,TV-14)">flags/rating/TV-14_Certificate_US.png</value>
+		<value condition="substring(ListItem.Mpaa,TV-MA)">flags/rating/TV-MA_Certificate_US.png</value>
+		<value condition="substring(ListItem.mpaa,FSK0) | substring(ListItem.mpaa,FSK 0) | substring(ListItem.mpaa,FSK o.A.) | substring(ListItem.mpaa,o.A.) | substring(ListItem.mpaa,ab 0) | substring(ListItem.mpaa,Germany:0) | substring(ListItem.mpaa,Germany:o.Al.)">flags/rating/FSK-0.png</value>
+		<value condition="substring(ListItem.mpaa,FSK6) | substring(ListItem.mpaa,FSK 6) | substring(ListItem.mpaa,ab 6) | substring(ListItem.mpaa,Germany:6)">flags/rating/FSK-6.png</value>
+		<value condition="substring(ListItem.mpaa,FSK12) | substring(ListItem.mpaa,FSK 12) | substring(ListItem.mpaa,ab 12) | substring(ListItem.mpaa,Germany:12)">flags/rating/FSK-12.png</value>
+		<value condition="substring(ListItem.mpaa,FSK16) | substring(ListItem.mpaa,FSK 16) | substring(ListItem.mpaa,ab 16) | substring(ListItem.mpaa,Germany:16)">flags/rating/FSK-16.png</value>
+		<value condition="substring(ListItem.mpaa,FSK18) | substring(ListItem.mpaa,FSK 18) | substring(ListItem.mpaa,ab 18) | substring(ListItem.mpaa,Germany:18)">flags/rating/FSK-18.png</value>
+		<value condition="substring(ListItem.Mpaa,HU-KN)">flags/rating/HU_KN.png</value>
+		<value condition="substring(ListItem.Mpaa,HU-12)">flags/rating/HU_12.png</value>
+		<value condition="substring(ListItem.Mpaa,HU-16)">flags/rating/HU_16.png</value>
+		<value condition="substring(ListItem.Mpaa,HU-18)">flags/rating/HU_18.png</value>
+        <value condition="substring(ListItem.mpaa,전체)">flags/rating/KR_Certificate_All.png</value>
+        <value condition="substring(ListItem.mpaa,12세)">flags/rating/KR_Certificate_12.png</value>
+        <value condition="substring(ListItem.mpaa,15세)">flags/rating/KR_Certificate_15.png</value>
+        <value condition="substring(ListItem.mpaa,불가)">flags/rating/KR_Certificate_18.png</value>
+        <value condition="substring(ListItem.mpaa,제한)">flags/rating/KR_Certificate_R.png</value>
+	</variable>
+	
+	<!-- ######################################################################### Variable Rating Flags Full Screen ######################################################################### -->
+  <variable name="Furniture_VideoRatingFS">
+    <value condition="substring(Videoplayer.Mpaa,Rated NR) | substring(Videoplayer.Mpaa,Rated: NR)">flags/rating/MPAA_NR_Certificate_US.png</value>
+		<value condition="substring(Videoplayer.Mpaa,Rated G) | substring(Videoplayer.Mpaa,Rated: G)">flags/rating/MPAA_G_Certificate_US.png</value>
+		<value condition="[substring(Videoplayer.Mpaa,Rated PG) | substring(Videoplayer.Mpaa,Rated: PG)] + !substring(Videoplayer.Mpaa,Rated PG-13) + !substring(Videoplayer.Mpaa,Rated: PG-13)">flags/rating/MPAA_PG_Certificate_US.png</value>
+		<value condition="substring(Videoplayer.Mpaa,Rated PG-13) | substring(Videoplayer.Mpaa,Rated: PG-13)">flags/rating/MPAA_PG-13_Certificate_US.png</value>
+		<value condition="substring(Videoplayer.Mpaa,Rated R) | substring(Videoplayer.Mpaa,Rated: R)">flags/rating/MPAA_R_Certificate_US.png</value>
+		<value condition="substring(Videoplayer.Mpaa,Rated NC-17) | substring(Videoplayer.Mpaa,Rated: NC-17)">flags/rating/MPAA_NC-17_Certificate_US.png</value>
+		<value condition="StringCompare(Videoplayer.Mpaa,UK:U)">flags/rating/BBFC_U_Certificate_UK.png</value>
+		<!--<value condition="StringCompare(Videoplayer.Mpaa,UK:UC)">flags/rating/BBFC_UC_Certificate_UK.png</value>-->
+		<value condition="StringCompare(Videoplayer.Mpaa,UK:PG)">flags/rating/BBFC_PG_Certificate_UK.png</value>
+		<value condition="StringCompare(Videoplayer.Mpaa,UK:12)">flags/rating/BBFC_12_Certificate_UK.png</value>
+		<value condition="StringCompare(Videoplayer.Mpaa,UK:12A)">flags/rating/BBFC_12A_Certificate_UK.png</value>
+		<value condition="StringCompare(Videoplayer.Mpaa,UK:15)">flags/rating/BBFC_15_Certificate_UK.png</value>
+		<value condition="StringCompare(Videoplayer.Mpaa,UK:18)">flags/rating/BBFC_18_Certificate_UK.png</value>
+		<!--<value condition="StringCompare(Videoplayer.Mpaa,UK:R18)">flags/rating/BBFC_R18_Certificate_UK.png</value>-->
+		<value condition="substring(Videoplayer.mpaa,Brazil:Livre) | substring(Videoplayer.mpaa,Livre)">flags/rating/MPAA_Brazil_Livre.png</value>
+		<value condition="substring(Videoplayer.mpaa,Brazil:10) | substring(Videoplayer.mpaa,10 anos)">flags/rating/MPAA_Brazil_10.png</value>
+		<value condition="substring(Videoplayer.mpaa,Brazil:12) | substring(Videoplayer.mpaa,12 anos)">flags/rating/MPAA_Brazil_12.png</value>
+		<value condition="substring(Videoplayer.mpaa,Brazil:14) | substring(Videoplayer.mpaa,14 anos)">flags/rating/MPAA_Brazil_14.png</value>
+		<value condition="substring(Videoplayer.mpaa,Brazil:16) | substring(Videoplayer.mpaa,16 anos)">flags/rating/MPAA_Brazil_16.png</value>
+		<value condition="substring(Videoplayer.mpaa,Brazil:18) | substring(Videoplayer.mpaa,18 anos)">flags/rating/MPAA_Brazil_18.png</value>
+		<value condition="substring(Videoplayer.Mpaa,TV-G)">flags/rating/TV-G_Certificate_US.png</value>
+		<value condition="substring(Videoplayer.Mpaa,TV-PG)">flags/rating/TV-PG_Certificate_US.png</value>
+		<value condition="substring(Videoplayer.Mpaa,TV-14)">flags/rating/TV-14_Certificate_US.png</value>
+		<value condition="substring(Videoplayer.Mpaa,TV-MA)">flags/rating/TV-MA_Certificate_US.png</value>
+    <value condition="substring(Videoplayer.mpaa,FSK0) | substring(Videoplayer.mpaa,FSK 0) | substring(Videoplayer.mpaa,FSK o.A.) | substring(Videoplayer.mpaa,o.A.) | substring(Videoplayer.mpaa,ab 0) | substring(Videoplayer.mpaa,Germany:0) | substring(Videoplayer.mpaa,Germany:o.Al.)">flags/rating/FSK-0.png</value>
+    <value condition="substring(Videoplayer.mpaa,FSK6) | substring(Videoplayer.mpaa,FSK 6) | substring(Videoplayer.mpaa,ab 6) | substring(Videoplayer.mpaa,Germany:6)">flags/rating/FSK-6.png</value>
+    <value condition="substring(Videoplayer.mpaa,FSK12) | substring(Videoplayer.mpaa,FSK 12) | substring(Videoplayer.mpaa,ab 12) | substring(Videoplayer.mpaa,Germany:12)">flags/rating/FSK-12.png</value>
+    <value condition="substring(Videoplayer.mpaa,FSK16) | substring(Videoplayer.mpaa,FSK 16) | substring(Videoplayer.mpaa,ab 16) | substring(Videoplayer.mpaa,Germany:16)">flags/rating/FSK-16.png</value>
+    <value condition="substring(Videoplayer.mpaa,FSK18) | substring(Videoplayer.mpaa,FSK 18) | substring(Videoplayer.mpaa,ab 18) | substring(Videoplayer.mpaa,Germany:18)">flags/rating/FSK-18.png</value>
+        <value condition="substring(VideoPlayer.mpaa,전체)">flags/rating/KR_Certificate_All.png</value>
+        <value condition="substring(VideoPlayer.mpaa,12세)">flags/rating/KR_Certificate_12.png</value>
+        <value condition="substring(VideoPlayer.mpaa,15세)">flags/rating/KR_Certificate_15.png</value>
+        <value condition="substring(VideoPlayer.mpaa,불가)">flags/rating/KR_Certificate_18.png</value>
+        <value condition="substring(VideoPlayer.mpaa,제한)">flags/rating/KR_Certificate_R.png</value>
+	</variable>
+  
+  <!-- ######################################################################### Variable Rating Flags Info ######################################################################### -->
+  <variable name="Furniture_VideoRatingInfo">
+    <value condition="substring(ListItem.Mpaa,Rated NR) | substring(ListItem.Mpaa,Rated: NR)">flags/rating/mpaa_nr.png</value>
+		<value condition="substring(ListItem.Mpaa,Rated G) | substring(ListItem.Mpaa,Rated: G)">flags/rating/mpaa_g.png</value>
+		<value condition="[substring(ListItem.Mpaa,Rated PG) | substring(ListItem.Mpaa,Rated: PG)] + !substring(ListItem.Mpaa,Rated PG-13) + !substring(ListItem.Mpaa,Rated: PG-13)">flags/rating/mpaa_pg.png</value>
+		<value condition="substring(ListItem.Mpaa,Rated PG-13) | substring(ListItem.Mpaa,Rated: PG-13)">flags/rating/mpaa_pg13.png</value>
+		<value condition="substring(ListItem.Mpaa,Rated R) | substring(ListItem.Mpaa,Rated: R)">flags/rating/mpaa_restricted.png</value>
+		<value condition="substring(ListItem.Mpaa,Rated NC-17) | substring(ListItem.Mpaa,Rated: NC-17)">flags/rating/mpaa_nc17.png</value>
+		<value condition="StringCompare(ListItem.Mpaa,UK:U)">flags/rating/bbfc_u.png</value>
+		<value condition="StringCompare(ListItem.Mpaa,UK:PG)">flags/rating/bbfc_pg.png</value>
+		<value condition="StringCompare(ListItem.Mpaa,UK:12)">flags/rating/bbfc_12.png</value>
+		<value condition="StringCompare(ListItem.Mpaa,UK:12A)">flags/rating/bbfc_12a.png</value><!-- missing -->
+		<value condition="StringCompare(ListItem.Mpaa,UK:15)">flags/rating/bbfc_15.png</value>
+		<value condition="StringCompare(ListItem.Mpaa,UK:18)">flags/rating/bbfc_18.png</value>
+		<value condition="substring(ListItem.mpaa,Brazil:Livre) | substring(ListItem.mpaa,Livre)">flags/rating/MPAA_Brazil_Livre_info.png</value>
+		<value condition="substring(ListItem.mpaa,Brazil:10) | substring(ListItem.mpaa,10 anos)">flags/rating/MPAA_Brazil_10_info.png</value>
+		<value condition="substring(ListItem.mpaa,Brazil:12) | substring(ListItem.mpaa,12 anos)">flags/rating/MPAA_Brazil_12_info.png</value>
+		<value condition="substring(ListItem.mpaa,Brazil:14) | substring(ListItem.mpaa,14 anos)">flags/rating/MPAA_Brazil_14_info.png</value>
+		<value condition="substring(ListItem.mpaa,Brazil:16) | substring(ListItem.mpaa,16 anos)">flags/rating/MPAA_Brazil_16_info.png</value>
+		<value condition="substring(ListItem.mpaa,Brazil:18) | substring(ListItem.mpaa,18 anos)">flags/rating/MPAA_Brazil_18_info.png</value>
+		<value condition="substring(ListItem.Mpaa,TV-G)">flags/rating/TV-G_Certificate_US.png</value>
+		<value condition="substring(ListItem.Mpaa,TV-PG)">flags/rating/TV-PG_Certificate_US.png</value>
+		<value condition="substring(ListItem.Mpaa,TV-14)">flags/rating/TV-14_Certificate_US.png</value>
+		<value condition="substring(ListItem.Mpaa,TV-MA)">flags/rating/TV-MA_Certificate_US.png</value>
+    <value condition="substring(ListItem.mpaa,FSK0) | substring(ListItem.mpaa,FSK 0) | substring(ListItem.mpaa,FSK o.A.) | substring(ListItem.mpaa,o.A.) | substring(ListItem.mpaa,ab 0) | substring(ListItem.mpaa,Germany:0) | substring(ListItem.mpaa,Germany:o.Al.)">flags/rating/FSK-0_info.png</value>
+    <value condition="substring(ListItem.mpaa,FSK6) | substring(ListItem.mpaa,FSK 6) | substring(ListItem.mpaa,ab 6) | substring(ListItem.mpaa,Germany:6)">flags/rating/FSK-6_info.png</value>
+    <value condition="substring(ListItem.mpaa,FSK12) | substring(ListItem.mpaa,FSK 12) | substring(ListItem.mpaa,ab 12) | substring(ListItem.mpaa,Germany:12)">flags/rating/FSK-12_info.png</value>
+    <value condition="substring(ListItem.mpaa,FSK16) | substring(ListItem.mpaa,FSK 16) | substring(ListItem.mpaa,ab 16) | substring(ListItem.mpaa,Germany:16)">flags/rating/FSK-16_info.png</value>
+    <value condition="substring(ListItem.mpaa,FSK18) | substring(ListItem.mpaa,FSK 18) | substring(ListItem.mpaa,ab 18) | substring(ListItem.mpaa,Germany:18)">flags/rating/FSK-18_info.png</value>
+        <value condition="substring(ListItem.mpaa,전체)">flags/rating/KR_Certificate_All_info.png</value>
+        <value condition="substring(ListItem.mpaa,12세)">flags/rating/KR_Certificate_12_info.png</value>
+        <value condition="substring(ListItem.mpaa,15세)">flags/rating/KR_Certificate_15_info.png</value>
+        <value condition="substring(ListItem.mpaa,불가)">flags/rating/KR_Certificate_18_info.png</value>
+        <value condition="substring(ListItem.mpaa,제한)">flags/rating/KR_Certificate_R_info.png</value>
+	</variable>
+	
+	<!-- ######################################################################### Variable Sets Rating Flags Info ######################################################################### -->
+  <variable name="Furniture_SetsRatingInfo">
+    <value condition="substring(Container(7000).ListItem.Mpaa,Rated NR) | substring(Container(7000).ListItem.Mpaa,Rated: NR)">flags/rating/mpaa_nr.png</value>
+		<value condition="substring(Container(7000).ListItem.Mpaa,Rated G) | substring(Container(7000).ListItem.Mpaa,Rated: G)">flags/rating/mpaa_g.png</value>
+		<value condition="[substring(Container(7000).ListItem.Mpaa,Rated PG) | substring(Container(7000).ListItem.Mpaa,Rated: PG)] + !substring(Container(7000).ListItem.Mpaa,Rated PG-13) + !substring(Container(7000).ListItem.Mpaa,Rated: PG-13)">flags/rating/mpaa_pg.png</value>
+		<value condition="substring(Container(7000).ListItem.Mpaa,Rated PG-13) | substring(Container(7000).ListItem.Mpaa,Rated: PG-13)">flags/rating/mpaa_pg13.png</value>
+		<value condition="substring(Container(7000).ListItem.Mpaa,Rated R) | substring(Container(7000).ListItem.Mpaa,Rated: R)">flags/rating/mpaa_restricted.png</value>
+		<value condition="substring(Container(7000).ListItem.Mpaa,Rated NC-17) | substring(Container(7000).ListItem.Mpaa,Rated: NC-17)">flags/rating/mpaa_nc17.png</value>
+		<value condition="StringCompare(Container(7000).ListItem.Mpaa,UK:U)">flags/rating/bbfc_u.png</value>
+		<value condition="StringCompare(Container(7000).ListItem.Mpaa,UK:PG)">flags/rating/bbfc_pg.png</value>
+		<value condition="StringCompare(Container(7000).ListItem.Mpaa,UK:12)">flags/rating/bbfc_12.png</value>
+		<value condition="StringCompare(Container(7000).ListItem.Mpaa,UK:12A)">flags/rating/bbfc_12a.png</value><!-- missing -->
+		<value condition="StringCompare(Container(7000).ListItem.Mpaa,UK:15)">flags/rating/bbfc_15.png</value>
+		<value condition="StringCompare(Container(7000).ListItem.Mpaa,UK:18)">flags/rating/bbfc_18.png</value>
+		<value condition="substring(Container(7000).ListItem.mpaa,Brazil:Livre) | substring(Container(7000).ListItem.mpaa,Livre)">flags/rating/MPAA_Brazil_Livre_info.png</value>
+		<value condition="substring(Container(7000).ListItem.mpaa,Brazil:10) | substring(Container(7000).ListItem.mpaa,10 anos)">flags/rating/MPAA_Brazil_10_info.png</value>
+		<value condition="substring(Container(7000).ListItem.mpaa,Brazil:12) | substring(Container(7000).ListItem.mpaa,12 anos)">flags/rating/MPAA_Brazil_12_info.png</value>
+		<value condition="substring(Container(7000).ListItem.mpaa,Brazil:14) | substring(Container(7000).ListItem.mpaa,14 anos)">flags/rating/MPAA_Brazil_14_info.png</value>
+		<value condition="substring(Container(7000).ListItem.mpaa,Brazil:16) | substring(Container(7000).ListItem.mpaa,16 anos)">flags/rating/MPAA_Brazil_16_info.png</value>
+		<value condition="substring(Container(7000).ListItem.mpaa,Brazil:18) | substring(Container(7000).ListItem.mpaa,18 anos)">flags/rating/MPAA_Brazil_18_info.png</value>
+		<value condition="substring(Container(7000).ListItem.Mpaa,TV-G)">flags/rating/TV-G_Certificate_US.png</value>
+		<value condition="substring(Container(7000).ListItem.Mpaa,TV-PG)">flags/rating/TV-PG_Certificate_US.png</value>
+		<value condition="substring(Container(7000).ListItem.Mpaa,TV-14)">flags/rating/TV-14_Certificate_US.png</value>
+		<value condition="substring(Container(7000).ListItem.Mpaa,TV-MA)">flags/rating/TV-MA_Certificate_US.png</value>
+    <value condition="substring(Container(7000).ListItem.mpaa,FSK0) | substring(Container(7000).ListItem.mpaa,FSK 0) | substring(Container(7000).ListItem.mpaa,FSK o.A.) | substring(Container(7000).ListItem.mpaa,o.A.) | substring(Container(7000).ListItem.mpaa,ab 0) | substring(Container(7000).ListItem.mpaa,Germany:0) | substring(Container(7000).ListItem.mpaa,Germany:o.Al.)">flags/rating/FSK-0_info.png</value>
+    <value condition="substring(Container(7000).ListItem.mpaa,FSK6) | substring(Container(7000).ListItem.mpaa,FSK 6) | substring(Container(7000).ListItem.mpaa,ab 6) | substring(Container(7000).ListItem.mpaa,Germany:6)">flags/rating/FSK-6_info.png</value>
+    <value condition="substring(Container(7000).ListItem.mpaa,FSK12) | substring(Container(7000).ListItem.mpaa,FSK 12) | substring(Container(7000).ListItem.mpaa,ab 12) | substring(Container(7000).ListItem.mpaa,Germany:12)">flags/rating/FSK-12_info.png</value>
+    <value condition="substring(Container(7000).ListItem.mpaa,FSK16) | substring(Container(7000).ListItem.mpaa,FSK 16) | substring(Container(7000).ListItem.mpaa,ab 16) | substring(Container(7000).ListItem.mpaa,Germany:16)">flags/rating/FSK-16_info.png</value>
+    <value condition="substring(Container(7000).ListItem.mpaa,FSK18) | substring(Container(7000).ListItem.mpaa,FSK 18) | substring(Container(7000).ListItem.mpaa,ab 18) | substring(Container(7000).ListItem.mpaa,Germany:18)">flags/rating/FSK-18_info.png</value>
+	</variable>
+	
+	<!-- ######################################################################### Variable Music Codec Flags ######################################################################### -->
+	<variable name="Furniture_MusicCodec">
+		<value condition="substring(ListItem.Filename,.aac,Right)">flags/music/audiocodec/aac.png</value>
+		<value condition="substring(ListItem.Filename,.ac3,Right)">flags/music/audiocodec/ac3.png</value>
+		<value condition="substring(ListItem.Filename,.aif,Right) + ![substring(ListItem.Filename,.aifc,Right) | substring(ListItem.Filename,.aiff,Right)]">flags/music/audiocodec/aif.png</value>
+		<value condition="substring(ListItem.Filename,.aifc,Right)">flags/music/audiocodec/aifc.png</value>
+		<value condition="substring(ListItem.Filename,.aiff,Right)">flags/music/audiocodec/aiff.png</value>
+		<value condition="substring(ListItem.Filename,.avs,Right)">flags/music/audiocodec/avs.png</value>
+		<value condition="substring(ListItem.Filename,.ape,Right)">flags/music/audiocodec/ape.png</value>
+		<value condition="substring(ListItem.Filename,.cdda,Right)">flags/music/audiocodec/cdda.png</value>
+		<value condition="substring(ListItem.Filename,.dts,Right)">flags/music/audiocodec/dts.png</value>
+		<value condition="substring(ListItem.Filename,.flac,Right)">flags/music/audiocodec/flac.png</value>
+		<value condition="substring(ListItem.Filename,.m4a,Right)">flags/music/audiocodec/m4a.png</value>
+		<value condition="substring(ListItem.Filename,.mlp,Right)">flags/music/audiocodec/mlp.png</value>
+		<value condition="substring(ListItem.Filename,.mp2,Right)">flags/music/audiocodec/mp2.png</value>
+		<value condition="substring(ListItem.Filename,.mp3,Right)">flags/music/audiocodec/mp3.png</value>
+		<value condition="substring(ListItem.Filename,.mpc,Right)">flags/music/audiocodec/mpc.png</value>
+		<value condition="substring(ListItem.Filename,.ogg,Right)">flags/music/audiocodec/ogg.png</value>
+		<value condition="substring(ListItem.Filename,.ra,Right)">flags/music/audiocodec/ra.png</value>
+		<value condition="substring(ListItem.Filename,.shn,Right)">flags/music/audiocodec/shn.png</value>
+		<value condition="substring(ListItem.Filename,.wav,Right)">flags/music/audiocodec/wav.png</value>
+		<value condition="substring(ListItem.Filename,.wma,Right)">flags/music/audiocodec/wma.png</value>
+		<value condition="substring(ListItem.Filename,.wv,Right)">flags/music/audiocodec/wv.png</value>
+	</variable>
+</includes>

@@ -1,0 +1,16 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window id="2999">
+    <onload condition="Skin.HasSetting(randomthemes) + SubString(skin.string(pretheme_bg),future)">Skin.SetString(theme_bg,cold)</onload>
+    <onload condition="Skin.HasSetting(randomthemes) + SubString(skin.string(pretheme_bg),cold)">Skin.SetString(theme_bg,warm)</onload>
+    <onload condition="Skin.HasSetting(randomthemes) + SubString(skin.string(pretheme_bg),warm)">Skin.SetString(theme_bg,darkness)</onload>
+    <onload condition="Skin.HasSetting(randomthemes) + SubString(skin.string(pretheme_bg),darkness)">Skin.SetString(theme_bg,digitalart)</onload>
+    <onload condition="Skin.HasSetting(randomthemes) + SubString(skin.string(pretheme_bg),digitalart)">Skin.SetString(theme_bg,future)</onload>
+    <onload condition="Skin.HasSetting(startplay)">PlayMedia($INFO[Skin.String(startuplocation)])</onload>
+    <onload condition="!Skin.HasSetting(welcomedone)">ReplaceWindow(627)</onload>
+    <onload condition="Skin.HasSetting(welcomedone)">ReplaceWindow(Home)</onload>
+    <onload condition="SubString(skin.string(weather_mode),36hour)">SetProperty(WeatherOverride,36hour)</onload>
+    <onload condition="SubString(skin.string(weather_mode),weekend)">SetProperty(WeatherOverride,weekend)</onload>
+    <onload condition="SubString(skin.string(weather_mode),4days)">SetProperty(WeatherOverride,4day)</onload>
+    <onload condition="SubString(skin.string(weather_mode),7days)">SetProperty(WeatherOverride,7day)</onload>
+</window>

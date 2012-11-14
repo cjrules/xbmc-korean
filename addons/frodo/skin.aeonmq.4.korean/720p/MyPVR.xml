@@ -1,0 +1,542 @@
+﻿<!-- Aeon MQ 4 -->
+
+<window id="600">
+  <defaultcontrol>32</defaultcontrol>
+	<allowoverlay>no</allowoverlay>
+  <controls>
+  <control type="image">
+    <include>AnimatedBG</include>
+    <texture background="true">$VAR[value_mainmenubg_livetv]</texture>
+  </control>
+
+  <control type="group">
+    <include>Animation_OpenCloseZoom</include>
+  <control type="button" id="9900"><!-- to menu/kiosk condition -->
+    <include>InvisibleButton</include>
+    <onfocus condition="![Skin.HasSetting(kiosk) | Skin.HasSetting(kiosksmart) + !SubString(skin.string(codestep),step3)]">SetFocus(9300)</onfocus>
+    <onfocus condition="Skin.HasSetting(kiosksmart) + !SubString(skin.string(codestep),step3)">SetFocus(9100)</onfocus>
+  </control>
+  <control type="button" id="9920"><!-- hidden colection/view fanart -->
+    <include>InvisibleButton</include>
+    <onleft>SetFocus(11)</onleft>
+    <onright>SetFocus(11)</onright>
+    <onup>SetFocus(11)</onup>
+    <ondown>SetFocus(11)</ondown>
+  </control>
+  <control type="image">
+    <description>background image</description>
+    <posx>0</posx>
+    <posy>30</posy>
+    <width>1280</width>
+    <height>690</height>
+    <texture>common_black.png</texture>
+    <colordiffuse>e5FFFFFF</colordiffuse>
+    <include>Animation_CommonFade</include>
+    <visible>!Player.HasMedia</visible>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>29</posy>
+    <width>1280</width>
+    <height>2</height>
+    <texture>panel_horizontal_separator.png</texture>
+    <visible>!Player.HasMedia</visible>
+  </control>
+  
+  <control type="group">
+    <animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+  <control type="videowindow">
+    <include>FullScreenDimensions</include>
+    <visible>Player.HasVideo</visible>
+    <animation effect="slide" start="0,0" end="-2000,0" time="0">WindowClose</animation>
+  </control>
+  <control type="visualisation">
+    <include>FullScreenDimensions</include>
+    <visible>Player.HasAudio</visible>
+    <animation effect="slide" start="0,0" end="-2000,0" time="0">WindowClose</animation>
+  </control>
+  <control type="image">
+    <include>FullScreenDimensions</include>
+    <texture>common_black.png</texture>
+    <colordiffuse>e5FFFFFF</colordiffuse>
+    <include>Animation_CommonFade</include>
+    <visible>![Control.IsVisible(11) | Control.IsVisible(12)] + Player.HasMedia</visible>
+  </control>
+  <control type="image">
+    <include>FullScreenDimensions</include>
+    <aspectratio>stretch</aspectratio>
+    <texture background="true">thumb_tvglass_noedge.png</texture>
+    <visible>!Player.HasMedia</visible>
+  </control>
+  </control>
+  <control type="group">
+  <animation effect="slide" start="0,0" end="0,-250" time="400" tween="cubic" easing="inout" condition="Player.HasVideo + System.IdleTime(8) | Control.HasFocus(9920)">Conditional</animation>
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <height>250</height>
+    <width>1280</width>
+    <texture flipy="true" background="true">osd_black_bg.png</texture>
+  </control>
+  <control type="label"><!-- Title -->
+    <posx>30</posx>
+    <posy>5</posy>
+    <height>40</height>
+    <width>1100</width>
+    <font>Font_MenuVirtualClassic</font>
+    <label>$INFO[VideoPlayer.Title]</label>
+    <textcolor>FFececec</textcolor>
+    <scroll>true</scroll>
+    <scrollout>false</scrollout>
+  </control>
+  <control type="label">
+    <posx>30</posx>
+    <posy>55</posy>
+    <width>1100</width>
+    <height>25</height>
+    <font>Font_Time</font>
+    <label>$INFO[VideoPlayer.ChannelName]</label>
+    <textcolor>70FFFFFF</textcolor>
+		<scroll>true</scroll>
+    <scrollout>false</scrollout>
+  </control>
+  </control>
+  
+  <!-- Recording/Time -->
+	<control type="group">
+	  <posx>-720</posx>
+	  <posy>-2</posy>
+		<animation effect="slide" start="0,0" end="720,0" time="400" tween="cubic" easing="inout" condition="!PVR.IsRecording + PVR.HasTimer">Conditional</animation>
+		<animation effect="slide" start="0,0" end="0,-40" time="400" tween="cubic" easing="inout" condition="Player.HasVideo">Conditional</animation>
+		<animation effect="fade" end="85" condition="true">Conditional</animation>
+    <animation type="WindowOpen" reversible="false" condition="true">
+    <effect type="fade" start="20" end="100" time="1000" delay="2000" />
+    <effect type="slide" start="-1200,-28" end="0,0" time="500" delay="2000" tween="sine" easing="out" />
+    </animation>
+    <animation type="Visible" reversible="false" condition="true">
+    <effect type="fade" start="20" end="100" time="500" delay="500" />
+    <effect type="slide" start="0,-28" end="0,0" time="400" delay="500" tween="cubic" easing="out" />
+    </animation>
+  <control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>1200</width>
+    <height>28</height>
+    <aspectratio>stretch</aspectratio>
+    <texture flipy="true" background="true">home_common_border_large.png</texture>
+    <colordiffuse>$VAR[value_texturecolors]</colordiffuse>
+  </control>
+	<control type="image">
+    <posx>0</posx>
+    <posy>0</posy>
+    <width>1200</width>
+    <height>28</height>
+    <aspectratio>stretch</aspectratio>
+    <texture flipy="true" background="true">home_common_panel_large.png</texture>
+    <colordiffuse>$VAR[value_texturecolors]</colordiffuse>
+    <animation effect="fade" end="85" condition="true">Conditional</animation>
+  </control>
+  <control type="image">
+    <posx>10</posx>
+    <posy>7</posy>
+    <width>15</width>
+    <height>15</height>
+    <aspectratio>stretch</aspectratio>
+    <texture>pvr_hastimer.png</texture>
+  </control>
+  <control type="label">
+    <posx>30</posx>
+    <posy>5</posy>
+    <width>600</width>
+    <align>left</align>
+    <font>Font_MultiplexPlotTips</font>
+    <textcolor>FFe5e5e5</textcolor>
+    <label>[UPPERCASE][COLOR=$VAR[value_headercolors]]$LOCALIZE[19157]: [/COLOR]$INFO[PVR.NextRecordingDateTime][COLOR=80ffffff] | [/COLOR]$INFO[PVR.NextRecordingTitle][COLOR=80ffffff] | [/COLOR]$INFO[PVR.NextRecordingChannel][/UPPERCASE]</label>
+    <scroll>true</scroll>
+    <scrollout>false</scrollout>
+  </control>
+  <control type="label">
+    <posx>1180</posx>
+    <posy>5</posy>
+    <width>600</width>
+    <font>Font_MultiplexPlotTips</font>
+    <align>right</align>
+    <textcolor>FFe5e5e5</textcolor>
+    <label>[UPPERCASE]$INFO[System.Date][COLOR=80ffffff] | [/COLOR][COLOR=$VAR[value_headercolors]]$INFO[System.Time][/COLOR][/UPPERCASE][COLOR=80ffffff] | [/COLOR][UPPERCASE]$INFO[Window(Weather).Property(Current.Condition)][COLOR=80ffffff] | [/COLOR][COLOR=$VAR[value_headercolors]]$INFO[Weather.Temperature][/COLOR][/UPPERCASE]</label>
+    <scroll>true</scroll>
+    <scrollout>false</scrollout>
+  </control>
+  </control>
+  
+  <control type="image"><!-- flags -->
+    <posx>880</posx>
+    <posy>0</posy>
+    <width>400</width>
+    <height>600</height>
+    <aspectratio>stretch</aspectratio>
+    <texture flipx="true">showcase_vignette.png</texture>
+    <animation effect="slide" time="400" start="0,0" end="300,0" easing="in" tween="cubic" condition="Player.HasVideo + System.IdleTime(8) | Control.HasFocus(9920)">Conditional</animation>
+    <visible>!Window.IsVisible(138) + [Control.IsVisible(11) + Player.HasVideo | Control.IsVisible(12) + Player.HasAudio]</visible>
+  </control>
+  <control type="grouplist">
+    <posx>1180</posx>
+    <posy>200</posy>
+    <itemgap>10</itemgap>
+    <animation effect="slide" time="400" start="0,0" end="300,0" easing="in" tween="cubic" condition="Player.HasVideo + System.IdleTime(8) | Control.HasFocus(9920)">Conditional</animation>
+    <visible>!Window.IsVisible(138) + [Control.IsVisible(11) + Player.HasVideo | Control.IsVisible(12) + Player.HasAudio]</visible>
+  <control type="image">
+    <width>80</width>
+    <height>50</height>
+    <aspectratio>stretch</aspectratio>
+    <colordiffuse>80e1e1e1</colordiffuse>
+    <texture>$VAR[Furniture_VideoCodecInfo]</texture>
+    <visible>!IsEmpty(VideoPlayer.VideoCodec)</visible>
+  </control>
+   <control type="image">
+    <width>80</width>
+    <height>50</height>
+    <aspectratio>stretch</aspectratio>
+    <colordiffuse>80e1e1e1</colordiffuse>
+    <texture>$INFO[VideoPlayer.VideoResolution,flags/resolution/,.png]</texture>
+    <visible>!IsEmpty(VideoPlayer.VideoResolution)</visible>
+  </control>
+   <control type="image">
+    <width>80</width>
+    <height>50</height>
+    <aspectratio>stretch</aspectratio>
+    <colordiffuse>80e1e1e1</colordiffuse>
+    <texture>$INFO[Videoplayer.VideoAspect,flags/aspectratio/,.png]</texture>
+    <visible>!IsEmpty(VideoPlayer.VideoAspect)</visible>
+  </control>
+  <control type="image">
+    <width>80</width>
+    <height>50</height>
+    <aspectratio>stretch</aspectratio>
+    <colordiffuse>80e1e1e1</colordiffuse>
+    <texture>$INFO[VideoPlayer.AudioCodec,flags/audio/,.png]</texture>
+    <visible>!IsEmpty(VideoPlayer.AudioCodec)</visible>
+  </control>
+  <control type="image">
+    <width>80</width>
+    <height>40</height>
+    <aspectratio>keep</aspectratio>
+    <colordiffuse>80e1e1e1</colordiffuse>
+    <texture>$INFO[VideoPlayer.AudioChannels,flags/audio/,ch.png]</texture>
+    <visible>!IsEmpty(VideoPlayer.AudioChannels)</visible>
+  </control>
+  </control>
+  
+  <control type="group"><!-- Furniture -->
+    <visible>Control.IsVisible(11) | Control.IsVisible(12)</visible>
+    <animation effect="slide" time="400" start="0,0" end="0,300" easing="in" tween="cubic" condition="Player.HasVideo + System.IdleTime(8) | Control.HasFocus(9920)">Conditional</animation>
+  <control type="image">
+    <posx>0</posx>
+    <posy>450</posy>
+    <height>370</height>
+    <width>1280</width>
+    <colordiffuse>FF000000</colordiffuse>
+    <texture>shadow_mask.png</texture>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>450</posy>
+    <height>370</height>
+    <width>1280</width>
+    <texture background="true">osd_black_bg.png</texture>
+  </control>
+  <control type="image">
+    <posx>530</posx>
+    <posy>600</posy>
+    <width>2</width>
+    <height>120</height>
+    <texture>panel_vertical_separator.png</texture>
+    <visible>Control.IsVisible(11) | Control.IsVisible(12)</visible>
+  </control>
+  <control type="progress">
+    <description>Progressbar</description>
+    <posx>150</posx>
+    <posy>685</posy>
+    <width>370</width>
+    <height>30</height>
+    <info>Player.Progress</info>
+    <animation effect="fade" end="90" condition="true">Conditional</animation>
+    <animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+    <visible>Player.HasVideo</visible>
+  </control>
+  <control type="label">
+    <posx>250</posx>
+    <posy>690</posy>
+    <width>160</width>
+    <height>20</height>
+    <align>center</align>
+    <font>Font_OSDOptions</font>
+    <textcolor>FFececec</textcolor>
+    <label>$INFO[Container(11).ListItem.StartTime]$INFO[Container(11).ListItem.EndTime, / ]</label>
+    <animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+    <visible>Player.HasVideo</visible>
+  </control>
+  <control type="label">
+    <posx>150</posx>
+    <posy>685</posy>
+    <width>160</width>
+    <height>20</height>
+    <font>Font_OSDCodecInfo</font>
+    <textcolor>FFececec</textcolor>
+    <label>$INFO[Container(11).ListItem.StartTime]$INFO[Container(11).ListItem.EndTime, / ]</label>
+    <animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+    <visible>!Player.HasVideo</visible>
+  </control>
+  <control type="label">
+    <posx>150</posx>
+    <posy>610</posy>
+    <width>270</width>
+    <height>20</height>
+    <scroll>true</scroll>
+    <font>Font_FSInfoArtist</font>
+    <label>$INFO[Container(11).ListItem.Label]</label>
+  </control>
+  <control type="label">
+    <posx>150</posx>
+    <posy>650</posy>
+    <width>270</width>
+    <height>20</height>
+    <scroll>true</scroll>
+    <font>Font_SettingsMenuButton</font>
+    <label>$INFO[Container(11).ListItem.Title]</label>
+  </control>
+  <control type="textbox">
+    <posx>550</posx>
+    <posy>610</posy>
+    <width>710</width>
+    <height>150</height>
+    <aligny>top</aligny>
+    <label>$INFO[Container(11).ListItem.Plot]</label>
+    <textcolor>c0FFFFFF</textcolor>
+    <font>Font_MultiplexPlotPVR</font>
+    <autoscroll delay="8000" time="2000" repeat="8000">!Skin.HasSetting(noallowscroll)</autoscroll>
+    <animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+    <visible>!Control.HasFocus(71)</visible>
+  </control>
+  <control type="image">
+    <posx>115</posx>
+    <posy>605</posy>
+    <width>24</width>
+    <height>115</height>
+    <texture>panel_list_detailwide.png</texture>
+  </control>
+  <control type="image">
+    <posx>0</posx>
+    <posy>605</posy>
+    <width>115</width>
+    <height>115</height>
+    <texture fallback="DefaultVideo.png">$INFO[Container(11).ListItem.Icon]</texture>
+    <aspectratio>keep</aspectratio>
+  </control>
+  <control type="label" id="29">
+    <description>Current Catagory</description>
+    <include>InvisibleButton</include>
+    <visible>false</visible>
+  </control>
+  <control type="label" id="30">
+    <description>Current Sub Catagory</description>
+    <include>InvisibleButton</include>
+    <visible>false</visible>
+  </control>
+
+  <!-- Items -->
+	<control type="group">
+	  <posx>0</posx>
+	  <posy>221</posy>
+		<animation effect="fade" end="85" condition="true">Conditional</animation>
+    <animation type="WindowOpen" reversible="false" condition="true">
+    <effect type="fade" start="20" end="100" time="500" delay="1000" />
+    <effect type="slide" start="-1200,28" end="0,0" time="500" delay="1000" tween="sine" easing="out" />
+    </animation>
+    <animation type="Visible" reversible="false" condition="true">
+    <effect type="fade" start="20" end="100" time="500" delay="500" />
+    <effect type="slide" start="0,-28" end="0,0" time="400" delay="500" tween="cubic" easing="out" />
+    </animation>
+  <control type="image">
+    <posx>0</posx>
+    <posy>315</posy>
+    <width>1200</width>
+    <height>28</height>
+    <aspectratio>stretch</aspectratio>
+    <texture background="true">home_common_border_large.png</texture>
+    <colordiffuse>$VAR[value_texturecolors]</colordiffuse>
+    <animation effect="slide" start="0,0" end="-700,0" time="400" tween="cubic" easing="inout" condition="!Control.IsVisible(600)">Conditional</animation>
+  </control>
+	<control type="image">
+    <posx>0</posx>
+    <posy>315</posy>
+    <width>1200</width>
+    <height>28</height>
+    <aspectratio>stretch</aspectratio>
+    <texture background="true">home_common_panel_large.png</texture>
+    <colordiffuse>$VAR[value_texturecolors]</colordiffuse>
+    <animation effect="fade" end="85" condition="true">Conditional</animation>
+    <animation effect="slide" start="0,0" end="-700,0" time="400" tween="cubic" easing="inout" condition="!Control.IsVisible(600)">Conditional</animation>
+  </control>
+  <control type="label">
+    <posx>10</posx>
+    <posy>320</posy>
+    <width>600</width>
+    <align>left</align>
+    <font>Font_MultiplexPlotTips</font>
+    <textcolor>FFe5e5e5</textcolor>
+    <label>[UPPERCASE]$INFO[Control.GetLabel(29)][COLOR=80ffffff] | [/COLOR]$INFO[Control.GetLabel(30)][COLOR=80ffffff] | [/COLOR]$VAR[value_pvrnumitems][/UPPERCASE]</label>
+    <scroll>true</scroll>
+    <scrollout>false</scrollout>
+    <animation effect="fade" time="200" delay="400">Visible</animation>
+  </control>
+  <control type="list" id="600">
+		<animation effect="fade" time="800">Visible</animation>
+		<animation effect="fade" time="400">Hidden</animation>
+		<animation effect="slide" start="0,0" end="-28,0" time="400" tween="cubic" easing="inout" condition="Player.HasAudio + !IsEmpty(MusicPlayer.offset(1).Artist)">Conditional</animation>
+    <visible>Player.HasVideo | Player.HasAudio</visible>
+    <posx>930</posx>
+    <posy>295</posy>
+    <height>200</height>
+    <width>990</width>
+    <ondown>300</ondown>
+    <onup>SetFocus(403)</onup>
+    <onleft>600</onleft>
+    <onright>600</onright>
+    <viewtype>list</viewtype>
+    <align>right</align>
+    <orientation>horizontal</orientation>
+    <scrolltime>200</scrolltime>
+    <focusposition>0</focusposition>
+    <itemlayout width="28" height="40">
+  <control type="image">
+    <posy>22</posy>
+    <width>24</width>
+    <height>24</height>
+    <info>ListItem.Icon</info>
+		<colordiffuse>60DCDCDC</colordiffuse>
+		<include>Animation_CommonFade</include>
+  </control>
+  </itemlayout>
+  <focusedlayout width="28" height="40">
+  <control type="image">
+    <posy>22</posy>
+    <width>24</width>
+    <height>24</height>
+    <info>ListItem.Icon</info>
+    <colordiffuse>60DCDCDC</colordiffuse>
+    <include>Animation_CommonFade</include>
+    <visible>!Control.HasFocus(600)</visible>
+  </control>
+  <control type="image">
+    <posy>22</posy>
+    <width>24</width>
+    <height>24</height>
+    <info>ListItem.Icon</info>
+    <colordiffuse>dcFFFFFF</colordiffuse>
+    <include>Animation_CommonFade</include>
+    <visible>Control.HasFocus(600)</visible>
+  </control>
+  </focusedlayout>
+  <content>
+  <item id="14"><!-- play DVD -->
+    <label>-</label>
+    <icon>osd_menu_play_square.png</icon>
+    <onclick>PlayDVD</onclick>
+    <visible>System.HasMediaDVD + ![Player.Playing | Player.Paused | Player.Forwarding | Player.Rewinding]</visible>
+  </item>
+  <item id="3"><!-- pause -->
+    <label>-</label>
+    <icon>osd_menu_pause_square.png</icon>
+    <onclick>PlayerControl(Play)</onclick>
+    <visible>!Player.Paused</visible>
+  </item>
+  <item id="4"><!-- play -->
+    <label>-</label>
+    <icon>osd_menu_play_square.png</icon>
+    <onclick>PlayerControl(Play)</onclick>
+    <visible>Player.Paused</visible>
+  </item>
+  <item id="15"><!-- playlist -->
+    <label>-</label>
+    <icon>osd_menu_plyalist_square.png</icon>
+    <onclick>ActivateWindow(musicplaylist)</onclick>
+    <visible>Player.HasAudio + !IsEmpty(MusicPlayer.offset(1).Artist)</visible>
+  </item>
+  <item id="5"><!-- stop -->
+    <label>-</label>
+    <icon>osd_menu_stop_square.png</icon>
+    <onclick>PlayerControl(Stop)</onclick>
+  </item>
+  <item id="1"><!-- skipbwd -->
+    <label>-</label>
+    <icon>osd_menu_skipbwd_square.png</icon>
+    <onclick>PlayerControl(Previous)</onclick>
+  </item>
+  <item id="2"><!-- rew -->
+    <label>-</label>
+    <icon>osd_menu_rew_square.png</icon>
+    <onclick>PlayerControl(Rewind)</onclick>
+  </item>
+  <item id="6"><!-- ff -->
+    <label>-</label>
+    <icon>osd_menu_ff_square.png</icon>
+    <onclick>PlayerControl(Forward)</onclick>
+  </item>
+  <item id="7"><!-- skipfwd -->
+    <label>-</label>
+    <icon>osd_menu_skipfwd_square.png</icon>
+    <onclick>PlayerControl(Next)</onclick>
+  </item>
+  <item id="8"><!-- repeat -->
+    <label>-</label>
+    <icon>$VAR[value_playericon_repeat]</icon>
+    <onclick>PlayerControl(Repeat)</onclick>
+  </item>
+  <item id="9"><!-- random -->
+    <label>-</label>
+    <icon>$VAR[value_playericon_random]</icon>
+    <onclick>PlayerControl(Random)</onclick>
+  </item>
+  <item id="13"><!-- go to fullscreen -->
+    <label>-</label>
+    <icon>osd_menu_fullscreen_square.png</icon>
+    <onclick>fullscreen</onclick>
+  </item>
+  </content>
+  </control>
+  <control type="label">
+    <posx>915</posx>
+    <posy>320</posy>
+    <width>600</width>
+    <font>Font_MultiplexPlotTips</font>
+    <align>right</align>
+    <textcolor>FFe5e5e5</textcolor>
+    <label>[UPPERCASE]$VAR[value_playercontrols][/UPPERCASE]</label>
+    <scroll>true</scroll>
+    <scrollout>false</scrollout>
+    <animation effect="fade" time="200" delay="400">Visible</animation>
+    <animation effect="slide" start="0,0" end="-28,0" time="400" tween="cubic" easing="inout" condition="Player.HasAudio + !IsEmpty(MusicPlayer.offset(1).Artist)">Conditional</animation>
+    <visible>!Skin.HasSetting(nohomeminiplayer) + [Player.HasVideo + !Skin.HasSetting(homevisvideo) | Player.HasAudio | System.HasMediaDVD]</visible>
+  </control>
+  </control>
+  </control>
+  
+  <!-- ViewTypes -->
+  <control type="group" id="9002">
+    <include>Animation_OpenCloseZoom</include>
+    <include>ViewEPGTimeline</include><!-- 10 -->
+    <include>ViewLiveTVChannel</include><!-- 11 -->
+    <include>ViewLiveRadioChannel</include><!-- 12 -->
+    <include>ViewLiveTVRecordings</include><!-- 13 -->
+    <include>ViewLiveTVTimers</include><!-- 14 -->
+    <include>ViewLiveTVGuideChannel</include><!-- 15 -->
+    <include>ViewLiveTVGuideNowNext</include><!-- 16 -->
+    <include>ViewLiveTVSeach</include><!-- 17 -->
+  </control>
+  
+  <!-- Furniture -->
+		<include>TopMenu_PVR</include>
+  </control>
+  <include>BGBlack</include>
+  </controls>
+  </window>
