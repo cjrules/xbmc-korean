@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <defaultcontrol always="true">800</defaultcontrol>
+    <coordinates>
+        <system>1</system>
+        <posx>0</posx>
+        <posy>0</posy>
+    </coordinates>
+    <include>Animation_DialogZoom</include>
+    <controls>
+        <include>DialogBackFade</include>
+        <include condition="Skin.HasSetting(effect_bg)">BG_Effect_Home</include>
+        <control type="grouplist" id="800">
+            <posx>729</posx>
+            <width>462</width>
+            <height>1080</height>
+            <onleft>800</onleft>
+            <onright>800</onright>
+            <onup>800</onup>
+            <ondown>800</ondown>
+            <orientation>vertical</orientation>
+            <align>center</align>
+            <control type="image" id="1">
+                <posy>-39</posy>
+                <width>462</width>
+                <height>39</height>
+                <texture>dialogs/context_top_shutdown.png</texture>
+            </control>
+            <control type="button" id="5110">
+                <label>Import Games</label>
+                <font>Font_Reg19</font>
+                <include>Objects_ContextMenuButton</include>
+            </control>
+            <control type="button" id="5111">
+                <label>Add Rom Collection</label>
+                <font>Font_Reg19</font>
+                <include>Objects_ContextMenuButton</include>
+            </control>
+            <control type="button" id="5112">
+                <label>Edit Rom Collection</label>
+                <font>Font_Reg19</font>
+                <include>Objects_ContextMenuButton</include>
+            </control>
+            <control type="button" id="5117">
+                <label>Edit Offline Scrapers</label>
+                <font>Font_Reg19</font>
+                <include>Objects_ContextMenuButton</include>
+            </control>
+            <control type="button" id="5113">
+                <label>Edit Game Command</label>
+                <font>Font_Reg19</font>
+                <include>Objects_ContextMenuButton</include>
+            </control>
+            <control type="button" id="5118">
+                <label>Add Game To Favorites</label>
+                <font>Font_Reg19</font>
+                <include>Objects_ContextMenuButton</include>
+            </control>
+            <control type="button" id="5119">
+                <label>Add Selection To Favorites</label>
+                <font>Font_Reg19</font>
+                <include>Objects_ContextMenuButton</include>
+            </control>
+            <control type="button" id="5120">
+                <label>Export game database (nfo files)</label>
+                <font>Font_Reg19</font>
+                <include>Objects_ContextMenuButton</include>
+            </control>
+            <control type="button" id="5121">
+                <label>Rescrape Game</label>
+                <font>Font_Reg19</font>
+                <include>Objects_ContextMenuButton</include>
+            </control>
+            <control type="button" id="5122">
+                <label>Rescrape Selection</label>
+                <font>Font_Reg19</font>
+                <include>Objects_ContextMenuButton</include>
+            </control>
+            <control type="button" id="5223">
+                <label>Open Addon Settings</label>
+                <font>Font_Reg19</font>
+                <include>Objects_ContextMenuButton</include>
+            </control>
+            <control type="button" id="5114">
+                <label>Delete Game</label>
+                <font>Font_Reg19</font>
+                <include>Objects_ContextMenuButton</include>
+            </control>
+            <control type="button" id="5115">
+                <label>Delete Rom Collection</label>
+                <font>Font_Reg19</font>
+                <include>Objects_ContextMenuButton</include>
+            </control>
+            <control type="button" id="5116">
+                <label>Clean Database</label>
+                <font>Font_Reg19</font>
+                <include>Objects_ContextMenuButton</include>
+            </control>
+            <control type="image" id="2">
+                <posy>699</posy>
+                <width>462</width>
+                <height>40</height>
+                <texture>dialogs/context_bottom.png</texture>
+            </control>
+        </control>
+    </controls>
+</window>

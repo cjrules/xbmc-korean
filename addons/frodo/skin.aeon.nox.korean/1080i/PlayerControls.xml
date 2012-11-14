@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="114">
+    <defaultcontrol always="true">9011</defaultcontrol>
+    <!--<include>Animation_DialogZoom</include>-->
+    <onload>Dialog.Close(1121)</onload>
+    <onload condition="Window.IsActive(script.pseudotv.TVOverlay.xml)">Dialog.Close(114)</onload>
+    <controls>
+        <include>DialogBackFade</include>
+        <control type="group">
+            <animation effect="slide" start="0,-730" end="0,-473" time="500" tween="cubic" easing="out" delay="200">WindowOpen</animation>
+            <animation effect="slide" end="0,-730" start="0,-473" time="500" tween="cubic" easing="out" delay="200">WindowClose</animation>
+            <animation effect="slide" start="0,0" end="0,100" time="500" tween="cubic" easing="out" delay="200" condition="Player.HasMedia">Conditional</animation>
+            <!--         <control type="button" id="451">
+            
+            <posx>-30</posx>
+            <posy>-30</posy>
+            <width>1</width>
+            <height>1</height>
+            <label>-</label>
+            <font>-</font>
+            <texturenofocus>-</texturenofocus>
+            <texturefocus>-</texturefocus>
+            <onfocus>RunScript(script.playlists,type=video)</onfocus>
+            <onfocus>RunScript(script.playlists,type=music)</onfocus>
+            <onfocus>RunScript(script.favourites,playlists=play)</onfocus>
+            <onfocus>SetFocus(9011)</onfocus>
+        </control> -->
+            <control type="group" id="300">
+                <control type="image">
+                    <texture flipy="true">views/lowlist_panelback.png</texture>
+                    <width>1920</width>
+                    <height>630</height>
+                    <animation effect="fade" start="100" end="80" time="50" condition="true">Conditional</animation>
+                </control>
+                <control type="grouplist">
+                    <visible>Player.HasMedia</visible>
+                    <posx>380</posx>
+                    <posy>381</posy>
+                    <width>1160</width>
+                    <height>135</height>
+                    <scrolltime tween="sine" easing="out">200</scrolltime>
+                    <orientation>horizontal</orientation>
+                    <align>center</align>
+                    <onup>9011</onup>
+                    <ondown>9011</ondown>
+                    <onleft>652</onleft>
+                    <onright>652</onright>
+                    <animation effect="fade" end="50" time="0" condition="true">Conditional</animation>
+                    <control type="button">
+                        <width>100</width>
+                        <height>100</height>
+                        <colordiffuse>white</colordiffuse>
+                        <texturenofocus>special://skin/extras/BigIcons/Format.png</texturenofocus>
+                        <visible>Player.HasAudio</visible>
+                    </control>
+                    <control type="button">
+                        <width>100</width>
+                        <height>100</height>
+                        <colordiffuse>white</colordiffuse>
+                        <texturenofocus>special://skin/extras/BigIcons/Lyrics.png</texturenofocus>
+                        <visible>Player.HasAudio</visible>
+                    </control>
+                    <control type="button">
+                        <width>100</width>
+                        <height>100</height>
+                        <colordiffuse>white</colordiffuse>
+                        <texturenofocus>special://skin/extras/BigIcons/ButtonFirst.png</texturenofocus>
+                    </control>
+                    <control type="button">
+                        <width>100</width>
+                        <height>100</height>
+                        <colordiffuse>white</colordiffuse>
+                        <texturenofocus>special://skin/extras/BigIcons/ButtonFRW.png</texturenofocus>
+                    </control>
+                    <control type="togglebutton">
+                        <width>100</width>
+                        <height>100</height>
+                        <colordiffuse>white</colordiffuse>
+                        <texturenofocus>special://skin/extras/BigIcons/ButtonPause.png</texturenofocus>
+                        <usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
+                        <alttexturenofocus>special://skin/extras/BigIcons/ButtonPlay.png</alttexturenofocus>
+                    </control>
+                    <control type="button">
+                        <width>100</width>
+                        <height>100</height>
+                        <colordiffuse>white</colordiffuse>
+                        <texturenofocus>special://skin/extras/BigIcons/ButtonStop.png</texturenofocus>
+                    </control>
+                    <control type="button">
+                        <width>100</width>
+                        <height>100</height>
+                        <colordiffuse>white</colordiffuse>
+                        <texturenofocus>special://skin/extras/BigIcons/ButtonFFW.png</texturenofocus>
+                    </control>
+                    <control type="button">
+                        <width>100</width>
+                        <height>100</height>
+                        <colordiffuse>white</colordiffuse>
+                        <texturenofocus>special://skin/extras/BigIcons/ButtonEnd.png</texturenofocus>
+                    </control>
+                    <control type="button">
+                        <width>100</width>
+                        <height>100</height>
+                        <texturenofocus>special://skin/extras/BigIcons/Microphone.png</texturenofocus>
+                        <colordiffuse>white</colordiffuse>
+                        <visible>Player.CanRecord</visible>
+                    </control>
+                    <control type="button">
+                        <width>1</width>
+                        <height>1</height>
+                        <texturenofocus>-</texturenofocus>
+                        <colordiffuse>white</colordiffuse>
+                        <visible>Player.HasAudio</visible>
+                    </control>
+                    <control type="image">
+                        <width>100</width>
+                        <height>100</height>
+                        <texture>$VAR[MusicOSDRepeatButtonVar]</texture>
+                        <visible>Player.HasAudio</visible>
+                        <colordiffuse>white</colordiffuse>
+                        <enable>no</enable>
+                    </control>
+                    <control type="togglebutton">
+                        <width>100</width>
+                        <height>100</height>
+                        <texturenofocus>special://skin/extras/BigIcons/ArrowRight.png</texturenofocus>
+                        <usealttexture>Playlist.IsRandom</usealttexture>
+                        <visible>Player.HasAudio</visible>
+                        <colordiffuse>white</colordiffuse>
+                        <alttexturenofocus>special://skin/extras/BigIcons/ButtonShuffle.png</alttexturenofocus>
+                    </control>
+                </control>
+                <control type="grouplist" id="652">
+                    <visible>Player.HasMedia</visible>
+                    <posx>380</posx>
+                    <posy>381</posy>
+                    <width>1160</width>
+                    <height>135</height>
+                    <scrolltime tween="sine" easing="out">200</scrolltime>
+                    <orientation>horizontal</orientation>
+                    <align>center</align>
+                    <onup>9011</onup>
+                    <ondown>9011</ondown>
+                    <onleft>652</onleft>
+                    <onright>652</onright>
+                    <control type="button" id="700">
+                        <width>100</width>
+                        <height>100</height>
+                        <label>10517</label>
+                        <font>-</font>
+                        <colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
+                        <texturefocus>special://skin/extras/BigIcons/Format.png</texturefocus>
+                        <texturenofocus>-</texturenofocus>
+                        <onclick>ActivateWindow(MusicPlaylist)</onclick>
+                        <visible>Player.HasAudio</visible>
+                    </control>
+                    <control type="togglebutton" id="703">
+                        <width>100</width>
+                        <height>100</height>
+                        <label>24013</label>
+                        <font>-</font>
+                        <texturefocus>special://skin/extras/BigIcons/Lyrics.png</texturefocus>
+                        <texturenofocus>-</texturenofocus>
+                        <alttexturefocus>special://skin/extras/BigIcons/Lyrics.png</alttexturefocus>
+                        <alttexturenofocus>-</alttexturenofocus>
+                        <colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
+                        <onclick>Close</onclick>
+                        <onclick>RunScript($INFO[Skin.String(LyricScript_Path)])</onclick>
+                        <altclick>Skin.SetAddon(LyricScript_Path,xbmc.python.lyrics)</altclick>
+                        <altclick>Close</altclick>
+                        <altclick>RunScript($INFO[Skin.String(LyricScript_Path)])</altclick>
+                        <usealttexture>IsEmpty(Skin.String(LyricScript_Path))</usealttexture>
+                        <visible>Player.HasAudio</visible>
+                    </control>
+                    <control type="button" id="600">
+                        <width>100</width>
+                        <height>100</height>
+                        <label>210</label>
+                        <font>-</font>
+                        <colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
+                        <texturefocus>special://skin/extras/BigIcons/ButtonFirst.png</texturefocus>
+                        <texturenofocus>-</texturenofocus>
+                        <onclick>PlayerControl(Previous)</onclick>
+                    </control>
+                    <control type="button" id="601">
+                        <width>100</width>
+                        <height>100</height>
+                        <label>31354</label>
+                        <colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
+                        <font>-</font>
+                        <texturefocus>special://skin/extras/BigIcons/ButtonFRW.png</texturefocus>
+                        <texturenofocus>-</texturenofocus>
+                        <onclick>PlayerControl(Rewind)</onclick>
+                    </control>
+                    <control type="togglebutton" id="602">
+                        <width>100</width>
+                        <height>100</height>
+                        <label>31351</label>
+                        <altlabel>208</altlabel>
+                        <font>-</font>
+                        <texturefocus>special://skin/extras/BigIcons/ButtonPause.png</texturefocus>
+                        <texturenofocus>-</texturenofocus>
+                        <usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
+                        <alttexturefocus>special://skin/extras/BigIcons/ButtonPlay.png</alttexturefocus>
+                        <alttexturenofocus>special://skin/extras/BigIcons/ButtonPlay.png</alttexturenofocus>
+                        <colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
+                        <onclick>PlayerControl(Play)</onclick>
+                    </control>
+                    <control type="button" id="603">
+                        <width>100</width>
+                        <height>100</height>
+                        <label>31352</label>
+                        <font>-</font>
+                        <texturefocus>special://skin/extras/BigIcons/ButtonStop.png</texturefocus>
+                        <texturenofocus>-</texturenofocus>
+                        <colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
+                        <onclick>down</onclick>
+                        <onclick>PlayerControl(Stop)</onclick>
+                    </control>
+                    <control type="button" id="604">
+                        <width>100</width>
+                        <height>100</height>
+                        <label>31353</label>
+                        <colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
+                        <font>-</font>
+                        <texturefocus>special://skin/extras/BigIcons/ButtonFFW.png</texturefocus>
+                        <texturenofocus>-</texturenofocus>
+                        <onclick>PlayerControl(Forward)</onclick>
+                    </control>
+                    <control type="button" id="605">
+                        <width>100</width>
+                        <height>100</height>
+                        <label>209</label>
+                        <colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
+                        <font>-</font>
+                        <texturefocus>special://skin/extras/BigIcons/ButtonEnd.png</texturefocus>
+                        <texturenofocus>-</texturenofocus>
+                        <onclick>PlayerControl(Next)</onclick>
+                    </control>
+                    <control type="button" id="706">
+                        <width>100</width>
+                        <height>100</height>
+                        <label>264</label>
+                        <font>-</font>
+                        <texturefocus>special://skin/extras/BigIcons/Microphone.png</texturefocus>
+                        <colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
+                        <texturenofocus>-</texturenofocus>
+                        <onclick>PlayerControl(record)</onclick>
+                        <visible>Player.CanRecord</visible>
+                    </control>
+                    <control type="button" id="704">
+                        <width>1</width>
+                        <height>1</height>
+                        <label>$LOCALIZE[486]$INFO[Playlist.Repeat, : ]</label>
+                        <font>-</font>
+                        <texturefocus>-</texturefocus>
+                        <colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
+                        <texturenofocus>-</texturenofocus>
+                        <onclick>PlayerControl(Repeat)</onclick>
+                        <visible>Player.HasAudio</visible>
+                    </control>
+                    <control type="image" id="708">
+                        <width>100</width>
+                        <height>100</height>
+                        <colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
+                        <texture>$VAR[MusicOSDRepeatButtonVar2]</texture>
+                        <enable>no</enable>
+                        <visible>Player.HasAudio</visible>
+                    </control>
+                    <control type="togglebutton" id="705">
+                        <width>100</width>
+                        <height>100</height>
+                        <label>$LOCALIZE[590]$INFO[Playlist.Random, : ]</label>
+                        <font>-</font>
+                        <texturefocus>special://skin/extras/BigIcons/ArrowRight.png</texturefocus>
+                        <texturenofocus>-</texturenofocus>
+                        <colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
+                        <usealttexture>Playlist.IsRandom</usealttexture>
+                        <alttexturefocus>special://skin/extras/BigIcons/ButtonShuffle.png</alttexturefocus>
+                        <alttexturenofocus>-</alttexturenofocus>
+                        <onclick>PlayerControl(Random)</onclick>
+                        <visible>Player.HasAudio</visible>
+                    </control>
+                </control>
+                <control type="list" id="9011">
+                    <posy>472</posy>
+                    <width>1920</width>
+                    <height>135</height>
+                    <orientation>horizontal</orientation>
+                    <onleft>9011</onleft>
+                    <onup>652</onup>
+                    <ondown>Dialog.Close(114)</ondown>
+                    <onright>9011</onright>
+                    <focusposition>4</focusposition>
+                    <itemlayout height="225" width="213">
+                        <control type="image">
+                            <posx>63</posx>
+                            <width>88</width>
+                            <height>88</height>
+                            <texture>$INFO[ListItem.Thumb]</texture>
+                            <colordiffuse>white5</colordiffuse>
+                        </control>
+                        <control type="label">
+                            <posx>107</posx>
+                            <posy>29</posy>
+                            <width>213</width>
+                            <height>120</height>
+                            <textcolor>grey2</textcolor>
+                            <height>225</height>
+                            <align>center</align>
+                            <label>$INFO[ListItem.Label]</label>
+                            <font>Font_Reg17_Caps</font>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout height="225" width="213">
+                        <control type="image">
+                            <width>213</width>
+                            <height>115</height>
+                            <colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
+                            <texture>views/tripanel/listselect_fo.png</texture>
+                            <visible>Control.HasFocus(9011)</visible>
+                        </control>
+                        <control type="image">
+                            <posx>63</posx>
+                            <width>88</width>
+                            <height>88</height>
+                            <texture>$INFO[ListItem.Thumb]</texture>
+                            <colordiffuse>white2</colordiffuse>
+                        </control>
+                        <control type="label">
+                            <posx>107</posx>
+                            <posy>29</posy>
+                            <width>213</width>
+                            <height>120</height>
+                            <align>center</align>
+                            <label>$INFO[ListItem.Label]</label>
+                            <font>Font_Reg17_Caps</font>
+                        </control>
+                    </focusedlayout>
+                    <content>
+                        <include>QuickNavContent</include>
+                    </content>
+                </control>
+            </control>
+        </control>
+        <control type="button">
+            <animation effect="slide" start="0,0" end="0,100" time="500" tween="cubic" easing="out" delay="200" condition="Player.HasMedia">Conditional</animation>
+            <include>HiddenObject</include>
+            <hitrect x="0" y="200" w="1920" h="945" />
+            <onfocus>Dialog.Close(playercontrols)</onfocus>
+        </control>
+        <!--         <control type="group">
+            <posx>100</posx>
+            <posy>-450</posy>
+            <animation effect="slide" start="700,0" end="0,0" time="500" tween="cubic" easing="out" delay="1000">WindowOpen</animation>
+            <animation effect="slide" end="700,0" start="0,0" time="500" tween="cubic" easing="out" delay="0">WindowClose</animation>
+            <include>NextTracksList</include>
+        </control> -->
+    </controls>
+</window>
