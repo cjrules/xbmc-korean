@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <string id="30000">tving</string>
+
+    <!--Message-->
+    <string id="30010">No Video</string>
+    <string id="30011">Video doesn't exist</string>
+
+    <!--NavItems-->
+    <string id="30100">Prev Page</string>
+    <string id="30100">Next Page</string>
+    
+</strings>

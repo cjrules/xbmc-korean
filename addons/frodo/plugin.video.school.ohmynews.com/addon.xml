@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.school.ohmynews.com"
+       name="OhmyNews School"
+       version="0.1.0"
+       provider-name="XBMC-Korea">
+  <requires>
+    <import addon="xbmc.python" version="1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.0.8"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">OhmyNews School</summary>
+    <summary lang="ko">오마이뉴스 온라인 강좌</summary>
+    <description lang="en">Online Lecture from Onmynew. Only free lectures are possitble to watch now.</description>
+    <description lang="ko">오마이뉴스에서 제공하는 온라인 강좌. 현재 무료강의만 시청가능.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
