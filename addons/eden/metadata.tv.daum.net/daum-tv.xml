@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<scraper framework="1.1" date="2011-02-24" language="ko">
+ <?xml version="1.0" encoding="UTF-8"?>
+<scraper framework="1.1" date="2012-11-29" language="ko">
 	<NfoUrl dest="3">
 		<RegExp input="$$1" output="&lt;url&gt;http://movie.daum.net/tv/detail/main.do?tvProgramId=\1&lt;/url&gt;" dest="3">
 			<expression>movie\.daum\.net[^\?]*\?tvProgramId=(\d+)</expression>
@@ -19,6 +19,9 @@
 		<RegExp input="$$4" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;&lt;results&gt;\1&lt;/results&gt;" dest="1">
 			<RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\2 (\3)&lt;/title&gt;&lt;url&gt;http://movie.daum.net/tv/detail/main.do?tvProgramId=\1&lt;/url&gt;&lt;id&gt;\1&lt;/id&gt;&lt;/entity&gt;" dest="4">
 				<expression repeat="yes">class="fl srch"&gt;&lt;a href="http://movie.daum.net/tv/detail/main.do\?tvProgramId=(\d+)"[^&gt;]*&gt;([^"]*)&lt;/a&gt;\s*\((\d*)\)&lt;/span&gt;[^\(]*"fs13"&gt;([^"]*)&lt;/span</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\2 (\3)&lt;/title&gt;&lt;url&gt;http://movie.daum.net/tv/detail/main.do?tvProgramId=\1&lt;/url&gt;&lt;id&gt;\1&lt;/id&gt;&lt;/entity&gt;" dest="4+">
+				<expression repeat="yes">class="fl srch"&gt;&lt;a href="http://movie.daum.net/tv/detail/main.do\?tvProgramId=(\d+)"[^&gt;]*&gt;([^"]*)&lt;/a&gt;\s*&lt;/span&gt;[^\(]*"fs13"&gt;([^"]*)&lt;/span</expression>
 			</RegExp>
 			<expression noclean="1"/>
 		</RegExp>
