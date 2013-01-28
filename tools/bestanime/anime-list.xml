@@ -41,6 +41,9 @@
   <anime bestanimeid="3392" tvdbid="82807" defaulttvdbseason="2">
     <name>세키레이 2기</name>
   </anime>
+  <anime bestanimeid="3556" tvdbid="244061" defaulttvdbseason="1">
+    <name>슈타인즌 게이트</name>
+  </anime>
   <anime bestanimeid="3139" tvdbid="79414" defaulttvdbseason="2">
     <name>스즈미야 하루히의 우울 2기</name>
   </anime>
@@ -61,6 +64,21 @@
   </anime>
   <anime bestanimeid="2695" tvdbid="79839" defaulttvdbseason="0">
     <name>아리아 OVA</name>
+  </anime>
+  <anime bestanimeid="1138" tvdbid="70900" defaulttvdbseason="1">
+    <name>이니셜 D 퍼스트 스테이지</name>
+  </anime>
+  <anime bestanimeid="238" tvdbid="70900" defaulttvdbseason="1">
+    <name>이니셜 D 세컨드 스테이지</name>
+  </anime>
+  <anime bestanimeid="1257" tvdbid="70900" defaulttvdbseason="1">
+    <name>이니셜 D 서드 스테이지</name>
+  </anime>
+  <anime bestanimeid="1138" tvdbid="70900" defaulttvdbseason="1">
+    <name>이니셜 D 포스 스테이지</name>
+  </anime>
+  <anime bestanimeid="1182" tvdbid="70900" defaulttvdbseason="0">
+    <name>이니셜 D 엑스트라 스테이지</name>
   </anime>
   <anime bestanimeid="2803" tvdbid="80327" defaulttvdbseason="2">
     <name>속 안녕 절망선생</name>
@@ -85,6 +103,15 @@
   </anime>
   <anime bestanimeid="2881" tvdbid="79525" defaulttvdbseason="2">
     <name>코드기어스 반역의 를르슈 R2</name>
+  </anime>
+  <anime bestanimeid="2282" tvdbid="79151" defaulttvdbseason="1">
+    <name>Fate/stay night</name>
+  </anime>
+  <anime bestanimeid="3651" tvdbid="79151" defaulttvdbseason="2">
+    <name>Fate/Zero 1기</name>
+  </anime>
+  <anime bestanimeid="3651" tvdbid="79151" defaulttvdbseason="3">
+    <name>Fate/Zero 2기</name>
   </anime>
   <anime bestanimeid="1677" tvdbid="78914" defaulttvdbseason="2">
     <name>풀 메탈 패닉 후못후</name>
