@@ -37,10 +37,10 @@ class DaumNews:
         #-- item list
 	self.video_list = []
         for item in obj['tv']['newsList']['data']:
-            vid_url = item['videoUrl']
+	    vid = re.compile('vid=([^&]*)').search(item['videoUrl']).group(1)
             thumb   = item['imageUrl']
             title   = item['title']
-            self.video_list.append( (title,vid_url,thumb) )
+            self.video_list.append( (title,vid,thumb) )
         #-- page navigation
         psec = obj['tv']['newsList']['pageNavigation']
         if psec['currentPageNo'] > 1:

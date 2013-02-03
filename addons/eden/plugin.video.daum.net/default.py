@@ -28,8 +28,8 @@ def CATEGORIES():
   addDir(u"영화 예고편", "http://movie.daum.net/ranking/movieclip_ranking/", 10, image_dir+"daum_trailer.png")
   addDir(u"뉴스", "http://media.daum.net/tv/", 20, image_dir+"daum_media.png")
   addDir(u"베스트 동영상", "http://tvpot.daum.net/best/", 30, tvpot_icon)
-  addDir(u"브랜드", "http://tvpot.daum.net/brand/", 40, tvpot_icon)
-  addDir(u"게임", "http://tvpot.daum.net", 50, tvpot_icon)
+  addDir(u"브랜드", "_1", 40, tvpot_icon)
+  addDir(u"키즈짱", "http://kids.daum.net", 50, tvpot_icon)
   endDir()
 
 def CAT_TRAILER(base_url):
@@ -54,41 +54,51 @@ def CAT_BEST(base_url):
   addDir(u"연예/ 인기순 ", base_url+"TotalBest.do?cateid=22&sort=play",31,'')
   endDir()
 
-def CAT_BRAND_TOP(base_url):
-  from daum_brand import DaumBrand
-  for grp in DaumBrand.getList(DaumBrand.root_url+"/brands/"):
-    addDir(u"[COLOR FFFF0000]%s[/COLOR]" % grp['title'],'-',0,'')
-    for title,bid in grp['list']:
-      if bid:
-        url = base_url + "Top.do?ownerid=" + bid
-        addDir(title,url,41,'')
-      else:
-        addDir(title,'',40,'')
-  endDir()
-
-def CAT_BRAND(url):
+def CAT_BRAND_TOP(url,contPage):
+  page = int(url[1:])
   from daum_brand import DaumBrand
   site=DaumBrand()
-  site.parseTop(url)
-  for grp in site.menu_list:
-    if 'name' in grp:
-      addDir(u"[COLOR FF0000FF]%s[/COLOR]" % grp['name'],'-',0,'')
-    for title,url in grp['list']:
-      addDir(title,url,42,'')
+  site.parseList(page)
+  for title,ownerid,thumb in site.menu_list:
+    addDir(title, ownerid, 42, thumb)
+  if site.prevpage:
+    addDir(prevPage, "_%d"% (page-1), 41, '')
+  if site.nextpage:
+    addDir(nextPage, "_%d"% (page+1), 41, '')
+  endDir(contPage)
+
+def CAT_BRAND(ownerid):
+  from daum_brand import DaumBrand
+  site=DaumBrand()
+  site.parseTop(ownerid)
+  for title, playlistid, thumb in site.menu_list:
+    if playlistid:
+      addDir(title, "%s-%d-1"% (ownerid, playlistid), 43, thumb)
+    else:
+      addDir(u"[COLOR FFFF0000]%s[/COLOR]"% title,'',0,thumb)
   endDir()
 
-def CAT_GAME(base_url):
-  addDir(u"스타리그", base_url+"/game/sl/LeagueList.do?league=osl&type=list&lu=game_osl_closegame",51,image_dir+"oslBanner.png")
-  addDir(u"프로리그", base_url+"/game/sl/LeagueList.do?league=pro&type=list&lu=game_pro_closegame",51,image_dir+"proleagueBanner.png")
-  addDir(u"MSL", base_url+"/game/sl/LeagueList.do?league=msl&type=list&lu=game_msl_closegame",51,"")
+def CAT_KIDS(base_url):
+  addDir(u"팡팡동영상", "http://infant.kids.daum.net/vod",51,'')
   endDir()
 
-def CAT_STARCRAFT(main_url):
-  from daum_starcraft import DaumStarcraft
-  site = DaumStarcraft()
+def CAT_KIDS_VOD(main_url):
+  from daum_kids import DaumKids
+  site = DaumKids()
   site.parseTop(main_url)
-  for title,url in site.menu_list:
-    addDir(title, url, 52, '')
+  for title,url,thumb in site.menu_list:
+    if url.find('categoryId=') > 0:
+      addDir(title, url, 53, thumb)
+    else:
+      addDir(title, url, 52, thumb)
+  endDir()
+
+def CAT_KIDS_SERIES(main_url):
+  from daum_kids import DaumKids
+  site = DaumKids()
+  site.parseSeries(main_url)
+  for title,url,thumb in site.menu_list:
+    addDir(title, url, 53, thumb)
   endDir()
 
 #------------------------------------------------------------------
@@ -97,16 +107,16 @@ def BROWSE_TRAILER(main_url):
   site=DaumTrailer()
   site.parse(main_url)
   for title,url,thumb in site.video_list:
-    addDir(title, url, 1000, thumb)
+    addDir(title, url, 1002, thumb)
   endDir()
 
 def BROWSE_NEWS(main_url,contPage):
   from daum_news import DaumNews
   site=DaumNews()
   site.parse(main_url)
-  for title,url,thumb in site.video_list:
+  for title,vid,thumb in site.video_list:
     title = title.replace('&#39;',"'")
-    addDir(title, url, 1001, thumb)
+    addDir(title, vid, 1000, thumb)
   if site.prevpage:
     addDir(prevPage, site.prevpage, 22, '')
   if site.nextpage:
@@ -119,59 +129,90 @@ def BROWSE_BEST(main_url, contPage):
   site.parse(main_url)
   for title,url,thumb in site.video_list:
     title = title.replace('\n'," ")
-    addDir(title, url, 1000, thumb)
+    addDir(title, url, 1001, thumb)
   if site.prevpage:
     addDir(prevPage, site.prevpage, 32, '')
   if site.nextpage:
     addDir(nextPage, site.nextpage, 32, '')
   endDir(contPage)
 
-def BROWSE_BRAND(main_url,contPage):
+def BROWSE_BRAND(plst,contPage):
+  ownerid,plstr,pgstr = re.compile("(.+?)-(\d+)-(\d+)").match(plst).group(1,2,3)
+  playlistid = int(plstr)
+  page = int(pgstr)
+
   from daum_brand import DaumBrand
   site=DaumBrand()
-  site.parse(main_url)
-  for title,url,thumb in site.video_list:
-    title = title.replace('\n'," ")
-    addDir(title, url, 1000, thumb)
+  site.parse(ownerid,playlistid,page)
+  for title,vid,thumb in site.video_list:
+    addDir(title, vid, 1000, thumb)
   if site.prevpage:
-    addDir(prevPage, site.prevpage, 43, '')
+    addDir(prevPage, "%s-%d-%d"% (ownerid,playlistid,page-1), 44, '')
   if site.nextpage:
-    addDir(nextPage, site.nextpage, 43, '')
+    addDir(nextPage, "%s-%d-%d"% (ownerid,playlistid,page+1), 44, '')
   endDir(contPage)
 
-def BROWSE_STARCRAFT(main_url, contPage):
-  from daum_starcraft import DaumStarcraft
-  site=DaumStarcraft()
+def BROWSE_KIDS(main_url,contPage):
+  from daum_kids import DaumKids
+  site = DaumKids()
   site.parse(main_url)
-  for date,cable,mtitle,set_list in site.video_list:
-    addDir("[COLOR FFFF0000]%s(%s) %s[/COLOR]" % (date,cable,mtitle), '', 53, '')
-    for sname,stitle,url in set_list:
-      addDir("%s %s" % (sname,stitle), url, 1000, '')
+  for title,url,thumb in site.menu_list:
+    addDir('[COLOR FFFF0000]%s[/COLOR]'% title, url, 53, thumb)
+  for title,url,thumb in site.video_list:
+    addDir(title, url, 1003, thumb)
   if site.prevpage:
-    addDir(prevPage, site.prevpage, 53, '')
+    addDir(prevPage, site.prevpage, 54, '')
   if site.nextpage:
-    addDir(nextPage, site.nextpage, 53, '')
+    addDir(nextPage, site.nextpage, 54, '')
   endDir(contPage)
 
 #--------------------------------------------------------------------
-def PLAY_SWFURL(main_url, title):
+def PLAY_VID(vid, title):
   from getdaumvid import DaumGetFlvByVid2
-  vid = re.compile('vid=([^&]*)').search(main_url).group(1)
   vid_url = DaumGetFlvByVid2(None, vid)
+  print "daum vid=%s url=%s" % (vid, vid_url)
 
   li = xbmcgui.ListItem(title, iconImage="DefaultVideo.png")
   li.setInfo('video', {"Title": title})
   xbmc.Player().play(vid_url, li)
 
-def PLAY_CLIP(main_url, title):
+def PLAY_CLIP(main_url):
+  clipid = re.compile('clipid=(\d*)').search(main_url).group(1)
+  from getdaumvid import DaumGetClipInfo
+  title,vid,thumb = DaumGetClipInfo(int(clipid))
+  if vid:
+    from getdaumvid import DaumGetFlvByVid2
+    vid_url = DaumGetFlvByVid2(None, vid)
+    print "daum vid=%s url=%s" % (vid, vid_url)
+    if not thumb:
+      thumb = "DefaultVideo.png"
+    li = xbmcgui.ListItem(title, iconImage=thumb)
+    li.setInfo('video', {"Title": title})
+    xbmc.Player().play(vid_url, li)
+  else:
+    xbmcgui.Dialog().ok("No info on clip, ", clipid)
+
+def PLAY_SITE(main_url, title):
   import getdaumvid
   urls = getdaumvid.parse(main_url)
-  if len(urls):
+  if len(urls) > 0:
     li = xbmcgui.ListItem(title, iconImage="DefaultVideo.png")
     li.setInfo('video', {"Title": title})
     xbmc.Player().play(urls[0], li)
   else:
-    xbmcgui.Dialog().ok("Can not find video", main_url)
+    xbmcgui.Dialog().ok("No video found")
+
+def PLAY_KIDS_VOD(main_url, title):
+  from daum_kids import DaumKids
+  site = DaumKids()
+  vid = site.extract_video_id(main_url)
+  from getdaumvid import DaumGetFlvByVid2
+  vid_url = DaumGetFlvByVid2(None, vid)
+  print "daum vid=%s url=%s" % (vid, vid_url)
+
+  li = xbmcgui.ListItem(title, iconImage="DefaultVideo.png")
+  li.setInfo('video', {"Title": title})
+  xbmc.Player().play(vid_url, li)
 
 #--------------------------------------------------------------------                
 def get_params():
@@ -250,23 +291,29 @@ elif mode==30:
 elif mode==31 or mode==32:
   BROWSE_BEST(url,mode==32)
 # brands
-elif mode==40:
-  CAT_BRAND_TOP(url)
-elif mode==41:
+elif mode==40 or mode==41:
+  CAT_BRAND_TOP(url,mode==41)
+elif mode==42:
   CAT_BRAND(url)
-elif mode==42 or mode==43:
-  BROWSE_BRAND(url,mode==43)
-# game broadcast
+elif mode==43 or mode==44:
+  BROWSE_BRAND(url,mode==44)
+# kids jjang
 elif mode==50:
-  CAT_GAME(url)
+  CAT_KIDS(url)
 elif mode==51:
-  CAT_STARCRAFT(url)
-elif mode==52 or mode==53:
-  BROWSE_STARCRAFT(url,mode==53)
+  CAT_KIDS_VOD(url)
+elif mode==52:
+  CAT_KIDS_SERIES(url)
+elif mode==53 or mode==54:
+  BROWSE_KIDS(url,mode==54)
 # play
 elif mode==1000:
-  PLAY_CLIP(url,name)
+  PLAY_VID(url,name)
 elif mode==1001:
-  PLAY_SWFURL(url,name)
+  PLAY_CLIP(url)
+elif mode==1002:
+  PLAY_SITE(url,name)
+elif mode==1003:
+  PLAY_KIDS_VOD(url,name)
 
 # vim: softtabstop=2 shiftwidth=2 expandtab

@@ -9,11 +9,9 @@ def parse(url):
     response = urllib2.urlopen(url)
     link=response.read()
     response.close()
-    if url.startswith("http://movie"):  # trailer
-        match=re.compile('''VideoView\.html\?vid=(.+?)["\&]''').findall(link)
-    else:
-        # daumEmbed_jingle2 had 3 arguments, but daumEmbed_standard had 4
-        match=re.compile('''daumEmbed_.+?\('.+?','(.+?)','.+?'[,\)]''').findall(link)
+    match=re.compile('''Video\.html\?vid=(.+?)["\&]''').findall(link)
+    if not match:
+        match=re.compile('''{\s*vid:\s*"(.*?)",''').findall(link)
     flv_url = []
     for vid in match:
         flv = DaumGetFlvByVid2(url,vid)
@@ -21,8 +19,15 @@ def parse(url):
             flv_url.append( flv )
     return flv_url
 
+def DaumGetClipInfo(clipid):
+    url = "http://tvpot.daum.net/mypot/json/GetClipInfo.do?clipid=%d" % clipid
+    jstr = urllib2.urlopen(url).read()
+    import simplejson
+    obj = simplejson.loads(jstr)
+    clip = obj['clip_bean'];
+    return (clip['title'], clip['vid'], clip['thumb_url'])
+
 def DaumGetFlvByVid(referer, vid):
-    print "daum vid=%s" % vid
     req = urllib2.Request("http://flvs.daum.net/viewer/MovieLocation.do?vid="+vid)
     if referer:
         req.add_header('Referer', referer)
@@ -39,7 +44,6 @@ def DaumGetFlvByVid(referer, vid):
     return DaumGetFLV(referer, url)
 
 def DaumGetFlvByVid2(referer, vid):
-    print "daum vid=%s" % vid
     url = "http://videofarm.daum.net/controller/api/open/v1_2/MovieLocation.apixml?preset=main"
     if referer and referer.find("movie.daum.net") >= 0:
         url += "&playLoc=daum_movie"
