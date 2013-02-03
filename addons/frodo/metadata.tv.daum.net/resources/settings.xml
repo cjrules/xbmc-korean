@@ -6,5 +6,6 @@
     </category>
     <category label="30004">
 	<setting label="30002" type="bool" id="useAgent" default="false"/>
+	<setting label="30005" type="bool" id="escEpQueryBug" default="false"/>
     </category>
 </settings>

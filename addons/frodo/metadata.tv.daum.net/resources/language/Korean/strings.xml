@@ -5,4 +5,5 @@
     <string id="30002">Agent에서 에피소드 가져오기</string>
     <string id="30003">기본</string>
     <string id="30004">고급</string>
+    <string id="30005">1회 정보가 없을 때 회차 요구가 안되는 버그를 피함</string>
 </strings>

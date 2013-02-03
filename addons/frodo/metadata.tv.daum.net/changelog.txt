@@ -1,3 +1,9 @@
+1.2.5
+
+Changes
+- pass episode number in ID
+- minor bug fix
+
 1.2.4
 
 Changes
