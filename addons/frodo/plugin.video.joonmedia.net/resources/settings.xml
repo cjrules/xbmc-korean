@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings>
+  <category label="30005">
+    <setting id="showThumb" type="bool" label="30001" default="false" />
+    <setting id="youtubeQuality" type="labelenum" label="30002" values="270p|360p|480p|720p" default="270p" />
+    <setting id="dailymotionQuality" type="labelenum" label="30003" values="sd|hd" default="sd" />
+  </category>
+  <category label="30006">
+    <setting id="VideoColumn" type="labelenum" label="30004" values="2|3|4" default="2"/>
+  </category>
+</settings>
