@@ -34,7 +34,7 @@
 		</RegExp>
 	</GetAlbumSearchResults>
 	<GetAlbumSearchResultPage dest="3">
-		<RegExp input="$$4" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;results&gt;\1&lt;/results&gt;" dest="3">
+		<RegExp input="$$4" output="&lt;results&gt;\1&lt;/results&gt;" dest="3">
 			<RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\2&lt;/title&gt;&lt;artist&gt;\3&lt;/artist&gt;&lt;url&gt;http://music.naver.com\1&lt;/url&gt;&lt;/entity&gt;" dest="4">
 				<expression repeat="yes">&lt;dt&gt;&lt;a href="(/album/index\.nhn\?albumId=\d+)" title="(.*?)".*?&lt;a href="/artist/.*?title="(.*?)"</expression>
 			</RegExp>

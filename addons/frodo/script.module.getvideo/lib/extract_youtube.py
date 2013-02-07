@@ -26,7 +26,7 @@ def extract_video(vid):
   html = html.replace('\\u0026', '&')
   query = re.compile('"url_encoded_fmt_stream_map":\s*"(.+?)"').search(html)
   if query is None:
-    return None
+    raise FormatError
 
   vid_urls = {}
   for url_desc in query.group(1).split(','):

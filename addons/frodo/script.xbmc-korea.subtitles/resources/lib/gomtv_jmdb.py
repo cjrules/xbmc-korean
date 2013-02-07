@@ -85,7 +85,7 @@ def gomtv_jamak_url(url):
 
 if __name__ == "__main__":
   import os
-  f = open(os.path.join('d:'+os.sep,'work','test','test.avi'), 'rb')
+  f=xbmcvfs.File(os.path.join('d:'+os.sep,'work','test','test.avi'))
   for supl,title,url in gomtv_jamak_from_file(f):
     print "[%s] %s = %s" % (supl,title,url)
   f.close
