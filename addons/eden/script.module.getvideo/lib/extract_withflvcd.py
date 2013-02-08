@@ -15,11 +15,16 @@ def extract_withFLVCD(main_url):
   match = re.compile('<input[^>]*name="inf" value="(.*?)">', re.S).search(doc)
   if not match:
     return []
-  for item in match.group(1).split('<$>'):
+  items = match.group(1).split('<$>')
+  ua_match = re.compile(r"<A>(.*)").search(items[0])
+  for item in items[1:]:
     try:
       title = re.compile(r"<N>(.*)", re.U).search(item).group(1).encode('utf-8')
       url = re.compile(r"<U>(.*)").search(item).group(1)
-      vid_list.append( {"title":title, "url":url} )
+      vitem = {"title":title, "url":url}
+      if ua_match:
+        vitem["useragent"] = ua_match.group(1)
+      vid_list.append( vitem )
     except:
       pass
   return vid_list

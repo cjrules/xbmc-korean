@@ -23,13 +23,16 @@ tvpot_icon = image_dir+"daum_tvpot.png"
 prevPage = u"[B]<{0:s}[/B]".format(_L(30000))
 nextPage = u"[B]{0:s}>[/B]".format(_L(30001))
 
+from getdaumvid import DaumGetClipInfo, DaumGetFlvByVid
+
 # show menu
 def CATEGORIES():
   addDir(u"영화 예고편", "http://movie.daum.net/ranking/movieclip_ranking/", 10, image_dir+"daum_trailer.png")
   addDir(u"뉴스", "http://media.daum.net/tv/", 20, image_dir+"daum_media.png")
   addDir(u"베스트 동영상", "http://tvpot.daum.net/best/", 30, tvpot_icon)
   addDir(u"브랜드", "_1", 40, tvpot_icon)
-  addDir(u"키즈짱", "http://kids.daum.net", 50, tvpot_icon)
+  #addDir(u"키즈짱", "http://kids.daum.net/vod", 50, tvpot_icon)
+  addDir(u"키즈짱", "http://infant.kids.daum.net/vod", 51, tvpot_icon)
   endDir()
 
 def CAT_TRAILER(base_url):
@@ -156,20 +159,19 @@ def BROWSE_KIDS(main_url,contPage):
   from daum_kids import DaumKids
   site = DaumKids()
   site.parse(main_url)
-  for title,url,thumb in site.menu_list:
-    addDir('[COLOR FFFF0000]%s[/COLOR]'% title, url, 53, thumb)
   for title,url,thumb in site.video_list:
     addDir(title, url, 1003, thumb)
   if site.prevpage:
     addDir(prevPage, site.prevpage, 54, '')
   if site.nextpage:
     addDir(nextPage, site.nextpage, 54, '')
+  for title,url,thumb in site.menu_list:
+    addDir('[COLOR FF00FF00]%s[/COLOR]'% title, url, 54, thumb)
   endDir(contPage)
 
 #--------------------------------------------------------------------
 def PLAY_VID(vid, title):
-  from getdaumvid import DaumGetFlvByVid2
-  vid_url = DaumGetFlvByVid2(None, vid)
+  vid_url = DaumGetFlvByVid(None, vid)
   print "daum vid=%s url=%s" % (vid, vid_url)
 
   li = xbmcgui.ListItem(title, iconImage="DefaultVideo.png")
@@ -178,11 +180,9 @@ def PLAY_VID(vid, title):
 
 def PLAY_CLIP(main_url):
   clipid = re.compile('clipid=(\d*)').search(main_url).group(1)
-  from getdaumvid import DaumGetClipInfo
   title,vid,thumb = DaumGetClipInfo(int(clipid))
   if vid:
-    from getdaumvid import DaumGetFlvByVid2
-    vid_url = DaumGetFlvByVid2(None, vid)
+    vid_url = DaumGetFlvByVid(None, vid)
     print "daum vid=%s url=%s" % (vid, vid_url)
     if not thumb:
       thumb = "DefaultVideo.png"
@@ -206,8 +206,7 @@ def PLAY_KIDS_VOD(main_url, title):
   from daum_kids import DaumKids
   site = DaumKids()
   vid = site.extract_video_id(main_url)
-  from getdaumvid import DaumGetFlvByVid2
-  vid_url = DaumGetFlvByVid2(None, vid)
+  vid_url = DaumGetFlvByVid(None, vid)
   print "daum vid=%s url=%s" % (vid, vid_url)
 
   li = xbmcgui.ListItem(title, iconImage="DefaultVideo.png")

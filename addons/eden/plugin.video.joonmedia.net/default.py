@@ -145,8 +145,8 @@ def _playTudou(url):
   pl = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
   pl.clear()
   for vid in vid_list:
-    vid_url = vid['url'].replace('&amp;','&')
-    vid_url = vid_url.replace("?1","?8") # trick to make streaming easier
+    vid_url = vid['url'].replace("?1","?8") # trick to make streaming easier
+    vid_url = vid_url+"|User-Agent="+vid['useragent']
     li = xbmcgui.ListItem(vid['title'], iconImage="DefaultVideo.png")
     li.setInfo( 'video', { "Title": vid['title'] } )
     pl.add(vid_url, li)

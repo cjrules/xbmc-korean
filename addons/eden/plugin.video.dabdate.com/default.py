@@ -79,7 +79,7 @@ def _BROWSE(url):
             title = re.compile('''<a href[^>]*pr=[1|m]"><font [^>]*>(.*?)</font></a>''').search(item).group(1)
             title = re.compile("</?b>").sub("",title)
             if re.compile('<b>Free').search(item):
-                title = "*"+title
+                title = "[B]"+title+"[/B]"
         except:
             continue
 

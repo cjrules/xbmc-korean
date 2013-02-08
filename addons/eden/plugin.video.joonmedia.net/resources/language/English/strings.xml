@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
-    <string id="30000">BayKorean</string>
+    <string id="30000">JoonMedia</string>
     <string id="30001">Show Thumbnail</string>
-    <string id="30002">Youtube Qualit</string>
-    <string id="30003">Dailymotion Qualit</string>
+    <string id="30002">Youtube Quality</string>
+    <string id="30003">Dailymotion Quality</string>
     <string id="30004">Data Column</string>
     <string id="30005">Basic</string>
     <string id="30006">Advanced</string>

@@ -16,29 +16,26 @@
       44: 4096\\3272304 WebM
       45: 4096\\3272304 WebM
 """
-import urllib, re
+import urllib, urlparse, re
 
+# refer plugin.video.youtube/YouTubePlayer/scrapeWebPageForVideoLinks
 def extract_video(vid):
   url = "http://www.youtube.com/watch?v=%s&fmt=18" % vid
 
   html = urllib.urlopen(url).read()
   html = html.replace('\\u0026', '&')
-  match = re.compile('url_encoded_fmt_stream_map=(.+?)&').findall(html)
-  if len(match) == 0:
-    stream_map = (re.compile('url_encoded_fmt_stream_map": "(.+?)"').findall(html)[0]).replace('\\/', '/').split('url=')
-  else:
-    stream_map = urllib.unquote(match[0]).decode('utf8').split('url=')
-
-  if re.search('status=fail', html):
-    return None
+  query = re.compile('"url_encoded_fmt_stream_map":\s*"(.+?)"').search(html)
+  if query is None:
+    raise FormatError
 
   vid_urls = {}
-  for attr in stream_map:
-    if attr == '':
-        continue
-    parts = urllib.unquote(attr).decode('utf8').split('&qual')
-    qual = int(re.compile('&itag=(\d*)').findall(parts[1])[0])
-    vid_urls[qual] = parts[0]
+  for url_desc in query.group(1).split(','):
+    url_desc_map = urlparse.parse_qs(url_desc)
+    #print u"url_map: " + repr(url_desc_map)
+    if not (url_desc_map.has_key(u"url") and url_desc_map.has_key(u"itag")):
+      continue
+    itag = int(url_desc_map[u"itag"][0])
+    vid_urls[itag] = urllib.unquote(url_desc_map[u"url"][0])
 
   return vid_urls
 
