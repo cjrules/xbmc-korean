@@ -1,13 +1,7 @@
-1.0.4
+1.1.0
 
 Changes
-- version fix
-
-
-1.0.1
-
-Changes
-- support multiple search result pages
+- full revision to catch site changes
 
 1.0.0
 
