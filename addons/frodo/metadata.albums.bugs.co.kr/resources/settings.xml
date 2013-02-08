@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <setting label="30003" type="bool" id="srchByArtist" default="true"/>
+    <setting label="30004" type="bool" id="srchByAlbum" default="true" visible="eq(-1,true)"/>
+</settings>

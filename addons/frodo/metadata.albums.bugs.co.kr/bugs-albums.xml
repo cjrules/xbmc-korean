@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scraper framework="1.1" date="2013-01-30">
+	<NfoUrl dest="3">
+		<RegExp input="$$1" output="&lt;url&gt;\1&lt;/url&gt;" dest="3">
+			<expression>(http://www.bugs.co.kr/album/\d*)</expression>
+		</RegExp>
+	</NfoUrl>
+	<CreateAlbumSearchUrl dest="3">
+		<RegExp input="$$4" output="&lt;url&gt;http://search.bugs.co.kr/album?q=\1&lt;/url&gt;" dest="3">
+			<RegExp conditional="!srchByArtist" input="$$1" output="\1" dest="4">
+				<expression/>
+			</RegExp>
+			<RegExp conditional="srchByArtist">
+				<RegExp conditional="!srchByAlbum" input="$$2" output="\1" dest="4">
+					<expression/>
+				</RegExp>
+				<RegExp conditional="srchByAlbum" input="$$2%20$$1" output="\1" dest="4">
+					<expression/>
+				</RegExp>
+				<expression/>
+			</RegExp>
+			<expression/>
+		</RegExp>
+	</CreateAlbumSearchUrl>
+	<GetAlbumSearchResults dest="3">
+		<RegExp input="$$4" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;&lt;results&gt;\1&lt;/results&gt;" dest="3">
+			<RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\2&lt;/title&gt;&lt;artist&gt;\3&lt;/artist&gt;&lt;url&gt;\1&lt;/url&gt;&lt;/entity&gt;" dest="4">
+				<expression repeat="yes">href="([^"]*)" class="albumtitle" title="(.*?)".*?class="artistname" title="(.*?)"</expression>
+			</RegExp>
+			<RegExp input="$$5" output="&lt;url function=&quot;GetAlbumSearchResultPage&quot;&gt;1&lt;/url&gt;" dest="4+">
+				<RegExp input="$$1" output="\1" dest="5">
+					<expression noclean="1">&lt;div class="pagination[^"]*"&gt;(.*?)&lt;/div&gt;</expression>
+				</RegExp>
+				<expression repeat="yes">href="(http[^"]*)" class="number"</expression>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetAlbumSearchResults>
+	<GetAlbumSearchResultPage dest="3">
+		<RegExp input="$$4" output="&lt;results&gt;\1&lt;/results&gt;" dest="3">
+			<RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\2&lt;/title&gt;&lt;artist&gt;\3&lt;/artist&gt;&lt;url&gt;\1&lt;/url&gt;&lt;/entity&gt;" dest="4">
+				<expression repeat="yes">href="([^"]*)" class="albumtitle" title="(.*?)".*?class="artistname" title="(.*?)"</expression>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetAlbumSearchResultPage>
+	<GetAlbumDetails dest="3">
+		<RegExp input="$$4" output="&lt;details&gt;\1&lt;/details&gt;" dest="3">
+			<RegExp input="$$1" output="&lt;title&gt;\1&lt;/title&gt;" dest="4">
+				<expression>property="og:title" content="(.*?)"</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;thumb&gt;\1&lt;/thumb&gt;" dest="4+">
+				<expression>property="og:image" content="(.*?)"</expression>
+			</RegExp>
+			<!-- description box -->
+			<RegExp input="$$1" output="\1" dest="5">
+				<expression noclean="1">&lt;dl class="desc"&gt;(.*?)&lt;/dl&gt;</expression>
+			</RegExp>
+			<RegExp input="$$5" output="&lt;artist&gt;\1&lt;/artist&gt;" dest="4+">
+				<expression>&lt;dt class="artistname".*?title="(.*?)"</expression>
+			</RegExp>
+			<RegExp input="$$6" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="4+">
+				<RegExp input="$$5" output="\1" dest="6">
+					<expression>&lt;dt class="genre".*?&lt;dd&gt;(.*?)&lt;/dd&gt;</expression>
+				</RegExp>
+				<expression repeat="yes" trim="1">(\S.*?)(?:,|$)</expression>
+			</RegExp>
+			<RegExp input="$$6" output="&lt;style&gt;\1&lt;/style&gt;" dest="4+">
+				<RegExp input="$$5" output="\1" dest="6">
+					<expression>&lt;dt class="style".*?&lt;dd&gt;(.*?)&lt;/dd&gt;</expression>
+				</RegExp>
+				<expression repeat="yes" trim="1">(\S.*?)(?:,|$)</expression>
+			</RegExp>
+			<RegExp input="$$5" output="&lt;year&gt;\1&lt;/year&gt;" dest="4+">
+				<expression trim="1">&lt;dt class="date"&gt;.*?&lt;dd&gt;(\d{4})[^&lt;]*&lt;</expression>
+			</RegExp>
+			<RegExp input="$$5" output="&lt;releasedate&gt;\1&lt;/releasedate&gt;" dest="4+">
+				<expression trim="1">&lt;dt class="date"&gt;.*?&lt;dd&gt;(.*?)&lt;</expression>
+			</RegExp>
+			<RegExp input="$$5" output="&lt;label&gt;\1&lt;/label&gt;" dest="4+">
+				<expression trim="1">&lt;dt class="company"&gt;.*?&lt;dd&gt;(.*?)&lt;</expression>
+			</RegExp>
+			<RegExp input="$$5" output="&lt;review&gt;\1&lt;/review&gt;" dest="4+">
+				<RegExp input="$$1" output="\1" dest="6">
+					<expression noclean="1">div class="albumReview".*?&lt;p[^&gt;]*&gt;(.*?)&lt;/p&gt;</expression>
+				</RegExp>
+				<RegExp input="$$6" output="\1" dest="5">
+					<expression />
+				</RegExp>
+				<RegExp input="$$6" output="\1\n" dest="5">
+					<expression repeat="yes">(.*?)&lt;br */?&gt;</expression>
+				</RegExp>
+				<RegExp input="$$6" output="\1" dest="5+">
+					<expression>br */?&gt;([^&gt;]*)$</expression>
+				</RegExp>
+				<expression trim="1" />
+			</RegExp>
+			<RegExp input="$$1" output="&lt;track&gt;&lt;position&gt;\2&lt;/position&gt;&lt;title&gt;\1&lt;/title&gt;&lt;/track&gt;" dest="4+">
+				<expression repeat="yes">class="tracktitle[^"]*" title="([^"]*)"&gt;\s*[0]*(\d*)</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;url function=&quot;GetBugsAlbumPhoto&quot;&gt;http://music.bugs.co.kr/album/ajax/photoes?albumId=\1&amp;id=\2&lt;/url&gt;" dest="4+">
+				<expression>span class="morePhoto"&gt;&lt;a [^&gt;]*\((\d+), *(\d+)</expression>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetAlbumDetails>
+	<GetBugsAlbumPhoto dest="3">
+		<RegExp input="$$4" output="&lt;details&gt;&lt;fanart&gt;\1&lt;/fanart&gt;&lt;/details&gt;" dest="3">
+			<RegExp input="$$1" output="&lt;thumb preview=&quot;\2&quot;&gt;\1&lt;/thumb&gt;" dest="4">
+				<expression repeat="yes">{[^}]*"imageUrl":"([^"]*)"[^}]*"clip59":"([^"]*)"</expression>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetBugsAlbumPhoto>
+</scraper>
