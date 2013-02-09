@@ -43,10 +43,18 @@ def parseEpisodePage(main_url):
     sec = soup.find("h3",{"class":"pagepage"})
     prevpg = sec.find(text=lambda(x) : x == "Prev")
     if prevpg:
-        result['prevpage'] = prevpg.parent['href']
+        url = prevpg.parent['href']
+        if url[0] == '/':
+            result['prevpage'] = root_url+url
+        else:
+            result['prevpage'] = url
     nextpg = sec.find(text=lambda(x) : x == "Next")
     if nextpg:
-        result['nextpage'] = nextpg.parent['href']
+        url = nextpg.parent['href']
+        if url[0] == '/':
+            result['nextpage'] = root_url+url
+        else:
+            result['nextpage'] = url
     return result
 
 def parseProg(main_url):
