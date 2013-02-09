@@ -3,7 +3,7 @@
     GomTV Mobile
 """
 
-import urllib
+import urllib, re
 import xbmcaddon,xbmcplugin,xbmcgui
 
 # plugin constants
@@ -55,54 +55,36 @@ def programListMore(main_url):
 def videoList(main_url,main_title):
     info = gomm.parseProg(main_url)
     if info is None:
-    	xbmcgui.Dialog().ok(_L(30010), _L(30011))
-    	return
-    if len(info['link']):
-    	if len(info['link']) == 1:
-            url = info['link'][0]['url'] + "|Referer="+main_url
-            li = xbmcgui.ListItem(main_title, iconImage="DefaultVideo.png")
-            li.setInfo('video', {"Title": main_title})
-            xbmc.Player().play(url, li)
-        elif plistDir:
-            for item in info['link']:
-                url = item['url'] + "|Referer="+main_url
-                addLink(item['title'], url, "")
-            endDir()
-        else:
-            pl = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
-            pl.clear()
-            for item in info['link']:
-                li = xbmcgui.ListItem(item['title'], iconImage="DefaultVideo.png")
-                li.setInfo( 'video', { "Title": item['title'] } )
-                pl.add(item['url']+"|Referer="+main_url, li)
-            xbmc.Player().play(pl)
+        xbmcgui.Dialog().ok(_L(30010), _L(30011))
+        return
+    if len(info['link']) == 0:
+        nidlist = gomtv.getNodeIds( int(info['contentsid']), int(info['seriesid']) )
+        setnum = 0
+        for nid in nidlist:
+            info['link'].append( {
+                'title':info['titles'][setnum],
+                'url':info['video_base']+gomm.getRequestQuery(info['contentsid'],info['seriesid'],nid)
+                } )
+            setnum += 1
+
+    if len(info['link']) == 1:
+        url = info['link'][0]['url'] + "|Referer="+main_url
+        li = xbmcgui.ListItem(main_title, iconImage="DefaultVideo.png")
+        li.setInfo('video', {"Title": main_title})
+        xbmc.Player().play(url, li)
+    elif plistDir:
+        for item in info['link']:
+            url = item['url'] + "|Referer="+main_url
+            addLink(item['title'], url, "")
+        endDir()
     else:
-    	url = "http://ch.gomtv.com/%s/%s/%s" % (info['chnum'],info['id1s'],info['id2s'])
-    	info2 = gomtv.parseProg(url)
-    	if info2 is None:
-            xbmcgui.Dialog().ok(_L(30010), _L(30011))
-    	    return
-    	if len(info2['playlist']) == 1:
-            url = info['video_base'] + gomm.getRequestQuery(info['contentsid'],info['seriesid'],info2['playlist'][0]['nodeid'])
-            url += "|Referer="+main_url
-            li = xbmcgui.ListItem(main_title, iconImage="DefaultVideo.png")
-            li.setInfo('video', {"Title": main_title})
-            xbmc.Player().play(url, li)
-        elif plistDir:
-            for item in info2['playlist']:
-                url = info['video_base'] + gomm.getRequestQuery(info['contentsid'],info['seriesid'],item['nodeid'])
-                url += "|Referer="+main_url
-                addLink(item['title'], url, "")
-            endDir()
-        else:
-            pl = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
-            pl.clear()
-            for item in info2['playlist']:
-                li = xbmcgui.ListItem(item['title'], iconImage="DefaultVideo.png")
-                li.setInfo( 'video', { "Title": item['title'] } )
-                url = info['video_base'] + gomm.getRequestQuery(info['contentsid'],info['seriesid'],item['nodeid'])
-                pl.add(url+"|Referer="+main_url, li)
-            xbmc.Player().play(pl)
+        pl = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
+        pl.clear()
+        for item in info['link']:
+            li = xbmcgui.ListItem(item['title'], iconImage="DefaultVideo.png")
+            li.setInfo( 'video', { "Title": item['title'] } )
+            pl.add(item['url']+"|Referer="+main_url, li)
+        xbmc.Player().play(pl)
 
 #-----------------------------------                
 def get_params():

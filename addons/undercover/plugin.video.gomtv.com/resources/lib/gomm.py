@@ -87,12 +87,23 @@ def parseProg2(main_url):
         info['link'].append({'title':info['titles'][1],'url':info['video_base']+getRequestQuery(info['contentsid'], info['seriesid'], nid2)})
     return info
 
+def getVideoBase(contentsid=None):
+    down_url = root_url+"/ajax/getPlayUrl.gom"
+    req = urllib2.Request(down_url)
+    req.add_header("User-Agent", BrowserAgent)
+    if contentsid:
+        req.add_header("Referer", root_url+"/view.gom?contentsid="+str(contentsid))
+    paras = '&authmodel=ipad&systemversion=4.3'
+    jsonstr = urllib2.urlopen(req, paras).read()
+    markup = simplejson.loads(jsonstr)
+    return markup['param']
+
 def getRequestQuery(contentsid, seriesid, nodeid):
     ss  = "&attr1=10002"
-    ss += "&contentsid=" + contentsid
-    ss += "&seriesid=" + seriesid
+    ss += "&contentsid=" + str(contentsid)
+    ss += "&seriesid=" + str(seriesid)
     ss += "&userno="
-    ss += "&nodeid=" + nodeid
+    ss += "&nodeid=" + str(nodeid)
     ss += "&level_flag=4"
     ss += "&service_flag=1"
     ss += "&isfree=1"
