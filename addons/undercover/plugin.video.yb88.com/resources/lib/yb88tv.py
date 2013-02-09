@@ -28,10 +28,29 @@ def parseList(main_url):
         result['nextpage'] = nextpg.parent['href']
     return result
 
-def parseProg(main_url):
+def parseEpisodePage(main_url):
     resp = urllib.urlopen(main_url)
     html = resp.read()
     resp.close()
+    soup = BeautifulSoup( html, fromEncoding="utf-8" )
+    result = {}
+    link = []
+    for aa in soup.findAll("a",{"href":re.compile("Show\.php")}):
+        title = aa['title']
+        url = aa['href']
+        link.append( {'title':title,'url':url} )
+    result['link'] = link
+    sec = soup.find("h3",{"class":"pagepage"})
+    prevpg = sec.find(text=lambda(x) : x == "Prev")
+    if prevpg:
+        result['prevpage'] = prevpg.parent['href']
+    nextpg = sec.find(text=lambda(x) : x == "Next")
+    if nextpg:
+        result['nextpage'] = nextpg.parent['href']
+    return result
+
+def parseProg(main_url):
+    html = urllib.urlopen(main_url).read()
     soup = BeautifulSoup( html, fromEncoding="utf-8" )
     result = {}
     # playlist
@@ -40,22 +59,14 @@ def parseProg(main_url):
     if sec is None:
         sec = soup.find("div",{"class":"Content-view-mlink"})
     for aa in sec.findAll("a"):
-    	if aa['href'].find('/play/') > 0:
-            link.append({'title':aa.string,'url':aa['href'].replace('&amp;','&')})
-    result['playlist'] = link
-    # other episodes
-    sec = soup.find("div",{"class":re.compile("^Content-list")}).find('ul')
-    link = []
-    for aa in sec.findAll('a'):
-        link.append({'title':aa['title'],'url':aa['href'].replace('&amp;','&')})
-    result['episodes'] = link
+    	if aa['href'].find('/play') > 0 or aa['href'].find('dailymotion') > 0:
+            link.append({'title':aa.string,'url':aa['href']})
+    result['list'] = link
     return result
 
 def parseVideoPlay(main_url):
-    resp = urllib.urlopen(main_url)
-    html = resp.read()
-    resp.close()
-    return re.compile("<script>show\('(.*)'\);</script>").search(html).group(1)
+    html = urllib.urlopen(main_url).read()
+    return re.compile("<script>show\('([^']*)'\);</script>").search(html).group(1)
 
 if __name__ == "__main__":
     result = parseList(root_url+"/tv/Entertainment/")

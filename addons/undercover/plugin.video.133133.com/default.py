@@ -85,7 +85,7 @@ def playVideo(main_url):
     elif main_url.find('youku.com') > 0 or main_url.find('yinyuetai.com') > 0:
         from extract_withflvcd import extract_withFLVCD
         vid_list = extract_withFLVCD(urllib.quote_plus(main_url))
-    elif url.find('sohu.com') > 0:
+    elif main_url.find('sohu.com') > 0:
         import extract_sohu
         vid_list = extract_sohu.extract_video_from_url(main_url)
     else:

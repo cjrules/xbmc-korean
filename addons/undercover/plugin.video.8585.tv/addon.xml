@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.yb88.com"
-       name="YB88 TV"
+<addon id="plugin.video.8585.tv"
+       name="바로바로 TV"
        version="0.1.0"
        provider-name="XBMC-Korea">
   <requires>
@@ -13,10 +13,10 @@
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">YB88 TV Streaming Service</summary>
-    <summary lang="ko">영변88 비디오 스트리밍 서비스</summary>
-    <description lang="en">Watch Korean TV series in tv.yb88.com</description>
-    <description lang="ko">영변88 TV(tv.yb88.com)에서 제공하는 영화/드라마등을 볼 수 있습니다</description>
+    <summary lang="en">8585 TV Streaming Service</summary>
+    <summary lang="ko">8585 TV 비디오 스트리밍 서비스</summary>
+    <description lang="en">Watch Korean TV series in 8585.tv</description>
+    <description lang="ko">8585 TV(8585.tv)에서 제공하는 영화/드라마등을 볼 수 있습니다</description>
     <platform>all</platform>
   </extension>
 </addon>

@@ -51,13 +51,13 @@ def progListNext(main_url):
     endDir(True)
 
 def _episodeList(main_url):
-    info = yb88tv.parseProg(main_url)
-    for item in info['playlist']:
-        addDir(u"[B]%s[/B]" % item['title'], item['url'], 5, "")
-    if len(info['episodes']) > 0:
-        addDir(u"[COLOR FFFF0000]%s[/COLOR]" % _L(30103), "-", 0, "")
-        for item in info['episodes']:
-            addDir(item['title'], item['url'], 4, "")
+    info = yb88tv.parseEpisodePage(main_url)
+    for item in info['link']:
+        addDir(item['title'], item['url'], 5, "")
+    if 'prevpage' in info:
+        addDir(tPrevPage, info['prevpage'], 4, "")
+    if 'nextpage' in info:
+        addDir(tNextPage, info['nextpage'], 4, "")
 
 def episodeList(main_url):
     _episodeList(main_url)
@@ -66,6 +66,12 @@ def episodeList(main_url):
 def episodeListNext(main_url):
     _episodeList(main_url)
     endDir(True)
+
+def videoList(main_url):
+    info = yb88tv.parseProg(main_url)
+    for item in info['list']:
+        addDir(item['title'], item['url'], 6, "")
+    endDir()
 
 #-----------------------------------                
 def _playFLVCD(url):
@@ -95,8 +101,7 @@ def _playTudou(url):
     for vid in vid_list:
         li = xbmcgui.ListItem(vid['title'], iconImage="DefaultVideo.png")
         li.setInfo( 'video', { "Title": vid['title'] } )
-        url = vid['url'].replace("?1","?8") # trick to make streaming easier
-        pl.add(url+"|User-Agent="+vid['useragent'], li)
+        pl.add(vid['url']+"|User-Agent="+vid['useragent'], li)
     xbmc.Player().play(pl)
 
 def _playSohu(url):
@@ -122,6 +127,8 @@ def _playYoutube(url, title):
     try:
         vid_urls = extract_youtube.extract_video(vid)
     except:
+        vid_urls = None
+    if vid_urls is None:
         xbmcgui.Dialog().ok("Fail to extract video", url)
         return
     qual = int(fmttbl[__addon__.getSetting('youtubeQuality')])
@@ -154,7 +161,10 @@ def _playDmotion(url, title):
     xbmc.Player().play(pl)
 
 def playWrapper(main_url, title):
-    url = yb88tv.parseVideoPlay(main_url)
+    if main_url.find('http://www.dailymotion.com') == 0:
+        url = main_url
+    else:
+        url = yb88tv.parseVideoPlay(main_url)
 
     if url.find('tudou.com') > 0:
         _playTudou(url)
@@ -254,6 +264,8 @@ elif mode==3:
 elif mode==4:
     episodeListNext(url)
 elif mode==5:
+    videoList(url)
+elif mode==6:
     playWrapper(url, name)
 
 # vim:sts=4:sw=4:et

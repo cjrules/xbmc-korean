@@ -19,16 +19,16 @@ tNextPage = u"[B]%s>[/B]" % _L(30101)
 
 def rootList():
     ## not parsing homepage for faster speed
-    addDir("방영 드라마",root_url+"/drama",1,"")
-    addDir("종영 드라마",root_url+"/drama_fin",1,"")
-    addDir("예능 | 오락",root_url+"/entertain",1,"")
-    addDir("시사 | 교양",root_url+"/current",1,"")
-    addDir("영화",root_url+"/movie",4,"")
-    #addDir("영화 예고편",root_url+"/trailer",6,"")
-    addDir("애니 극장판",root_url+"/animation",4,"")
-    #addDir("애니 장편",root_url+"/animation_featured",7,"")
-    addDir("스포츠",root_url+"/sports",1,"")
-    addDir("뮤직비디오",root_url+"/music",1,"")
+    addDir(u"방영 드라마",root_url+"/drama",1,"")
+    addDir(u"종영 드라마",root_url+"/drama_fin",1,"")
+    addDir(u"예능 | 오락",root_url+"/entertain",1,"")
+    addDir(u"시사 | 교양",root_url+"/current",1,"")
+    addDir(u"영화",root_url+"/movie",4,"")
+    #addDir(u"영화 예고편",root_url+"/trailer",6,"")
+    addDir(u"애니 극장판",root_url+"/animation",4,"")
+    #addDir(u"애니 장편",root_url+"/animation_featured",7,"")
+    addDir(u"스포츠",root_url+"/sports",1,"")
+    addDir(u"뮤직비디오",root_url+"/music",1,"")
     endDir()
 
 #-----------------------------------                
@@ -52,7 +52,7 @@ def _progList(main_url):
             url = item.p.a['href']
             if not url.startswith('http://'):
             	url = root_url + url
-            addDir(title, url, 3, thumb)
+            addDir(title.decode('utf-8'), url, 3, thumb)
 
     cur = soup.find("div", {"class":"pagination"}).find("strong")
     p = cur.findPreviousSibling("a")
@@ -213,6 +213,7 @@ def playTudouId(iid,title):
         #vid_list = extract_tudou.extract_video(icode)
         vid_list = extract_tudou.extract_video_from_iid(iid)
         vid_url = vid_list[0]['url'].replace("?1","?8") # trick to make streaming easier
+        vid_url += "|User-Agent="+vid_list[0]['useragent']
     except:
         xbmc.log("Fail to extract Tudou %s" % iid, xbmc.LOGWARNING)
         dialog = xbmcgui.Dialog()
@@ -222,7 +223,7 @@ def playTudouId(iid,title):
     xbmc.log("Tudou: "+vid_url, xbmc.LOGDEBUG)
     li = xbmcgui.ListItem(title, iconImage="DefaultVideo.png")
     li.setInfo('video', {"Title": title})
-    xbmc.Player().play(vid_url+"|User-Agent="+UserAgent, li)
+    xbmc.Player().play(vid_url, li)
 
 def playYoutube(main_url, title):
     fmttbl = {"270p":18, "360p":34, "480p":35, "720p":22, "1080p":37}
@@ -275,6 +276,7 @@ def playList(main_url, title):
 
 #-----------------------------------                
 def addDir(name,url,mode,thumb,title=""):
+    name=name.encode('utf-8')
     li = xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=thumb)
     u = sys.argv[0]+"?url="+urllib.quote_plus(url)
     u += "&mode="+str(mode)

@@ -2,6 +2,7 @@
 import urllib
 import re
 from BeautifulSoup import BeautifulSoup
+from extract_tudou import revert_icode
 
 root_url = "http://www.133133.com"
 
@@ -57,7 +58,8 @@ def parseProg(main_url):
     html = resp.read()
     resp.close()
     soup = BeautifulSoup( html, fromEncoding="utf-8" )
-    playptn = re.compile("new_play_(\d)\('(.*?)',(\d+)\)")
+    playptn = re.compile("new_play_(\d)\('(.+?)',(\d+)\)")
+    allnum_ptn = re.compile("^\d+$")
     sohu_idptn = re.compile("id=(\d+)")
     tudou_idptn = re.compile("/v/(\w*)")
     youku_idptn = re.compile("/([^/]*)/v.swf")
@@ -68,7 +70,11 @@ def parseProg(main_url):
         for aa in item.findAll("a"):
             tt, url = playptn.search(aa['href']).group(1,2)
             if tt == '1':
-                if url:
+                if allnum_ptn.match(url):
+                    #icode = int(url)+133122
+                    #vsrc.append( "http://www.tudou.com/programs/view/"+revert_icode(str(icode)) )
+                    pass
+                else:
                     vsrc.append( "http://v.youku.com/v_show/id_"+url )
             elif tt == '2':
                 # pretty formatting

@@ -7,7 +7,7 @@ import xbmcaddon,xbmcplugin,xbmcgui
 import os.path
 
 # plugin constants
-__addonid__ = "plugin.video.koreayh.com"
+__addonid__ = "plugin.video.8585.tv"
 __addon__ = xbmcaddon.Addon( __addonid__ )
 _L = __addon__.getLocalizedString
 
@@ -17,7 +17,7 @@ sys.path.append (LIB_DIR)
 import koreayh
 
 
-root_url = "http://www.koreayh.com"
+root_url = "http://www.8585.tv"
 
 tPrevPage = u"[B]<%s[/B]" % _L(30100)
 tNextPage = u"[B]%s>[/B]" % _L(30101)
