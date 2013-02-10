@@ -1,0 +1,9 @@
+1.1.0
+
+Changes
+- full revision to catch site changes
+
+1.0.0
+
+Changes
+- Initial addon version

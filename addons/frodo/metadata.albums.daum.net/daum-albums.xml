@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<scraper framework="1.1" date="2013-02-07" language="ko">
+	<NfoUrl dest="3">
+		<RegExp input="$$1" output="&lt;url&gt;\1&lt;/url&gt;" dest="3">
+			<expression>(http://music.daum.net/album/main\?album_id=\d*)</expression>
+		</RegExp>
+	</NfoUrl>
+	<CreateAlbumSearchUrl dest="3">
+		<RegExp input="$$4" output="&lt;url&gt;http://music.daum.net/search/album.do?query=\1&lt;/url&gt;" dest="3">
+			<RegExp conditional="!srchByArtist" input="$$1" output="\1" dest="4">
+				<expression/>
+			</RegExp>
+			<RegExp conditional="srchByArtist" input="$$5" output="\1" dest="4">
+				<RegExp conditional="!srchByAlbum" input="$$2" output="\1" dest="5">
+					<expression/>
+				</RegExp>
+				<RegExp conditional="srchByAlbum" input="$$2%20$$1" output="\1" dest="5">
+					<expression/>
+				</RegExp>
+				<expression/>
+			</RegExp>
+			<expression/>
+		</RegExp>
+	</CreateAlbumSearchUrl>
+	<GetAlbumSearchResults dest="3">
+		<RegExp input="$$4" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;&lt;results&gt;\1&lt;/results&gt;" dest="3">
+			<RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\2&lt;/title&gt;&lt;artist&gt;\3&lt;/artist&gt;&lt;url&gt;http://music.daum.net\1&lt;/url&gt;&lt;/entity&gt;" dest="4">
+				<expression repeat="yes" trim="2,3">&lt;span class="txt_name"&gt;\s*&lt;a [^&gt;]*href="(/.*?)"[^&gt;]*&gt;(.+?)&lt;/a&gt;.*?&lt;dd class="wrap_artist"&gt;(.*?)&lt;/dd&gt;</expression>
+			</RegExp>
+			<RegExp input="$$5" output="&lt;url function=&quot;GetAlbumSearchResultPage&quot;&gt;http://music.daum.net/search/album.do\1&lt;/url&gt;" dest="4+">
+				<RegExp input="$$1" output="\1" dest="5">
+					<expression noclean="1">&lt;span class="paging bg_paging"&gt;(.*?)&lt;span class="bg_paging</expression>
+				</RegExp>
+				<expression repeat="yes">&lt;a href="(/.*?)"</expression>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetAlbumSearchResults>
+	<GetAlbumSearchResultPage dest="3">
+		<RegExp input="$$4" output="&lt;results&gt;\1&lt;/results&gt;" dest="3">
+			<RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\2&lt;/title&gt;&lt;artist&gt;\3&lt;/artist&gt;&lt;url&gt;http://music.daum.net\1&lt;/url&gt;&lt;/entity&gt;" dest="4">
+				<expression repeat="yes" trim="2,3">&lt;span class="txt_name"&gt;\s*&lt;a [^&gt;]*href="(/.*?)"[^&gt;]*&gt;(.+?)&lt;/a&gt;.*?&lt;dd class="wrap_artist"&gt;(.*?)&lt;/dd&gt;</expression>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetAlbumSearchResultPage>
+	<GetAlbumDetails dest="3">
+		<RegExp input="$$4" output="&lt;details&gt;\1&lt;/details&gt;" dest="3">
+			<RegExp input="$$1" output="\1" dest="10">
+				<expression>artist_id=(\d*)</expression>
+			</RegExp>
+			<RegExp input="$$1" output="\1" dest="11">
+				<expression>album_id=(\d*)</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;title&gt;\1&lt;/title&gt;" dest="4">
+				<expression trim="1">&lt;strong class="tit_album"&gt;(.*?)&lt;/strong&gt;</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;artist&gt;\1&lt;/artist&gt;" dest="4+">
+				<expression trim="1">&lt;a class="artist_name"[^&gt;]*&gt;(.*?)&lt;/a&gt;</expression>
+			</RegExp>
+			<RegExp input="$$5" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="4+">
+				<RegExp input="$$1" output="\1" dest="5">
+					<expression noclean="1">&lt;dt class="tit_detail tit_genre"&gt;.*?&lt;dd&gt;(.*?)&lt;/dd&gt;</expression>
+				</RegExp>
+				<expression repeat="yes" trim="1">&gt;(.*?)&lt;/a&gt;</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;year&gt;\1&lt;/year&gt;&lt;releasedate&gt;\1\2&lt;/releasedate&gt;" dest="4+">
+				<expression>&lt;dt class="tit_detail tit_sale"&gt;.*?&lt;dd&gt;(\d{4})(.*?)&lt;/dd&gt;</expression>
+			</RegExp>
+			<RegExp input="$$5" output="&lt;label&gt;\1&lt;/label&gt;" dest="4+">
+				<RegExp input="$$1" output="\1" dest="5">
+					<expression>&lt;dt class="tit_detail tit_project"&gt;.*?&lt;dd&gt;(.*?)&lt;/dd&gt;</expression>
+				</RegExp>
+				<expression repeat="yes" trim="1">(.*?)[|$]</expression>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;thumb preview=&quot;\1/\2/\3&quot;&gt;\1/image/\3&lt;/thumb&gt;" dest="4+">
+				<expression>class="thumb_link"&gt;\s*&lt;img [^&gt;]*src="(http://.*?)/(.\d+x\d+)/([^"]*)"</expression>
+			</RegExp>
+			<RegExp input="$$5" output="&lt;review&gt;\1&lt;/review&gt;" dest="4+">
+				<RegExp input="$$1" output="\1" dest="6">
+				    <expression noclean="1">&lt;span id="fullContent"[^&gt;]*&gt;(.*?)&lt;/span&gt;</expression>
+				</RegExp>
+				<RegExp input="$$6" output="\1" dest="5">
+					<expression />
+				</RegExp>
+				<RegExp input="$$6" output="\1\n" dest="5">
+					<expression repeat="yes">(.*?)&lt;br */?&gt;</expression>
+				</RegExp>
+				<RegExp input="$$6" output="\1" dest="5+">
+					<expression>br */?&gt;([^&gt;]*)$</expression>
+				</RegExp>
+				<expression trim="1" />
+			</RegExp>
+			<RegExp input="$$1" output="&lt;track&gt;&lt;position&gt;\1&lt;/position&gt;&lt;title&gt;\2&lt;/title&gt;&lt;/track&gt;" dest="4+">
+				<expression repeat="yes" trim="2">&lt;td class="col_rank"&gt;(\d+)&lt;/td&gt;\s*&lt;td class="col_title"&gt;(.*?)&lt;/(?:a|td)&gt;</expression>
+			</RegExp>
+			<RegExp conditional="false" input="" output="&lt;url function=&quot;GetDaumArtistPhoto&quot;&gt;http://music.daum.net/artist/photo/list?album_id=$$11&amp;artist_id=$$10&amp;obj_type=AL&lt;/url&gt;" dest="4+">
+				<expression />
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetAlbumDetails>
+	<GetDaumAlbumPhoto dest="3">
+		<RegExp input="$$4" output="&lt;details&gt;&lt;fanart&gt;\1&lt;/fanart&gt;&lt;/details&gt;" dest="3">
+			<RegExp input="$$1" output="\1" dest="5">
+				<expression noclean="1">&lt;ul class="thumb_list list_photo"&gt;(.*?)&lt;/ul&gt;</expression>
+			</RegExp>
+			<RegExp input="$$5" output="&lt;thumb preview=&quot;\1/\2/\3&quot;&gt;\1/image/\3&lt;/thumb&gt;" dest="4">
+				<expression repeat="yes">&lt;a class="thumb_link".*?&lt;img [^&gt;]*src="(http://.*?)/(.\d+x\d+)/([^"]*)"</expression>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetDaumAlbumPhoto>
+</scraper>

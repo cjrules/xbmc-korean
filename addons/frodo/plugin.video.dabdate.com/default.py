@@ -18,12 +18,14 @@ _L_ = _A_.getLocalizedString
 _S_ = _A_.getSetting
 
 qualcode = {
+    ''         :'1',    # default
     _L_(31000) :'1',
     _L_(31001) :'2',
     _L_(31002) :'3',
     _L_(31003) :'m',
 }
 localcode = {
+    ''         :'la1',  # default
     _L_(31010) :'au1',
     _L_(31011) :'au2',
     _L_(31012) :'au3',
