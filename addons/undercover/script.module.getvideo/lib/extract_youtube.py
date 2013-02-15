@@ -34,8 +34,11 @@ def extract_video(vid):
     #print u"url_map: " + repr(url_desc_map)
     if not (url_desc_map.has_key(u"url") and url_desc_map.has_key(u"itag")):
       continue
+    url = urllib.unquote(url_desc_map[u"url"][0])
+    if url_desc_map.has_key(u"sig"):
+      url += u"&signature=" + urllib.unquote(url_desc_map[u"sig"][0])
     itag = int(url_desc_map[u"itag"][0])
-    vid_urls[itag] = urllib.unquote(url_desc_map[u"url"][0])
+    vid_urls[itag] = url
 
   return vid_urls
 
