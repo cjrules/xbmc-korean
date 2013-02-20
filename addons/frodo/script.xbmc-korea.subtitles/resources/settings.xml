@@ -4,5 +4,8 @@
     <setting id="Language" type="enum" label="30101" default="0" lvalues="30212|30226" />
     <setting type="lsep" label="30102" />
     <setting id="GomTV" type="bool" label="30103" default="true"/>
-    <setting id="Qple" type="bool" label="30104" default="false"/>
+    <setting id="Cineast" type="bool" label="30105" default="false"/>
+    <setting type="lsep" label="30110" />
+    <setting id="smi2ass" type="bool" label="30111" default="false"/>
+    <setting id="overwrite_ass" type="bool" label="30112" default="false"/>
 </settings>

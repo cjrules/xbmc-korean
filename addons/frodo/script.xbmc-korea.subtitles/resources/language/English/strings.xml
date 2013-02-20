@@ -14,7 +14,7 @@
     <string id="110">Not writable movie directory</string>
 
     <string id="200">GomTV</string>
-    <string id="201">Tokplayer</string>
+    <string id="202">Cineast</string>
 
       <!-- 
      * Script Settings
@@ -23,7 +23,10 @@
     <string id="30101">Language</string>
     <string id="30102">Select Services</string>
     <string id="30103">GomTV</string>
-    <string id="30104">Tokplayer</string>
+    <string id="30105">Cineast</string>
+    <string id="30110">Conversion</string>
+    <string id="30111">SMI to ASS</string>
+    <string id="30112">Allow to overwrite existing ASS file</string>
       <!-- Optional  -->
     <string id="30201">Albanian</string>
     <string id="30202">Arabic</string>

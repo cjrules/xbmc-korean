@@ -11,13 +11,14 @@ __author__ = "xbmc-korea.com"
 __url__ = "http://code.google.com/p/xbmc-korean"
 __svn_url__ = "http://code.google.com/p/xbmc-korean/svn/trunk/addons/script.subtitle.xbmc-korea.com"
 __credits__ = ""
-__version__ = "1.3.0"
+__version__ = "1.4.0"
 
 if not xbmc.getCondVisibility('Player.Paused') : xbmc.Player().pause()  #Pause if not paused
 
 __settings__ = xbmcaddon.Addon( id=__addonID__ )
 __language__ = __settings__.getLocalizedString
 _ = sys.modules[ "__main__" ].__language__
+__cwd__ = __settings__.getAddonInfo('path')
 
 BASE_RESOURCE_PATH = xbmc.translatePath( os.path.join( __settings__.getAddonInfo('path'), 'resources', 'lib' ) )
 

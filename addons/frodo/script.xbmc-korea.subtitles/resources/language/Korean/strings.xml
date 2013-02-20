@@ -14,7 +14,7 @@
     <string id="110">영화 디렉토리 쓰기 실패</string>
 
     <string id="200">곰TV</string>
-    <string id="201">톡플</string>
+    <string id="202">씨네스트</string>
 
       <!-- 
      * Script Settings
@@ -23,7 +23,10 @@
     <string id="30101">언어</string>
     <string id="30102">서비스 선택</string>
     <string id="30103">곰 TV</string>
-    <string id="30104">톡플레이어</string>
+    <string id="30105">씨네스트</string>
+    <string id="30110">변환</string>
+    <string id="30111">SMI to ASS</string>
+    <string id="30112">ASS파일 덮어쓰기 허용</string>
       <!-- Optional  -->
     <string id="30212">영어</string>
     <string id="30226">한글</string>
