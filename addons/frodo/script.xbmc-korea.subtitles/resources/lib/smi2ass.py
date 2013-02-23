@@ -7,12 +7,7 @@ from BeautifulSoup import BeautifulSoup
 from asscontents import *
 
 
-def smi2ass(smiPath):
-    #read smi file 
-    smi_file = open(smiPath,"r") # require to use'r' for proper reading
-    smi_sgml = smi_file.read()
-    smi_file.close()
-    
+def smi2ass(smi_sgml):
     # check character encoding and covert to UTF-8
     smi_sgml = chdetToUTF8(smi_sgml) 
     
@@ -29,10 +24,6 @@ def smi2ass(smiPath):
             
             asscontents = (scriptInfo+styles+events+''.join(asslines)).encode('utf8')
             assDict[longlang[langIndex]] = asscontents 
-            #assPath = smiPath[:smiPath.rfind('.')]+longlang[langIndex]+'.ass'
-            #assfile= open(assPath, "w")
-            #assfile.write(asscontents)
-            #assfile.close()
     return assDict
         
 def smiToassSynax (sln):
@@ -259,8 +250,10 @@ def multiLanguageSeperation(smiLines):
     return multiLanguageDictSorted, longlang
 
 if __name__ == '__main__':
-    smiPath = 'badcase.smi'
-    assDict = smi2ass(smiPath)
+    smi_file = xbmcvfs.File("badcase.smi","r")
+    smi_sgml = smi_file.read()
+    smi_file.close()
+    assDict = smi2ass(smi_sgml)
     for lang in assDict:
         assPath = smiPath[:smiPath.rfind('.')]+'.'+lang+'.ass'
         assfile= open(assPath, "w")

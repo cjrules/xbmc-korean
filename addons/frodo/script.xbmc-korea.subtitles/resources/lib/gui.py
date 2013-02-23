@@ -120,14 +120,21 @@ def subt_conv(smiPath=None):
     return
   if not smiPath.lower().endswith(".smi"):
     return
-  assDict = smi2ass(smiPath)
+
+  #read smi file 
+  smi_file = xbmcvfs.File(smiPath,"r")
+  smi_sgml = smi_file.read()
+  smi_file.close()
+    
+  assDict = smi2ass(smi_sgml)
   for lang in assDict:
     ext = lang+'.ass'
     if lang == '':
       ext = 'ass'
     assPath = smiPath[:smiPath.rfind('.')]+'.'+ext
     tempDir = xbmc.translatePath( "special://temp/" )
-    tempFile = os.path.basename( smiPath[:smiPath.rfind('.')]+'.'+ext )
+    #tempFile = os.path.basename( assPath )
+    tempFile = "smi2ass."+ext
     tempPath = os.path.join( tempDir, tempFile )
     if not xbmcvfs.exists(assPath) or __settings__.getSetting( "overwrite_ass" )=='true':
       assfile = open(tempPath, "w")

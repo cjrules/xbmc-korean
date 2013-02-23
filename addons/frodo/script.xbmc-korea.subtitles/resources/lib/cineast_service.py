@@ -43,7 +43,7 @@ def download_subtitles (subtitles_list, pos, zip_subs, tmp_sub_dir, sub_folder, 
     language = subtitles_list[pos][ "language_name" ]
     websvc = CineastWebService()
     subtitle = websvc.parseSubtitlesPage( subtitles_list[pos]["link"] )[0]
-    log(__name__,  "download subtitle from %s" %subtitle["link"])
+    log(__name__,  u"download subtitle from %s" %subtitle["link"])
     try:
         tmp_fname = os.path.join(tmp_sub_dir, subtitle["filename"])
         resp = urllib2.urlopen(url)
