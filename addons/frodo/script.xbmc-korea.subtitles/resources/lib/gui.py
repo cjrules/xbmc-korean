@@ -126,10 +126,18 @@ def subt_conv(smiPath=None):
     if lang == '':
       ext = 'ass'
     assPath = smiPath[:smiPath.rfind('.')]+'.'+ext
+    tempDir = xbmc.translatePath( "special://temp/" )
+    tempFile = os.path.basename( smiPath[:smiPath.rfind('.')]+'.'+ext )
+    tempPath = os.path.join( tempDir, tempFile )
     if not xbmcvfs.exists(assPath) or __settings__.getSetting( "overwrite_ass" )=='true':
-      assfile = xbmcvfs.File(assPath, "w")
+      assfile = open(tempPath, "w")
       assfile.write(assDict[lang])
       assfile.close()
+      if not xbmcvfs.copy(tempPath, assPath):
+        xbmc.log("Fail to write subtitles to "+assPath, xbmc.LOGWARNING)
+        xbmcgui.Dialog().ok(__scriptname__, _(110), _(107), assPath)
+        assPath = tempPath
+      # enable the downloaded subtitle
       xbmc.Player().setSubtitles(assPath)
 
 # vim: softtabstop=2 shiftwidth=2 expandtab
