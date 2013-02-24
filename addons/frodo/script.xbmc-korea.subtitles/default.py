@@ -5,22 +5,17 @@
 import sys,os
 import xbmc,xbmcaddon
 
-__scriptname__ = "KorSubtitle"
-__addonID__ = "script.xbmc-korea.subtitles"
-__author__ = "xbmc-korea.com"
-__url__ = "http://code.google.com/p/xbmc-korean"
-__svn_url__ = "http://code.google.com/p/xbmc-korean/svn/trunk/addons/script.subtitle.xbmc-korea.com"
-__credits__ = ""
-__version__ = "1.4.0"
+__addon__ = xbmcaddon.Addon()
+__scriptname__ = __addon__.getAddonInfo('name')
+__version__ = __addon__.getAddonInfo('version')
+__language__ = __addon__.getLocalizedString
+__cwd__ = __addon__.getAddonInfo('path')
+
+_ = __language__
 
 if not xbmc.getCondVisibility('Player.Paused') : xbmc.Player().pause()  #Pause if not paused
 
-__settings__ = xbmcaddon.Addon( id=__addonID__ )
-__language__ = __settings__.getLocalizedString
-_ = sys.modules[ "__main__" ].__language__
-__cwd__ = __settings__.getAddonInfo('path')
-
-BASE_RESOURCE_PATH = xbmc.translatePath( os.path.join( __settings__.getAddonInfo('path'), 'resources', 'lib' ) )
+BASE_RESOURCE_PATH = xbmc.translatePath( os.path.join( __cwd__, 'resources', 'lib' ) )
 
 sys.path.append (BASE_RESOURCE_PATH)
 
@@ -28,7 +23,7 @@ from gui import *
 
 #############-----------------Is script runing from OSD? -------------------------------###############
 if not xbmc.getCondVisibility('videoplayer.isfullscreen') :
-  __settings__.openSettings()
+  __addon__.openSettings()
   if xbmc.getCondVisibility('Player.Paused'): xbmc.Player().pause() # if Paused, un-pause
 else:
   window = False

@@ -6,10 +6,14 @@ import xbmc, xbmcvfs
 import hashlib
 
 def log(name, text):
-    xbmc.log(u"%s - %s" %(name, text), xbmc.LOGINFO)
+    xbmc.log("%s - %s" %(name, text), xbmc.LOGINFO)
 
-def languageTranslate():
-    pass
+LANGABBR = {
+    "English":"en",
+    "Korean":"ko",
+}
+def languageTranslate(lang, fromlang, tolang):
+    return LANGABBR[lang]
 
 def hashFileMD5(file_path, buff_size=1048576):
     # calculate MD5 key from file

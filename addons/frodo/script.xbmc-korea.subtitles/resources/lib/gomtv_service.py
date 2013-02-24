@@ -16,14 +16,14 @@ def search_subtitles( file_original_path, title, tvshow, year, season, episode, 
     subtitles_list = []
     msg = ""
 
-    log(__name__, u"Search GomTV with a file name, "+file_original_path)
+    log(__name__, "Search GomTV with a file name, "+file_original_path)
     video_hash = hashFileMD5( file_original_path, buff_size=1024*1024 )
     if video_hash is None:
         msg = _(755)
         return subtitles_list, "", msg  #standard output
     webService = GomTvWebService()
     subtitles_list = webService.SearchSubtitles( video_hash )
-    log(__name__, u"Found %d subtitles in GomTV" %len(subtitles_list))
+    log(__name__, "Found %d subtitles in GomTV" %len(subtitles_list))
 
     return subtitles_list, "", msg  #standard output
 
@@ -31,9 +31,9 @@ def download_subtitles (subtitles_list, pos, zip_subs, tmp_sub_dir, sub_folder, 
     language = subtitles_list[pos][ "language_name" ]
     link = subtitles_list[pos][ "link" ]
     webService = GomTvWebService()
-    log(__name__,  u"parse subtitle page at %s" %link)
+    log(__name__,  "parse subtitle page at %s" %link)
     url = webService.GetSubtitleUrl( link )
-    log(__name__,  u"download subtitle from %s" %url)
+    log(__name__,  "download subtitle from %s" %url)
     try:
         fname = "gomtv-%s.smi" % subtitles_list[pos]["ID"]
         tmp_fname = os.path.join(tmp_sub_dir, fname)
@@ -56,7 +56,7 @@ class GomTvWebService:
         subtitles = []
 
         q_url = "http://gom.gomtv.com/jmdb/search.html?key=%s" %key
-        log(__name__, u"search subtitle at %s"  %q_url)
+        log(__name__, "search subtitle at %s"  %q_url)
 
         # main page
         req = urllib2.Request(q_url)
@@ -80,20 +80,18 @@ class GomTvWebService:
         for row in soup.find("table",{"class":"smi_list"}).findAll("tr")[1:]:
             a_node = row.find("a")
             if a_node is None:
-                    continue
+                continue
             title = a_node.text
             url = self.root_url + a_node["href"]
             if title.startswith(u"[한글]"):
                 langlong  = "Korean"
-                langshort = "ko"
                 title = title[4:]
             elif title.startswith(u"[영문]"):
                 langlong  = "English"
-                langshort = "en"
                 title = title[4:]
             else:   # [통합]
                 langlong  = "Korean"
-                langshort = "ko"
+            langshort = languageTranslate(langlong, 0, 2)
             subtitles.append( {
                 "link"          : url,
                 "filename"      : title,

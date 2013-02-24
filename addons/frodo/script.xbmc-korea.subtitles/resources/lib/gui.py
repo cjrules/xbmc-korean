@@ -6,16 +6,16 @@ import sys
 import os
 import xbmc, xbmcgui, xbmcvfs
 
-_ = sys.modules[ "__main__" ].__language__
-__scriptname__ = sys.modules[ "__main__" ].__scriptname__
-__settings__ = sys.modules[ "__main__" ].__settings__
+__addon__ = sys.modules[ "__main__" ].__addon__
+_ = __addon__.getLocalizedString
+__scriptname__ = __addon__.getAddonInfo('name')
 
 import gomtv_service
 import cineast_service
 from smi2ass import smi2ass
 
 def gui():
-  if __settings__.getSetting( "smi2ass" )=='true':
+  if __addon__.getSetting( "smi2ass" )=='true':
     smiPath = getExsitingSmi()
     if smiPath is None:
       smiPath = subt_down()
@@ -42,7 +42,7 @@ def subt_down():
   subt_list = []
   dialog = xbmcgui.DialogProgress()
   ignored = dialog.create(__scriptname__ )
-  if __settings__.getSetting( "GomTV" )=='true':
+  if __addon__.getSetting( "GomTV" )=='true':
     dialog.update( 0, _(100)%_(200) )
     subt_list1, temp, msg = gomtv_service.search_subtitles(movieFullPath, "", False, 0, 0, 0, False, False, "Korean", "English", "", False)
     if len(subt_list1) == 0:
@@ -51,7 +51,7 @@ def subt_down():
       for i in range(len(subt_list1)):
         subt_list1[i]["service"] = "gomtv"
       subt_list += subt_list1
-  if __settings__.getSetting( "Cineast" )=='true':
+  if __addon__.getSetting( "Cineast" )=='true':
     dialog.update( 50, _(100)%_(202) )
     infoTag = xbmc.Player().getVideoInfoTag()
     title = infoTag.getTitle()
@@ -136,7 +136,7 @@ def subt_conv(smiPath=None):
     #tempFile = os.path.basename( assPath )
     tempFile = "smi2ass."+ext
     tempPath = os.path.join( tempDir, tempFile )
-    if not xbmcvfs.exists(assPath) or __settings__.getSetting( "overwrite_ass" )=='true':
+    if not xbmcvfs.exists(assPath) or __addon__.getSetting( "overwrite_ass" )=='true':
       assfile = open(tempPath, "w")
       assfile.write(assDict[lang])
       assfile.close()
