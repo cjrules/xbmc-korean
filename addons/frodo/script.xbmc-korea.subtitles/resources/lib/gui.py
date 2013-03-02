@@ -21,7 +21,7 @@ def gui():
       smiPath = subt_down()
     if smiPath is not None:
       subt_conv(smiPath)
-      xbmc.executebuiltin("Notification('Subtitles','converted to ASS')")
+      xbmc.executebuiltin("Notification(%s,%s)" %(__scriptname__, _(111).encode('utf-8')))
   else:
     subt_down()
 
@@ -46,7 +46,9 @@ def subt_down():
     dialog.update( 0, _(100)%_(200) )
     subt_list1, temp, msg = gomtv_service.search_subtitles(movieFullPath, "", False, 0, 0, 0, False, False, "Korean", "English", "", False)
     if len(subt_list1) == 0:
-      xbmcgui.Dialog().ok(__scriptname__, _(101)%_(200), _(108) )
+      xbmc.log("%s: %s" %(__scriptname__, "No result from gomtv"), xbmc.LOGINFO)
+      if msg:
+        xbmcgui.Dialog().ok(__scriptname__, _(200), msg)
     else:
       for i in range(len(subt_list1)):
         subt_list1[i]["service"] = "gomtv"
@@ -58,7 +60,9 @@ def subt_down():
     year = infoTag.getYear()
     subt_list2, temp, msg = cineast_service.search_subtitles(movieFullPath, title.decode('utf-8'), "", year, 0, 0, False, False, "Korean", "English", "", False)
     if len(subt_list2) == 0:
-      xbmcgui.Dialog().ok(__scriptname__, _(101)%_(202), _(108) )
+      xbmc.log("%s: %s" %(__scriptname__, "No result from cineast"), xbmc.LOGINFO)
+      if msg:
+        xbmcgui.Dialog().ok(__scriptname__, _(202), msg)
     else:
       for i in range(len(subt_list2)):
         subt_list2[i]["service"] = "cineast"
@@ -99,7 +103,7 @@ def subt_down():
         xbmcgui.Dialog().ok(__scriptname__, _(101)%_(202), _(108) )
     if not smiTempPath:
       return None
-    xbmc.log("subtitle is downloaded to "+smiTempPath, xbmc.LOGNOTICE)
+    xbmc.log("Subtitles is downloaded to "+smiTempPath, xbmc.LOGDEBUG)
 
     # try to copy temp file to desired path
     if xbmcvfs.copy(smiTempPath, smiFullPath):
@@ -109,6 +113,7 @@ def subt_down():
       xbmcgui.Dialog().ok(__scriptname__, _(110), _(107), smiTempPath )
       smiPath = smiTempPath
     # enable the downloaded subtitle
+    xbmc.log("Subtitles is saved as "+smiPath, xbmc.LOGINFO)
     xbmc.Player().setSubtitles(smiPath)
     return smiPath
 
@@ -117,11 +122,14 @@ def subt_conv(smiPath=None):
     videoDir = os.path.dirname(xbmc.Player().getPlayingFile())
     smiPath = os.path.join(videoDir, xbmc.Player().getSubtitles())
   if not xbmcvfs.exists(smiPath):
+    xbmc.log("Can not find subtitles at "+smiFullPath, xbmc.LOGWARNING)
     return
   if not smiPath.lower().endswith(".smi"):
+    xbmc.log("Subtitles file, %s, is not SMI format" %smiFullPath, xbmc.LOGWARNING)
     return
 
   #read smi file 
+  xbmc.log("Convert "+smiPath+" to ASS format", xbmc.LOGDEBUG)
   smi_file = xbmcvfs.File(smiPath,"r")
   smi_sgml = smi_file.read()
   smi_file.close()
@@ -145,6 +153,9 @@ def subt_conv(smiPath=None):
         xbmcgui.Dialog().ok(__scriptname__, _(110), _(107), assPath)
         assPath = tempPath
       # enable the downloaded subtitle
+      xbmc.log("ASS file is saved as "+assPath, xbmc.LOGINFO)
       xbmc.Player().setSubtitles(assPath)
+    else:
+      xbmc.log("Skip overwriting the existing ASS file, "+assPath, xbmc.LOGINFO)
 
 # vim: softtabstop=2 shiftwidth=2 expandtab

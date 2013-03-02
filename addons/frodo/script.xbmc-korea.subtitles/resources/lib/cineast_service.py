@@ -2,6 +2,7 @@
 
 import sys
 import os
+import re
 from utilities import log, languageTranslate
 from cineast import CineastWebService
 
@@ -11,7 +12,9 @@ def search_subtitles( file_original_path, title, tvshow, year, season, episode, 
     msg = ""
     subtitles_list = []
     websvc = CineastWebService()
-    if len(tvshow) > 0:     # TvShow
+    title = title.strip()
+    if tvshow:  # TvShow
+        log(__name__, "search TVshow with "+tvshow)
         for result in websvc.searchTvSubtitlesByTitle(tvshow):
             subtitle = {"format": "smi", "sync": True}
             subtitle['link'] = result['link']
@@ -25,18 +28,22 @@ def search_subtitles( file_original_path, title, tvshow, year, season, episode, 
             subtitle['language_name'] = result['language']
             subtitle['language_flag'] = "flags/%s.gif" %languageTranslate(result['language'],0,2)
             subtitles_list.append( subtitle )
-    else:   # Movie
-        title = title.strip()
-        if title[0]=='(' and title[-1]==')':
-            title = title[1:-1]
-            for result in websvc.searchMovieSubtitlesByTitle(title):
-                subtitle = {"format": "smi", "sync": True}
-                subtitle['link'] = result['link']
-                subtitle['filename'] = result['title']
-                subtitle['rating'] = "6" if file_original_path.find(result['relgrp']) > 0 else "0"
-                subtitle['language_name'] = result['language']
-                subtitle['language_flag'] = "flags/%s.gif" %result['language'][:2].lower()
-                subtitles_list.append( subtitle )
+    elif title:   # Movie
+        srch_title = title
+        query = re.match("^(.*)\(([^\)]*)\)$", title)
+        if query:
+            srch_title = query.group(2).strip() # English title
+        log(__name__, "search Movie with "+srch_title)
+        for result in websvc.searchMovieSubtitlesByTitle(srch_title):
+            subtitle = {"format": "smi", "sync": True}
+            subtitle['link'] = result['link']
+            subtitle['filename'] = result['title']
+            subtitle['rating'] = "6" if file_original_path.find(result['relgrp']) > 0 else "0"
+            subtitle['language_name'] = result['language']
+            subtitle['language_flag'] = "flags/%s.gif" %result['language'][:2].lower()
+            subtitles_list.append( subtitle )
+    else:
+        msg = _(800)
     return subtitles_list, "", msg #standard output
 
 def download_subtitles (subtitles_list, pos, zip_subs, tmp_sub_dir, sub_folder, session_id): #standard input
