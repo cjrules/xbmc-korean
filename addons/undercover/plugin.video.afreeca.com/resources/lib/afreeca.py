@@ -22,7 +22,6 @@ def getTopItems():
     result = []
     result.append({'title':u"실시간 인기방송", 'data':getVideoList(root_url+"/data/main/main_top_broad_list.json?%d" %ts_now)})
     result.append({'title':u"보라 인기방송",   'data':getVideoList(root_url+"/data/main/main_top_bora_broad_list.json?%d" %ts_now, dataitem_name='M_DATA')})
-    #result.append({'title':u"게임 인기방송", 'data':getGameBroadcast()})
     result.append({'title':u"인기 영상클립", 'data':getVideoList(root_url+"/data/main/main_top_vod_list.json")})
     result.append({'title':u"추천 영상클립", 'data':getVideoList(root_url+"/m.afreeca.com/json/app_main_hot_vod.js")})
     return result
@@ -33,6 +32,42 @@ def getVideoList(url, dataitem_name='DATA'):
     json = simplejson.loads(jstr)
     return json[dataitem_name]
     #return [{'title':item['broad_title'], 'user_id':item['user_id'], } for item in json[dataitem_name]]
+
+# 실시간 시청인원 급상승 방송
+def getRapidGrowingBroadcast():
+    url = "http://live.afreeca.com:8057/pg_gen/broad_list_rank_js.php"
+    html = urllib.urlopen(url).read().decode('euc-kr')
+    jstr = re.search('var oBroadListViewRank = ({.*?});', html).group(1)
+    ptn_item = re.compile('"([^"]*)"\s*:\s*"([^"]*)"')
+    items = []
+    for sect in re.compile('({[^{}]*})').findall(jstr):
+        info = dict()
+        for key, val in ptn_item.findall(sect):
+            if key == 'bj_id':
+                info['user_id'] = val
+            if key == 'bj_nick':
+                info['user_nick'] = val
+            if key == 'broad_title':
+                info['broad_title'] = val.replace('\[','[').replace('\]',']')
+            if key == 'broad_no':
+                info['broad_no'] = val
+            if key == 'thumb':
+                info['thumb'] = val
+        items.append(info)
+    return items
+
+# 이슈 생방송
+def getIssueBroadcast():
+    ts_now = time.time() * 1000
+    url = root_url+"/data/main/main_live_banner_list.json?%d" %ts_now
+    jstr = urllib.urlopen(url).read().decode('euc-kr')
+    json = simplejson.loads(jstr)
+    items = []
+    for item in json['DATA']['aBroadInfo']:
+        items += json['DATA']['aBroadInfo'][item]
+    #for item in json['DATA']['aBannerInfo']:
+    #    print item
+    return items
 
 def getBestBj():
     url = root_url+"/data/main/main_best_bj.json"
@@ -64,8 +99,8 @@ def getGameBroadcast(cateNo=None):
     jstr = urllib.urlopen(url).read().decode('euc-kr')
     json = simplejson.loads(jstr)
     for sec in json['DATA']:
-    	if cateNo is None or sec['cate_no'] == cateNo:
-    	    return sec['list']
+        if cateNo is None or sec['cate_no'] == cateNo:
+            return sec['list']
     return None
 
 def extractBroadUrl(uid, bid):
@@ -88,18 +123,18 @@ def searchBroadById(uId):
     jstr = urllib2.urlopen(req).read()[2:-1]
     btbl = dict()
     for broad_no, user_id in re.compile("'broad_no':'(\d+)',[^}]*'user_id':'([^']*)'").findall(jstr):
-    	if user_id in btbl:
-    	    btbl[user_id].append(broad_no)
+        if user_id in btbl:
+            btbl[user_id].append(broad_no)
         else:
-    	    btbl[user_id] = [broad_no]
+            btbl[user_id] = [broad_no]
     return btbl
     json = simplejson.loads(jstr)
     for item in json['REAL_BROAD']:
-    	user_id = item['user_id']
-    	if user_id in btbl:
-    	    btbl[user_id].append( item['broad_no'] )
+        user_id = item['user_id']
+        if user_id in btbl:
+            btbl[user_id].append( item['broad_no'] )
         else:
-    	    btbl[user_id] = [ item['broad_no'] ]
+            btbl[user_id] = [ item['broad_no'] ]
     return btbl
 
 def searchBjById(uId):
@@ -110,10 +145,12 @@ def searchBjById(uId):
 
 if __name__ == "__main__":
     #print getTopItems()
+    #print getIssueBroadcast()
+    print getRapidGrowingBroadcast()
     #print getBestBj()
     #print getBjRanking()
     #print getGameRanking()
     #print getGameBroadcast()
-    print searchBroadById('sehee3235')
+    #print searchBroadById('sehee3235')
 
 # vim:sw=4:sts=4:et
