@@ -2,23 +2,12 @@
 <strings>
     <string id="30000">곰티비</string>
     <string id="30001">디렉토리로 재생목록 표시</string>
-    <string id="30002">페이지당 표시개수</string>
-    <string id="30003">프록시 서버 사용</string>
-    <string id="30004">프록시 서버</string>
-    <string id="30005">일반</string>
-    <string id="30006">고급</string>
-    <string id="30007">사용자</string>
-    <string id="30008">암호</string>
     
     <!--Message-->
     <string id="30010">오류</string>
-    <string id="30011">로그인이 필요합니다</string>
-    <string id="30012">로그인 실패</string>
-    <string id="30013">잘못된 포맷 오류</string>
+    <string id="30011">아직 로그인이 지원되지 않습니다.</string>
 
     <!--NavItems-->
     <string id="30100">더 보기</string>
-    <string id="30101">이전 페이지</string>
-    <string id="30102">다음 페이지</string>
     
 </strings>
