@@ -2,12 +2,24 @@
 <strings>
     <string id="30000">GomTV</string>
     <string id="30001">Show Play List as Directory</string>
+    <string id="30002">Number of Items per Page</string>
+    <string id="30003">Use Proxy Server</string>
+    <string id="30004">Proxy Server</string>
+    <string id="30005">General</string>
+    <string id="30006">Advanced</string>
+    <string id="30007">User name</string>
+    <string id="30008">Password</string>
 
     <!--Message-->
     <string id="30010">Error</string>
-    <string id="30011">Login is not supported</string>
+    <string id="30011">Login is needed</string>
+    <string id="30012">Login failed</string>
+    <string id="30013">Unknown format</string>
+    <string id="30014">Login succeded</string>
     
     <!--NavItems-->
     <string id="30100">More</string>
+    <string id="30101">Previous Page</string>
+    <string id="30102">Next Page</string>
     
 </strings>
