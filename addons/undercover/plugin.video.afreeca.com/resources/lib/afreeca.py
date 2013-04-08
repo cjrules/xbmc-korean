@@ -17,13 +17,29 @@ root_url = "http://www.afreeca.com"
 UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.9"
 
 # http://www.afreeca.com/script/main/afreeca.front.main.js
-def getTopItems():
+def getTopBroadcast():
     ts_now = time.time() * 1000
     result = []
     result.append({'title':u"실시간 인기방송", 'data':getVideoList(root_url+"/data/main/main_top_broad_list.json?%d" %ts_now)})
     result.append({'title':u"보라 인기방송",   'data':getVideoList(root_url+"/data/main/main_top_bora_broad_list.json?%d" %ts_now, dataitem_name='M_DATA')})
-    result.append({'title':u"인기 영상클립", 'data':getVideoList(root_url+"/data/main/main_top_vod_list.json")})
+    #result += getEsportsVideo('broadcast')
+    return result
+
+def getTopClips():
+    result = []
     result.append({'title':u"추천 영상클립", 'data':getVideoList(root_url+"/m.afreeca.com/json/app_main_hot_vod.js")})
+    result.append({'title':u"인기 영상클립", 'data':getVideoList(root_url+"/data/main/main_top_vod_list.json")})
+    #result += getEsportsVideo('vod')
+    return result
+
+def getEsportsVideo(select='all'):
+    ts_now = time.time() * 1000
+    result = []
+    for sect in getVideoList(root_url+"/data/main/main_sports_esports.json?%d" %ts_now):
+    	if select=='all' or select=='broadcast':
+            result.append({'title':u"e스포츠 인기방송", 'data':sect['BROAD_INFO']})
+    	if select=='all' or select=='vod':
+            result.append({'title':u"e스포츠 영상클립", 'data':sect['VOD_INFO']})
     return result
 
 def getVideoList(url, dataitem_name='DATA'):
@@ -57,16 +73,17 @@ def getRapidGrowingBroadcast():
     return items
 
 # 이슈 생방송
-def getIssueBroadcast():
+def getIssueBroadcast(showmore=False):
     ts_now = time.time() * 1000
     url = root_url+"/data/main/main_live_banner_list.json?%d" %ts_now
     jstr = urllib.urlopen(url).read().decode('euc-kr')
     json = simplejson.loads(jstr)
     items = []
-    for item in json['DATA']['aBroadInfo']:
-        items += json['DATA']['aBroadInfo'][item]
-    #for item in json['DATA']['aBannerInfo']:
-    #    print item
+    for item in json['DATA']['aBannerInfo']:
+        items += json['DATA']['aBannerInfo'][item]
+    if showmore:
+        for item in json['DATA']['aBroadInfo']:
+            items += json['DATA']['aBroadInfo'][item]
     return items
 
 def getBestBj():
@@ -88,18 +105,13 @@ def getBjRanking():
 # 결국 '게임 인기방송'을 game_no 로 필터링
 def getGameRanking():
     ts_now = time.time() * 1000
-    url = root_url+"/data/main/game_ranking.json?%d" %ts_now
-    jstr = urllib.urlopen(url).read().decode('euc-kr')
-    json = simplejson.loads(jstr)
-    return json['DATA']
+    return getVideoList(root_url+"/data/main/game_ranking.json?%d" %ts_now)
 
-def getGameBroadcast(cateNo=None):
+def getGameBroadcast(cateNo=''):
     ts_now = time.time() * 1000
     url = root_url+"/data/main/main_top_game_broad_list.json?%d" %ts_now
-    jstr = urllib.urlopen(url).read().decode('euc-kr')
-    json = simplejson.loads(jstr)
-    for sec in json['DATA']:
-        if cateNo is None or sec['cate_no'] == cateNo:
+    for sec in getVideoList(url):
+        if not cateNo or sec['cate_no'] == cateNo:
             return sec['list']
     return None
 
@@ -144,9 +156,11 @@ def searchBjById(uId):
     return None
 
 if __name__ == "__main__":
-    #print getTopItems()
+    #print getTopBroadcast()
+    #print getTopClips()
+    print getEsportsVideo()
     #print getIssueBroadcast()
-    print getRapidGrowingBroadcast()
+    #print getRapidGrowingBroadcast()
     #print getBestBj()
     #print getBjRanking()
     #print getGameRanking()

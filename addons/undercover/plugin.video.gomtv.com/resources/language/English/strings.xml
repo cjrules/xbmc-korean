@@ -2,14 +2,6 @@
 <strings>
     <string id="30000">GomTV</string>
     
-    <!--Settings-->
-    <string id="30001">Show Play List as Directory</string>
-
-    <!--Message-->
-    <string id="30010">Error</string>
-    <string id="30011">Login is not supported</string>
-
-    <string id="30100">Next Page</string>
     <string id="30101">Previous Page</string>
-    
+    <string id="30102">Next Page</string>
 </strings>

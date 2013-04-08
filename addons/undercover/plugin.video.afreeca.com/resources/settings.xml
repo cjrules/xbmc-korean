@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings>
+  <category label="30005">
+    <setting id="account" type="text" label="30001" default="" visible="false" />
+    <setting id="password" type="text" label="30002" option="hidden" default="" visible="false" />
+    <setting id="showMoreIssueBroad" type="bool" label="30007" default="false" />
+  </category>
+  <category label="30006">
+    <setting id="useProxy" type="bool" label="30003" default="false" />
+    <setting id="proxyServer" type="text" label="30004" default="" visible="eq(-1,true)" />
+  </category>
+</settings>

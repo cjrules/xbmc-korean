@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+  <!-- Plugin setting -->
+  <string id="30000">아프리카 TV</string>
+  <string id="30001">사용자</string>
+  <string id="30002">암호</string>
+  <string id="30003">프록시 사용</string>
+  <string id="30004">프록시 서버</string>
+  <string id="30005">일반</string>
+  <string id="30006">고급</string>
+  <string id="30007">이슈 생방송 더보기</string>
+
+  <string id="30100">이전 페이지</string>
+  <string id="30101">다음 페이지</string>
+</strings>

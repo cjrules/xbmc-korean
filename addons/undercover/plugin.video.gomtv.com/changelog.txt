@@ -1,3 +1,10 @@
+1.0.0
+
+Changes
+- fully rewritten
+- change framework based on xbmcswift2
+- use plugin.video.m.gomtv.com to play video
+
 0.7.0
 
 Changes

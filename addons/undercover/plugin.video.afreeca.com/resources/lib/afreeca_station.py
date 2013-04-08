@@ -4,7 +4,7 @@
 #   szBjId        : BJ ID
 #   nStationNo    : 방송국 ID (방송국에 여러 BJ 소속가능)
 #   nBbsNo        : 게시판 ID (방송국 홈피에 여러 게시판 존재)
-#   nTItleNo      : 게시글(또는 동영상) ID
+#   nTitleNo      : 게시글(또는 동영상) ID
 #   nBroadNo      : 생방송 ID
 #
 # [사이트]

@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
-  <!-- Plugin name -->
-  <string id="30000">Eroanime Blog</string>
+  <!-- Plugin setting -->
+  <string id="30000">Afreeca TV</string>
+  <string id="30001">Account</string>
+  <string id="30002">Password</string>
+  <string id="30003">Use Proxy</string>
+  <string id="30004">Proxy Server</string>
+  <string id="30005">Basic</string>
+  <string id="30006">Advanced</string>
+  <string id="30007">Show More Issue Broadcasts</string>
+
+  <string id="30100">Previous Page</string>
+  <string id="30101">Next Page</string>
 </strings>

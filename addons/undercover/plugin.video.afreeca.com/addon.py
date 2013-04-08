@@ -2,33 +2,47 @@
 from xbmcswift2 import Plugin
 import resources.lib.afreeca as afreeca
 import resources.lib.afreeca_station as afreeca_station
+import resources.lib.afreeca_sports as afreeca_sports
 
 plugin = Plugin()
 
 UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.9"
 m_broad = "plugin://plugin.video.m.afreeca/broadcast/"
 
+tPrevPage = u"[B]<<%s[/B]" %plugin.get_string(30100)
+tNextPage = u"[B]%s>>[/B]" %plugin.get_string(30101)
+
 @plugin.route('/')
 def main_menu():
     items = []
+    items.append({'label':u"[COLOR FF00FF00]스포츠[/COLOR]", 'path':plugin.url_for("sports_menu")})
     ###
-    items.append({'label':u"[COLOR FF0000FF]이슈 생방송[/COLOR]", 'path':''})
-    for video in afreeca.getIssueBroadcast():
-        vid_path = m_broad + video['broad_no']
-        items.append({'label':video['broad_title'], 'label2': video['user_nick'], 'path':vid_path, 'thumbnail':video['thumb']})
+    videos = afreeca.getIssueBroadcast(plugin.get_setting("showMoreIssueBroad", bool))
+    if videos:
+        items.append({'label':u"[COLOR FF0000FF]이슈 생방송[/COLOR]", 'path':''})
+        for video in videos:
+            vid_path = m_broad + video['broad_no']
+            items.append({'label':video['broad_title'], 'label2': video['user_nick'], 'path':vid_path, 'thumbnail':video['thumb']})
     ###
-    for section in afreeca.getTopItems():
+    for section in afreeca.getTopBroadcast():
     	items.append({'label':u"[COLOR FF0000FF]%s[/COLOR]" %section['title'], 'path':''})
         for video in section['data']:
-            if 'title_no' in video:
-                items.append({'label':video['title'], 'label2': video['user_nick'], 'path':plugin.url_for("play_ucc_rtmp", url=video['flv_name']), 'thumbnail':video['thumb']})
-            elif 'broad_no' in video:
+            if 'broad_no' in video:
                 if 'url' in video:
                     items.append({'label':video['broad_title'], 'label2': video['user_nick'], 'path':info['url'], 'thumbnail':video['thumb'], 'is_playable':True})
                 else:
                     #vid_path = plugin.url_for("watch_broadcast", userId=video['user_id'], broadNo=video['broad_no'])
                     vid_path = m_broad + video['broad_no']
                     items.append({'label':video['broad_title'], 'label2': video['user_nick'], 'path':vid_path, 'thumbnail':video['thumb']})
+            else:
+            	plugin.log.warning("unknown broadcast info")
+            	print video
+    ###
+    for section in afreeca.getTopClips():
+    	items.append({'label':u"[COLOR FF0000FF]%s[/COLOR]" %section['title'], 'path':''})
+        for video in section['data']:
+            if 'title_no' in video:
+                items.append({'label':video['title'], 'label2': video['user_nick'], 'path':plugin.url_for("play_ucc_rtmp", url=video['flv_name']), 'thumbnail':video['thumb']})
             elif 'broad_type' in video and video['broad_type'] == 'vod':
                 items.append({'label':video['broad_title'], 'label2': video['user_nick'], 'path':plugin.url_for("play_ucc_rtmp", url=video['url']), 'thumbnail':video['thumb']})
     ###
@@ -109,6 +123,68 @@ def play_ucc(userId, titleNo):
     info = afreeca_station.extractUccUrl( userId, titleNo )
     rtmp_url = "%s app=%s swfUrl=%s pageUrl=%s playpath=%s" % (info['tcUrl'], info['app'], info['swfUrl'], info['pageUrl'], info['playpath'])
     xbmc.Player().play( rtmp_url )
+    return plugin.finish(None, succeeded=False)
+
+@plugin.route('/sports/')
+def sports_menu():
+    items = []
+    items.append({'label':u"[COLOR FF00FF00]e스포츠[/COLOR]", 'path':plugin.url_for("esports_menu")})
+    items.append({'label':u"[COLOR FF0000FF]스포츠 베스트[/COLOR]", 'path':''})
+    for item in afreeca_sports.getSportsBest():
+        items.append({'label':item['b_subject'], 'path':plugin.url_for("watch_sports_url", url=item['link_url']), 'thumbnail':item['img']})
+    items.append({'label':u"[COLOR FF0000FF]e스포츠 베스트[/COLOR]", 'path':''})
+    for item in afreeca_sports.getEsportsBest():
+        items.append({'label':item['b_subject'], 'path':plugin.url_for("watch_sports_url", url=item['link_url']), 'thumbnail':item['img']})
+    return items
+
+@plugin.route('/esports/')
+def esports_menu():
+    items = [
+        {'label':'GSL',  'path':plugin.url_for("sports_highlight", cid='esports_highlight', btype='GSL', page='-')},
+        {'label':'GSTL', 'path':plugin.url_for("sports_highlight", cid='esports_highlight', btype='GSTL', page='-')},
+        {'label':'LOL',  'path':plugin.url_for("sports_highlight", cid='esports_highlight', btype='LOL', page='-')},
+    ]
+    return items
+    #return plugin.finish(items, view_mode='thumbnail')
+
+@plugin.route('/sports_highlight/<cid>/<btype>/<page>/')
+def sports_highlight(cid, btype, page):
+    if page == '-':
+    	page = ''
+    result = afreeca_sports.parseBoard(cid, btype, page)
+    items = [{'label':item['title'], 'path':plugin.url_for("watch_sports", cid=cid, bno=item['b_no'], btype=btype), 'thumbnail':item['thumbnail']} for item in result['video']]
+    if 'prev_pgno' in result:
+        items.append({'label':tPrevPage, 'path':plugin.url_for("sports_highlight", cid=cid, btype=btype, page=result['prev_pgno'])})
+    if 'next_pgno' in result:
+        items.append({'label':tNextPage, 'path':plugin.url_for("sports_highlight", cid=cid, btype=btype, page=result['next_pgno'])})
+    morepage = True if page else False
+    return plugin.finish(items, update_listing=morepage)
+
+@plugin.route('/watch/sports/<cid>/<bno>/<btype>/')
+def watch_sports(cid, bno, btype):
+    proxy = plugin.get_setting('proxyServer', unicode) if plugin.get_setting('useProxy', bool) else None
+    info = afreeca_sports.getInfoById(cid, bno, btype, proxy=proxy)
+    print info
+    return play_sports_stream(info['c_id'], info['b_no'], info['sub_btype'], info['idx'])
+
+@plugin.route('/watch/sports/url/<url>')
+def watch_sports_url(url):
+    proxy = plugin.get_setting('proxyServer', unicode) if plugin.get_setting('useProxy', bool) else None
+    info = afreeca_sports.parseVideoPage( url, proxy=proxy )
+    print info
+    return play_sports_stream(info['c_id'], info['b_no'], info['sub_btype'], info['idx'])
+
+def play_sports_stream(c_id, b_no, sub_btype, idx):
+    video = afreeca_sports.extractStreamUrl(c_id, b_no, sub_btype, idx)
+    print video
+    #return plugin.play_video({'label':video['title'], 'path':video['url'], 'thumbnail':video['thumbnail']})
+    from xbmcswift2 import xbmc, xbmcgui
+    import re
+    tcUrl, app, playpath = re.search("(rtmp://[^/]+)/([^/]+)/(.*)", video['url']).group(1,2,3)
+    vid_url = "%s app=%s playpath=%s" %(tcUrl, app, playpath)
+    li = xbmcgui.ListItem(video['title'], iconImage=video['thumbnail'])
+    li.setInfo('video', {"Title": video['title']})
+    xbmc.Player().play(vid_url, li)
     return plugin.finish(None, succeeded=False)
 
 if __name__ == "__main__":
