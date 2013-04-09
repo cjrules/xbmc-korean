@@ -1,3 +1,9 @@
+0.2.0
+
+Changes
+- revise framework to use xbmcswift2
+- drop tving Air API and access internal JSON query
+
 0.1.0
 
 Changes

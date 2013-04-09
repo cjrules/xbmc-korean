@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
     <string id="30000">티빙</string>
+    <string id="30003">프록시 사용</string>
+    <string id="30004">프록시 서버</string>
     
     <!--Message-->
     <string id="30010">비디오 없음</string>

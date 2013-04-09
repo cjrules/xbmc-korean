@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings>
+  <setting id="useProxy" type="bool" label="30003" default="false" />
+  <setting id="proxyServer" type="text" label="30004" default="" visible="eq(-1,true)" />
+</settings>
