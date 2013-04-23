@@ -8,8 +8,10 @@
   <string id="30004">프록시 서버</string>
   <string id="30005">일반</string>
   <string id="30006">고급</string>
-  <string id="30007">이슈 생방송 더보기</string>
+  <string id="30007">이슈 방송 표시</string>
+  <string id="30008">e스포츠 방송 표시</string>
 
   <string id="30100">이전 페이지</string>
   <string id="30101">다음 페이지</string>
+  <string id="30102">ID로 방송국 바로가기</string>
 </strings>

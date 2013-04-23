@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # DailyMotion
 import urllib, re
+import simplejson
 
 def extract_id(url):
   try:
@@ -9,25 +10,36 @@ def extract_id(url):
     return None
 
 def extract_video(vid):
-  resp = urllib.urlopen("http://www.dailymotion.com/video/"+vid)
-  html = resp.read()
-  resp.close()
-
-  sequence = re.compile('"sequence":"(.+?)"').findall(html)
-  newseqeunce = urllib.unquote(sequence[0]).decode('utf8').replace('\\/', '/')
-
-  vid_info = {}
-
-  imgSrc = re.compile('og:image" content="(.+?)"').findall(html)
-  if len(imgSrc) == 0:
-      imgSrc = re.compile('/jpeg" href="(.+?)"').findall(html)
-  vid_info['image'] = imgSrc
-
-  vid_info['sd'] = re.compile('"sdURL":"(.+?)"').findall(newseqeunce)
-  vid_info['hd'] = re.compile('"hqURL":"(.+?)"').findall(newseqeunce)
+  jstr = urllib.urlopen("http://www.dailymotion.com/sequence/"+vid).read()
+  json = simplejson.loads(jstr)
+  vid_info = {'image':[], 'hd':[], 'sd':[]}
+  if not 'sequence' in json:
+    return vid_info
+  for node1 in json['sequence']:
+    for node2 in node1['layerList'][0]['sequenceList']:
+      #print '-'+node2['name']
+      if node2['name'] == 'main':
+        for node3 in node2['layerList']:
+          #print '--'+node3['name']
+          if node3['name'] != 'video':
+            continue
+          node4 = node3['param']
+          #json['customURL']
+          #json['hd1080URL']
+          #json['hd720URL']
+          if 'hqURL' in node4:
+            vid_info['hd'].append( node4['hqURL'] )
+          if 'sdURL' in node4:
+            vid_info['sd'].append( node4['sdURL'] )
+          #json['video_url']
+      elif node2['name'] == 'reporting':
+        for node3 in node2['layerList']:
+          node4 = node3['param']['extraParams']
+          vid_info['image'].append( node4['videoPreviewURL'] )
   return vid_info
 
 if __name__=="__main__":
-  print extract_video("xsb5oi")
+  #print extract_video("xyt3vl")
+  print extract_video("k73kkqGIaOfz2w3YEVU")
 
 # vim:sts=2:sw=2:et

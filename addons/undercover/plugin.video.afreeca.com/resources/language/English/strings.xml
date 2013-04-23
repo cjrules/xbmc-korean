@@ -8,8 +8,10 @@
   <string id="30004">Proxy Server</string>
   <string id="30005">Basic</string>
   <string id="30006">Advanced</string>
-  <string id="30007">Show More Issue Broadcasts</string>
+  <string id="30007">Show Issue Broadcasts</string>
+  <string id="30008">Show Esports Broadcasts</string>
 
   <string id="30100">Previous Page</string>
   <string id="30101">Next Page</string>
+  <string id="30102">Station by BJ ID</string>
 </strings>

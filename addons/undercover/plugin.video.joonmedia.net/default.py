@@ -15,7 +15,7 @@ IMAGE_DIR = xbmc.translatePath( os.path.join( __addon2__.getAddonInfo('path'), '
 
 from BeautifulSoup import BeautifulSoup
 
-root_url = "http://www.mjoon.tv"
+root_url = "http://"+__addon__.getSetting("SiteAddr")
 show_thumb = __addon__.getSetting('showThumb').lower() == 'true'
 
 #-----------------------------------------------------
@@ -79,7 +79,7 @@ def recentList(main_url):
 
 def episodeList(main_url):
     link = urllib.urlopen(main_url)
-    soup = BeautifulSoup( link.read(), fromEncoding="utf-8" )
+    soup = BeautifulSoup( link.read() )
     cols = soup("div", {"class" : "column"})
     thumb = root_url + cols[0].find('img')['src']
     colsel = int(__addon__.getSetting("VideoColumn"))

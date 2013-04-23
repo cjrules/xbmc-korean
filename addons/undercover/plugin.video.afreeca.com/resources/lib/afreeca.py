@@ -17,19 +17,25 @@ root_url = "http://www.afreeca.com"
 UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.9"
 
 # http://www.afreeca.com/script/main/afreeca.front.main.js
-def getTopBroadcast():
+def getTopBroadcast(esports=False):
     ts_now = time.time() * 1000
     result = []
     result.append({'title':u"실시간 인기방송", 'data':getVideoList(root_url+"/data/main/main_top_broad_list.json?%d" %ts_now)})
     result.append({'title':u"보라 인기방송",   'data':getVideoList(root_url+"/data/main/main_top_bora_broad_list.json?%d" %ts_now, dataitem_name='M_DATA')})
-    #result += getEsportsVideo('broadcast')
+    if esports:
+        info = getEsportsVideo('broadcast')[0]
+        data = []
+        for item in info['data']:
+            if item['is_live']=='Y':
+                data.append({'broad_title':item['title'], 'broad_no':item['b_no'], 'user_nick':item['sub_btype'], 'thumb':item['banner_img']})
+        if data:
+            result.append({'title':info['title'], 'data':data})
     return result
 
 def getTopClips():
     result = []
     result.append({'title':u"추천 영상클립", 'data':getVideoList(root_url+"/m.afreeca.com/json/app_main_hot_vod.js")})
     result.append({'title':u"인기 영상클립", 'data':getVideoList(root_url+"/data/main/main_top_vod_list.json")})
-    #result += getEsportsVideo('vod')
     return result
 
 def getEsportsVideo(select='all'):
@@ -73,17 +79,14 @@ def getRapidGrowingBroadcast():
     return items
 
 # 이슈 생방송
-def getIssueBroadcast(showmore=False):
+def getIssueBroadcast():
     ts_now = time.time() * 1000
     url = root_url+"/data/main/main_live_banner_list.json?%d" %ts_now
     jstr = urllib.urlopen(url).read().decode('euc-kr')
     json = simplejson.loads(jstr)
     items = []
     for item in json['DATA']['aBannerInfo']:
-        items += json['DATA']['aBannerInfo'][item]
-    if showmore:
-        for item in json['DATA']['aBroadInfo']:
-            items += json['DATA']['aBroadInfo'][item]
+        items += json['DATA']['aBroadInfo'][ item['no'] ]
     return items
 
 def getBestBj():
@@ -114,6 +117,19 @@ def getGameBroadcast(cateNo=''):
         if not cateNo or sec['cate_no'] == cateNo:
             return sec['list']
     return None
+
+# sportsType := kbo | npb | kfa | knl | kbl | etc
+# alternate: root_url+"/data/sportstv/neo_sports_"+sportsType+"_b2c.js"
+def getSportsBroadcast(sportsType):
+    info = getVideoList(root_url+"/data/main/main_sports_"+sportsType+".json")
+    items = []
+    for item in info[0]['BROAD_INFO']:
+    	if item['is_live'] == 'Y':
+    	    if item['b_no'] == '':
+                query = searchBroadById(item['user_id'])
+                item['b_no'] = query[ item['user_id'] ][0]
+            items.append(item)
+    return items
 
 def extractBroadUrl(uid, bid):
     url = "http://live.afreeca.com:8057/afreeca/newafreeca/index.php?szBjId="+uid+"&nBroadNo="+bid
@@ -156,15 +172,16 @@ def searchBjById(uId):
     return None
 
 if __name__ == "__main__":
-    #print getTopBroadcast()
+    print getTopBroadcast(esports=True)
     #print getTopClips()
-    print getEsportsVideo()
+    #print getEsportsVideo()
     #print getIssueBroadcast()
     #print getRapidGrowingBroadcast()
     #print getBestBj()
     #print getBjRanking()
     #print getGameRanking()
     #print getGameBroadcast()
+    #print getSportsBroadcast('kbo')
     #print searchBroadById('sehee3235')
 
 # vim:sw=4:sts=4:et

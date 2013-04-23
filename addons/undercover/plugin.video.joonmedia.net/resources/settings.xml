@@ -6,6 +6,7 @@
     <setting id="dailymotionQuality" type="labelenum" label="30003" values="sd|hd" default="sd" />
   </category>
   <category label="30006">
+    <setting id="SiteAddr" type="text" label="30007" default="ujoon.com"/>
     <setting id="VideoColumn" type="labelenum" label="30004" values="2|3|4" default="2"/>
   </category>
 </settings>

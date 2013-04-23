@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.afreeca.com" name="Afreeca TV" version="0.2.1" provider-name="edge">
+<addon id="plugin.video.afreeca.com" name="Afreeca TV" version="0.3.0" provider-name="edge">
   <requires>
     <import addon="xbmc.python" version="2.0"/>
     <import addon="plugin.video.m.afreeca" version="1.0"/>
@@ -13,7 +13,9 @@
   <extension point="xbmc.addon.metadata">
     <platform>all</platform>
     <language>ko</language>
+    <summary lang="en">Afreeca TV</summary>
+    <description lang="ko">Watch user broadcast by user or video clip provided by afreeca.com[CR]plugin.video.m.afreeca is required</description>
     <summary lang="ko">아프리카 티비</summary>
-    <description lang="ko">아프리카에서 유저 생방송 및 동영상 시청</description>
+    <description lang="ko">아프리카에서 유저 생방송 및 동영상 시청[CR]plugin.video.m.afreeca을 먼저 설치하셔야 합니다.</description>
   </extension>
 </addon>

@@ -3,7 +3,8 @@
   <category label="30005">
     <setting id="account" type="text" label="30001" default="" visible="false" />
     <setting id="password" type="text" label="30002" option="hidden" default="" visible="false" />
-    <setting id="showMoreIssueBroad" type="bool" label="30007" default="false" />
+    <setting id="showIssueBroad" type="bool" label="30007" default="true" />
+    <setting id="showEsportsBroad" type="bool" label="30008" default="false" visible="false" />
   </category>
   <category label="30006">
     <setting id="useProxy" type="bool" label="30003" default="false" />

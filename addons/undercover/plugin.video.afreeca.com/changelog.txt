@@ -1,7 +1,12 @@
-0.2.0
+0.3.0
 
 Changes
 - add Sports section
+
+0.3.0
+
+Changes
+- browse station by BJ id
 
 0.1.0
 
