@@ -29,12 +29,12 @@ def parseSubCateList(cate):
     return items
 
 def parseBoard(cate, subcate, page):
-    page_url = root_url + "/video/cate.gom?seq=%d&subseq=%d&page=%d" %(cate, subcate, page)
+    page_url = root_url + "/video/cate.gom?seq=%d&subseq=%d&page=%d&isseries=0" %(cate, subcate, page)
     html = urllib2.urlopen(page_url).read()
     soup = BeautifulSoup(html)
     result = {'video':[]}
     ptn_contentsid = re.compile("contentsid=(\d+)")
-    for node in soup.findAll('dl', {'class':'dl_type_join'}):
+    for node in soup.findAll('dl', {'class':'dl_type_join2'}):
     	a_node = node.find('a')
     	title = a_node.img['alt']
     	thumb = a_node.img['src']
@@ -42,12 +42,13 @@ def parseBoard(cate, subcate, page):
     	result['video'].append({'title':title, 'contentsid':contentsid, 'thumbnail':thumb})
     # page navigation
     curpg = soup.find('div', {'class':re.compile('^page_index')}).find('a', {'class':'on'})
-    prevpg = curpg.findPreviousSibling('a')
-    if prevpg:
-    	result['prevpage'] = int(prevpg['href'])
-    nextpg = curpg.findNextSibling('a')
-    if nextpg:
-    	result['nextpage'] = int(nextpg['href'])
+    if curpg:
+        prevpg = curpg.findPreviousSibling('a')
+        if prevpg:
+            result['prevpage'] = int(prevpg['href'])
+        nextpg = curpg.findNextSibling('a')
+        if nextpg:
+            result['nextpage'] = int(nextpg['href'])
     return result
 
 if __name__ == "__main__":
