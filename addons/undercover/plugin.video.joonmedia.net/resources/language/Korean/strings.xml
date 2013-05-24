@@ -8,4 +8,6 @@
     <string id="30005">기본</string>
     <string id="30006">고급</string>
     <string id="30007">사이트 주소</string>
+    <string id="30008">프록시 서버 사용</string>
+    <string id="30009">프록시 서버 주소</string>
 </strings>

@@ -8,5 +8,7 @@
   <category label="30006">
     <setting id="SiteAddr" type="text" label="30007" default="ujoon.com"/>
     <setting id="VideoColumn" type="labelenum" label="30004" values="2|3|4" default="2"/>
+    <setting id="useProxy" type="bool" label="30008" default="false" />
+    <setting id="proxyServer" type="text" label="30009" default="" visible="eq(-1,true)" />
   </category>
 </settings>

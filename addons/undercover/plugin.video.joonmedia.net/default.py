@@ -2,7 +2,7 @@
 """
     JoonMedia - Korea Drama/TV Shows Streaming Service
 """
-import urllib,re
+import urllib,urllib2,re
 import xbmcaddon,xbmcplugin,xbmcgui
 import os.path
 
@@ -32,7 +32,7 @@ def rootList():
     endDir()
 
 def progList(main_url):
-    html = urllib.urlopen(main_url).read()
+    html = fetch_html(main_url)
     soup = BeautifulSoup( html, fromEncoding="utf-8" )
     for item in soup.findAll("div", { "class" : "column" } ):
         ref = item.find('a')
@@ -58,7 +58,7 @@ def progList(main_url):
     endDir()
 
 def recentList(main_url):
-    html = urllib.urlopen(main_url).read()
+    html = fetch_html(main_url)
     soup = BeautifulSoup( html, fromEncoding="utf-8" )
     for item in soup.findAll( "div", { "class" : "column" } ):
         category = item.find('h2').contents[0]
@@ -78,8 +78,8 @@ def recentList(main_url):
     endDir()
 
 def episodeList(main_url):
-    link = urllib.urlopen(main_url)
-    soup = BeautifulSoup( link.read() )
+    html = fetch_html(main_url)
+    soup = BeautifulSoup( html )
     cols = soup("div", {"class" : "column"})
     thumb = root_url + cols[0].find('img')['src']
     colsel = int(__addon__.getSetting("VideoColumn"))
@@ -118,7 +118,7 @@ def episodeList(main_url):
 
 #-----------------------------------                
 def get_player_link(url):
-    html = urllib.urlopen(url).read()
+    html = fetch_html(url)
     return re.compile('<a class="player_link" href="([^"]*)" target="_blank">').findall(html)
 
 def _play_link(vid_list, thumb):
@@ -238,6 +238,20 @@ def playWrapper(main_url, title, thumb):
         _playDmotion(url, title, thumb)
     else:
         xbmc.Dialog().ok("Unsupported format", url)
+
+#-----------------------------------                
+def fetch_html(url):
+    proxy = None
+    if __addon__.getSetting("useProxy") == "true":
+    	proxy = __addon__.getSetting("proxyServer")
+    	print "Proxy="+proxy
+    if proxy:
+        px_handler = urllib2.ProxyHandler({'http': proxy})
+        opener = urllib2.build_opener(px_handler)
+        resp = opener.open(url)
+    else:
+        resp = urllib.urlopen(url)
+    return resp.read()
 
 #-----------------------------------                
 def get_params():
