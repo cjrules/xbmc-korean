@@ -1,3 +1,9 @@
+0.4.2
+
+Changes
+- change plugin platform to xbmcswift2
+- add download menu and related setting
+
 0.3.2
 
 Changes
