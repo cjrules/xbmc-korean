@@ -9,7 +9,7 @@ import unicodedata
 import Tkinter
 from Tkconstants import *
 
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 
 class KorMeta(Tkinter.Frame):
 	def __init__(self, root):
@@ -74,7 +74,7 @@ class KorMeta(Tkinter.Frame):
 
 		# line 3: buttons
 		f3 = Tkinter.Frame(self)
-		self.btn1 = Tkinter.Button(f3, text='Browse', command=self.movieCmd.getdir)
+		self.btn1 = Tkinter.Button(f3, text='Select', command=self.movieCmd.getdir)
 		self.btn2 = Tkinter.Button(f3, text='Import', command=self.movieCmd.getmeta)
 		self.btn3 = Tkinter.Button(f3, text='Generate', command=self.movieCmd.genfile)
 		self.btn1.pack(side=LEFT,padx=20)

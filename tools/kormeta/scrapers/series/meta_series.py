@@ -48,7 +48,8 @@ class SeriesMetaData:
 		lines.append(u"  <thumb>%s</thumb>" % self.s_poster)
 		lines.append(u"  <studio>%s</studio>" % self.s_network)
 		lines.append(u"  <premiered>%s</premiered>" % self.s_aired)
-		lines.append(u"  <director>%s</director>" % self.s_directors[0])
+		if self.s_directors:
+			lines.append(u"  <director>%s</director>" % self.s_directors[0])
 		lines.append(u"  <credits>%s</credits>" % ', '.join(self.s_writers) )
 		for name,role in self.s_actors:
 			lines.append(u"  <actor>")

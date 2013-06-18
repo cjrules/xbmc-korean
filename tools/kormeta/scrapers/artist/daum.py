@@ -27,7 +27,7 @@ class ArtistFetcher:
 	soup = BeautifulSoup(resp.read(),fromEncoding="utf-8")
         result = []
 	for item in soup.findAll("div",{"class" : "collCont"}):
-	    id = re.compile("artistDetailId=(\d+)").search(item.find('a')['href']).group(1)
+	    id = re.compile("artistDetailId=(\d+)").search(item.a['href']).group(1)
 	    title = ''.join(item.a.findAll(text=True))
             result.append( (id,title) )
         return result

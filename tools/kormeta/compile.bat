@@ -1,1 +1,1 @@
-python.exe setup.py py2exe
+python setup.py py2exe

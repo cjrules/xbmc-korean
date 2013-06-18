@@ -28,7 +28,7 @@ class MovieFetcher:
 	soup = BeautifulSoup(resp.read(),fromEncoding="utf-8")
         result = []
 	for item in soup.findAll("span",{"class" : "fl srch"}):
-	    id = re.compile("movieId=(\d+)").search(item.find('a')['href']).group(1)
+	    id = re.compile("movieId=(\d+)").search(item.a['href']).group(1)
 	    title = ''.join(item.a.findAll(text=True))
             result.append( (id,title) )
         return result

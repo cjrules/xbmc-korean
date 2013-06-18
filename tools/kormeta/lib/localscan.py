@@ -29,6 +29,7 @@ class LocalScan:
         rules = []
         rules.append( re.compile('[ \._](?:EP|ep)[ \.]?(?P<ep>\d+)[ \._]') )
         rules.append( re.compile('[ \._][Ee](?P<ep>\d+)[ \._]') )
+        rules.append( re.compile('[Ss][\d+][Ee](?P<ep>\d+)[ \._]') )
         # scan
         found = []
         for path in files:

@@ -33,11 +33,8 @@ class SeriesFetcher:
 		soup = BeautifulSoup(resp.read(),fromEncoding="utf-8")
 		result = []
 		for item in soup.findAll("span",{"class" : "fl srch"}):
-			id = re.compile("tvProgramId=(\d+)").search(item.find('a')['href']).group(1)
-			if item.a.b is None:
-				title = item.a.string
-			else:
-				title = item.a.b.string
+			id = re.compile("tvProgramId=(\d+)").search(item.a['href']).group(1)
+			title = ''.join(item.a.findAll(text=True))
 			result.append( (id,title) )
 		return result
 
