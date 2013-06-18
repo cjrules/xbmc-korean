@@ -46,7 +46,7 @@ class MusicCommand:
 		self.artist_id = None
 
 		self.tb.insert(END, "Start searching artist...\n")
-		from scrapers.artist.naver import ArtistFetcher
+		from scrapers.artist.melon import ArtistFetcher
 		artists = ArtistFetcher().Search( self.artistName )
 		self.tb.insert(END, "%d artists found...\n" % len(artists), 'i')
 		for id,name in artists:
@@ -76,7 +76,7 @@ class MusicCommand:
 				continue
 			self.albumPath.append( albumPath )
 			self.tb.insert(END, "Start searching album...\n")
-			from scrapers.album.naver import AlbumFetcher
+			from scrapers.album.melon import AlbumFetcher
 			albums = AlbumFetcher().Search( album_dir, self.artistName )
 			self.tb.insert(END, "%d albums found...\n" % len(albums), 'i')
 			for id,title,artist in albums:
@@ -107,14 +107,14 @@ class MusicCommand:
 
 		self.artist_meta = None
 		self.tb.insert(END, "Start fetching artist metadata...\n")
-		from scrapers.artist.naver import ArtistFetcher
+		from scrapers.artist.melon import ArtistFetcher
 		self.artist_meta = ArtistFetcher().ParsePage(self.artist_id)
 		self.tb.insert(END, "Metadata for %s is ready...\n" % self.artist_id, 'i')
 
 		self.album_meta = []
 		for id in self.album_id:
 			self.tb.insert(END, "Start fetching album metadata...\n")
-			from scrapers.album.naver import AlbumFetcher
+			from scrapers.album.melon import AlbumFetcher
 			self.album_meta.append( AlbumFetcher().ParsePage(id) )
 			self.tb.insert(END, "Metadata for %s is ready...\n" % id, 'i')
 

@@ -9,7 +9,7 @@ import unicodedata
 import Tkinter
 from Tkconstants import *
 
-__version__ = "0.2.2"
+__version__ = "0.3.0"
 
 class KorMeta(Tkinter.Frame):
 	def __init__(self, root):
