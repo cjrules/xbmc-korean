@@ -87,15 +87,15 @@ def episodeList(main_url):
         title = u""
         for node in episode.contents:
             if node.string:
-            	title += node.string
+                title += node.string
             if getattr(node, 'name', None) == 'br':
-            	break
+                break
         title = title.strip()
 
         for ref in episode.findAll('a'):
             url = ref['href']
             if not url.startswith('http://'):
-            	url = root_url + url
+                url = root_url + url
             suppl = ''.join(ref.findAll(text=True)).strip()
             title2 = u"{0:s} ({1:s})".format(title,suppl)
             xbmc.log( "Found page: %s" % title2.encode('utf-8'), xbmc.LOGDEBUG )
@@ -183,6 +183,8 @@ def _playDmotion(url, title, thumb):
     qual = __addon__.getSetting('dailymotionQuality')
     if not vid_urls.has_key(qual):
         return
+    if not vid_urls[qual] and qual == 'hd':
+        qual = 'sd'
     _play_link([{'title':title,'url':url} for url in vid_urls[qual]], thumb)
 
 #-----------------------------------                
@@ -243,8 +245,8 @@ def playWrapper(main_url, title, thumb):
 def fetch_html(url):
     proxy = None
     if __addon__.getSetting("useProxy") == "true":
-    	proxy = __addon__.getSetting("proxyServer")
-    	print "Proxy="+proxy
+        proxy = __addon__.getSetting("proxyServer")
+        print "Proxy="+proxy
     if proxy:
         px_handler = urllib2.ProxyHandler({'http': proxy})
         opener = urllib2.build_opener(px_handler)
