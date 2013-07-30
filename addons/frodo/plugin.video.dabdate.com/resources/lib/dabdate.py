@@ -117,7 +117,7 @@ def getStreamUrl( main_url, userid='', passwd='', cookiefile='cookie.lwp'):
         vurl = re.compile(r"location\.href\s*=\s*'([^']*)'").search( psrc ).group(1)
         vtitle = re.compile("<font class=big>(.*?)</font>", re.U).search( psrc ).group(1)
     else:
-        vurl = re.compile("FileName='([^']*)'").search( psrc ).group(1)
+        vurl = re.compile('file: *"([^"]*)"').search( psrc ).group(1)
         if not vurl.startswith("http://"):
             vurl = "http://dabdate.com/"+vurl
         vtitle = re.compile("<font class=big>(.*?)</font>", re.U).search( psrc ).group(1)
