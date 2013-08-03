@@ -4,13 +4,12 @@ import cookielib
 import os
 import re
 
-root_url = "http://dabdate.com"
+root_url = "http://www.dabdate.com"
 
 BrowserAgent = 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0)'
-#BrowserAgent = 'Mozilla/5.0 (Windows NT 6.1; rv:22.0) Gecko/20130405 Firefox/22.0'
 PlayerAgent  = 'Windows-Media-Player/12.0.7601.17514'
 
-# http://dabdate.com
+# http://www.dabdate.com
 def parseTop( main_url, quality='1', localsrv='la'):
     result = {'video':[]}
     req = urllib2.Request(main_url)
@@ -20,7 +19,7 @@ def parseTop( main_url, quality='1', localsrv='la'):
     items = re.split("<td colspan=\d+ height=\d+>", psrc)
     for item in items[:-1]:
         try:
-            title = re.compile('''<a href[^>]*pr=[1|m]"><font [^>]*>(.*?)</font></a>''').search(item).group(1)
+            title = re.compile('''<a href[^>]*pr=1"><span [^>]*>(.*?)</span></a>''').search(item).group(1)
             title = re.compile("</?b>").sub("",title)
             if re.compile('<b>Free').search(item):
                 title = "[B]"+title+"[/B]"
@@ -85,7 +84,7 @@ def getStreamUrl( main_url, userid='', passwd='', cookiefile='cookie.lwp'):
             'pass':passwd
         }
         # login
-        req = urllib2.Request( 'http://www.dabdate.com/login.php', urllib.urlencode(values) )
+        req = urllib2.Request( root_url+'/login.php', urllib.urlencode(values) )
         req.add_header('User-Agent', BrowserAgent)
         req.add_header('Referer', newurl)
         resp = urllib2.urlopen(req)
@@ -101,7 +100,7 @@ def getStreamUrl( main_url, userid='', passwd='', cookiefile='cookie.lwp'):
             'url' :main_url,
             'auto':'0'
         }
-        req = urllib2.Request( 'http://www.dabdate.com/msg.php', urllib.urlencode(values) )
+        req = urllib2.Request( root_url+'/msg.php', urllib.urlencode(values) )
         req.add_header('User-Agent', BrowserAgent)
         req.add_header('Referer', newurl)
         resp = urllib2.urlopen(req)
@@ -112,15 +111,13 @@ def getStreamUrl( main_url, userid='', passwd='', cookiefile='cookie.lwp'):
     psrc = resp.read().decode('euc-kr', 'ignore')
     resp.close()
     if not newurl.startswith(main_url):
+        print newurl
+        print main_url
         raise NotEnoughToken(newurl)
-    if newurl.startswith("http://m.dabdate.com"):
-        vurl = re.compile(r"location\.href\s*=\s*'([^']*)'").search( psrc ).group(1)
-        vtitle = re.compile("<font class=big>(.*?)</font>", re.U).search( psrc ).group(1)
-    else:
-        vurl = re.compile('file: *"([^"]*)"').search( psrc ).group(1)
-        if not vurl.startswith("http://"):
-            vurl = "http://dabdate.com/"+vurl
-        vtitle = re.compile("<font class=big>(.*?)</font>", re.U).search( psrc ).group(1)
+    vurl = re.compile('file: *"([^"]*)"').search( psrc ).group(1)
+    if not vurl.startswith("http://"):
+        vurl = root_url+'/'+vurl
+    vtitle = re.compile("<font class=big>(.*?)</font>", re.U).search( psrc ).group(1)
     cookies = []
     for cookie in cj:
         cookies.append( cookie.name+'='+cookie.value )
@@ -128,8 +125,8 @@ def getStreamUrl( main_url, userid='', passwd='', cookiefile='cookie.lwp'):
     return {'title':vtitle, 'url':vurl, 'useragent':PlayerAgent, 'cookie':ckStr}
 
 if __name__ == "__main__":
-    #print parseTop( root_url )
-    #print parseTop( root_url+"/index.php?page=2&lang=0" )
-    print getStreamUrl( root_url+"/player.php?idx=29697&pr=1" )
+    print parseTop( root_url )
+    print parseTop( root_url+"/index.php?page=2&lang=0" )
+    print getStreamUrl( root_url+"/player.php?idx=30828&pr=1" )
 
 # vim:sw=4:sts=4:et

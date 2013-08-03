@@ -1,7 +1,7 @@
 0.4.1
 
 Changes
-- catch up mp4 url changes
+- reflect video url change (wmv -> mp4)
 
 0.4.0
 

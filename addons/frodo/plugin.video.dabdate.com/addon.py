@@ -15,7 +15,6 @@ qualcode = {
     _L(31000) :'1',     # medium
     _L(31001) :'2',     # low
     _L(31002) :'3',     # high
-    _L(31003) :'m',     # mobile
 }
 localcode = {
     ''        :'la',    # default
@@ -34,13 +33,7 @@ tNextPage = u"[B]%s>>[/B]" % _L(30201)
 def browse_page(url):
     quality = qualcode[ plugin.get_setting("quality", unicode) ]
     localsrv = localcode[ plugin.get_setting("local", unicode) ]
-    if quality == 'm':
-    	root_url = "http://m.dabdate.com"
-    	if localsrv == 'au':
-            quality = "mAU"
-    else:
-    	root_url = "http://www.dabdate.com"
-    info = dabdate.parseTop( root_url+url, quality=quality, localsrv=localsrv )
+    info = dabdate.parseTop( dabdate.root_url+url, quality=quality, localsrv=localsrv )
     items = []
     label_download = plugin.get_string(30204)
     for item in info['video']:
@@ -80,10 +73,7 @@ def play_video(url):
 def download_video(url):
     info = resolve_video_url(url)
     wdir = plugin.get_setting('download_dir', unicode)
-    if plugin.get_setting('quality', str) == 'm':
-        ext = '.mp4'
-    else:
-        ext = '.wmv'
+    ext = '.mp4'
     import xbmcvfs
     if not xbmcvfs.exists(wdir):
         return plugin.finish(None, succeeded=False)
@@ -108,12 +98,11 @@ def download_video(url):
 
 def resolve_video_url(url):
     from xbmcswift2 import xbmc
-    root_url = "http://www.dabdate.com"
     cookiepath = xbmc.translatePath( 'special://temp/dabdate_cookie.lwp' )
     userid = plugin.get_setting('id', str)
     passwd = plugin.get_setting('pass', str)
 
-    page_url = root_url+url
+    page_url = dabdate.root_url+url
     return dabdate.getStreamUrl( page_url, userid=userid, passwd=passwd, cookiefile=cookiepath )
 
 if __name__ == "__main__":

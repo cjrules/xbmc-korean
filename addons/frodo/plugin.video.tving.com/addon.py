@@ -81,7 +81,7 @@ def channel_view(cate_cd, ch_cd, offset):
 
     items = []
     for item in json['RESULT_DATA']['RESULT_DATA']:
-        #items.append({'label':item['PGM_NM'], 'path':plugin.url_for('play_vod', file_cd=str(item['DRM_VOD_FILE_CD'])), 'thumbnail':img_root+item['IMG_URL']})
+        #items.append({'label':item['PGM_NM'], 'path':plugin.url_for('play_vod', file_cd=str(item['DRM_VOD_FILE_CD'])), 'thumbnail':img_root+item['IMG_URL'], 'is_playable':True})
         items.append({'label':item['PGM_NM'], 'path':plugin.url_for('program_view', pgm_cd=str(item['PGM_CD']), offset='-'), 'thumbnail':img_root+item['IMG_URL']})
     # navigation
     if offset2 >= itemPerPage:
@@ -121,7 +121,7 @@ def program_view(pgm_cd, offset):
     items = []
     for item in json['RESULT_DATA']['RESULT_DATA']:
         title = u"%s [%s]" %(item['EPI_NM'], item['BROAD_DT'])
-        items.append({'label':title, 'path':plugin.url_for('play_vod', file_cd=(item['DRM_VOD_FILE_CD'])), 'thumbnail':img_root+item['IMG_URL']})
+        items.append({'label':title, 'path':plugin.url_for('play_vod', file_cd=(item['DRM_VOD_FILE_CD'])), 'thumbnail':img_root+item['IMG_URL'], 'is_playable':True})
     # navigation
     if offset2 >= itemPerPage:
         new_offset = offset2 - itemPerPage
@@ -153,7 +153,7 @@ def movie_list(cate_cd, page_no):
 
     items = []
     for item in json['data']:
-        items.append({'label':item['MAST_NM'], 'path':plugin.url_for('play_vod', file_cd=item['DRM_VOD_FILE_CD']), 'thumbnail':img_root+item['POSTER_IMG_URL']})
+        items.append({'label':item['MAST_NM'], 'path':plugin.url_for('play_vod', file_cd=item['DRM_VOD_FILE_CD']), 'thumbnail':img_root+item['POSTER_IMG_URL'], 'is_playable':True})
     # navigation
     if pgnum > 1:
         new_pgnum = pgnum - 1
@@ -189,15 +189,10 @@ def play_vod(file_cd):
     except:
         plugin.notify('login required')
         return plugin.finish(None, succeeded=False)
-
-    from xbmcswift2 import xbmc, xbmcgui
     if vid_url is None:
         xbmcgui.Dialog().ok(_L(30010), _L(30011))
-    else:
-        li = xbmcgui.ListItem(vid_title, iconImage=vid_thumb)
-        li.setInfo('video', {"Title": vid_title})
-        xbmc.Player().play(vid_url, li)
-    return plugin.finish(None, succeeded=False)
+        return plugin.finish(None, succeeded=False)
+    plugin.set_resolved_url(vid_url)
 
 if __name__ == "__main__":
     plugin.run()

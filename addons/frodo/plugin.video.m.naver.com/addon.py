@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from xbmcswift2 import Plugin
-import lib.jrnaverm as jrnaverm
+import resources.lib.jrnaverm as jrnaverm
 import urllib
 
 tPrevPage = u"[B]<<이전[/B]"

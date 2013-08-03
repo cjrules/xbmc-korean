@@ -71,7 +71,7 @@ def getStreamUrlByBroadNum( bnum ):
     #return url
     html = urllib2.urlopen(url).read()
     murls = re.compile('(http://.*)', re.M).findall(html)
-    return murls[-1]
+    return murls[-1] if murls else None     # the best quality
 
 if __name__ == "__main__":
     print parseMobileHot( "http://m.afreeca.com/index.php" )

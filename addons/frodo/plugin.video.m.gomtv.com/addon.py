@@ -84,8 +84,7 @@ def video_url(url):
 
 @plugin.route('/play/contentsid/<contentsid>')
 def play_contentsid(contentsid):
-    video_url(root_url+"/view.gom?contentsid="+contentsid)
-    #return plugin.redirect(plugin.url_for("video_url", url=root_url+"/view.gom?contentsid="+contentsid))
+    return plugin.redirect(plugin.url_for("video_url", url=root_url+"/view.gom?contentsid="+contentsid))
 
 def gomtv_login():
     userid = plugin.get_setting('account', unicode)
