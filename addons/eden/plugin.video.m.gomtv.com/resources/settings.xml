@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <settings>
-  <setting id="plistDir" type="bool" label="30001" default="false" />
+  <category label="30005">
+    <setting id="account" type="text" label="30007" default="" />
+    <setting id="password" type="text" label="30008" option="hidden" default="" />
+    <setting id="plistDir" type="bool" label="30001" default="false" />
+    <setting id="plistStep" type="number" label="30002" default="25" />
+  </category>
+  <category label="30006">
+    <setting id="useProxy" type="bool" label="30003" default="false" />
+    <setting id="proxyServer" type="text" label="30004" default="" visible="eq(-1,true)" />
+  </category>
 </settings>

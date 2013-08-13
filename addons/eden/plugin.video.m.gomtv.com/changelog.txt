@@ -1,25 +1,6 @@
-0.7.0
+1.0.0
 
 Changes
-- change internal structure
-- mobile mode is added to watch Star2 game league
-
-0.6.0
-
-Changes
-- add experimental live video service
-
-0.5.1
-
-Changes
-- BeautifulSoup Library from common addon
-
-0.5.0
-
-Changes
-- Direct play upon selection
-
-0.4.6
-
-Changes
-- Initial addon version
+- change framework built on xbmcswift2
+- support login
+- support proxy

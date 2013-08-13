@@ -2,114 +2,150 @@
 """
   m.gomtv.com
 """
-import urllib2, re
+import urllib, urllib2
+import cookielib
+import re
+from random import randrange
 from BeautifulSoup import BeautifulSoup
-import simplejson
+import xml.etree.ElementTree as etree
 
 BrowserAgent = "Mozilla/5.0 (iPad; U; CPU OS 4_3 like Mac OS X; en-us) Mobile"
+cookie_jar = None
 
 root_url = "http://m.gomtv.com"
 
-def parseList(main_url):
-    vid_info = {}
-    vid_info['tab'] = []
-    vid_info['subtab'] = []
-    vid_info['list'] = []
+def setCookieFile(fpath):
+    import os
+    global cookie_jar
+    cookie_jar = cookielib.LWPCookieJar(fpath)
+    if os.path.isfile(fpath):
+        cookie_jar.load(ignore_discard=True, ignore_expires=True)
 
-    req = urllib2.Request(main_url)
-    req.add_header("User-Agent", BrowserAgent)
-    html = urllib2.urlopen(req).read()
+def login(userid, password):
+    global cookie_jar
+    if cookie_jar is None:
+    	return False
+    # prepare login form
+    import hashlib
+    m = hashlib.md5()
+    m.update(password)
+    paras = {'userid':userid,
+             'passwd':m.hexdigest(),
+             'passwdtmp':'',
+             'savedIdCheck':'1',
+             'from':'m',
+             'adultcheck':'Y',
+             'adult':'2',
+             'returl':root_url+'/'
+            }
+    referer = "http://private.gomtv.com/login/loginMobile.gom?adult=2&returl="+urllib.quote(paras['returl'])
+    # login and save cookie
+    opener = setCookieOpener()
+    opener.addheaders = [('User-Agent', BrowserAgent), ('Referer', referer)]
+    f = opener.open('https://private.gomtv.com/gomtv20/member/loginProcess.gom', urllib.urlencode(paras))
+    print f.geturl()
+    login_status = f.geturl() == paras['returl']
+    f.close()
+    for cj in cookie_jar:
+    	print cj
+    cookie_jar.save(ignore_discard=True, ignore_expires=True)
+    return login_status
+
+def parseMenu(main_url):
+    vid_info = {'tab':[], 'subtab':[]}
+
+    opener = setCookieOpener()
+    html = opener.open(main_url).read()
+    if html.startswith('<script>'):
+    	return None     # redirected to login page
     soup = BeautifulSoup(html)
 
     # tab menu
     for node in soup.find("nav", {"class":re.compile("^top_menu")}).findAll('a'):
         vid_info['tab'].append( {'title':node.string, 'url':root_url+node['href']} )
     # subtab menu
+    ptn_para = re.compile("'listtype'\s*:\s*'([^']*)'[^}]*'listseq'\s*:\s*'([^']*)'")
     for node in soup.find("ul", {"class":"list_tab"}).findAll('a'):
-        sorttype = re.compile("'listsort'\s*:\s*'(\d+)'").search(node['href']).group(1)
-        vid_info['subtab'].append( {'title':node.string, 'url':main_url+"&listsort="+sorttype} )
-    # programs
-    sect = soup.find("div", {"id":"contentsList"})
-    if sect:
-        for node in sect.findAll('a'):
-            title = ' '.join(node.find('dt').findAll(text=True))
-            vid_info['list'].append( {'title':title, 'url':root_url+node['href'], 'thumb':node.find('img')['src']} )
+        cmd = node['onclick']
+        service, listseq = ptn_para.search(cmd).group(1,2)
+        vid_info['subtab'].append( {'title':node.string, 'service':service, 'listseq':listseq} )
     return vid_info
 
-def parseProg(main_url):
-    vid_info = {}
-    req = urllib2.Request(main_url)
-    req.add_header("User-Agent", BrowserAgent)
+# http://m.gomtv.com/js/m.js?<date>
+def parseList(service, listseq, offset, limit):
+    page_url = root_url + "/ajaxInclude.gom?lib=gomclass&src=%2FindexList.gom&offset={0:d}&limit={1:d}&listseq={2:s}&service={3:s}".format(offset, limit, listseq, service)
+    req = urllib2.Request(page_url)
+    req.add_header('User-Agent', BrowserAgent)
     html = urllib2.urlopen(req).read()
+    soup = BeautifulSoup(html, fromEncoding='UTF-8')
+    items = []
+    for node in soup.findChildren('a'):
+        items.append( {'title':node.span.string, 'url':root_url+node['href'], 'thumbnail':node.img['src']} )
+    return items
 
-    # program info
-    match = re.search('&chnum=(\d+)&', html)
-    if not match:
+def parseProg(main_url, proxy=None):
+    opener = setCookieOpener()
+    resp = opener.open(main_url)
+    if 'loginMobile' in resp.geturl():
+    	#raise LoginRequired
     	return None
-    vid_info['chnum'] = match.group(1)
-    for vname,vval in re.compile(r"^\s*var (\w+)\s*=\s*'(\d+)';",re.M).findall(html):
-    	if vname == "systype" or vname[:2] == "id" or vname == "contentsid" or vname == "seriesid":
-    	    vid_info[vname] = vval
 
-    # video base
+    html = resp.read()
+    btns = BeautifulSoup(html).findAll('dd', {'class':'btn'})
+    if not btns:
+    	#raise UnknownFormat
+    	return None
+    soup = btns[-1]
+    ptn_play = re.compile("setPlayVideo\('([^']*)'\)")
+    result = {'link':[]}
+    for item in soup.findAll('a', {'onclick':ptn_play}):
+    	arg = ptn_play.search(item['onclick']).group(1)
+        result['link'].append( getPlayUrl(arg, main_url, proxy) )
+    return result
+
+def setCookieOpener():
+    global cookie_jar
+    ck_handler = urllib2.HTTPCookieProcessor(cookie_jar)
+    opener = urllib2.build_opener(ck_handler)
+    opener.addheaders = [('User-Agent', BrowserAgent)]
+    return opener
+
+def getPlayUrl(arg, referer, proxy=None):
+    global cookie_jar
+    ck_handler = urllib2.HTTPCookieProcessor(cookie_jar)
+    if proxy:
+        px_handler = urllib2.ProxyHandler({'http': proxy})
+        opener = urllib2.build_opener(px_handler, ck_handler)
+    else:
+        opener = urllib2.build_opener(ck_handler)
+
     down_url = root_url+"/ajax/getPlayUrl.gom"
-    req = urllib2.Request(down_url)
-    req.add_header("User-Agent", BrowserAgent)
-    req.add_header("Referer", main_url)
-    paras = '&authmodel=ipad&systemversion=4.3'
-    jsonstr = urllib2.urlopen(req, paras).read()
-    markup = simplejson.loads(jsonstr)
-    vid_info['video_base'] = markup['param']
-
-    # video link
-    vid_info['link'] = []
-    btndiv = re.compile('<dd class="btn">(.*?)</dd>', re.S).findall(html)
-    match = re.compile(r"""setPlayVideo\('(.*?)'\);">(.*?)</a>""").findall(btndiv[-1])
-    for item in match:
-        url = vid_info['video_base'] + item[0]
-        vid_info['link'].append( {'title':item[1].decode('utf-8'), 'url':url} )
-    if len(match) == 0:
-        vid_info['titles'] = [nn.decode('utf-8') for nn in re.compile(r';">(.*?)</a>').findall(btndiv[-1])]
-
-    return vid_info
-
-def parseProg2(main_url):
-    info = parseProg(main_url)
-    if len(info['link']) == 0:
-        # trick to guess 1st/2nd node id
-        req = urllib2.Request(main_url)
-        req.add_header("User-Agent", BrowserAgent)
-        html = urllib2.urlopen(req).read()
-        nid = re.search('nid=(\d*)', html).group(1)
-        nid1 = str(int(nid)-1)
-        nid2 = str(int(nid1)+6)
-        info['link'].append({'title':info['titles'][0],'url':info['video_base']+getRequestQuery(info['contentsid'], info['seriesid'], nid1)})
-        info['link'].append({'title':info['titles'][1],'url':info['video_base']+getRequestQuery(info['contentsid'], info['seriesid'], nid2)})
-    return info
-
-def getRequestQuery(contentsid, seriesid, nodeid):
-    ss  = "&attr1=10002"
-    ss += "&contentsid=" + contentsid
-    ss += "&seriesid=" + seriesid
-    ss += "&userno="
-    ss += "&nodeid=" + nodeid
-    ss += "&level_flag=4"
-    ss += "&service_flag=1"
-    ss += "&isfree=1"
-    ss += "&platform_flag=2"
-    ss += "&etc0="
-    return ss
+    opener.addheaders = [("User-Agent", BrowserAgent),
+                         ("Referer", referer),
+                         ("Accept", "text/html")]
+    paras = '&authmodel=ipad&systemversion=6&arg=%s&rand=%d' %(urllib.quote(arg), randrange(0, 1000))
+    print paras
+    xml = opener.open(down_url, paras).read()
+    markup = etree.fromstring(xml)
+    title = markup.find('.//TITLE').text
+    vid_url = markup.find('.//REF').attrib['href']
+    return {'title':title, 'url':vid_url}
 
 if __name__ == "__main__":
-    #info = parseProg(root_url+"/view.gom?contentsid=552606&service=musicvideo")
-    info = parseProg(root_url+"/view.gom?contentsid=453618&service=game")
+    proxy = "http://175.209.211.180:8888/"
+    ### regular contents
+    """
+    print parseMenu(root_url)
+    print parseList('game', '142', 0, 25)
+    info = parseProg(root_url+"/view.gom?contentsid=3013576&service=game", proxy=proxy)
     print "%s %s" % (info['contentsid'], info['seriesid'])
-    print "%s %s %s %s" % (info['chnum'], info['id0s'], info['id1s'], info['id2s'])
-    if len(info['link']):
-        for item in info['link']:
-            print item['title'] + " : " + item['url']
-    else:
-    	print "http://ch.gomtv.com/%s/%s/%s" % (info['chnum'],info['id1s'],info['id2s'])
-    	print getRequestQuery(info['contentsid'],info['seriesid'],'?')
+    print info['title'] + " : " + info['url']
+    """
+    # adult contents
+    setCookieFile('temp.txt')
+    print login('test', 'temp')
+    print parseMenu(root_url+"/?service=adult")
+    #info = parseProg(root_url+"/view.gom?contentsid=19961&service=movie", proxy=proxy)
+    #print "%s %s" % (info['contentsid'], info['seriesid'])
 
 # vim:sts=4:et
