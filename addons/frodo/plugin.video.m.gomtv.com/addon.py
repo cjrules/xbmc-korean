@@ -31,21 +31,21 @@ def section_list(url):
     if info is None:
         xbmcgui.Dialog().ok(_L(30010), _L(30013))
     	return
-    return [{'label':item['title'], 'path':plugin.url_for('program_list', service=item['service'], listseq=item['listseq'], offset='-')} for item in info['subtab']]
+    return [{'label':item['title'], 'path':plugin.url_for('program_list', service=item['service'], cate=item['cate'], offset='-')} for item in info['subtab']]
 
-@plugin.route('/program/<service>/<listseq>/<offset>')
-def program_list(service, listseq, offset):
+@plugin.route('/program/<service>/<cate>/<offset>')
+def program_list(service, cate, offset):
     offset2 = 0 if offset=='-' else int(offset)
     plistStep = plugin.get_setting('plistStep', int)
-    vlist = gomm.parseList(service, listseq, offset2, plistStep)
+    vlist = gomm.parseList(service, cate, offset2, plistStep)
     items = [{'label':item['title'], 'path':plugin.url_for('video_url', url=item['url']), 'thumbnail':item['thumbnail']} for item in vlist]
     # navigation
     if offset2 > 0:
         new_offset = (offset2-plistStep) if offset2 >= plistStep else 0
-        items.append({'label':tPrevPage, 'path':plugin.url_for('program_list', service=service, listseq=listseq, offset=str(new_offset))})
+        items.append({'label':tPrevPage, 'path':plugin.url_for('program_list', service=service, cate=cate, offset=str(new_offset))})
     if len(vlist) == plistStep:
         new_offset = offset2 + plistStep
-        items.append({'label':tNextPage, 'path':plugin.url_for('program_list', service=service, listseq=listseq, offset=str(new_offset))})
+        items.append({'label':tNextPage, 'path':plugin.url_for('program_list', service=service, cate=cate, offset=str(new_offset))})
     morepage = False if offset=='-' else True
     return plugin.finish(items, update_listing=morepage)
 
@@ -70,7 +70,7 @@ def video_url(url):
         li.setInfo('video', {"Title": video['title']})
         xbmc.Player().play(url, li)
     elif plugin.get_setting('plistDir', bool):
-        items = [{'label':item['title'], 'path':item['url']+"Referer="+url, 'thumbnail':"DefaultVideo.png", 'is_playable':True} for item in info['link']]
+        items = [{'label':item['title'], 'path':item['url']+"|Referer="+url, 'thumbnail':"DefaultVideo.png", 'is_playable':True} for item in info['link']]
         return plugin.finish(items)
     else:
         pl = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )

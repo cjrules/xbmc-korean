@@ -61,26 +61,27 @@ def parseMenu(main_url):
     soup = BeautifulSoup(html)
 
     # tab menu
-    for node in soup.find("nav", {"class":re.compile("^top_menu")}).findAll('a'):
-        vid_info['tab'].append( {'title':node.string, 'url':root_url+node['href']} )
+    for node in soup.find("div", {"class":"gnbox"}).findAll('a'):
+        vid_info['tab'].append( {'title':node['title'], 'url':node['href']} )
     # subtab menu
-    ptn_para = re.compile("'listtype'\s*:\s*'([^']*)'[^}]*'listseq'\s*:\s*'([^']*)'")
-    for node in soup.find("ul", {"class":"list_tab"}).findAll('a'):
-        cmd = node['onclick']
-        service, listseq = ptn_para.search(cmd).group(1,2)
-        vid_info['subtab'].append( {'title':node.string, 'service':service, 'listseq':listseq} )
+    sec = soup.find("ul", {"id":"menuArea"})
+    if sec:
+        ptn_para = re.compile("service=([^&]+)&cate=(\d+)")
+        for node in sec.findAll('a'):
+            service, cate = ptn_para.search(node['href']).group(1,2)
+            vid_info['subtab'].append( {'title':node.string, 'service':service, 'cate':cate} )
     return vid_info
 
 # http://m.gomtv.com/js/m.js?<date>
-def parseList(service, listseq, offset, limit):
-    page_url = root_url + "/ajaxInclude.gom?lib=gomclass&src=%2FindexList.gom&offset={0:d}&limit={1:d}&listseq={2:s}&service={3:s}".format(offset, limit, listseq, service)
+def parseList(service, cate, offset, limit):
+    page_url = root_url + "/ajaxInclude.gom?lib=gomclass&src=%2FlistList.gom&offset={0:d}&limit={1:d}&cate={2:s}&cate2=list_{3:s}".format(offset, limit, cate, service)
     req = urllib2.Request(page_url)
     req.add_header('User-Agent', BrowserAgent)
     html = urllib2.urlopen(req).read()
     soup = BeautifulSoup(html, fromEncoding='UTF-8')
     items = []
-    for node in soup.findChildren('a'):
-        items.append( {'title':node.span.string, 'url':root_url+node['href'], 'thumbnail':node.img['src']} )
+    for node in soup.findAll('dl'):
+        items.append( {'title':node.dt.a.string, 'url':node.dd.a['href'], 'thumbnail':node.dd.a.img['src']} )
     return items
 
 def parseProg(main_url, proxy=None):
@@ -91,14 +92,13 @@ def parseProg(main_url, proxy=None):
     	return None
 
     html = resp.read()
-    btns = BeautifulSoup(html).findAll('dd', {'class':'btn'})
-    if not btns:
+    node = BeautifulSoup(html).find('ul', {'class':'otherPlayList'})
+    if not node:
     	#raise UnknownFormat
     	return None
-    soup = btns[-1]
     ptn_play = re.compile("setPlayVideo\('([^']*)'\)")
     result = {'link':[]}
-    for item in soup.findAll('a', {'onclick':ptn_play}):
+    for item in node.findAll('a', {'onclick':ptn_play}):
     	arg = ptn_play.search(item['onclick']).group(1)
         result['link'].append( getPlayUrl(arg, main_url, proxy) )
     return result
@@ -132,20 +132,20 @@ def getPlayUrl(arg, referer, proxy=None):
     return {'title':title, 'url':vid_url}
 
 if __name__ == "__main__":
-    proxy = "http://175.209.211.180:8888/"
+    proxy = "http://210.101.131.232:8080/"
     ### regular contents
-    """
     print parseMenu(root_url)
-    print parseList('game', '142', 0, 25)
-    info = parseProg(root_url+"/view.gom?contentsid=3013576&service=game", proxy=proxy)
-    print "%s %s" % (info['contentsid'], info['seriesid'])
-    print info['title'] + " : " + info['url']
+    #print parseList('game', '142', 0, 25)
+    #info = parseProg(root_url+"/view.gom?contentsid=3035047&service=game", proxy=proxy)
     """
     # adult contents
     setCookieFile('temp.txt')
-    print login('test', 'temp')
+    print login('test', 'test')
     print parseMenu(root_url+"/?service=adult")
     #info = parseProg(root_url+"/view.gom?contentsid=19961&service=movie", proxy=proxy)
+    print info
     #print "%s %s" % (info['contentsid'], info['seriesid'])
+    #print info['title'] + " : " + info['url']
+    """
 
 # vim:sts=4:et
