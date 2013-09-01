@@ -55,27 +55,27 @@ def video_url(url):
     if plugin.get_setting('useProxy', bool):
     	proxy = plugin.get_setting('proxyServer', unicode)
     	print "Proxy="+proxy
-    info = gomm.parseProg(url, proxy=proxy)
-    if info is None:
+    data = gomm.parseProg(url, proxy=proxy)
+    if data is None:
     	if not gomtv_login():
     	    return
-        info = gomm.parseProg(url, proxy=proxy)
-    if info is None:
+        data = gomm.parseProg(url, proxy=proxy)
+    if data is None:
         xbmcgui.Dialog().ok(_L(30010), _L(30013))
         return
-    if len(info['link']) == 1:
-    	video = info['link'][0]
+    if len(data) == 1:
+    	video = data[0]
         url = video['url'] + "|Referer="+url
         li = xbmcgui.ListItem(video['title'], iconImage="DefaultVideo.png")
         li.setInfo('video', {"Title": video['title']})
         xbmc.Player().play(url, li)
     elif plugin.get_setting('plistDir', bool):
-        items = [{'label':item['title'], 'path':item['url']+"|Referer="+url, 'thumbnail':"DefaultVideo.png", 'is_playable':True} for item in info['link']]
+        items = [{'label':item['title'], 'path':item['url']+"|Referer="+url, 'thumbnail':"DefaultVideo.png", 'is_playable':True} for item in data]
         return plugin.finish(items)
     else:
         pl = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
         pl.clear()
-        for item in info['link']:
+        for item in data:
             li = xbmcgui.ListItem(item['title'], iconImage="DefaultVideo.png")
             li.setInfo( 'video', { "Title": item['title'] } )
             pl.add(item['url']+"|Referer="+url, li)

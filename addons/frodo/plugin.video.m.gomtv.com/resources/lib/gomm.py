@@ -97,10 +97,10 @@ def parseProg(main_url, proxy=None):
     	#raise UnknownFormat
     	return None
     ptn_play = re.compile("setPlayVideo\('([^']*)'\)")
-    result = {'link':[]}
+    result = []
     for item in node.findAll('a', {'onclick':ptn_play}):
     	arg = ptn_play.search(item['onclick']).group(1)
-        result['link'].append( getPlayUrl(arg, main_url, proxy) )
+        result.append( getPlayUrl(arg, main_url, proxy) )
     return result
 
 def setCookieOpener():
@@ -135,17 +135,17 @@ if __name__ == "__main__":
     proxy = "http://210.101.131.232:8080/"
     ### regular contents
     print parseMenu(root_url)
-    #print parseList('game', '142', 0, 25)
-    #info = parseProg(root_url+"/view.gom?contentsid=3035047&service=game", proxy=proxy)
+    print parseList('game', '142', 0, 25)
+    data = parseProg(root_url+"/view.gom?contentsid=3035047&service=game", proxy=proxy)
     """
     # adult contents
     setCookieFile('temp.txt')
     print login('test', 'test')
     print parseMenu(root_url+"/?service=adult")
-    #info = parseProg(root_url+"/view.gom?contentsid=19961&service=movie", proxy=proxy)
-    print info
+    #data = parseProg(root_url+"/view.gom?contentsid=19961&service=movie", proxy=proxy)
+    """
+    info = data[0]
     #print "%s %s" % (info['contentsid'], info['seriesid'])
     #print info['title'] + " : " + info['url']
-    """
 
 # vim:sts=4:et
