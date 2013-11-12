@@ -1,0 +1,9 @@
+2.0.0
+
+Changes
+- full revision based on JSON API
+
+1.0.1
+
+Changes
+- Initial addon version

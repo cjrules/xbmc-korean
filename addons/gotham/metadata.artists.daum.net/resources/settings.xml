@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+    <setting label="30001" type="bool" id="enThumbs" default="false" visible="false"/>
+</settings>
