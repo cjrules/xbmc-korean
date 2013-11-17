@@ -12,9 +12,9 @@ root_url = "http://m.afreeca.com"
 
 IPadAgent = "Mozilla/5.0 (iPad; U; CPU OS 4_3 like Mac OS X; en-us) Mobile"
 
-AFPLAY_PTN = re.compile("afPlay\((\d+)\)")
+AFPLAY_PTN = re.compile("afPlay\((\d+), *'(.*?)'\)")
 
-# http://m.afreeca.com/index.php
+# http://m.afreeca.com/main.php
 def parseMobileHot( main_url ):
     req = urllib2.Request( main_url )
     req.add_header('User-Agent',IPadAgent)
@@ -67,16 +67,17 @@ def parseMobileOnAir( main_url ):
     return result
 
 def getStreamUrlByBroadNum( bnum ):
-    url = "http://istream.m.afreeca.com/stream/route/%d.m3u8?fr=w" %bnum
+    #url = "http://istream.m.afreeca.com/stream/route/%d.m3u8?fr=w" %bnum
+    url = "http://m.afreeca.com/live/stream/a/hls/broad_no/"+str(bnum)
     #return url
     html = urllib2.urlopen(url).read()
     murls = re.compile('(http://.*)', re.M).findall(html)
     return murls[-1] if murls else None     # the best quality
 
 if __name__ == "__main__":
-    print parseMobileHot( "http://m.afreeca.com/index.php" )
+    print parseMobileHot( "http://m.afreeca.com/main.php" )
     print parseMobileOnAir( "http://m.afreeca.com/onair.php" )
     print parseMobileOnAir("http://m.afreeca.com/onair.php?page_no=5")
-    print getStreamUrlByBroadNum(31476971)
+    print getStreamUrlByBroadNum(63629241)
 
 # vim:sw=4:sts=4:et

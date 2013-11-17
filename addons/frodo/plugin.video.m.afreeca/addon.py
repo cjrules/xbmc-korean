@@ -17,7 +17,7 @@ def main_menu():
 
 @plugin.route('/hot/')
 def hot_list():
-    url = afreecam.root_url + "/index.php"
+    url = afreecam.root_url + "/main.php"
     info = afreecam.parseMobileHot(url)
     items = [{'label':item['title'], 'path':plugin.url_for('watch_broadcast', bno=item['broad_no']), 'thumbnail':item['thumbnail']} for item in info['video']]
     return plugin.finish(items, view_mode='thumbnail')
