@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon
   id="skin.confluence.korean"
-  version="2.2.1"
+  version="2.2.5"
   name="Confluence Korean"
-  provider-name="XBMC-Korea">
+  provider-name="XBMC-Korea.com">
   <requires>
     <import addon="xbmc.gui" version="5.0.0"/>
   </requires>
