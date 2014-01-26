@@ -18,6 +18,8 @@
 """
 import urllib, urlparse, re
 
+PTN_ID = re.compile("(?:watch\?v=|/embed/)(?P<id>[^&/]*)")
+
 # refer plugin.video.youtube/YouTubePlayer/scrapeWebPageForVideoLinks
 def extract_video(vid):
   url = "http://www.youtube.com/watch?v=%s&fmt=18" % vid
@@ -41,6 +43,10 @@ def extract_video(vid):
     vid_urls[itag] = url
 
   return vid_urls
+
+def extract_video_from_url(url):
+  vid = PTN_ID.search(url).group('id')
+  return extract_video(vid)
 
 if __name__ == "__main__":
   urls = extract_video('UslqIyPZsic')

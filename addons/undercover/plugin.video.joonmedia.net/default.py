@@ -10,8 +10,7 @@ import os.path
 __addonid__ = "plugin.video.joonmedia.net"
 __addon__ = xbmcaddon.Addon( __addonid__ )
 
-__addon2__ = xbmcaddon.Addon( "script.module.getvideo" )
-IMAGE_DIR = xbmc.translatePath( os.path.join( __addon2__.getAddonInfo('path'), 'images' ) )
+IMAGE_DIR = xbmc.translatePath( os.path.join( __addon__.getAddonInfo('path'), 'resources', 'media' ) )
 
 from BeautifulSoup import BeautifulSoup
 
@@ -103,7 +102,7 @@ def episodeList(main_url):
             if url.find('tudou') > 0:
                 addRedir(title2, url, 9, "", os.path.join(IMAGE_DIR,"tudou.png"), thumb)
             elif url.find('youku') > 0:
-                addRedir(title2, url, 4, "", os.path.join(IMAGE_DIR,"youku.png"), thumb)
+                addRedir(title2, url, 10, "", os.path.join(IMAGE_DIR,"youku.png"), thumb)
             elif url.find('sohu') > 0:
                 addRedir(title2, url, 5, "", os.path.join(IMAGE_DIR,"sohu.png"), thumb)
             elif url.find('youtube') > 0:
@@ -131,16 +130,17 @@ def _play_link(vid_list, thumb):
     xbmc.Player().play(pl)
 
 def _playFLVCD(url, thumb):
-    from extract_withflvcd import extract_withFLVCD
-    vid_list = extract_withFLVCD(urllib.quote_plus(url))
+    from getvideo.extract_withflvcd import extract_video_from_url
+    vid_list = extract_video_from_url(urllib.quote_plus(url))
     if len(vid_list) == 0:
         xbmcgui.Dialog().ok("Fail to extract video", url)
         return
     _play_link(vid_list, thumb)
 
 def _playTudou(url, thumb):
-    import extract_tudou
-    vid_list = extract_tudou.extract_video_from_url(url)
+    xbmc.log("Tudou URL: "+url, xbmc.LOGDEBUG)
+    from getvideo.extract_tudou import extract_video_from_url
+    vid_list = extract_video_from_url(url)
     if len(vid_list) == 0:
         xbmcgui.Dialog().ok("Fail to extract video", url)
         return
@@ -150,20 +150,33 @@ def _playTudou(url, thumb):
     _play_link(vid_list, thumb)
 
 def _playSohu(url, thumb):
-    import extract_sohu
-    vid_list = extract_sohu.extract_video_from_url(urllib.quote_plus(url))
+    xbmc.log("Sohu URL: "+url, xbmc.LOGDEBUG)
+    print url
+    from getvideo.extract_sohu import extract_video
+    vid = re.search("sohuplayer\.php\?id=(\d+)", url).group(1)
+    xbmc.log("Sohu ID: "+vid, xbmc.LOGDEBUG)
+    vid_list = extract_video(vid)
+    if len(vid_list) == 0:
+        xbmcgui.Dialog().ok("Fail to extract video", url)
+        return
+    _play_link(vid_list, thumb)
+
+def _playYouku(url, thumb):
+    xbmc.log("Youku URL: "+url, xbmc.LOGDEBUG)
+    from getvideo.extract_youku import extract_video_from_url
+    vid_list = extract_video_from_url(url)
     if len(vid_list) == 0:
         xbmcgui.Dialog().ok("Fail to extract video", url)
         return
     _play_link(vid_list, thumb)
 
 def _playYoutube(url, title, thumb):
+    xbmc.log("Youtube URL: "+url, xbmc.LOGDEBUG)
     fmttbl = {"270p":18, "360p":34, "480p":35, "720p":22, "1080p":37}
-    import extract_youtube
 
-    vid = url[ url.rfind('/')+1 : ]
+    from getvideo.extract_youtube import extract_video_from_url
     try:
-        vid_urls = extract_youtube.extract_video(vid)
+        vid_urls = extract_video_from_url(url)
     except:
         xbmcgui.Dialog().ok("Fail to extract video", url)
         return
@@ -176,12 +189,13 @@ def _playYoutube(url, title, thumb):
     _play_link([{'title':title,'url':vid_urls[qual]}], thumb)
 
 def _playDmotion(url, title, thumb):
-    import extract_dailymotion
-    vid = extract_dailymotion.extract_id(url)
-    vid_urls = extract_dailymotion.extract_video(vid)
+    xbmc.log("Dailymotion URL: "+url, xbmc.LOGDEBUG)
+    from getvideo.extract_dailymotion import extract_video_from_url
+    vid_urls = extract_video_from_url(url)
 
     qual = __addon__.getSetting('dailymotionQuality')
-    if not vid_urls.has_key(qual):
+    if not qual in vid_urls:
+        xbmc.log( "Unexpected quality setting, "+qual, xbmc.LOGERROR)
         return
     if not vid_urls[qual] and qual == 'hd':
         qual = 'sd'
@@ -206,6 +220,12 @@ def playSohu(url, thumb):
         return
     _playSohu(match[0], thumb)
 
+def playYouku(url, thumb):
+    match = get_player_link(url)
+    if len(match) == 0:
+        return
+    _playYouku(match[0], thumb)
+
 def playYoutube(url, title, thumb):
     match = get_player_link(url)
     if len(match) == 0:
@@ -227,7 +247,8 @@ def playWrapper(main_url, title, thumb):
     if url.find('tudou.com') > 0:
         _playTudou(url, thumb)
     elif url.find('youku.com') > 0:
-        _playFLVCD(url, thumb)
+        #_playFLVCD(url, thumb)
+        _playYouku(url, thumb)
     elif url.find('56.com') > 0:
         _playFLVCD(url, thumb)
     elif url.find('letv.com') > 0:
@@ -344,5 +365,7 @@ elif mode==8:
     playWrapper(url, playtitle, playthumb)
 elif mode==9:
     playTudou(url, playthumb)
+elif mode==10:
+    playYouku(url, playthumb)
 
 # vim:sts=4:sw=4:et
