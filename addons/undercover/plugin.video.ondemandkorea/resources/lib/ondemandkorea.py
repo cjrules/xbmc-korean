@@ -13,7 +13,7 @@ def parseTop():
     html = urllib.urlopen(root_url).read()
     soup = BeautifulSoup(html)
     items = []
-    for node in soup.find('span', {'class':'menu'}).findAll(lambda tag: tag.name=='a' and tag['href'].endswith('html')):
+    for node in soup.find('div', {'id':'menu-category'}).findAll(lambda tag: tag.name=='a' and '.html' in tag['href']):
     	items.append(node['href'])
     return items
 
@@ -63,8 +63,9 @@ def extractStreamUrl(page_url):
     return {'title':vid_title, 'bitrate':videos}
 
 if __name__ == "__main__":
+    #print parseTop()
     #print parseGenrePage( root_url+"/variety" )
-    #print parseEpisodePage( root_url+"/infinite-challenge-e324.html" )
-    print extractStreamUrl( root_url+"/infinite-challenge-e324.html" )
+    #print parseEpisodePage( root_url+"/infinite-challenge-366.html" )
+    print extractStreamUrl( root_url+"/infinite-challenge-366.html" )
 
 # vim:sw=4:sts=4:et

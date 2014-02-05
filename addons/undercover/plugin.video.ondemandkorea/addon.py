@@ -37,12 +37,15 @@ def main_menu():
 
 @plugin.route('/genre/<genre>/')
 def genre_view(genre):
-    info = scraper.parseGenrePage(root_url+'/'+genre)
+    url = root_url+'/'+genre
+    plugin.log.debug(url)
+    info = scraper.parseGenrePage(url)
     items = [{'label':item['title'], 'path':plugin.url_for('episode_view', url=item['url']), 'thumbnail':item['thumbnail']} for item in info]
     return plugin.finish(items, view_mode='thumbnail')
 
 @plugin.route('/episode/<url>')
 def episode_view(url):
+    plugin.log.debug(url)
     info = scraper.parseEpisodePage(url)
     items = [{'label':item['title'], 'label2':item['broad_date'], 'path':plugin.url_for('play_episode', url=item['url']), 'thumbnail':item['thumbnail']} for item in info['episode']]
     # navigation
@@ -57,6 +60,7 @@ def play_episode(url):
     flashVer = 'WIN 11,6,602,180'
     swfUrl = 'http://www.ondemandkorea.com/player/jw6.2/jwplayer.flash.swf'
     bitrate = resolution2bitrate[plugin.get_setting('quality', int)]
+    plugin.log.debug(url)
 
     info = scraper.extractStreamUrl(url)
     avail_bitrates = info['bitrate'].keys()
