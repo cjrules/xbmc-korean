@@ -18,11 +18,12 @@ def parseTop( main_url, quality='1', localsrv='la'):
     # item list
     items = re.split("<td colspan=\d+ height=\d+>", psrc)
     for item in items[:-1]:
+        is_free = False
         try:
             title = re.compile('''<a href[^>]*pr=1"><span [^>]*>(.*?)</span></a>''').search(item).group(1)
             title = re.compile("</?b>").sub("",title)
-            if re.compile('<b>Free').search(item):
-                title = "[B]"+title+"[/B]"
+            if re.compile('<b>[^<]*Free').search(item):
+                is_free = True
         except:
             continue
 
@@ -31,25 +32,12 @@ def parseTop( main_url, quality='1', localsrv='la'):
         if match:
             img = match.group(1)
 
-        vurl = None
-        if quality == '1':
-            match = re.compile("<a href='([^']*&pr={0:s}&local={1:s})'>".format(quality, localsrv)).search(item)
-            if match:
-                vurl = match.group(1)
+        match = re.compile("<a href='([^']*&pr={0:s}&local={1:s})'>".format(quality, localsrv)).search(item)
+        if match:
+            vurl = match.group(1)
+            result['video'].append({'title':title, 'url':vurl, 'thumb':img, 'free':is_free})
         else:
-            match = re.compile('<a href="([^"]*&pr={0:s})">'.format(quality)).search(item)
-            if match:
-                vurl = match.group(1)
-        # fallback
-        if vurl is None:
-            #match = re.compile("<a href='([^']*&pr=1&local={0:s})'>".format(localsrv)).search(item)
-            match = re.compile('<a href="([^"]*&pr=1)">').search(item)
-            if match:
-                vurl = match.group(1)
-        if vurl is None:
             print "Video, {0:s}, doesn't exist on {1:s} server".format(title, quality)
-        else:
-            result['video'].append({'title':title, 'url':vurl, 'thumb':img})
 
     # navigation
     query = re.compile("<a href='([^']*)' class=navi>\[Prev\]</a>").search(psrc)
@@ -76,7 +64,7 @@ def getStreamUrl( main_url, userid='', passwd='', cookiefile='cookie.lwp'):
     if newurl.find('order.php') >= 0:
         resp.close()
         if userid == '' or passwd == '':
-            raise LoginRequired(newurl)
+            raise Exception('LoginRequired', newurl)
         values = {
             'mode':'login',
             'url' :main_url,
@@ -111,9 +99,7 @@ def getStreamUrl( main_url, userid='', passwd='', cookiefile='cookie.lwp'):
     psrc = resp.read().decode('euc-kr', 'ignore')
     resp.close()
     if not newurl.startswith(main_url):
-        print newurl
-        print main_url
-        raise NotEnoughToken(newurl)
+        raise Exception('NotEnoughToken', newurl)
     vurl = re.compile('file: *"([^"]*)"').search( psrc ).group(1)
     if not vurl.startswith("http://"):
         vurl = root_url+'/'+vurl

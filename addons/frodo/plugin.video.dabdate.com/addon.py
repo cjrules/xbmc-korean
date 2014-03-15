@@ -37,8 +37,12 @@ def browse_page(url):
     items = []
     label_download = plugin.get_string(30204)
     for item in info['video']:
+        if item['free']:
+            title = u"[B]%s[/B]"% item['title']
+        else:
+            title = item['title']
         items.append({
-            'label':item['title'],
+            'label':title,
             'path':plugin.url_for('play_video', url=item['url']),
             'thumbnail':item['thumb'],
             'context_menu': [
@@ -51,10 +55,10 @@ def browse_page(url):
     if 'nextpage' in info:
         items.append({'label':tNextPage, 'path':plugin.url_for('browse_page', url=info['nextpage'])})
     # extra 
-    if url == '/' and quality[0] != 'm':
-        items.append({'label':u"[COLOR FF0000FF]로보카 폴리[/COLOR]", 'path':plugin.url_for('browse_page', url="?lang=5")})
-        items.append({'label':u"[COLOR FF0000FF]그때를 아십니까[/COLOR]", 'path':plugin.url_for('browse_page', url="?lang=7")})
-        items.append({'label':u"[COLOR FF0000FF]특선 다큐멘터리[/COLOR]", 'path':plugin.url_for('browse_page', url="?lang=6")})
+    if url == '/':
+        items.append({'label':u"[COLOR FF0000FF]유아프로그램[/COLOR]", 'path':plugin.url_for('browse_page', url="?lang=5")})
+        #items.append({'label':u"[COLOR FF0000FF]그때를 아십니까[/COLOR]", 'path':plugin.url_for('browse_page', url="?lang=7")})
+        #items.append({'label':u"[COLOR FF0000FF]특선 다큐멘터리[/COLOR]", 'path':plugin.url_for('browse_page', url="?lang=6")})
     morepage = True if 'page=' in url else False
     return plugin.finish(items, update_listing=morepage)
 

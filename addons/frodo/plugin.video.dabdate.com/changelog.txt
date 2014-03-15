@@ -1,3 +1,9 @@
+0.4.2
+
+Changes
+- remove high quality/mobile from settings
+- reflect Free flag change
+
 0.4.1
 
 Changes
