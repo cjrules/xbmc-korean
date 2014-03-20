@@ -77,6 +77,8 @@ def getStreamUrl( main_url, userid='', passwd='', cookiefile='cookie.lwp'):
         req.add_header('Referer', newurl)
         resp = urllib2.urlopen(req)
         newurl = resp.geturl()
+        if newurl.startswith('/'):
+            newurl = root_url+newurl
         cj.save(cookiefile)
         print "LOGIN to "+newurl
     # 3. accept payment
@@ -93,13 +95,16 @@ def getStreamUrl( main_url, userid='', passwd='', cookiefile='cookie.lwp'):
         req.add_header('Referer', newurl)
         resp = urllib2.urlopen(req)
         newurl = resp.geturl()
+        if newurl.startswith('/'):
+            newurl = root_url+newurl
         cj.save(cookiefile)
         print "PAY to "+newurl
+    if not newurl.startswith(main_url):
+        print "Payment failed, "+newurl
+        raise Exception('NotEnoughToken', newurl)
     # 4. video page
     psrc = resp.read().decode('euc-kr', 'ignore')
     resp.close()
-    if not newurl.startswith(main_url):
-        raise Exception('NotEnoughToken', newurl)
     vurl = re.compile('file: *"([^"]*)"').search( psrc ).group(1)
     if not vurl.startswith("http://"):
         vurl = root_url+'/'+vurl
