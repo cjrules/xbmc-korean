@@ -61,7 +61,7 @@ def getStreamUrl( main_url, userid='', passwd='', cookiefile='cookie.lwp'):
     resp = urllib2.urlopen(req)
     newurl = resp.geturl()
     # 2. login page
-    if newurl.find('order.php') >= 0:
+    if 'login.php' in newurl:
         resp.close()
         if userid == '' or passwd == '':
             raise Exception('LoginRequired', newurl)
@@ -81,8 +81,11 @@ def getStreamUrl( main_url, userid='', passwd='', cookiefile='cookie.lwp'):
             newurl = root_url+newurl
         cj.save(cookiefile)
         print "LOGIN to "+newurl
+        if 'login.php' in newurl:
+            print "Login failed, "+newurl
+            raise Exception('LoginFailed', newurl)
     # 3. accept payment
-    if newurl.find('msg.php') >= 0:
+    if 'msg.php' in newurl:
         resp.close()
         values = {
             'mode':'auto',

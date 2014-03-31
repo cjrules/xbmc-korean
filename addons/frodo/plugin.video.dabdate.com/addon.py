@@ -102,7 +102,7 @@ def download_video(url):
 
 def resolve_video_url(url):
     from xbmcswift2 import xbmc
-    cookiepath = xbmc.translatePath( 'special://temp/dabdate_cookie.lwp' )
+    cookiepath = xbmc.translatePath( CookieFile )
     userid = plugin.get_setting('id', str)
     passwd = plugin.get_setting('pass', str)
 
