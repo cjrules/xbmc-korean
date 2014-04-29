@@ -23,15 +23,23 @@ resolution2bitrate = [
 
 @plugin.route('/')
 def main_menu():
-    urls = scraper.parseTop()
+    #urls = scraper.parseTop()
     items = [
-        {'label':u'드라마', 'path':plugin.url_for('genre_view', genre='drama')},
-        {'label':u'버라이어티', 'path':plugin.url_for('genre_view', genre='variety')},
+        #{'label':u'뉴스',     'path':plugin.url_for('gallery_view', cate='kbs-news-9')},
+        {'label':u'드라마',    'path':plugin.url_for('genre_view', genre='drama')},
+        {'label':u'예능/오락', 'path':plugin.url_for('genre_view', genre='variety')},
+        {'label':u'시사/다큐', 'path':plugin.url_for('genre_view', genre='documentary')},
+        {'label':u'음식/요리', 'path':plugin.url_for('genre_view', genre='food')},
+        {'label':u'뷰티/패션', 'path':plugin.url_for('genre_view', genre='beauty')},
+        {'label':u'여성',      'path':plugin.url_for('genre_view', genre='women')},
+        {'label':u'건강',      'path':plugin.url_for('genre_view', genre='health')},
+        {'label':u'스포츠',    'path':plugin.url_for('genre_view', genre='sports')},
+        #{'label':u'교육',     'path':plugin.url_for('episode_view', url=urls[1])},
+        {'label':u'경제',      'path':plugin.url_for('genre_view', genre='economy')},
+        {'label':u'종교',      'path':plugin.url_for('genre_view', genre='religion')},
         #{'label':u'화제영상', 'path':plugin.url_for('gallery_view', cate='hot')},
-        {'label':u'교육', 'path':plugin.url_for('episode_view', url=urls[1])},
-        {'label':u'경제', 'path':plugin.url_for('genre_view', genre='economy')},
-        {'label':u'종교', 'path':plugin.url_for('genre_view', genre='religion')},
-        {'label':u'음악', 'path':plugin.url_for('genre_view', genre='kmuze')},
+        {'label':u'음악',      'path':plugin.url_for('genre_view', genre='kmuze')},
+        {'label':u'게임',      'path':plugin.url_for('genre_view', genre='games')},
     ]
     return items
 
