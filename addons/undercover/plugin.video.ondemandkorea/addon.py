@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    tving Air
+    Ondemand Korea
 """
 from xbmcswift2 import Plugin
 import resources.lib.ondemandkorea as scraper
@@ -39,14 +39,14 @@ def main_menu():
 def genre_view(genre):
     url = root_url+'/'+genre
     plugin.log.debug(url)
-    info = scraper.parseGenrePage(url)
+    info = scraper.parseGenrePage(url, koPage=plugin.get_setting('koPage', bool))
     items = [{'label':item['title'], 'path':plugin.url_for('episode_view', url=item['url']), 'thumbnail':item['thumbnail']} for item in info]
     return plugin.finish(items, view_mode='thumbnail')
 
 @plugin.route('/episode/<url>')
 def episode_view(url):
     plugin.log.debug(url)
-    info = scraper.parseEpisodePage(url)
+    info = scraper.parseEpisodePage(url, koPage=plugin.get_setting('koPage', bool))
     items = [{'label':item['title'], 'label2':item['broad_date'], 'path':plugin.url_for('play_episode', url=item['url']), 'thumbnail':item['thumbnail']} for item in info['episode']]
     # navigation
     if 'prevpage' in info:

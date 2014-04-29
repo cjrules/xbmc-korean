@@ -2,7 +2,7 @@
 """
     ondemandkorea.com
 """
-import urllib
+import urllib, urllib2
 import re
 from BeautifulSoup import BeautifulSoup
 import xml.etree.ElementTree as etree
@@ -17,8 +17,12 @@ def parseTop():
     	items.append(node['href'])
     return items
 
-def parseGenrePage(page_url):
-    html = urllib.urlopen(page_url).read()
+def parseGenrePage(page_url, koPage=True):
+    req  = urllib2.Request(page_url)
+    if koPage:
+        req.add_header('Accept-Langauge', 'ko')
+        req.add_header('Cookie', 'language=kr')
+    html = urllib2.urlopen(req).read()
     soup = BeautifulSoup(html)
     # soup.findAll('div', {'class':'genreSub'})
     items = []
@@ -26,8 +30,12 @@ def parseGenrePage(page_url):
     	items.append({'title':node.b.string, 'url':root_url+'/'+node.a['href'], 'thumbnail':node.img['src']})
     return items
 
-def parseEpisodePage(page_url):
-    html = urllib.urlopen(page_url).read()
+def parseEpisodePage(page_url, koPage=True):
+    req  = urllib2.Request(page_url)
+    if koPage:
+        req.add_header('Accept-Langauge', 'ko')
+        req.add_header('Cookie', 'language=kr')
+    html = urllib2.urlopen(req).read()
     soup = BeautifulSoup(html)
     # soup.findAll('div', {'class':'genreSub'})
     result = {'episode':[]}
