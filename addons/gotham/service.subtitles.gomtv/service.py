@@ -17,8 +17,14 @@ from BeautifulSoup import BeautifulSoup
 __addon__ = xbmcaddon.Addon()
 __scriptid__   = __addon__.getAddonInfo('id')
 
+__cwd__        = xbmc.translatePath( __addon__.getAddonInfo('path') ).decode("utf-8")
 __profile__    = xbmc.translatePath( __addon__.getAddonInfo('profile') ).decode("utf-8")
+__resource__   = xbmc.translatePath( os.path.join( __cwd__, 'resources', 'lib' ) ).decode("utf-8")
 __temp__       = xbmc.translatePath( os.path.join( __profile__, 'temp') ).decode("utf-8")
+
+sys.path.append (__resource__)
+
+from smi2ass import smi2ass
 
 ROOT_URL   = "http://gom.gomtv.com"
 USER_AGENT = "GomPlayer 2, 1, 23, 5007 (KOR)"
@@ -29,10 +35,12 @@ JAMAK_ID_PTN = re.compile('name="intseq" +value="(\d+)"')
 
 ###################################################################################
 def Search( item ):
-    xbmc.log("Search GomTV with a file name, "+item['file_original_path'].encode('cp949'), level=xbmc.LOGINFO)
+    convertASS = (__addon__.getSetting("convertASS") == "true")
+
+    xbmc.log("Search GomTV with a file name, "+item['file_original_path'].encode('cp949', errors='ignore'), level=xbmc.LOGDEBUG)
     video_hash = hashFileMD5( item['file_original_path'], buff_size=1024*1024 )
     if video_hash is None:
-        xbmc.log(u"Fail to access movie flie, "+item['file_original_path'].encode('utf-8'), level=xbmc.LOGERROR)
+        xbmc.log(u"Fail to access movie flie, "+item['file_original_path'].encode('cp949', errors='ignore'), level=xbmc.LOGERROR)
         return
 
     q_url = "http://gom.gomtv.com/jmdb/search.html?key=%s" %video_hash
@@ -69,7 +77,7 @@ def Search( item ):
                             urllib.quote(sub["link"]),
                             sub["ID"],
                             sub["filename"],
-                            sub["format"]
+                            'ass' if convertASS else sub["format"]
                             )
         xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=url, listitem=listitem, isFolder=False)
 
@@ -82,17 +90,31 @@ def Download (sub_id, link, filename, sub_fmt):
     xbmc.log("download subtitle from %s" %url, level=xbmc.LOGINFO)
     subtitle_list = []
 
-    # only one file is downloaded
+    # only one file to download
     try:
-        subtitle = os.path.join(__temp__, "%s.%s" %(sub_id, sub_fmt))
-        f = urllib.urlopen(url)
-        with open(subtitle, "wb") as subFile:
-            subFile.write(f.read())
-        subFile.close()
-        subtitle_list.append(subtitle)
+        smi_sgml = urllib.urlopen(url).read()
     except:
-        xbmc.log("download subtitle from %s" %url, level=xbmc.LOGINFO)
+        xbmc.log("fail to download subtitle from %s" %url, level=xbmc.LOGWARNING)
         return []
+
+    # convert to ASS format
+    if sub_fmt == 'ass':
+        assDict = smi2ass( smi_sgml )
+        if len(assDict) > 1 and 'Korean' in assDict:    # select Korean in multi-language
+            lang = 'Korean'
+        else:
+            lang = assDict.keys()[0]
+        sub_txt = assDict[lang]
+    else:
+        sub_txt = smi_sgml
+
+    # store in temp
+    subtitle = os.path.join(__temp__, "%s.%s" %(sub_id, sub_fmt))
+    with open(subtitle, "w") as subFile:
+        subFile.write( sub_txt )
+    subFile.close()
+    subtitle_list.append(subtitle)
+    xbmc.log("stored at "+subtitle.encode('cp949', errors='ignore'), xbmc.LOGINFO)
 
     if xbmcvfs.exists(subtitle_list[0]):
         return subtitle_list
@@ -112,7 +134,7 @@ def hashFileMD5(file_path, buff_size=1048576):
   
 ###################################################################################
 def SearchSubtitles(q_url):
-    xbmc.log("search subtitle at %s"  %q_url, level=xbmc.LOGINFO)
+    xbmc.log("search subtitle at %s"  %q_url, level=xbmc.LOGDEBUG)
 
     # main page
     req = urllib2.Request(q_url)
@@ -134,7 +156,7 @@ def SearchSubtitles(q_url):
         # if only one subtitle exists, redirected directly
         new_url = resp.geturl()
         if '&seq=' in new_url:
-            xbmc.log("Redirect direct to "+url, xbmc.LOGINFO)
+            xbmc.log("Redirect to "+url, xbmc.LOGINFO)
             title = JAMAK_TITLE_PTN.search(html).group(1)
             sub_id = JAMAK_ID_PTN.search(html).group(1)
             return [ {

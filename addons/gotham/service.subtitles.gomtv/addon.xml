@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="service.subtitles.gomtv"
-       name="GomTV Jamak"
-       version="1.0.0"
+       name="GomTV Subtitles"
+       version="1.1.0"
        provider-name="edge">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -10,14 +10,16 @@
   <extension point="xbmc.subtitle.module"
              library="service.py" />
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">GomTV Jamak</summary>
+    <summary lang="en">GomTV Subtitles</summary>
+    <summary lang="ko">곰티비 자막</summary>
     <description lang="en">Search and download subtitles from GomPlayer</description>
-    <disclaimer lang="en"></disclaimer>
+    <description lang="ko">곰플레이어 자막검색 사이트에서 검색 및 다운로드</description>
+    <disclaimer lang="ko"></disclaimer>
     <platform>all</platform>
     <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
     <forum></forum>
     <website></website>
     <email></email>
-    <source>https://github.com/hojel/service.subtitles.gomtv</source>    
+    <source>https://xbmc-korean.googlecode.com/svn/trunk/addons/gotham/service.subtitles.gomtv/</source>    
   </extension>
 </addon>
