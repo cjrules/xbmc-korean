@@ -37,10 +37,10 @@ JAMAK_ID_PTN = re.compile('name="intseq" +value="(\d+)"')
 def Search( item ):
     convertASS = (__addon__.getSetting("convertASS") == "true")
 
-    xbmc.log("Search GomTV with a file name, "+item['file_original_path'].encode('cp949', errors='ignore'), level=xbmc.LOGDEBUG)
+    xbmc.log("Search GomTV with a file name, "+item['file_original_path'].encode('cp949', 'ignore'), level=xbmc.LOGDEBUG)
     video_hash = hashFileMD5( item['file_original_path'], buff_size=1024*1024 )
     if video_hash is None:
-        xbmc.log(u"Fail to access movie flie, "+item['file_original_path'].encode('cp949', errors='ignore'), level=xbmc.LOGERROR)
+        xbmc.log(u"Fail to access movie flie, "+item['file_original_path'].encode('cp949', 'ignore'), level=xbmc.LOGERROR)
         return
 
     q_url = "http://gom.gomtv.com/jmdb/search.html?key=%s" %video_hash
@@ -114,7 +114,7 @@ def Download (sub_id, link, filename, sub_fmt):
         subFile.write( sub_txt )
     subFile.close()
     subtitle_list.append(subtitle)
-    xbmc.log("stored at "+subtitle.encode('cp949', errors='ignore'), xbmc.LOGINFO)
+    xbmc.log("stored at "+subtitle.encode('cp949', 'ignore'), xbmc.LOGINFO)
 
     if xbmcvfs.exists(subtitle_list[0]):
         return subtitle_list
