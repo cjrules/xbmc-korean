@@ -366,7 +366,7 @@
 				<expression />
 			</RegExp>
 			<!-- set $$11(season) -->
-			<RegExp input="$$1" output="&lt;url function=&quot;LookupSeasonFromTableById&quot; cache=&quot;daum-tvtbl.json&quot;&gt;https://sites.google.com/site/xbmckorea/table/daumtv_extra.json&lt;/url&gt;" dest="5+">
+			<RegExp input="$INFO[SeasonMapURL]" output="&lt;url function=&quot;LookupSeasonFromTableById&quot; cache=&quot;daum-tvtbl.json&quot;&gt;\1&lt;/url&gt;" dest="5+">
 				<expression />
 			</RegExp>
 			<!-- get list based on $$10 & $$11 -->
@@ -493,7 +493,7 @@
 	<!--
 	api: thetvdb.com/api/GetSeries.php?seriesname=<query>
 	web: thetvdb.com/?string=<query>&tab=listseries&function=Search
-	api would be correct choise, but api showed worse result than web (ex: House M.D.)
+	api is a correct solution, but api shows worse result than web (ex: House M.D.)
 	-->
 	<GetTVDBEpisodeListByTitleChain dest="4">
 		<RegExp input="$$5" output="&lt;episodeguide&gt;\1&lt;/episodeguide&gt;" dest="4">
