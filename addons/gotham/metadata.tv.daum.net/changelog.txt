@@ -1,3 +1,8 @@
+2.0.3
+
+Changes
+- new option to allow dummy episodes for long series(24 vs 100)
+
 2.0.0
 
 Changes
