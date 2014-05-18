@@ -3,6 +3,7 @@ import urllib, urllib2
 import cookielib
 import os
 import re
+import json
 
 root_url = "http://www.dabdate.com"
 
@@ -108,9 +109,10 @@ def getStreamUrl( main_url, userid='', passwd='', cookiefile='cookie.lwp'):
     # 4. video page
     psrc = resp.read().decode('euc-kr', 'ignore')
     resp.close()
-    vurl = re.compile('file: *"([^"]*)"').search( psrc ).group(1)
-    if not vurl.startswith("http://"):
-        vurl = root_url+'/'+vurl
+    data = re.compile('data: *"([^"]*)"').search( psrc ).group(1)
+    jstr = urllib2.urlopen(root_url+'/player.php', data).read()
+    jobj = json.loads(jstr)
+    vurl = jobj['fn']
     vtitle = re.compile("<font class=big>(.*?)</font>", re.U).search( psrc ).group(1)
     cookies = []
     for cookie in cj:
