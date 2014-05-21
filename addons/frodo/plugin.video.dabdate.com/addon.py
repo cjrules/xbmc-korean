@@ -3,9 +3,8 @@
   Dabdate - Korea Drama/TV Shows Streaming Service
 """
 from xbmcswift2 import Plugin, actions
+import os
 import resources.lib.dabdate as dabdate
-
-CookieFile = 'special://temp/dabdate_cookie.lwp'
 
 plugin = Plugin()
 _L = plugin.get_string
@@ -24,6 +23,9 @@ localcode = {
     _L(31013) :'la',    # US west
     _L(31014) :'ny',    # US east
 }
+
+#CookiePath = xbmc.translatePath( 'special://temp/dabdate_cookie.lwp' )
+CookiePath = os.path.join(plugin.storage_path, 'cookie.lwp')
 
 tPrevPage = u"[B]<<%s[/B]" % _L(30200)
 tNextPage = u"[B]%s>>[/B]" % _L(30201)
@@ -102,12 +104,11 @@ def download_video(url):
 
 def resolve_video_url(url):
     from xbmcswift2 import xbmc
-    cookiepath = xbmc.translatePath( CookieFile )
     userid = plugin.get_setting('id', str)
     passwd = plugin.get_setting('pass', str)
 
     page_url = dabdate.root_url+url
-    return dabdate.getStreamUrl( page_url, userid=userid, passwd=passwd, cookiefile=cookiepath )
+    return dabdate.getStreamUrl( page_url, userid=userid, passwd=passwd, cookiefile=CookiePath )
 
 if __name__ == "__main__":
     plugin.run()
