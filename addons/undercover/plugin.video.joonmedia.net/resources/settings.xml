@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <settings>
   <category label="30005">
-    <setting id="showThumb" type="bool" label="30001" default="false" />
-    <setting id="youtubeQuality" type="labelenum" label="30002" values="270p|360p|480p|720p" default="270p" />
-    <setting id="dailymotionQuality" type="labelenum" label="30003" values="sd|hd" default="sd" />
+    <setting id="qualityPref" type="enum" label="30010" values="sd|hd|fhd" default="1" />
   </category>
   <category label="30006">
-    <setting id="SiteAddr" type="text" label="30007" default="ujoon.com"/>
     <setting id="VideoColumn" type="labelenum" label="30004" values="2|3|4" default="2"/>
     <setting id="useProxy" type="bool" label="30008" default="false" />
     <setting id="proxyServer" type="text" label="30009" default="" visible="eq(-1,true)" />

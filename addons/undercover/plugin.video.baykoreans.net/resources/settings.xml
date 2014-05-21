@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-  <setting id="showThumb" type="bool" label="30001" default="false" />
-  <setting id="youtubeQuality" type="labelenum" label="30002" values="270p|360p|480p|720p" default="270p" />
-  <setting id="dailymotionQuality" type="labelenum" label="30003" values="sd|hd" default="sd" />
+  <setting id="qualityPref" type="enum" label="30004" values="sd|hd|fhd" default="1" />
 </settings>

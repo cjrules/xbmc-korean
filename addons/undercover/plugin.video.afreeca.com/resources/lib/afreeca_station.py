@@ -90,7 +90,8 @@ def extractUccUrl(uid, vid):
     soup = BeautifulStoneSoup(xml, fromEncoding='euc-kr')
     #soup.find('title').string
     #soup.find('thumb').string
-    result = extractRtmpUrl( soup.find('flv_name').string )
+    #result = extractRtmpUrl( soup.find('flv_name').string )
+    result = extractRtmpUrl( soup.find('thumb').string.replace('.jpg', '.mp4') )
     result['pageUrl'] = pageUrl
     result['swfUrl'] = swfUrl
     return result
@@ -99,7 +100,7 @@ def extractRtmpUrl(url):
     vidtype = url[ url.rfind('.')+1 : ]
     pos = url.find('flv')
     vidhost = url[ pos : url.find('.',pos) ]
-    vidurl = url[ url.find('/',7)+1 : ]
+    vidurl = url[ url.find('AFFLV') : ]
 
     app_name = 'af'+vidhost+'/_definst_'
     return {'app'     :  app_name,
@@ -126,10 +127,10 @@ def extractRtmpUrl(url):
 # (5) onStatus('NetStream.Play.Reset') | ... | onStatus('NetStream.Play.Start')
 
 if __name__ == "__main__":
-    print is_broadcasting('house2222')
-    #print parse_ucc('house2222', '')
-    #print parse_ucc('house2222', '5180346')
-    #print parse_bbs('house2222', '5180346', '11159637')
-    #print extractUccUrl('house2222', '3428584')
+    print is_broadcasting('rlaxordyd')
+    #print parse_ucc('rlaxordyd', '')
+    #print parse_ucc('rlaxordyd', '6691487')
+    #print parse_bbs('rlaxordyd', '6691487', '13118671')
+    #print extractUccUrl('rlaxordyd', '9458475')
 
 # vim:sw=4:sts=4:et

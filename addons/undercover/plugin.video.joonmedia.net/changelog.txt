@@ -1,3 +1,9 @@
+1.7.0
+
+Changes
+- migrate to xbmcswift2 framework
+- resole video url using script.module.youtube.dl
+
 1.6.0
 
 Changes
