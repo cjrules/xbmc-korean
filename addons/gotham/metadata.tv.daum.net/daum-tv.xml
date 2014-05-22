@@ -161,7 +161,7 @@
 				<RegExp input="$$1" output="\1" dest="6">
 					<expression>"data":\[(.*)\],"page"</expression>
 				</RegExp>
-				<expression repeat="yes">"nameKo":"([^"]*)"[^}]*"fullname":"([^"]*)"[^}]*}[^}]*"castcrewCastName":"(?:주연|출연|특별출연)","castcrewTitleKo":"([^"]*)"</expression>
+				<expression repeat="yes">"nameKo":"([^"]*)"[^}]*"fullname":"([^"]*)"[^}]*}[^}]*"castcrewCastName":"(?:주연|출연|특별출연|진행) *","castcrewTitleKo":"([^"]*)"</expression>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;director&gt;\1&lt;/director&gt;" dest="5+">
 				<expression>"nameKo":"([^"]*)"[^}]*}[^}]*"castcrewCastName":"연출"</expression>
