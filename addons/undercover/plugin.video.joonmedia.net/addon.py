@@ -2,7 +2,7 @@
 """
     JoonMedia
 """
-from xbmcswift2 import Plugin, xbmcgui
+from xbmcswift2 import Plugin
 import urllib, urllib2
 import sys
 import os
@@ -73,15 +73,20 @@ def play_video(eid, server):
         if info is None:
             plugin.log.warning('Fail to extract')
             return None
-        plugin.log.debug("num of streams: %d" % len(info.streams()))
-        # select quality
-        stream = info.selectedStream()
-        li = xbmcgui.ListItem(stream['title'], iconImage="DefaultVideo.png")
-        li.setInfo('video', {"Title": stream['title']})
-        xbmc.Player().play(stream['xbmc_url'], li)
+        streams = info.streams()
+        plugin.log.debug("num of streams: %d" % len(streams))
+
+        from xbmcswift2 import xbmc, xbmcgui
+        pl = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
+        pl.clear()
+        for stream in streams:
+            li = xbmcgui.ListItem(stream['title'], iconImage="DefaultVideo.png")
+            li.setInfo( 'video', { "Title": stream['title'] } )
+            pl.add(stream['xbmc_url'], li)
+        xbmc.Player().play(pl)
     else:
         plugin.log.warning('Unsupported')
-    return plugin.finish(None, succeeded=False)
+    return plugin.finish(None, succeeded=False) # immediate return
 
 def fetch_html(rel):
     url = BaseURL + rel

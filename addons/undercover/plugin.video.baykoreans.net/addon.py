@@ -5,6 +5,7 @@
 from xbmcswift2 import Plugin
 import urllib
 import sys
+import os
 from YDStreamExtractor import getVideoInfo
 
 plugin = Plugin()
@@ -67,13 +68,17 @@ def play_video(url):
     quality = plugin.get_setting('qualityPref', int)
     info = getVideoInfo(url, quality=quality)
     if info:
-        plugin.log.debug("num of streams: %d" % len(info.streams()))
+        streams = info.streams()
+        plugin.log.debug("num of streams: %d" % len(streams))
         # select quality
-        from xbmcswift2 import xbmcgui
-        stream = info.selectedStream()
-        li = xbmcgui.ListItem(stream['title'], iconImage="DefaultVideo.png")
-        li.setInfo('video', {"Title": stream['title']})
-        xbmc.Player().play(stream['xbmc_url'], li)
+        from xbmcswift2 import xbmc, xbmcgui
+        pl = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
+        pl.clear()
+        for stream in streams:
+            li = xbmcgui.ListItem(stream['title'], iconImage="DefaultVideo.png")
+            li.setInfo( 'video', { "Title": stream['title'] } )
+            pl.add(stream['xbmc_url'], li)
+        xbmc.Player().play(pl)
     else:
         plugin.log.warning('Fail to extract')
     return plugin.finish(None, succeeded=False)
