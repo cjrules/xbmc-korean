@@ -69,7 +69,7 @@ def play_video(eid, server):
         # select first video
         plugin.log.debug(urls[0])
         quality = plugin.get_setting('qualityPref', int)
-        info = getVideoInfo(urls[0], quality=quality)
+        info = getVideoInfo(urls[0], quality=quality, resolve_redirects=True)
         if info is None:
             plugin.log.warning('Fail to extract')
             return None

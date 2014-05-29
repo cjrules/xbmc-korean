@@ -62,15 +62,12 @@ def video_list(cate, eid):
 
 @plugin.route('/play/<url>')
 def play_video(url):
-    # select first video
-    print url
     plugin.log.debug(url)
     quality = plugin.get_setting('qualityPref', int)
-    info = getVideoInfo(url, quality=quality)
+    info = getVideoInfo(url, quality=quality, resolve_redirects=True)
     if info:
         streams = info.streams()
         plugin.log.debug("num of streams: %d" % len(streams))
-        # select quality
         from xbmcswift2 import xbmc, xbmcgui
         pl = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
         pl.clear()
@@ -81,6 +78,7 @@ def play_video(url):
         xbmc.Player().play(pl)
     else:
         plugin.log.warning('Fail to extract')
+        plugin.play_video({'path':url, 'is_playable':True})
     return plugin.finish(None, succeeded=False)
 
 if __name__ == "__main__":

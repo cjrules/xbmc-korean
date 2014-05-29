@@ -13,5 +13,6 @@
     <description>Commonly used over various video plugin released by XBMC-Korea team.</description>
     <license>BSD</license>
     <platform>all</platform>
+    <broken>deprecated</broken>
   </extension>
 </addon>

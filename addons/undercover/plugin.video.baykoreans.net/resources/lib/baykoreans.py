@@ -32,7 +32,7 @@ def parseProgList(main_url):
                 title = date + " " + title
             url = item.p.a['href']
             if 'index.php' in url:
-                qs = urlparse.parse_qs(url.split('?')[1])
+                qs = urlparse.parse_qs(url.split('?',1)[1])
                 cate = qs['mid'][0]
                 id = qs['document_srl'][0]
             else:
@@ -94,33 +94,42 @@ def parseVideoList(main_url):
     result = []
     for item in soup.find('div', {'class':re.compile('^document')}).findAll('a'):
         url = item['href']
-        title = item.span.string.split('|')[0].strip()
-
         if not url.startswith('http://'):
             url = ROOT_URL + url
+        title = item.span.string.split('|')[0].strip()
+
         base_url = url[ : url.find('/',7)] 
-        if url.find('/?xink=') > 0:
-            xink = re.search('xink=(.*)', url).group(1)
+        vid_url = None
+        if '/?xink=' in url:
+            qs = urlparse.parse_qs(url.split('?',1)[1])
+            xink = qs['xink'][0]
             vid_url = None
             if '/dmotion/' in url:
                 vid_url = "http://www.dailymotion.com/video/"+xink
             elif '/tudou.y/' in url:
-                vid_url = "http://www.tudou.com/programs/view/"+xink
+                vid_url = "http://vr.tudou.com/v2proxy/v2?it=%s&st=52&pw=" % xink
             elif '/sohu/' in url:
                 vid_url = "http://my.tv.sohu.com/u/vw/"+xink
+            elif '/xink' in url or '/linkbank/' in url:
+                vid_url = xink
             else:
                 print "Unsupported URL, "+url
-            if vid_url:
-                result.append({'title':title, 'url':vid_url})
-        elif url.find('/?link=') > 0:
+        elif '/?link=' in url:
             req = urllib2.Request(url)
             req.add_header('User-Agent', UserAgent)
             doc = urllib2.urlopen(req).read()
             xink = re.search(r'\)\);</script>([^>]*)">', doc).group(1)
             vid_url = base_url+"/linkout/getfile/"+xink
-            result.append({'title':title, 'url':vid_url})
+        elif '/xoxo/?' in url:
+            vid_url = url.split('?',1)[1].split('&')[0]
         else:
-            result.append({'title':title, 'url':url})
+            vid_url = url
+
+        if 'tudou.com/v/' in vid_url:
+            vid_url = vid_url.replace('tudou.com/v/', 'tudou.com/programs/view/')
+
+        if vid_url:
+            result.append({'title':title, 'url':vid_url})
     return result
 
 if __name__ == "__main__":
