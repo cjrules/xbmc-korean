@@ -1,3 +1,10 @@
+2.0.2
+
+Changes
+- set <originaltitle>
+- improve extraction for writer
+- pick trailer from video clips
+
 2.0.0
 
 Changes

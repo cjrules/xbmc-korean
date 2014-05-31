@@ -38,11 +38,11 @@
 				<RegExp conditional="RemoveSeasonFromTitle" input="$$6" output="\1" dest="6">
 					<expression trim="1">^(.*) 시즌 *(\d+) *$</expression>
 				</RegExp>
-				<!-- $$10:english_title for later use -->
-				<RegExp input="$$1" output="\1" dest="10">
-					<expression>"titleEn":"(.*?)"</expression>
-				</RegExp>
 				<expression />
+			</RegExp>
+			<!-- BUG: titleEn is not set for Mobile!!! -->
+			<RegExp input="$$1" output="&lt;originaltitle&gt;\1&lt;/originaltitle&gt;" dest="5+">
+				<expression>"titleEn":"([^"]+)"</expression>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;year&gt;\1&lt;/year&gt;" dest="5+">
 				<expression>"prodYear":(\d*)</expression>
@@ -95,6 +95,9 @@
 				<expression>"fullname":"(.*?)"</expression>
 			</RegExp>
 
+			<RegExp input="$$2" output="&lt;url function=&quot;ParseDaumMoviePage&quot; cache=&quot;daum-movie-\1.html&quot;&gt;http://movie.daum.net/tv/detail/main.do?tvProgramId=\1&lt;/url&gt;" dest="5+">
+				<expression />
+			</RegExp>
 			<RegExp input="$$2" output="&lt;url function=&quot;ParseDaumCast&quot; cache=&quot;daum-tcast-\1.json&quot;&gt;http://m.movie.daum.net/data/movie/tv/cast_crew.json?pageNo=1&amp;pageSize=100&amp;tvProgramId=\1&lt;/url&gt;" dest="5+">
 				<expression />
 			</RegExp>
@@ -161,7 +164,7 @@
 				<RegExp input="$$1" output="\1" dest="6">
 					<expression>"data":\[(.*)\],"page"</expression>
 				</RegExp>
-				<expression repeat="yes">"nameKo":"([^"]*)"[^}]*"fullname":"([^"]*)"[^}]*}[^}]*"castcrewCastName":"(?:주연|출연|특별출연|진행) *","castcrewTitleKo":"([^"]*)"</expression>
+				<expression repeat="yes">"nameKo":"([^"]*)"[^}]*"fullname":"([^"]*)"[^}]*}[^}]*"castcrewCastName":"(?:주연|출연|특별출연)","castcrewTitleKo":"([^"]*)"</expression>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;director&gt;\1&lt;/director&gt;" dest="5+">
 				<expression>"nameKo":"([^"]*)"[^}]*}[^}]*"castcrewCastName":"연출"</expression>
@@ -345,10 +348,7 @@
 				<expression>(\d+)_(\d+)</expression>
 			</RegExp>
 			<RegExp input="$$7" output="\1" dest="5">
-				<RegExp conditional="!ManyDummyEp" input="" output="24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1" dest="6">
-					<expression/>
-				</RegExp>
-				<RegExp conditional="ManyDummyEp" input="" output="100 99 98 97 96 95 94 93 92 91 90 89 88 87 86 85 84 83 82 81 80 79 78 77 76 75 74 73 72 71 70 69 68 67 66 65 64 63 62 61 60 59 58 57 56 55 54 53 52 51 50 49 48 47 46 45 44 43 42 41 40 39 38 37 36 35 34 33 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1" dest="6">
+				<RegExp input="" output="24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1" dest="6">
 					<expression/>
 				</RegExp>
 				<RegExp input="$$6" output="&lt;episode&gt;&lt;url&gt;&lt;/url&gt;&lt;season&gt;$$11&lt;/season&gt;&lt;epnum&gt;\1&lt;/epnum&gt;&lt;id&gt;DUMMY_$$11_\1&lt;/id&gt;&lt;/episode&gt;" dest="7">
@@ -409,6 +409,15 @@
 			<expression />
 		</RegExp>
 	</LookupSeasonFromTableById>
+	<!-- Parse web page for missing info. Refer GetTVDBArtByDaumId -->
+	<ParseDaumMoviePage dest="4">
+		<RegExp input="$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
+			<RegExp input="$$1" output="&lt;originaltitle&gt;\1&lt;/originaltitle&gt;" dest="5">
+				<expression>span class="eng"&gt;([^&lt;]+)&lt;/span</expression>
+			</RegExp>
+			<expression noclean="1" />
+		</RegExp>
+	</ParseDaumMoviePage>
 	<!-- #############################################
 		function needed for TVDB fanart
 	-->
