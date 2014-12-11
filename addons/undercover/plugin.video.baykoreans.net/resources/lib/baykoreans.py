@@ -104,7 +104,7 @@ def parseVideoList(main_url):
             qs = urlparse.parse_qs(url.split('?',1)[1])
             xink = qs['xink'][0]
             vid_url = None
-            if '/dmotion/' in url:
+            if '/dmotion/' in url or '/emotion/' in url:
                 vid_url = "http://www.dailymotion.com/video/"+xink
             elif '/tudou.y/' in url:
                 vid_url = "http://vr.tudou.com/v2proxy/v2?it=%s&st=52&pw=" % xink
@@ -125,10 +125,9 @@ def parseVideoList(main_url):
         else:
             vid_url = url
 
-        if 'tudou.com/v/' in vid_url:
-            vid_url = vid_url.replace('tudou.com/v/', 'tudou.com/programs/view/')
-
         if vid_url:
+            if 'tudou.com/v/' in vid_url:
+                vid_url = vid_url.replace('tudou.com/v/', 'tudou.com/programs/view/')
             result.append({'title':title, 'url':vid_url})
     return result
 
